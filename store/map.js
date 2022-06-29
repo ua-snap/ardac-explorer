@@ -1,6 +1,4 @@
 import _ from 'lodash'
-import ak from '!raw-loader!../assets/alaska.geojson'
-const akJson = JSON.parse(ak)
 
 // This needs to be outside of the Store or there's problems
 // because Leaflet mutates the state of the map, and Vuex
@@ -122,17 +120,6 @@ export default {
       layerObject = L.tileLayer.wms(wmsUrl, layerConfiguration)
 
       map.addLayer(layerObject)
-    },
-    addLayerEventHandler(state, handler) {
-      L.geoJSON(akJson, {
-        onEachFeature: function (feature, layer) {
-          layer.on(handler.event, handler.handler)
-        },
-        style: {
-          opacity: 0.0,
-          fillOpacity: 0.0,
-        },
-      }).addTo(map)
     },
   },
 }
