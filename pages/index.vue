@@ -14,7 +14,11 @@
         <div class="columns">
           <div class="column">
             <a href="https://northernclimatereports.org/">
-              <img class="showcase" src="~/assets/images/showcases/ncr.png" alt="Northern Climate Reports" />
+              <img
+                class="showcase"
+                src="~/assets/images/showcases/ncr.png"
+                alt="Northern Climate Reports"
+              />
             </a>
             <span class="tag is-warning is-light">Temperature</span>
             <span class="tag is-link is-light">Precipitation</span>
@@ -24,7 +28,11 @@
           </div>
           <div class="column">
             <a href="http://dev.arcticeds.org/">
-              <img class="showcase" src="~/assets/images/showcases/arctic-eds.png" alt="Arctic ED" />
+              <img
+                class="showcase"
+                src="~/assets/images/showcases/arctic-eds.png"
+                alt="Arctic ED"
+              />
             </a>
             <span class="tag is-warning is-light">Temperature</span>
             <span class="tag is-link is-light">Precipitation</span>
@@ -37,11 +45,30 @@
     <section class="section datasets">
       <div class="container">
         <h2 class="title is-2">Data</h2>
-        <ul>
-          <li>
-            <NuxtLink to="/dataset/landfast-sea-ice">Landfast Sea Ice</NuxtLink>
-          </li>
-        </ul>
+        <div class="columns">
+          <div class="column data">
+            <img src="~/assets/images/data/precipitation.svg" />
+            Precipitation
+          </div>
+          <div class="column data">
+            <img src="~/assets/images/data/temperature.svg" />
+            Temperature
+          </div>
+          <div class="column data">
+            <img src="~/assets/images/data/snow.svg" />
+            Snowfall
+          </div>
+          <div class="column data">
+            <img src="~/assets/images/data/flammability.svg" />
+            Flammability
+          </div>
+          <div class="column data">
+            <NuxtLink to="/dataset/landfast-sea-ice">
+              <img src="~/assets/images/data/sea-ice.svg" />
+              Landfast Sea Ice
+            </NuxtLink>
+          </div>
+        </div>
       </div>
     </section>
   </div>
@@ -50,6 +77,16 @@
 .showcase {
   width: 100%;
   border: 1px solid #ccc;
+}
+.data {
+  text-align: center;
+  font-size: 1.2em;
+  img {
+    width: 100%;
+    border: 1px solid #ccc;
+    border-radius: 15px;
+    padding: 30px;
+  }
 }
 </style>
 <script>
