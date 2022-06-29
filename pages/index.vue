@@ -9,6 +9,27 @@
     <section class="section showcases">
       <div class="container">
         <h2 class="title is-2">Showcases</h2>
+        <div class="columns">
+          <div class="column">
+            <a href="https://northernclimatereports.org/">
+              <img class="showcase" src="~/assets/images/showcases/ncr.png" alt="Northern Climate Reports" />
+            </a>
+            <span class="tag is-warning is-light">Temperature</span>
+            <span class="tag is-link is-light">Precipitation</span>
+            <span class="tag is-warning is-light">Permafrost</span>
+            <span class="tag is-danger is-light">Flammability</span>
+            <span class="tag is-success is-light">Vegetation</span>
+          </div>
+          <div class="column">
+            <a href="http://dev.arcticeds.org/">
+              <img class="showcase" src="~/assets/images/showcases/arctic-eds.png" alt="Arctic ED" />
+            </a>
+            <span class="tag is-warning is-light">Temperature</span>
+            <span class="tag is-link is-light">Precipitation</span>
+            <span class="tag is-white is-light">Snowfall</span>
+            <span class="tag is-warning is-light">Permafrost</span>
+          </div>
+        </div>
       </div>
     </section>
     <section class="section datasets">
@@ -18,7 +39,12 @@
     </section>
   </div>
 </template>
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.showcase {
+  width: 100%;
+  border: 1px solid #ccc;
+}
+</style>
 <script>
 export default {
   name: "HomePage",
