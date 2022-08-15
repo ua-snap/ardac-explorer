@@ -44,6 +44,8 @@ export default {
     apiUrl: process.env.SNAP_API_URL || "https://earthmaps.io",
     rasdamanUrl:
       process.env.RASDAMAN_URL || "https://zeus.snap.uaf.edu/rasdaman/ows",
+    strapiUrl:
+      process.env.STRAPI_URL || "http://localhost:1337"
   },
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins

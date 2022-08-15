@@ -3,9 +3,7 @@
     <b-navbar>
       <template slot="start">
         <b-navbar-item href="/"> Home </b-navbar-item>
-        <b-navbar-dropdown label="About">
-          <b-navbar-item tag="nuxt-link" to="/about"> About </b-navbar-item>
-        </b-navbar-dropdown>
+        <b-navbar-item tag="nuxt-link" to="/about"> About </b-navbar-item>
       </template>
 
       <template slot="end">
