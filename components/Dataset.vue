@@ -27,7 +27,6 @@
           <b-taglist>
             <b-tag
               type="is-info"
-              size="is-large"
               v-for="tag in dataset.tags.data"
               v-bind:key="dataset.tags.id"
             >
@@ -49,7 +48,7 @@
           </div>
         </div>
 
-        <div v-if="dataset.api_url">
+        <div v-if="dataset.api_url" class="block">
           <h3 class="title is-4">Query this data through the API</h3>
           <p class="content is-5">
             You can query this dataset via a programmatic API.
@@ -57,6 +56,20 @@
           <div>
             <a class="button is-info" v-bind:href="dataset.api_url"
               >Access this dataset via API</a
+            >
+          </div>
+        </div>
+
+        <div v-if="dataset.source_url" class="block">
+          <h3 class="title is-4">Access source data</h3>
+          <p class="content is-5">
+            The full underlying dataset of model outputs, in raw form, can be
+            downloaded and used with GIS software and geospatial programming
+            libraries.
+          </p>
+          <div>
+            <a class="button is-info" v-bind:href="dataset.source_url"
+              >Access source data</a
             >
           </div>
         </div>
@@ -76,6 +89,10 @@
 
 .references {
   margin-top: 2rem;
+}
+
+.block {
+  margin-top: 3rem;
 }
 </style>
 
