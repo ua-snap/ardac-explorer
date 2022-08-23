@@ -76,7 +76,7 @@ export default {
 
 <style lang="scss" scoped>
 .footer {
-  box-shadow: inset 0 7px 9px rgba(0, 0, 0, 0.4);
+  border-top: 1px solid #888;
 
   .logo {
     text-align: center;

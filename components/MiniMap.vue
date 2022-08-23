@@ -1,11 +1,11 @@
 <template>
   <div>
-    <div id="minimmap--map"></div>
+    <div v-bind:id="mapConfiguration.layer + '--map'" class="leaflet-map"></div>
   </div>
 </template>
 
 <style lang="scss" scoped>
-#minimmap--map {
+.leaflet-map {
   aspect-ratio: 1 / 1;
   height: 100%;
 }
@@ -41,7 +41,7 @@ export default {
     },
   },
   mounted() {
-    this.map = L.map("minimmap--map", this.getBaseMapAndLayers());
+    this.map = L.map(this.mapConfiguration.layer + "--map", this.getBaseMapAndLayers());
     this.layer.addTo(this.map);
   },
 
