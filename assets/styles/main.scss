@@ -1,0 +1,37 @@
+@charset "utf-8";
+
+@import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;600;700;800;900&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
+
+// Set your brand colors
+$purple: #8A4D76;
+$pink: #FA7C91;
+$brown: #757763;
+$beige-light: #D0D1CD;
+$beige-lighter: #EFF0EB;
+
+// Update Bulma's global variables
+$family-sans-serif: "Archivo", sans-serif;
+$text: $beige-light;
+$grey-dark: $brown;
+$grey-light: $beige-light;
+$primary: $purple;
+$link: $pink;
+
+// Update some of Bulma's component variables
+$body-background-color: #FFF;
+
+// Import the rest of Bulma
+@import "~/node_modules/bulma/bulma.sass";
+
+// Specific overrides
+.title {
+	color: $text;
+}
+
+.card {
+	color: #000;
+
+	.tag {
+		margin-right: 0.25rem;
+	}
+}
