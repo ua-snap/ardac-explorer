@@ -5,7 +5,7 @@ definePageMeta({
 
 const { $Masonry } = useNuxtApp()
 
-import cards from '~/assets/cards.json'
+import cards from '~/assets/cards'
 
 let cardsByCategory = {}
 cards.forEach(card => {
