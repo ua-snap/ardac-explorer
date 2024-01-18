@@ -25,9 +25,8 @@ let categories = Object.keys(cardsByCategory).map(category => {
 onMounted(() => {
   categories.forEach(category => {
     let gridSelector = `.grid-${category['slug']}`
-    let gridItemSelector = `.grid-item-${category['slug']}`
     new $Masonry(gridSelector, {
-      itemSelector: gridItemSelector,
+      itemSelector: '.grid-item',
       columnWidth: 300,
     })
   })
@@ -37,9 +36,9 @@ onMounted(() => {
 <template>
   <div v-for="category in categories">
     <h1 class="title is-3">{{ category['name'] }}</h1>
-    <div :class="'mb-3 grid-' + category['slug']">
+    <div class="mb-3" :class="'grid-' + category['slug']">
       <div
-        :class="'card clamp mb-5 grid-item-' + category['slug']"
+        class="card clamp mb-5 grid-item"
         v-for="card in cardsByCategory[category['name']]"
       >
         <div v-if="card['image']" class="card-image">
