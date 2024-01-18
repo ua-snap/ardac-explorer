@@ -1,12 +1,17 @@
 export default [
   {
     type: 'general',
+    slug: 'future-precipitation-map',
     image: '/previews/data-preview-1.png',
     imageAlt: 'A Map',
     title: 'Future precipitation map &amp; web services',
     blurb: `See <a href="">statewide precipitation maps</a> and access web services (WMS) that can be used in your own GIS applications.`,
     tags: ['Precipitation', 'WMS', 'Visualization', 'GIS'],
     category: 'Precipitation',
+    full_view_content: `
+      <p>This is a freeform HTML field. We can put <em>whatever</em> we want here.</p>
+      <marquee class="is-size-1">The world is our oyster! 🦪</marquee>
+    `,
   },
   {
     type: 'general',
@@ -115,10 +120,5 @@ export default [
     type: 'small',
     title: `Historical + near-real-time <a href="https://earthmaps.io/fire/" >wildfire and related research data</a>`,
     category: 'Wildfire and Vegetation',
-  },
-  {
-    type: 'small',
-    title: `<a href="https://earthmaps.io/boundary/" >Places &amp; boundaries</a > in Alaska and parts of western Canada`,
-    category: 'Geospatial processing code and data',
   },
 ]
