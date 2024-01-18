@@ -30,11 +30,6 @@ onMounted(() => {
       columnWidth: 300,
     })
   })
-
-  new $Masonry('.grid2', {
-    itemSelector: '.grid-item',
-    columnWidth: 300,
-  })
 })
 </script>
 
@@ -42,24 +37,16 @@ onMounted(() => {
   <div v-for="category in categories">
     <h1 class="title is-3">{{ category['name'] }}</h1>
     <div class="mb-3" :class="'grid-' + category['slug']">
-      <div
-        class="card clamp mb-5 grid-item"
-        v-for="card in cardsByCategory[category['name']]"
-      >
-        <div v-if="card['image']" class="card-image">
-          <figure class="image is-4by3">
-            <img :src="card['image']" :alt="card['image_alt']" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <h3 class="title is-4">{{ card['title'] }}</h3>
-            <p v-html="card['blurb']" />
-            <span v-for="tag in card['tags']" class="tag is-dark mb-1">{{
-              tag
-            }}</span>
-          </div>
-        </div>
+      <div v-for="card in cardsByCategory[category['name']]" class="grid-item">
+        <Item
+          :category="category.name"
+          :type="card.type"
+          :image="card.image"
+          :imageAlt="card.altImage"
+          :title="card.title"
+          :blurb="card.blurb"
+          :tags="card.tags"
+        />
       </div>
     </div>
   </div>
@@ -67,154 +54,20 @@ onMounted(() => {
     <div class="container">
       <h2 class="title is-2">Subsection experimental itemfarm 🥗🥗 salad</h2>
 
-      <div class="grid2" style="position: relative;">
-        <!-- Example 1: "smallest" content atoms -->
-        <div class="card grid-item small">
-          <div class="card-content">
-            <h5 class="title is-5">
-              Modeled
-              <a href="https://earthmaps.io/alfresco/"
-                >future flammability and vegetation</a
-              >
-            </h5>
-          </div>
-        </div>
+      <div class="grid2" style="position: relative">
+       
 
-        <div class="card grid-item small">
-          <div class="card-content">
-            <h5 class="title is-5">
-              Historical + near-real-time
-              <a href="https://earthmaps.io/alfresco/"
-                >wildfire and related research data</a
-              >
-            </h5>
-          </div>
-        </div>
-
-        <div class="card grid-item small">
-          <div class="card-content">
-            <h5 class="title is-5">
-              <a href="https://earthmaps.io/boundary/"
-                >Places &amp; boundaries</a
-              >
-              in Alaska and parts of western Canada
-            </h5>
-          </div>
-        </div>
 
         <!-- "general" content atoms -->
-        <div class="card grid-item medium">
-          <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="~/assets/images/data-preview-1.png" alt="A Map" />
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="content">
-              <h3 class="title is-4">Future precipitation map &amp; web services</h3>
-              <p>
-                See <a href="">statewide precipitation maps</a> and access web services (WMS) that can be used in your own GIS applications.
-              </p>
-              <div>
-                <span class="tag is-dark">Precipitation</span>
-                <span class="tag is-dark">WMS</span>
-                <span class="tag is-dark">Visualization</span>
-                <span class="tag is-dark">GIS</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card grid-item medium">
-          <div class="card-image">
-            <figure class="image is-square">
-              <img src="~/assets/images/data-preview-2.png" alt="A Map" />
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="content">
-              <h3 class="title is-4">Degree days, projected statewide</h3>
-              <p>
-                Explore climate projections used to derive <a href="">future heating, freezing and thawing degree days</a> across Alaska.
-              </p>
-              <div>
-                <span class="tag is-dark">Degree days</span>
-                <span class="tag is-dark">WMS</span>
-                <span class="tag is-dark">Visualization</span>
-                <span class="tag is-dark">GIS</span>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class="card grid-item medium">
-          <div class="card-image">
-            <figure class="image is-4by3">
-              <img src="~/assets/images/data-preview-3.png" alt="A Map" />
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="content">
-              <h3 class="title is-4">Flammability, vegetation, current conditions</h3>
-              <p>
-                Historical and projected flammability and vegetation model output, with adjacent indicators updated daily.  <a href="">See a map and access data layers.</a>
-              </p>
-              <div>
-                <span class="tag is-dark">Wildfire</span>
-                <span class="tag is-dark">Vegetation</span>
-                <span class="tag is-dark">Lightning</span>
-                <span class="tag is-dark">WMS</span>
-                <span class="tag is-dark">Visualization</span>
-                <span class="tag is-dark">GIS</span>
-              </div>
-            </div>
-          </div>
-        </div>
+        <!-- <div class="card grid-item medium">
+         
+         
+  
 
 
-        <div class="card grid-item big">
-          <div class="card-image">
-            <figure class="image">
-              <img src="~/assets/images/ncr-preview.png" alt="A Map" />
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="content">
-              <h3 class="title is-4">Northern Climate Reports</h3>
-              <p>
-                See charts, maps and tables of climate data for Alaska and parts of Western Canada.
-              </p>
-              <div>
-                <span class="tag is-dark">Tool</span>
-                <span class="tag is-dark">Permafrost</span>
-                <span class="tag is-dark">Temperature</span>
-                <span class="tag is-dark">Precipitation</span>
-                <span class="tag is-dark">Vegetation</span>
-                <span class="tag is-dark">Lightning</span>
-                <span class="tag is-dark">WMS</span>
-                <span class="tag is-dark">Visualization</span>
-                <span class="tag is-dark">GIS</span>
-              </div>
-            </div>
-          </div>
-        </div>
 
-        <div class="card grid-item big">
-          <div class="card-image">
-            <figure class="image">
-              <img src="~/assets/images/data-preview-4.png" alt="A Map" />
-            </figure>
-          </div>
-          <div class="card-content">
-            <div class="content">
-              <h3 class="title is-4">Historical Sea Ice Atlas</h3>
-              <p>
-                Interactive application for viewing sea ice extent and concentration, 1850&ndash;2022.
-              </p>
-              <div>
-                <span class="tag is-dark">Tool</span>
-                <span class="tag is-dark">Sea ice</span>
-              </div>
+        <diviv>
+      >
             </div>
           </div>
         </div>
@@ -294,27 +147,14 @@ onMounted(() => {
               </div>
             </div>
           </div>
-        </div>
-
+        </div>-->
       </div>
     </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
-.clamp {
+.card {
   max-width: 280px;
-}
-
-.small {
-  width: 20%;
-}
-
-.medium {
-  width: 30%;
-}
-
-.big {
-  width: 50%;
 }
 </style>
