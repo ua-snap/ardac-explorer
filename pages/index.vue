@@ -34,34 +34,33 @@ onMounted(() => {
 </script>
 
 <template>
-  <div v-for="category in categories">
-    <h1 class="title is-3">{{ category['name'] }}</h1>
-    <div class="mb-3" :class="'grid-' + category['slug']">
-      <div
-        class="card clamp mb-5 grid-item"
-        v-for="card in cardsByCategory[category['name']]"
-      >
-        <div v-if="card['image']" class="card-image">
-          <figure class="image is-4by3">
-            <img :src="card['image']" :alt="card['image_alt']" />
-          </figure>
-        </div>
-        <div class="card-content">
-          <div class="content">
-            <h3 class="title is-4">{{ card['title'] }}</h3>
-            <p v-html="card['blurb']" />
-            <span v-for="tag in card['tags']" class="tag is-dark mb-1">{{
-              tag
-            }}</span>
+  <section class="section">
+    <div class="container">
+      <div v-for="category in categories">
+        <h1 class="title is-3">{{ category['name'] }}</h1>
+        <div class="mb-3" :class="'grid-' + category['slug']">
+          <div
+            v-for="card in cardsByCategory[category['name']]"
+            class="grid-item"
+          >
+            <Item
+              :category="category.name"
+              :type="card.type"
+              :image="card.image"
+              :imageAlt="card.altImage"
+              :title="card.title"
+              :blurb="card.blurb"
+              :tags="card.tags"
+            />
           </div>
         </div>
       </div>
     </div>
-  </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
-.clamp {
+.card {
   max-width: 280px;
 }
 </style>
