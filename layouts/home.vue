@@ -6,13 +6,23 @@
   <section class="section dark">
     <div class="brand mb-6">
       <h1>Arctic Data Collaborative</h1>
-      <h2><img src="~/assets/images/ardac-green-logo.svg" alt="logo of ARDAC acronym"/><span>Explorer</span></h2>
+      <h2>
+        <img
+          src="~/assets/images/ardac-green-logo.svg"
+          alt="logo of ARDAC acronym"
+        /><span>Explorer</span>
+      </h2>
     </div>
   </section>
   <section class="section dark">
     <div class="container">
       <div class="content is-size-3">
-        <p>The Arctic Data Collaborative (ARDAC) provides highly-curated, relevant <b>Arctic datasets</b>, streamlined <b>data access</b>, processing <code>code examples</code> and <b>visualizations</b> to support research in the North.</p>
+        <p>
+          The Arctic Data Collaborative (ARDAC) provides highly-curated,
+          relevant <b>Arctic datasets</b>, streamlined <b>data access</b>,
+          processing <code>code examples</code> and <b>visualizations</b> to
+          support research in the North.
+        </p>
       </div>
     </div>
   </section>
@@ -27,10 +37,10 @@
 
 <style lang="scss" scoped>
 .dark {
-  background-color: #000;
+  background-color: $black;
 }
 .brand {
-      color: #fff;
+  color: $white;
   h1 {
     color: #ccc;
     margin-left: 4rem;
@@ -45,9 +55,9 @@
       position: relative;
       bottom: 5px;
     }
-  img {
-    height: 4.62rem;
+    img {
+      height: 4.62rem;
+    }
   }
-}
 }
 </style>

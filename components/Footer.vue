@@ -41,9 +41,9 @@ const year = new Date().getFullYear();
 
 <style lang="scss" scoped>
   footer {
-    border-top: 6rem solid #000;
-    background-color: #fff;
-    color: #000;
+    border-top: 6rem solid $black;
+    background-color: $white;
+    color: $black;
     padding: 3rem;
 
     font-size: 140%;
