@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 const props = defineProps<{
   type: string
-  category?: string
   image?: string
   imageAlt?: string
   title?: string
