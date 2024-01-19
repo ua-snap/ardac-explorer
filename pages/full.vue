@@ -11,9 +11,8 @@ let card = cards.find(card => card.slug === slug)
 </script>
 
 <template>
-  <h1 class="title is-3">{{ card['title'] }}</h1>
-  <div v-html="card['full_view_content']" />
-  <NuxtLink to="/" class="button mt-4">Go back</NuxtLink>
+  <h1 class="title is-3" v-html="card['title']"></h1>
+  <div v-html="card['fullView']" />
 </template>
 
 <style scoped></style>

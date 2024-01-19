@@ -8,7 +8,7 @@ export default [
     blurb: `See <a href="">statewide precipitation maps</a> and access web services (WMS) that can be used in your own GIS applications.`,
     tags: ['Precipitation', 'WMS', 'Visualization', 'GIS'],
     category: 'Precipitation',
-    full_view_content: `
+    fullView: `
       <p>This is a freeform HTML field. We can put <em>whatever</em> we want here.</p>
       <marquee class="is-size-1">The world is our oyster! 🦪</marquee>
     `,
@@ -96,7 +96,6 @@ export default [
     title:
       'Permafrost Observations with Modeled Historical Air Temperature Data',
     blurb: `This notebook demonstrates how to take a set of monthly observations at a known sampling location and query the SNAP Data API for modeled historical monthly data at that location. In this example, CALM active layer thickness (ALT) observations made at the "Imnavait Creek WET" site (U11B: 68.611, -149.3145) in the month of August are paired with CRU-TS 4.0 mean August air temperature data accessed via the SNAP Data API. (References for these datasets are included at the bottom of this notebook.)`,
-    tags: ['Notebook', 'Temperature', 'Permafrost', 'API'],
     category: 'Geospatial processing code and data',
   },
 

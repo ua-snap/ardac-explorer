@@ -51,6 +51,8 @@ onMounted(() => {
               :title="card.title"
               :blurb="card.blurb"
               :tags="card.tags"
+              :slug="card.slug"
+              :fullView="card.fullView"
             />
           </div>
         </div>
