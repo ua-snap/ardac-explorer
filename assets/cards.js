@@ -1,12 +1,17 @@
 export default [
   {
     type: 'general',
+    slug: 'future-precipitation-map',
     image: '/previews/data-preview-1.png',
     imageAlt: 'A Map',
     title: 'Future precipitation map &amp; web services',
     blurb: `See <a href="">statewide precipitation maps</a> and access web services (WMS) that can be used in your own GIS applications.`,
     tags: ['Precipitation', 'WMS', 'Visualization', 'GIS'],
     category: 'Precipitation',
+    fullView: `
+      <p>This is a freeform HTML field. We can put <em>whatever</em> we want here.</p>
+      <marquee class="is-size-1">The world is our oyster! 🦪</marquee>
+    `,
   },
   {
     type: 'general',
@@ -91,7 +96,6 @@ export default [
     title:
       'Permafrost Observations with Modeled Historical Air Temperature Data',
     blurb: `This notebook demonstrates how to take a set of monthly observations at a known sampling location and query the SNAP Data API for modeled historical monthly data at that location. In this example, CALM active layer thickness (ALT) observations made at the "Imnavait Creek WET" site (U11B: 68.611, -149.3145) in the month of August are paired with CRU-TS 4.0 mean August air temperature data accessed via the SNAP Data API. (References for these datasets are included at the bottom of this notebook.)`,
-    tags: ['Notebook', 'Temperature', 'Permafrost', 'API'],
     category: 'Geospatial processing code and data',
   },
 
@@ -115,10 +119,5 @@ export default [
     type: 'small',
     title: `Historical + near-real-time <a href="https://earthmaps.io/fire/" >wildfire and related research data</a>`,
     category: 'Wildfire and Vegetation',
-  },
-  {
-    type: 'small',
-    title: `<a href="https://earthmaps.io/boundary/" >Places &amp; boundaries</a > in Alaska and parts of western Canada`,
-    category: 'Geospatial processing code and data',
   },
 ]

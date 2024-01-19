@@ -7,10 +7,18 @@ const props = defineProps<{
   title?: string
   blurb?: string
   tags?: string[]
+  slug?: string
+  fullView?: string
 }>()
 
 const isSmall = computed<boolean>(() => {
   return props.type === 'small'
+})
+const hasFullView = computed<boolean>(() => {
+  return props.fullView && props.slug
+})
+const fullViewLink = computed<string>(() => {
+  return '/item/' + props.slug
 })
 </script>
 
@@ -29,6 +37,9 @@ const isSmall = computed<boolean>(() => {
         <div class="content">
           <h3 class="title is-4" v-html="title"></h3>
           <p v-html="blurb" />
+          <div v-if="hasFullView" class="mb-4">
+            <NuxtLink :to="fullViewLink">Read more</NuxtLink>
+          </div>
           <span v-for="tag in tags" class="tag is-dark mb-1">{{ tag }}</span>
         </div>
       </div>
