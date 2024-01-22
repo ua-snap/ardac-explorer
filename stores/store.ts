@@ -1,5 +1,5 @@
 import { defineStore } from 'pinia'
-import items from '~/assets/cards'
+import items from '~/assets/items'
 
 export const useStore = defineStore('store', () => {
   const filteredItems = ref(items)

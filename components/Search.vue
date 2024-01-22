@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 const { $autoComplete } = useNuxtApp()
 
-import items from '~/assets/cards'
+import items from '~/assets/items'
 
 onMounted(() => {
   let config = {

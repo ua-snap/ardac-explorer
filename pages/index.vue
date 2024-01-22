@@ -7,22 +7,22 @@ import { useStore } from '~/stores/store'
 
 const { $Masonry } = useNuxtApp()
 const store = useStore()
-const cards = computed(() => store.filteredItems)
+const items = computed(() => store.filteredItems)
 const searchActive = computed(() => store.searchActive)
-const cardsByTag = ref({})
+const itemsByTag = ref({})
 const tags = ref([])
 
 const populatePage = () => {
-  cardsByTag.value = {}
-  cards.value.forEach(card => {
-    card.tags.forEach(tag => {
-      if (!cardsByTag.value.hasOwnProperty(tag)) {
-        cardsByTag.value[tag] = []
+  itemsByTag.value = {}
+  items.value.forEach(item => {
+    item.tags.forEach(tag => {
+      if (!itemsByTag.value.hasOwnProperty(tag)) {
+        itemsByTag.value[tag] = []
       }
-      cardsByTag.value[tag].push(card)
+      itemsByTag.value[tag].push(item)
     })
   })
-  tags.value = Object.keys(cardsByTag.value).map(tag => {
+  tags.value = Object.keys(itemsByTag.value).map(tag => {
     return {
       name: tag,
       slug: tag.toLowerCase().replaceAll(' ', '-'),
@@ -52,7 +52,7 @@ onMounted(() => {
   populatePage()
 })
 
-watch([cards, searchActive], async () => {
+watch([items, searchActive], async () => {
   populatePage()
 })
 </script>
@@ -64,32 +64,32 @@ watch([cards, searchActive], async () => {
       <div v-if="!store.searchActive" v-for="tag in tags">
         <h1 class="title is-3">{{ tag['name'] }}</h1>
         <div class="mb-6" :class="'grid-' + tag['slug']">
-          <div v-for="card in cardsByTag[tag['name']]" class="grid-item">
+          <div v-for="item in itemsByTag[tag['name']]" class="grid-item">
             <Item
-              :type="card.type"
-              :image="card.image"
-              :imageAlt="card.altImage"
-              :title="card.title"
-              :blurb="card.blurb"
-              :tags="card.tags"
-              :slug="card.slug"
-              :fullView="card.fullView"
+              :type="item.type"
+              :image="item.image"
+              :imageAlt="item.altImage"
+              :title="item.title"
+              :blurb="item.blurb"
+              :tags="item.tags"
+              :slug="item.slug"
+              :fullView="item.fullView"
             />
           </div>
         </div>
       </div>
       <div v-else>
         <div class="mb-6 grid">
-          <div v-for="card in cards" class="grid-item">
+          <div v-for="item in items" class="grid-item">
             <Item
-              :type="card.type"
-              :image="card.image"
-              :imageAlt="card.altImage"
-              :title="card.title"
-              :blurb="card.blurb"
-              :tags="card.tags"
-              :slug="card.slug"
-              :fullView="card.fullView"
+              :type="item.type"
+              :image="item.image"
+              :imageAlt="item.altImage"
+              :title="item.title"
+              :blurb="item.blurb"
+              :tags="item.tags"
+              :slug="item.slug"
+              :fullView="item.fullView"
             />
           </div>
         </div>
@@ -99,7 +99,7 @@ watch([cards, searchActive], async () => {
 </template>
 
 <style lang="scss" scoped>
-.card {
+.grid-item {
   max-width: 332px;
   margin: 10px;
 }
