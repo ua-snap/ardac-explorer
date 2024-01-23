@@ -19,7 +19,7 @@ onMounted(() => {
     },
   }
 
-  const autoCompleteJS = new $autoComplete(config)
+  new $autoComplete(config)
 
   document
     .querySelector('#autoComplete')
@@ -32,7 +32,8 @@ onMounted(() => {
       let filteredItems = event.detail.results.map(result => {
         return result.value
       })
-      filteredItems = new Set(filteredItems)
+      // Remove duplicates by converting to a Set and back to an Array.
+      filteredItems = Array.from(new Set(filteredItems))
       store.filteredItems = filteredItems
       store.searchActive = true
     })
@@ -47,6 +48,7 @@ onMounted(() => {
 :global(.autoComplete_wrapper) {
   width: 100%;
 }
+/* Hide results list since we are showing results as cards instead. */
 :global(ul[id^='autoComplete_list']) {
   display: none;
 }

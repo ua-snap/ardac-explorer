@@ -7,6 +7,7 @@ import { useStore } from '~/stores/store'
 
 const { $Masonry } = useNuxtApp()
 const store = useStore()
+
 const items = computed(() => store.filteredItems)
 const searchActive = computed(() => store.searchActive)
 const itemsByTag = ref({})
@@ -39,7 +40,7 @@ const populatePage = () => {
           columnWidth: columnWidth,
         })
       })
-    } else {
+    } else if (items.value.length > 0) {
       new $Masonry('.grid', {
         itemSelector: gridItemSelector,
         columnWidth: columnWidth,
@@ -79,7 +80,7 @@ watch([items, searchActive], async () => {
         </div>
       </div>
       <div v-else>
-        <div class="mb-6 grid">
+        <div v-if="items.length > 0" class="mb-6 grid">
           <div v-for="item in items" class="grid-item">
             <Item
               :type="item.type"
@@ -92,6 +93,9 @@ watch([items, searchActive], async () => {
               :fullView="item.fullView"
             />
           </div>
+        </div>
+        <div v-else class="has-text-centered">
+          <h1 class="title is-4">No results found.</h1>
         </div>
       </div>
     </div>
