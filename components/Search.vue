@@ -22,16 +22,18 @@ onMounted(() => {
   new $autoComplete(config)
 
   document
-    .querySelector('#autoComplete')
-    .addEventListener('results', function (event) {
+    .querySelector('#autoComplete')!
+    .addEventListener('results', (event: Event) => {
       const store = useStore()
-      if (event.detail.query === '') {
+      if ((event as CustomEvent).detail.query === '') {
         store.searchActive = false
         return
       }
-      let filteredItems = event.detail.results.map(result => {
-        return result.value
-      })
+      let filteredItems = (event as CustomEvent).detail.results.map(
+        (result: any) => {
+          return result.value
+        }
+      )
       // Remove duplicates by converting to a Set and back to an Array.
       filteredItems = Array.from(new Set(filteredItems))
       store.filteredItems = filteredItems

@@ -8,17 +8,17 @@ import { useStore } from '~/stores/store'
 const { $Masonry } = useNuxtApp()
 const store = useStore()
 
-const items = computed(() => store.filteredItems)
+const items = computed<any[]>(() => store.filteredItems)
 const searchActive = computed(() => store.searchActive)
-const itemsByTag = ref({})
-const tags = ref([])
+const itemsByTag = ref({} as ItemsByTag)
+const tags = ref(new Array<Tag>())
 
 const populatePage = () => {
   itemsByTag.value = {}
-  items.value.forEach(item => {
-    item.tags.forEach(tag => {
+  items.value.forEach((item: Item) => {
+    item.tags?.forEach((tag: string) => {
       if (!itemsByTag.value.hasOwnProperty(tag)) {
-        itemsByTag.value[tag] = []
+        itemsByTag.value[tag] = new Array<Item>()
       }
       itemsByTag.value[tag].push(item)
     })
@@ -69,7 +69,7 @@ watch([items, searchActive], async () => {
             <Item
               :type="item.type"
               :image="item.image"
-              :imageAlt="item.altImage"
+              :imageAlt="item.imageAlt"
               :title="item.title"
               :blurb="item.blurb"
               :tags="item.tags"
@@ -85,7 +85,7 @@ watch([items, searchActive], async () => {
             <Item
               :type="item.type"
               :image="item.image"
-              :imageAlt="item.altImage"
+              :imageAlt="item.imageAlt"
               :title="item.title"
               :blurb="item.blurb"
               :tags="item.tags"
