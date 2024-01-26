@@ -59,9 +59,9 @@ watch([items, searchActive], async () => {
 </script>
 
 <template>
-  <Search />
-  <section class="section">
+  <section class="section dark">
     <div class="container">
+      <Search />
       <div v-if="!store.searchActive" v-for="tag in tags">
         <h1 class="title is-3">{{ tag['name'] }}</h1>
         <div class="mb-6" :class="'grid-' + tag['slug']">

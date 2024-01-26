@@ -1,7 +1,4 @@
 <script lang="ts" setup>
-definePageMeta({
-  layout: 'full',
-})
 
 import items from '~/assets/items'
 
