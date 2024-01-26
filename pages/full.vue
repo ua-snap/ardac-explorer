@@ -6,6 +6,7 @@ definePageMeta({
 import type { ConcreteComponent } from 'vue'
 import { getCurrentInstance } from 'vue'
 import items from '~/assets/items'
+import { validSlug, slugToCamelCase } from '~/utils/slugs'
 
 const route = useRoute()
 let slug = route.params.slug
@@ -14,18 +15,10 @@ let component: ConcreteComponent | string
 
 const componentFileExists = computed<boolean>(() => {
   let slugString = slug.toString()
-
-  // Validate that slug is not empty and contains only expected characters.
-  if (slugString === '' || !slugString.match(/^[a-z0-9-]+$/)) {
+  if (!validSlug(slugString)) {
     return false
   }
-
-  // Convert slug string from lowercase-with-dashes style to the CamelCase
-  // style used for Vue components.
-  let camelCaseString = slugString
-    .split('-')
-    .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-    .join('')
+  let camelCaseString = slugToCamelCase(slugString)
 
   let vueComponents = getCurrentInstance()?.appContext.components
   if (vueComponents?.hasOwnProperty(camelCaseString)) {

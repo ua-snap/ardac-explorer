@@ -10,6 +10,8 @@ const props = defineProps<{
   fullView?: string
 }>()
 
+import { slugToCamelCase } from '~/utils/slugs'
+
 const isSmall = computed<boolean>(() => {
   return props.type === 'small'
 })
@@ -20,11 +22,13 @@ const showReadMore = computed<boolean>(() => {
   if (props.fullView !== undefined) {
     return true
   }
-  const component = resolveComponent(props.slug)
-  if (typeof component === 'string') {
-    return false
-  } else {
+
+  let camelCaseString = slugToCamelCase(props.slug)
+  let vueComponents = getCurrentInstance()?.appContext.components
+  if (vueComponents?.hasOwnProperty(camelCaseString)) {
     return true
+  } else {
+    return false
   }
 })
 const fullViewLink = computed<string>(() => {
