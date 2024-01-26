@@ -13,8 +13,19 @@ const props = defineProps<{
 const isSmall = computed<boolean>(() => {
   return props.type === 'small'
 })
-const hasFullView = computed<boolean>(() => {
-  return props.fullView !== undefined && props.slug !== undefined
+const showReadMore = computed<boolean>(() => {
+  if (props.slug === undefined) {
+    return false
+  }
+  if (props.fullView !== undefined) {
+    return true
+  }
+  const component = resolveComponent(props.slug)
+  if (typeof component === 'string') {
+    return false
+  } else {
+    return true
+  }
 })
 const fullViewLink = computed<string>(() => {
   return '/item/' + props.slug
@@ -36,7 +47,7 @@ const fullViewLink = computed<string>(() => {
         <div class="content">
           <h3 class="title is-4" v-html="title"></h3>
           <p v-html="blurb" />
-          <div v-if="hasFullView" class="mb-4">
+          <div v-if="showReadMore" class="mb-4">
             <NuxtLink :to="fullViewLink">Read more</NuxtLink>
           </div>
           <span v-for="tag in tags" class="tag is-dark mb-1">{{ tag }}</span>

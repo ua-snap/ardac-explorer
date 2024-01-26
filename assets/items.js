@@ -89,6 +89,7 @@ export default [
   },
   {
     type: 'general',
+    slug: 'querying-daymet-daily-precipitation',
     image: '/previews/data-preview-5.png',
     imageAlt: 'temp map of alaska',
     title:
