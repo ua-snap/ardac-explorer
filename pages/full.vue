@@ -3,16 +3,16 @@ definePageMeta({
   layout: 'full',
 })
 
-import cards from '~/assets/cards'
+import items from '~/assets/items'
 
 const route = useRoute()
 let slug = route.params.slug
-let card = cards.find(card => card.slug === slug)
+let item = items.find(item => item.slug === slug)
 </script>
 
 <template>
-  <h1 class="title is-3" v-html="card['title']"></h1>
-  <div v-html="card['fullView']" />
+  <h1 class="title is-3" v-html="item?.['title']"></h1>
+  <div v-html="item?.['fullView'] ?? ''" />
 </template>
 
 <style scoped></style>

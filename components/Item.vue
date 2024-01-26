@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 const props = defineProps<{
   type: string
-  category?: string
   image?: string
   imageAlt?: string
   title?: string
@@ -15,7 +14,7 @@ const isSmall = computed<boolean>(() => {
   return props.type === 'small'
 })
 const hasFullView = computed<boolean>(() => {
-  return props.fullView && props.slug
+  return props.fullView !== undefined && props.slug !== undefined
 })
 const fullViewLink = computed<string>(() => {
   return '/item/' + props.slug
