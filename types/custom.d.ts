@@ -8,12 +8,3 @@ interface Item {
   slug?: string
   fullView?: string
 }
-
-interface ItemsByTag {
-  [key: string]: Item[]
-}
-
-interface Tag {
-  name: string
-  slug: string
-}
