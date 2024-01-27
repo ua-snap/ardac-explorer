@@ -12,8 +12,11 @@ const items = computed<any[]>(() => store.filteredItems)
 const searchActive = computed(() => store.searchActive)
 const itemsByTag = ref({} as ItemsByTag)
 const tags = ref(new Array<Tag>())
+const totalItemCount = ref()
+const resultsCount = ref()
 
 const populatePage = () => {
+  resultsCount.value = items.value.length
   itemsByTag.value = {}
   items.value.forEach((item: Item) => {
     item.tags?.forEach((tag: string) => {
@@ -50,6 +53,7 @@ const populatePage = () => {
 }
 
 onMounted(() => {
+  totalItemCount.value = items.value.length
   populatePage()
 })
 
@@ -62,6 +66,26 @@ watch([items, searchActive], async () => {
   <section class="section dark">
     <div class="container">
       <Search />
+      <div v-if="searchActive">
+        <div v-if="resultsCount > 0">
+          <p class="ml-2 mt-2">
+            Showing
+            <strong class="has-text-white">{{ resultsCount }}</strong>
+            <span v-if="resultsCount > 1"> matches</span>
+            <span v-else> match</span>
+            out of
+            <strong class="has-text-white">{{ totalItemCount }}</strong>
+            possible items.
+          </p>
+        </div>
+        <div v-else>
+          <p class="ml-2 mt-2">
+            No matches found out of
+            <strong class="has-text-white">{{ totalItemCount }}</strong>
+            possible items.
+          </p>
+        </div>
+      </div>
       <div v-if="!store.searchActive" v-for="tag in tags">
         <h1 class="title is-3">{{ tag['name'] }}</h1>
         <div class="mb-6" :class="'grid-' + tag['slug']">
@@ -93,9 +117,6 @@ watch([items, searchActive], async () => {
               :fullView="item.fullView"
             />
           </div>
-        </div>
-        <div v-else class="has-text-centered">
-          <h1 class="title is-4">No results found.</h1>
         </div>
       </div>
     </div>
