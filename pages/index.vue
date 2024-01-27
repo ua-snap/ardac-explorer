@@ -13,6 +13,9 @@ const searchActive = computed(() => store.searchActive)
 
 const populatePage = () => {
   setTimeout(() => {
+    if (items.value.length === 0) {
+      return
+    }
     let gridItemSelector = '.grid-item'
     let columnWidth = 352
     new $Masonry('.grid', {
@@ -49,7 +52,7 @@ watch([items, searchActive], async () => {
           />
         </div>
       </div>
-      <div v-else class="has-text-centered">
+      <div v-else class="ml-2">
         <h1 class="title is-4">No results found.</h1>
       </div>
     </div>

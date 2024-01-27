@@ -43,7 +43,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <input id="autoComplete" class="foobar" />
+  <input id="autoComplete" class="ml-2" />
 </template>
 
 <style lang="scss" scoped>
@@ -53,9 +53,5 @@ onMounted(() => {
 /* Hide results list since we are showing results as cards instead. */
 :global(ul[id^='autoComplete_list']) {
   display: none;
-}
-#autoComplete {
-  display: block;
-  margin: 0 auto;
 }
 </style>
