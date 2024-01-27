@@ -10,11 +10,26 @@ const props = defineProps<{
   fullView?: string
 }>()
 
+import { slugToCamelCase } from '~/utils/slugs'
+
 const isSmall = computed<boolean>(() => {
   return props.type === 'small'
 })
-const hasFullView = computed<boolean>(() => {
-  return props.fullView !== undefined && props.slug !== undefined
+const showReadMore = computed<boolean>(() => {
+  if (props.slug === undefined) {
+    return false
+  }
+  if (props.fullView !== undefined) {
+    return true
+  }
+
+  let camelCaseString = slugToCamelCase(props.slug)
+  let vueComponents = getCurrentInstance()?.appContext.components
+  if (vueComponents?.hasOwnProperty(camelCaseString)) {
+    return true
+  } else {
+    return false
+  }
 })
 const fullViewLink = computed<string>(() => {
   return '/item/' + props.slug
@@ -36,7 +51,7 @@ const fullViewLink = computed<string>(() => {
         <div class="content">
           <h3 class="title is-4" v-html="title"></h3>
           <p v-html="blurb" />
-          <div v-if="hasFullView" class="mb-4">
+          <div v-if="showReadMore" class="mb-4">
             <NuxtLink :to="fullViewLink">Read more</NuxtLink>
           </div>
           <span v-for="tag in tags" class="tag is-dark mb-1">{{ tag }}</span>
