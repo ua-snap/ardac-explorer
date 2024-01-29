@@ -54,7 +54,7 @@ const fullViewLink = computed<string>(() => {
           <div v-if="showReadMore" class="mb-4">
             <NuxtLink :to="fullViewLink">Read more</NuxtLink>
           </div>
-          <span v-for="tag in tags" class="tag is-dark mb-1">{{ tag }}</span>
+          <span v-for="tag in tags" class="tag mb-1">{{ tag }}</span>
         </div>
       </div>
     </div>
