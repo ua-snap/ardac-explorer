@@ -13,7 +13,7 @@
 
   padding: 0.75rem;
 
-  background-color: #666;
+  background-color: $gray;
 
   color: #fff;
   font-size: 0.8rem;

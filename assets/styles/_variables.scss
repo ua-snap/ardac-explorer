@@ -1,7 +1,11 @@
+// Variables to be used in components, etc.
+// If these are the same name as Bulma variables,
+// it'll override them.
+$family-sans-serif: "Archivo", sans-serif;
 
-// Set your brand colors
-
-$pink: #FA7C91;
-$beige-light: #D0D1CD;
 $black: #102030;
 $white: #fff8f0;
+$gray: #64686a;
+$gray-darker: #34383a;
+
+$link: #D60A2C;

@@ -16,9 +16,9 @@
 
 <style lang="scss" scoped>
 .brand {
-  color: $white;
+  color: $black;
   h1 {
-    color: #ccc;
+    color: $gray;
     margin-left: 4rem;
     margin-bottom: -2.2rem;
     font-weight: 700;
