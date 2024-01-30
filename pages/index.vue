@@ -37,7 +37,10 @@ watch([items, searchActive], async () => {
 <template>
   <section class="section dark">
     <div class="container">
+
       <Search class="mb-6" />
+      <ResultsCount />
+      
       <div v-if="items.length > 0" class="mb-6 grid">
         <div v-for="item in items" class="grid-item">
           <Item
