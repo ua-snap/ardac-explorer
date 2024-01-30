@@ -1,8 +1,10 @@
 <script lang="ts" setup></script>
 
 <template>
-  <HeaderBanner/>
-  <Header/>
+  <HeaderBanner />
+  <Navbar />
+  <Header />
+  <Tagbar />
   <slot />
   <Footer />
 </template>

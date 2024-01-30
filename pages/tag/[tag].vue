@@ -1,21 +1,14 @@
 <script lang="ts" setup>
-definePageMeta({
-  layout: 'home',
-})
-
-import { useStore } from '~/stores/store'
-
+import items from '~/assets/items'
+const route = useRoute()
 const { $Masonry } = useNuxtApp()
-const store = useStore()
 
-const items = computed<any[]>(() => store.filteredItems)
-const searchActive = computed(() => store.searchActive)
+let tag = route.params.tag as string
+let matchedItems = items.filter(item => item.tags?.includes(tag))
+let matchedItemsCount = matchedItems.length
 
-const populatePage = () => {
+onMounted(() => {
   setTimeout(() => {
-    if (items.value.length === 0) {
-      return
-    }
     let gridItemSelector = '.grid-item'
     let columnWidth = 550
     new $Masonry('.grid', {
@@ -23,25 +16,17 @@ const populatePage = () => {
       columnWidth: columnWidth,
     })
   }, 0)
-}
-
-onMounted(() => {
-  populatePage()
 })
 
-watch([items, searchActive], async () => {
-  populatePage()
-})
 </script>
 
 <template>
   <section class="section">
     <div class="container">
-      <Search class="mb-6" />
-      <ResultsCount />
-
-      <div v-if="items.length > 0" class="mb-6 grid">
-        <div v-for="item in items" class="grid-item">
+      <h2 class="title is-2">{{ tag }}</h2>
+      <h3 class="subtitle is-3">{{ matchedItemsCount }} matching items</h3>
+      <div class="grid">
+        <div v-for="item in matchedItems" class="grid-item">
           <Item
             :type="item.type"
             :image="item.image"
