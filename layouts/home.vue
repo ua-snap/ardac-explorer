@@ -2,8 +2,9 @@
 
 <template>
   <HeaderBanner />
+  <Navbar />
   <Header />
-  <section class="section dark">
+  <section class="section">
     <div class="container">
       <div class="content is-size-3">
         <p>
@@ -15,6 +16,7 @@
       </div>
     </div>
   </section>
+  <Tagbar/>
   <slot />
   <Footer />
 </template>

@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <section class="section dark">
+  <section class="section">
     <div class="brand mb-6">
       <h1>Arctic Data Collaborative</h1>
       <h2>
