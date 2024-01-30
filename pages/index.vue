@@ -17,7 +17,7 @@ const populatePage = () => {
       return
     }
     let gridItemSelector = '.grid-item'
-    let columnWidth = 352
+    let columnWidth = 550
     new $Masonry('.grid', {
       itemSelector: gridItemSelector,
       columnWidth: columnWidth,
@@ -37,10 +37,9 @@ watch([items, searchActive], async () => {
 <template>
   <section class="section dark">
     <div class="container">
-
       <Search class="mb-6" />
       <ResultsCount />
-      
+
       <div v-if="items.length > 0" class="mb-6 grid">
         <div v-for="item in items" class="grid-item">
           <Item
@@ -55,16 +54,16 @@ watch([items, searchActive], async () => {
           />
         </div>
       </div>
-      <div v-else class="ml-2">
-        <h1 class="title is-4">No results found.</h1>
-      </div>
     </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
 .grid-item {
-  max-width: 332px;
+  width: 530px;
   margin: 10px;
+  border: 1px solid $gray-lighter;
+  border-radius: 5px;
+  background-color: $white-lighter;
 }
 </style>
