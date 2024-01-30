@@ -37,28 +37,24 @@ const fullViewLink = computed<string>(() => {
 </script>
 
 <template>
-  <div class="card">
-    <div v-if="isSmall" class="card-content">
-      <h5 class="title is-5" v-html="title"></h5>
-    </div>
-    <div v-else>
-      <div v-if="image" class="card-image">
-        <figure class="image is-4by3">
-          <img :src="image" :alt="imageAlt" />
-        </figure>
+  <div class="p-4">
+    <div>
+      <img :src="image" :alt="imageAlt" class="is-pulled-right mb-4 ml-4" />
+      <h3 class="title is-4 mt-0" v-html="title"></h3>
+      <p v-if="blurb" v-html="blurb" class="mb-4" />
+      <div v-if="showReadMore" class="mb-4">
+        <NuxtLink :to="fullViewLink">Read more</NuxtLink>
       </div>
-      <div class="card-content">
-        <div class="content">
-          <h3 class="title is-4" v-html="title"></h3>
-          <p v-html="blurb" />
-          <div v-if="showReadMore" class="mb-4">
-            <NuxtLink :to="fullViewLink">Read more</NuxtLink>
-          </div>
-          <span v-for="tag in tags" class="tag mb-1">{{ tag }}</span>
-        </div>
-      </div>
+      <span v-for="tag in tags" class="tag is-dark mt-1 mb-1 mr-1">{{
+        tag
+      }}</span>
     </div>
   </div>
 </template>
 
-<style scoped></style>
+<style scoped>
+img {
+  max-width: 200px;
+  height: auto;
+}
+</style>
