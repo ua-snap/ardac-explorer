@@ -107,4 +107,11 @@ export default [
     title: `Historical + near-real-time <a href="https://earthmaps.io/fire/" >wildfire and related research data</a>`,
     tags: ['API', 'Wildfire'],
   },
+  {
+    type: 'general',
+    slug: 'modified-berggren-frost-depth-calculator',
+    title: `Modified Berggren frost depth calculator`,
+    blurb: `In this notebook, we use temperature and degree days data from SNAP's Data API to calculate the modified Berggren frost depth.`,
+    tags: ['API', 'Temperature', 'Degree Days', 'Notebook'],
+  },
 ]
