@@ -40,7 +40,7 @@ watch([items, searchActive], async () => {
       <Search class="mb-6" />
       <ResultsCount />
 
-      <div v-if="items.length > 0" class="mb-6 grid">
+      <div v-if="items.length > 5" class="mb-6 grid">
         <div v-for="item in items" class="grid-item">
           <Item
             :type="item.type"
@@ -53,6 +53,9 @@ watch([items, searchActive], async () => {
             :fullView="item.fullView"
           />
         </div>
+      </div>
+      <div v-else-if="items.length > 0" class="mb-6">
+        <ResultsTable :items="items" />
       </div>
     </div>
   </section>
