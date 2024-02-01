@@ -34,8 +34,10 @@ export default [
       'Visualization',
       'Map',
     ],
+    priority: 2,
   },
   {
+    priority: 1,
     type: 'general',
     image: '/previews/ncr-preview.png',
     imageAlt: 'logo for northern climate reports website',
@@ -67,6 +69,7 @@ export default [
     tags: ['Code', 'Notebook'],
   },
   {
+    priority: 1,
     type: 'general',
     title: 'Arctic Engineering Design and Decision Support Tool (Arctic-EDS)',
     blurb: `Access data to support Arctic engineering: climate model outputs aggregated for easy access and integration into engineering workflows.  Download data subsets for communities and points across Alaska, and see data summaries and aggregation for near- to late-century model outputs.`,
