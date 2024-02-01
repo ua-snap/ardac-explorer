@@ -1,21 +1,23 @@
 <script lang="ts" setup>
-// import { mapGetters } from 'vuex'
-
-// export default {
-//   name: 'Map',
-//   props: ['mapName'],
-//   mounted() {
-//     this.$store.commit('map/create', this.mapName)
-//   },
-//   destroyed() {
-//     this.$store.commit('map/destroy', this.mapName)
-//   },
-// }
+import { useStore } from '~/stores/map'
+const mapStore = useStore()
 
 const props = defineProps<{
   mapId: string
 }>()
 
+async function initialize() {
+  await nextTick()
+  mapStore.create(props.mapId)
+}
+
+onMounted(() => {
+  initialize()
+})
+
+onUnmounted(() => {
+  mapStore.destroy(props.mapId)
+})
 </script>
 
 <template>

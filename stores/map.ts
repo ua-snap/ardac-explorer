@@ -115,22 +115,22 @@ export const useStore = defineStore('map', () => {
   // const filteredItems = ref(items)
   // const searchActive = ref(false)
 
-  function create(mapName: string) {
-    maps[mapName] = $L.map(mapName, getBaseMapAndLayers())
+  function create(mapId: string) {
+    maps[mapId] = $L.map(mapId, getBaseMapAndLayers())
 
     // Craig, check:
     // This may have never been reachable code?  maxBounds does not
     // exist anywhere in this or ARctic EDS repo -- old dead stuff?
-    // maps[mapName].on('drag', function () {
-    //   maps[mapName].panInsideBounds(mapConfig.maxBounds, { animate: false })
+    // maps[mapId].on('drag', function () {
+    //   maps[mapId].panInsideBounds(mapConfig.maxBounds, { animate: false })
     // })
 
-    new $L.Control.Zoom({ position: 'topright' }).addTo(maps[mapName])
+    new $L.Control.Zoom({ position: 'topright' }).addTo(maps[mapId])
   }
 
-  function destroy(mapName: string) {
-    if (maps[mapName]) {
-      maps[mapName].remove()
+  function destroy(mapId: string) {
+    if (maps[mapId]) {
+      maps[mapId].remove()
     }
   }
 
@@ -139,7 +139,7 @@ export const useStore = defineStore('map', () => {
   // function setSelectedLayer(layerInfo) {
   //   // Because it's an object, need to use Vue.set to get
   //   // proper reactivity
-  //   Vue.set(state.selectedLayers, layerInfo.mapName, layerInfo.layer.id)
+  //   Vue.set(state.selectedLayers, layerInfo.mapId, layerInfo.layer.id)
   // }
 
   
