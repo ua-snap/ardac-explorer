@@ -2,7 +2,7 @@ import { resolve } from 'path'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
-  ssr: false,
+  ssr: false, // required or 3rd party libs break the app
   devtools: { enabled: true },
   css: ['assets/styles/main.scss'],
   vite: {

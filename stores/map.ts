@@ -135,13 +135,14 @@ export const useStore = defineStore('map', () => {
   }
 
   // What type is layerInfo? -- pack into toggleLayer
+  // It's unclear if this is needed.
   // function setSelectedLayer(layerInfo) {
   //   // Because it's an object, need to use Vue.set to get
   //   // proper reactivity
   //   Vue.set(state.selectedLayers, layerInfo.mapName, layerInfo.layer.id)
   // }
 
-  //
+  
   function addLegend(mapId: string) {
     if (legendControls[mapId]) {
       legendControls[mapId].remove()
@@ -225,7 +226,3 @@ export const useStore = defineStore('map', () => {
     // totalItemCount,
   }
 })
-
-export default {
-  mutations: {},
-}

@@ -1,3 +1,71 @@
+<script setup lang="ts">
+
+const props = defineProps<{
+  layer: MapLayer
+  mapId: string
+}>()
+
+// const publishedBooksMessage = computed(() => {
+//   return author.books.length > 0 ? 'Yes' : 'No'
+// })
+
+const active = computed(() : boolean => {
+  //       // Get all layers + then the active layer for this map.
+//       // Need to get all layers so that reactivity works.
+//       if (this.activeLayers) {
+//         return this.activeLayers[this.mapName] === this.layer.id
+//       }
+//       // Otherwise, make it active if it's defaulted to be active.
+//       return this.layer.default
+
+  return true
+})
+
+
+function toggleLayer() {
+      // this.$store.commit('map/toggleLayer', {
+      //   layer: this.layer,
+      //   mapId: this.mapId,
+      // })
+    }
+
+// import Vue from 'vue'
+// import { mapGetters } from 'vuex'
+
+// export default {
+//   name: 'MapLayer',
+//   props: ['layer', 'mapId'],
+//   computed: {
+//     active() {
+//       // Get all layers + then the active layer for this map.
+//       // Need to get all layers so that reactivity works.
+//       if (this.activeLayers) {
+//         return this.activeLayers[this.mapName] === this.layer.id
+//       }
+//       // Otherwise, make it active if it's defaulted to be active.
+//       return this.layer.default
+//     },
+//     ...mapGetters({ activeLayers: 'map/getSelectedLayers' }),
+//   },
+//   mounted() {
+    // https://vuejs.org/api/general.html#nexttick
+//     if (this.layer.default) {
+//       // We need to wait for Vue to render the full DOM which
+//       // includes the Leaflet elements before we can trigger this.
+//       Vue.nextTick(this.toggleLayer)
+//     }
+//   },
+//   methods: {
+//     toggleLayer() {
+//       this.$store.commit('map/toggleLayer', {
+//         layer: this.layer,
+//         mapId: this.mapId,
+//       })
+//     },
+//   },
+// }
+</script>
+
 <template>
   <div
     @click="toggleLayer"
@@ -43,40 +111,3 @@
   }
 }
 </style>
-
-<script>
-import Vue from 'vue'
-import { mapGetters } from 'vuex'
-
-export default {
-  name: 'MapLayer',
-  props: ['layer', 'mapId'],
-  computed: {
-    active() {
-      // Get all layers + then the active layer for this map.
-      // Need to get all layers so that reactivity works.
-      if (this.activeLayers) {
-        return this.activeLayers[this.mapName] === this.layer.id
-      }
-      // Otherwise, make it active if it's defaulted to be active.
-      return this.layer.default
-    },
-    ...mapGetters({ activeLayers: 'map/getSelectedLayers' }),
-  },
-  mounted() {
-    if (this.layer.default) {
-      // We need to wait for Vue to render the full DOM which
-      // includes the Leaflet elements before we can trigger this.
-      Vue.nextTick(this.toggleLayer)
-    }
-  },
-  methods: {
-    toggleLayer() {
-      this.$store.commit('map/toggleLayer', {
-        layer: this.layer,
-        mapId: this.mapId,
-      })
-    },
-  },
-}
-</script>

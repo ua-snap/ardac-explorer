@@ -1,5 +1,25 @@
+<script lang="ts" setup>
+// import { mapGetters } from 'vuex'
+
+// export default {
+//   name: 'Map',
+//   props: ['mapName'],
+//   mounted() {
+//     this.$store.commit('map/create', this.mapName)
+//   },
+//   destroyed() {
+//     this.$store.commit('map/destroy', this.mapName)
+//   },
+// }
+
+const props = defineProps<{
+  mapId: string
+}>()
+
+</script>
+
 <template>
-  <div :id="mapName" class="map"></div>
+  <div :id="mapId" class="map"></div>
 </template>
 
 <style lang="scss" scoped>
@@ -7,7 +27,7 @@
   aspect-ratio: 1/1;
   height: 100%;
 }
-::v-deep {
+.deep {
   .legend {
     padding: 10px;
     background-color: rgba(255, 255, 255, 0.7);
@@ -26,19 +46,3 @@
   }
 }
 </style>
-
-<script>
-import _ from 'lodash'
-import { mapGetters } from 'vuex'
-
-export default {
-  name: 'Map',
-  props: ['mapName'],
-  mounted() {
-    this.$store.commit('map/create', this.mapName)
-  },
-  destroyed() {
-    this.$store.commit('map/destroy', this.mapName)
-  },
-}
-</script>
