@@ -6,11 +6,8 @@ export default [
     imageAlt: 'A Map',
     title: 'Future precipitation map &amp; web services',
     blurb: `See <a href="">statewide precipitation maps</a> and access web services (WMS) that can be used in your own GIS applications.`,
-    tags: ['Precipitation', 'WMS', 'Visualization', 'GIS'],
-    fullView: `
-      <p>This is a freeform HTML field. We can put <em>whatever</em> we want here.</p>
-      <marquee class="is-size-1">The world is our oyster! 🦪</marquee>
-    `,
+    tags: ['Precipitation', 'WMS', 'Map', 'Visualization', 'GIS'],
+    fullView: ``, // Craig: why does this break `full.vue` if this key is removed??
   },
   {
     type: 'general',
