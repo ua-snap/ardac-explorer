@@ -1,24 +1,17 @@
-// import _ from 'lodash'
-// const mapContent = require('~/components/map_content')
-import { layers, legend } from '~/components/map_content'
-
 import { defineStore } from 'pinia'
 const { $L } = useNuxtApp()
 
-// These three variables needs to be outside of the Store or there's problems
-// because Leaflet mutates the state of the map, and Vuex
-// throws a "Don't do that" error; plus, having these objects
-// within the scope of the Nuxt/Vue reactivity decoration causes
-// unpredictable buggy behavior ("too much recursion")
-
-// collection of Leaflet map objects, keys mapping to map_content.js
+// collection of Leaflet map objects, keys equal to ID of Leaflet map
 const maps: { [index: string]: any } = {}
 
 // collection of active layer Leaflet objects, keyed like `maps` var above
 var layerObjects: { [index: string]: any } = {}
 
-// Collection of legend objects, keyed like `maps` var above
+// Collection of leaflet control (legend) objects, keyed like `maps` var above
 var legendControls: { [index: string]: any } = {}
+
+// The active lay on each/any map
+var activeLayers: { [index: string]: MapLayer } = {}
 
 import {
   tileLayer,
@@ -33,7 +26,7 @@ function getBaseMapAndLayers(): MapOptions {
   const config = useRuntimeConfig()
 
   // Projection definition.
-  var proj = new $L.Proj.CRS(
+  const proj = new $L.Proj.CRS(
     'EPSG:3338',
     '+proj=aea +lat_1=55 +lat_2=65 +lat_0=50 +lon_0=-154 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs',
     {
@@ -47,7 +40,7 @@ function getBaseMapAndLayers(): MapOptions {
     }
   )
 
-  let baseLayer = tileLayer.wms(config.public.geoserverUrl, {
+  const baseLayer = tileLayer.wms(config.public.geoserverUrl, {
     transparent: true,
     crs: proj,
     format: 'image/png',
@@ -56,9 +49,9 @@ function getBaseMapAndLayers(): MapOptions {
   })
 
   // Set maximum bounds of main map
-  let southWest = latLng(50.5, 155)
-  let northEast = latLng(64, -131)
-  let bounds = latLngBounds(southWest, northEast)
+  const southWest = latLng(50.5, 155)
+  const northEast = latLng(64, -131)
+  const bounds = latLngBounds(southWest, northEast)
 
   // Map base configuration
   let layerConfig: MapOptions = {
@@ -105,15 +98,24 @@ function buildLayer(layer: MapLayer) {
   return tileLayer.wms(wmsUrl, layerConfiguration)
 }
 
-export const useStore = defineStore('map', () => {
-  //const childRef = ref<InstanceType<typeof ChildComponent>>()
-  //{ [index: string]: any }
+export const useMapStore = defineStore('map', () => {
+  // const getEventById= computed(() => (id: string) => {
+  //     return fetchedEvents.value.find((event) => (event.id= id)) ?? null;
+  //   });
 
-  const selectedLayer = ref<MapLayerInstance>()
+  const getActiveLayerByMap = computed(() => {
+    return (mapId: string) => {
+      return activeLayers[mapId]
+    }
+  })
 
-  // const totalItemCount = ref(items.length)
-  // const filteredItems = ref(items)
-  // const searchActive = ref(false)
+  const getActiveLayers = computed(() => activeLayers)
+
+  // (mapId: string): MapLayer? => activeLayers[mapId]
+  // (x) => x
+
+  // (mapId) => activeLayers[mapId]
+  // )
 
   function create(mapId: string) {
     maps[mapId] = $L.map(mapId, getBaseMapAndLayers())
@@ -142,29 +144,27 @@ export const useStore = defineStore('map', () => {
   //   Vue.set(state.selectedLayers, layerInfo.mapId, layerInfo.layer.id)
   // }
 
-  
+  function setSelectedLayer(layer: MapLayer) {}
+
   function addLegend(mapId: string) {
-    if (legendControls[mapId]) {
-      legendControls[mapId].remove()
-    }
-
-    legendControls[mapId] = new $L.Control({ position: 'topleft' })
-
-    legendControls[mapId].onAdd = (map: Map) => {
-      var div = $L.DomUtil.create('div', 'info legend')
-      div.innerHTML = ''
-      legend.forEach(legendItem => {
-        div.innerHTML +=
-          '<div class="legend-item"><div class="legend-swatch" style="background-color: ' +
-          legendItem['color'] +
-          ';"></div> ' +
-          legendItem['label'] +
-          '</div>'
-      })
-      return div
-    }
-
-    legendControls[mapId].addTo(maps[mapId])
+    // if (legendControls[mapId]) {
+    //   legendControls[mapId].remove()
+    // }
+    // legendControls[mapId] = new $L.Control({ position: 'topleft' })
+    // legendControls[mapId].onAdd = (map: Map) => {
+    //   var div = $L.DomUtil.create('div', 'info legend')
+    //   div.innerHTML = ''
+    //   legend.forEach(legendItem => {
+    //     div.innerHTML +=
+    //       '<div class="legend-item"><div class="legend-swatch" style="background-color: ' +
+    //       legendItem['color'] +
+    //       ';"></div> ' +
+    //       legendItem['label'] +
+    //       '</div>'
+    //   })
+    //   return div
+    // }
+    // legendControls[mapId].addTo(maps[mapId])
   }
 
   function toggleLayer(layerObj: MapLayerInstance) {
@@ -205,24 +205,17 @@ export const useStore = defineStore('map', () => {
         : config.public.geoserverUrl
 
     layerObjects[layerObj.mapId] = tileLayer.wms(wmsUrl, layerConfiguration)
-    maps[layerObj.mapId].addLayer(layerObjects[layerObj.mapId])
-    
-    selectedLayer.value = {
-      mapId: layerObj.mapId,
-      layer: layer,
-    }
+    maps[layerObj.mapId]?.addLayer(layerObjects[layerObj.mapId])
 
-    addLegend(layerObj.mapId)
-    
+    activeLayers[layerObj.mapId] = layer
+    // addLegend(layerObj.mapId)
   }
 
   return {
     toggleLayer,
-    selectedLayer,
+    getActiveLayerByMap,
     create,
     destroy,
     addLegend,
-    // searchActive,
-    // totalItemCount,
   }
 })

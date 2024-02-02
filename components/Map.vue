@@ -1,6 +1,6 @@
 <script lang="ts" setup>
-import { useStore } from '~/stores/map'
-const mapStore = useStore()
+import { useMapStore } from '~/stores/map'
+const mapStore = useMapStore()
 
 const props = defineProps<{
   mapId: string

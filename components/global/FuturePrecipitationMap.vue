@@ -79,7 +79,7 @@ const legend: LegendItem[] = [
     <template v-slot:layers>
       <h3 class="title is-4">Precipitation</h3>
 
-      <MapLayer mapId="precipitation" :layer="layers[0]">
+      <MapLayer mapId="precipitation" :layer="layers[0]" default>
         <template v-slot:title>Total annual precipitation, historical</template>
         <template v-slot:subtext>1980&ndash;2009, CRU TS 4.0</template>
       </MapLayer>
