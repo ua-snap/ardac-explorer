@@ -6,13 +6,8 @@ const props = defineProps<{
   mapId: string
 }>()
 
-async function initialize() {
-  await nextTick()
-  mapStore.create(props.mapId)
-}
-
 onMounted(() => {
-  initialize()
+  mapStore.create(props.mapId)
 })
 
 onUnmounted(() => {

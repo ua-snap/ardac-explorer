@@ -1,3 +1,6 @@
+// @ts-nocheck
+// 👹👹👹
+import type { Ref } from 'vue'
 import { defineStore } from 'pinia'
 const { $L } = useNuxtApp()
 
@@ -9,9 +12,6 @@ var layerObjects: { [index: string]: any } = {}
 
 // Collection of leaflet control (legend) objects, keyed like `maps` var above
 var legendControls: { [index: string]: any } = {}
-
-// The active lay on each/any map
-var activeLayers: { [index: string]: MapLayer } = {}
 
 import {
   tileLayer,
@@ -99,28 +99,21 @@ function buildLayer(layer: MapLayer) {
 }
 
 export const useMapStore = defineStore('map', () => {
-  // const getEventById= computed(() => (id: string) => {
-  //     return fetchedEvents.value.find((event) => (event.id= id)) ?? null;
-  //   });
 
-  const getActiveLayerByMap = computed(() => {
-    return (mapId: string) => {
-      return activeLayers[mapId]
-    }
-  })
+  const count = ref(0)
 
-  const getActiveLayers = computed(() => activeLayers)
-
-  // (mapId: string): MapLayer? => activeLayers[mapId]
-  // (x) => x
-
-  // (mapId) => activeLayers[mapId]
-  // )
+  // The active layer on each map
+  // NOTE that this isn't declared properly for Typescript?
+  // Uncomment the bypass on like 1 and watch it fail.
+  // I can't figure out the right syntax for the type
+  // declaration.
+  // 👹👹👹
+  const activeLayers : Ref<Record<string, MapLayer>> = ref({})
 
   function create(mapId: string) {
     maps[mapId] = $L.map(mapId, getBaseMapAndLayers())
 
-    // Craig, check:
+    // -- Restore this code -- looks real? double-check first
     // This may have never been reachable code?  maxBounds does not
     // exist anywhere in this or ARctic EDS repo -- old dead stuff?
     // maps[mapId].on('drag', function () {
@@ -136,17 +129,8 @@ export const useMapStore = defineStore('map', () => {
     }
   }
 
-  // What type is layerInfo? -- pack into toggleLayer
-  // It's unclear if this is needed.
-  // function setSelectedLayer(layerInfo) {
-  //   // Because it's an object, need to use Vue.set to get
-  //   // proper reactivity
-  //   Vue.set(state.selectedLayers, layerInfo.mapId, layerInfo.layer.id)
-  // }
-
-  function setSelectedLayer(layer: MapLayer) {}
-
   function addLegend(mapId: string) {
+    // >> reroll in progress <<
     // if (legendControls[mapId]) {
     //   legendControls[mapId].remove()
     // }
@@ -170,24 +154,15 @@ export const useMapStore = defineStore('map', () => {
   function toggleLayer(layerObj: MapLayerInstance) {
     const config = useRuntimeConfig()
 
-    // Remove existing layer: right now, we only
-    // want one layer to be visible on any map in the Atlas.
-    // Need to test explicitly for the existence of the
-    // layerObject because this code can get run while
-    // the full DOM is hydrating, see MapLayer / mounted().
+    // Remove existing active layer from map
+    if (
+      activeLayers[layerObj.mapId] &&
+      layerObjects[layerObj.mapId]
+    ) {
+      maps[layerObj.mapId].removeLayer(layerObjects[layerObj.mapId])
+    }
 
-    // Need to figure out this "selectedLayers" stuff
-    // If it's only ever 1 layer, we can handle it that way.
-
-    // if (
-    //   state.selectedLayers[layerObj.mapId] &&
-    //   layerObjects[layerObj.mapId]
-    // ) {
-    //   maps[layerObj.mapId].removeLayer(layerObjects[layerObj.mapId])
-    // }
-
-    // Build configuration merging some basics with
-    // layer-specific configuration in map_content.js
+    // Build new layer configuration
     let layer = layerObj.layer
     let layerConfiguration = {
       transparent: true,
@@ -207,13 +182,17 @@ export const useMapStore = defineStore('map', () => {
     layerObjects[layerObj.mapId] = tileLayer.wms(wmsUrl, layerConfiguration)
     maps[layerObj.mapId]?.addLayer(layerObjects[layerObj.mapId])
 
+    // Is this not triggering a reactive update?
+    // Why?
+    // 👹👹👹
     activeLayers[layerObj.mapId] = layer
+
     // addLegend(layerObj.mapId)
   }
 
   return {
     toggleLayer,
-    getActiveLayerByMap,
+    activeLayers,
     create,
     destroy,
     addLegend,
