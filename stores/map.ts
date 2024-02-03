@@ -1,6 +1,3 @@
-// @ts-nocheck
-// 👹👹👹
-import type { Ref } from 'vue'
 import { defineStore } from 'pinia'
 const { $L } = useNuxtApp()
 
@@ -100,16 +97,11 @@ function buildLayer(layer: MapLayer) {
 
 export const useMapStore = defineStore('map', () => {
 
-  const count = ref(0)
-
   // The active layer on each map
-  // NOTE that this isn't declared properly for Typescript?
-  // Uncomment the bypass on like 1 and watch it fail.
-  // I can't figure out the right syntax for the type
-  // declaration.
-  // 👹👹👹
   const activeLayers : Ref<Record<string, MapLayer>> = ref({})
 
+  // Create the Leaflet map object.
+  // mapID = string corresponding to element ID.
   function create(mapId: string) {
     maps[mapId] = $L.map(mapId, getBaseMapAndLayers())
 
@@ -155,12 +147,12 @@ export const useMapStore = defineStore('map', () => {
     const config = useRuntimeConfig()
 
     // Remove existing active layer from map
-    if (
-      activeLayers[layerObj.mapId] &&
-      layerObjects[layerObj.mapId]
-    ) {
-      maps[layerObj.mapId].removeLayer(layerObjects[layerObj.mapId])
-    }
+    // if (
+    //   activeLayers[layerObj.mapId] &&
+    //   layerObjects[layerObj.mapId]
+    // ) {
+    //   maps[layerObj.mapId].removeLayer(layerObjects[layerObj.mapId])
+    // }
 
     // Build new layer configuration
     let layer = layerObj.layer
@@ -182,10 +174,7 @@ export const useMapStore = defineStore('map', () => {
     layerObjects[layerObj.mapId] = tileLayer.wms(wmsUrl, layerConfiguration)
     maps[layerObj.mapId]?.addLayer(layerObjects[layerObj.mapId])
 
-    // Is this not triggering a reactive update?
-    // Why?
-    // 👹👹👹
-    activeLayers[layerObj.mapId] = layer
+    activeLayers.value[layerObj.mapId] = layer
 
     // addLegend(layerObj.mapId)
   }

@@ -10,16 +10,8 @@ const props = defineProps<{
 
 const { activeLayers } = storeToRefs(mapStore)
 
-// I'd expect this to fire when `toggleLayer` executes in the map store.  But it's not.  Why?
-// 👹👹👹
-watch(activeLayers, (e) => {
-  console.log(e) // nope
-}, { deep: true})
-
 const active = computed( () => {
-  // This will get wired in once we figure out the reactivity
-  // properly.
-  return false
+  return activeLayers.value[props.mapId]?.id === props.layer.id
 })
 
 async function toggleLayer() {
