@@ -1,14 +1,17 @@
 import { defineStore } from 'pinia'
 const { $L } = useNuxtApp()
 
-// collection of Leaflet map objects, keys equal to ID of Leaflet map
+// Leaflet map objects, keys equal to ID of Leaflet map
 const maps: { [index: string]: any } = {}
 
-// collection of active layer Leaflet objects, keyed like `maps` var above
+// Active layer Leaflet objects, keyed like `maps` var above
 var layerObjects: { [index: string]: any } = {}
 
-// Collection of leaflet control (legend) objects, keyed like `maps` var above
+// Leaflet control (legend) objects, keyed like `maps` var above
 var legendControls: { [index: string]: any } = {}
+
+// Legend items for each map, keyed like `maps` var above.
+var legendItems: { [index: string]: any } = {}
 
 import {
   tileLayer,
@@ -58,7 +61,6 @@ function getBaseMapAndLayers(): MapOptions {
     center: [64.7, -155],
     scrollWheelZoom: false,
     crs: proj,
-    // continuousWorld: true, // RED FLAG >> FIX BEFORE MERGE
     zoomControl: false,
     doubleClickZoom: false,
     attributionControl: false,
@@ -96,16 +98,15 @@ function buildLayer(layer: MapLayer) {
 }
 
 export const useMapStore = defineStore('map', () => {
-
   // The active layer on each map
-  const activeLayers : Ref<Record<string, MapLayer>> = ref({})
+  const activeLayers: Ref<Record<string, MapLayer>> = ref({})
 
   // Create the Leaflet map object.
   // mapID = string corresponding to element ID.
   function create(mapId: string) {
     maps[mapId] = $L.map(mapId, getBaseMapAndLayers())
 
-    // -- Restore this code -- looks real? double-check first
+    // -- Restore this code?? -- looks real? double-check first
     // This may have never been reachable code?  maxBounds does not
     // exist anywhere in this or ARctic EDS repo -- old dead stuff?
     // maps[mapId].on('drag', function () {
@@ -121,38 +122,52 @@ export const useMapStore = defineStore('map', () => {
     }
   }
 
-  function addLegend(mapId: string) {
-    // >> reroll in progress <<
-    // if (legendControls[mapId]) {
-    //   legendControls[mapId].remove()
-    // }
-    // legendControls[mapId] = new $L.Control({ position: 'topleft' })
-    // legendControls[mapId].onAdd = (map: Map) => {
-    //   var div = $L.DomUtil.create('div', 'info legend')
-    //   div.innerHTML = ''
-    //   legend.forEach(legendItem => {
-    //     div.innerHTML +=
-    //       '<div class="legend-item"><div class="legend-swatch" style="background-color: ' +
-    //       legendItem['color'] +
-    //       ';"></div> ' +
-    //       legendItem['label'] +
-    //       '</div>'
-    //   })
-    //   return div
-    // }
-    // legendControls[mapId].addTo(maps[mapId])
+  // `legends` is an object with keys corresponding to the name of the
+  // legend to use for the layer, and values which is an array of legend items.
+  function setLegendItems(
+    mapId: string,
+    legends: Record<string, LegendItem[]>
+  ) {
+    legendItems[mapId] = legends
+  }
+
+  // legendKey = the `legend` property in the definition of a MapLayer.
+  function addLegend(mapId: string, legendKey: string) {
+    // Legends must be provided by the component rendering
+    // the map via the `setLegends` method.
+    if (!legendItems[mapId]) {
+      throw `Legend items not set for map ID '${mapId}' in mapStore`
+    }
+
+    // Remove the active map legend, if present
+    if (legendControls[mapId]) {
+      legendControls[mapId].remove()
+    }
+
+    legendControls[mapId] = new $L.Control({ position: 'topleft' })
+    legendControls[mapId].onAdd = (map: L.Map) => {
+      var div = $L.DomUtil.create('div', 'info legend')
+      div.innerHTML = ''
+      legendItems[mapId][legendKey].forEach((legendItem: LegendItem) => {
+        div.innerHTML +=
+          '<div class="legend-item"><div class="legend-swatch" style="background-color: ' +
+          legendItem['color'] +
+          ';"></div> ' +
+          legendItem['label'] +
+          '</div>'
+      })
+      return div
+    }
+    legendControls[mapId].addTo(maps[mapId])
   }
 
   function toggleLayer(layerObj: MapLayerInstance) {
     const config = useRuntimeConfig()
 
     // Remove existing active layer from map
-    // if (
-    //   activeLayers[layerObj.mapId] &&
-    //   layerObjects[layerObj.mapId]
-    // ) {
-    //   maps[layerObj.mapId].removeLayer(layerObjects[layerObj.mapId])
-    // }
+    if (layerObjects[layerObj.mapId]) {
+      maps[layerObj.mapId].removeLayer(layerObjects[layerObj.mapId])
+    }
 
     // Build new layer configuration
     let layer = layerObj.layer
@@ -162,8 +177,8 @@ export const useMapStore = defineStore('map', () => {
       version: '1.3.0',
       layers: layer.wmsLayerName,
       id: layer.id,
-      style: layer.style,
-      rasdamanConfiguration: layer.rasdamanConfiguration,
+      styles: layer.style,
+      ...layer.rasdamanConfiguration,
     }
 
     let wmsUrl =
@@ -176,13 +191,14 @@ export const useMapStore = defineStore('map', () => {
 
     activeLayers.value[layerObj.mapId] = layer
 
-    // addLegend(layerObj.mapId)
+    addLegend(layerObj.mapId, layer.legend)
   }
 
   return {
     toggleLayer,
     activeLayers,
     create,
+    setLegendItems,
     destroy,
     addLegend,
   }
