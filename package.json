@@ -11,6 +11,7 @@
   },
   "devDependencies": {
     "@types/leaflet": "^1.9.8",
+    "@types/proj4leaflet": "^1.0.10",
     "nuxt": "^3.9.0",
     "prettier": "^3.2.2",
     "sass": "^1.69.7",
@@ -22,7 +23,6 @@
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
     "@tarekraafat/autocomplete.js": "^10.2.7",
-    "@types/proj4leaflet": "^1.0.10",
     "bulma": "^0.9.4",
     "leaflet": "^1.9.4",
     "masonry-layout": "^4.2.2",

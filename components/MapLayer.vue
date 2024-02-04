@@ -10,7 +10,7 @@ const props = defineProps<{
 
 const { activeLayers } = storeToRefs(mapStore)
 
-const active = computed( () => {
+const active = computed(() => {
   return activeLayers.value[props.mapId]?.id === props.layer.id
 })
 
@@ -49,7 +49,6 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .layer {
-
   line-height: 1.2;
   font-size: 1.25rem;
   cursor: pointer;

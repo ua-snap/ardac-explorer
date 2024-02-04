@@ -105,14 +105,6 @@ export const useMapStore = defineStore('map', () => {
   // mapID = string corresponding to element ID.
   function create(mapId: string) {
     maps[mapId] = $L.map(mapId, getBaseMapAndLayers())
-
-    // -- Restore this code?? -- looks real? double-check first
-    // This may have never been reachable code?  maxBounds does not
-    // exist anywhere in this or ARctic EDS repo -- old dead stuff?
-    // maps[mapId].on('drag', function () {
-    //   maps[mapId].panInsideBounds(mapConfig.maxBounds, { animate: false })
-    // })
-
     new $L.Control.Zoom({ position: 'topright' }).addTo(maps[mapId])
   }
 
