@@ -14,7 +14,7 @@ interface MapLayer {
   title: string
   source?: 'rasdaman' | undefined
   wmsLayerName: string
-  style: string
+  style?: string
   default?: boolean
   legend: string
   rasdamanConfiguration?: any
