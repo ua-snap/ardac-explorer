@@ -1,11 +1,14 @@
 <script lang="ts" setup>
 import items from '~/assets/items'
+import { useStore } from '~/stores/store'
 const route = useRoute()
 const { $Masonry } = useNuxtApp()
+const store = useStore()
 
 let tag = route.params.tag as string
-let matchedItems = items.filter(item => item.tags?.includes(tag))
-let matchedItemsCount = matchedItems.length
+let filteredItems = items.filter(item => item.tags?.includes(tag))
+store.filteredItems = filteredItems
+let filteredItemsCount = store.sortedFilteredItems.length
 
 onMounted(() => {
   setTimeout(() => {
@@ -17,16 +20,15 @@ onMounted(() => {
     })
   }, 0)
 })
-
 </script>
 
 <template>
   <section class="section">
     <div class="container">
       <h2 class="title is-2">{{ tag }}</h2>
-      <h3 class="subtitle is-3">{{ matchedItemsCount }} matching items</h3>
+      <h3 class="subtitle is-3">{{ filteredItemsCount }} matching items</h3>
       <div class="grid">
-        <div v-for="item in matchedItems" class="grid-item">
+        <div v-for="item in store.sortedFilteredItems" class="grid-item">
           <Item
             :type="item.type"
             :image="item.image"

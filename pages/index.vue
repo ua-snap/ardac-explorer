@@ -8,7 +8,7 @@ import { useStore } from '~/stores/store'
 const { $Masonry } = useNuxtApp()
 const store = useStore()
 
-const items = computed<any[]>(() => store.filteredItems)
+const items = computed<any[]>(() => store.sortedFilteredItems)
 const searchActive = computed(() => store.searchActive)
 
 const populatePage = () => {
@@ -21,6 +21,7 @@ const populatePage = () => {
     new $Masonry('.grid', {
       itemSelector: gridItemSelector,
       columnWidth: columnWidth,
+      horizontalOrder: true,
     })
   }, 0)
 }

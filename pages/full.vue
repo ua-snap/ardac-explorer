@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-
 import type { ConcreteComponent } from 'vue'
 import { getCurrentInstance } from 'vue'
 import items from '~/assets/items'
