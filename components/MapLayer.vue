@@ -35,13 +35,13 @@ onMounted(() => {
     class="layer tile is-ancestor is-parent"
     :class="{ active: active }"
   >
-    <span class="tile is-child description">
+    <span class="tile is-child layer-wrapper">
       <div class="layer-title">
         <slot name="title">{{ layer.title }}</slot>
       </div>
       <div class="subtext"><slot name="subtext"></slot></div>
     </span>
-    <span class="tile is-child is-1 if-active">
+    <span class="tile is-child active-pointer">
       <div v-if="active">&#x25b6;</div>
     </span>
   </div>
@@ -49,6 +49,7 @@ onMounted(() => {
 
 <style lang="scss" scoped>
 .layer {
+
   line-height: 1.2;
   font-size: 1.25rem;
   cursor: pointer;
@@ -59,18 +60,21 @@ onMounted(() => {
     background-color: #f2c716;
   }
 
-  .if-active {
-    display: flex;
-    align-items: center;
-    font-size: 125%;
+  .layer-wrapper {
+    flex-basis: 80%;
   }
 
   .subtext {
     display: block;
     margin-top: 0;
     padding-top: 0;
-
     font-weight: 300;
+  }
+
+  .active-pointer {
+    display: flex;
+    align-items: center;
+    font-size: 125%;
   }
 }
 </style>

@@ -8,7 +8,7 @@ const props = defineProps<{
 
 <template>
   <div class="columns">
-    <div class="column is-one-third">
+    <div class="column is-one-third mt-3 ml-4">
       <slot name="layers"></slot>
     </div>
     <div class="column">
