@@ -10,10 +10,13 @@ const store = useStore()
 
 const items = computed<any[]>(() => store.sortedFilteredItems)
 const searchActive = computed(() => store.searchActive)
+const masonryThreshold = 5
 
 const populatePage = () => {
   setTimeout(() => {
-    if (items.value.length === 0) {
+    // Use table display instead of Masonry if the number of filtered items is
+    // less than or equal to the masonryThreshold.
+    if (items.value.length <= masonryThreshold) {
       return
     }
     let gridItemSelector = '.grid-item'
@@ -41,7 +44,7 @@ watch([items, searchActive], async () => {
       <Search class="mb-6" />
       <ResultsCount />
 
-      <div v-if="items.length > 0" class="mb-6 grid">
+      <div v-if="items.length > masonryThreshold" class="mb-6 grid">
         <div v-for="item in items" class="grid-item">
           <Item
             :type="item.type"
@@ -54,6 +57,9 @@ watch([items, searchActive], async () => {
             :fullView="item.fullView"
           />
         </div>
+      </div>
+      <div v-else-if="items.length > 0" class="mb-6">
+        <ResultsTable :items="items" />
       </div>
     </div>
   </section>
