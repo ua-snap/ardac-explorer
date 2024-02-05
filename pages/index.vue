@@ -7,10 +7,18 @@ import { useStore } from '~/stores/store'
 
 const { $Masonry } = useNuxtApp()
 const store = useStore()
+const route = useRoute()
 
 const items = computed<any[]>(() => store.filteredItems)
 const searchActive = computed(() => store.searchActive)
 const masonryThreshold = 5
+
+let tag = route.params.tag
+if (tag === undefined) {
+  store.filteredItems = store.allItems
+} else {
+  store.filteredItems = store.tagItems(tag.toString())
+}
 
 const populatePage = () => {
   setTimeout(() => {
@@ -32,6 +40,10 @@ onMounted(() => {
   populatePage()
 })
 
+onUnmounted(() => {
+  store.searchActive = false
+})
+
 watch([items, searchActive], async () => {
   populatePage()
 })
@@ -40,9 +52,9 @@ watch([items, searchActive], async () => {
 <template>
   <section class="section">
     <div class="container">
-      <Search class="mb-6" />
+      <h3 v-html="tag" v-if="tag" class="title is-3 ml-2" />
+      <Search v-if="!tag" class="mb-5" />
       <ResultsCount />
-
       <div v-if="items.length > masonryThreshold" class="mb-6 grid">
         <div v-for="item in items" class="grid-item">
           <Item

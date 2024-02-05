@@ -1,13 +1,13 @@
 <script lang="ts" setup>
 const { $autoComplete } = useNuxtApp()
-
-import items from '~/assets/items'
+import { useStore } from '~/stores/store'
+const store = useStore()
 
 onMounted(() => {
   let config = {
     placeHolder: 'Search...',
     data: {
-      src: items,
+      src: store.allItems,
       keys: ['title', 'blurb'],
     },
     resultItem: {

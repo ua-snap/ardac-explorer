@@ -45,11 +45,9 @@ const fullViewLink = computed<string>(() => {
       <div v-if="showReadMore" class="mb-4">
         <NuxtLink :to="fullViewLink">Read more</NuxtLink>
       </div>
-      <span v-for="tag in tags" class="tag mt-1 mb-1 mr-1"
-        ><NuxtLink :to="{ name: 'tag-tag', params: { tag: tag } }">{{
-          tag
-        }}</NuxtLink></span
-      >
+      <span v-for="tag in tags" class="tag mt-1 mb-1 mr-1">
+        <NuxtLink :to="'tag/' + tag">{{ tag }}</NuxtLink>
+      </span>
     </div>
   </div>
 </template>

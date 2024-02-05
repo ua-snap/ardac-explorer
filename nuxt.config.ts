@@ -15,10 +15,16 @@ export default defineNuxtConfig({
   },
   hooks: {
     'pages:extend'(pages) {
-      pages.push({
-        path: '/item/:slug',
-        file: resolve('/pages/full.vue'),
-      })
+      pages.push(
+        {
+          path: '/item/:slug',
+          file: resolve('/pages/full.vue'),
+        },
+        {
+          path: '/tag/:tag',
+          file: resolve('/pages/index.vue'),
+        }
+      )
     },
   },
   modules: ['@pinia/nuxt'],
