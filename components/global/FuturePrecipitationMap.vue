@@ -10,7 +10,6 @@ const layers: MapLayer[] = [
     wmsLayerName: 'annual_precip_totals_mm',
     style: 'precip_mm_historical_era',
     legend: 'precipitation',
-    default: true,
   },
   {
     id: 'midcentury_era_precip',
@@ -99,7 +98,6 @@ const permafrostLayers: MapLayer[] = [
     wmsLayerName: 'permafrost_beta:jorgenson_2008_pf_extent_ground_ice_volume',
     legend: 'pfextent_jorgenson',
     style: 'permafrost_beta:permafrost_extent',
-    default: true,
   },
   {
     id: 'icevol_jorgenson',
