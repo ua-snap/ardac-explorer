@@ -29,3 +29,8 @@ interface LegendItem {
   color: string
   label: string
 }
+
+interface LatLng {
+  lat: number
+  lng: number
+}

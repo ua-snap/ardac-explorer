@@ -107,4 +107,12 @@ export default [
     title: `Historical + near-real-time <a href="https://earthmaps.io/fire/" >wildfire and related research data</a>`,
     tags: ['API', 'Wildfire'],
   },
+  {
+    type: 'general',
+    slug: 'projected-permafrost-and-magt',
+    image: '/previews/projected-permafrost-and-magt.png',
+    title: 'Projected permafrost and mean annual ground temperature',
+    blurb: `Download projections of permafrost top and base depths, talik thickness, and mean annual ground temperature at seven different depths for years 2021–2120, provided by the Geophysical Institute Permafrost Lab (GIPL 2.0) model.`,
+    tags: ['API', 'Permafrost'],
+  },
 ]
