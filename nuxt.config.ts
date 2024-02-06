@@ -25,4 +25,9 @@ export default defineNuxtConfig({
   typescript: {
     typeCheck: true,
   },
+  runtimeConfig: {
+    public: {
+      apiUrl: process.env.SNAP_API_URL || 'https://earthmaps.io',
+    },
+  },
 })

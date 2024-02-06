@@ -5,6 +5,7 @@ export const useStore = defineStore('store', () => {
   const totalItemCount = ref(items.length)
   const filteredItems = ref(items)
   const searchActive = ref(false)
+  const latLng = ref({} as LatLng)
 
   // Sort items with a priority field above items without a priority field.
   // For items with a priority field, lower numbers sort higher.
@@ -24,5 +25,6 @@ export const useStore = defineStore('store', () => {
     searchActive,
     totalItemCount,
     sortedFilteredItems,
+    latLng,
   }
 })
