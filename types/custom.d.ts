@@ -8,3 +8,8 @@ interface Item {
   slug?: string
   fullView?: string
 }
+
+interface LatLng {
+  lat: number
+  lng: number
+}

@@ -27,13 +27,17 @@ const componentFileExists = computed<boolean>(() => {
 </script>
 
 <template>
-  <div v-if="componentFileExists">
-    <Component :is="component" />
-  </div>
-  <div v-else-if="item?.fullView">
-    <div v-html="item?.fullView"></div>
-  </div>
-  <div v-else>Item not found.</div>
+  <section class="section">
+    <div class="content is-size-5">
+      <div v-if="componentFileExists">
+        <Component :is="component" />
+      </div>
+      <div v-else-if="item?.fullView">
+        <div v-html="item?.fullView"></div>
+      </div>
+      <div v-else>Item not found.</div>
+    </div>
+  </section>
 </template>
 
 <style scoped></style>

@@ -23,6 +23,7 @@
     "@tarekraafat/autocomplete.js": "^10.2.7",
     "bulma": "^0.9.4",
     "masonry-layout": "^4.2.2",
+    "parse-dms": "^0.0.5",
     "pinia": "^2.1.7"
   }
 }
