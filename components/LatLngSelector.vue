@@ -1,9 +1,21 @@
 <script lang="ts" setup>
+// bbox order is left, bottom, right, top
+const props = defineProps<{
+  bbox?: number[]
+}>()
+
 const { $parseDMS } = useNuxtApp()
 const store = useStore()
 const latLngInput = defineModel()
 const latLng = ref()
 const fieldMessage = ref('')
+
+let bbox: number[]
+if (props.bbox) {
+  bbox = props.bbox
+} else {
+  bbox = [-179.1506, 51.229, -129.9795, 71.3526]
+}
 
 fieldMessage.value = ''
 let unparseableMessage =
@@ -39,12 +51,20 @@ const validate = () => {
   } catch (e) {
     return invalidLatLng(unparseableMessage)
   }
-  // test BBOX
-  if (lat >= 51.229 && lat <= 71.3526 && lon >= -179.1506 && lon <= -129.9795) {
+  // Make sure lat/lon is within BBOX.
+  // This currently does not support BBOXes that cross the antimeridian.
+  if (lat >= bbox[1] && lat <= bbox[3] && lon >= bbox[0] && lon <= bbox[2]) {
     return validLatLng(lat, lon)
   } else {
     return invalidLatLng(
-      'This point is outside the bounding box of data: latitude between 51.229–71.3526, longitude between -179.1506–129.9795'
+      'This point is outside the bounding box of data: latitude between ' +
+        bbox[1] +
+        ' – ' +
+        bbox[3] +
+        ', longitude between ' +
+        bbox[0] +
+        ' – ' +
+        bbox[2]
     )
   }
 }
@@ -59,12 +79,14 @@ onUnmounted(() => {
     <div class="control">
       <label class="label">Get data for lat/lon point:</label>
       <input
-        class="input is-primary"
+        class="input is-primary mr-3"
         type="text"
         placeholder="64.8436, -147.7230"
-        @keydown.native.enter="validate"
+        @keydown.enter="validate"
+        @keydown.tab="validate"
         v-model="latLngInput"
       />
+      <button @click="validate" class="button is-link is-light">Go</button>
     </div>
     <p class="help" v-html="fieldMessage" />
   </div>

@@ -27,7 +27,7 @@ export default defineNuxtConfig({
   },
   runtimeConfig: {
     public: {
-      apiUrl: process.env.SNAP_API_URL,
+      apiUrl: process.env.SNAP_API_URL || 'https://earthmaps.io',
     },
   },
 })
