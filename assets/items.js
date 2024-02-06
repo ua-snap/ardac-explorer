@@ -7,7 +7,7 @@ export default [
     title: 'Future precipitation map &amp; web services',
     blurb: `See <a href="">statewide precipitation maps</a> and access web services (WMS) that can be used in your own GIS applications.`,
     tags: ['Precipitation', 'WMS', 'Map', 'Visualization', 'GIS'],
-    fullView: ``, // 👹👹👹 Craig: why does this break `full.vue` if this key is removed??
+    fullView: ``,
   },
   {
     type: 'general',
