@@ -98,6 +98,7 @@ const permafrostLayers: MapLayer[] = [
     title: 'Permafrost extent (Jorgenson et al., 2008)',
     wmsLayerName: 'permafrost_beta:jorgenson_2008_pf_extent_ground_ice_volume',
     legend: 'pfextent_jorgenson',
+    style: 'permafrost_beta:permafrost_extent',
     default: true,
   },
   {
@@ -112,6 +113,7 @@ const permafrostLayers: MapLayer[] = [
     id: 'pfextent_obu',
     title: 'Permafrost extent (Obu et al., 2018)',
     wmsLayerName: 'permafrost_beta:obu_pf_extent',
+    style: 'permafrost_beta:obu_pfextent',
     legend: 'pfextent_obu',
   },
   {
