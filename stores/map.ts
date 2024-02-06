@@ -71,32 +71,6 @@ function getBaseMapAndLayers(): MapOptions {
   return layerConfig
 }
 
-function buildLayer(layer: MapLayer) {
-  let layerConfiguration = {
-    transparent: true,
-    format: 'image/png',
-    version: '1.3.0',
-    layers: layer.wmsLayerName,
-    id: layer.id,
-    style: layer.style,
-  }
-
-  if (layer.rasdamanConfiguration) {
-    layerConfiguration = {
-      ...layerConfiguration,
-      ...layer.rasdamanConfiguration,
-    }
-  }
-
-  const config = useRuntimeConfig()
-  let wmsUrl =
-    layer.source == 'rasdaman'
-      ? config.public.rasdamanUrl
-      : config.public.geoserverUrl
-
-  return tileLayer.wms(wmsUrl, layerConfiguration)
-}
-
 export const useMapStore = defineStore('map', () => {
   // The active layer on each map
   const activeLayers: Ref<Record<string, MapLayer>> = ref({})
