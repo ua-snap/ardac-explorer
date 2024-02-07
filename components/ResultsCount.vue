@@ -2,7 +2,7 @@
 import { useStore } from '~/stores/store'
 const store = useStore()
 const route = useRoute()
-const resultsCount = computed(() => store.filteredItems.length)
+const resultsCount = computed(() => store.sortedFilteredItems.length)
 const searchActive = computed(() => store.searchActive)
 const totalItemCount = computed(() => store.totalItemCount)
 </script>

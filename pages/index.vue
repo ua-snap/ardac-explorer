@@ -9,7 +9,7 @@ const { $Masonry } = useNuxtApp()
 const store = useStore()
 const route = useRoute()
 
-const items = computed<any[]>(() => store.filteredItems)
+const items = computed<any[]>(() => store.sortedFilteredItems)
 const searchActive = computed(() => store.searchActive)
 const masonryThreshold = 5
 
@@ -32,6 +32,7 @@ const populatePage = () => {
     new $Masonry('.grid', {
       itemSelector: gridItemSelector,
       columnWidth: columnWidth,
+      horizontalOrder: true,
     })
   }, 0)
 }
