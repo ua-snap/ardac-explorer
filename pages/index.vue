@@ -19,37 +19,48 @@ console.log(items[0])
         </div>
         <div class="featured column is-6">
           <div class="tile is-ancestor">
-            <div class="tile is-vertical">
-              <div class="tile is-parent">
-                <Item type="featured" :itemJson="items[4]" />
+            <div class="tile is-parent is-vertical">
+              <div class="tile is-child">
+                <Item type="featured" :itemJson="items[5]" />
               </div>
-              <div class="tile is-parent">
-                <div class="tile is-child">
-                  <Item :itemJson="items[5]" />
+              <div class="general">
+                <div class="row tile is-parent mb-4">
+                  <div class="left tile is-child">
+                    <Item :itemJson="items[4]" />
+                  </div>
+                  <div class="right tile is-child">
+                    <Item :itemJson="items[6]" />
+                  </div>
                 </div>
-                <div class="tile is-child">
-                  <Item :itemJson="items[6]" />
+                <div class="row tile is-parent">
+                  <div class="left tile is-child">
+                    <Item :itemJson="items[7]" />
+                  </div>
+                  <div class="right tile is-child">
+                    <Item :itemJson="items[8]" />
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
         <div class="column">
-          <div class= "content is-size-5">
+          <div class="content is-size-5">
             <p>Did you know people are awesome?</p>
-          <ul>
-            <li>Sign up for our newsletter</li>
-            <li>Email us with questions</li>
-            <li>Visit data API</li>
-            <li>
-              <NuxtLink
-                href="https://archive.org/details/INTERNETCLUB-REDEFININGTHEWORKPLACE/04+SYNERGIZE.mp3"
-                >Redefining the workplace</NuxtLink
-              >
-            </li>
-            <li>Who are these people anyways?</li>
-            <li>&hellip;and other content.</li>
-          </ul></div>
+            <ul>
+              <li>Sign up for our newsletter</li>
+              <li>Email us with questions</li>
+              <li>Visit data API</li>
+              <li>
+                <NuxtLink
+                  href="https://archive.org/details/INTERNETCLUB-REDEFININGTHEWORKPLACE/04+SYNERGIZE.mp3"
+                  >Redefining the workplace</NuxtLink
+                >
+              </li>
+              <li>Who are these people anyways?</li>
+              <li>&hellip;and other content.</li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
@@ -57,16 +68,33 @@ console.log(items[0])
 </template>
 
 <style lang="scss" scoped>
-.briefs :deep(.item) {
-  margin-top: -0.5rem; // align to top of column
- margin-bottom: 0.5rem;
- padding: 0.5rem;
- &:hover {
-  background-color: $white-lighter !important;
-  color: #88f;
- }
+.tile.row {
+  border-bottom: 1px dotted $gray-darker;
 }
-.featured .tile {
-  border-bottom: 1px dotted #888;
+:deep(.item) {
+  p {
+    color: $gray-darker !important;
+  }
+  h3 {
+    padding: 0.5rem;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
+  &:hover {
+    h3 {
+      transition: 0.3s;
+      background-color: $white-lighter !important;
+      color: $link !important;
+    }
+  }
+}
+.general .tile.left {
+  &:deep(.item) {
+    padding-right: 1rem;
+    border-right: 1px dotted $gray-darker;
+  }
+}
+.general .tile.right {
+  margin-left: 1rem !important;
 }
 </style>

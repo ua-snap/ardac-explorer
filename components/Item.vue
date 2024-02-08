@@ -2,7 +2,7 @@
 import { ref, onBeforeMount } from 'vue'
 
 const props = defineProps<{
-  type: ItemType
+  type?: ItemType
   image?: string
   imageAlt?: string
   title?: string
@@ -60,39 +60,28 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div class="item">
-    <div v-if="isBrief === true">
-      <NuxtLink :to="fullViewLink">
-        <h3 class="title is-4 mt-0" v-html="title"></h3
-      ></NuxtLink>
-    </div>
-    <div v-if="isFeatured === true">
-      <h3 class="title" v-html="title"></h3>
-      <img :src="image" :alt="imageAlt" class="mb-4" />
-      <p v-if="blurb" v-html="blurb" class="mb-4" />
-      <div v-if="showReadMore" class="mb-4">
-        <NuxtLink :to="fullViewLink">Read more</NuxtLink>
+  <NuxtLink :to="fullViewLink">
+    <div class="item">
+      <div v-if="isBrief === true" class="brief">
+        <h3 class="title is-4 mt-0" v-html="title"></h3>
       </div>
-      <span v-for="tag in tags" class="tag mt-1 mb-1 mr-1"
-        ><NuxtLink :to="{ name: 'tag-tag', params: { tag: tag } }">{{
-          tag
-        }}</NuxtLink></span
-      >
-    </div>
-    <div v-else>
-      <h3 class="title" v-html="title"></h3>
-      <img :src="image" :alt="imageAlt" class="mb-4" />
-      <p v-if="blurb" v-html="blurb" class="mb-4" />
-      <div v-if="showReadMore" class="mb-4">
-        <NuxtLink :to="fullViewLink">Read more</NuxtLink>
+      <div v-else-if="isFeatured === true" class="featured">
+        <span v-for="tag in tags" class="tag mt-1 mb-1 mr-1"
+          ><NuxtLink :to="{ name: 'tag-tag', params: { tag: tag } }">{{
+            tag
+          }}</NuxtLink></span
+        >
+        <h3 class="title" v-html="title"></h3>
+        <p v-if="blurb" v-html="blurb" class="mb-4" />
+        <img :src="image" :alt="imageAlt" class="mb-4" />
+      </div>
+      <div v-else>
+        <h3 class="title is-4 mb-2" v-html="title"></h3>
+        <img v-if="image" :src="image" :alt="imageAlt" class="mb-4" />
+        <p v-if="blurb" v-html="blurb" class="mb-4" />
       </div>
     </div>
-  </div>
+  </NuxtLink>
 </template>
 
-<style scoped>
-img {
-  max-width: 200px;
-  height: auto;
-}
-</style>
+<style lang="scss" scoped></style>
