@@ -4,7 +4,6 @@ import items from '~/assets/items'
 definePageMeta({
   layout: 'home',
 })
-console.log(items[0])
 </script>
 
 <template>
@@ -12,6 +11,12 @@ console.log(items[0])
     <div class="container">
       <div class="columns">
         <div class="briefs column is-3">
+          <div class="content is-size-5 hello">
+            <p>
+              Hello! Not sure what you&rsquo;re looking for?
+              <a href="example.com">Email us!</a>
+            </p>
+          </div>
           <Item type="brief" :itemJson="items[0]" />
           <Item type="brief" :itemJson="items[1]" />
           <Item type="brief" :itemJson="items[2]" />
@@ -32,7 +37,7 @@ console.log(items[0])
                     <Item :itemJson="items[6]" />
                   </div>
                 </div>
-                <div class="row tile is-parent">
+                <div class="tile is-parent">
                   <div class="left tile is-child">
                     <Item :itemJson="items[7]" />
                   </div>
@@ -65,9 +70,30 @@ console.log(items[0])
       </div>
     </div>
   </section>
+  <hr />
+  <section class="section topic">
+    <h2 class="title is-2">Terrestrial</h2>
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical is-parent">
+        <div class="tile is-child"><Item :itemJson="items[9]" /></div>
+        <div class="tile is-child"><Item :itemJson="items[10]" /></div>
+      </div>
+      <div class="tile is-parent">
+        <div class="tile is-child"><Item :itemJson="items[11]" /></div>
+      </div>
+      <div class="tile is-parent">
+        <div class="tile is-child"><Item :itemJson="items[1]" /></div>
+      </div>
+    </div>
+  </section>
 </template>
 
 <style lang="scss" scoped>
+.hello {
+  background-color: $white-darker;
+  padding: 1rem;
+  border: 2px dashed $gray-darker;
+}
 .tile.row {
   border-bottom: 1px dotted $gray-darker;
 }
@@ -96,5 +122,13 @@ console.log(items[0])
 }
 .general .tile.right {
   margin-left: 1rem !important;
+}
+
+.topic {
+  &:deep(.item) {
+    h3 {
+      min-height: 5rem;
+    }
+  }
 }
 </style>
