@@ -2,24 +2,21 @@
   <div class="tagbar">
     <ul>
       <li>
-        <NuxtLink to="/tag/Wildfire">Wildfire</NuxtLink>
+        <NuxtLink to="/tag/Wildfire">Terrestrial</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/tag/Vegetation">Vegetation</NuxtLink>
+        <NuxtLink to="/tag/Vegetation">Ocean</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/tag/Precipitation">Precipitation</NuxtLink>
+        <NuxtLink to="/tag/Precipitation">Ecology</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/tag/Temperature">Temperature</NuxtLink>
+        <NuxtLink to="/tag/Temperature">Data Analysis</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/tag/WMS">WMS</NuxtLink>
+        <NuxtLink to="/tag/WMS">Maps</NuxtLink>
       </li>
-      <li>
-        <NuxtLink to="/tag/Degree Days">Degree Days</NuxtLink>
-      </li>
-      <li>etc etc etc</li>
+      <li>←←← these are topics</li>
     </ul>
   </div>
 </template>
@@ -29,11 +26,14 @@
   border-top: 1px solid $gray-darker;
   border-bottom: 1px solid $gray-darker;
   padding: 1rem 4rem;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   font-weight: 600;
   ul li {
     display: inline-block;
     padding-right: 4rem;
+    a {
+      color: $black;
+    }
   }
 }
 </style>

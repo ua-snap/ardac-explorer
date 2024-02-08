@@ -1,65 +1,53 @@
 <script lang="ts" setup>
+import items from '~/assets/items'
+
 definePageMeta({
   layout: 'home',
 })
-
-import { useStore } from '~/stores/store'
-
-const { $Masonry } = useNuxtApp()
-const store = useStore()
-
-const items = computed<any[]>(() => store.sortedFilteredItems)
-const searchActive = computed(() => store.searchActive)
-const masonryThreshold = 5
-
-const populatePage = () => {
-  setTimeout(() => {
-    // Use table display instead of Masonry if the number of filtered items is
-    // less than or equal to the masonryThreshold.
-    if (items.value.length <= masonryThreshold) {
-      return
-    }
-    let gridItemSelector = '.grid-item'
-    let columnWidth = 550
-    new $Masonry('.grid', {
-      itemSelector: gridItemSelector,
-      columnWidth: columnWidth,
-      horizontalOrder: true,
-    })
-  }, 0)
-}
-
-onMounted(() => {
-  populatePage()
-})
-
-watch([items, searchActive], async () => {
-  populatePage()
-})
+console.log(items[0])
 </script>
 
 <template>
   <section class="section">
     <div class="container">
-      <Search class="mb-6" />
-      <ResultsCount />
-
-      <div v-if="items.length > masonryThreshold" class="mb-6 grid">
-        <div v-for="item in items" class="grid-item">
-          <Item
-            :type="item.type"
-            :image="item.image"
-            :imageAlt="item.imageAlt"
-            :title="item.title"
-            :blurb="item.blurb"
-            :tags="item.tags"
-            :slug="item.slug"
-            :fullView="item.fullView"
-          />
+      <div class="tile is-ancestor">
+        <div class="tile is-parent is-3 is-vertical">
+          <div class="tile is-child">
+            <Item type="small" :itemJson="items[0]" />
+          </div>
+          <div class="tile is-child">
+            <Item type="small" :itemJson="items[1]" />
+          </div>
+          <div class="tile is-child">
+            <Item type="small" :itemJson="items[2]" />
+          </div>
+          <div class="tile is-child">
+            <Item type="small" :itemJson="items[3]" />
+          </div>
         </div>
-      </div>
-      <div v-else-if="items.length > 0" class="mb-6">
-        <ResultsTable :items="items" />
+        <div class="tile is-parent is-6 is-vertical">
+          <div class="tile is-child">
+            <Item type="grand" :itemJson="items[4]" />
+          </div>
+          <div class="tile is-child">
+            <Item type="grand" :itemJson="items[5]" />
+          </div>
+        </div>
+        <div class="tile is-parent is-3 is-vertical content is-size-4">
+          <ul class="mt-0">
+            <li>Sign up for our newsletter</li>
+            <li>Email us with questions</li>
+            <li>Visit data API</li>
+            <li>
+              <NuxtLink
+                href="https://archive.org/details/INTERNETCLUB-REDEFININGTHEWORKPLACE/04+SYNERGIZE.mp3"
+                >Redefining the workplace</NuxtLink
+              >
+            </li>
+            <li>Who are these people anyways?</li>
+            <li>&hellip;and other content.</li>
+          </ul>
+        </div>
       </div>
     </div>
   </section>
