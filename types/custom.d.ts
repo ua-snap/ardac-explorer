@@ -1,5 +1,7 @@
+type ItemType = "brief" | "featured" | undefined
+
 interface Item {
-  type: string
+  type?: ItemType
   image?: string
   imageAlt?: string
   title?: string
@@ -7,6 +9,7 @@ interface Item {
   tags?: string[]
   slug?: string
   fullView?: string
+  priority?: number
 }
 
 interface MapLayer {

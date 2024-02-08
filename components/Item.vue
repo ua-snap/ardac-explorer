@@ -2,7 +2,7 @@
 import { ref, onBeforeMount } from 'vue'
 
 const props = defineProps<{
-  type: string
+  type: ItemType
   image?: string
   imageAlt?: string
   title?: string
@@ -23,13 +23,12 @@ const fullView = ref(props.fullView || props.itemJson.fullView)
 
 import { slugToCamelCase } from '~/utils/slugs'
 
-const isSmall = computed<boolean>(() => {
-  console.log("small small")
-  return props.type === 'small'
+const isBrief = computed<boolean>(() => {
+  return props.type === 'brief'
 })
 
-const isMedium = computed<boolean>(() => {
-  return props.type === 'medium'
+const isFeatured = computed<boolean>(() => {
+  return props.type === 'featured'
 })
 
 const showReadMore = computed<boolean>(() => {
@@ -61,24 +60,33 @@ onBeforeMount(() => {
 </script>
 
 <template>
-  <div v-if="isSmall === true">
-
-    <NuxtLink :to="fullViewLink">
-      <h3 class="title is-4 mt-0" v-html="title"></h3
-    ></NuxtLink>
-  </div>
-  <div v-else>
-    <img :src="image" :alt="imageAlt" class="is-pulled-right mb-4 ml-4" />
-    <h3 class="title is-4 mt-0" v-html="title"></h3>
-    <p v-if="blurb" v-html="blurb" class="mb-4" />
-    <div v-if="showReadMore" class="mb-4">
-      <NuxtLink :to="fullViewLink">Read more</NuxtLink>
+  <div class="item">
+    <div v-if="isBrief === true">
+      <NuxtLink :to="fullViewLink">
+        <h3 class="title is-4 mt-0" v-html="title"></h3
+      ></NuxtLink>
     </div>
-    <span v-for="tag in tags" class="tag mt-1 mb-1 mr-1"
-      ><NuxtLink :to="{ name: 'tag-tag', params: { tag: tag } }">{{
-        tag
-      }}</NuxtLink></span
-    >
+    <div v-if="isFeatured === true">
+      <h3 class="title" v-html="title"></h3>
+      <img :src="image" :alt="imageAlt" class="mb-4" />
+      <p v-if="blurb" v-html="blurb" class="mb-4" />
+      <div v-if="showReadMore" class="mb-4">
+        <NuxtLink :to="fullViewLink">Read more</NuxtLink>
+      </div>
+      <span v-for="tag in tags" class="tag mt-1 mb-1 mr-1"
+        ><NuxtLink :to="{ name: 'tag-tag', params: { tag: tag } }">{{
+          tag
+        }}</NuxtLink></span
+      >
+    </div>
+    <div v-else>
+      <h3 class="title" v-html="title"></h3>
+      <img :src="image" :alt="imageAlt" class="mb-4" />
+      <p v-if="blurb" v-html="blurb" class="mb-4" />
+      <div v-if="showReadMore" class="mb-4">
+        <NuxtLink :to="fullViewLink">Read more</NuxtLink>
+      </div>
+    </div>
   </div>
 </template>
 

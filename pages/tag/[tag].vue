@@ -6,7 +6,7 @@ const { $Masonry } = useNuxtApp()
 const store = useStore()
 
 let tag = route.params.tag as string
-let filteredItems = items.filter(item => item.tags?.includes(tag))
+let filteredItems:Item[] = items.filter(item => item.tags?.includes(tag))
 store.filteredItems = filteredItems
 let filteredItemsCount = store.sortedFilteredItems.length
 

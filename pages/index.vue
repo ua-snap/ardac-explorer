@@ -10,31 +10,34 @@ console.log(items[0])
 <template>
   <section class="section">
     <div class="container">
-      <div class="tile is-ancestor">
-        <div class="tile is-parent is-3 is-vertical">
-          <div class="tile is-child">
-            <Item type="small" :itemJson="items[0]" />
-          </div>
-          <div class="tile is-child">
-            <Item type="small" :itemJson="items[1]" />
-          </div>
-          <div class="tile is-child">
-            <Item type="small" :itemJson="items[2]" />
-          </div>
-          <div class="tile is-child">
-            <Item type="small" :itemJson="items[3]" />
+      <div class="columns">
+        <div class="briefs column is-3">
+          <Item type="brief" :itemJson="items[0]" />
+          <Item type="brief" :itemJson="items[1]" />
+          <Item type="brief" :itemJson="items[2]" />
+          <Item type="brief" :itemJson="items[3]" />
+        </div>
+        <div class="featured column is-6">
+          <div class="tile is-ancestor">
+            <div class="tile is-vertical">
+              <div class="tile is-parent">
+                <Item type="featured" :itemJson="items[4]" />
+              </div>
+              <div class="tile is-parent">
+                <div class="tile is-child">
+                  <Item :itemJson="items[5]" />
+                </div>
+                <div class="tile is-child">
+                  <Item :itemJson="items[6]" />
+                </div>
+              </div>
+            </div>
           </div>
         </div>
-        <div class="tile is-parent is-6 is-vertical">
-          <div class="tile is-child">
-            <Item type="grand" :itemJson="items[4]" />
-          </div>
-          <div class="tile is-child">
-            <Item type="grand" :itemJson="items[5]" />
-          </div>
-        </div>
-        <div class="tile is-parent is-3 is-vertical content is-size-4">
-          <ul class="mt-0">
+        <div class="column">
+          <div class= "content is-size-5">
+            <p>Did you know people are awesome?</p>
+          <ul>
             <li>Sign up for our newsletter</li>
             <li>Email us with questions</li>
             <li>Visit data API</li>
@@ -46,11 +49,24 @@ console.log(items[0])
             </li>
             <li>Who are these people anyways?</li>
             <li>&hellip;and other content.</li>
-          </ul>
+          </ul></div>
         </div>
       </div>
     </div>
   </section>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.briefs :deep(.item) {
+  margin-top: -0.5rem; // align to top of column
+ margin-bottom: 0.5rem;
+ padding: 0.5rem;
+ &:hover {
+  background-color: $white-lighter !important;
+  color: #88f;
+ }
+}
+.featured .tile {
+  border-bottom: 1px dotted #888;
+}
+</style>
