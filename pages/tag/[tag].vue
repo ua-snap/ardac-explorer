@@ -30,7 +30,6 @@ onMounted(() => {
       <div class="grid">
         <div v-for="item in store.sortedFilteredItems" class="grid-item">
           <Item
-            :type="item.type"
             :image="item.image"
             :imageAlt="item.imageAlt"
             :title="item.title"

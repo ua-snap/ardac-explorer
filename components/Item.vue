@@ -9,8 +9,8 @@ const props = defineProps<{
   blurb?: string
   tags?: string[]
   slug?: string
-  fullView?: string
   itemJson?: any
+  fullView?: string
 }>()
 
 const blurb = ref(props.blurb || props.itemJson.blurb)
@@ -19,7 +19,6 @@ const imageAlt = ref(props.imageAlt || props.itemJson.imageAlt)
 const title = ref(props.title || props.itemJson.title)
 const tags = ref(props.tags || props.itemJson.tags)
 const slug = ref(props.slug || props.itemJson.slug)
-const fullView = ref(props.fullView || props.itemJson.fullView)
 
 import { slugToCamelCase } from '~/utils/slugs'
 
@@ -29,23 +28,6 @@ const isBrief = computed<boolean>(() => {
 
 const isFeatured = computed<boolean>(() => {
   return props.type === 'featured'
-})
-
-const showReadMore = computed<boolean>(() => {
-  if (props.slug === undefined) {
-    return false
-  }
-  if (props.fullView !== undefined) {
-    return true
-  }
-
-  let camelCaseString = slugToCamelCase(props.slug)
-  let vueComponents = getCurrentInstance()?.appContext.components
-  if (vueComponents?.hasOwnProperty(camelCaseString)) {
-    return true
-  } else {
-    return false
-  }
 })
 
 const fullViewLink = computed<string>(() => {
