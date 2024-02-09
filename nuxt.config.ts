@@ -37,14 +37,6 @@ export default defineNuxtConfig({
       },
     },
   },
-  hooks: {
-    'pages:extend'(pages) {
-      pages.push({
-        path: '/item/:slug',
-        file: resolve('/pages/full.vue'),
-      })
-    },
-  },
   modules: ['@pinia/nuxt'],
   typescript: {
     typeCheck: true,

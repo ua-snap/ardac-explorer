@@ -17,32 +17,32 @@ definePageMeta({
               <a href="example.com">Email us!</a>
             </p>
           </div>
-          <Item type="brief" :itemJson="items[0]" />
-          <Item type="brief" :itemJson="items[1]" />
-          <Item type="brief" :itemJson="items[2]" />
-          <Item type="brief" :itemJson="items[3]" />
+          <ItemBrief :item="items[0]" />
+          <ItemBrief :item="items[1]" />
+          <ItemBrief :item="items[2]" />
+          <ItemBrief :item="items[3]" />
         </div>
         <div class="featured column is-6">
           <div class="tile is-ancestor">
             <div class="tile is-parent is-vertical">
               <div class="tile is-child">
-                <Item type="featured" :itemJson="items[5]" />
+                <ItemTextPicture :item="items[5]" />
               </div>
               <div class="general">
                 <div class="row tile is-parent mb-4">
                   <div class="left tile is-child">
-                    <Item :itemJson="items[4]" />
+                    <ItemText :item="items[4]" />
                   </div>
                   <div class="right tile is-child">
-                    <Item :itemJson="items[6]" />
+                    <ItemText :item="items[6]" />
                   </div>
                 </div>
                 <div class="tile is-parent">
                   <div class="left tile is-child">
-                    <Item :itemJson="items[7]" />
+                    <ItemText :item="items[7]" />
                   </div>
                   <div class="right tile is-child">
-                    <Item :itemJson="items[8]" />
+                    <ItemText :item="items[8]" />
                   </div>
                 </div>
               </div>
@@ -75,14 +75,14 @@ definePageMeta({
     <h2 class="title is-2">Terrestrial</h2>
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-parent">
-        <div class="tile is-child"><Item :itemJson="items[9]" /></div>
-        <div class="tile is-child"><Item :itemJson="items[10]" /></div>
+        <div class="tile is-child"><ItemText :item="items[9]" /></div>
+        <div class="tile is-child"><ItemText :item="items[10]" /></div>
       </div>
       <div class="tile is-parent">
-        <div class="tile is-child"><Item :itemJson="items[11]" /></div>
+        <div class="tile is-child"><ItemTextPicture :item="items[11]" /></div>
       </div>
       <div class="tile is-parent">
-        <div class="tile is-child"><Item :itemJson="items[1]" /></div>
+        <div class="tile is-child"><ItemTextPicture :item="items[1]" /></div>
       </div>
     </div>
   </section>
@@ -106,11 +106,18 @@ definePageMeta({
     margin-left: -0.5rem;
     margin-right: -0.5rem;
   }
+  img {
+    filter: grayscale(1);
+  }
   &:hover {
     h3 {
       transition: 0.3s;
       background-color: $white-lighter !important;
       color: $link !important;
+    }
+    img {
+      transition: 0.3s;
+      filter: none;
     }
   }
 }

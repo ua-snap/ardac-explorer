@@ -1,5 +1,3 @@
-type ItemType = "brief" | "featured" | undefined
-
 interface Item {
   slug: string
   title: string
