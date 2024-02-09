@@ -116,7 +116,7 @@ watch(apiData, async () => {
 watch(latLng, async () => {
   errorMsg.value = ''
   $Plotly.purge('chart')
-  dataStore.fetchData()
+  dataStore.fetchData('precipitationFrequency')
 })
 watch(dataError, async () => {
   if (dataError.value === true) {
