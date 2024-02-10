@@ -2,6 +2,8 @@
 // bbox order is left, bottom, right, top
 const props = defineProps<{
   bbox?: number[]
+  label?: string
+  errorMsg?: string
 }>()
 
 const { $parseDMS } = useNuxtApp()
@@ -9,6 +11,11 @@ const store = useStore()
 const latLngInput = defineModel()
 const latLng = ref()
 const fieldMessage = ref('')
+const inputLabel = ref('Get data for lat/lon point:')
+
+if (props.label) {
+  inputLabel.value = props.label
+}
 
 let bbox: number[]
 if (props.bbox) {
@@ -72,12 +79,21 @@ const validate = () => {
 onUnmounted(() => {
   store.latLng = {} as LatLng
 })
+
+watch(
+  () => props.errorMsg,
+  async () => {
+    if (props.errorMsg) {
+      invalidLatLng(props.errorMsg)
+    }
+  }
+)
 </script>
 
 <template>
   <div class="field my-6">
     <div class="control">
-      <label class="label">Get data for lat/lon point:</label>
+      <label class="label" v-html="inputLabel" />
       <input
         class="input is-primary mr-3"
         type="text"
