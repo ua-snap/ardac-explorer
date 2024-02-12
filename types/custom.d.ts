@@ -1,12 +1,12 @@
 interface Item {
-  type: string
+  slug: string
+  title: string
+  blurb: string
+  tags?: string[]
   image?: string
   imageAlt?: string
-  title?: string
-  blurb?: string
-  tags?: string[]
-  slug?: string
   fullView?: string
+  priority?: number
 }
 
 interface MapLayer {

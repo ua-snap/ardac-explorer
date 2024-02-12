@@ -6,7 +6,7 @@ const { $Masonry } = useNuxtApp()
 const store = useStore()
 
 let tag = route.params.tag as string
-let filteredItems = items.filter(item => item.tags?.includes(tag))
+let filteredItems:Item[] = items.filter(item => item.tags?.includes(tag))
 store.filteredItems = filteredItems
 let filteredItemsCount = store.sortedFilteredItems.length
 
@@ -30,7 +30,6 @@ onMounted(() => {
       <div class="grid">
         <div v-for="item in store.sortedFilteredItems" class="grid-item">
           <Item
-            :type="item.type"
             :image="item.image"
             :imageAlt="item.imageAlt"
             :title="item.title"

@@ -1,68 +1,154 @@
 <script lang="ts" setup>
+import items from '~/assets/items'
+
 definePageMeta({
   layout: 'home',
-})
-
-import { useStore } from '~/stores/store'
-
-const { $Masonry } = useNuxtApp()
-const store = useStore()
-
-const items = computed<any[]>(() => store.sortedFilteredItems)
-const searchActive = computed(() => store.searchActive)
-const masonryThreshold = 5
-
-const populatePage = () => {
-  setTimeout(() => {
-    // Use table display instead of Masonry if the number of filtered items is
-    // less than or equal to the masonryThreshold.
-    if (items.value.length <= masonryThreshold) {
-      return
-    }
-    let gridItemSelector = '.grid-item'
-    let columnWidth = 550
-    new $Masonry('.grid', {
-      itemSelector: gridItemSelector,
-      columnWidth: columnWidth,
-      horizontalOrder: true,
-    })
-  }, 0)
-}
-
-onMounted(() => {
-  populatePage()
-})
-
-watch([items, searchActive], async () => {
-  populatePage()
 })
 </script>
 
 <template>
   <section class="section">
-    <div class="container">
-      <Search class="mb-6" />
-      <ResultsCount />
-
-      <div v-if="items.length > masonryThreshold" class="mb-6 grid">
-        <div v-for="item in items" class="grid-item">
-          <Item
-            :type="item.type"
-            :image="item.image"
-            :imageAlt="item.imageAlt"
-            :title="item.title"
-            :blurb="item.blurb"
-            :tags="item.tags"
-            :slug="item.slug"
-            :fullView="item.fullView"
-          />
+    <div class="columns">
+      <div class="briefs column is-3 pr-5 border-right">
+        <div class="content is-size-5 hello">
+          <p>
+            Hello! Not sure what you&rsquo;re looking for?
+            <a href="example.com">Email us!</a>
+          </p>
+        </div>
+        <ItemBrief :item="items[0]" />
+        <ItemBrief :item="items[1]" />
+        <ItemBrief :item="items[2]" />
+        <ItemBrief :item="items[3]" />
+      </div>
+      <div class="featured column is-6 px-5">
+        <div class="tile is-ancestor">
+          <div class="tile is-parent is-vertical">
+            <div class="tile is-child border-bottom">
+              <ItemTextPicture :item="items[5]" />
+            </div>
+            <div class="general">
+              <div class="row tile is-parent mb-4">
+                <div class="left tile is-child">
+                  <ItemText :item="items[4]" />
+                </div>
+                <div class="right tile is-child">
+                  <ItemText :item="items[6]" />
+                </div>
+              </div>
+              <div class="tile is-parent">
+                <div class="left tile is-child">
+                  <ItemText :item="items[7]" />
+                </div>
+                <div class="right tile is-child">
+                  <ItemText :item="items[8]" />
+                </div>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
-      <div v-else-if="items.length > 0" class="mb-6">
-        <ResultsTable :items="items" />
+      <div class="column right pl-5 border-left">
+        <div class="content is-size-5">
+          <p>Did you know people are awesome?</p>
+          <ul>
+            <li>Sign up for our newsletter</li>
+            <li>Email us with questions</li>
+            <li>Visit data API</li>
+            <li>
+              <NuxtLink
+                href="https://archive.org/details/INTERNETCLUB-REDEFININGTHEWORKPLACE/04+SYNERGIZE.mp3"
+                >Redefining the workplace</NuxtLink
+              >
+            </li>
+            <li>Who are these people anyways?</li>
+            <li>&hellip;and other content.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+  <hr />
+  <h2 class="title is-2 mx-6">Terrestrial</h2>
+  <hr class="light" />
+  <section class="section topic pt-3">
+    <div class="tile is-ancestor">
+      <div class="tile is-vertical is-parent pr-5 border-right">
+        <div class="tile is-child border-bottom">
+          <ItemText :item="items[9]" />
+        </div>
+        <div class="tile is-child"><ItemText :item="items[10]" /></div>
+      </div>
+      <div class="tile is-parent px-5">
+        <div class="tile is-child"><ItemTextPicture :item="items[11]" /></div>
+      </div>
+      <div class="tile is-parent pl-5 border-left">
+        <div class="tile is-child"><ItemTextPicture :item="items[1]" /></div>
       </div>
     </div>
   </section>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.hello {
+  background-color: $white-darker;
+  padding: 1rem;
+  border: 1px dashed $gray-lighter;
+}
+.tile.row {
+  border-bottom: 1px dashed $gray-lighter;
+}
+:deep(.item) {
+  p {
+    color: $gray-darker !important;
+  }
+  h3 {
+    padding: 0.5rem;
+    margin-left: -0.5rem;
+    margin-right: -0.5rem;
+  }
+  img {
+    filter: grayscale(1);
+  }
+  &:hover {
+    h3 {
+      transition: 0.3s;
+      background-color: $white-lighter !important;
+      color: $link !important;
+    }
+    img {
+      transition: 0.3s;
+      filter: none;
+    }
+  }
+}
+.general .tile.left {
+  &:deep(.item) {
+    padding-right: 1rem;
+    border-right: 1px dashed $gray-lighter;
+  }
+}
+.general .tile.right {
+  margin-left: 1rem !important;
+}
+
+.topic {
+  &:deep(.item) {
+    h3 {
+      min-height: 5rem;
+    }
+  }
+}
+
+.border-left {
+  border-left: 1px dashed $gray-lighter;
+}
+
+.border-right {
+  border-right: 1px dashed $gray-lighter;
+}
+
+.border-bottom {
+  border-bottom: 1px dashed $gray-lighter;
+}
+</style>
