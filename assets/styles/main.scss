@@ -7,5 +7,8 @@
 @import "~/node_modules/bulma/bulma.sass";
 
 hr {
-	border: 1px dashed $black;
+	border: 1px solid $black;
+	&.light {
+		border: 1px dashed $gray-lighter;
+	}
 }
