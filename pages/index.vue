@@ -4,6 +4,7 @@ import items from '~/assets/items'
 definePageMeta({
   layout: 'home',
 })
+
 </script>
 
 <template>
@@ -36,7 +37,7 @@ definePageMeta({
       <div class="featured column is-6 px-5">
         <div class="tile is-ancestor">
           <div class="tile is-parent is-vertical">
-            <div class="tile is-child border-bottom">
+            <div class="tile lead is-child border-bottom">
               <ItemTextPicture :item="items[5]" />
             </div>
             <div class="general">
@@ -114,11 +115,14 @@ definePageMeta({
   p {
     color: $gray-darker !important;
   }
-  h3 {
-    padding: 0.5rem;
-    margin-left: -0.5rem;
-    margin-right: -0.5rem;
+  
+  // We want to keep the height of headlines consistent (~=3 lines).
+  // Except for the item within the `.lead` class, which is done below.
+  &.text h3, &.text-picture h3 {
+    min-height: 5rem;
+    margin-bottom: 0.3rem;
   }
+  
   img {
     filter: grayscale(1);
   }
@@ -126,6 +130,9 @@ definePageMeta({
     h3 {
       transition: 0.3s;
       background-color: $white-lighter !important;
+      color: $link !important;
+    }
+    p {
       color: $link !important;
     }
     img {
@@ -144,10 +151,11 @@ definePageMeta({
   margin-left: 1rem !important;
 }
 
-.topic {
+.lead {
   &:deep(.item) {
     h3 {
-      min-height: 5rem;
+      font-size: 215%;
+      min-height: auto; // undo forced spacing used in other places
     }
   }
 }
