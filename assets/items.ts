@@ -58,7 +58,7 @@ export default [
     image: '/previews/data-preview-6.png',
     imageAlt: 'logo for northern climate reports website',
     title: 'ERA5 access via the CDS API',
-    blurb: `The Climate Data Store run by the European Center for Medium-Range Weather Forecasts provides a great API and associated python package for accessing the eight different ERA5 datasets they host.`,
+    blurb: `The Climate Data Store run by the European Center for Medium-Range Weather Forecasts provides an API and Python package for accessing ERA datasets.`,
     tags: ['Code', 'Notebook'],
   },
   {

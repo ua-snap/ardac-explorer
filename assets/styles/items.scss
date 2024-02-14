@@ -1,0 +1,33 @@
+:deep(.item) {
+  
+  p {
+    color: $gray-darker !important;
+  }
+
+  // We want to keep the height of headlines consistent (~=3 lines).
+  // Except for the item within the `.lead` class, which is done below.
+  &.text h3,
+  &.text-picture h3 {
+    margin-bottom: 0.3rem;
+  }
+
+  img {
+    filter: grayscale(1);
+  }
+  &:hover {
+    transition: 0.3s;
+    background-color: $white-lighter !important;
+    h3 {
+      transition: 0.3s;
+      color: $link !important;
+    }
+    p {
+      transition: 0.3s;
+      color: $link !important;
+    }
+    img {
+      transition: 0.3s;
+      filter: none;
+    }
+  }
+}
