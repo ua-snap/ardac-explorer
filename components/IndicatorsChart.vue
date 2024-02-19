@@ -43,18 +43,27 @@ const buildChart = () => {
     let chartData = dataStore.apiData[props.dataKey]
 
     let means: Array<number | null> = []
+    let maxes: Array<number | null> = []
+    let mins: Array<number | null> = []
     let maxOffsets: Array<number | null> = []
     let minOffsets: Array<number | null> = []
 
     let era = 'historical'
     let model = 'Daymet'
 
-    let mean = chartData[era][model]['historical']['mean']
+    let historicalData = chartData[era][model]['historical']
+
+    let mean = historicalData['mean']
+    let max = historicalData['max']
+    let min = historicalData['min']
+
     means.push(mean)
+    maxes.push(max)
+    mins.push(min)
 
     // Calculate max/min as offsets from mean for error bars.
-    maxOffsets.push(chartData[era][model]['historical']['max'] - mean)
-    minOffsets.push(mean - chartData[era][model]['historical']['min'])
+    maxOffsets.push(max - mean)
+    minOffsets.push(mean - min)
 
     traces.push({
       x: ticks,
@@ -72,10 +81,17 @@ const buildChart = () => {
         symbol: Array(ticks.length).fill(symbols[model]),
         size: 8,
       },
+      hovertemplate:
+        'max: %{customdata[0]}<br />' +
+        'mean: %{y:}<br />' +
+        'min: %{customdata[1]}',
+      customdata: $_.zip(maxes, mins),
     })
 
     projectedModels.forEach(model => {
       means = []
+      maxes = []
+      mins = []
       maxOffsets = []
       minOffsets = []
 
@@ -85,16 +101,19 @@ const buildChart = () => {
       let offsetTicks = ticks.slice(1).map(tick => tick + offsets[model])
 
       projectedEras.forEach(era => {
-        let mean = chartData[era][model][scenarioInput.value]['mean']
+        console.log(era)
+        let scenarioData = chartData[era][model][scenarioInput.value]
+        let mean = scenarioData['mean']
+        let max = scenarioData['max']
+        let min = scenarioData['min']
+
         means.push(mean)
+        maxes.push(max)
+        mins.push(min)
 
         // Calculate max/min as offsets from mean for error bars.
-        maxOffsets.push(
-          chartData[era][model][scenarioInput.value]['max'] - mean
-        )
-        minOffsets.push(
-          mean - chartData[era][model][scenarioInput.value]['min']
-        )
+        maxOffsets.push(max - mean)
+        minOffsets.push(mean - min)
       })
 
       traces.push({
@@ -113,6 +132,11 @@ const buildChart = () => {
           symbol: Array(ticks.length).fill(symbols[model]),
           size: 8,
         },
+        hovertemplate:
+          'max: %{customdata[0]}<br />' +
+          'mean: %{y:}<br />' +
+          'min: %{customdata[1]}',
+        customdata: $_.zip(maxes, mins),
       })
     })
 

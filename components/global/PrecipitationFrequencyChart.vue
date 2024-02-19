@@ -1,7 +1,7 @@
 <script lang="ts" setup>
 import type { Data } from 'plotly.js-dist-min'
 
-const { $Plotly } = useNuxtApp()
+const { $Plotly, $_ } = useNuxtApp()
 const store = useStore()
 const dataStore = useDataStore()
 
@@ -51,20 +51,28 @@ const buildChart = () => {
       dataStore.apiData[returnIntervalInput.value][durationInput.value]
     models.forEach(model => {
       let pfs: number[] = []
-      let pf_uppers: number[] = []
-      let pf_lowers: number[] = []
+      let pfUppers: number[] = []
+      let pfLowers: number[] = []
+      let pfUpperOffsets: number[] = []
+      let pfLowersOffsets: number[] = []
 
       // Offset the chart markers/bars slightly so they don't overlap.
       // Omit the first tick mark because it's just the placeholder for the
       // 0 x-axis position, where the y-axis line is drawn.
       let offsetTicks = ticks.slice(1).map(tick => tick + offsets[model])
       eras.forEach(era => {
-        let pf = chartData[model][era]['pf']
+        let eraData = chartData[model][era]
+        let pf = eraData['pf']
+        let pfUpper = eraData['pf_upper']
+        let pfLower = eraData['pf_lower']
+
         pfs.push(pf)
+        pfUppers.push(pfUpper)
+        pfLowers.push(pfLower)
 
         // Calculate upper/lower as offsets from pf for error bars.
-        pf_uppers.push(chartData[model][era]['pf_upper'] - pf)
-        pf_lowers.push(pf - chartData[model][era]['pf_lower'])
+        pfUpperOffsets.push(pfUpper - pf)
+        pfLowersOffsets.push(pf - pfLower)
       })
 
       traces.push({
@@ -73,8 +81,8 @@ const buildChart = () => {
         error_y: {
           type: 'data',
           symmetric: false,
-          array: pf_uppers,
-          arrayminus: pf_lowers,
+          array: pfUpperOffsets,
+          arrayminus: pfLowersOffsets,
         },
         mode: 'markers',
         type: 'scatter',
@@ -83,6 +91,11 @@ const buildChart = () => {
           symbol: Array(ticks.length).fill(symbols[model]),
           size: 8,
         },
+        hovertemplate:
+          'max: %{customdata[0]}<br />' +
+          'mean: %{y:}<br />' +
+          'min: %{customdata[1]}',
+        customdata: $_.zip(pfUppers, pfLowers),
       })
     })
 

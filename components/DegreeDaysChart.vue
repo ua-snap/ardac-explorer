@@ -44,29 +44,39 @@ const getPlotValues = (minYear: number, maxYear: number, model: string) => {
   let decades = Object.keys(decadeBuckets)
 
   let means: number[] = []
+  let maxes: number[] = []
+  let mins: number[] = []
   let maxOffsets: number[] = []
   let minOffsets: number[] = []
 
   decades.forEach(decade => {
     let mean = $_.mean(decadeBuckets[decade])
+    let min = $_.min(decadeBuckets[decade])
+    let max = $_.max(decadeBuckets[decade])
 
     // Calculate max/min as offsets from mean for error bars.
-    let maxOffset = $_.max(decadeBuckets[decade]) - mean
-    let minOffset = mean - $_.min(decadeBuckets[decade])
+    let maxOffset = max - mean
+    let minOffset = mean - min
 
     means.push(mean)
+    mins.push(min)
+    maxes.push(max)
     maxOffsets.push(maxOffset)
     minOffsets.push(minOffset)
   })
 
   decades = xTickPadding.concat(decades)
   means = xTickPadding.concat(means)
+  maxes = xTickPadding.concat(maxes)
+  mins = xTickPadding.concat(mins)
   maxOffsets = xTickPadding.concat(maxOffsets)
   minOffsets = xTickPadding.concat(minOffsets)
 
   return {
     decades,
     means,
+    maxes,
+    mins,
     maxOffsets,
     minOffsets,
   }
@@ -143,6 +153,11 @@ const buildChart = () => {
           symbol: symbols[params.model],
           size: 8,
         },
+        hovertemplate:
+          'max: %{customdata[0]}<br />' +
+          'mean: %{y:}<br />' +
+          'min: %{customdata[1]}',
+        customdata: $_.zip(plotValues.maxes, plotValues.mins),
       })
     })
 
