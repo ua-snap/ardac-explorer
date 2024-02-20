@@ -20,6 +20,18 @@ definePageMeta({
         <ItemBrief :item="items[1]" />
         <ItemBrief :item="items[2]" />
         <ItemBrief :item="items[3]" />
+        <ItemBrief :item="items[12]" />
+        <ItemBrief :item="items[13]" />
+        <ItemBrief :item="items[14]" />
+        <ItemBrief :item="items[15]" />
+        <ItemBrief :item="items[16]" />
+        <ItemBrief :item="items[17]" />
+        <ItemBrief :item="items[18]" />
+        <ItemBrief :item="items[19]" />
+        <ItemBrief :item="items[20]" />
+        <ItemBrief :item="items[21]" />
+        <ItemBrief :item="items[22]" />
+        <ItemBrief :item="items[23]" />
       </div>
       <div class="featured column is-6 px-5">
         <div class="tile is-ancestor">

@@ -3,7 +3,13 @@ const runtimeConfig = useRuntimeConfig()
 const store = useStore()
 
 const endpoints: Record<string, string> = {
+  heatingDegreeDays: '/degree_days/heating/',
+  indicators: '/indicators/base/point/',
+  freezingIndex: '/degree_days/freezing_index/',
+  precipitation: '/precipitation/point/',
   precipitationFrequency: '/precipitation/frequency/point/',
+  temperature: '/temperature/point/',
+  thawingIndex: '/degree_days/thawing_index/',
 }
 
 export const useDataStore = defineStore('data', () => {
