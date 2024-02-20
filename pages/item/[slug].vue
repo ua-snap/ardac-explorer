@@ -30,9 +30,6 @@ const componentFileExists = computed<boolean>(() => {
   <div v-if="componentFileExists">
     <Component :is="itemComponent" />
   </div>
-  <div v-else-if="item?.fullView">
-    <div v-html="item?.fullView"></div>
-  </div>
   <div v-else>
     <article class="message is-warning">
       <div class="message-header">

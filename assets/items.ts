@@ -13,7 +13,7 @@ export default [
     imageAlt: 'A Map',
     title: 'Degree days, projected statewide',
     blurb: `Explore climate projections used to derive future heating, freezing and thawing degree days across Alaska, as well as direct access to source data.`,
-    tags: ['Degree days', 'WMS', 'Visualization', 'GIS'],
+    tags: ['Precipitation', 'Degree days', 'WMS', 'Visualization', 'GIS'],
   },
   {
     slug: 'flammability-vegetation-current-conditions',
@@ -24,7 +24,7 @@ export default [
     tags: [
       'Wildfire',
       'Vegetation',
-      'Lightning',
+      'Lightning','Precipitation', 
       'WMS',
       'Visualization',
       'Map',

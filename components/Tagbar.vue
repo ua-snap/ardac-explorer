@@ -33,6 +33,11 @@
     padding-right: 4rem;
     a {
       color: $black;
+      &:hover {
+        transition: 0.3s;
+        background-color: $white-lighter !important;
+        color: $link !important;
+      }
     }
   }
 }
