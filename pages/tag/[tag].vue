@@ -15,15 +15,11 @@ for (let row = 0; row < store.sortedFilteredItems.length / 4; row++) {
   gridItems[row] = []
   for (let col = 0; col < 4; col++) {
     let offset = (row * 4) + col
-    console.log("row="+row)
-    console.log("col="+col)
-    console.log("offset="+offset)
     if (store.sortedFilteredItems[offset]) {
       gridItems[row][col] = store.sortedFilteredItems[offset]
     }
   }
 }
-console.log(gridItems)
 </script>
 
 <template>

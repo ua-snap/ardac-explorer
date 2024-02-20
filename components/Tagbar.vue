@@ -8,7 +8,7 @@
         <NuxtLink to="/tag/Vegetation">Ocean</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/tag/Precipitation">Ecology</NuxtLink>
+        <NuxtLink to="/tag/Precipitation">Precipitation</NuxtLink>
       </li>
       <li>
         <NuxtLink to="/tag/Temperature">Data Analysis</NuxtLink>
