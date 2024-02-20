@@ -4,7 +4,11 @@
   <section class="section">
     <div class="content is-size-5">
       <h3 class="title is-3">Cold spell duration index chart</h3>
-      <IndicatorsChart label="Cold spell duration index" dataKey="csdi" />
+      <IndicatorsChart
+        label="Cold spell duration index"
+        units="Days"
+        dataKey="csdi"
+      />
     </div>
   </section>
 </template>

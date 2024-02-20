@@ -2,6 +2,7 @@
 const props = defineProps<{
   endpoint: string
   label: string
+  units: string
   dataKey: string
 }>()
 
@@ -136,7 +137,7 @@ const buildChart = () => {
         },
         yaxis: {
           title: {
-            text: props.label + ' (°C)',
+            text: props.label + ' (' + props.units + ')',
             font: {
               size: 18,
             },

@@ -1,6 +1,7 @@
 <script lang="ts" setup>
 const props = defineProps<{
   label: string
+  units?: string
   dataKey: string
 }>()
 
@@ -140,6 +141,11 @@ const buildChart = () => {
       })
     })
 
+    let yAxisLabel = props.label
+    if (props.units) {
+      yAxisLabel += ' (' + props.units + ')'
+    }
+
     $Plotly.newPlot(
       'chart',
       traces,
@@ -166,7 +172,7 @@ const buildChart = () => {
         },
         yaxis: {
           title: {
-            text: 'Days',
+            text: yAxisLabel,
             font: {
               size: 18,
             },
