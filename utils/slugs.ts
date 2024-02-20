@@ -1,6 +1,6 @@
 export const validSlug = (slug: string) => {
   // Validate that slug is not empty and contains only expected characters.
-  if (slug === '' || !slug.match(/^[a-z0-9-]+$/)) {
+  if (slug === '' || !slug.match(/^[a-zA-Z0-9-]+$/)) {
     return false
   } else {
     return true
