@@ -5,7 +5,6 @@ interface Item {
   tags?: string[]
   image?: string
   imageAlt?: string
-  fullView?: string
   priority?: number
 }
 

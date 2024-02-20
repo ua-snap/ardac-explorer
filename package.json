@@ -29,7 +29,6 @@
     "deepdash": "^5.3.9",
     "leaflet": "^1.9.4",
     "lodash": "^4.17.21",
-    "masonry-layout": "^4.2.2",
     "parse-dms": "^0.0.5",
     "pinia": "^2.1.7",
     "plotly.js-dist-min": "^2.29.0",

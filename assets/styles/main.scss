@@ -6,9 +6,22 @@
 // Import the rest of Bulma
 @import "~/node_modules/bulma/bulma.sass";
 
+
 hr {
 	border: 1px solid $black;
 	&.light {
 		border: 1px dashed $gray-lighter;
 	}
+}
+
+.border-left {
+  border-left: 1px dashed $gray-lighter;
+}
+
+.border-right {
+  border-right: 1px dashed $gray-lighter;
+}
+
+.border-bottom {
+  border-bottom: 1px dashed $gray-lighter;
 }

@@ -2,8 +2,6 @@ import { defineStore } from 'pinia'
 import items from '~/assets/items'
 
 export const useStore = defineStore('store', () => {
-    // const activeLayers: Ref<Record<string, MapLayer>> = ref({})
-
   const totalItemCount = ref(items.length)
   const filteredItems: Ref<Item[]> = ref(items)
   const searchActive = ref(false)
