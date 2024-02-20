@@ -50,7 +50,7 @@ const getPlotValues = (minYear: number, maxYear: number, model: string) => {
   let minOffsets: number[] = []
 
   decades.forEach(decade => {
-    let mean = $_.mean(decadeBuckets[decade])
+    let mean = Math.round($_.mean(decadeBuckets[decade]))
     let min = $_.min(decadeBuckets[decade])
     let max = $_.max(decadeBuckets[decade])
 
