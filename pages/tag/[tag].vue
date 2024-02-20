@@ -41,15 +41,15 @@ for (let row = 0; row < store.sortedFilteredItems.length / 4; row++) {
 </script>
 
 <template>
-  <section class="section">
-    <div v-if="componentFileExists">
-      <Component :is="itemComponent" />
-    </div>
+  <section class="section" v-if="componentFileExists">
+    <Component :is="itemComponent" />
   </section>
   <section class="section">
     <div class="container">
       <h2 class="title is-3">{{ tag }}</h2>
-      <h3 class="subtitle is-4">Showing all matching items ({{ filteredItemsCount }})</h3>
+      <h3 class="subtitle is-4">
+        Showing all matching items ({{ filteredItemsCount }})
+      </h3>
       <div v-for="row in gridItems" class="tile is-ancestor">
         <div class="tile is-parent">
           <div
