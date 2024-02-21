@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-import items from '~/assets/items'
+const store = useStore()
 </script>
 
 <template>
@@ -15,52 +15,52 @@ import items from '~/assets/items'
 
         <ul>
           <li>
-            <ItemBrief :item="items[0]" />
+            <ItemBrief item="future-precipitation-map" />
           </li>
           <li>
-            <ItemBrief :item="items[1]" />
+            <ItemBrief item="degree-days-projected-statewide" />
           </li>
           <li>
-            <ItemBrief :item="items[2]" />
+            <ItemBrief item="flammability-vegetation-current-conditions" />
           </li>
           <li>
-            <ItemBrief :item="items[3]" />
+            <ItemBrief item="future-precipitation-map" />
           </li>
           <li>
-            <ItemBrief :item="items[12]" />
+            <ItemBrief item="precipitation-frequency-chart" />
           </li>
           <li>
-            <ItemBrief :item="items[13]" />
+            <ItemBrief item="temperature-chart" />
           </li>
           <li>
-            <ItemBrief :item="items[14]" />
+            <ItemBrief item="precipitation-chart" />
           </li>
           <li>
-            <ItemBrief :item="items[15]" />
+            <ItemBrief item="heating-degree-days-chart" />
           </li>
           <li>
-            <ItemBrief :item="items[16]" />
+            <ItemBrief item="freezing-index-chart" />
           </li>
           <li>
-            <ItemBrief :item="items[17]" />
+            <ItemBrief item="thawing-index-chart" />
           </li>
           <li>
-            <ItemBrief :item="items[18]" />
+            <ItemBrief item="very-cold-day-threshold-chart" />
           </li>
           <li>
-            <ItemBrief :item="items[19]" />
+            <ItemBrief item="very-hot-day-threshold-chart" />
           </li>
           <li>
-            <ItemBrief :item="items[20]" />
+            <ItemBrief item="summer-days-chart" />
           </li>
           <li>
-            <ItemBrief :item="items[21]" />
+            <ItemBrief item="deep-winter-days-chart" />
           </li>
           <li>
-            <ItemBrief :item="items[22]" />
+            <ItemBrief item="warm-spell-duration-index-chart" />
           </li>
           <li>
-            <ItemBrief :item="items[23]" />
+            <ItemBrief item="cold-spell-duration-index-chart" />
           </li>
         </ul>
       </div>
@@ -68,23 +68,23 @@ import items from '~/assets/items'
         <div class="tile is-ancestor">
           <div class="tile is-parent is-vertical">
             <div class="tile lead is-child border-bottom">
-              <ItemTextPicture :item="items[11]" />
+              <ItemTextPicture item="projected-permafrost-and-magt" />
             </div>
             <div class="general">
               <div class="row tile is-parent mb-4">
                 <div class="left tile is-child">
-                  <ItemText :item="items[4]" />
+                  <ItemText item="historical-sea-ice-atlas" />
                 </div>
                 <div class="right tile is-child">
-                  <ItemText :item="items[6]" />
+                  <ItemText item="arctic-eds" />
                 </div>
               </div>
               <div class="tile is-parent">
                 <div class="left tile is-child">
-                  <ItemText :item="items[7]" />
+                  <ItemText item="permafrost-observations-modeled-air-temp" />
                 </div>
                 <div class="right tile is-child">
-                  <ItemText :item="items[8]" />
+                  <ItemText item="querying-daymet-daily-precipitation" />
                 </div>
               </div>
             </div>
