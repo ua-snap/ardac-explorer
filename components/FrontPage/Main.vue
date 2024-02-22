@@ -1,6 +1,4 @@
-<script lang="ts" setup>
-const store = useStore()
-</script>
+<script lang="ts" setup></script>
 
 <template>
   <section class="section">
