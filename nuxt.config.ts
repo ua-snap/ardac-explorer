@@ -32,7 +32,10 @@ export default defineNuxtConfig({
     css: {
       preprocessorOptions: {
         scss: {
-          additionalData: '@use "~/assets/styles/_variables.scss" as *;',
+          additionalData: `
+            @use "~/assets/styles/_variables.scss" as *;
+            @import "~/node_modules/bulma/sass/utilities/mixins.sass";
+          `,
         },
       },
     },

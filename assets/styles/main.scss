@@ -3,7 +3,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Archivo:wght@300;400;600;700;800;900&family=IBM+Plex+Mono:wght@300;400;500&display=swap');
 @import "~/node_modules/leaflet/dist/leaflet.css";
 
-// Import the rest of Bulma
+// Import the rest of Bulma.
+// Overrides to Bulma varibles go in styles/_variables.scss
 @import "~/node_modules/bulma/bulma.sass";
 
 
