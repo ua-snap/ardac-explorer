@@ -103,7 +103,7 @@ export default [
   {
     slug: 'hydrology-sm',
     title: 'Soil Moisture',
-    blurb: 'Monthly mean of daily soil moisture in layer 1',
+    blurb: 'Monthly mean of daily soil moisture in layers 1-3',
     tags: ['Climate', 'Hydrology'],
   },
   {

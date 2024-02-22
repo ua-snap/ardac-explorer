@@ -1,10 +1,7 @@
-// Take the spreadsheet here:
-//
-// Save it in this directory as input.csv & run.
-// Emits a JSON version that can be copy/pasted
-// into the ~/assets/items.ts file.
-// https://docs.google.com/spreadsheets/d/1Gztm9o8JEPibPWEDwH54qBG5kwj51ILDOk_dxK6uTSY/export?format=csv&gid=1330027783
-// Just for reference if needed.
+// This is just some sample code for working with 
+// a (temporary!) spreadsheet version of some items.
+// Below it sketches an example that outputs JSON,
+// and also a version that just outputs type defs for Slugs.
 const csvFile = './input.csv'
 const csv = require('csvtojson')
 var out = []

@@ -67,7 +67,7 @@
               </div>
               <div class="tile is-parent">
                 <div class="left tile is-child">
-                  <ItemText slug="sea-ice-concentration" />
+                  <ItemText slug="hydrology-sm" />
                 </div>
                 <div class="right tile is-child">
                   <ItemText slug="notebook-perm-obs-temp" />
