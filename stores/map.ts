@@ -13,14 +13,7 @@ var legendControls: { [index: string]: any } = {}
 // Legend items for each map, keyed like `maps` var above.
 var legendItems: { [index: string]: any } = {}
 
-import {
-  tileLayer,
-  control,
-  latLng,
-  latLngBounds,
-  type MapOptions,
-  type Map,
-} from 'leaflet'
+import { tileLayer, latLng, latLngBounds, type MapOptions } from 'leaflet'
 
 function getBaseMapAndLayers(): MapOptions {
   const config = useRuntimeConfig()

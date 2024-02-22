@@ -1,5 +1,3 @@
-import { resolve } from 'path'
-
 const noscriptHtml = `
 <section class="section">
 <div class="container">
