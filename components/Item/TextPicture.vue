@@ -4,7 +4,7 @@ const props = defineProps<{
 }>()
 
 const store = useStore()
-let item = store.itemBySlug(props.item)
+let item = store.itemBySlug(props.item as Slug)
 </script>
 
 <template>

@@ -20,7 +20,7 @@ export const useStore = defineStore('store', () => {
     return itemsWithPriority.concat(itemsWithoutPriority)
   })
 
-  const itemBySlug = (slug: string): Item => {
+  const itemBySlug = (slug: Slug): Item => {
     return items.find(item => item.slug === slug)!
   }
 
