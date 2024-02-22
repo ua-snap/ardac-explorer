@@ -3,9 +3,11 @@
 <template>
   <HeaderBanner />
   <Navbar />
-  <Header />
-  <Tagbar />
-  <slot />
+  <div class="container is-fullhd">
+    <Header />
+    <Tagbar />
+    <slot />
+  </div>
   <Footer />
 </template>
 
