@@ -3,9 +3,9 @@
 <template>
   <HeaderBanner />
   <Navbar />
-  <Header />
-  <section class="section">
-    <div class="container">
+  <div class="container is-fullhd">
+    <Header />
+    <section class="section">
       <div class="content is-size-3">
         <p>
           The Arctic Data Collaborative (ARDAC) provides highly-curated,
@@ -14,10 +14,10 @@
           support research in the North.
         </p>
       </div>
-    </div>
-  </section>
-  <Tagbar/>
-  <slot />
+    </section>
+    <Tagbar />
+    <slot />
+  </div>
   <Footer />
 </template>
 

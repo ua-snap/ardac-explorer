@@ -10,11 +10,13 @@
 
 <style lang="scss" scoped>
 .brand {
-  
   h1 {
-    font-weight: 900;
+    font-weight: 800;
+    line-height: 0.9;
     font-size: 5rem;
+    @include until($desktop) {
+      font-size: 2.75rem;
+    }
   }
 }
-
 </style>
