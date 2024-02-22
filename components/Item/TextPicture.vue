@@ -1,7 +1,10 @@
 <script lang="ts" setup>
 const props = defineProps<{
-  item: Item
+  slug: Slug
 }>()
+
+const store = useStore()
+let item = store.itemBySlug(props.slug)
 </script>
 
 <template>

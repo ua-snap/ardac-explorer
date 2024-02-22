@@ -3,7 +3,6 @@ import items from '~/assets/items'
 import { useStore } from '~/stores/store'
 import type { ConcreteComponent } from 'vue'
 import { getCurrentInstance } from 'vue'
-import { validSlug, slugToCamelCase } from '~/utils/slugs'
 const route = useRoute()
 const store = useStore()
 
@@ -56,7 +55,7 @@ for (let row = 0; row < store.sortedFilteredItems.length / 4; row++) {
             v-for="item in row"
             class="tile is-child is-3 block border-right border-bottom"
           >
-            <ItemTextPicture :item="item" />
+            <ItemTextPicture :slug="item.slug" />
           </div>
         </div>
       </div>

@@ -1,6 +1,4 @@
-<script lang="ts" setup>
-import items from '~/assets/items'
-</script>
+<script lang="ts" setup></script>
 
 <template>
   <div>
@@ -9,7 +7,7 @@ import items from '~/assets/items'
     <div class="tile is-ancestor">
       <div class="tile is-parent">
         <div class="tile box is-child">
-          <ItemTextPicture :item="items[2]" />
+          <ItemTextPicture slug="flammability-vegetation-current-conditions" />
         </div>
 
         <div class="tile box is-child">

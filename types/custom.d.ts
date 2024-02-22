@@ -1,5 +1,5 @@
 interface Item {
-  slug: string
+  slug: Slug
   title: string
   blurb: string
   tags?: string[]
