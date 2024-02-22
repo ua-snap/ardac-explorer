@@ -15,52 +15,52 @@ const store = useStore()
 
         <ul>
           <li>
-            <ItemBrief item="future-precipitation-map" />
+            <ItemBrief slug="future-precipitation-map" />
           </li>
           <li>
-            <ItemBrief item="degree-days-projected-statewide" />
+            <ItemBrief slug="degree-days-projected-statewide" />
           </li>
           <li>
-            <ItemBrief item="flammability-vegetation-current-conditions" />
+            <ItemBrief slug="flammability-vegetation-current-conditions" />
           </li>
           <li>
-            <ItemBrief item="future-precipitation-map" />
+            <ItemBrief slug="future-precipitation-map" />
           </li>
           <li>
-            <ItemBrief item="precipitation-frequency-chart" />
+            <ItemBrief slug="precipitation-frequency-chart" />
           </li>
           <li>
-            <ItemBrief item="temperature-chart" />
+            <ItemBrief slug="temperature-chart" />
           </li>
           <li>
-            <ItemBrief item="precipitation-chart" />
+            <ItemBrief slug="precipitation-chart" />
           </li>
           <li>
-            <ItemBrief item="heating-degree-days-chart" />
+            <ItemBrief slug="heating-degree-days-chart" />
           </li>
           <li>
-            <ItemBrief item="freezing-index-chart" />
+            <ItemBrief slug="freezing-index-chart" />
           </li>
           <li>
-            <ItemBrief item="thawing-index-chart" />
+            <ItemBrief slug="thawing-index-chart" />
           </li>
           <li>
-            <ItemBrief item="very-cold-day-threshold-chart" />
+            <ItemBrief slug="very-cold-day-threshold-chart" />
           </li>
           <li>
-            <ItemBrief item="very-hot-day-threshold-chart" />
+            <ItemBrief slug="very-hot-day-threshold-chart" />
           </li>
           <li>
-            <ItemBrief item="summer-days-chart" />
+            <ItemBrief slug="summer-days-chart" />
           </li>
           <li>
-            <ItemBrief item="deep-winter-days-chart" />
+            <ItemBrief slug="deep-winter-days-chart" />
           </li>
           <li>
-            <ItemBrief item="warm-spell-duration-index-chart" />
+            <ItemBrief slug="warm-spell-duration-index-chart" />
           </li>
           <li>
-            <ItemBrief item="cold-spell-duration-index-chart" />
+            <ItemBrief slug="cold-spell-duration-index-chart" />
           </li>
         </ul>
       </div>
@@ -68,23 +68,23 @@ const store = useStore()
         <div class="tile is-ancestor">
           <div class="tile is-parent is-vertical">
             <div class="tile lead is-child border-bottom">
-              <ItemTextPicture item="projected-permafrost-and-magt" />
+              <ItemTextPicture slug="projected-permafrost-and-magt" />
             </div>
             <div class="general">
               <div class="row tile is-parent mb-4">
                 <div class="left tile is-child">
-                  <ItemText item="historical-sea-ice-atlas" />
+                  <ItemText slug="historical-sea-ice-atlas" />
                 </div>
                 <div class="right tile is-child">
-                  <ItemText item="arctic-eds" />
+                  <ItemText slug="arctic-eds" />
                 </div>
               </div>
               <div class="tile is-parent">
                 <div class="left tile is-child">
-                  <ItemText item="permafrost-observations-modeled-air-temp" />
+                  <ItemText slug="permafrost-observations-modeled-air-temp" />
                 </div>
                 <div class="right tile is-child">
-                  <ItemText item="querying-daymet-daily-precipitation" />
+                  <ItemText slug="querying-daymet-daily-precipitation" />
                 </div>
               </div>
             </div>

@@ -7,20 +7,20 @@
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-parent pr-5 border-right">
         <div class="tile is-child border-bottom">
-          <ItemText item="modeled-future-flammability" />
+          <ItemText slug="modeled-future-flammability" />
         </div>
         <div class="tile is-child">
-          <ItemText item="historical-nrt-wildfire" />
+          <ItemText slug="historical-nrt-wildfire" />
         </div>
       </div>
       <div class="tile is-parent px-5">
         <div class="tile is-child">
-          <ItemTextPicture item="era-access-cds-api" />
+          <ItemTextPicture slug="era-access-cds-api" />
         </div>
       </div>
       <div class="tile is-parent pl-5 border-left">
         <div class="tile is-child">
-          <ItemTextPicture item="degree-days-projected-statewide" />
+          <ItemTextPicture slug="degree-days-projected-statewide" />
         </div>
       </div>
     </div>

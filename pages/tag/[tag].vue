@@ -55,7 +55,7 @@ for (let row = 0; row < store.sortedFilteredItems.length / 4; row++) {
             v-for="item in row"
             class="tile is-child is-3 block border-right border-bottom"
           >
-            <ItemTextPicture :item="item.slug" />
+            <ItemTextPicture :slug="item.slug" />
           </div>
         </div>
       </div>
