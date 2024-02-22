@@ -1,0 +1,25 @@
+title,blurb,slug,tags,What should it offer?
+Freeze/Thaw Cycle,Annual count of days with low temperature below freezing and high temps above freezing.,indicator-ftc,Climate,"Map showing historical, mid- and late- century FTC.  Gimme widget to get a MMM table across all models, and links to CSV."
+Maximum 1-day Precipitation,Maximum precipitation in a single calendar year.,indicator-rx1day,"Climate, Precipitation","Map showing historical, mid- and late- century RX1Day, for both CMIP5 and CMIP6.  Gimme widget to get a MMM table across all models, and links to CSV."
+Summer Days,Annual count when daily max temperature (threshold) >25°C,indicator-su,Climate,"Map showing historical, mid- and late- century SU, for both CMIP5 and CMIP6.  Gimme widget to get a MMM table across all models, and links to CSV."
+Deep Winter Days,Annual count when daily min temperature (threshold) <-30°C,indicator-dw,Climate,"Map showing historical, mid- and late- century DW, for both CMIP5 and CMIP6.  Gimme widget to get a MMM table across all models, and links to CSV."
+Hot Day Threshold,The highest observed daily maximum 2 m air temperature such that there are 5 other observations equal to or greater than this value.,indicator-hd,Climate,"Map (historical, mid, late); gimme for MMM, links to CSV"
+Cold Day Threshold,the lowest observed daily minimum 2 m air temperature such that there are 5 other observations equal to or less than this value.,indicator-cd,Climate,"Map (historical, mid, late); gimme for MMM, links to CSV"
+Warm Spell Duration Index,Annual count of occurrences of at least 5 consecutive days with daily mean 2 m air temperature above 90th percentile of historical values for the date,indicator-wsdi,Climate,"Map (historical, mid, late); gimme for MMM, links to CSV"
+Cold Spell Duration Index,Annual count of occurrences of at least 5 consecutive days with daily mean 2 m air temperature below 10th percentile of historical values for the date,indicator-cdsi,Climate,"Map (historical, mid, late); gimme for MMM, links to CSV"
+Maximum 5–day precipitation,,indicator-rx5day,"Climate, Precipitation","Map (historical, mid, late); gimme for MMM, links to CSV"
+Number of days with precipitation > 10 mm,,indicator-r10mm,"Climate, Precipitation","Map (historical, mid, late); gimme for MMM, links to CSV"
+Consecutive wet days,Number of the most consecutive days with precipitation > 1 mm,indicator-cwd,"Climate, Precipitation","Map (historical, mid, late); gimme for MMM, links to CSV"
+Consecutive dry days,Number of the most consecutive days with precipitation < 1 mm,indicator-cdd,"Climate, Precipitation","Map (historical, mid, late); gimme for MMM, links to CSV"
+Evapotranspiration,Monthly sum of daily evapotranspiration,hydrology-evap,"Climate, Hydrology","Map (historical, mid, late); gimme for MMM, links to CSV"
+Glacier Melt,Monthly sum of daily glacier ice melt,hydrology-glacier-melt,"Climate, Hydrology","Map (historical, mid, late); gimme for MMM, links to CSV"
+Daily Runoff,Monthly sum of daily surface runoff,hydrology-runoff,"Climate, Hydrology","Map (historical, mid, late); gimme for MMM, links to CSV"
+Snow Water Equivalent,Monthly maximum of daily snow water equivalent,hydrology-swe,"Climate, Hydrology","Map (historical, mid, late); gimme for MMM, links to CSV"
+Soil Moisture,Monthly mean of daily soil moisture in layer 1,hydrology-sm,"Climate, Hydrology","Map (historical, mid, late); gimme for MMM, links to CSV"
+Ground Temperature,"Mean annual ground temperature value, surface - 5m",permafrost-magt,"Climate, Permafrost","Map (historical, mid, late); gimme for MMM, links to CSV"
+Permafrost Depth: Base & Top,,permafrost-base-top,"Climate, Permafrost","Map (historical, mid, late); gimme for MMM, links to CSV"
+Talik Thickness,,permafrost-talik,"Climate, Permafrost","Map (historical, mid, late); gimme for MMM, links to CSV"
+Sea Ice Concentration,Monthly pan-Arctic sea ice concentration data at a resolution of approximately 17.1km for years 1850–2021,sea-ice-concentration,Cryosphere,Link to HSIA.  Gimme for the timeseries for lat/lng.
+Combining Permafrost Observations with Climate Data,Code example of how to combine sampled permafrost and modeled historical monthly temperature data,notebook-perm-obs-temp,"Climate, Permafrost, Programming",https://github.com/ua-snap/ardac-toolbox/blob/main/notebooks/calm.ipynb
+"Daily Precipitation Summary, By Polygon",Demonstration of fetching a polygon of interest and then using this polygon's bounding box to subset Daymet daily precipitation data,notebook-precip-poly,"Precipitation, Programming",https://github.com/ua-snap/ardac-toolbox/blob/main/notebooks/daymet_access.ipynb
+ERA5 access via the CDS API,Learn to download ERA5 data via Python programming,notebook-era5-cds-api,"Temperature, Programming",https://github.com/ua-snap/ardac-toolbox/blob/main/notebooks/era5_access.ipynb
