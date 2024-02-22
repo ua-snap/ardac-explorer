@@ -15,14 +15,16 @@ hr {
 	}
 }
 
-.border-left {
-  border-left: 1px dashed $gray-lighter;
-}
+@media (min-width: 769px) {
+  .border-left {
+    border-left: 1px dashed $gray-lighter;
+  }
 
-.border-right {
-  border-right: 1px dashed $gray-lighter;
-}
+  .border-right {
+    border-right: 1px dashed $gray-lighter;
+  }
 
-.border-bottom {
-  border-bottom: 1px dashed $gray-lighter;
+  .border-bottom {
+    border-bottom: 1px dashed $gray-lighter;
+  }
 }

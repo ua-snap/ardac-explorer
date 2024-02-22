@@ -132,17 +132,20 @@ import items from '~/assets/items'
   }
 }
 
-.tile.row {
-  border-bottom: 1px dashed $gray-lighter;
-}
-.general .tile.left {
-  &:deep(.item) {
-    padding-right: 1rem;
-    border-right: 1px dashed $gray-lighter;
+@media (min-width: 769px) {
+  .tile.row {
+    border-bottom: 1px dashed $gray-lighter;
   }
-}
-.general .tile.right {
-  margin-left: 1rem !important;
+
+  .general .tile.left {
+    &:deep(.item) {
+      padding-right: 1rem;
+      border-right: 1px dashed $gray-lighter;
+    }
+  }
+  .general .tile.right {
+    margin-left: 1rem !important;
+  }
 }
 
 .lead {
