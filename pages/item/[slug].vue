@@ -1,12 +1,10 @@
 <script lang="ts" setup>
 import type { ConcreteComponent } from 'vue'
 import { getCurrentInstance } from 'vue'
-import items from '~/assets/items'
 import { validSlug, slugToCamelCase } from '~/utils/slugs'
 
 const route = useRoute()
 let slug = route.params.slug
-let item = items.find(item => item.slug === slug) as Item
 let itemComponent: ConcreteComponent | string
 
 const componentFileExists = computed<boolean>(() => {
@@ -33,7 +31,9 @@ const componentFileExists = computed<boolean>(() => {
   <div v-else>
     <article class="message is-warning">
       <div class="message-header">
-        <p>Undefined content: <code>{{ slug }}</code></p>
+        <p>
+          Undefined content: <code>{{ slug }}</code>
+        </p>
       </div>
       <div class="message-body">
         <p>
