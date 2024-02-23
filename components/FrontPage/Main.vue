@@ -13,52 +13,40 @@
 
         <ul>
           <li>
-            <ItemBrief slug="future-precipitation-map" />
+            <ItemBrief slug="indicator-ftc" />
           </li>
           <li>
-            <ItemBrief slug="degree-days-projected-statewide" />
+            <ItemBrief slug="indicator-rx1day" />
           </li>
           <li>
-            <ItemBrief slug="flammability-vegetation-current-conditions" />
+            <ItemBrief slug="indicator-su" />
           </li>
           <li>
-            <ItemBrief slug="future-precipitation-map" />
+            <ItemBrief slug="indicator-dw" />
           </li>
           <li>
-            <ItemBrief slug="precipitation-frequency-chart" />
+            <ItemBrief slug="indicator-hd" />
           </li>
           <li>
-            <ItemBrief slug="temperature-chart" />
+            <ItemBrief slug="indicator-cd" />
           </li>
           <li>
-            <ItemBrief slug="precipitation-chart" />
+            <ItemBrief slug="indicator-wsdi" />
           </li>
           <li>
-            <ItemBrief slug="heating-degree-days-chart" />
+            <ItemBrief slug="indicator-cdsi" />
           </li>
           <li>
-            <ItemBrief slug="freezing-index-chart" />
+            <ItemBrief slug="indicator-rx5day" />
           </li>
           <li>
-            <ItemBrief slug="thawing-index-chart" />
+            <ItemBrief slug="indicator-r10mm" />
           </li>
           <li>
-            <ItemBrief slug="very-cold-day-threshold-chart" />
+            <ItemBrief slug="indicator-cwd" />
           </li>
           <li>
-            <ItemBrief slug="very-hot-day-threshold-chart" />
-          </li>
-          <li>
-            <ItemBrief slug="summer-days-chart" />
-          </li>
-          <li>
-            <ItemBrief slug="deep-winter-days-chart" />
-          </li>
-          <li>
-            <ItemBrief slug="warm-spell-duration-index-chart" />
-          </li>
-          <li>
-            <ItemBrief slug="cold-spell-duration-index-chart" />
+            <ItemBrief slug="indicator-cdd" />
           </li>
         </ul>
       </div>
@@ -66,23 +54,23 @@
         <div class="tile is-ancestor">
           <div class="tile is-parent is-vertical">
             <div class="tile lead is-child border-bottom">
-              <ItemTextPicture slug="projected-permafrost-and-magt" />
+              <ItemTextPicture slug="permafrost-magt" />
             </div>
             <div class="general">
               <div class="row tile is-parent mb-4">
                 <div class="left tile is-child">
-                  <ItemText slug="historical-sea-ice-atlas" />
+                  <ItemText slug="sea-ice-concentration" />
                 </div>
                 <div class="right tile is-child">
-                  <ItemText slug="arctic-eds" />
+                  <ItemText slug="permafrost-talik" />
                 </div>
               </div>
               <div class="tile is-parent">
                 <div class="left tile is-child">
-                  <ItemText slug="permafrost-observations-modeled-air-temp" />
+                  <ItemText slug="hydrology-sm" />
                 </div>
                 <div class="right tile is-child">
-                  <ItemText slug="querying-daymet-daily-precipitation" />
+                  <ItemText slug="notebook-perm-obs-temp" />
                 </div>
               </div>
             </div>

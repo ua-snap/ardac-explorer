@@ -7,7 +7,7 @@
     <div class="tile is-ancestor">
       <div class="tile is-parent">
         <div class="tile box is-child">
-          <ItemTextPicture slug="flammability-vegetation-current-conditions" />
+          <ItemTextPicture slug="notebook-precip-poly" />
         </div>
 
         <div class="tile box is-child">

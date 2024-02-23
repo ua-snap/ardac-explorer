@@ -1,15 +1,13 @@
 <script lang="ts" setup>
-
 definePageMeta({
   layout: 'home',
 })
-
 </script>
 
 <template>
-  <FrontPageMain/>
+  <FrontPageMain />
   <hr />
-  <FrontPageSectionTerrestrial/>
+  <FrontPageSectionPrecipitation />
 </template>
 
 <style lang="scss" scoped></style>

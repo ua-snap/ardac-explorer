@@ -1,26 +1,26 @@
 <script lang="ts" setup></script>
 
 <template>
-  <h2 class="title is-2 mx-6">Terrestrial</h2>
+  <h2 class="title is-2 mx-6">Precipitation</h2>
   <hr class="light" />
   <section class="section topic pt-3">
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-parent pr-5 border-right">
         <div class="tile is-child border-bottom">
-          <ItemText slug="modeled-future-flammability" />
+          <ItemText slug="indicator-rx1day" />
         </div>
         <div class="tile is-child">
-          <ItemText slug="historical-nrt-wildfire" />
+          <ItemText slug="indicator-rx5day" />
         </div>
       </div>
       <div class="tile is-parent px-5">
         <div class="tile is-child">
-          <ItemTextPicture slug="era-access-cds-api" />
+          <ItemTextPicture slug="notebook-era5-cds-api" />
         </div>
       </div>
       <div class="tile is-parent pl-5 border-left">
         <div class="tile is-child">
-          <ItemTextPicture slug="degree-days-projected-statewide" />
+          <ItemTextPicture slug="notebook-precip-poly" />
         </div>
       </div>
     </div>
