@@ -2,7 +2,7 @@ interface Item {
   slug: Slug
   title: string
   blurb: string
-  tags?: string[]
+  tags?: Tag[]
   image?: string
   imageAlt?: string
   priority?: number
