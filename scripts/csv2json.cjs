@@ -6,42 +6,45 @@
 const csvFile = './input.csv'
 const csv = require('csvtojson')
 var out = []
-let tags = new Set()
+let tagSet = new Set()
 
 console.log('type Slug =')
 csv({
-  ignoreColumns: /What/, // ignore the "What should it offer?" column
+  ignoreColumns: /Who|What|Notes/, // ignore unused columns
 })
   .fromFile(csvFile)
   .subscribe(json => {
     return new Promise((resolve, reject) => {
       // Generate most of the needed JSON in bulk
+      let tags = json.tags.split(', ')
       /*
-			let tags = json.tags.split(',')
-			tags.forEach((tag, i) => {
-				tags[i] = tag.trim()
-			})
-			console.log({
-				slug: json.slug,
-				title: json.title,
-				blurb: json.blurb,
-				tags: tags,
-			},',')
-			*/
+      tags.forEach((tag, i) => {
+        tags[i] = tag.trim()
+      })
+      console.log(
+        {
+          slug: json.slug,
+          title: json.title,
+          blurb: json.blurb,
+          tags: tags,
+        },
+        ','
+      )
+      */
 
       /* Regenerate valid slugs */
       console.log("  | '" + json.slug + "'")
 
       /* Add tags to set to be output later */
-      json.tags.split(', ').forEach(tag => {
-        tags.add(tag)
+      tags.forEach(tag => {
+        tagSet.add(tag)
       })
       resolve()
     })
   })
   .then(() => {
     console.log('\ntype Tag =')
-    tags.forEach(tag => {
+    tagSet.forEach(tag => {
       console.log("  | '" + tag + "'")
     })
   })
