@@ -21,10 +21,10 @@ const expandedText = computed(() => {
         <NuxtLink to="/tag/Hydrology">Hydrology</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/tag/Temperature">Cryosphere</NuxtLink>
+        <NuxtLink to="/tag/Cryosphere">Cryosphere</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/tag/WMS">Permafrost</NuxtLink>
+        <NuxtLink to="/tag/Permafrost">Permafrost</NuxtLink>
       </li>
       <li @click="expanded = !expanded" class="more" v-html="expandedText"></li>
     </ul>
