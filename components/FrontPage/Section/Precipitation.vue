@@ -1,7 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
-  <h2 class="title is-2 mx-6">Precipitation</h2>
+  <h2 class="title is-2 mx-6"><NuxtLink to="/tag/Precipitation">Precipitation <span class="more">&#x2192; see all</span></NuxtLink></h2>
   <hr class="light" />
   <section class="section topic pt-3">
     <div class="tile is-ancestor">
@@ -29,4 +29,14 @@
 
 <style scoped lang="scss">
 @import '~/assets/styles/items.scss';
+h2.title.is-2 a {
+  color: $black !important; 
+  &:hover {
+    color: $link !important;
+  }
+  .more {
+    font-size: 60%;
+    font-weight: 300;
+  }
+}
 </style>

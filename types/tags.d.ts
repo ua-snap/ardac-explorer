@@ -10,3 +10,4 @@ type Tag =
   | 'Programming'
   | 'Temperature'
   | 'Lightning'
+  | 'CMIP6'

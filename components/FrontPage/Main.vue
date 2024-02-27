@@ -6,44 +6,43 @@
       <div class="briefs column is-3 pr-5 border-right">
         <div class="content is-size-5 hello">
           <p>
-            Hello! Not sure what you&rsquo;re looking for?
-            <a href="example.com">Email us!</a>
+            Hello!  Looking for an <NuxtLink to="/overview">overview of the content</NuxtLink> available here?  <NuxtLink to="/overview">&#x2192; read</NuxtLink>
           </p>
         </div>
 
         <ul>
           <li>
-            <ItemBrief slug="indicator-ftc" />
+            <ItemBrief slug="indicator-ftc" showTag />
           </li>
           <li>
-            <ItemBrief slug="indicator-rx1day" />
+            <ItemBrief slug="indicator-rx1day" showTag />
           </li>
           <li>
-            <ItemBrief slug="indicator-su" />
+            <ItemBrief slug="precipitation-frequency" showTag />
           </li>
           <li>
-            <ItemBrief slug="indicator-dw" />
+            <ItemBrief slug="alfresco-vegetation" showTag />
           </li>
           <li>
-            <ItemBrief slug="indicator-hd" />
+            <ItemBrief slug="indicator-hd" showTag />
           </li>
           <li>
-            <ItemBrief slug="indicator-cd" />
+            <ItemBrief slug="hydrology-sm" showTag />
           </li>
           <li>
-            <ItemBrief slug="indicator-wsdi" />
+            <ItemBrief slug="indicator-wsdi" showTag />
           </li>
           <li>
-            <ItemBrief slug="indicator-cdsi" />
+            <ItemBrief slug="permafrost-base-top" showTag />
           </li>
           <li>
-            <ItemBrief slug="indicator-rx5day" />
+            <ItemBrief slug="indicator-rx5day" showTag />
           </li>
           <li>
-            <ItemBrief slug="indicator-r10mm" />
+            <ItemBrief slug="indicator-r10mm" showTag />
           </li>
           <li>
-            <ItemBrief slug="indicator-cwd" />
+            <ItemBrief slug="indicator-cwd" showTag />
           </li>
           <li>
             <ItemBrief slug="indicator-cdd" />
@@ -54,23 +53,23 @@
         <div class="tile is-ancestor">
           <div class="tile is-parent is-vertical">
             <div class="tile lead is-child border-bottom">
-              <ItemTextPicture slug="permafrost-magt" />
+              <ItemTextPicture slug="story-arctic-in-2100" />
             </div>
             <div class="general">
               <div class="row tile is-parent mb-4">
                 <div class="left tile is-child">
-                  <ItemText slug="sea-ice-concentration" />
+                  <ItemText slug="sea-ice-concentration" showTag />
                 </div>
                 <div class="right tile is-child">
-                  <ItemText slug="permafrost-talik" />
+                  <ItemTextPicture slug="alfresco-flammability" showTag />
                 </div>
               </div>
               <div class="tile is-parent">
                 <div class="left tile is-child">
-                  <ItemText slug="hydrology-sm" />
+                  <ItemText slug="hydrology-sm" showTag />
                 </div>
                 <div class="right tile is-child">
-                  <ItemText slug="notebook-perm-obs-temp" />
+                  <ItemText slug="notebook-perm-obs-temp" showTag />
                 </div>
               </div>
             </div>
@@ -78,7 +77,9 @@
         </div>
       </div>
       <div class="column right pl-5 border-left">
+        <ItemText slug="communities-boundaries" />
         <div class="content is-size-5">
+          <hr class="light" />
           <p>Did you know people are awesome?</p>
           <ul>
             <li>Sign up for our newsletter</li>

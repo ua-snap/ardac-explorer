@@ -2,21 +2,21 @@
   <div class="tagbar">
     <ul>
       <li>
-        <NuxtLink to="/tag/Wildfire">Terrestrial</NuxtLink>
-      </li>
-      <li>
-        <NuxtLink to="/tag/Vegetation">Ocean</NuxtLink>
+        <NuxtLink to="/tag/Climate">Climate</NuxtLink>
       </li>
       <li>
         <NuxtLink to="/tag/Precipitation">Precipitation</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/tag/Temperature">Data Analysis</NuxtLink>
+        <NuxtLink to="/tag/Hydrology">Hydrology</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/tag/WMS">Maps</NuxtLink>
+        <NuxtLink to="/tag/Temperature">Cryosphere</NuxtLink>
       </li>
-      <li>←←← these are topics</li>
+      <li>
+        <NuxtLink to="/tag/WMS">Permafrost</NuxtLink>
+      </li>
+      <li class="more">&#x2192; see all [bruce make this toggle]</li>
     </ul>
   </div>
 </template>
@@ -38,6 +38,9 @@
         background-color: $white-lighter !important;
         color: $link !important;
       }
+    }
+    &.more {
+      font-weight: 300;
     }
   }
 }

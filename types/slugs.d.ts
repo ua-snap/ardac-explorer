@@ -19,7 +19,7 @@ type Slug =
   | 'hydrology-sm'
   | 'hydrology-snow-melt'
   | 'landfast-sea-ice'
-  | 'communities'
+  | 'communities-boundaries'
   | 'permafrost-magt'
   | 'permafrost-base-top'
   | 'permafrost-talik'
@@ -50,3 +50,4 @@ type Slug =
   | 'precipitation-frequency'
   | 'wildfire-combined'
   | 'lightning-climatology'
+  | 'story-arctic-in-2100'
