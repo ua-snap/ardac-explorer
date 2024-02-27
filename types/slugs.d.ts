@@ -51,3 +51,4 @@ type Slug =
   | 'wildfire-combined'
   | 'lightning-climatology'
   | 'story-arctic-in-2100'
+  | 'map-permafrost'

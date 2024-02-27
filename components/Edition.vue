@@ -12,8 +12,5 @@
   font-family: "Patrick Hand";
   font-size: 2rem;
   color: $gray;
-  position: relative;
-  bottom: 3rem;
-  z-index: 10000;
 }
 </style>

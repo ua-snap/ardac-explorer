@@ -45,7 +45,7 @@
             <ItemBrief slug="indicator-cwd" showTag />
           </li>
           <li>
-            <ItemBrief slug="indicator-cdd" />
+            <ItemBrief slug="indicator-cdd" showTag />
           </li>
         </ul>
       </div>

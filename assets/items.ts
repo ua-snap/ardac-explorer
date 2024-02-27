@@ -332,4 +332,11 @@ export default [
       'What could the climate of Alaska and the Arctic look like in 2100?  New CMIP6 climate data provides more tools for research',
     tags: ['Climate'],
   },
+  {
+    slug: 'map-permafrost',
+    title: 'Maps of Permafrost Research',
+    blurb:
+      'Statewide maps from prior research efforts to locate and classify permafrost in Alaska',
+    tags: ['Permafrost'],
+  },
 ] satisfies Item[]

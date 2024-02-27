@@ -1,3 +1,13 @@
+<script lang="ts" setup>
+
+// true if "see all" is expanded
+const expanded = ref(false)
+const expandedText = computed(() => {
+  return expanded.value === false ? '&#x2192; see all' : '&#x2715; close'  
+})
+
+</script>
+
 <template>
   <div class="tagbar">
     <ul>
@@ -16,7 +26,16 @@
       <li>
         <NuxtLink to="/tag/WMS">Permafrost</NuxtLink>
       </li>
-      <li class="more">&#x2192; see all [bruce make this toggle]</li>
+      <li @click="expanded = !expanded" class="more" v-html="expandedText"></li>
+    </ul>
+    <ul v-show="expanded">
+      <li><NuxtLink to="/tag/GIS">GIS</NuxtLink></li>
+      <li><NuxtLink to="/tag/Wildfire">Wildfire</NuxtLink></li>
+      <li><NuxtLink to="/tag/Terrestrial">Terrestrial</NuxtLink></li>
+      <li><NuxtLink to="/tag/Programming">Programming</NuxtLink></li>
+      <li><NuxtLink to="/tag/Temperature">Temperature</NuxtLink></li>
+      <li><NuxtLink to="/tag/Lightning">Lightning</NuxtLink></li>
+      <li><NuxtLink to="/tag/CMIP6">CMIP6</NuxtLink></li>
     </ul>
   </div>
 </template>
