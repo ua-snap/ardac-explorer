@@ -3,6 +3,7 @@ const runtimeConfig = useRuntimeConfig()
 const store = useStore()
 
 const endpoints: Record<string, string> = {
+  degreeDaysBelow0: '/degree_days/below_zero/',
   heatingDegreeDays: '/degree_days/heating/',
   indicators: '/indicators/base/point/',
   freezingIndex: '/degree_days/freezing_index/',

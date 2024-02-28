@@ -43,7 +43,7 @@ export default [
     tags: ['Climate'],
   },
   {
-    slug: 'indicator-cdsi',
+    slug: 'indicator-csdi',
     title: 'Cold Spell Duration Index',
     blurb:
       'Annual count of occurrences of at least 5 consecutive days with daily mean 2 m air temperature below 10th percentile of historical values for the date',

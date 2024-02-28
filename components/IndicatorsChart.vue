@@ -221,7 +221,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <LatLngSelector label="Get chart for lat/lon point:" :errorMsg="errorMsg" />
+  <LatLngSelector
+    label="Get chart and data for lat/lon point:"
+    :errorMsg="errorMsg"
+  />
   <div v-if="apiData">
     <div class="control mb-5">
       <label class="radio mr-3">

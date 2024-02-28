@@ -1,0 +1,141 @@
+<script lang="ts" setup>
+import { useMapStore } from '~/stores/map'
+
+const store = useStore()
+const mapStore = useMapStore()
+const runtimeConfig = useRuntimeConfig()
+
+const latLng = computed(() => store.latLng)
+const latLngEmpty = computed(() => Object.keys(latLng.value).length === 0)
+
+const layers: MapLayer[] = [
+  {
+    id: 'indicator_cd_historical_era',
+    title: 'Historical Cold Day Threshold (1980&ndash;2009)',
+    source: 'rasdaman',
+    wmsLayerName: 'ncar12km_indicators_era_summaries',
+    style: 'ardac_indicator_cd_historical_era',
+    legend: 'cold_day_threshold',
+  },
+  {
+    id: 'indicator_cd_midcentury_era',
+    title: 'Projected Cold Day Threshold (2040&ndash;2069)',
+    source: 'rasdaman',
+    wmsLayerName: 'ncar12km_indicators_era_summaries',
+    style: 'ardac_indicator_cd_midcentury_era',
+    legend: 'cold_day_threshold',
+  },
+  {
+    id: 'indicator_cd_latecentury_era',
+    title: 'Projected Cold Day Threshold (2070&ndash;2099)',
+    source: 'rasdaman',
+    wmsLayerName: 'ncar12km_indicators_era_summaries',
+    style: 'ardac_indicator_cd_latecentury_era',
+    legend: 'cold_day_threshold',
+  },
+]
+
+const legend: Record<string, LegendItem[]> = {
+  cold_day_threshold: [
+    { color: '#08519c', label: '&lt;&minus;40&deg;C' },
+    { color: '#3182bd', label: '&ge;&minus;40&deg;C, &lt;&minus;30&deg;C' },
+    { color: '#6baed6', label: '&ge;&minus;30&deg;C, &lt;&minus;20&deg;C' },
+    { color: '#9ecae1', label: '&ge;&minus;20&deg;C, &lt;&minus;10&deg;C' },
+    { color: '#c6dbef', label: '&ge;&minus;10&deg;C' },
+  ],
+}
+
+const mapId = 'cold_day_threshold'
+mapStore.setLegendItems(mapId, legend)
+</script>
+
+<template>
+  <section class="section">
+    <div class="content is-size-5">
+      <h3 class="title is-3">Cold Day Threshold</h3>
+      <p class="mb-6">
+        The cold day threshold is the temperature at which only five days in a
+        year are colder. The map below shows the 30-year mean of the cold day
+        threshold for three eras. The historical era (1980&ndash;2009) uses
+        historical modeled data provided by the Daymet model. The mid century
+        (2040&ndash;2069) and late century (2070&ndash;2099) eras use modeled
+        projections from the NCAR CCSM4 model under the RCP 8.5 emissions
+        scenario.
+      </p>
+
+      <MapBlock :mapId="mapId" class="mb-6">
+        <template v-slot:layers>
+          <MapLayer :mapId="mapId" :layer="layers[0]" default>
+            <template v-slot:title>1980&ndash;2009, Daymet</template>
+          </MapLayer>
+          <MapLayer :mapId="mapId" :layer="layers[1]">
+            <template v-slot:title
+              >2040&ndash;2069, NCAR CCSM4, RCP 8.5</template
+            >
+          </MapLayer>
+          <MapLayer :mapId="mapId" :layer="layers[2]">
+            <template v-slot:title
+              >2070&ndash;2099, NCAR CCSM4, RCP 8.5</template
+            >
+          </MapLayer>
+        </template>
+      </MapBlock>
+
+      <p>
+        Enter lat/lon coordinates below to see a chart of the cold day threshold
+        for a point location. This chart displays min/mean/max values for the
+        historical modeled era (1980&ndash;2009) using Daymet and projections
+        for the mid century (2040&ndash;2069) and late century (2070&ndash;2099)
+        eras using both the MRI CGCM3 and NCAR CCSM4 models under two different
+        emissions scenarios, RCP 4.5 and RCP 8.5.
+      </p>
+
+      <p>
+        After entering lat/lon coordinates, links will be provided where you can
+        download the data that is used to populate the chart.
+      </p>
+
+      <IndicatorsChart label="Cold day threshold" dataKey="cd" />
+
+      <div v-if="!latLngEmpty" class="my-6">
+        <h5 class="title is-5">
+          Download cold day threshold data for {{ latLng.lat }},
+          {{ latLng.lng }}
+        </h5>
+        <p>
+          The following download links bundle cold day threshold data with other
+          climate indicators. Cold day threshold uses the "cd" identifier.
+        </p>
+        <ul>
+          <li>
+            <a
+              :href="
+                runtimeConfig.public.apiUrl +
+                '/indicators/base/point/' +
+                latLng.lat +
+                '/' +
+                latLng.lng +
+                '?format=csv'
+              "
+              >Download as CSV</a
+            >
+          </li>
+          <li>
+            <a
+              :href="
+                runtimeConfig.public.apiUrl +
+                '/indicators/base/point/' +
+                latLng.lat +
+                '/' +
+                latLng.lng
+              "
+              >Download as JSON</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
+</template>
+
+<style scoped></style>
