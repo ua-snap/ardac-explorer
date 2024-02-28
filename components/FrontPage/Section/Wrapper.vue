@@ -27,6 +27,8 @@ h2.section-title.title.is-2 a {
     color: $link !important;
   }
   .more {
+    position: relative;
+    bottom: 0.28rem;
     font-size: 60%;
     font-weight: 300;
   }
