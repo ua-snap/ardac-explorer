@@ -3,23 +3,11 @@ export default [
     slug: 'indicator-ftc',
     title: 'Freeze/Thaw Cycle',
     blurb:
-      'Annual count of days with low temperature below freezing and high temps above freezing.',
+      'Annual count of days with low temperature below freezing and high temps above freezing',
     tags: ['Climate'],
     image: 'freeze-thaw_ilona-frey-unsplash.jpg',
     imageAlt:
       'Photo of icicles demonstrating a freeze/thaw cycle.  Photo by Ilona Frey on Unsplash.',
-  },
-  {
-    slug: 'indicator-rx1day',
-    title: 'Maximum 1-day Precipitation',
-    blurb: 'Maximum precipitation in a single calendar year.',
-    tags: ['Precipitation', 'Climate'],
-  },
-  {
-    slug: 'indicator-rx5day',
-    title: 'Maximum 5–day precipitation',
-    blurb: 'Maximum precipitation total for any 5-day period',
-    tags: ['Precipitation', 'Climate'],
   },
   {
     slug: 'indicator-su',
@@ -62,22 +50,112 @@ export default [
     tags: ['Climate'],
   },
   {
-    slug: 'indicator-r10mm',
-    title: 'Heavy Precipitation Days',
-    blurb: 'Number of days with ≥ 10mm precipitation',
-    tags: ['Precipitation'],
+    slug: 'wet-days-per-year',
+    title: 'Wet Days Per Year',
+    blurb:
+      'Number of days per calendar year where the total precipitation amount is ≥ 1.0 mm',
+    tags: ['Climate'],
   },
   {
-    slug: 'indicator-cwd',
-    title: 'Consecutive wet days',
-    blurb: 'Number of the most consecutive days with precipitation > 1 mm',
-    tags: ['Precipitation'],
+    slug: 'dd-below-65',
+    title: 'Degree Days Below 65°F',
+    blurb: 'Total annual cumulative degree days below 65°F',
+    tags: ['Climate'],
   },
   {
-    slug: 'indicator-cdd',
-    title: 'Consecutive dry days',
-    blurb: 'Number of the most consecutive days with precipitation < 1 mm',
-    tags: ['Precipitation'],
+    slug: 'dd-below-0',
+    title: 'Degree Days Below 0°F',
+    blurb: 'Total annual cumulative degree days below 0°F',
+    tags: ['Climate'],
+  },
+  {
+    slug: 'thawing-index',
+    title: 'Thawing Index',
+    blurb: 'Total annual cumulative degree days above 32°F',
+    tags: ['Climate'],
+  },
+  {
+    slug: 'freezing-index',
+    title: 'Freezing Index',
+    blurb: 'Total annual cumulative degree days below 32°F',
+    tags: ['Climate'],
+  },
+  {
+    slug: 'story-arctic-in-2100',
+    title: 'The Arctic in 2100',
+    blurb:
+      'What could the climate of Alaska and the Arctic look like in 2100?  New CMIP6 climate data provides more tools for research',
+    tags: ['Climate'],
+    image: 'arctic2100_drew-beamer-unsplash.jpg',
+    imageAlt:
+      'Person holding a crystal ball up to an Arctic sunset.  Photo by Drew Beamer on Unsplash.',
+  },
+  {
+    slug: 'notebook-corporation-hdd',
+    title: 'Heating Degree Days by Alaska Native Corporation',
+    blurb:
+      'Demonstration of how to query Alaska Native Corporation polygons, Alaska communities, and modeled heating degree days',
+    tags: ['Climate', 'Programming'],
+  },
+  {
+    slug: 'notebook-raster-database',
+    title: "Fetch data from SNAP's raster database",
+    blurb:
+      "Learn how to fetch and plot subsets of data from SNAP's raster database",
+    tags: ['Climate', 'Programming'],
+  },
+  {
+    slug: 'notebook-frosth-depth',
+    title: 'Modified Berggren Frost Depth',
+    blurb: 'Learn how to calculate compute the ModBerg frost depth',
+    tags: ['Climate', 'Programming'],
+  },
+  {
+    slug: 'notebook-design-freezing-index',
+    title: 'Design Freezing Index',
+    blurb:
+      'Learn how to calculate design freezing index by averaging the three coldest years from a given range of years',
+    tags: ['Climate', 'Programming'],
+  },
+  {
+    slug: 'notebook-design-thawing-index',
+    title: 'Design Thawing Index',
+    blurb:
+      'Learn how to calculate design thawing index by averaging the three warmest years from a given range of years',
+    tags: ['Climate', 'Programming'],
+  },
+  {
+    slug: 'climate-beetle-protection',
+    title: 'Climate Protection from Spruce Beetles',
+    blurb: 'Level to which climate protects against spruce beetle outbreaks',
+    tags: ['Climate', 'Terrestrial'],
+  },
+  {
+    slug: 'landfast-sea-ice',
+    title: 'Landfast Sea Ice Extent',
+    blurb:
+      'Historical daily landfast ice extent information for the Alaska coastline',
+    tags: ['Cryosphere'],
+  },
+  {
+    slug: 'sea-ice-concentration',
+    title: 'Sea Ice Concentration',
+    blurb:
+      'Monthly pan-Arctic sea ice concentration data at a resolution of approximately 17.1km for years 1850–2021',
+    tags: ['Cryosphere'],
+  },
+  {
+    slug: 'notebook-sea-ice-traffic',
+    title: 'Marine Vessel Traffic and Sea Ice Concentration',
+    blurb:
+      'Learn how to combine Arctic marine vessel traffic with historical sea ice concentration data',
+    tags: ['Cryosphere', 'Programming'],
+  },
+  {
+    slug: 'communities-boundaries',
+    title: 'Places & Polygons',
+    blurb: 'Names, coordinates, and boundaries to integrate with other data',
+    tags: ['GIS'],
   },
   {
     slug: 'hydrology-evap',
@@ -119,22 +197,15 @@ export default [
     tags: ['Hydrology'],
   },
   {
-    slug: 'landfast-sea-ice',
-    title: 'Landfast Sea Ice Extent',
-    blurb:
-      'Historical daily landfast ice extent information for the Alaska coastline',
-    tags: ['Cryosphere'],
-  },
-  {
-    slug: 'communities-boundaries',
-    title: 'Places & Polygons',
-    blurb: 'Names, coordinates, and boundaries to integrate with other data',
-    tags: ['GIS'],
+    slug: 'lightning-climatology',
+    title: 'Lightning climatology',
+    blurb: 'Daily number of lightning strikes in 20km grid boxes',
+    tags: ['Lightning', 'Terrestrial', 'Wildfire'],
   },
   {
     slug: 'permafrost-magt',
     title: 'Ground Temperature',
-    blurb: 'Mean annual ground temperature value, surface&ndash;5m',
+    blurb: 'Mean annual ground temperature value, surface - 5m',
     tags: ['Permafrost'],
     image: 'projected-permafrost-and-magt.png',
     imageAlt:
@@ -155,70 +226,11 @@ export default [
     tags: ['Permafrost'],
   },
   {
-    slug: 'wet-days-per-year',
-    title: 'Wet Days Per Year',
+    slug: 'map-permafrost',
+    title: 'Maps of Permafrost Research',
     blurb:
-      'Number of days per calendar year where the total precipitation amount is ≥ 1.0 mm',
-    tags: ['Climate'],
-  },
-  {
-    slug: 'sea-ice-concentration',
-    title: 'Sea Ice Concentration',
-    blurb:
-      'Monthly pan-Arctic sea ice concentration data at a resolution of approximately 17.1km for years 1850–2021',
-    tags: ['Cryosphere'],
-    image: 'sea-ice_tapio-haaja-unsplash.jpg',
-    imageAlt: 'Photo of plate sea ice.  Photo by Tapio Haaja on Unsplash.',
-  },
-  {
-    slug: 'climate-beetle-protection',
-    title: 'Climate Protection from Spruce Beetles',
-    blurb: 'Level to which climate protects against spruce beetle outbreaks',
-    tags: ['Climate', 'Terrestrial'],
-    image: 'dendroctonus_rufipennis.jpg',
-    imageAlt: 'Photo of a Dendroctonus Rufipennis beetle',
-  },
-  {
-    slug: 'dd-below-65',
-    title: 'Degree Days Below 65°F',
-    blurb: 'Total annual cumulative degree days below 65°F',
-    tags: ['Climate'],
-  },
-  {
-    slug: 'dd-below-0',
-    title: 'Degree Days Below 0°F',
-    blurb: 'Total annual cumulative degree days below 0°F',
-    tags: ['Climate'],
-  },
-  {
-    slug: 'thawing-index',
-    title: 'Thawing Index',
-    blurb: 'Total annual cumulative degree days above 32°F',
-    tags: ['Climate'],
-  },
-  {
-    slug: 'freezing-index',
-    title: 'Freezing Index',
-    blurb: 'Total annual cumulative degree days below 32°F',
-    tags: ['Climate'],
-  },
-  {
-    slug: 'elevation',
-    title: 'Elevation',
-    blurb: 'ASTER GDEM elevation data for Alaska and Western Canada',
-    tags: ['Terrestrial'],
-  },
-  {
-    slug: 'alfresco-flammability',
-    title: 'Flammability',
-    blurb: 'Modeled flammability derived from ALFRESCO simulations',
-    tags: ['Wildfire', 'Terrestrial'],
-  },
-  {
-    slug: 'alfresco-vegetation',
-    title: 'Vegetation Type',
-    blurb: 'Modeled vegetation type derived from ALFRESCO simulations',
-    tags: ['Wildfire', 'Terrestrial'],
+      'Statewide maps from prior research efforts to locate and classify permafrost in Alaska',
+    tags: ['Permafrost'],
   },
   {
     slug: 'notebook-perm-obs-temp',
@@ -228,85 +240,22 @@ export default [
     tags: ['Permafrost', 'Climate', 'Programming'],
   },
   {
-    slug: 'notebook-precip-poly',
-    title: 'Daily Precipitation Summary, By Polygon',
-    blurb:
-      "Demonstration of fetching a polygon of interest and then using this polygon's bounding box to subset Daymet daily precipitation data",
-    tags: ['Precipitation', 'Programming'],
+    slug: 'indicator-r10mm',
+    title: 'Heavy Precipitation Days',
+    blurb: 'Number of days with ≥ 10mm precipitation',
+    tags: ['Precipitation'],
   },
   {
-    slug: 'notebook-era5-cds-api',
-    title: 'ERA5 access via the CDS API',
-    blurb: 'Learn to download ERA5 data via Python programming',
-    tags: ['Temperature', 'Programming'],
+    slug: 'indicator-cwd',
+    title: 'Consecutive wet days',
+    blurb: 'Number of the most consecutive days with precipitation > 1 mm',
+    tags: ['Precipitation'],
   },
   {
-    slug: 'notebook-fmz-flammability',
-    title: 'Modeled Flammability by Fire Management Zone',
-    blurb:
-      'Demonstration of how to query fire management zone polygons and modeled flammability within those polygons',
-    tags: ['Terrestrial', 'Programming'],
-  },
-  {
-    slug: 'notebook-corporation-hdd',
-    title: 'Heating Degree Days by Alaska Native Corporation',
-    blurb:
-      'Demonstration of how to query Alaska Native Corporation polygons, Alaska communities, and modeled heating degree days',
-    tags: ['Climate', 'Programming'],
-  },
-  {
-    slug: 'notebook-sea-ice-traffic',
-    title: 'Marine Vessel Traffic and Sea Ice Concentration',
-    blurb:
-      'Learn how to combine Arctic marine vessel traffic with historical sea ice concentration data',
-    tags: ['Cryosphere', 'Programming'],
-  },
-  {
-    slug: 'notebook-raster-database',
-    title: "Fetch data from SNAP's raster database",
-    blurb:
-      "Learn how to fetch and plot subsets of data from SNAP's raster database",
-    tags: ['Climate', 'Programming'],
-  },
-  {
-    slug: 'notebook-design-discharge',
-    title: 'Design Discharge',
-    blurb:
-      'Learn how to calculate a design discharge value via the Rational Method',
-    tags: ['Precipitation', 'Climate', 'Programming'],
-  },
-  {
-    slug: 'notebook-frosth-depth',
-    title: 'Modified Berggren Frost Depth',
-    blurb: 'Learn how to calculate compute the ModBerg frost depth',
-    tags: ['Climate', 'Programming'],
-  },
-  {
-    slug: 'notebook-design-freezing-index',
-    title: 'Design Freezing Index',
-    blurb:
-      'Learn how to calculate design freezing index by averaging the three coldest years from a given range of years',
-    tags: ['Climate', 'Programming'],
-  },
-  {
-    slug: 'notebook-design-thawing-index',
-    title: 'Design Thawing Index',
-    blurb:
-      'Learn how to calculate design thawing index by averaging the three warmest years from a given range of years',
-    tags: ['Climate', 'Programming'],
-  },
-  {
-    slug: 'temperature-2km-cmip5',
-    title: 'Temperature',
-    blurb:
-      'Historical and projected temperatures at various temporal and spatial resolutions',
-    tags: ['Temperature'],
-  },
-  {
-    slug: 'temperature-cmip6',
-    title: 'Temperature, CMIP6 all models scenarios',
-    blurb: 'Coarse-resolution temperature model outputs, CMIP6',
-    tags: ['Temperature'],
+    slug: 'indicator-cdd',
+    title: 'Consecutive dry days',
+    blurb: 'Number of the most consecutive days with precipitation < 1 mm',
+    tags: ['Precipitation'],
   },
   {
     slug: 'precipitation-2km-cmip5',
@@ -324,6 +273,76 @@ export default [
     imageAlt: 'Image of water splashing by Ben Wicks on Unsplash',
   },
   {
+    slug: 'indicator-rx1day',
+    title: 'Maximum 1-day Precipitation',
+    blurb: 'Maximum precipitation in a single calendar year.',
+    tags: ['Precipitation', 'Climate'],
+  },
+  {
+    slug: 'indicator-rx5day',
+    title: 'Maximum 5–day precipitation',
+    blurb: 'Maximum precipitation total for any 5-day period',
+    tags: ['Precipitation', 'Climate'],
+  },
+  {
+    slug: 'notebook-design-discharge',
+    title: 'Design Discharge',
+    blurb:
+      'Learn how to calculate a design discharge value via the Rational Method',
+    tags: ['Precipitation', 'Climate', 'Programming'],
+  },
+  {
+    slug: 'notebook-precip-poly',
+    title: 'Daily Precipitation Summary, By Polygon',
+    blurb:
+      "Demonstration of fetching a polygon of interest and then using this polygon's bounding box to subset Daymet daily precipitation data",
+    tags: ['Precipitation', 'Programming'],
+  },
+  {
+    slug: 'temperature-cmip5',
+    title: 'Temperature, CMIP5',
+    blurb:
+      'Historical and projected temperatures at various temporal and spatial resolutions',
+    tags: ['Temperature'],
+  },
+  {
+    slug: 'temperature-cmip6',
+    title: 'Temperature & Humidity, CMIP6',
+    blurb: 'Coarse-resolution temperature model outputs, CMIP6',
+    tags: ['Temperature', 'CMIP6'],
+  },
+  {
+    slug: 'notebook-era5-cds-api',
+    title: 'ERA5 access via the CDS API',
+    blurb: 'Learn to download ERA5 data via Python programming',
+    tags: ['Temperature', 'Programming'],
+  },
+  {
+    slug: 'elevation',
+    title: 'Elevation',
+    blurb: 'ASTER GDEM elevation data for Alaska and Western Canada',
+    tags: ['Terrestrial'],
+  },
+  {
+    slug: 'notebook-fmz-flammability',
+    title: 'Modeled Flammability by Fire Management Zone',
+    blurb:
+      'Demonstration of how to query fire management zone polygons and modeled flammability within those polygons',
+    tags: ['Terrestrial', 'Programming'],
+  },
+  {
+    slug: 'alfresco-flammability',
+    title: 'Flammability',
+    blurb: 'Modeled flammability derived from ALFRESCO simulations',
+    tags: ['Wildfire', 'Terrestrial'],
+  },
+  {
+    slug: 'alfresco-vegetation',
+    title: 'Vegetation Type',
+    blurb: 'Modeled vegetation type derived from ALFRESCO simulations',
+    tags: ['Wildfire', 'Terrestrial'],
+  },
+  {
     slug: 'wildfire-combined',
     title: 'Wildfire',
     blurb:
@@ -331,26 +350,45 @@ export default [
     tags: ['Wildfire', 'Terrestrial'],
   },
   {
-    slug: 'lightning-climatology',
-    title: 'Lightning climatology',
-    blurb: 'Daily number of lightning strikes in 20km grid boxes',
-    tags: ['Lightning', 'Terrestrial', 'Wildfire'],
+    slug: 'wind-cmip6',
+    title: 'Wind, CMIP6',
+    blurb: 'Near-surface and surface, including maximums and wind component',
+    tags: ['Wind', 'CMIP6'],
   },
   {
-    slug: 'story-arctic-in-2100',
-    title: 'The Arctic in 2100',
-    blurb:
-      'What could the climate of Alaska and the Arctic look like in 2100?  New CMIP6 climate data provides more tools for research',
-    tags: ['Climate'],
-    image: 'arctic2100_drew-beamer-unsplash.jpg',
-    imageAlt:
-      'Person holding a crystal ball up to an Arctic sunset.  Photo by Drew Beamer on Unsplash.',
+    slug: 'oceanography-cmip6',
+    title: 'Oceanography, CMIP6',
+    blurb: 'Sea level pressure, surface temperature and mixed layer thickness',
+    tags: ['Oceanography', 'CMIP6'],
   },
   {
-    slug: 'map-permafrost',
-    title: 'Maps of Permafrost Research',
-    blurb:
-      'Statewide maps from prior research efforts to locate and classify permafrost in Alaska',
-    tags: ['Permafrost'],
+    slug: 'precipitation-cmip6',
+    title: 'Precipitation, CMIP6',
+    blurb: 'Total precipitation, daily and monthly',
+    tags: ['Precipitation', 'CMIP6'],
+  },
+  {
+    slug: 'sea-ice-cmip6',
+    title: 'Sea Ice Concentration, CMIP6',
+    blurb: 'Sea ice fraction',
+    tags: ['Sea Ice', 'CMIP6', 'Cryosphere'],
+  },
+  {
+    slug: 'hydrology-cmip6',
+    title: 'Hydrology, CMIP6',
+    blurb: 'Evapotranspiration, total runoff and soil moisture',
+    tags: ['Hydrology', 'CMIP6'],
+  },
+  {
+    slug: 'solar-radiation-cloud-cover-cmip6',
+    title: 'Solar Radiation & Cloud Cover, CMIP6',
+    blurb: 'Cloud fraction, shortwave and longwave and heat fluxes',
+    tags: ['Solar Radiation', 'CMIP6'],
+  },
+  {
+    slug: 'snow-cmip6',
+    title: 'Snow, CMIP6',
+    blurb: 'Snow amount, snowfall flux and surface snow thickness',
+    tags: ['Cryosphere', 'Snow', 'CMIP6'],
   },
 ] satisfies Item[]
