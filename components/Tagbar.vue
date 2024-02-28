@@ -1,22 +1,41 @@
+<script lang="ts" setup>
+
+// true if "see all" is expanded
+const expanded = ref(false)
+const expandedText = computed(() => {
+  return expanded.value === false ? '&#x2192; see all' : '&#x2715; close'  
+})
+
+</script>
+
 <template>
   <div class="tagbar">
     <ul>
       <li>
-        <NuxtLink to="/tag/Wildfire">Terrestrial</NuxtLink>
-      </li>
-      <li>
-        <NuxtLink to="/tag/Vegetation">Ocean</NuxtLink>
+        <NuxtLink to="/tag/Climate">Climate</NuxtLink>
       </li>
       <li>
         <NuxtLink to="/tag/Precipitation">Precipitation</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/tag/Temperature">Data Analysis</NuxtLink>
+        <NuxtLink to="/tag/Hydrology">Hydrology</NuxtLink>
       </li>
       <li>
-        <NuxtLink to="/tag/WMS">Maps</NuxtLink>
+        <NuxtLink to="/tag/Cryosphere">Cryosphere</NuxtLink>
       </li>
-      <li>←←← these are topics</li>
+      <li>
+        <NuxtLink to="/tag/Permafrost">Permafrost</NuxtLink>
+      </li>
+      <li @click="expanded = !expanded" class="more" v-html="expandedText"></li>
+    </ul>
+    <ul v-show="expanded">
+      <li><NuxtLink to="/tag/GIS">GIS</NuxtLink></li>
+      <li><NuxtLink to="/tag/Wildfire">Wildfire</NuxtLink></li>
+      <li><NuxtLink to="/tag/Terrestrial">Terrestrial</NuxtLink></li>
+      <li><NuxtLink to="/tag/Programming">Programming</NuxtLink></li>
+      <li><NuxtLink to="/tag/Temperature">Temperature</NuxtLink></li>
+      <li><NuxtLink to="/tag/Lightning">Lightning</NuxtLink></li>
+      <li><NuxtLink to="/tag/CMIP6">CMIP6</NuxtLink></li>
     </ul>
   </div>
 </template>
@@ -38,6 +57,9 @@
         background-color: $white-lighter !important;
         color: $link !important;
       }
+    }
+    &.more {
+      font-weight: 300;
     }
   }
 }

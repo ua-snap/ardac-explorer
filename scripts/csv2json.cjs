@@ -17,10 +17,11 @@ csv({
     return new Promise((resolve, reject) => {
       // Generate most of the needed JSON in bulk
       let tags = json.tags.split(', ')
-      /*
+      
       tags.forEach((tag, i) => {
         tags[i] = tag.trim()
       })
+      
       console.log(
         {
           slug: json.slug,
@@ -30,10 +31,10 @@ csv({
         },
         ','
       )
-      */
+      
 
       /* Regenerate valid slugs */
-      console.log("  | '" + json.slug + "'")
+      // console.log("  | '" + json.slug + "'")
 
       /* Add tags to set to be output later */
       tags.forEach(tag => {

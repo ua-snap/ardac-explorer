@@ -3,6 +3,7 @@
 <template>
   <HeaderBanner />
   <Navbar />
+  <Edition />
   <div class="container is-fullhd">
     <Header />
     <section class="section">

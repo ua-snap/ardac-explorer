@@ -5,18 +5,21 @@ export default [
     blurb:
       'Annual count of days with low temperature below freezing and high temps above freezing.',
     tags: ['Climate'],
+    image: 'freeze-thaw_ilona-frey-unsplash.jpg',
+    imageAlt:
+      'Photo of icicles demonstrating a freeze/thaw cycle.  Photo by Ilona Frey on Unsplash.',
   },
   {
     slug: 'indicator-rx1day',
     title: 'Maximum 1-day Precipitation',
     blurb: 'Maximum precipitation in a single calendar year.',
-    tags: ['Climate', 'Precipitation'],
+    tags: ['Precipitation', 'Climate'],
   },
   {
     slug: 'indicator-rx5day',
     title: 'Maximum 5–day precipitation',
     blurb: 'Maximum precipitation total for any 5-day period',
-    tags: ['Climate', 'Precipitation'],
+    tags: ['Precipitation', 'Climate'],
   },
   {
     slug: 'indicator-su',
@@ -62,61 +65,58 @@ export default [
     slug: 'indicator-r10mm',
     title: 'Heavy Precipitation Days',
     blurb: 'Number of days with ≥ 10mm precipitation',
-    tags: ['Climate', 'Precipitation'],
+    tags: ['Precipitation'],
   },
   {
     slug: 'indicator-cwd',
     title: 'Consecutive wet days',
     blurb: 'Number of the most consecutive days with precipitation > 1 mm',
-    tags: ['Climate', 'Precipitation'],
+    tags: ['Precipitation'],
   },
   {
     slug: 'indicator-cdd',
     title: 'Consecutive dry days',
     blurb: 'Number of the most consecutive days with precipitation < 1 mm',
-    tags: ['Climate', 'Precipitation'],
+    tags: ['Precipitation'],
   },
   {
     slug: 'hydrology-evap',
     title: 'Evapotranspiration',
     blurb: 'Monthly sum of daily evapotranspiration',
-    tags: ['Climate', 'Hydrology'],
+    tags: ['Hydrology'],
   },
   {
     slug: 'hydrology-glacier-melt',
     title: 'Glacier Melt',
     blurb: 'Monthly sum of daily glacier ice melt',
-    tags: ['Climate', 'Hydrology'],
+    tags: ['Hydrology'],
+    image: 'glacier-melt_mick-kirchman-unsplash.jpg',
+    imageAlt:
+      'Photo of a melting tidewater glacier.  Image by Mick Kirchman at Unsplash.',
   },
   {
-    slug: 'hydrology-iwe',
-    title: 'Ice Water Equivalent',
-    blurb: 'Monthly maximum daily ice water equivalent',
-    tags: ['Climate', 'Hydrology'],
+    slug: 'hydrology-iswe',
+    title: 'Ice/Snow Water Equivalent',
+    blurb: 'Monthly maximum daily ice and snow water equivalent',
+    tags: ['Hydrology'],
   },
   {
     slug: 'hydrology-runoff',
     title: 'Runoff',
     blurb: 'Monthly sum of daily surface runoff',
-    tags: ['Climate', 'Hydrology'],
-  },
-  {
-    slug: 'hydrology-swe',
-    title: 'Snow Water Equivalent',
-    blurb: 'Monthly maximum of daily snow water equivalent',
-    tags: ['Climate', 'Hydrology'],
+    tags: ['Hydrology'],
   },
   {
     slug: 'hydrology-sm',
     title: 'Soil Moisture',
     blurb: 'Monthly mean of daily soil moisture in layers 1-3',
-    tags: ['Climate', 'Hydrology'],
+    tags: ['Hydrology'],
   },
   {
     slug: 'hydrology-snow-melt',
     title: 'Snow Melt',
     blurb: 'Monthly sum of daily snowmelt',
-    tags: ['Climate', 'Hydrology'],
+    tags: ['Hydrology'],
   },
   {
     slug: 'landfast-sea-ice',
@@ -126,7 +126,7 @@ export default [
     tags: ['Cryosphere'],
   },
   {
-    slug: 'communities',
+    slug: 'communities-boundaries',
     title: 'Places & Polygons',
     blurb: 'Names, coordinates, and boundaries to integrate with other data',
     tags: ['GIS'],
@@ -134,20 +134,25 @@ export default [
   {
     slug: 'permafrost-magt',
     title: 'Ground Temperature',
-    blurb: 'Mean annual ground temperature value, surface - 5m',
-    tags: ['Climate', 'Permafrost'],
+    blurb: 'Mean annual ground temperature value, surface&ndash;5m',
+    tags: ['Permafrost'],
+    image: 'projected-permafrost-and-magt.png',
+    imageAlt:
+      'Example map of data showing projected ground temperature at 1m depth',
   },
   {
     slug: 'permafrost-base-top',
     title: 'Permafrost Depth: Base & Top',
     blurb: '',
-    tags: ['Climate', 'Permafrost'],
+    tags: ['Permafrost'],
+    image: 'permafrost-soil-pit_skip-walker_USPA.jpg',
+    imageAlt: 'Image of visible permafrost in a soil pit by Skip Walker, USPA',
   },
   {
     slug: 'permafrost-talik',
     title: 'Talik Thickness',
     blurb: 'Thickness of permafrost talik layer',
-    tags: ['Climate', 'Permafrost'],
+    tags: ['Permafrost'],
   },
   {
     slug: 'wet-days-per-year',
@@ -162,12 +167,16 @@ export default [
     blurb:
       'Monthly pan-Arctic sea ice concentration data at a resolution of approximately 17.1km for years 1850–2021',
     tags: ['Cryosphere'],
+    image: 'sea-ice_tapio-haaja-unsplash.jpg',
+    imageAlt: 'Photo of plate sea ice.  Photo by Tapio Haaja on Unsplash.',
   },
   {
     slug: 'climate-beetle-protection',
     title: 'Climate Protection from Spruce Beetles',
     blurb: 'Level to which climate protects against spruce beetle outbreaks',
     tags: ['Climate', 'Terrestrial'],
+    image: 'dendroctonus_rufipennis.jpg',
+    imageAlt: 'Photo of a Dendroctonus Rufipennis beetle',
   },
   {
     slug: 'dd-below-65',
@@ -203,20 +212,20 @@ export default [
     slug: 'alfresco-flammability',
     title: 'Flammability',
     blurb: 'Modeled flammability derived from ALFRESCO simulations',
-    tags: ['Terrestrial', 'Wildfire'],
+    tags: ['Wildfire', 'Terrestrial'],
   },
   {
     slug: 'alfresco-vegetation',
     title: 'Vegetation Type',
     blurb: 'Modeled vegetation type derived from ALFRESCO simulations',
-    tags: ['Terrestrial', 'Wildfire'],
+    tags: ['Wildfire', 'Terrestrial'],
   },
   {
     slug: 'notebook-perm-obs-temp',
     title: 'Combining Permafrost Observations with Climate Data',
     blurb:
       'Code example of how to combine sampled permafrost and modeled historical monthly temperature data',
-    tags: ['Climate', 'Permafrost', 'Programming'],
+    tags: ['Permafrost', 'Climate', 'Programming'],
   },
   {
     slug: 'notebook-precip-poly',
@@ -264,7 +273,7 @@ export default [
     title: 'Design Discharge',
     blurb:
       'Learn how to calculate a design discharge value via the Rational Method',
-    tags: ['Climate', 'Precipitation', 'Programming'],
+    tags: ['Precipitation', 'Climate', 'Programming'],
   },
   {
     slug: 'notebook-frosth-depth',
@@ -311,6 +320,8 @@ export default [
     blurb:
       'Precipitation frequency for various return intervals and durations across different models and eras',
     tags: ['Precipitation'],
+    image: 'precip_ben-wicks-unsplash.jpg',
+    imageAlt: 'Image of water splashing by Ben Wicks on Unsplash',
   },
   {
     slug: 'wildfire-combined',
@@ -324,5 +335,22 @@ export default [
     title: 'Lightning climatology',
     blurb: 'Daily number of lightning strikes in 20km grid boxes',
     tags: ['Lightning', 'Terrestrial', 'Wildfire'],
+  },
+  {
+    slug: 'story-arctic-in-2100',
+    title: 'The Arctic in 2100',
+    blurb:
+      'What could the climate of Alaska and the Arctic look like in 2100?  New CMIP6 climate data provides more tools for research',
+    tags: ['Climate'],
+    image: 'arctic2100_drew-beamer-unsplash.jpg',
+    imageAlt:
+      'Person holding a crystal ball up to an Arctic sunset.  Photo by Drew Beamer on Unsplash.',
+  },
+  {
+    slug: 'map-permafrost',
+    title: 'Maps of Permafrost Research',
+    blurb:
+      'Statewide maps from prior research efforts to locate and classify permafrost in Alaska',
+    tags: ['Permafrost'],
   },
 ] satisfies Item[]
