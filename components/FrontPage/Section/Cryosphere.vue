@@ -2,15 +2,21 @@
 
 <template>
   <FrontPageSectionWrapper tag="Cryosphere">
-    <div class="columns">
-      <div class="column border-right">
-        <ItemTextPicture slug="landfast-sea-ice" />
+    <div class="tile is-ancestor">
+      <div class="tile is-parent pr-5 border-right">
+        <div class="tile is-child">
+          <ItemTextPicture slug="landfast-sea-ice" />
+        </div>
       </div>
-      <div class="column">
-        <ItemTextPicture slug="sea-ice-concentration" />
+      <div class="tile is-parent pr-5 border-right">
+        <div class="tile is-child">
+          <ItemTextPicture slug="sea-ice-concentration" />
+        </div>
       </div>
-      <div class="column border-left">
-        <ItemTextPicture slug="notebook-sea-ice-traffic" />
+      <div class="tile is-parent pr-5 border-right">
+        <div class="tile is-child">
+          <ItemTextPicture slug="notebook-sea-ice-traffic" />
+        </div>
       </div>
     </div>
   </FrontPageSectionWrapper>

@@ -10,9 +10,13 @@ const tagPath = computed(() => {
 </script>
 
 <template>
-  <NuxtLink :to="tagPath" class="tag">
+  <NuxtLink :to="tagPath" class="tag mb-1">
     {{ tag }}
   </NuxtLink>
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped>
+  .tag {
+    background-color: lighten($white-darker, 8%);
+  }
+</style>

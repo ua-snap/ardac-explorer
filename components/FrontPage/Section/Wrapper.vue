@@ -21,10 +21,10 @@ const props = defineProps<{
 <style lang="scss" scoped>
 // Styles for the Sections on the home page
 h2.section-title.title.is-2 a {
-  padding-top: 8rem !important;
-  color: $black !important; 
+  padding-top: 8rem;
+  color: $black; 
   &:hover {
-    color: $link !important;
+    color: $link;
   }
   .more {
     position: relative;
