@@ -8,12 +8,13 @@
           <ItemText slug="permafrost-talik" />
         </div>
         <div class="tile is-child">
-          <ItemText slug="permafrost-base-top" />
+          
+          <ItemTextPicture slug="map-permafrost" />
         </div>
       </div>
       <div class="tile is-parent px-5">
         <div class="tile is-child">
-          <ItemTextPicture slug="map-permafrost" />
+          <ItemTextPicture slug="permafrost-base-top" />
         </div>
       </div>
       <div class="tile is-parent pl-5 border-left">

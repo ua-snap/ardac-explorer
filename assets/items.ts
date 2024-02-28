@@ -5,6 +5,9 @@ export default [
     blurb:
       'Annual count of days with low temperature below freezing and high temps above freezing.',
     tags: ['Climate'],
+    image: 'freeze-thaw_ilona-frey-unsplash.jpg',
+    imageAlt:
+      'Photo of icicles demonstrating a freeze/thaw cycle.  Photo by Ilona Frey on Unsplash.',
   },
   {
     slug: 'indicator-rx1day',
@@ -87,23 +90,20 @@ export default [
     title: 'Glacier Melt',
     blurb: 'Monthly sum of daily glacier ice melt',
     tags: ['Hydrology'],
+    image: 'glacier-melt_mick-kirchman-unsplash.jpg',
+    imageAlt:
+      'Photo of a melting tidewater glacier.  Image by Mick Kirchman at Unsplash.',
   },
   {
-    slug: 'hydrology-iwe',
-    title: 'Ice Water Equivalent',
-    blurb: 'Monthly maximum daily ice water equivalent',
+    slug: 'hydrology-iswe',
+    title: 'Ice/Snow Water Equivalent',
+    blurb: 'Monthly maximum daily ice and snow water equivalent',
     tags: ['Hydrology'],
   },
   {
     slug: 'hydrology-runoff',
     title: 'Runoff',
     blurb: 'Monthly sum of daily surface runoff',
-    tags: ['Hydrology'],
-  },
-  {
-    slug: 'hydrology-swe',
-    title: 'Snow Water Equivalent',
-    blurb: 'Monthly maximum of daily snow water equivalent',
     tags: ['Hydrology'],
   },
   {
@@ -134,14 +134,19 @@ export default [
   {
     slug: 'permafrost-magt',
     title: 'Ground Temperature',
-    blurb: 'Mean annual ground temperature value, surface - 5m',
+    blurb: 'Mean annual ground temperature value, surface&ndash;5m',
     tags: ['Permafrost'],
+    image: 'projected-permafrost-and-magt.png',
+    imageAlt:
+      'Example map of data showing projected ground temperature at 1m depth',
   },
   {
     slug: 'permafrost-base-top',
     title: 'Permafrost Depth: Base & Top',
     blurb: '',
     tags: ['Permafrost'],
+    image: 'permafrost-soil-pit_skip-walker_USPA.jpg',
+    imageAlt: 'Image of visible permafrost in a soil pit by Skip Walker, USPA',
   },
   {
     slug: 'permafrost-talik',
@@ -162,12 +167,16 @@ export default [
     blurb:
       'Monthly pan-Arctic sea ice concentration data at a resolution of approximately 17.1km for years 1850–2021',
     tags: ['Cryosphere'],
+    image: 'sea-ice_tapio-haaja-unsplash.jpg',
+    imageAlt: 'Photo of plate sea ice.  Photo by Tapio Haaja on Unsplash.',
   },
   {
     slug: 'climate-beetle-protection',
     title: 'Climate Protection from Spruce Beetles',
     blurb: 'Level to which climate protects against spruce beetle outbreaks',
     tags: ['Climate', 'Terrestrial'],
+    image: 'dendroctonus_rufipennis.jpg',
+    imageAlt: 'Photo of a Dendroctonus Rufipennis beetle',
   },
   {
     slug: 'dd-below-65',
@@ -311,6 +320,8 @@ export default [
     blurb:
       'Precipitation frequency for various return intervals and durations across different models and eras',
     tags: ['Precipitation'],
+    image: 'precip_ben-wicks-unsplash.jpg',
+    imageAlt: 'Image of water splashing by Ben Wicks on Unsplash',
   },
   {
     slug: 'wildfire-combined',
@@ -331,6 +342,9 @@ export default [
     blurb:
       'What could the climate of Alaska and the Arctic look like in 2100?  New CMIP6 climate data provides more tools for research',
     tags: ['Climate'],
+    image: 'arctic2100_drew-beamer-unsplash.jpg',
+    imageAlt:
+      'Person holding a crystal ball up to an Arctic sunset.  Photo by Drew Beamer on Unsplash.',
   },
   {
     slug: 'map-permafrost',

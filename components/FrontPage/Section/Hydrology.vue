@@ -5,10 +5,10 @@
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-parent pr-5 border-right">
         <div class="tile is-child border-bottom">
-          <ItemText slug="indicator-wsdi" />
+          <ItemText slug="hydrology-iswe" />
         </div>
         <div class="tile is-child">
-          <ItemText slug="climate-beetle-protection" />
+          <ItemText slug="hydrology-evap" />
         </div>
       </div>
 
@@ -18,13 +18,13 @@
         </div>
 
         <div class="tile is-child">
-          <ItemTextPicture slug="notebook-raster-database" />
+          <ItemTextPicture slug="hydrology-runoff" />
         </div>
       </div>
 
       <div class="tile is-parent">
         <div class="tile is-child">
-          <ItemTextPicture slug="indicator-ftc" />
+          <ItemTextPicture slug="hydrology-glacier-melt" />
         </div>
       </div>
     </div>
