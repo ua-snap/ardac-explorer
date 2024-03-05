@@ -3,10 +3,12 @@ import { useMapStore } from '~/stores/map'
 
 const store = useStore()
 const mapStore = useMapStore()
+const dataStore = useDataStore()
 const runtimeConfig = useRuntimeConfig()
 
 const latLng = computed(() => store.latLng)
 const latLngEmpty = computed(() => Object.keys(latLng.value).length === 0)
+const apiData = computed<any[]>(() => dataStore.apiData)
 
 const layers: MapLayer[] = [
   {
@@ -57,8 +59,8 @@ mapStore.setLegendItems(mapId, legend)
         The hot day threshold is the temperature at which only five days in a
         year are colder. The map below shows the 30-year mean of the cold day
         threshold for three eras. The historical era (1980&ndash;2009) uses
-        historical modeled data provided by the Daymet model. The mid century
-        (2040&ndash;2069) and late century (2070&ndash;2099) eras use modeled
+        historical modeled data provided by the Daymet model. The mid-century
+        (2040&ndash;2069) and late-century (2070&ndash;2099) eras use modeled
         projections from the NCAR CCSM4 model under the RCP 8.5 emissions
         scenario.
       </p>
@@ -85,7 +87,7 @@ mapStore.setLegendItems(mapId, legend)
         Enter lat/lon coordinates below to see a chart of the hot day threshold
         for a point location. This chart displays min/mean/max values for the
         historical modeled era (1980&ndash;2009) using Daymet and projections
-        for the mid century (2040&ndash;2069) and late century (2070&ndash;2099)
+        for the mid-century (2040&ndash;2069) and late-century (2070&ndash;2099)
         eras using both the MRI CGCM3 and NCAR CCSM4 models under two different
         emissions scenarios, RCP 4.5 and RCP 8.5.
       </p>
@@ -97,7 +99,7 @@ mapStore.setLegendItems(mapId, legend)
 
       <IndicatorsChart label="Hot day threshold" dataKey="hd" />
 
-      <div v-if="!latLngEmpty" class="my-6">
+      <div v-if="!latLngEmpty && apiData" class="my-6">
         <h5 class="title is-5">
           Download hot day threshold data for {{ latLng.lat }},
           {{ latLng.lng }}

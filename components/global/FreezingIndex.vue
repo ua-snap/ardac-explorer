@@ -3,10 +3,12 @@ import { useMapStore } from '~/stores/map'
 
 const store = useStore()
 const mapStore = useMapStore()
+const dataStore = useDataStore()
 const runtimeConfig = useRuntimeConfig()
 
 const latLng = computed(() => store.latLng)
 const latLngEmpty = computed(() => Object.keys(latLng.value).length === 0)
+const apiData = computed<any[]>(() => dataStore.apiData)
 
 const layers: MapLayer[] = [
   {
@@ -57,8 +59,8 @@ mapStore.setLegendItems(mapId, legend)
         The freezing index is the number of degree days above freezing per year.
         The map below shows the 30-year mean of the freezing index for three
         eras. The historical era (1980&ndash;2009) uses historical modeled data
-        provided by the ERA-Interim model. The mid century (2040&ndash;2069) and
-        late century (2070&ndash;2099) eras use modeled projections from the
+        provided by the ERA-Interim model. The mid-century (2040&ndash;2069) and
+        late-century (2070&ndash;2099) eras use modeled projections from the
         NCAR CCSM4 model under the RCP 8.5 emissions scenario.
       </p>
 
@@ -94,7 +96,7 @@ mapStore.setLegendItems(mapId, legend)
 
       <DegreeDaysChart endpoint="freezingIndex" label="Freezing index" />
 
-      <div v-if="!latLngEmpty" class="my-6">
+      <div v-if="!latLngEmpty && apiData" class="my-6">
         <h5 class="title is-5">
           Download freezing index data for {{ latLng.lat }},
           {{ latLng.lng }}

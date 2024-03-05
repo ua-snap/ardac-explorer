@@ -12,53 +12,53 @@ const apiData = computed<any[]>(() => dataStore.apiData)
 
 const layers: MapLayer[] = [
   {
-    id: 'dd_below_0_historical_era',
-    title: 'Historical Degree Days Below 0&deg;F (1980&ndash;2009)',
+    id: 'indicator_rx1day_historical_era',
+    title: 'Historical Maximum 1-day Precipitation (1980&ndash;2009)',
     source: 'rasdaman',
-    wmsLayerName: 'degree_days_below_zero',
-    style: 'ardac_dd_below_0_historical_era',
-    legend: 'dd_below_0',
+    wmsLayerName: 'ncar12km_indicators_era_summaries',
+    style: 'ardac_indicator_rx1day_historical_era',
+    legend: 'rx1day',
   },
   {
-    id: 'dd_below_0_midcentury_era',
-    title: 'Projected Degree Days Below 0&deg;F (2040&ndash;2069)',
+    id: 'indicator_rx1day_midcentury_era',
+    title: 'Projected Maximum 1-day Precipitation (2040&ndash;2069)',
     source: 'rasdaman',
-    wmsLayerName: 'degree_days_below_zero',
-    style: 'ardac_dd_below_0_midcentury_era',
-    legend: 'dd_below_0',
+    wmsLayerName: 'ncar12km_indicators_era_summaries',
+    style: 'ardac_indicator_rx1day_midcentury_era',
+    legend: 'rx1day',
   },
   {
-    id: 'dd_below_0_latecentury_era',
-    title: 'Projected Degree Days Below 0&deg;F (2070&ndash;2099)',
+    id: 'indicator_rx1day_latecentury_era',
+    title: 'Projected Maximum 1-day Precipitation (2070&ndash;2099)',
     source: 'rasdaman',
-    wmsLayerName: 'degree_days_below_zero',
-    style: 'ardac_dd_below_0_latecentury_era',
-    legend: 'dd_below_0',
+    wmsLayerName: 'ncar12km_indicators_era_summaries',
+    style: 'ardac_indicator_rx1day_latecentury_era',
+    legend: 'rx1day',
   },
 ]
 
 const legend: Record<string, LegendItem[]> = {
-  dd_below_0: [
-    { color: '#c6dbef', label: '&ge;0 F&sdot;days, &lt;200 F&sdot;days' },
-    { color: '#9ecae1', label: '&ge;200 F&sdot;days, &lt;400 F&sdot;days' },
-    { color: '#6baed6', label: '&ge;400 F&sdot;days, &lt;600 F&sdot;days' },
-    { color: '#3182bd', label: '&ge;600 F&sdot;days, &lt;800 F&sdot;days' },
-    { color: '#08519c', label: '&ge;800 F&sdot;days' },
+  rx1day: [
+    { color: '#edf8fb', label: '&ge;0㎜, &lt;10㎜' },
+    { color: '#b2e2e2', label: '&ge;10㎜, &lt;20㎜' },
+    { color: '#66c2a4', label: '&ge;20㎜, &lt;30㎜' },
+    { color: '#2ca25f', label: '&ge;30㎜, &lt;40㎜' },
+    { color: '#006d2c', label: '&ge;40㎜' },
   ],
 }
 
-const mapId = 'dd_below_0'
+const mapId = 'maximum_1_day_precipitation'
 mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
   <section class="section">
     <div class="content is-size-5">
-      <h3 class="title is-3">Degree Days Below 0&deg;F</h3>
+      <h3 class="title is-3">Maximum 1-day Precipitation</h3>
       <p class="mb-6">
-        The map below shows the 30-year mean of degree days below 0&deg;F for
-        three eras. The historical era (1980&ndash;2009) uses historical modeled
-        data provided by the ERA-Interim model. The mid-century
+        The map below shows the 30-year mean of the maximum 1-day precipitation
+        for three eras. The historical era (1980&ndash;2009) uses historical
+        modeled data provided by the Daymet model. The mid-century
         (2040&ndash;2069) and late-century (2070&ndash;2099) eras use modeled
         projections from the NCAR CCSM4 model under the RCP 8.5 emissions
         scenario.
@@ -83,11 +83,12 @@ mapStore.setLegendItems(mapId, legend)
       </MapBlock>
 
       <p>
-        Enter lat/lon coordinates below to see a chart of degree days below
-        0&deg;F for a point location. This chart displays min/mean/max values
-        for historical decades using the ERA-Interim model and projected decades
-        using both the GFDL CM3 and NCAR CCSM4 models under the RCP 8.5
-        emissions scenario.
+        Enter lat/lon coordinates below to see a chart of maximum 1-day
+        precipitation for a point location. This chart displays min/mean/max
+        values for the historical modeled era (1980&ndash;2009) using Daymet and
+        projections for the mid-century (2040&ndash;2069) and late-century
+        (2070&ndash;2099) eras using both the MRI CGCM3 and NCAR CCSM4 models
+        under two different emissions scenarios, RCP 4.5 and RCP 8.5.
       </p>
 
       <p>
@@ -95,22 +96,28 @@ mapStore.setLegendItems(mapId, legend)
         download the data that is used to populate the chart.
       </p>
 
-      <DegreeDaysChart
-        endpoint="degreeDaysBelow0"
-        label="Degree days below 0&deg;F"
+      <IndicatorsChart
+        label="Maximum 1-day precipitation"
+        units="㎜"
+        dataKey="rx1day"
       />
 
       <div v-if="!latLngEmpty && apiData" class="my-6">
         <h5 class="title is-5">
-          Download degree days below 0&deg;F data for {{ latLng.lat }},
+          Download maximum 1-day precipitation data for {{ latLng.lat }},
           {{ latLng.lng }}
         </h5>
+        <p>
+          The following download links bundle maximum 1-day precipitation data
+          with other climate indicators. Maximum 1-day precipitation uses the
+          "rx1day" identifier.
+        </p>
         <ul>
           <li>
             <a
               :href="
                 runtimeConfig.public.apiUrl +
-                '/degree_days/below_zero/' +
+                '/indicators/base/point/' +
                 latLng.lat +
                 '/' +
                 latLng.lng +
@@ -123,7 +130,7 @@ mapStore.setLegendItems(mapId, legend)
             <a
               :href="
                 runtimeConfig.public.apiUrl +
-                '/degree_days/below_zero/' +
+                '/indicators/base/point/' +
                 latLng.lat +
                 '/' +
                 latLng.lng

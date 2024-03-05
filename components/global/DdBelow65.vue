@@ -3,10 +3,12 @@ import { useMapStore } from '~/stores/map'
 
 const store = useStore()
 const mapStore = useMapStore()
+const dataStore = useDataStore()
 const runtimeConfig = useRuntimeConfig()
 
 const latLng = computed(() => store.latLng)
 const latLngEmpty = computed(() => Object.keys(latLng.value).length === 0)
+const apiData = computed<any[]>(() => dataStore.apiData)
 
 const layers: MapLayer[] = [
   {
@@ -58,8 +60,8 @@ mapStore.setLegendItems(mapId, legend)
         to approximate the energy needed to heat a building in a given year. The
         map below shows the 30-year mean of degree bays below 65&deg;F for three
         eras. The historical era (1980&ndash;2009) uses historical modeled data
-        provided by the ERA-Interim model. The mid century (2040&ndash;2069) and
-        late century (2070&ndash;2099) eras use modeled projections from the
+        provided by the ERA-Interim model. The mid-century (2040&ndash;2069) and
+        late-century (2070&ndash;2099) eras use modeled projections from the
         NCAR CCSM4 model under the RCP 8.5 emissions scenario.
       </p>
 
@@ -99,7 +101,7 @@ mapStore.setLegendItems(mapId, legend)
         label="Degree days below 65&deg;F"
       />
 
-      <div v-if="!latLngEmpty" class="my-6">
+      <div v-if="!latLngEmpty && apiData" class="my-6">
         <h5 class="title is-5">
           Download degree days below 65&deg;F data for {{ latLng.lat }},
           {{ latLng.lng }}
