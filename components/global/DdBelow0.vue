@@ -13,7 +13,7 @@ const apiData = computed<any[]>(() => dataStore.apiData)
 const layers: MapLayer[] = [
   {
     id: 'dd_below_0_historical_era',
-    title: 'Historical Degree Days Below 0&deg;F (1980&ndash;2009)',
+    title: '1980–2009, Daymet',
     source: 'rasdaman',
     wmsLayerName: 'degree_days_below_zero',
     style: 'ardac_dd_below_0_historical_era',
@@ -21,7 +21,7 @@ const layers: MapLayer[] = [
   },
   {
     id: 'dd_below_0_midcentury_era',
-    title: 'Projected Degree Days Below 0&deg;F (2040&ndash;2069)',
+    title: '2040–2069, NCAR CCSM4, RCP 8.5',
     source: 'rasdaman',
     wmsLayerName: 'degree_days_below_zero',
     style: 'ardac_dd_below_0_midcentury_era',
@@ -29,7 +29,7 @@ const layers: MapLayer[] = [
   },
   {
     id: 'dd_below_0_latecentury_era',
-    title: 'Projected Degree Days Below 0&deg;F (2070&ndash;2099)',
+    title: '2070–2099, NCAR CCSM4, RCP 8.5',
     source: 'rasdaman',
     wmsLayerName: 'degree_days_below_zero',
     style: 'ardac_dd_below_0_latecentury_era',
@@ -67,17 +67,13 @@ mapStore.setLegendItems(mapId, legend)
       <MapBlock :mapId="mapId" class="mb-6">
         <template v-slot:layers>
           <MapLayer :mapId="mapId" :layer="layers[0]" default>
-            <template v-slot:title>1980&ndash;2009, Daymet</template>
+            <template v-slot:title>{{ layers[0].title }}</template>
           </MapLayer>
           <MapLayer :mapId="mapId" :layer="layers[1]">
-            <template v-slot:title
-              >2040&ndash;2069, NCAR CCSM4, RCP 8.5</template
-            >
+            <template v-slot:title>{{ layers[1].title }}</template>
           </MapLayer>
           <MapLayer :mapId="mapId" :layer="layers[2]">
-            <template v-slot:title
-              >2070&ndash;2099, NCAR CCSM4, RCP 8.5</template
-            >
+            <template v-slot:title>{{ layers[2].title }}</template>
           </MapLayer>
         </template>
       </MapBlock>
@@ -101,10 +97,10 @@ mapStore.setLegendItems(mapId, legend)
       />
 
       <div v-if="!latLngEmpty && apiData" class="my-6">
-        <h5 class="title is-5">
+        <h4 class="title is-4">
           Download degree days below 0&deg;F data for {{ latLng.lat }},
           {{ latLng.lng }}
-        </h5>
+        </h4>
         <ul>
           <li>
             <a

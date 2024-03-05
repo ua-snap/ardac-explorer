@@ -13,7 +13,7 @@ const apiData = computed<any[]>(() => dataStore.apiData)
 const layers: MapLayer[] = [
   {
     id: 'indicator_rx5day_historical_era',
-    title: 'Historical Maximum 5-day Precipitation (1980&ndash;2009)',
+    title: '1980–2009, Daymet',
     source: 'rasdaman',
     wmsLayerName: 'ncar12km_indicators_era_summaries',
     style: 'ardac_indicator_rx5day_historical_era',
@@ -21,7 +21,7 @@ const layers: MapLayer[] = [
   },
   {
     id: 'indicator_rx5day_midcentury_era',
-    title: 'Projected Maximum 5-day Precipitation (2040&ndash;2069)',
+    title: '2040–2069, NCAR CCSM4, RCP 8.5',
     source: 'rasdaman',
     wmsLayerName: 'ncar12km_indicators_era_summaries',
     style: 'ardac_indicator_rx5day_midcentury_era',
@@ -29,7 +29,7 @@ const layers: MapLayer[] = [
   },
   {
     id: 'indicator_rx5day_latecentury_era',
-    title: 'Projected Maximum 5-day Precipitation (2070&ndash;2099)',
+    title: '2070–2099, NCAR CCSM4, RCP 8.5',
     source: 'rasdaman',
     wmsLayerName: 'ncar12km_indicators_era_summaries',
     style: 'ardac_indicator_rx5day_latecentury_era',
@@ -67,17 +67,13 @@ mapStore.setLegendItems(mapId, legend)
       <MapBlock :mapId="mapId" class="mb-6">
         <template v-slot:layers>
           <MapLayer :mapId="mapId" :layer="layers[0]" default>
-            <template v-slot:title>1980&ndash;2009, Daymet</template>
+            <template v-slot:title>{{ layers[0].title }}</template>
           </MapLayer>
           <MapLayer :mapId="mapId" :layer="layers[1]">
-            <template v-slot:title
-              >2040&ndash;2069, NCAR CCSM4, RCP 8.5</template
-            >
+            <template v-slot:title>{{ layers[1].title }}</template>
           </MapLayer>
           <MapLayer :mapId="mapId" :layer="layers[2]">
-            <template v-slot:title
-              >2070&ndash;2099, NCAR CCSM4, RCP 8.5</template
-            >
+            <template v-slot:title>{{ layers[2].title }}</template>
           </MapLayer>
         </template>
       </MapBlock>
@@ -103,10 +99,10 @@ mapStore.setLegendItems(mapId, legend)
       />
 
       <div v-if="!latLngEmpty && apiData" class="my-6">
-        <h5 class="title is-5">
+        <h4 class="title is-4">
           Download maximum 5-day precipitation data for {{ latLng.lat }},
           {{ latLng.lng }}
-        </h5>
+        </h4>
         <p>
           The following download links bundle maximum 5-day precipitation data
           with other climate indicators. Maximum 5-day precipitation uses the
