@@ -28,4 +28,8 @@
       filter: none;
     }
   }
+
+  &.missing:hover {
+    cursor: not-allowed;
+  }
 }
