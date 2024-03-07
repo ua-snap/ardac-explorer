@@ -50,6 +50,9 @@
         </ul>
       </div>
       <div class="featured column is-6 px-5">
+        <div>
+          <Gimme />
+        </div>
         <div class="tile is-ancestor">
           <div class="tile is-parent is-vertical">
             <div class="tile lead is-child border-bottom">
