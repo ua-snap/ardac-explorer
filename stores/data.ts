@@ -5,6 +5,7 @@ const store = useStore()
 const endpoints: Record<string, string> = {
   beetles: '/beetles/point/',
   heatingDegreeDays: '/degree_days/heating/',
+  hydrology: '/hydrology/point/',
   indicators: '/indicators/base/point/',
   freezingIndex: '/degree_days/freezing_index/',
   precipitation: '/precipitation/point/',

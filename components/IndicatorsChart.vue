@@ -18,17 +18,16 @@ const dataError = computed<boolean>(() => dataStore.dataError)
 const latLng = computed<LatLng>(() => store.latLng)
 const errorMsg = ref('')
 
-const scenarionLabels: Record<string, string> = {
+const scenarioLabels: Record<string, string> = {
   rcp45: 'RCP 4.5',
   rcp85: 'RCP 8.5',
 }
 
 const buildChart = () => {
-  let eraLabels: string[] = ['1988–2017', '2040–2069', '2070–2099']
   if (apiData.value) {
-    let projectedModels = ['MRI-CGCM3', 'NCAR-CCSM4']
-    let projectedEras = ['midcentury', 'longterm']
-
+    const eraLabels: string[] = ['1988–2017', '2040–2069', '2070–2099']
+    const projectedModels = ['MRI-CGCM3', 'NCAR-CCSM4']
+    const projectedEras = ['midcentury', 'longterm']
     let traces: Data[] = []
     let offsets: Record<string, number> = {
       Daymet: 0,
@@ -102,7 +101,6 @@ const buildChart = () => {
       let offsetTicks = ticks.slice(1).map(tick => tick + offsets[model])
 
       projectedEras.forEach(era => {
-        console.log(era)
         let scenarioData = chartData[era][model][scenarioInput.value]
         let mean = scenarioData['mean']
         let max = scenarioData['max']
@@ -159,7 +157,7 @@ const buildChart = () => {
             store.latLng.lng +
             '<br />' +
             'Scenario: ' +
-            scenarionLabels[scenarioInput.value],
+            scenarioLabels[scenarioInput.value],
           font: {
             size: 24,
           },
@@ -227,7 +225,8 @@ onUnmounted(() => {
   />
   <div v-if="apiData">
     <div class="control mb-5">
-      <label class="radio mr-3">
+      <label for="scenario" class="label">Scenario:</label>
+      <label id="scenario" class="radio mr-3">
         <input
           type="radio"
           name="scenario"
