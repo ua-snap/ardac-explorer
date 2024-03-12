@@ -6,6 +6,7 @@ const endpoints: Record<string, string> = {
   beetles: '/beetles/point/',
   heatingDegreeDays: '/degree_days/heating/',
   indicators: '/indicators/base/point/',
+  landfastSeaIce: '/landfastice/point/',
   freezingIndex: '/degree_days/freezing_index/',
   precipitation: '/precipitation/point/',
   precipitationFrequency: '/precipitation/frequency/point/',
