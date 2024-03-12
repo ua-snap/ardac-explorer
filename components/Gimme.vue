@@ -34,7 +34,6 @@ onMounted(() => {
     // Include alt name if possible
     resultItem: {
       element: (element: HTMLElement, match: any) => {
-        console.log(match)
         let community = match.value
         if (community.alt_name) {
           element.innerHTML =
@@ -44,13 +43,22 @@ onMounted(() => {
     },
     // Intercept/test for valid Lat/Lng
     query: (input: string) => {
-      if (validate(input)) {
-        alert('winner')
+      let result = validate(input)
+      if(result) {
+        store.latLng = result
       }
       return input
     },
   }
   new $autoComplete(config)
+
+  document
+    .querySelector('#gimme')!
+    .addEventListener('selection', function (event) {
+      // "event.detail" carries the autoComplete.js "feedback" object
+      let community = (event as CustomEvent).detail.selection.value
+      store.latLng = { lat: community.latitude, lng: community.longitude }
+    })
 })
 
 let bbox: number[]
@@ -78,7 +86,7 @@ const validate = (latLng: string) => {
         lon >= bbox[0] &&
         lon <= bbox[2]
       ) {
-        return true
+        return { lat: lat, lng: lon }
       } else {
         fieldMessage.value =
           'This point is outside the bounding box of data: latitude between ' +
