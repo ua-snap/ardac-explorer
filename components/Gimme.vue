@@ -1,32 +1,27 @@
 <script lang="ts" setup>
-// bbox order is left, bottom, right, top
+// bbox order is
+// [ lower-left lng, lower-left lat, upper-right lng, upper-right lat ]
 const props = defineProps<{
   bbox?: number[]
   label?: string
-  errorMsg?: string
 }>()
 
-import { useStore as usePlacesStore } from '~/stores/places'
-const store = useStore()
-const placeStore = usePlacesStore()
-const { $autoComplete, $parseDMS } = useNuxtApp()
-const fieldMessage = ref('')
-const latLngButton = ref('')
-const parsedLat: Ref<number> = ref(0)
-const parsedLng: Ref<number> = ref(0)
-const latLngIsValid = ref(false)
-const inputLabel = ref('Get data for a community or by lat/long')
-if (props.label) {
-  inputLabel.value = props.label
-}
-let communities = placeStore.fetchCommunities()
-
 import items from '~/assets/items'
+
+const store = useStore()
+const placesStore = usePlacesStore()
+
+const { $autoComplete, $parseDMS } = useNuxtApp()
+
+const fieldMessage = ref('')
+const parsedLatLng: Ref<LatLngValue> = ref(undefined)
+const latLngIsValid = ref(false)
+let communities = placesStore.fetchCommunities()
 
 onMounted(() => {
   let config = {
     selector: '#gimme',
-    placeHolder: 'Search places or enter a lat/long',
+    placeHolder: 'Search community names or enter a lat/long',
     data: {
       src: communities,
       keys: ['name'],
@@ -41,7 +36,7 @@ onMounted(() => {
         let community = match.value
         if (community.alt_name) {
           element.innerHTML =
-            element.innerHTML + ' <span>(' + community.alt_name + ')</span>'
+            element.innerHTML + ' <span>/ ' + community.alt_name + '</span>'
         }
       },
     },
@@ -49,19 +44,19 @@ onMounted(() => {
     query: (input: string) => {
       let result = validate(input)
       if (result) {
-        store.latLng = result
+        placesStore.latLng = result
       }
       return input
     },
   }
   new $autoComplete(config)
 
+  // When a placename is selected, populate the store.
   document
     .querySelector('#gimme')!
     .addEventListener('selection', function (event) {
-      // "event.detail" carries the autoComplete.js "feedback" object
       let community = (event as CustomEvent).detail.selection.value
-      store.latLng = { lat: community.latitude, lng: community.longitude }
+      placesStore.latLng = { lat: community.latitude, lng: community.longitude }
     })
 })
 
@@ -83,6 +78,7 @@ const validate = (latLng: string) => {
     return false
   }
 
+  // ParseDMS throws if parsing fails: capture + ignore
   try {
     let parsedDms = $parseDMS(latLng)
     if (parsedDms && parsedDms.lat && parsedDms.lon) {
@@ -97,12 +93,16 @@ const validate = (latLng: string) => {
         lon >= bbox[0] &&
         lon <= bbox[2]
       ) {
+        // Rounding!
+        lat = +(lat.toFixed(2))
+        lon = +(lon.toFixed(2))
+
+        // It's a valid lat/lng: update the button so it can
+        // trigger setting the store.
         fieldMessage.value = ''
-        latLngButton.value = 'for ' + lat + ', ' + lon
-        parsedLat.value = lat
-        parsedLng.value = lon
+        parsedLatLng.value = { lat: lat, lng: lon } as LatLng
         latLngIsValid.value = true
-        return { lat: lat, lng: lon }
+        return parsedLatLng.value
       } else {
         fieldMessage.value =
           'This point is outside the bounding box of data: latitude between ' +
@@ -118,24 +118,34 @@ const validate = (latLng: string) => {
   } catch (e) {
     // ignore, it's ParseDMS throwing an error
   }
-  fieldMessage.value =
-    'Lat/long must be in decimal degrees or DMS format, i.e. 51°30\'0.5486" -0°7\'34.4503"'
+  fieldMessage.value = `Lat/long must be in decimal degrees or DMS format, i.e. 65°30'0.56" -140°7'34.45"`
   latLngIsValid.value = false
+  parsedLatLng.value = undefined
+  placesStore.latLng = undefined
   return false
 }
 
+function setLatLng() {
+  placesStore.latLng = parsedLatLng.value
+}
+
 onUnmounted(() => {
-  store.latLng = {} as LatLng
+  placesStore.latLng = undefined
 })
 </script>
 
 <template>
+  <div class="content is-size-4">{{ placesStore.latLng }}</div>
   <div class="field">
     <div class="control">
-      <label class="label" v-html="inputLabel" />
+      <label class="label">Get data for a community or by lat/long</label>
       <input id="gimme" />
-      <button v-if="latLngIsValid" class="button is-link is-light">
-        Get data for {{ parsedLat }}, {{ parsedLng }}
+      <button
+        v-if="latLngIsValid"
+        @click="setLatLng"
+        class="button is-link is-light"
+      >
+        Get data for {{ parsedLatLng?.lat }}, {{ parsedLatLng?.lng }}
       </button>
     </div>
     <p class="help" v-html="fieldMessage" />
@@ -144,6 +154,10 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 @import '~/node_modules/@tarekraafat/autocomplete.js/dist/css/autoComplete.02.css';
+
+:deep(.autoComplete_wrapper > ul > li:hover) {
+  background-color: #b7ffaf;
+}
 
 #gimme {
   background-image: none;

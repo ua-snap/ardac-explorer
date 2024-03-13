@@ -9,10 +9,11 @@ import type { Data } from 'plotly.js-dist-min'
 const { $Plotly, $_ } = useNuxtApp()
 const store = useStore()
 const dataStore = useDataStore()
+const placesStore = usePlacesStore()
 
 const apiData = computed<any[]>(() => dataStore.apiData)
 const dataError = computed<boolean>(() => dataStore.dataError)
-const latLng = computed<LatLng>(() => store.latLng)
+const latLng = computed<LatLngValue>(() => placesStore.latLng)
 const errorMsg = ref('')
 
 let chartData: any
@@ -167,7 +168,7 @@ const buildChart = () => {
       {
         title: {
           text:
-            props.label + ' for ' + store.latLng.lat + ', ' + store.latLng.lng,
+            props.label + ' for ' + placesStore.latLng?.lat + ', ' + placesStore.latLng?.lng,
           font: {
             size: 24,
           },

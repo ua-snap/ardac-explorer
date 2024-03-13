@@ -44,3 +44,6 @@ interface LatLng {
   lat: number
   lng: number
 }
+
+type LatLngValue = LatLng | undefined
+
