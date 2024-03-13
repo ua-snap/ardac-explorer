@@ -11,6 +11,10 @@ const store = useStore()
 const placeStore = usePlacesStore()
 const { $autoComplete, $parseDMS } = useNuxtApp()
 const fieldMessage = ref('')
+const latLngButton = ref('')
+const parsedLat: Ref<number> = ref(0)
+const parsedLng: Ref<number> = ref(0)
+const latLngIsValid = ref(false)
 const inputLabel = ref('Get data for a community or by lat/long')
 if (props.label) {
   inputLabel.value = props.label
@@ -44,7 +48,7 @@ onMounted(() => {
     // Intercept/test for valid Lat/Lng
     query: (input: string) => {
       let result = validate(input)
-      if(result) {
+      if (result) {
         store.latLng = result
       }
       return input
@@ -72,6 +76,13 @@ const validate = (latLng: string) => {
   let lat: number
   let lon: number
 
+  // If it's alphanumeric or empty, don't try to parse / validate
+  if (latLng === '' || /^[a-zA-Z]+/.test(latLng)) {
+    fieldMessage.value = ''
+    latLngIsValid.value = false
+    return false
+  }
+
   try {
     let parsedDms = $parseDMS(latLng)
     if (parsedDms && parsedDms.lat && parsedDms.lon) {
@@ -86,6 +97,11 @@ const validate = (latLng: string) => {
         lon >= bbox[0] &&
         lon <= bbox[2]
       ) {
+        fieldMessage.value = ''
+        latLngButton.value = 'for ' + lat + ', ' + lon
+        parsedLat.value = lat
+        parsedLng.value = lon
+        latLngIsValid.value = true
         return { lat: lat, lng: lon }
       } else {
         fieldMessage.value =
@@ -102,6 +118,9 @@ const validate = (latLng: string) => {
   } catch (e) {
     // ignore, it's ParseDMS throwing an error
   }
+  fieldMessage.value =
+    'Lat/long must be in decimal degrees or DMS format, i.e. 51°30\'0.5486" -0°7\'34.4503"'
+  latLngIsValid.value = false
   return false
 }
 
@@ -115,7 +134,9 @@ onUnmounted(() => {
     <div class="control">
       <label class="label" v-html="inputLabel" />
       <input id="gimme" />
-      <button class="button is-link is-light">Get data</button>
+      <button v-if="latLngIsValid" class="button is-link is-light">
+        Get data for {{ parsedLat }}, {{ parsedLng }}
+      </button>
     </div>
     <p class="help" v-html="fieldMessage" />
   </div>
@@ -123,4 +144,8 @@ onUnmounted(() => {
 
 <style lang="scss" scoped>
 @import '~/node_modules/@tarekraafat/autocomplete.js/dist/css/autoComplete.02.css';
+
+#gimme {
+  background-image: none;
+}
 </style>
