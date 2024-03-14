@@ -30,7 +30,7 @@ onMounted(() => {
     placeHolder: 'Search community names or enter a lat/long',
     data: {
       src: communities,
-      keys: ['name'],
+      keys: ['name', 'alt_name'],
     },
     threshold: 0,
     resultsList: {
@@ -61,6 +61,7 @@ onMounted(() => {
   gimmeInput.value.addEventListener('selection', function (event: CustomEvent) {
     let community = event.detail.selection.value
     placesStore.latLng = { lat: community.latitude, lng: community.longitude }
+    placesStore.selectedCommunity = community
     placeIsSelected.value = true
     placeSelectionType.value = 'community'
     selectedCommunityName.value = community.name
@@ -103,13 +104,13 @@ const validate = (latLng: string) => {
         lon >= bbox[0] &&
         lon <= bbox[2]
       ) {
-        // Rounding!
-        lat = +lat.toFixed(2)
-        lon = +lon.toFixed(2)
-
         // It's a valid lat/lng: update the button so it can
         // trigger setting the store.
         fieldMessage.value = ''
+
+        // Rounding!
+        lat = +lat.toFixed(4)
+        lon = +lon.toFixed(4)
         parsedLatLng.value = { lat: lat, lng: lon } as LatLng
         latLngIsValid.value = true
         return parsedLatLng.value
@@ -144,6 +145,7 @@ function setLatLng() {
 
 async function clearSelectedPlace() {
   placesStore.latLng = undefined
+  placesStore.selectedCommunity = undefined
   placeIsSelected.value = false
   placeSelectionType.value = undefined
   inputValue.value = '' // clear input
@@ -163,13 +165,11 @@ const placeName = computed(() => {
 
 onUnmounted(() => {
   placesStore.latLng = undefined
+  placesStore.selectedCommunity = undefined
 })
 </script>
 
 <template>
-  <div class="content is-size-4">
-    Testing: <code>placesStore.latLng = </code> {{ placesStore.latLng }}
-  </div>
   <div v-show="placeIsSelected" class="clearPlace">
     Showing data for {{ placeName }}.
     <button class="button" @click="clearSelectedPlace">
@@ -197,7 +197,11 @@ onUnmounted(() => {
 @import '~/node_modules/@tarekraafat/autocomplete.js/dist/css/autoComplete.02.css';
 
 :deep(.autoComplete_wrapper > ul > li:hover) {
-  background-color: #b7ffaf;
+  background-color: $highlight;
+}
+
+:deep(.autoComplete_wrapper > ul > li[aria-selected="true"]) {
+  background-color: $highlight;
 }
 
 #gimme {

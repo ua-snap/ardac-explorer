@@ -19,6 +19,8 @@ interface Community {
   type: string
 }
 
+type CommunityValue = Community | undefined
+
 interface MapLayer {
   id: string
   title: string

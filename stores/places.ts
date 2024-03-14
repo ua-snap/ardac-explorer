@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 
 export const usePlacesStore = defineStore('places', () => {
+  const selectedCommunity: Ref<CommunityValue> = ref(undefined)
   const latLng: Ref<LatLngValue> = ref(undefined)
 
   async function fetchCommunities(): Promise<Community[]> {
@@ -12,5 +13,6 @@ export const usePlacesStore = defineStore('places', () => {
   return {
     fetchCommunities,
     latLng,
+    selectedCommunity,
   }
 })
