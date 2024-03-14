@@ -32,7 +32,7 @@ onMounted(() => {
       src: communities,
       keys: ['name', 'alt_name'],
     },
-    threshold: 0,
+    threshold: 3,
     resultsList: {
       maxResults: 999,
     },
@@ -82,8 +82,8 @@ const validate = (latLng: string) => {
   let lat: number
   let lon: number
 
-  // If it's alphanumeric or empty, don't try to parse / validate
-  if (latLng === '' || /^[a-zA-Z]+/.test(latLng)) {
+  // If it's alphanumeric or empty or too short, don't try to parse / validate
+  if (latLng === '' || /^[a-zA-Z]+/.test(latLng) || latLng.length <= 3) {
     fieldMessage.value = ''
     latLngIsValid.value = false
     return false
