@@ -57,7 +57,7 @@ mapStore.setLegendItems(mapId, legend)
       <h3 class="title is-3">Hot Day Threshold</h3>
       <p class="mb-6">
         The hot day threshold is the temperature at which only five days in a
-        year are colder. The map below shows the 30-year mean of the cold day
+        year are hotter. The map below shows the 30-year mean of the hot day
         threshold for three eras. The historical era (1980&ndash;2009) uses
         historical modeled data provided by the Daymet model. The mid-century
         (2040&ndash;2069) and late-century (2070&ndash;2099) eras use modeled
