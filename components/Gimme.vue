@@ -10,13 +10,19 @@ import items from '~/assets/items'
 
 const store = useStore()
 const placesStore = usePlacesStore()
+let communities = placesStore.fetchCommunities()
 
 const { $autoComplete, $parseDMS } = useNuxtApp()
 
-const fieldMessage = ref('')
+const fieldMessage = ref('') // Helper message when user is entering lat/lng
 const parsedLatLng: Ref<LatLngValue> = ref(undefined)
 const latLngIsValid = ref(false)
-let communities = placesStore.fetchCommunities()
+const placeIsSelected = ref(false) // has the user confirmed a place?
+const placeSelectionType: Ref<PlaceType> = ref(undefined) // community | latLng
+const selectedCommunityName = ref('') // i.e. Fairbanks, etc
+const inputValue = ref('') // input value for autocompleter
+const gimmeInput = ref() // DOM element of #gimme
+const gimmeInputB = ref() // DOM element of #gimme
 
 onMounted(() => {
   let config = {
@@ -52,12 +58,16 @@ onMounted(() => {
   new $autoComplete(config)
 
   // When a placename is selected, populate the store.
-  document
-    .querySelector('#gimme')!
-    .addEventListener('selection', function (event) {
-      let community = (event as CustomEvent).detail.selection.value
-      placesStore.latLng = { lat: community.latitude, lng: community.longitude }
-    })
+  gimmeInput.value.addEventListener('selection', function (event: CustomEvent) {
+    let community = event.detail.selection.value
+    placesStore.latLng = { lat: community.latitude, lng: community.longitude }
+    placeIsSelected.value = true
+    placeSelectionType.value = 'community'
+    selectedCommunityName.value = community.name
+    if (community.alt_name) {
+      selectedCommunityName.value += ' / ' + community.alt_name
+    }
+  })
 })
 
 let bbox: number[]
@@ -94,8 +104,8 @@ const validate = (latLng: string) => {
         lon <= bbox[2]
       ) {
         // Rounding!
-        lat = +(lat.toFixed(2))
-        lon = +(lon.toFixed(2))
+        lat = +lat.toFixed(2)
+        lon = +lon.toFixed(2)
 
         // It's a valid lat/lng: update the button so it can
         // trigger setting the store.
@@ -125,9 +135,31 @@ const validate = (latLng: string) => {
   return false
 }
 
+// For confirming a user's Lat/Lng selection
 function setLatLng() {
   placesStore.latLng = parsedLatLng.value
+  placeIsSelected.value = true
+  placeSelectionType.value = 'latLng'
 }
+
+async function clearSelectedPlace() {
+  placesStore.latLng = undefined
+  placeIsSelected.value = false
+  placeSelectionType.value = undefined
+  inputValue.value = '' // clear input
+  latLngIsValid.value = false // hide button
+
+  await nextTick() // so the focus works
+  gimmeInput.value.focus()
+}
+
+const placeName = computed(() => {
+  if (placeSelectionType.value === 'latLng') {
+    return parsedLatLng.value?.lat + ', ' + parsedLatLng.value?.lng
+  } else {
+    return selectedCommunityName.value
+  }
+})
 
 onUnmounted(() => {
   placesStore.latLng = undefined
@@ -135,11 +167,20 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div class="content is-size-4">{{ placesStore.latLng }}</div>
-  <div class="field">
+  <div class="content is-size-4">
+    Testing: <Code>placesStore.latLng</Code> {{ placesStore.latLng }}
+  </div>
+  <div v-show="placeIsSelected" class="clearPlace">
+    Showing data for {{ placeName }}.
+    <button class="button" @click="clearSelectedPlace">
+      &#x21BA; Pick a new place
+    </button>
+  </div>
+  <div v-show="!placeIsSelected" class="field">
     <div class="control">
       <label class="label">Get data for a community or by lat/long</label>
-      <input id="gimme" />
+
+      <input id="gimme" v-model="inputValue" ref="gimmeInput" />
       <button
         v-if="latLngIsValid"
         @click="setLatLng"

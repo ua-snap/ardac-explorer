@@ -47,3 +47,4 @@ interface LatLng {
 
 type LatLngValue = LatLng | undefined
 
+type PlaceType = 'community' | 'latLng' | undefined
