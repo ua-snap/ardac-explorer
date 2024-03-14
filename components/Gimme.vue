@@ -116,7 +116,7 @@ const validate = (latLng: string) => {
         return parsedLatLng.value
       } else {
         fieldMessage.value =
-          'This point is outside the bounding box of data: latitude between ' +
+          '⚠️ This point is outside the bounding box of data: latitude between ' +
           bbox[1] +
           ' – ' +
           bbox[3] +
@@ -124,6 +124,7 @@ const validate = (latLng: string) => {
           bbox[0] +
           ' – ' +
           bbox[2]
+        return false
       }
     }
   } catch (e) {
