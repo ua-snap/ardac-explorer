@@ -1,6 +1,7 @@
 import { defineStore } from 'pinia'
 const runtimeConfig = useRuntimeConfig()
 const store = useStore()
+const placesStore = usePlacesStore()
 
 const endpoints: Record<string, string> = {
   beetles: '/beetles/point/',
@@ -22,14 +23,17 @@ export const useDataStore = defineStore('data', () => {
   const dataError: Ref<boolean> = ref(false)
 
   const fetchData = async (dataset: string) => {
+    if(placesStore.latLng === undefined) {
+      return // do not try
+    }
     apiData.value = null
     dataError.value = false
     let url =
       runtimeConfig.public.apiUrl +
       endpoints[dataset] +
-      store.latLng.lat +
+      placesStore.latLng.lat +
       '/' +
-      store.latLng.lng
+      placesStore.latLng.lng
     try {
       const response = await fetch(url)
       const data = await response.json()

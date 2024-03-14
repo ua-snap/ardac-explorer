@@ -10,12 +10,13 @@ import type { Data } from 'plotly.js-dist-min'
 const { $Plotly, $_ } = useNuxtApp()
 const store = useStore()
 const dataStore = useDataStore()
+const placesStore = usePlacesStore()
 
 const scenarioInput = defineModel({ default: 'rcp85' })
 
 const apiData = computed<any[]>(() => dataStore.apiData)
 const dataError = computed<boolean>(() => dataStore.dataError)
-const latLng = computed<LatLng>(() => store.latLng)
+const latLng = computed<LatLngValue>(() => placesStore.latLng)
 const errorMsg = ref('')
 
 const scenarionLabels: Record<string, string> = {
@@ -154,9 +155,9 @@ const buildChart = () => {
           text:
             props.label +
             ' for ' +
-            store.latLng.lat +
+            placesStore.latLng?.lat +
             ', ' +
-            store.latLng.lng +
+            placesStore.latLng?.lng +
             '<br />' +
             'Scenario: ' +
             scenarionLabels[scenarioInput.value],

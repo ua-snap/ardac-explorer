@@ -8,6 +8,19 @@ interface Item {
   priority?: number
 }
 
+interface Community {
+  id: string,
+  name: string,
+  alt_name?: string,
+  region: string,
+  country: string,
+  latitude: number,
+  longitude: number,
+  type: string
+}
+
+type CommunityValue = Community | undefined
+
 interface MapLayer {
   id: string
   title: string
@@ -33,3 +46,7 @@ interface LatLng {
   lat: number
   lng: number
 }
+
+type LatLngValue = LatLng | undefined
+
+type PlaceType = 'community' | 'latLng' | undefined

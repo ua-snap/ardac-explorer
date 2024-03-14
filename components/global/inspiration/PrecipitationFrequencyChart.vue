@@ -4,13 +4,14 @@ import type { Data } from 'plotly.js-dist-min'
 const { $Plotly, $_ } = useNuxtApp()
 const store = useStore()
 const dataStore = useDataStore()
+const placesStore = usePlacesStore()
 
 const durationInput = defineModel('duration', { default: '24h' })
 const returnIntervalInput = defineModel('frequency', { default: '100' })
 
 const apiData = computed<any[]>(() => dataStore.apiData)
 const dataError = computed<boolean>(() => dataStore.dataError)
-const latLng = computed<LatLng>(() => store.latLng)
+const latLng = computed<LatLngValue>(() => placesStore.latLng)
 const errorMsg = ref('')
 
 const returnIntervals = [2, 5, 10, 25, 50, 100, 200, 500, 1000]
@@ -106,9 +107,9 @@ const buildChart = () => {
         title: {
           text:
             'Precipitation frequency for ' +
-            store.latLng.lat +
+            placesStore.latLng?.lat +
             ', ' +
-            store.latLng.lng +
+            placesStore.latLng?.lng +
             '<br />' +
             'Duration: ' +
             durationInput.value +

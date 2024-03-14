@@ -21,13 +21,14 @@ interface ExtendedBoxPlotData extends BoxPlotData {
 const { $Plotly } = useNuxtApp()
 const store = useStore()
 const dataStore = useDataStore()
+const placesStore = usePlacesStore()
 
 const seasonInput = defineModel('season', { default: 'DJF' })
 const scenarioInput = defineModel('scenario', { default: 'rcp85' })
 
 const apiData = computed<any[]>(() => dataStore.apiData)
 const dataError = computed<boolean>(() => dataStore.dataError)
-const latLng = computed<LatLng>(() => store.latLng)
+const latLng = computed<LatLngValue>(() => placesStore.latLng)
 const errorMsg = ref('')
 
 const seasonLabels: Record<string, string> = {
@@ -118,9 +119,9 @@ const buildChart = () => {
           text:
             props.label +
             ' for ' +
-            store.latLng.lat +
+            placesStore.latLng?.lat +
             ', ' +
-            store.latLng.lng +
+            placesStore.latLng?.lng +
             ' (5-Model Average)<br />' +
             'Season: ' +
             seasonLabels[seasonInput.value] +
