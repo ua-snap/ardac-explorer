@@ -1,14 +1,13 @@
 <script lang="ts" setup>
 import { useMapStore } from '~/stores/map'
 
-const store = useStore()
+const placesStore = usePlacesStore()
 const mapStore = useMapStore()
 const dataStore = useDataStore()
 const runtimeConfig = useRuntimeConfig()
 
-const latLng = computed(() => store.latLng)
-const latLngEmpty = computed(() => Object.keys(latLng.value).length === 0)
 const apiData = computed<any[]>(() => dataStore.apiData)
+const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const layers: MapLayer[] = [
   {
@@ -49,6 +48,14 @@ const legend: Record<string, LegendItem[]> = {
 
 const mapId = 'dd_below_0'
 mapStore.setLegendItems(mapId, legend)
+
+watch(latLng, async () => {
+  dataStore.fetchData('ddBelow0')
+})
+
+onUnmounted(() => {
+  dataStore.apiData = null
+})
 </script>
 
 <template>
@@ -91,12 +98,9 @@ mapStore.setLegendItems(mapId, legend)
         download the data that is used to populate the chart.
       </p>
 
-      <DegreeDaysChart
-        endpoint="degreeDaysBelow0"
-        label="Degree days below 0&deg;F"
-      />
+      <Gimme />
 
-      <div v-if="!latLngEmpty && apiData" class="my-6">
+      <div v-if="latLng && apiData" class="my-6">
         <h4 class="title is-4">
           Download degree days below 0&deg;F data for {{ latLng.lat }},
           {{ latLng.lng }}

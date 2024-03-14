@@ -1,5 +1,5 @@
 <script lang="ts" setup>
-const store = useStore()
+const placesStore = usePlacesStore()
 const mapStore = useMapStore()
 const dataStore = useDataStore()
 const runtimeConfig = useRuntimeConfig()
@@ -8,9 +8,7 @@ const snowpackInput = defineModel('snowpack', { default: 'medium' })
 const scenarioInput = defineModel('scenario', { default: 'rcp85' })
 
 const apiData = computed<Record<string, any>>(() => dataStore.apiData)
-const dataError = computed<boolean>(() => dataStore.dataError)
-const latLng = computed<LatLng>(() => store.latLng)
-const errorMsg = ref('')
+const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const eras = ['2010-2039', '2040-2069', '2070-2099']
 const models = ['NCAR-CCSM4', 'GFDL-ESM2M', 'HadGEM2-ES', 'MRI-CGCM3']
@@ -64,15 +62,7 @@ const mapId = 'beetles'
 mapStore.setLegendItems(mapId, legend)
 
 watch(latLng, async () => {
-  errorMsg.value = ''
   dataStore.fetchData('beetles')
-})
-
-watch(dataError, async () => {
-  if (dataError.value === true) {
-    errorMsg.value =
-      'There was an error fetching data for this location. Please try another location.'
-  }
 })
 
 onUnmounted(() => {
@@ -122,11 +112,9 @@ onUnmounted(() => {
         download the data that is used to populate the table.
       </p>
 
-      <LatLngSelector
-        label="Get table for lat/lon point:"
-        :errorMsg="errorMsg"
-      />
-      <div v-if="apiData">
+      <Gimme />
+
+      <div v-if="latLng && apiData">
         <div class="parameter">
           <label for="snowpack" class="label">Snowpack:</label>
           <div class="select mb-5 mr-3">
@@ -154,8 +142,8 @@ onUnmounted(() => {
           </div>
         </div>
         <h4 class="title is-4">
-          Climate protection from spruce beetles for {{ store.latLng.lat }},
-          {{ store.latLng.lng }} with
+          Climate protection from spruce beetles for {{ latLng.lat }},
+          {{ latLng.lng }} with
           {{ snowpackLabels[snowpackInput].toLowerCase() }} snowpack
         </h4>
         <table class="mb-6">
@@ -228,9 +216,9 @@ onUnmounted(() => {
               :href="
                 runtimeConfig.public.apiUrl +
                 '/beetles/point/' +
-                latLng.lat +
+                latLng!.lat +
                 '/' +
-                latLng.lng
+                latLng!.lng
               "
               >Download as JSON</a
             >
