@@ -170,26 +170,32 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div v-show="placeIsSelected" class="clearPlace">
-    Showing data for {{ placeName }}.
-    <button class="button" @click="clearSelectedPlace">
-      &#x21BA; Pick a new place
-    </button>
-  </div>
-  <div v-show="!placeIsSelected" class="field">
-    <div class="control">
-      <label class="label">Get data for a community or by lat/long</label>
-
-      <input id="gimme" v-model="inputValue" ref="gimmeInput" />
-      <button
-        v-if="latLngIsValid"
-        @click="setLatLng"
-        class="button is-link is-light"
-      >
-        Get data for {{ parsedLatLng?.lat }}, {{ parsedLatLng?.lng }}
-      </button>
+  <div class="my-3">
+    <div v-show="placeIsSelected" class="selected-place">
+      <div class="content is-size-5">
+        <p>
+          Showing data for {{ placeName }}.
+          <button class="button is-link is-light" @click="clearSelectedPlace">
+            &#x21BA; Pick a new place
+          </button>
+        </p>
+      </div>
     </div>
-    <p class="help" v-html="fieldMessage" />
+    <div v-show="!placeIsSelected" class="field">
+      <div class="control">
+        <label class="label">Get data for a community or by lat/long</label>
+
+        <input id="gimme" v-model="inputValue" ref="gimmeInput" />
+        <button
+          v-if="latLngIsValid"
+          @click="setLatLng"
+          class="button is-link is-light ml-3"
+        >
+          Get data for {{ parsedLatLng?.lat }}, {{ parsedLatLng?.lng }}
+        </button>
+      </div>
+      <p class="help" v-html="fieldMessage" />
+    </div>
   </div>
 </template>
 
@@ -200,8 +206,12 @@ onUnmounted(() => {
   background-color: $highlight;
 }
 
-:deep(.autoComplete_wrapper > ul > li[aria-selected="true"]) {
+:deep(.autoComplete_wrapper > ul > li[aria-selected='true']) {
   background-color: $highlight;
+}
+
+.selected-place button {
+  vertical-align: baseline;
 }
 
 #gimme {
