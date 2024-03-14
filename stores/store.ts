@@ -9,7 +9,7 @@ import { validSlug, slugToCamelCase } from '~/utils/slugs'
 export const useStore = defineStore('store', () => {
   const totalItemCount = ref(items.length)
   const filteredItems: Ref<Item[]> = ref(items)
-  const latLng = ref({} as LatLng)
+  const searchActive = ref(false)
 
   // Sort items with a priority field above items without a priority field.
   // For items with a priority field, lower numbers sort higher.
@@ -49,7 +49,6 @@ export const useStore = defineStore('store', () => {
   return {
     filteredItems,
     totalItemCount,
-    latLng,
     sortedFilteredItems,
     itemBySlug,
     itemHasComponent,

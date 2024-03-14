@@ -1,8 +1,8 @@
 <script lang="ts" setup>
 const store = useStore()
+const placesStore = usePlacesStore()
 const runtimeConfig = useRuntimeConfig()
-const latLng = computed(() => store.latLng)
-const latLngEmpty = computed(() => Object.keys(latLng.value).length === 0)
+const latLng = computed(() => placesStore.latLng)
 </script>
 
 <template>
@@ -21,9 +21,9 @@ const latLngEmpty = computed(() => Object.keys(latLng.value).length === 0)
         Spatial resolution: 1&#8239;km.
       </p>
       <LatLngSelector />
-      <div v-if="!latLngEmpty" class="mb-6">
+      <div v-if="!(latLng === undefined)" class="mb-6">
         <h5 class="title is-5">
-          Download data for {{ latLng.lat }}, {{ latLng.lng }}
+          Download data for {{ latLng?.lat }}, {{ latLng?.lng }}
         </h5>
         <ul>
           <li>
@@ -31,9 +31,9 @@ const latLngEmpty = computed(() => Object.keys(latLng.value).length === 0)
               :href="
                 runtimeConfig.public.apiUrl +
                 '/permafrost/point/gipl/' +
-                latLng.lat +
+                latLng?.lat +
                 '/' +
-                latLng.lng +
+                latLng?.lng +
                 '?format=csv'
               "
               >Download as CSV</a
@@ -44,9 +44,9 @@ const latLngEmpty = computed(() => Object.keys(latLng.value).length === 0)
               :href="
                 runtimeConfig.public.apiUrl +
                 '/permafrost/point/gipl/' +
-                latLng.lat +
+                latLng?.lat +
                 '/' +
-                latLng.lng
+                latLng?.lng
               "
               >Download as JSON</a
             >
