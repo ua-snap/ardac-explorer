@@ -112,7 +112,7 @@ onUnmounted(() => {
         download the data that is used to populate the table.
       </p>
 
-      <Gimme />
+      <Gimme label="Get table for lat/lon point:" />
 
       <div v-if="latLng && apiData">
         <div class="parameter">

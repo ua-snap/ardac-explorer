@@ -7,14 +7,11 @@ const props = defineProps<{
 import type { Data } from 'plotly.js-dist-min'
 
 const { $Plotly, $_ } = useNuxtApp()
-const store = useStore()
 const dataStore = useDataStore()
 const placesStore = usePlacesStore()
 
 const apiData = computed<any[]>(() => dataStore.apiData)
-const dataError = computed<boolean>(() => dataStore.dataError)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
-const errorMsg = ref('')
 
 let chartData: any
 
@@ -168,7 +165,11 @@ const buildChart = () => {
       {
         title: {
           text:
-            props.label + ' for ' + placesStore.latLng?.lat + ', ' + placesStore.latLng?.lng,
+            props.label +
+            ' for ' +
+            placesStore.latLng?.lat +
+            ', ' +
+            placesStore.latLng?.lng,
           font: {
             size: 24,
           },
@@ -212,16 +213,8 @@ watch(apiData, async () => {
 })
 
 watch(latLng, async () => {
-  errorMsg.value = ''
   $Plotly.purge('chart')
   dataStore.fetchData(props.endpoint)
-})
-
-watch(dataError, async () => {
-  if (dataError.value === true) {
-    errorMsg.value =
-      'There was an error fetching data for this location. Please try another location.'
-  }
 })
 
 onUnmounted(() => {
@@ -230,7 +223,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <LatLngSelector label="Get chart for lat/lon point:" :errorMsg="errorMsg" />
+  <Gimme label="Get chart for lat/lon point:" />
   <div id="chart"></div>
 </template>
 
