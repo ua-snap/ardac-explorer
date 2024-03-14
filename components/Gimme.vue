@@ -168,7 +168,7 @@ onUnmounted(() => {
 
 <template>
   <div class="content is-size-4">
-    Testing: <Code>placesStore.latLng</Code> {{ placesStore.latLng }}
+    Testing: <Code>placesStore.latLng = </Code> {{ placesStore.latLng }}
   </div>
   <div v-show="placeIsSelected" class="clearPlace">
     Showing data for {{ placeName }}.
