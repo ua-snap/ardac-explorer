@@ -1,6 +1,11 @@
 import { defineStore } from 'pinia'
 import items from '~/assets/items'
 
+// To determine if an item has a component
+import type { ConcreteComponent } from 'vue'
+import { getCurrentInstance } from 'vue'
+import { validSlug, slugToCamelCase } from '~/utils/slugs'
+
 export const useStore = defineStore('store', () => {
   const totalItemCount = ref(items.length)
   const filteredItems: Ref<Item[]> = ref(items)
@@ -23,11 +28,29 @@ export const useStore = defineStore('store', () => {
     return items.find(item => item.slug === slug)!
   }
 
+  // True if the item has an implemented component.
+  // There's code duplication between this and pages/item/[slug]
+  // but this is probably interim code -- consider refactoring
+  // before merge?
+  const itemHasComponent = (item: Item): boolean => {
+    let slugString = item.slug
+    if (!validSlug(slugString)) {
+      return false
+    }
+    let camelCaseString = slugToCamelCase(slugString)
+
+    let vueComponents = getCurrentInstance()?.appContext.components
+    if (vueComponents?.hasOwnProperty(camelCaseString)) {
+      return true
+    }
+    return false
+  }
+
   return {
     filteredItems,
-    searchActive,
     totalItemCount,
     sortedFilteredItems,
     itemBySlug,
+    itemHasComponent,
   }
 })
