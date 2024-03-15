@@ -62,6 +62,7 @@ const mapId = 'beetles'
 mapStore.setLegendItems(mapId, legend)
 
 watch(latLng, async () => {
+  dataStore.apiData = null
   dataStore.fetchData('beetles')
 })
 
@@ -112,7 +113,7 @@ onUnmounted(() => {
         download the data that is used to populate the table.
       </p>
 
-      <Gimme label="Get table for lat/lon point:" />
+      <Gimme />
 
       <div v-if="latLng && apiData">
         <div class="parameter">

@@ -254,11 +254,14 @@ const buildChart = () => {
 
 watch(latLng, async () => {
   $Plotly.purge('chart')
+  dataStore.apiData = null
   dataStore.fetchData('landfastSeaIce')
 })
 
 watch([apiData, yearInput], async () => {
-  buildChart()
+  if (apiData.value) {
+    buildChart()
+  }
 })
 
 onUnmounted(() => {
@@ -322,7 +325,7 @@ onUnmounted(() => {
 
       <!-- TODO: Put some thought into the bbox. -->
       <Gimme
-        label="Get chart for lat/lon point:"
+        label="Get chart and data for lat/lon point:"
         :bbox="[-179.1506, 0, -129.9795, 90]"
       />
 

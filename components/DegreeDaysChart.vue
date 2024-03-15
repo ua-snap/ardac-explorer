@@ -214,6 +214,7 @@ watch(apiData, async () => {
 
 watch(latLng, async () => {
   $Plotly.purge('chart')
+  dataStore.apiData = null
   dataStore.fetchData(props.endpoint)
 })
 
@@ -223,7 +224,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Gimme label="Get chart for lat/lon point:" />
+  <Gimme />
   <div id="chart"></div>
 </template>
 

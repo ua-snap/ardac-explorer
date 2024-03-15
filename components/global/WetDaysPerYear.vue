@@ -120,7 +120,6 @@ const getPlotValues = (minYear: number, maxYear: number, model: string) => {
 
 const buildChart = () => {
   if (apiData.value) {
-    console.log(apiData.value)
     let models = ['GFDL-CM3', 'NCAR-CCSM4']
     let eras = ['2020-2049', '2050-2079', '2080-2099']
 
@@ -256,6 +255,7 @@ watch(apiData, async () => {
 
 watch(latLng, async () => {
   $Plotly.purge('chart')
+  dataStore.apiData = null
   dataStore.fetchData('wetDaysPerYear')
 })
 
@@ -305,7 +305,7 @@ onUnmounted(() => {
         download the data that is used to populate the chart.
       </p>
 
-      <Gimme label="Get chart for lat/lon point:" />
+      <Gimme />
       <div id="chart"></div>
       <div v-if="latLng && apiData" class="my-6">
         <h4 class="title is-4">
