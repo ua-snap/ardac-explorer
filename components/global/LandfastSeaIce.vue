@@ -216,7 +216,10 @@ const buildChart = () => {
           'Landfast sea ice for ' +
           latLng.value?.lat +
           ', ' +
-          latLng.value?.lng,
+          latLng.value?.lng +
+          '<br />' +
+          'Year: ' +
+          yearInput.value,
         font: {
           size: 24,
         },
