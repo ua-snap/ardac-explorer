@@ -187,7 +187,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <LatLngSelector label="Get chart for lat/lon point:" :errorMsg="errorMsg" />
+  <LatLngSelector
+    label="Get chart and data for lat/lon point:"
+    :errorMsg="errorMsg"
+  />
   <div v-if="apiData">
     <div class="control mb-2">
       <label v-for="season in Object.keys(seasonLabels)" class="radio mr-3">

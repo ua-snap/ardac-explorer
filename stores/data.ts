@@ -1,16 +1,19 @@
 import { defineStore } from 'pinia'
 const runtimeConfig = useRuntimeConfig()
-const store = useStore()
 const placesStore = usePlacesStore()
 
 const endpoints: Record<string, string> = {
+  beetles: '/beetles/point/',
+  degreeDaysBelow0: '/degree_days/below_zero/',
   heatingDegreeDays: '/degree_days/heating/',
   indicators: '/indicators/base/point/',
+  landfastSeaIce: '/landfastice/point/',
   freezingIndex: '/degree_days/freezing_index/',
   precipitation: '/precipitation/point/',
   precipitationFrequency: '/precipitation/frequency/point/',
   temperature: '/temperature/point/',
   thawingIndex: '/degree_days/thawing_index/',
+  wetDaysPerYear: '/wet_days_per_year/all/point/',
 }
 
 export const useDataStore = defineStore('data', () => {
@@ -20,7 +23,7 @@ export const useDataStore = defineStore('data', () => {
   const dataError: Ref<boolean> = ref(false)
 
   const fetchData = async (dataset: string) => {
-    if(placesStore.latLng === undefined) {
+    if (placesStore.latLng === undefined) {
       return // do not try
     }
     apiData.value = null

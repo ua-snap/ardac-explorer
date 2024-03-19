@@ -1,17 +1,55 @@
 <script lang="ts" setup>
-const props = defineProps<{
-  endpoint: string
-  label: string
-}>()
-
 import type { Data } from 'plotly.js-dist-min'
+import { useMapStore } from '~/stores/map'
 
 const { $Plotly, $_ } = useNuxtApp()
-const dataStore = useDataStore()
-const placesStore = usePlacesStore()
 
-const apiData = computed<any[]>(() => dataStore.apiData)
+const placesStore = usePlacesStore()
+const mapStore = useMapStore()
+const dataStore = useDataStore()
+const runtimeConfig = useRuntimeConfig()
+
+const apiData = computed<Record<string, any>>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
+
+const layers: MapLayer[] = [
+  {
+    id: 'wdpy_historical_era',
+    title: '1980–2009, ERA-Interim',
+    source: 'rasdaman',
+    wmsLayerName: 'wet_days_per_year',
+    style: 'ardac_wdpy_historical_era',
+    legend: 'wdpy',
+  },
+  {
+    id: 'wdpy_midcentury_era',
+    title: '2040–2069, NCAR CCSM4, RCP 8.5',
+    source: 'rasdaman',
+    wmsLayerName: 'wet_days_per_year',
+    style: 'ardac_wdpy_midcentury_era',
+    legend: 'wdpy',
+  },
+  {
+    id: 'wdpy_latecentury_era',
+    title: '2070–2099, NCAR CCSM4, RCP 8.5',
+    source: 'rasdaman',
+    wmsLayerName: 'wet_days_per_year',
+    style: 'ardac_wdpy_latecentury_era',
+    legend: 'wdpy',
+  },
+]
+
+const legend: Record<string, LegendItem[]> = {
+  wdpy: [
+    { color: '#edf8fb', label: '&ge;0 days, &lt;60 days' },
+    { color: '#ccece6', label: '&ge;60 days, &lt;120 days' },
+    { color: '#99d8c9', label: '&ge;120 days, &lt;180 days' },
+    { color: '#66C2a4', label: '&ge;180 days' },
+  ],
+}
+
+const mapId = 'wdpy'
+mapStore.setLegendItems(mapId, legend)
 
 let chartData: any
 
@@ -25,7 +63,7 @@ const getPlotValues = (minYear: number, maxYear: number, model: string) => {
   let degreeDays: number[] = []
 
   years.forEach((year: number) => {
-    degreeDays.push(chartData[model][year]['dd'])
+    degreeDays.push(chartData[model][year]['wdpy'])
   })
 
   // Group yearly values into decade buckets to make it easier to calculate
@@ -82,6 +120,9 @@ const getPlotValues = (minYear: number, maxYear: number, model: string) => {
 
 const buildChart = () => {
   if (apiData.value) {
+    let models = ['GFDL-CM3', 'NCAR-CCSM4']
+    let eras = ['2020-2049', '2050-2079', '2080-2099']
+
     let traces: Data[] = []
     let allDecades: string[] = ['']
     chartData = dataStore.apiData
@@ -126,6 +167,7 @@ const buildChart = () => {
         params.maxYear,
         params.model
       )
+
       let ticks = $_.range(0, plotValues.decades.length + 1)
 
       // Offset the chart markers/bars slightly so they don't overlap.
@@ -165,11 +207,10 @@ const buildChart = () => {
       {
         title: {
           text:
-            props.label +
-            ' for ' +
-            placesStore.latLng?.lat +
+            'Wet days per year for ' +
+            latLng.value?.lat +
             ', ' +
-            placesStore.latLng?.lng,
+            latLng.value?.lng,
           font: {
             size: 24,
           },
@@ -182,7 +223,7 @@ const buildChart = () => {
         },
         yaxis: {
           title: {
-            text: props.label + ' (°F⋅days)',
+            text: 'Wet days per year',
             font: {
               size: 18,
             },
@@ -215,7 +256,7 @@ watch(apiData, async () => {
 watch(latLng, async () => {
   $Plotly.purge('chart')
   dataStore.apiData = null
-  dataStore.fetchData(props.endpoint)
+  dataStore.fetchData('wetDaysPerYear')
 })
 
 onUnmounted(() => {
@@ -224,8 +265,83 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Gimme />
-  <div id="chart"></div>
+  <section class="section">
+    <div class="content is-size-5">
+      <h3 class="title is-3">Wet Days Per Year</h3>
+      <p class="mb-6">
+        A wet day is defined as a day with precipitation accumulation greater
+        than or equal to 1.0㎜. The map below shows the 30-year mean of wet days
+        per year for three eras. The historical era (1980&ndash;2009) uses
+        historical modeled data provided by the ERA-Interim model. The mid
+        century (2040&ndash;2069) and late century (2070&ndash;2099) eras use
+        modeled projections from the NCAR CCSM4 model under the RCP 8.5
+        emissions scenario.
+      </p>
+
+      <MapBlock :mapId="mapId" class="mb-6">
+        <template v-slot:layers>
+          <MapLayer :mapId="mapId" :layer="layers[0]" default>
+            <template v-slot:title>{{ layers[0].title }}</template>
+          </MapLayer>
+          <MapLayer :mapId="mapId" :layer="layers[1]">
+            <template v-slot:title>{{ layers[1].title }}</template>
+          </MapLayer>
+          <MapLayer :mapId="mapId" :layer="layers[2]">
+            <template v-slot:title>{{ layers[2].title }}</template>
+          </MapLayer>
+        </template>
+      </MapBlock>
+
+      <p>
+        Enter lat/lon coordinates below to see a chart of the wet days per year
+        for a point location. This chart displays min/mean/max values for
+        historical decades using the ERA-Interim model and projected decades
+        using both the GFDL CM3 and NCAR CCSM4 models under the RCP 8.5
+        emissions scenario.
+      </p>
+
+      <p>
+        After entering lat/lon coordinates, links will be provided where you can
+        download the data that is used to populate the chart.
+      </p>
+
+      <Gimme />
+      <div id="chart"></div>
+      <div v-if="latLng && apiData" class="my-6">
+        <h4 class="title is-4">
+          Download wet days per year data for {{ latLng.lat }},
+          {{ latLng.lng }}
+        </h4>
+        <ul>
+          <li>
+            <a
+              :href="
+                runtimeConfig.public.apiUrl +
+                '/wet_days_per_year/all/point/' +
+                latLng.lat +
+                '/' +
+                latLng.lng +
+                '?format=csv'
+              "
+              >Download as CSV</a
+            >
+          </li>
+          <li>
+            <a
+              :href="
+                runtimeConfig.public.apiUrl +
+                '/wet_days_per_year/all/point/' +
+                latLng.lat +
+                '/' +
+                latLng.lng
+              "
+              >Download as JSON</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </section>
 </template>
 
-<style scoped></style>
+<style lang="scss" scoped></style>

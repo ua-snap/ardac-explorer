@@ -5,7 +5,7 @@ type Slug =
   | 'indicator-hd'
   | 'indicator-cd'
   | 'indicator-wsdi'
-  | 'indicator-cdsi'
+  | 'indicator-csdi'
   | 'wet-days-per-year'
   | 'dd-below-65'
   | 'dd-below-0'

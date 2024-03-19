@@ -3,12 +3,8 @@
 // [ lower-left lng, lower-left lat, upper-right lng, upper-right lat ]
 const props = defineProps<{
   bbox?: number[]
-  label?: string
 }>()
 
-import items from '~/assets/items'
-
-const store = useStore()
 const placesStore = usePlacesStore()
 let communities = placesStore.fetchCommunities()
 
@@ -22,7 +18,6 @@ const placeSelectionType: Ref<PlaceType> = ref(undefined) // community | latLng
 const selectedCommunityName = ref('') // i.e. Fairbanks, etc
 const inputValue = ref('') // input value for autocompleter
 const gimmeInput = ref() // DOM element of #gimme
-const gimmeInputB = ref() // DOM element of #gimme
 
 onMounted(() => {
   let config = {
@@ -48,10 +43,7 @@ onMounted(() => {
     },
     // Intercept/test for valid Lat/Lng
     query: (input: string) => {
-      let result = validate(input)
-      if (result) {
-        placesStore.latLng = result
-      }
+      validate(input)
       return input
     },
   }
