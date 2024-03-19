@@ -9,42 +9,42 @@ const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const layers: MapLayer[] = [
   {
-    id: 'glacier_melt_historical_era',
+    id: 'evap_historical_era',
     title: '1980–2009, CanESM2, RCP 8.5',
     source: 'rasdaman',
     wmsLayerName: 'hydrology',
-    style: 'ardac_glacier_melt_historical_era',
-    legend: 'glacier_melt',
+    style: 'ardac_evap_historical_era',
+    legend: 'evap',
   },
   {
-    id: 'glacier_melt_midcentury_era',
+    id: 'evap_midcentury_era',
     title: '2040–2069, CanESM2, RCP 8.5',
     source: 'rasdaman',
     wmsLayerName: 'hydrology',
-    style: 'ardac_glacier_melt_midcentury_era',
-    legend: 'glacier_melt',
+    style: 'ardac_evap_midcentury_era',
+    legend: 'evap',
   },
   {
-    id: 'glacier_melt_latecentury_era',
+    id: 'evap_latecentury_era',
     title: '2070–2099, CanESM2, RCP 8.5',
     source: 'rasdaman',
     wmsLayerName: 'hydrology',
-    style: 'ardac_glacier_melt_latecentury_era',
-    legend: 'glacier_melt',
+    style: 'ardac_evap_latecentury_era',
+    legend: 'evap',
   },
 ]
 
 const legend: Record<string, LegendItem[]> = {
-  glacier_melt: [
-    { color: '#9ecae1', label: '&ge;0m, &lt;5m' },
-    { color: '#6baed6', label: '&ge;5m, &lt;10m' },
-    { color: '#4292c6', label: '&ge;10m, &lt;15m' },
-    { color: '#2171b5', label: '&ge;15m, &lt;20m' },
-    { color: '#084594', label: '&ge;20m' },
+  evap: [
+    { color: '#edf8fb', label: '&ge;0㎜, &lt;20㎜' },
+    { color: '#b2e2e2', label: '&ge;20㎜, &lt;40㎜' },
+    { color: '#66c2a4', label: '&ge;40㎜, &lt;60㎜' },
+    { color: '#2ca25f', label: '&ge;60㎜, &lt;80㎜' },
+    { color: '#006d2c', label: '&ge;80㎜' },
   ],
 }
 
-const mapId = 'glacier_melt'
+const mapId = 'evap'
 mapStore.setLegendItems(mapId, legend)
 
 onUnmounted(() => {
@@ -55,10 +55,10 @@ onUnmounted(() => {
 <template>
   <section class="section">
     <div class="content is-size-5">
-      <h3 class="title is-3">Glacier Melt</h3>
+      <h3 class="title is-3">Evapotranspiration</h3>
       <p class="mb-6">
-        The map below shows the 30-year mean annual glacier melt for three eras
-        using the CanESM2 model under the RCP 8.5 emissions scenario.
+        The map below shows the 30-year mean annual evapotranspiration for three
+        eras using the CanESM2 model under the RCP 8.5 emissions scenario.
       </p>
 
       <MapBlock :mapId="mapId" class="mb-6">
@@ -76,23 +76,23 @@ onUnmounted(() => {
       </MapBlock>
 
       <p>
-        Enter a location below to see a chart of mean annual glacier melt per
-        decade for a point location using the CanESM2 model and the selected
+        Enter a location below to see a chart of mean annual evapotranspiration
+        per decade for a point location using the CanESM2 model and the selected
         emissions scenario and month. After entering a location, links will be
         provided where you can download the data that is used to populate the
         chart.
       </p>
 
-      <HydrologyChart label="Glacier melt" units="㎜" dataKey="glacier_melt" />
+      <HydrologyChart label="Evapotranspiration" units="㎜" dataKey="evap" />
 
       <div v-if="latLng && apiData" class="my-6">
         <h4 class="title is-4">
-          Download glacier melt data for {{ latLng.lat }},
+          Download evapotranspiration data for {{ latLng.lat }},
           {{ latLng.lng }}
         </h4>
         <p>
-          The following download links bundle glacier melt data with other
-          hydrology data. Glacier melt uses the "glacier_melt" identifier.
+          The following download links bundle evapotranspiration data with other
+          hydrology data. Glacier melt uses the "evap" identifier.
         </p>
         <ul>
           <li>
