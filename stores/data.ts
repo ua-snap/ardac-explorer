@@ -5,6 +5,7 @@ const placesStore = usePlacesStore()
 
 const endpoints: Record<string, string> = {
   heatingDegreeDays: '/degree_days/heating/',
+  hydrology: '/hydrology/point/',
   indicators: '/indicators/base/point/',
   freezingIndex: '/degree_days/freezing_index/',
   precipitation: '/precipitation/point/',
@@ -20,7 +21,7 @@ export const useDataStore = defineStore('data', () => {
   const dataError: Ref<boolean> = ref(false)
 
   const fetchData = async (dataset: string) => {
-    if(placesStore.latLng === undefined) {
+    if (placesStore.latLng === undefined) {
       return // do not try
     }
     apiData.value = null

@@ -44,10 +44,7 @@ onMounted(() => {
     },
     // Intercept/test for valid Lat/Lng
     query: (input: string) => {
-      let result = validate(input)
-      if (result) {
-        placesStore.latLng = result
-      }
+      validate(input)
       return input
     },
   }

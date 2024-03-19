@@ -193,7 +193,7 @@ const legend: Record<string, LegendItem[]> = {
   ],
 }
 
-const mapId = 'beetles'
+const mapId = 'pf'
 mapStore.setLegendItems(mapId, legend)
 
 watch([apiData, durationInput, returnIntervalInput], async () => {
@@ -221,7 +221,7 @@ onUnmounted(() => {
 <template>
   <section class="section">
     <div class="content is-size-5">
-      <h3 class="title is-3">Precipitation frequency</h3>
+      <h3 class="title is-3">Precipitation Frequency</h3>
       <p class="mb-6">
         Precipitation frequency is the expected maximum precipitation in
         millimeters for the provided duration and return interval. The map below
@@ -259,11 +259,6 @@ onUnmounted(() => {
       </p>
 
       <Gimme />
-
-      <!-- <LatLngSelector
-        label="Get chart for lat/lon point:"
-        :errorMsg="errorMsg"
-      /> -->
 
       <div v-if="apiData">
         <div class="chart-input">
