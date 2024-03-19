@@ -6,7 +6,9 @@
       <div class="briefs column is-3 pr-5 border-right">
         <div class="content is-size-5 hello">
           <p>
-            Hello!  Looking for an <NuxtLink to="/overview">overview of the content</NuxtLink> available here?  <NuxtLink to="/overview">&#x2192; read</NuxtLink>
+            Hello! Looking for an
+            <NuxtLink to="/overview">overview of the content</NuxtLink>
+            available here? <NuxtLink to="/overview">&#x2192; read</NuxtLink>
           </p>
         </div>
 
@@ -50,9 +52,6 @@
         </ul>
       </div>
       <div class="featured column is-6 px-5">
-        <div>
-          <Gimme />
-        </div>
         <div class="tile is-ancestor">
           <div class="tile is-parent is-vertical">
             <div class="tile lead is-child border-bottom">
