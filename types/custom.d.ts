@@ -9,13 +9,13 @@ interface Item {
 }
 
 interface Community {
-  id: string,
-  name: string,
-  alt_name?: string,
-  region: string,
-  country: string,
-  latitude: number,
-  longitude: number,
+  id: string
+  name: string
+  alt_name?: string
+  region: string
+  country: string
+  latitude: number
+  longitude: number
   type: string
 }
 
@@ -47,6 +47,18 @@ interface LatLng {
   lng: number
 }
 
+interface HydrologyChartLabels {
+  scenarios: Record<string, string>
+  months: Record<string, string>
+}
+interface HydrologyInputsParams {
+  scenario: string
+  month: string
+}
+
 type LatLngValue = LatLng | undefined
 
 type PlaceType = 'community' | 'latLng' | undefined
+
+type HydrologyChartLabelsObj = HydrologyChartLabels | undefined
+type HydrologyChartInputsObj = HydrologyChartInputs | undefined

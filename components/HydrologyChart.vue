@@ -10,35 +10,18 @@ import type { Data } from 'plotly.js-dist-min'
 const { $Plotly, $_ } = useNuxtApp()
 const dataStore = useDataStore()
 const placesStore = usePlacesStore()
-
-const scenarioInput = defineModel('scenario', { default: 'rcp85' })
-const monthInput = defineModel('month', { default: 'jun' })
+const chartStore = useChartStore()
 
 const apiData = computed<any[]>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
-const scenarioLabels: Record<string, string> = {
-  rcp45: 'RCP 4.5',
-  rcp85: 'RCP 8.5',
-}
+const chartLabels = computed<HydrologyChartLabelsObj>(() => chartStore.labels)
+const chartInputs = computed<HydrologyChartInputsObj>(() => chartStore.inputs)
 
-const monthLabels: Record<string, string> = {
-  jan: 'January',
-  feb: 'February',
-  mar: 'March',
-  apr: 'April',
-  may: 'May',
-  jun: 'June',
-  jul: 'July',
-  aug: 'August',
-  sep: 'September',
-  oct: 'October',
-  nov: 'November',
-  dec: 'December',
-}
+const chartId = computed<string>(() => props.dataKey + '-chart')
 
 const buildChart = () => {
-  if (apiData.value) {
+  if (apiData.value && chartLabels.value && chartInputs.value) {
     let decades = [
       '1950-1959',
       '1960-1969',
@@ -63,7 +46,9 @@ const buildChart = () => {
 
     decades.forEach(decade => {
       let decadeData =
-        chartData['CanESM2'][scenarioInput.value][monthInput.value][decade]
+        chartData['CanESM2'][chartStore.inputs.scenario][
+          chartStore.inputs.month
+        ][decade]
       let mean = decadeData[props.dataKey]
       means.push(mean)
     })
@@ -85,7 +70,7 @@ const buildChart = () => {
     }
 
     $Plotly.newPlot(
-      'chart',
+      chartId.value,
       traces,
       {
         title: {
@@ -97,9 +82,9 @@ const buildChart = () => {
             placesStore.latLng?.lng +
             '<br />' +
             'Scenario: ' +
-            scenarioLabels[scenarioInput.value] +
+            chartLabels.value.scenarios[chartInputs.value.scenario] +
             ', Month: ' +
-            monthLabels[monthInput.value],
+            chartLabels.value.months[chartInputs.value.month],
           font: {
             size: 24,
           },
@@ -132,12 +117,16 @@ const buildChart = () => {
   }
 }
 
-watch([apiData, scenarioInput, monthInput], async () => {
-  buildChart()
+watch([apiData, chartLabels, chartInputs], async () => {
+  $Plotly.purge(chartId.value)
+  if (apiData.value) {
+    buildChart()
+  }
 })
 
 watch(latLng, async () => {
-  $Plotly.purge('chart')
+  $Plotly.purge(chartId.value)
+  dataStore.apiData = null
   dataStore.fetchData('hydrology')
 })
 
@@ -147,40 +136,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Gimme />
-  <div v-if="latLng && apiData">
-    <div class="parameter">
-      <label for="scenario" class="label">Scenario:</label>
-      <div class="select mb-5 mr-3">
-        <select id="scenario" v-model="scenarioInput">
-          <option
-            v-for="scenario in Object.keys(scenarioLabels)"
-            :value="scenario"
-          >
-            {{ scenarioLabels[scenario] }}
-          </option>
-        </select>
-      </div>
-    </div>
-    <div class="parameter mb-5">
-      <label for="month" class="label">Month:</label>
-      <div class="select">
-        <select id="month" v-model="monthInput">
-          <option v-for="month in Object.keys(monthLabels)" :value="month">
-            {{ monthLabels[month] }}
-          </option>
-        </select>
-      </div>
-    </div>
-  </div>
-  <div id="chart"></div>
+  <div :id="chartId"></div>
 </template>
 
-<style lang="scss" scoped>
-.parameter {
-  display: inline-block;
-  select {
-    background-color: $white-lighter;
-  }
-}
-</style>
+<style lang="scss" scoped></style>

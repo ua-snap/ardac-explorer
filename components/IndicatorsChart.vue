@@ -103,7 +103,6 @@ const buildChart = () => {
       let offsetTicks = ticks.slice(1).map(tick => tick + offsets[model])
 
       projectedEras.forEach(era => {
-        console.log(era)
         let scenarioData = chartData[era][model][scenarioInput.value]
         let mean = scenarioData['mean']
         let max = scenarioData['max']

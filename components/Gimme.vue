@@ -161,8 +161,6 @@ const dataStore = useDataStore()
 const dataError = computed<boolean>(() => dataStore.dataError)
 watch(dataError, async () => {
   if (dataError.value == true) {
-    console.log('dataError')
-    console.log(dataError.value)
     fieldMessage.value =
       '⚠️ Failed to load data for the selected location. Please choose a different location.'
   }

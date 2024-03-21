@@ -36,11 +36,11 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   glacier_melt: [
-    { color: '#9ecae1', label: '&ge;0m, &lt;5m' },
-    { color: '#6baed6', label: '&ge;5m, &lt;10m' },
-    { color: '#4292c6', label: '&ge;10m, &lt;15m' },
-    { color: '#2171b5', label: '&ge;15m, &lt;20m' },
-    { color: '#084594', label: '&ge;20m' },
+    { color: '#9ecae1', label: '&ge;0m, &lt;20m' },
+    { color: '#6baed6', label: '&ge;20m, &lt;40m' },
+    { color: '#4292c6', label: '&ge;40m, &lt;60m' },
+    { color: '#2171b5', label: '&ge;60m, &lt;80m' },
+    { color: '#084594', label: '&ge;80m' },
   ],
 }
 
@@ -83,6 +83,8 @@ onUnmounted(() => {
         chart.
       </p>
 
+      <Gimme />
+      <HydrologyChartControls />
       <HydrologyChart label="Glacier melt" units="㎜" dataKey="glacier_melt" />
 
       <div v-if="latLng && apiData" class="my-6">
