@@ -44,3 +44,15 @@ npx nuxi add component global/MapComponent
 ```
 
 ...which will add a Vue SFC file in the right place.  Now, that component can be accessed by clicking on the item you just created.
+
+#### Converting Jupyter notebooks to items
+
+Follow the pattern used in the `global/NotebookPermObsTemp` component.  To transform the HTML before copy/pasting it into the slot, activate a Conda environment with Jupyter and `nbconvert` and `tidy` (probably already installed in MacOS) then:
+
+```bash
+jupyter nbconvert --to html --template basic notebook.ipynb
+tidy -i -m notebook.html
+sed -i '' 's/class\=\"input\"//' notebook.html
+```
+
+This does a bit of cleanup and removes one class that will clash with Bulma.  Finally, copy paste everything in the `<body>` tag of the cleaned HTML into the `<slot>` in the `NotebookTemplate` component.

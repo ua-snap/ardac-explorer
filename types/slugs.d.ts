@@ -14,7 +14,7 @@ type Slug =
   | 'story-arctic-in-2100'
   | 'notebook-corporation-hdd'
   | 'notebook-raster-database'
-  | 'notebook-frosth-depth'
+  | 'notebook-frost-depth'
   | 'notebook-design-freezing-index'
   | 'notebook-design-thawing-index'
   | 'climate-beetle-protection'
