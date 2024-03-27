@@ -89,6 +89,9 @@ const buildChart = () => {
             size: 24,
           },
         },
+        xaxis: {
+          tickangle: 45,
+        },
         yaxis: {
           title: {
             text: yAxisLabel,

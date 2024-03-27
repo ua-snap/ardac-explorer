@@ -51,6 +51,7 @@ interface HydrologyChartLabels {
   scenarios: Record<string, string>
   months: Record<string, string>
 }
+
 interface HydrologyInputsParams {
   scenario: string
   month: string

@@ -10,7 +10,7 @@ const latLng = computed<LatLngValue>(() => placesStore.latLng)
 const layers: MapLayer[] = [
   {
     id: 'iwe_historical_era',
-    title: '1980–2009, CanESM2, RCP 8.5',
+    title: 'Ice Water Equivalent, 1980–2009, CanESM2, RCP 8.5',
     source: 'rasdaman',
     wmsLayerName: 'hydrology',
     style: 'ardac_iwe_historical_era',
@@ -18,7 +18,7 @@ const layers: MapLayer[] = [
   },
   {
     id: 'iwe_midcentury_era',
-    title: '2040–2069, CanESM2, RCP 8.5',
+    title: 'Ice Water Equivalent, 2040–2069, CanESM2, RCP 8.5',
     source: 'rasdaman',
     wmsLayerName: 'hydrology',
     style: 'ardac_iwe_midcentury_era',
@@ -26,7 +26,7 @@ const layers: MapLayer[] = [
   },
   {
     id: 'iwe_latecentury_era',
-    title: '2070–2099, CanESM2, RCP 8.5',
+    title: 'Ice Water Equivalent, 2070–2099, CanESM2, RCP 8.5',
     source: 'rasdaman',
     wmsLayerName: 'hydrology',
     style: 'ardac_iwe_latecentury_era',
@@ -34,7 +34,7 @@ const layers: MapLayer[] = [
   },
   {
     id: 'swe_historical_era',
-    title: '1980–2009, CanESM2, RCP 8.5',
+    title: 'Snow Water Equivalent, 1980–2009, CanESM2, RCP 8.5',
     source: 'rasdaman',
     wmsLayerName: 'hydrology',
     style: 'ardac_swe_historical_era',
@@ -42,7 +42,7 @@ const layers: MapLayer[] = [
   },
   {
     id: 'swe_midcentury_era',
-    title: '2040–2069, CanESM2, RCP 8.5',
+    title: 'Snow Water Equivalent, 2040–2069, CanESM2, RCP 8.5',
     source: 'rasdaman',
     wmsLayerName: 'hydrology',
     style: 'ardac_swe_midcentury_era',
@@ -50,7 +50,7 @@ const layers: MapLayer[] = [
   },
   {
     id: 'swe_latecentury_era',
-    title: '2070–2099, CanESM2, RCP 8.5',
+    title: 'Snow Water Equivalent, 2070–2099, CanESM2, RCP 8.5',
     source: 'rasdaman',
     wmsLayerName: 'hydrology',
     style: 'ardac_swe_latecentury_era',
@@ -96,38 +96,32 @@ onUnmounted(() => {
       <MapBlock :mapId="mapId" class="mb-6">
         <template v-slot:layers>
           <MapLayer :mapId="mapId" :layer="layers[0]" default>
-            <template v-slot:title>Ice Water Equivalent</template>
-            <template v-slot:subtext>{{ layers[0].title }}</template>
+            <template v-slot:title>{{ layers[0].title }}</template>
           </MapLayer>
           <MapLayer :mapId="mapId" :layer="layers[1]">
-            <template v-slot:title>Ice Water Equivalent</template>
-            <template v-slot:subtext>{{ layers[1].title }}</template>
+            <template v-slot:title>{{ layers[1].title }}</template>
           </MapLayer>
           <MapLayer :mapId="mapId" :layer="layers[2]">
-            <template v-slot:title>Ice Water Equivalent</template>
-            <template v-slot:subtext>{{ layers[2].title }}</template>
+            <template v-slot:title>{{ layers[2].title }}</template>
           </MapLayer>
           <MapLayer :mapId="mapId" :layer="layers[3]">
-            <template v-slot:title>Snow Water Equivalent</template>
-            <template v-slot:subtext>{{ layers[3].title }}</template>
+            <template v-slot:title>{{ layers[3].title }}</template>
           </MapLayer>
           <MapLayer :mapId="mapId" :layer="layers[4]">
-            <template v-slot:title>Snow Water Equivalent</template>
-            <template v-slot:subtext>{{ layers[4].title }}</template>
+            <template v-slot:title>{{ layers[4].title }}</template>
           </MapLayer>
           <MapLayer :mapId="mapId" :layer="layers[5]">
-            <template v-slot:title>Snow Water Equivalent</template>
-            <template v-slot:subtext>{{ layers[5].title }}</template>
+            <template v-slot:title>{{ layers[5].title }}</template>
           </MapLayer>
         </template>
       </MapBlock>
 
       <p>
-        Enter a location below to see a chart of mean annual ice/snow water
+        Enter a location below to see charts of mean annual ice/snow water
         equivalent per decade for a point location using the CanESM2 model and
         the selected emissions scenario and month. After entering a location,
         links will be provided where you can download the data that is used to
-        populate the chart.
+        populate the charts.
       </p>
 
       <Gimme />
