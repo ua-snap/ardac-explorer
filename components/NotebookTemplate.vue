@@ -6,7 +6,7 @@ const props = defineProps(['jupyterlabUrl', 'githubUrl'])
   <section class="section">
     <div class="columns">
       <div class="column is-three-quarters notebook content is-size-5">
-        <div class="message is-info">
+        <div class="message">
           <div class="message-body content is-size-5">
             <span class="robot">🤖</span> This article describes using the
             <strong>Python programming language</strong> to access, process and
