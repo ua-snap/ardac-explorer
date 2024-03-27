@@ -60,6 +60,12 @@ const expandedText = computed(() => {
     }
     &.more {
       font-weight: 300;
+      &:hover {
+        cursor: pointer;
+        transition: 0.3s;
+        color: $link !important;
+        text-decoration: underline;
+      }
     }
   }
 }
