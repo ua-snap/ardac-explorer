@@ -1,9 +1,17 @@
 <script lang="ts" setup>
+const props = defineProps<{
+  defaultMonth?: string
+}>()
+
 const placesStore = usePlacesStore()
 const chartStore = useChartStore()
 
 const scenarioInput = defineModel('scenario', { default: 'rcp85' })
 const monthInput = defineModel('month', { default: 'jun' })
+
+if (props.defaultMonth) {
+  monthInput.value = props.defaultMonth
+}
 
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
