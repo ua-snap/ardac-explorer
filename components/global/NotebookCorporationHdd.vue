@@ -3,7 +3,7 @@
 <template>
   <NotebookTemplate
     notebookUrl="https://notebooks.earthmaps.io"
-    githubUrl="https://github.com/ua-snap/ardac-toolbox/blob/main/notebooks/nc_dddays.ipynb"
+    githubUrl="https://github.com/ua-snap/ardac-toolbox/blob/main/notebooks/nc_ddays.ipynb"
   >
     <div class="cell border-box-sizing text_cell rendered">
       <div class="prompt input_prompt"></div>

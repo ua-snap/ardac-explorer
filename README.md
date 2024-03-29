@@ -40,7 +40,7 @@ The item is now available for use in static layouts and will be included in any 
 To build the actual content for the item, add a Vue component in `components/global` named according to the slug pattern in CamelCase, i.e. `map-permafrost` would become `MapPermafrost`.  From the command line in the root of the project directory:
 
 ```bash
-npx nuxi add component global/MapComponent
+npx nuxi add component global/MapPermafrost
 ```
 
 ...which will add a Vue SFC file in the right place.  Now, that component can be accessed by clicking on the item you just created.
