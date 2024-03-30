@@ -10,6 +10,7 @@ const endpoints: Record<string, string> = {
   freezingIndex: '/degree_days/freezing_index/',
   precipitation: '/precipitation/point/',
   precipitationFrequency: '/precipitation/frequency/point/',
+  seaIceConcentration: '/seaice/point/',
   temperature: '/temperature/point/',
   thawingIndex: '/degree_days/thawing_index/',
 }
