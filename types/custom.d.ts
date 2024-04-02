@@ -24,6 +24,7 @@ type CommunityValue = Community | undefined
 interface MapLayer {
   id: string
   title: string
+  subtext?: string
   source?: 'rasdaman' | undefined
   wmsLayerName: string
   style: string
@@ -52,9 +53,17 @@ interface HydrologyChartLabels {
   months: Record<string, string>
 }
 
-interface HydrologyInputsParams {
+interface HydrologyChartInputs {
   scenario: string
   month: string
+}
+
+interface PermafrostChartLabels {
+  scenarios: Record<string, string>
+}
+
+interface PermafrostChartInputs {
+  scenario: string
 }
 
 type LatLngValue = LatLng | undefined
@@ -63,3 +72,6 @@ type PlaceType = 'community' | 'latLng' | undefined
 
 type HydrologyChartLabelsObj = HydrologyChartLabels | undefined
 type HydrologyChartInputsObj = HydrologyChartInputs | undefined
+
+type PermafrostChartLabelsObj = PermafrostChartLabels | undefined
+type PermafrostChartInputsObj = PermafrostChartInputs | undefined

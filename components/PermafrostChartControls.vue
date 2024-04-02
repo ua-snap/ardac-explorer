@@ -6,13 +6,7 @@ const props = defineProps<{
 const placesStore = usePlacesStore()
 const chartStore = useChartStore()
 
-const scenarioInput = defineModel('scenario', { default: 'rcp85' })
-const monthInput = defineModel('month', { default: 'jun' })
-
-if (props.defaultMonth) {
-  monthInput.value = props.defaultMonth
-}
-
+const scenarioInput = defineModel({ default: 'RCP 8.5' })
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const chartLabels = computed<HydrologyChartLabels>(
@@ -20,30 +14,12 @@ const chartLabels = computed<HydrologyChartLabels>(
 )
 
 chartStore.labels = {
-  scenarios: {
-    rcp45: 'RCP 4.5',
-    rcp85: 'RCP 8.5',
-  },
-  months: {
-    jan: 'January',
-    feb: 'February',
-    mar: 'March',
-    apr: 'April',
-    may: 'May',
-    jun: 'June',
-    jul: 'July',
-    aug: 'August',
-    sep: 'September',
-    oct: 'October',
-    nov: 'November',
-    dec: 'December',
-  },
+  scenarios: { 'RCP 4.5': 'RCP 4.5', 'RCP 8.5': 'RCP 8.5' },
 }
 
-watch([latLng, scenarioInput, monthInput], async () => {
+watch([latLng, scenarioInput], async () => {
   chartStore.inputs = {
     scenario: scenarioInput.value,
-    month: monthInput.value,
   }
 })
 </script>
@@ -59,19 +35,6 @@ watch([latLng, scenarioInput, monthInput], async () => {
             :value="scenario"
           >
             {{ chartLabels.scenarios[scenario] }}
-          </option>
-        </select>
-      </div>
-    </div>
-    <div class="parameter mb-5">
-      <label for="month" class="label">Month:</label>
-      <div class="select">
-        <select id="month" v-model="monthInput">
-          <option
-            v-for="month in Object.keys(chartLabels.months)"
-            :value="month"
-          >
-            {{ chartLabels.months[month] }}
           </option>
         </select>
       </div>

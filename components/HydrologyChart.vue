@@ -15,8 +15,12 @@ const chartStore = useChartStore()
 const apiData = computed<any[]>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
-const chartLabels = computed<HydrologyChartLabelsObj>(() => chartStore.labels)
-const chartInputs = computed<HydrologyChartInputsObj>(() => chartStore.inputs)
+const chartLabels = computed<HydrologyChartLabelsObj>(
+  () => chartStore.labels as HydrologyChartLabelsObj
+)
+const chartInputs = computed<HydrologyChartInputsObj>(
+  () => chartStore.inputs as HydrologyChartInputsObj
+)
 
 const chartId = computed<string>(() => props.dataKey + '-chart')
 
@@ -45,10 +49,9 @@ const buildChart = () => {
     let means: number[] = []
 
     decades.forEach(decade => {
-      let decadeData =
-        chartData['CanESM2'][chartStore.inputs.scenario][
-          chartStore.inputs.month
-        ][decade]
+      let scenario = chartInputs.value!.scenario
+      let month = chartInputs.value!.month
+      let decadeData = chartData['CanESM2'][scenario][month][decade]
       let mean = decadeData[props.dataKey]
       means.push(mean)
     })

@@ -8,6 +8,7 @@ const endpoints: Record<string, string> = {
   hydrology: '/hydrology/point/',
   indicators: '/indicators/base/point/',
   freezingIndex: '/degree_days/freezing_index/',
+  permafrost: '/permafrost/point/gipl/',
   precipitation: '/precipitation/point/',
   precipitationFrequency: '/precipitation/frequency/point/',
   seaIceConcentration: '/seaice/point/',
