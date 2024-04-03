@@ -161,6 +161,8 @@ const buildChart = () => {
 
     if (props.depth) {
       titleText += '<br />Depth: ' + props.depth + ', '
+    } else {
+      titleText += '<br />'
     }
 
     titleText += 'Scenario: ' + chartInputs.value.scenario
