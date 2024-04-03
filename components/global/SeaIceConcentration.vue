@@ -7,7 +7,7 @@ const runtimeConfig = useRuntimeConfig()
 const { $Plotly, $_ } = useNuxtApp()
 import type { Data } from 'plotly.js-dist-min'
 
-const monthInput = defineModel('month', { default: '3' })
+const monthInput = defineModel({ default: '3' })
 
 const apiData = computed<Record<string, any>>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
