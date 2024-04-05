@@ -4,6 +4,7 @@ const store = useStore()
 const placesStore = usePlacesStore()
 
 const endpoints: Record<string, string> = {
+  elevation: '/elevation/point/',
   heatingDegreeDays: '/degree_days/heating/',
   hydrology: '/hydrology/point/',
   indicators: '/indicators/base/point/',
