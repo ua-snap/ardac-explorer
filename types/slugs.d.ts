@@ -1,5 +1,4 @@
 type Slug =
-  | 'indicator-ftc'
   | 'indicator-su'
   | 'indicator-dw'
   | 'indicator-hd'
@@ -58,3 +57,7 @@ type Slug =
   | 'hydrology-cmip6'
   | 'solar-radiation-cloud-cover-cmip6'
   | 'snow-cmip6'
+  | 'indicator-ftc-cmip6'
+  | 'indicator-su-cmip6'
+  | 'indicator-dw-cmip6'
+  | 'indicator-rx1day-cmip6'

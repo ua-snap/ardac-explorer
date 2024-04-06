@@ -9,13 +9,13 @@ interface Item {
 }
 
 interface Community {
-  id: string,
-  name: string,
-  alt_name?: string,
-  region: string,
-  country: string,
-  latitude: number,
-  longitude: number,
+  id: string
+  name: string
+  alt_name?: string
+  region: string
+  country: string
+  latitude: number
+  longitude: number
   type: string
 }
 
@@ -47,6 +47,19 @@ interface LatLng {
   lng: number
 }
 
+interface IndicatorsCmip6ChartLabels {
+  models: Record<string, string>
+  scenarios: Record<string, string>
+}
+
+interface IndicatorsCmip6ChartInputs {
+  model: string
+  scenario: string
+}
+
 type LatLngValue = LatLng | undefined
 
 type PlaceType = 'community' | 'latLng' | undefined
+
+type IndicatorsCmip6ChartLabelsObj = IndicatorsCmip6ChartLabels | undefined
+type IndicatorsCmip6ChartInputsObj = IndicatorsCmip6ChartInputs | undefined

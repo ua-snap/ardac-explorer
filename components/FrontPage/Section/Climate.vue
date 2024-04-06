@@ -11,7 +11,7 @@
 
       <div class="tile is-parent">
         <div class="tile is-child">
-          <ItemTextPicture slug="indicator-ftc" />
+          <ItemTextPicture slug="indicator-ftc-cmip6" />
         </div>
       </div>
 

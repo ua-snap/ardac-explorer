@@ -1,0 +1,238 @@
+<script lang="ts" setup>
+const props = defineProps<{
+  label: string
+  units?: string
+  dataKey: string
+}>()
+
+import type { Data } from 'plotly.js-dist-min'
+
+const { $Plotly, $_ } = useNuxtApp()
+const dataStore = useDataStore()
+const placesStore = usePlacesStore()
+const chartStore = useChartStore()
+
+const apiData = computed<any[]>(() => dataStore.apiData)
+const latLng = computed<LatLngValue>(() => placesStore.latLng)
+
+const chartLabels = computed<IndicatorsCmip6ChartLabelsObj>(
+  () => chartStore.labels as IndicatorsCmip6ChartLabelsObj
+)
+const chartInputs = computed<IndicatorsCmip6ChartInputsObj>(
+  () => chartStore.inputs as IndicatorsCmip6ChartInputsObj
+)
+
+let chartData: any
+
+const getPlotValues = (params: any) => {
+  let years = $_.range(params.minYear, params.maxYear + 1)
+
+  // Pad projected decades with nulls to align properly on chart.
+  let xTickPaddingLength: number = (params.minYear - 1850) / 10
+  let xTickPadding = $_.fill(Array(xTickPaddingLength), null)
+
+  let values: number[] = []
+
+  if (params.historical) {
+    years.forEach((year: number) => {
+      values.push(chartData['historical'][params.model][year]['ftc'])
+    })
+  } else {
+    years.forEach((year: number) => {
+      values.push(chartData[params.scenario][params.model][year]['ftc'])
+    })
+  }
+
+  // Group yearly values into decade buckets to make it easier to calculate
+  // min/mean/max for each decade.
+  let decadeBuckets: Record<string, number[]> = {}
+  for (let i = 0; i < values.length; i += 10) {
+    let yearRange = years[i] + '-' + years[i + 9]
+    decadeBuckets[yearRange] = []
+    for (let j = 0; j < 10; j++) {
+      decadeBuckets[yearRange].push(values[i + j])
+    }
+  }
+
+  let decades = Object.keys(decadeBuckets)
+
+  let means: number[] = []
+  let maxes: number[] = []
+  let mins: number[] = []
+  let maxOffsets: number[] = []
+  let minOffsets: number[] = []
+
+  decades.forEach(decade => {
+    let mean = Math.round($_.mean(decadeBuckets[decade]))
+    let min = $_.min(decadeBuckets[decade])
+    let max = $_.max(decadeBuckets[decade])
+
+    // Calculate max/min as offsets from mean for error bars.
+    let maxOffset = max - mean
+    let minOffset = mean - min
+
+    means.push(mean)
+    mins.push(min)
+    maxes.push(max)
+    maxOffsets.push(maxOffset)
+    minOffsets.push(minOffset)
+  })
+
+  decades = xTickPadding.concat(decades)
+  means = xTickPadding.concat(means)
+  maxes = xTickPadding.concat(maxes)
+  mins = xTickPadding.concat(mins)
+  maxOffsets = xTickPadding.concat(maxOffsets)
+  minOffsets = xTickPadding.concat(minOffsets)
+
+  return {
+    decades,
+    means,
+    maxes,
+    mins,
+    maxOffsets,
+    minOffsets,
+  }
+}
+
+const buildChart = () => {
+  if (apiData.value && chartLabels.value && chartInputs.value) {
+    let traces: Data[] = []
+    let allDecades: string[] = []
+    chartData = dataStore.apiData
+
+    for (let i = 1850; i <= 2090; i += 10) {
+      allDecades.push(i + '-' + (i + 9))
+    }
+
+    let traceParams = [
+      {
+        model: chartInputs.value?.model,
+        scenario: chartInputs.value?.scenario,
+        minYear: 1850,
+        maxYear: 2009,
+        historical: true,
+      },
+      {
+        model: chartInputs.value?.model,
+        scenario: chartInputs.value?.scenario,
+        minYear: 2020,
+        maxYear: 2099,
+        historical: false,
+      },
+    ]
+
+    let symbols: Record<string, string> = {
+      historical: 'circle',
+      projected: 'square',
+    }
+
+    traceParams.forEach(params => {
+      let plotValues = getPlotValues(params)
+      let ticks = $_.range(1, plotValues.decades.length + 1)
+
+      let symbolKey = params.historical ? 'historical' : 'projected'
+      let traceLabel = params.historical ? 'Historical' : 'Projected'
+
+      traces.push({
+        x: ticks,
+        y: plotValues.means,
+        error_y: {
+          type: 'data',
+          symmetric: false,
+          array: plotValues.maxOffsets,
+          arrayminus: plotValues.minOffsets,
+        },
+        mode: 'markers',
+        type: 'scatter',
+        name: traceLabel,
+        marker: {
+          symbol: symbols[symbolKey],
+          size: 8,
+        },
+        hovertemplate:
+          'max: %{customdata[0]}<br />' +
+          'mean: %{y:}<br />' +
+          'min: %{customdata[1]}',
+        customdata: $_.zip(plotValues.maxes, plotValues.mins),
+      })
+    })
+
+    let yAxisLabel = props.label
+    if (props.units) {
+      yAxisLabel += ' (' + props.units + ')'
+    }
+
+    $Plotly.newPlot(
+      'chart',
+      traces,
+      {
+        title: {
+          text:
+            props.label +
+            ' for ' +
+            placesStore.latLng?.lat +
+            ', ' +
+            placesStore.latLng?.lng +
+            '<br />Model: ' +
+            chartInputs.value.model +
+            ', Scenario: ' +
+            chartLabels.value.scenarios[chartInputs.value.scenario],
+          font: {
+            size: 24,
+          },
+        },
+        xaxis: {
+          // Pad x-axis with one null to avoid overlapping y-axis line.
+          tickvals: [null].concat($_.range(1, allDecades.length)),
+          ticktext: [''].concat(allDecades),
+          dtick: 1,
+        },
+        yaxis: {
+          title: {
+            text: yAxisLabel,
+            font: {
+              size: 18,
+            },
+          },
+        },
+      },
+      {
+        responsive: true, // changes the height / width dynamically for charts
+        displayModeBar: true, // always show the camera icon
+        displaylogo: false,
+        modeBarButtonsToRemove: [
+          'zoom2d',
+          'pan2d',
+          'select2d',
+          'lasso2d',
+          'zoomIn2d',
+          'zoomOut2d',
+          'autoScale2d',
+          'resetScale2d',
+        ],
+      }
+    )
+  }
+}
+
+watch([apiData, chartLabels, chartInputs], async () => {
+  buildChart()
+})
+
+watch(latLng, async () => {
+  $Plotly.purge('chart')
+  dataStore.apiData = null
+  dataStore.fetchData('indicatorsCmip6')
+})
+
+onUnmounted(() => {
+  dataStore.apiData = null
+})
+</script>
+
+<template>
+  <div id="chart"></div>
+</template>
+
+<style scoped></style>

@@ -14,7 +14,7 @@
 
         <ul>
           <li>
-            <ItemBrief slug="indicator-ftc" showTag />
+            <ItemBrief slug="indicator-ftc-cmip6" showTag />
           </li>
           <li>
             <ItemBrief slug="indicator-rx1day" showTag />

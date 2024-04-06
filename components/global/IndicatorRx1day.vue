@@ -51,7 +51,7 @@ mapStore.setLegendItems(mapId, legend)
 <template>
   <section class="section">
     <div class="content is-size-5">
-      <h3 class="title is-3">Maximum 1-day Precipitation</h3>
+      <h3 class="title is-3">Maximum 1-day Precipitation, CMIP6</h3>
       <p class="mb-6">
         The map below shows the 30-year mean of the maximum 1-day precipitation
         for three eras. The historical era (1980&ndash;2009) uses historical
