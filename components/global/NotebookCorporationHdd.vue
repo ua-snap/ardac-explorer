@@ -270,7 +270,7 @@
               href="https://earthmaps.io/degree_days/#:~:text=Degree%20days%20across%20provided%20year%20range%20(point%20query"
             >
               documentation</a
-            >), we can request projected heating degree days using the following
+            >, we can request projected heating degree days using the following
             endpoint construction:
           </p>
           <p>
@@ -797,7 +797,7 @@ no data returned for Port Alexander: 56.2497, -134.644
                <span class="mi">8660</span><span class=
 "p">,</span> <span class=
 "c1">### &lt;&lt; this is the only value that needed to be moved...otherwise the corps are alphabetical</span>
-               <span class="p">]</span>
+<span class="p">]</span>
 
 <span class="n">pop_df</span> <span class="o">=</span> <span class=
 "n">pd</span><span class="o">.</span><span class=
