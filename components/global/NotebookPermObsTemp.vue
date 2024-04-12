@@ -169,10 +169,10 @@
                 href="https://earthmaps.io/taspr/#:~:text=Monthly%20min%2C%20mean%2C%20and%20maximum%20temperature%20for%20each%20year%20(point%20query"
               >
                 documentation</a
-              >), we can request min/mean/max air temperatures for all months
-              and years using the following string construction:
+              >, we can request min/mean/max air temperatures for all months and
+              years using the following string construction:
             </p>
-            <p>
+            <p class="mb-5">
               <code
                 >earthmaps.io/tas2km/point/&lt;latitude&gt;/&lt;longitude&gt;</code
               >
