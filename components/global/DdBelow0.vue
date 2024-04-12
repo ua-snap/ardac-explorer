@@ -12,7 +12,7 @@ const layers: MapLayer[] = [
     id: 'dd_below_0_historical_era',
     title: '1980–2009, Daymet',
     source: 'rasdaman',
-    wmsLayerName: 'degree_days_below_zero',
+    wmsLayerName: 'degree_days_below_zero_Fdays',
     style: 'ardac_dd_below_0_historical_era',
     legend: 'dd_below_0',
   },
@@ -20,7 +20,7 @@ const layers: MapLayer[] = [
     id: 'dd_below_0_midcentury_era',
     title: '2040–2069, NCAR CCSM4, RCP 8.5',
     source: 'rasdaman',
-    wmsLayerName: 'degree_days_below_zero',
+    wmsLayerName: 'degree_days_below_zero_Fdays',
     style: 'ardac_dd_below_0_midcentury_era',
     legend: 'dd_below_0',
   },
@@ -28,7 +28,7 @@ const layers: MapLayer[] = [
     id: 'dd_below_0_latecentury_era',
     title: '2070–2099, NCAR CCSM4, RCP 8.5',
     source: 'rasdaman',
-    wmsLayerName: 'degree_days_below_zero',
+    wmsLayerName: 'degree_days_below_zero_Fdays',
     style: 'ardac_dd_below_0_latecentury_era',
     legend: 'dd_below_0',
   },
@@ -55,10 +55,9 @@ mapStore.setLegendItems(mapId, legend)
       <p class="mb-6">
         The map below shows the 30-year mean of degree days below 0&deg;F for
         three eras. The historical era (1980&ndash;2009) uses historical modeled
-        data provided by the ERA-Interim model. The mid-century
-        (2040&ndash;2069) and late-century (2070&ndash;2099) eras use modeled
-        projections from the NCAR CCSM4 model under the RCP 8.5 emissions
-        scenario.
+        data provided by Daymet. The mid-century (2040&ndash;2069) and
+        late-century (2070&ndash;2099) eras use modeled projections from the
+        NCAR CCSM4 model under the RCP 8.5 emissions scenario.
       </p>
 
       <MapBlock :mapId="mapId" class="mb-6">
@@ -79,7 +78,7 @@ mapStore.setLegendItems(mapId, legend)
         Enter lat/lon coordinates below to see a chart of degree days below
         0&deg;F for a point location. This chart displays min/mean/max values
         for historical decades using the ERA-Interim model and projected decades
-        using both the GFDL CM3 and NCAR CCSM4 models under the RCP 8.5
+        using both the GFDL ESM2M and NCAR CCSM4 models under the RCP 8.5
         emissions scenario.
       </p>
 
