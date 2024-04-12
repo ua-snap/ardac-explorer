@@ -95,14 +95,11 @@
             and from its properties below we get the Chena River HUC8 code
             '19080306':
           </p>
-          <p>...</p>
           <pre><code>{
     "id": "19080306",
     "name": "Chena River",
     "type": "huc"
-  },
-</code></pre>
-          <p>...</p>
+},</code></pre>
         </div>
       </div>
     </div>
@@ -255,11 +252,11 @@
           </ul>
           <p>
             <em
-              >(variables are listed here:
+              >variables are listed here:<br />
               <a
                 href="https://daymet.ornl.gov/single-pixel-tool-guide#:~:text=Variables%20and%20Units%3A"
                 >https://daymet.ornl.gov/single-pixel-tool-guide#:~:text=Variables%20and%20Units%3A</a
-              >)</em
+              ></em
             >
           </p>
         </div>
