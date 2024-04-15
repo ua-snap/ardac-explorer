@@ -28,18 +28,18 @@ const getPlotValues = (params: any) => {
   let years = $_.range(params.minYear, params.maxYear + 1)
 
   // Pad projected decades with nulls to align properly on chart.
-  let xTickPaddingLength: number = (params.minYear - 1850) / 10
+  let xTickPaddingLength: number = (params.minYear - 1950) / 10
   let xTickPadding = $_.fill(Array(xTickPaddingLength), null)
 
   let values: number[] = []
 
   if (params.historical) {
     years.forEach((year: number) => {
-      values.push(chartData['historical'][params.model][year]['ftc'])
+      values.push(chartData['historical'][params.model][year][props.dataKey])
     })
   } else {
     years.forEach((year: number) => {
-      values.push(chartData[params.scenario][params.model][year]['ftc'])
+      values.push(chartData[params.scenario][params.model][year][props.dataKey])
     })
   }
 
@@ -101,7 +101,7 @@ const buildChart = () => {
     let allDecades: string[] = []
     chartData = dataStore.apiData
 
-    for (let i = 1850; i <= 2090; i += 10) {
+    for (let i = 1950; i <= 2090; i += 10) {
       allDecades.push(i + '-' + (i + 9))
     }
 
@@ -109,7 +109,7 @@ const buildChart = () => {
       {
         model: chartInputs.value?.model,
         scenario: chartInputs.value?.scenario,
-        minYear: 1850,
+        minYear: 1950,
         maxYear: 2009,
         historical: true,
       },

@@ -3,12 +3,14 @@ const props = defineProps<{
   defaultMonth?: string
 }>()
 
+const dataStore = useDataStore()
 const placesStore = usePlacesStore()
 const chartStore = useChartStore()
 
 const modelInput = defineModel('model', { default: 'GFDL-ESM4' })
 const scenarioInput = defineModel('scenario', { default: 'ssp585' })
 
+const apiData = computed<any[]>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const chartLabels = computed<IndicatorsCmip6ChartLabels>(
@@ -45,7 +47,7 @@ watch([latLng, modelInput, scenarioInput], async () => {
 </script>
 
 <template>
-  <div v-if="latLng && chartLabels">
+  <div v-if="latLng && chartLabels && apiData">
     <div class="columns is-multiline">
       <div class="column is-6">
         <div class="parameter">
