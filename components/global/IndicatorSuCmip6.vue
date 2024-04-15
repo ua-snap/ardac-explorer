@@ -1,10 +1,35 @@
 <script lang="ts" setup>
 const placesStore = usePlacesStore()
+const mapStore = useMapStore()
 const dataStore = useDataStore()
 const runtimeConfig = useRuntimeConfig()
 
 const apiData = computed<Record<string, any>>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
+
+const layers: MapLayer[] = [
+  {
+    id: 'indicator_su_historical_era',
+    title: '1980–2009, CNRM-CM6-1-HR',
+    source: 'rasdaman',
+    wmsLayerName: 'new_cmip6_indicators',
+    style: 'ardac_indicator_su_historical_era',
+    legend: 'su',
+  },
+]
+
+const legend: Record<string, LegendItem[]> = {
+  su: [
+    // { color: '#edf8fb', label: '&ge;0㎜, &lt;10㎜' },
+    // { color: '#b2e2e2', label: '&ge;10㎜, &lt;20㎜' },
+    // { color: '#66c2a4', label: '&ge;20㎜, &lt;30㎜' },
+    // { color: '#2ca25f', label: '&ge;30㎜, &lt;40㎜' },
+    // { color: '#006d2c', label: '&ge;40㎜' },
+  ],
+}
+
+const mapId = 'su'
+mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
@@ -19,6 +44,14 @@ const latLng = computed<LatLngValue>(() => placesStore.latLng)
         scenarios. After entering lat/lon coordinates, links will be provided
         where you can download the data that is used to populate the chart.
       </p>
+
+      <MapBlock :mapId="mapId" class="mb-6">
+        <template v-slot:layers>
+          <MapLayer :mapId="mapId" :layer="layers[0]" default>
+            <template v-slot:title>{{ layers[0].title }}</template>
+          </MapLayer>
+        </template>
+      </MapBlock>
 
       <Gimme />
       <IndicatorsCmip6ChartControls />
