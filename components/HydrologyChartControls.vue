@@ -3,6 +3,7 @@ const props = defineProps<{
   defaultMonth?: string
 }>()
 
+const dataStore = useDataStore()
 const placesStore = usePlacesStore()
 const chartStore = useChartStore()
 
@@ -13,6 +14,7 @@ if (props.defaultMonth) {
   monthInput.value = props.defaultMonth
 }
 
+const apiData = computed<any[]>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const chartLabels = computed<HydrologyChartLabels>(
@@ -49,7 +51,7 @@ watch([latLng, scenarioInput, monthInput], async () => {
 </script>
 
 <template>
-  <div v-if="latLng && chartLabels">
+  <div v-if="latLng && chartLabels && apiData">
     <div class="parameter">
       <label for="scenario" class="label">Scenario:</label>
       <div class="select mb-5 mr-3">
