@@ -1,16 +1,84 @@
 <script lang="ts" setup>
 const placesStore = usePlacesStore()
+const mapStore = useMapStore()
 const dataStore = useDataStore()
 const runtimeConfig = useRuntimeConfig()
 
 const apiData = computed<Record<string, any>>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
+
+const layers: MapLayer[] = [
+  {
+    id: 'indicator_ftc_historical_era',
+    title: '1980–2009, GFDL-ESM4',
+    source: 'rasdaman',
+    wmsLayerName: 'cmip6_indicators',
+    style: 'ardac_indicator_ftc_historical_era',
+    legend: 'freeze_thaw_cycle',
+    rasdamanConfiguration: { dim_model: 4, dim_scenario: 0 },
+  },
+  {
+    id: 'indicator_ftc_midcentury_era',
+    title: '2040–2069, GFDL-ESM4, SSP5-8.5',
+    source: 'rasdaman',
+    wmsLayerName: 'cmip6_indicators',
+    style: 'ardac_indicator_ftc_midcentury_era',
+    legend: 'freeze_thaw_cycle',
+    rasdamanConfiguration: { dim_model: 4, dim_scenario: 4 },
+  },
+  {
+    id: 'indicator_rx5day_latecentury_era',
+    title: '2070–2099, GFDL-ESM4, SSP5-8.5',
+    source: 'rasdaman',
+    wmsLayerName: 'cmip6_indicators',
+    style: 'ardac_indicator_ftc_latecentury_era',
+    legend: 'freeze_thaw_cycle',
+    rasdamanConfiguration: { dim_model: 4, dim_scenario: 4 },
+  },
+]
+
+const legend: Record<string, LegendItem[]> = {
+  freeze_thaw_cycle: [
+    { color: '#f7f7f7', label: '&ge;1 day, &lt;20 days' },
+    { color: '#cccccc', label: '&ge;20 days, &lt;40 days' },
+    { color: '#969696', label: '&ge;40 days, &lt;60 days' },
+    { color: '#636363', label: '&ge;60 days, &lt;80 days' },
+    { color: '#252525', label: '&ge;80 days' },
+  ],
+}
+
+const mapId = 'freeze_thaw_cycle'
+mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
   <section class="section">
     <div class="content is-size-5">
       <h3 class="title is-3">Freeze/Thaw Cycle</h3>
+      <p class="mb-6">
+        Freeze/thaw cycle is the number of days where maximum daily temperatures
+        are above freezing and minimum daily temperatures are at or below
+        freezing. The map below shows the 30-year mean of CMIP6 freeze/thaw
+        cycle for three eras. The historical era (1980&ndash;2009) uses
+        historical modeled data provided by the GFDL-ESM4 model. The mid-century
+        (2040&ndash;2069) and late-century (2070&ndash;2099) eras use modeled
+        projections from the GFDL-ESM4 model under the SSP5-8.5 emissions
+        scenario.
+      </p>
+
+      <MapBlock :mapId="mapId" class="mb-6">
+        <template v-slot:layers>
+          <MapLayer :mapId="mapId" :layer="layers[0]" default>
+            <template v-slot:title>{{ layers[0].title }}</template>
+          </MapLayer>
+          <MapLayer :mapId="mapId" :layer="layers[1]">
+            <template v-slot:title>{{ layers[1].title }}</template>
+          </MapLayer>
+          <MapLayer :mapId="mapId" :layer="layers[2]">
+            <template v-slot:title>{{ layers[2].title }}</template>
+          </MapLayer>
+        </template>
+      </MapBlock>
 
       <p>
         Enter lat/lon coordinates below to see a chart of freeze/thaw cycle days
