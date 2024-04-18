@@ -27,7 +27,7 @@ const layers: MapLayer[] = [
     rasdamanConfiguration: { dim_model: 4, dim_scenario: 4 },
   },
   {
-    id: 'indicator_rx5day_latecentury_era',
+    id: 'indicator_ftc_latecentury_era',
     title: '2070–2099, GFDL-ESM4, SSP5-8.5',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_indicators',

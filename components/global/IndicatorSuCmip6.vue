@@ -27,7 +27,7 @@ const layers: MapLayer[] = [
     rasdamanConfiguration: { dim_model: 4, dim_scenario: 4 },
   },
   {
-    id: 'indicator_rx5day_latecentury_era',
+    id: 'indicator_su_latecentury_era',
     title: '2070–2099, GFDL-ESM4, SSP5-8.5',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_indicators',
@@ -56,8 +56,9 @@ mapStore.setLegendItems(mapId, legend)
     <div class="content is-size-5">
       <h3 class="title is-3">Summer Days, CMIP6</h3>
       <p class="mb-6">
-        The map below shows the 30-year mean of CMIP6 summer days for three
-        eras. The historical era (1980&ndash;2009) uses historical modeled data
+        Summer days are the number of days per year that are above 77&deg;F. The
+        map below shows the 30-year mean of CMIP6 summer days for three eras.
+        The historical era (1980&ndash;2009) uses historical modeled data
         provided by the GFDL-ESM4 model. The mid-century (2040&ndash;2069) and
         late-century (2070&ndash;2099) eras use modeled projections from the
         GFDL-ESM4 model under the SSP5-8.5 emissions scenario.

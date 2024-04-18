@@ -63,7 +63,7 @@ const getPlotValues = (params: any) => {
   let minOffsets: number[] = []
 
   decades.forEach(decade => {
-    let mean = Math.round($_.mean(decadeBuckets[decade]))
+    let mean = $_.mean(decadeBuckets[decade])
     let min = $_.min(decadeBuckets[decade])
     let max = $_.max(decadeBuckets[decade])
 
@@ -101,7 +101,7 @@ const buildChart = () => {
     let allDecades: string[] = []
     chartData = dataStore.apiData
 
-    for (let i = 1950; i <= 2090; i += 10) {
+    for (let i = 1950; i <= 2100; i += 10) {
       allDecades.push(i + '-' + (i + 9))
     }
 
