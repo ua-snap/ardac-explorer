@@ -12,42 +12,42 @@ const layers: MapLayer[] = [
     id: 'indicator_su_historical_era',
     title: '1980–2009, GFDL-ESM4',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_indicators_3338',
+    wmsLayerName: 'cmip6_indicators',
     style: 'ardac_indicator_su_historical_era',
-    legend: 'su',
+    legend: 'summer_days',
     rasdamanConfiguration: { dim_model: 4, dim_scenario: 0 },
   },
   {
     id: 'indicator_su_midcentury_era',
     title: '2040–2069, GFDL-ESM4, SSP5-8.5',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_indicators_3338',
+    wmsLayerName: 'cmip6_indicators',
     style: 'ardac_indicator_su_midcentury_era',
-    legend: 'su',
+    legend: 'summer_days',
     rasdamanConfiguration: { dim_model: 4, dim_scenario: 4 },
   },
   {
     id: 'indicator_rx5day_latecentury_era',
     title: '2070–2099, GFDL-ESM4, SSP5-8.5',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_indicators_3338',
+    wmsLayerName: 'cmip6_indicators',
     style: 'ardac_indicator_su_latecentury_era',
-    legend: 'su',
+    legend: 'summer_days',
     rasdamanConfiguration: { dim_model: 4, dim_scenario: 4 },
   },
 ]
 
 const legend: Record<string, LegendItem[]> = {
-  su: [
-    // { color: '#edf8fb', label: '&ge;0㎜, &lt;10㎜' },
-    // { color: '#b2e2e2', label: '&ge;10㎜, &lt;20㎜' },
-    // { color: '#66c2a4', label: '&ge;20㎜, &lt;30㎜' },
-    // { color: '#2ca25f', label: '&ge;30㎜, &lt;40㎜' },
-    // { color: '#006d2c', label: '&ge;40㎜' },
+  summer_days: [
+    { color: '#fdd0a2', label: '&ge;1 day, &lt;5 days' },
+    { color: '#fdae6b', label: '&ge;5 days, &lt;10 days' },
+    { color: '#fd8d3c', label: '&ge;10 days, &lt;20 days' },
+    { color: '#e6550d', label: '&ge;20 days, &lt;40 days' },
+    { color: '#a63603', label: '&ge;40 days' },
   ],
 }
 
-const mapId = 'su'
+const mapId = 'summer_days'
 mapStore.setLegendItems(mapId, legend)
 </script>
 
