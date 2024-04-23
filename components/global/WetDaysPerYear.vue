@@ -20,6 +20,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'wet_days_per_year',
     style: 'ardac_wdpy_historical_era',
     legend: 'wdpy',
+    rasdamanConfiguration: { dim_model: 0 },
   },
   {
     id: 'wdpy_midcentury_era',
@@ -28,6 +29,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'wet_days_per_year',
     style: 'ardac_wdpy_midcentury_era',
     legend: 'wdpy',
+    rasdamanConfiguration: { dim_model: 2 },
   },
   {
     id: 'wdpy_latecentury_era',
@@ -36,6 +38,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'wet_days_per_year',
     style: 'ardac_wdpy_latecentury_era',
     legend: 'wdpy',
+    rasdamanConfiguration: { dim_model: 2 },
   },
 ]
 
