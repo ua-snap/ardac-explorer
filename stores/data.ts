@@ -5,6 +5,7 @@ const placesStore = usePlacesStore()
 
 const endpoints: Record<string, string> = {
   elevation: '/elevation/point/',
+  flammability: '/alfresco/flammability/local/',
   heatingDegreeDays: '/degree_days/heating/',
   hydrology: '/hydrology/point/',
   indicators: '/indicators/base/point/',
