@@ -9,15 +9,11 @@ const runtimeConfig = useRuntimeConfig()
 
 const modelInput = defineModel('model', { default: 'NCAR-CCSM4' })
 const scenarioInput = defineModel('scenario', { default: 'rcp85' })
-const vegTypeInput = defineModel('vegType', {
-  default: 'deciduous_forest',
-})
 
 const apiData = computed<any>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const models = [
-  '5modelAvg',
   'GFDL-CM3',
   'GISS-E2-R',
   'IPSL-CM5A-LR',
@@ -32,7 +28,6 @@ const scenarioLabels: Record<string, string> = {
 }
 
 const vegTypeLabels: Record<string, string> = {
-  not_modeled: 'Not Modeled',
   barren_lichen_moss: 'Barren/Lichen/Moss',
   black_spruce: 'Black Spruce',
   deciduous_forest: 'Deciduous Forest',
@@ -41,53 +36,52 @@ const vegTypeLabels: Record<string, string> = {
   temperate_rainforest: 'Temperate Rainforest',
   wetland_tundra: 'Wetland Tundra',
   white_spruce: 'White Spruce',
+  not_modeled: 'Not Modeled',
+}
+
+const vegTypeColors: Record<string, string> = {
+  barren_lichen_moss: '#616161',
+  black_spruce: '#035500',
+  deciduous_forest: '#dcdc67',
+  graminoid_tundra: '#b9ba85',
+  shrub_tundra: '#abab02',
+  temperate_rainforest: '#448844',
+  wetland_tundra: '#7fc5da',
+  white_spruce: '#51ab00',
+  not_modeled: '#ffffff',
 }
 
 const buildChart = () => {
   if (apiData.value) {
-    let historicalEras = ['1950-2008']
-    let projectedEras = ['2010-2039', '2040-2069', '2070-2099']
+    let eras = ['1950-2008', '2010-2039', '2040-2069', '2070-2099']
 
     let traces: Data[] = []
 
-    let values: number[] = []
-    historicalEras.forEach(era => {
-      values.push(
-        apiData.value[era]['MODEL-SPINUP']['historical'][vegTypeInput.value]
-      )
-    })
-
-    traces.push({
-      x: historicalEras,
-      y: values,
-      mode: 'markers',
-      type: 'scatter',
-      name: 'MODEL-SPINUP',
-      marker: {
-        symbol: 'circle',
-        size: 8,
-      },
-    })
-
-    values = []
-    projectedEras.forEach(era => {
-      values.push(
-        apiData.value[era][modelInput.value][scenarioInput.value][
-          vegTypeInput.value
-        ]
-      )
-    })
-
-    traces.push({
-      x: projectedEras,
-      y: values,
-      mode: 'markers',
-      type: 'scatter',
-      name: modelInput.value,
-      marker: {
-        symbol: 'square',
-        size: 8,
-      },
+    Object.keys(vegTypeLabels).forEach(vegType => {
+      if (vegType == 'not_modeled') return
+      let values: number[] = []
+      eras.forEach(era => {
+        let model: string
+        let scenario: string
+        if (era == '1950-2008') {
+          model = 'MODEL-SPINUP'
+          scenario = 'historical'
+        } else {
+          model = modelInput.value
+          scenario = scenarioInput.value
+        }
+        values.push(apiData.value[era][model][scenario][vegType])
+      })
+      traces.unshift({
+        x: eras,
+        y: values,
+        mode: 'markers',
+        type: 'bar',
+        name: vegTypeLabels[vegType],
+        marker: {
+          color: vegTypeColors[vegType],
+        },
+      })
     })
 
     $Plotly.newPlot(
@@ -110,12 +104,13 @@ const buildChart = () => {
         },
         yaxis: {
           title: {
-            text: vegTypeLabels[vegTypeInput.value] + ' (%)',
+            text: 'Vegetation type coverage (%)',
             font: {
               size: 18,
             },
           },
         },
+        barmode: 'stack',
       },
       {
         responsive: true, // changes the height / width dynamically for charts
@@ -175,24 +170,21 @@ const layers: MapLayer[] = [
   },
 ]
 
-const legend: Record<string, LegendItem[]> = {
-  veg_type: [
-    { color: '#ffffff', label: 'Not Modeled' },
-    { color: '#616161', label: 'Barren/Lichen/Moss' },
-    { color: '#035500', label: 'Black Spruce' },
-    { color: '#dcdc67', label: 'Deciduous Forest' },
-    { color: '#b9ba85', label: 'Graminoid Tundra' },
-    { color: '#abab02', label: 'Shrub Tundra' },
-    { color: '#448844', label: 'Temperate Rainforest' },
-    { color: '#7fc5da', label: 'Wetland Tundra' },
-    { color: '#51ab00', label: 'White Spruce' },
-  ],
+let legend: Record<string, LegendItem[]> = {
+  veg_type: [],
 }
+
+Object.keys(vegTypeColors).forEach(vegType => {
+  legend.veg_type.push({
+    color: vegTypeColors[vegType],
+    label: vegTypeLabels[vegType],
+  })
+})
 
 const mapId = 'veg_type'
 mapStore.setLegendItems(mapId, legend)
 
-watch([apiData, modelInput, scenarioInput, vegTypeInput], async () => {
+watch([apiData, modelInput, scenarioInput], async () => {
   buildChart()
 })
 
@@ -269,19 +261,6 @@ onUnmounted(() => {
                 :value="scenario"
               >
                 {{ scenarioLabels[scenario] }}
-              </option>
-            </select>
-          </div>
-        </div>
-        <div class="chart-input">
-          <label for="vegetation-type" class="label">Vegetation Type:</label>
-          <div class="select mr-3">
-            <select id="vegetation-type" v-model="vegTypeInput">
-              <option
-                v-for="vegType in Object.keys(vegTypeLabels)"
-                :value="vegType"
-              >
-                {{ vegTypeLabels[vegType] }}
               </option>
             </select>
           </div>
