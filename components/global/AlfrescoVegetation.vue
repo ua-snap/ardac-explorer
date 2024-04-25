@@ -9,6 +9,9 @@ const runtimeConfig = useRuntimeConfig()
 
 const modelInput = defineModel('model', { default: 'NCAR-CCSM4' })
 const scenarioInput = defineModel('scenario', { default: 'rcp85' })
+const vegTypeInput = defineModel('vegType', {
+  default: 'deciduous_forest',
+})
 
 const apiData = computed<any[]>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
@@ -21,23 +24,37 @@ const models = [
   'MRI-CGCM3',
   'NCAR-CCSM4',
 ]
+
 const scenarioLabels: Record<string, string> = {
   rcp45: 'RCP 4.5',
   rcp60: 'RCP 6.0',
   rcp85: 'RCP 8.5',
 }
 
+const vegTypeLabels: Record<string, string> = {
+  not_modeled: 'Not Modeled',
+  barren_lichen_moss: 'Barren/Lichen/Moss',
+  black_spruce: 'Black Spruce',
+  deciduous_forest: 'Deciduous Forest',
+  graminoid_tundra: 'Graminoid Tundra',
+  shrub_tundra: 'Shrub Tundra',
+  temperate_rainforest: 'Temperate Rainforest',
+  wetland_tundra: 'Wetland Tundra',
+  white_spruce: 'White Spruce',
+}
+
 const buildChart = () => {
   if (apiData.value) {
-    let historicalEras = ['1950-1979', '1980-2008']
+    let historicalEras = ['1950-2008']
     let projectedEras = ['2010-2039', '2040-2069', '2070-2099']
 
     let traces: Data[] = []
 
     let values: number[] = []
     historicalEras.forEach(era => {
-      let percent = dataStore.apiData[era]['MODEL-SPINUP']['historical'] * 100
-      values.push(percent)
+      values.push(
+        dataStore.apiData[era]['MODEL-SPINUP']['historical'][vegTypeInput.value]
+      )
     })
 
     traces.push({
@@ -54,9 +71,11 @@ const buildChart = () => {
 
     values = []
     projectedEras.forEach(era => {
-      let percent =
-        dataStore.apiData[era][modelInput.value][scenarioInput.value] * 100
-      values.push(percent)
+      values.push(
+        dataStore.apiData[era][modelInput.value][scenarioInput.value][
+          vegTypeInput.value
+        ]
+      )
     })
 
     traces.push({
@@ -92,7 +111,7 @@ const buildChart = () => {
         },
         yaxis: {
           title: {
-            text: 'Flammability (%)',
+            text: vegTypeLabels[vegTypeInput.value] + ' (%)',
             font: {
               size: 18,
             },
@@ -120,72 +139,67 @@ const buildChart = () => {
 
 const layers: MapLayer[] = [
   {
-    id: 'flammability_earlyhistorical_era',
-    title: '1950–1979, MODEL-SPINUP',
+    id: 'veg_type_historical_era',
+    title: '1950–2008, MODEL-SPINUP',
     source: 'rasdaman',
-    wmsLayerName: 'alfresco_relative_flammability_30yr',
-    style: 'ardac_flammability',
-    legend: 'flammability',
+    wmsLayerName: 'alfresco_vegetation_mode_statistic',
+    style: 'ardac_veg_type',
+    legend: 'veg_type',
     rasdamanConfiguration: { dim_era: 0, dim_model: 0, dim_scenario: 0 },
   },
   {
-    id: 'flammability_latehistorical_era',
-    title: '1980–2008, MODEL-SPINUP',
-    source: 'rasdaman',
-    wmsLayerName: 'alfresco_relative_flammability_30yr',
-    style: 'ardac_flammability',
-    legend: 'flammability',
-    rasdamanConfiguration: { dim_era: 1, dim_model: 0, dim_scenario: 0 },
-  },
-  {
-    id: 'flammability_earlycentury_era',
+    id: 'veg_type_earlycentury_era',
     title: '2010–2039, NCAR-CCSM4, RCP 8.5',
     source: 'rasdaman',
-    wmsLayerName: 'alfresco_relative_flammability_30yr',
-    style: 'ardac_flammability',
-    legend: 'flammability',
-    rasdamanConfiguration: { dim_era: 2, dim_model: 6, dim_scenario: 3 },
+    wmsLayerName: 'alfresco_vegetation_mode_statistic',
+    style: 'ardac_veg_type',
+    legend: 'veg_type',
+    rasdamanConfiguration: { dim_era: 1, dim_model: 5, dim_scenario: 3 },
   },
   {
-    id: 'flammability_midcentury_era',
+    id: 'veg_type_midcentury_era',
     title: '2040–2069, NCAR-CCSM4, RCP 8.5',
     source: 'rasdaman',
-    wmsLayerName: 'alfresco_relative_flammability_30yr',
-    style: 'ardac_flammability',
-    legend: 'flammability',
-    rasdamanConfiguration: { dim_era: 3, dim_model: 6, dim_scenario: 3 },
+    wmsLayerName: 'alfresco_vegetation_mode_statistic',
+    style: 'ardac_veg_type',
+    legend: 'veg_type',
+    rasdamanConfiguration: { dim_era: 2, dim_model: 5, dim_scenario: 3 },
   },
   {
-    id: 'flammability_latecentury_era',
+    id: 'veg_type_latecentury_era',
     title: '2070–2099, NCAR-CCSM4, RCP 8.5',
     source: 'rasdaman',
-    wmsLayerName: 'alfresco_relative_flammability_30yr',
-    style: 'ardac_flammability',
-    legend: 'flammability',
-    rasdamanConfiguration: { dim_era: 4, dim_model: 6, dim_scenario: 3 },
+    wmsLayerName: 'alfresco_vegetation_mode_statistic',
+    style: 'ardac_veg_type',
+    legend: 'veg_type',
+    rasdamanConfiguration: { dim_era: 3, dim_model: 5, dim_scenario: 3 },
   },
 ]
 
 const legend: Record<string, LegendItem[]> = {
-  flammability: [
-    { color: '#fef0d9', label: '&ge;0%, &lt;0.02%' },
-    { color: '#fdcc8a', label: '&ge;0.02%, &lt;0.05%' },
-    { color: '#fc8d59', label: '&ge;0.05%, &lt;0.10%' },
-    { color: '#e34a33', label: '&ge;0.10%, &lt;0.20%' },
-    { color: '#b30000', label: '&ge;0.20%' },
+  veg_type: [
+    { color: '#ffffff', label: 'Not Modeled' },
+    { color: '#616161', label: 'Barren/Lichen/Moss' },
+    { color: '#035500', label: 'Black Spruce' },
+    { color: '#dcdc67', label: 'Deciduous Forest' },
+    { color: '#b9ba85', label: 'Graminoid Tundra' },
+    { color: '#abab02', label: 'Shrub Tundra' },
+    { color: '#448844', label: 'Temperate Rainforest' },
+    { color: '#7fc5da', label: 'Wetland Tundra' },
+    { color: '#51ab00', label: 'White Spruce' },
   ],
 }
 
-const mapId = 'flammability'
+const mapId = 'veg_type'
 mapStore.setLegendItems(mapId, legend)
 
-watch([apiData, modelInput, scenarioInput], async () => {
+watch([apiData, modelInput, scenarioInput, vegTypeInput], async () => {
   buildChart()
 })
 
 watch(latLng, async () => {
   $Plotly.purge('chart')
-  dataStore.fetchData('flammability')
+  dataStore.fetchData('vegType')
 })
 
 onUnmounted(() => {
@@ -196,13 +210,12 @@ onUnmounted(() => {
 <template>
   <section class="section">
     <div class="content is-size-5">
-      <h3 class="title is-3">Flammability</h3>
+      <h3 class="title is-3">Vegetation Type</h3>
       <p class="mb-6">
-        Flammability is defined as the percentage of times a pixel at a
-        particular location has burned in model simulations. The map below shows
-        ALFRESCO flammability outputs for five eras. Historical eras show model
-        spinup outputs. Projected eras show ALFRESCO flammability outputs using
-        the NCAR CCSM4 model under the RCP 8.5 emissions scenario.
+        The map below shows a 5-model mode of ALFRESCO dominant vegetation type
+        outputs across four eras. Historical eras show model spinup outputs.
+        Projected eras show ALFRESCO vegetation type outputs using five CMIP5
+        models under the RCP 8.5 emissions scenario.
       </p>
 
       <MapBlock :mapId="mapId" class="mb-6">
@@ -219,17 +232,15 @@ onUnmounted(() => {
           <MapLayer :mapId="mapId" :layer="layers[3]">
             <template v-slot:title>{{ layers[3].title }}</template>
           </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[4]">
-            <template v-slot:title>{{ layers[4].title }}</template>
-          </MapLayer>
         </template>
       </MapBlock>
 
       <p>
-        Enter lat/lon coordinates below to see a chart of flammability for a
-        point location across five eras. Historical eras show model spinup
-        outputs. Projected eras show ALFRESCO flammability outputs using the
-        selected model and emissions scenario.
+        Enter lat/lon coordinates below to see a chart of vegeation types. The
+        data shown is not for the lat/lon point itself, but the mean percentage
+        of the vegetation type values for the enclosing HUC-12. Historical eras
+        show model spinup outputs. Projected eras show ALFRESCO vegetation type
+        outputs using the selected model.
       </p>
 
       <p>
@@ -252,7 +263,7 @@ onUnmounted(() => {
         </div>
         <div class="chart-input">
           <label for="scenario" class="label">Scenario:</label>
-          <div class="select">
+          <div class="select mr-3">
             <select id="scenario" v-model="scenarioInput">
               <option
                 v-for="scenario in Object.keys(scenarioLabels)"
@@ -263,26 +274,32 @@ onUnmounted(() => {
             </select>
           </div>
         </div>
+        <div class="chart-input">
+          <label for="vegetation-type" class="label">Vegetation Type:</label>
+          <div class="select mr-3">
+            <select id="vegetation-type" v-model="vegTypeInput">
+              <option
+                v-for="vegType in Object.keys(vegTypeLabels)"
+                :value="vegType"
+              >
+                {{ vegTypeLabels[vegType] }}
+              </option>
+            </select>
+          </div>
+        </div>
       </div>
       <div id="chart"></div>
       <div v-if="latLng" class="my-6">
         <h4 class="title is-4">
-          Download flammability data for {{ latLng.lat }},
+          Download vegetation type data for {{ latLng.lat }},
           {{ latLng.lng }}
         </h4>
-        <p>
-          Note that the values returned from the following URLs are the same
-          data used to compute the flammability percentage in the maps and
-          charts above, but have not been converted into a percentage. For
-          example, a flammability value of 0.002 is equivalent to 0.2%
-          flammability.
-        </p>
         <ul>
           <li>
             <a
               :href="
                 runtimeConfig.public.apiUrl +
-                '/alfresco/flammability/local/' +
+                '/alfresco/veg_type/local/' +
                 latLng.lat +
                 '/' +
                 latLng.lng +
@@ -295,7 +312,7 @@ onUnmounted(() => {
             <a
               :href="
                 runtimeConfig.public.apiUrl +
-                '/alfresco/flammability/local/' +
+                '/alfresco/veg_type/local/' +
                 latLng.lat +
                 '/' +
                 latLng.lng
