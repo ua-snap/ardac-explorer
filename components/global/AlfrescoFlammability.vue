@@ -10,7 +10,7 @@ const runtimeConfig = useRuntimeConfig()
 const modelInput = defineModel('model', { default: 'NCAR-CCSM4' })
 const scenarioInput = defineModel('scenario', { default: 'rcp85' })
 
-const apiData = computed<any[]>(() => dataStore.apiData)
+const apiData = computed<any>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const models = [
@@ -36,7 +36,7 @@ const buildChart = () => {
 
     let values: number[] = []
     historicalEras.forEach(era => {
-      let percent = dataStore.apiData[era]['MODEL-SPINUP']['historical'] * 100
+      let percent = apiData.value[era]['MODEL-SPINUP']['historical'] * 100
       values.push(percent)
     })
 
@@ -55,7 +55,7 @@ const buildChart = () => {
     values = []
     projectedEras.forEach(era => {
       let percent =
-        dataStore.apiData[era][modelInput.value][scenarioInput.value] * 100
+        apiData.value[era][modelInput.value][scenarioInput.value] * 100
       values.push(percent)
     })
 
@@ -78,9 +78,8 @@ const buildChart = () => {
         title: {
           text:
             'Flammability for ' +
-            latLng.value?.lat +
-            ', ' +
-            latLng.value?.lng +
+            'HUC-12 ' +
+            apiData.value['huc_id'] +
             '<br />' +
             'Model: ' +
             modelInput.value +
@@ -226,10 +225,11 @@ onUnmounted(() => {
       </MapBlock>
 
       <p>
-        Enter lat/lon coordinates below to see a chart of flammability for a
-        point location across five eras. Historical eras show model spinup
-        outputs. Projected eras show ALFRESCO flammability outputs using the
-        selected model and emissions scenario.
+        Enter lat/lon coordinates below to see flammability charts. The data
+        shown is not for the lat/lon point itself, but the mean flammability for
+        the enclosing HUC-12. Historical eras show model spinup outputs.
+        Projected eras show ALFRESCO flammability outputs using the selected
+        model and emissions scenario.
       </p>
 
       <p>
@@ -265,9 +265,10 @@ onUnmounted(() => {
         </div>
       </div>
       <div id="chart"></div>
-      <div v-if="latLng" class="my-6">
+      <div v-if="latLng && apiData" class="my-6">
         <h4 class="title is-4">
-          Download flammability data for {{ latLng.lat }},
+          Download flammability data for
+          {{ apiData['huc_id'] }}, the HUC-12 enclosing {{ latLng.lat }},
           {{ latLng.lng }}
         </h4>
         <p>

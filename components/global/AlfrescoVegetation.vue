@@ -13,7 +13,7 @@ const vegTypeInput = defineModel('vegType', {
   default: 'deciduous_forest',
 })
 
-const apiData = computed<any[]>(() => dataStore.apiData)
+const apiData = computed<any>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const models = [
@@ -53,7 +53,7 @@ const buildChart = () => {
     let values: number[] = []
     historicalEras.forEach(era => {
       values.push(
-        dataStore.apiData[era]['MODEL-SPINUP']['historical'][vegTypeInput.value]
+        apiData.value[era]['MODEL-SPINUP']['historical'][vegTypeInput.value]
       )
     })
 
@@ -72,7 +72,7 @@ const buildChart = () => {
     values = []
     projectedEras.forEach(era => {
       values.push(
-        dataStore.apiData[era][modelInput.value][scenarioInput.value][
+        apiData.value[era][modelInput.value][scenarioInput.value][
           vegTypeInput.value
         ]
       )
@@ -97,9 +97,8 @@ const buildChart = () => {
         title: {
           text:
             'Flammability for ' +
-            latLng.value?.lat +
-            ', ' +
-            latLng.value?.lng +
+            'HUC-12 ' +
+            apiData.value['huc_id'] +
             '<br />' +
             'Model: ' +
             modelInput.value +
@@ -236,9 +235,9 @@ onUnmounted(() => {
       </MapBlock>
 
       <p>
-        Enter lat/lon coordinates below to see a chart of vegeation types. The
-        data shown is not for the lat/lon point itself, but the mean percentage
-        of the vegetation type values for the enclosing HUC-12. Historical eras
+        Enter lat/lon coordinates below to see vegetation type charts. The data
+        shown is not for the lat/lon point itself, but the mean percentage of
+        the vegetation type values for the enclosing HUC-12. Historical eras
         show model spinup outputs. Projected eras show ALFRESCO vegetation type
         outputs using the selected model.
       </p>
@@ -291,7 +290,8 @@ onUnmounted(() => {
       <div id="chart"></div>
       <div v-if="latLng" class="my-6">
         <h4 class="title is-4">
-          Download vegetation type data for {{ latLng.lat }},
+          Download vegetation type data for {{ apiData['huc_id'] }}, the HUC-12
+          enclosing {{ latLng.lat }},
           {{ latLng.lng }}
         </h4>
         <ul>
