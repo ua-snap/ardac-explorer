@@ -260,7 +260,7 @@ onUnmounted(() => {
 
       <Gimme />
 
-      <div v-if="apiData">
+      <div v-if="latLng && apiData">
         <div class="chart-input">
           <label for="duration" class="label">Duration:</label>
           <div class="select mb-5 mr-3">

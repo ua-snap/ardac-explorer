@@ -241,7 +241,7 @@ onUnmounted(() => {
 
       <Gimme />
 
-      <div v-if="apiData">
+      <div v-if="latLng && apiData">
         <div class="chart-input">
           <label for="model" class="label">Model:</label>
           <div class="select mb-5 mr-3">
@@ -267,7 +267,7 @@ onUnmounted(() => {
         </div>
       </div>
       <div id="chart"></div>
-      <div v-if="latLng" class="my-6">
+      <div v-if="latLng && apiData" class="my-6">
         <h4 class="title is-4">
           Download vegetation type data for {{ apiData['huc_id'] }}, the HUC-12
           enclosing {{ latLng.lat }},
