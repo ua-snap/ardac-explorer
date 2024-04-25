@@ -90,7 +90,7 @@ const buildChart = () => {
       {
         title: {
           text:
-            'Flammability for ' +
+            'Vegetation type for ' +
             'HUC-12 ' +
             apiData.value['huc_id'] +
             '<br />' +
