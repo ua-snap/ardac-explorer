@@ -277,7 +277,7 @@ onUnmounted(() => {
     <div class="content is-size-5">
       <h3 class="title is-3">Landfast Sea Ice Extent</h3>
       <p class="mb-6">
-        The map below shows landfast sea ice extent for March 1st from
+        The map below shows landfast sea ice extent for June 1st from
         1997&ndash;2007.
       </p>
 
