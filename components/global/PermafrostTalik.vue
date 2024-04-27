@@ -56,10 +56,10 @@ onUnmounted(() => {
   <section class="section">
     <div class="content is-size-5">
       <h3 class="title is-3">Talik Thickness</h3>
-      <!-- <p class="mb-6">
+      <p class="mb-6">
         The map below shows talik thickness for three eras using the GFDL CM3
-        under the RCP 8.5 emissions scenario.
-      </p> -->
+        model under the RCP 8.5 emissions scenario.
+      </p>
 
       <MapBlock :mapId="mapId" class="mb-6">
         <template v-slot:layers>
@@ -75,12 +75,12 @@ onUnmounted(() => {
         </template>
       </MapBlock>
 
-      <!-- <p>
+      <p>
         Enter a location below to see a chart of talik thickness using the GFDL
         CM3 and NCAR CCSM4 models and the selected emissions scenario. After
         entering a location, links will be provided where you can download the
         data that is used to populate the chart.
-      </p> -->
+      </p>
 
       <Gimme />
       <PermafrostChartControls />
