@@ -15,6 +15,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'degree_days_below_zero_Fdays',
     style: 'ardac_dd_below_0_historical_era',
     legend: 'dd_below_0',
+    rasdamanConfiguration: { dim_model: 0, dim_scenario: 0 },
   },
   {
     id: 'dd_below_0_midcentury_era',
@@ -23,6 +24,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'degree_days_below_zero_Fdays',
     style: 'ardac_dd_below_0_midcentury_era',
     legend: 'dd_below_0',
+    rasdamanConfiguration: { dim_model: 2, dim_scenario: 2 },
   },
   {
     id: 'dd_below_0_latecentury_era',
@@ -31,6 +33,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'degree_days_below_zero_Fdays',
     style: 'ardac_dd_below_0_latecentury_era',
     legend: 'dd_below_0',
+    rasdamanConfiguration: { dim_model: 2, dim_scenario: 2 },
   },
 ]
 

@@ -15,6 +15,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'air_freezing_index_Fdays',
     style: 'ardac_freezing_index_historical_era',
     legend: 'freezing_index',
+    rasdamanConfiguration: { dim_model: 0, dim_scenario: 0 },
   },
   {
     id: 'freezing_index_midcentury_era',
@@ -23,6 +24,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'air_freezing_index_Fdays',
     style: 'ardac_freezing_index_midcentury_era',
     legend: 'freezing_index',
+    rasdamanConfiguration: { dim_model: 2, dim_scenario: 2 },
   },
   {
     id: 'freezing_index_latecentury_era',
@@ -31,6 +33,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'air_freezing_index_Fdays',
     style: 'ardac_freezing_index_latecentury_era',
     legend: 'freezing_index',
+    rasdamanConfiguration: { dim_model: 2, dim_scenario: 2 },
   },
 ]
 
