@@ -79,7 +79,7 @@ mapStore.setLegendItems(mapId, legend)
       <p>
         Enter lat/lon coordinates below to see a chart of degree days below
         65&deg;F for a point location. This chart displays min/mean/max values
-        for historical decades using the ERA-Interim model and projected decades
+        for historical decades using the Daymet model and projected decades
         using both the GFDL ESM2M and NCAR CCSM4 models under the RCP 8.5
         emissions scenario.
       </p>

@@ -78,8 +78,8 @@ mapStore.setLegendItems(mapId, legend)
       <p>
         Enter lat/lon coordinates below to see a chart of the freezing index for
         a point location. This chart displays min/mean/max values for historical
-        decades using the ERA-Interim model and projected decades using both the
-        GFDL ESM2M and NCAR CCSM4 models under the RCP 8.5 emissions scenario.
+        decades using the Daymet model and projected decades using both the GFDL
+        ESM2M and NCAR CCSM4 models under the RCP 8.5 emissions scenario.
       </p>
 
       <p>
