@@ -29,7 +29,7 @@ const layers: MapLayer[] = [
     title: '1980–2009, Daymet, Medium Snowpack',
     source: 'rasdaman',
     wmsLayerName: 'beetle_risk',
-    style: 'ardac_beetle_risk',
+    style: 'beetle_risk',
     legend: 'beetles',
     rasdamanConfiguration: {
       dim_era: 0,
@@ -43,7 +43,7 @@ const layers: MapLayer[] = [
     title: '2040–2069, NCAR CCSM4, RCP 8.5, Medium Snowpack',
     source: 'rasdaman',
     wmsLayerName: 'beetle_risk',
-    style: 'ardac_beetle_risk',
+    style: 'beetle_risk',
     legend: 'beetles',
     rasdamanConfiguration: {
       dim_era: 2,
@@ -57,7 +57,7 @@ const layers: MapLayer[] = [
     title: '2070–2099, NCAR CCSM4, RCP 8.5, Medium Snowpack',
     source: 'rasdaman',
     wmsLayerName: 'beetle_risk',
-    style: 'ardac_beetle_risk',
+    style: 'beetle_risk',
     legend: 'beetles',
     rasdamanConfiguration: {
       dim_era: 3,
