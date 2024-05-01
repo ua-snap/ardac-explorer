@@ -23,6 +23,9 @@ const layers: MapLayer[] = [
     wmsLayerName: 'tas_2km_historical',
     style: 'ardac_tas_cmip5_historical_era',
     legend: 'tas',
+    rasdamanConfiguration: {
+      dim_month: 6,
+    },
   },
   {
     id: 'tas_cmip5_midcentury_era',
@@ -32,6 +35,11 @@ const layers: MapLayer[] = [
     wmsLayerName: 'tas_2km_projected',
     style: 'ardac_tas_cmip5_midcentury_era',
     legend: 'tas',
+    rasdamanConfiguration: {
+      dim_model: 2,
+      dim_scenario: 1,
+      dim_month: 6,
+    },
   },
   {
     id: 'tas_cmip5_latecentury_era',
@@ -41,6 +49,11 @@ const layers: MapLayer[] = [
     wmsLayerName: 'tas_2km_projected',
     style: 'ardac_tas_cmip5_latecentury_era',
     legend: 'tas',
+    rasdamanConfiguration: {
+      dim_model: 2,
+      dim_scenario: 1,
+      dim_month: 6,
+    },
   },
 ]
 
