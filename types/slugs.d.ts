@@ -37,7 +37,7 @@ type Slug =
   | 'indicator-r10mm'
   | 'indicator-cwd'
   | 'indicator-cdd'
-  | 'precipitation-2km-cmip5'
+  | 'precipitation-cmip5'
   | 'precipitation-frequency'
   | 'indicator-rx1day'
   | 'indicator-rx5day'

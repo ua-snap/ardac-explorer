@@ -258,8 +258,8 @@ export default [
     tags: ['Precipitation'],
   },
   {
-    slug: 'precipitation-2km-cmip5',
-    title: 'Precipitation, 2km',
+    slug: 'precipitation-cmip5',
+    title: 'Precipitation, CMIP5',
     blurb: 'Annual means, decadal means up to monthly temporal resolution',
     tags: ['Precipitation'],
   },

@@ -9,9 +9,9 @@ const endpoints: Record<string, string> = {
   indicators: '/indicators/base/point/',
   landfastSeaIce: '/landfastice/point/',
   freezingIndex: '/degree_days/freezing_index/',
-  precipitation: '/precipitation/point/',
+  precipitationCmip5: '/precipitation/',
   precipitationFrequency: '/precipitation/frequency/point/',
-  temperature: '/temperature/point/',
+  temperatureCmip5: '/tas2km/point/',
   thawingIndex: '/degree_days/thawing_index/',
   wetDaysPerYear: '/wet_days_per_year/all/point/',
 }

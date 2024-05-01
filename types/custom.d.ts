@@ -9,13 +9,13 @@ interface Item {
 }
 
 interface Community {
-  id: string,
-  name: string,
-  alt_name?: string,
-  region: string,
-  country: string,
-  latitude: number,
-  longitude: number,
+  id: string
+  name: string
+  alt_name?: string
+  region: string
+  country: string
+  latitude: number
+  longitude: number
   type: string
 }
 
@@ -24,6 +24,7 @@ type CommunityValue = Community | undefined
 interface MapLayer {
   id: string
   title: string
+  subtext?: string
   source?: 'rasdaman' | undefined
   wmsLayerName: string
   style: string
