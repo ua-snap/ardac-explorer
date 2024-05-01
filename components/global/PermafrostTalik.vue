@@ -15,6 +15,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'crrel_gipl_outputs',
     style: 'ardac_talikthickness_earlycentury_era',
     legend: 'talikthickness',
+    rasdamanConfiguration: { dim_model: 1, dim_scenario: 1 },
   },
   {
     id: 'talikthickness_midcentury_era',
@@ -23,6 +24,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'crrel_gipl_outputs',
     style: 'ardac_talikthickness_midcentury_era',
     legend: 'talikthickness',
+    rasdamanConfiguration: { dim_model: 1, dim_scenario: 1 },
   },
   {
     id: 'talikthickness_latecentury_era',
@@ -31,6 +33,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'crrel_gipl_outputs',
     style: 'ardac_talikthickness_latecentury_era',
     legend: 'talikthickness',
+    rasdamanConfiguration: { dim_model: 1, dim_scenario: 1 },
   },
 ]
 

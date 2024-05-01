@@ -16,6 +16,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'crrel_gipl_outputs',
     style: 'ardac_magt3m_earlycentury_era',
     legend: 'magt',
+    rasdamanConfiguration: { dim_model: 1, dim_scenario: 1 },
   },
   {
     id: 'magt3m_midcentury_era',
@@ -25,6 +26,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'crrel_gipl_outputs',
     style: 'ardac_magt3m_midcentury_era',
     legend: 'magt',
+    rasdamanConfiguration: { dim_model: 1, dim_scenario: 1 },
   },
   {
     id: 'magt3m_latecentury_era',
@@ -34,6 +36,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'crrel_gipl_outputs',
     style: 'ardac_magt3m_latecentury_era',
     legend: 'magt',
+    rasdamanConfiguration: { dim_model: 1, dim_scenario: 1 },
   },
 ]
 

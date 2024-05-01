@@ -16,6 +16,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'crrel_gipl_outputs',
     style: 'ardac_permafrost_base_earlycentury_era',
     legend: 'permafrost_base',
+    rasdamanConfiguration: { dim_model: 1, dim_scenario: 1 },
   },
   {
     id: 'permafrost_top_earlycentury_era',
@@ -25,6 +26,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'crrel_gipl_outputs',
     style: 'ardac_permafrost_top_earlycentury_era',
     legend: 'permafrost_top',
+    rasdamanConfiguration: { dim_model: 1, dim_scenario: 1 },
   },
   {
     id: 'permafrost_base_midcentury_era',
@@ -34,6 +36,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'crrel_gipl_outputs',
     style: 'ardac_permafrost_base_midcentury_era',
     legend: 'permafrost_base',
+    rasdamanConfiguration: { dim_model: 1, dim_scenario: 1 },
   },
   {
     id: 'permafrost_top_midcentury_era',
@@ -43,6 +46,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'crrel_gipl_outputs',
     style: 'ardac_permafrost_top_midcentury_era',
     legend: 'permafrost_top',
+    rasdamanConfiguration: { dim_model: 1, dim_scenario: 1 },
   },
   {
     id: 'permafrost_base_latecentury_era',
@@ -52,6 +56,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'crrel_gipl_outputs',
     style: 'ardac_permafrost_base_latecentury_era',
     legend: 'permafrost_base',
+    rasdamanConfiguration: { dim_model: 1, dim_scenario: 1 },
   },
   {
     id: 'permafrost_top_latecentury_era',
@@ -61,6 +66,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'crrel_gipl_outputs',
     style: 'ardac_permafrost_top_latecentury_era',
     legend: 'permafrost_top',
+    rasdamanConfiguration: { dim_model: 1, dim_scenario: 1 },
   },
 ]
 
