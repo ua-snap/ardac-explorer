@@ -15,6 +15,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_sm1_historical_era',
     legend: 'sm1',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
   {
     id: 'sm1_midcentury_era',
@@ -23,6 +24,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_sm1_midcentury_era',
     legend: 'sm1',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
   {
     id: 'sm1_latecentury_era',
@@ -31,6 +33,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_sm1_latecentury_era',
     legend: 'sm1',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
   {
     id: 'sm2_historical_era',
@@ -39,6 +42,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_sm2_historical_era',
     legend: 'sm2',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
   {
     id: 'sm2_midcentury_era',
@@ -47,6 +51,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_sm2_midcentury_era',
     legend: 'sm2',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
   {
     id: 'sm2_latecentury_era',
@@ -55,6 +60,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_sm2_latecentury_era',
     legend: 'sm2',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
   {
     id: 'sm3_historical_era',
@@ -63,6 +69,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_sm3_historical_era',
     legend: 'sm3',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
   {
     id: 'sm3_midcentury_era',
@@ -71,6 +78,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_sm3_midcentury_era',
     legend: 'sm3',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
   {
     id: 'sm3_latecentury_era',
@@ -79,6 +87,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_sm3_latecentury_era',
     legend: 'sm3',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
 ]
 

@@ -15,6 +15,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_runoff_historical_era',
     legend: 'runoff',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
   {
     id: 'runoff_midcentury_era',
@@ -23,6 +24,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_runoff_midcentury_era',
     legend: 'runoff',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
   {
     id: 'runoff_latecentury_era',
@@ -31,6 +33,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_runoff_latecentury_era',
     legend: 'runoff',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
 ]
 

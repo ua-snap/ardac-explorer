@@ -15,6 +15,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_snow_melt_historical_era',
     legend: 'snow_melt',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
   {
     id: 'snow_melt_midcentury_era',
@@ -23,6 +24,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_snow_melt_midcentury_era',
     legend: 'snow_melt',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
   {
     id: 'snow_melt_latecentury_era',
@@ -31,6 +33,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_snow_melt_latecentury_era',
     legend: 'snow_melt',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
 ]
 

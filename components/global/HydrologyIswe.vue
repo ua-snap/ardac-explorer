@@ -15,6 +15,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_iwe_historical_era',
     legend: 'iwe',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
   {
     id: 'iwe_midcentury_era',
@@ -23,6 +24,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_iwe_midcentury_era',
     legend: 'iwe',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
   {
     id: 'iwe_latecentury_era',
@@ -31,6 +33,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_iwe_latecentury_era',
     legend: 'iwe',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
   {
     id: 'swe_historical_era',
@@ -39,6 +42,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_swe_historical_era',
     legend: 'swe',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
   {
     id: 'swe_midcentury_era',
@@ -47,6 +51,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_swe_midcentury_era',
     legend: 'swe',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
   {
     id: 'swe_latecentury_era',
@@ -55,6 +60,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'hydrology',
     style: 'ardac_swe_latecentury_era',
     legend: 'swe',
+    rasdamanConfiguration: { dim_model: 3, dim_scenario: 1 },
   },
 ]
 
