@@ -21,6 +21,10 @@ const layers: MapLayer[] = [
     wmsLayerName: 'annual_precip_totals_mm',
     style: 'ardac_pr_cmip5_historical_era',
     legend: 'pr',
+    rasdamanConfiguration: {
+      dim_model: 0,
+      dim_scenario: 0,
+    },
   },
   {
     id: 'pr_cmip5_midcentury_era',
@@ -29,6 +33,10 @@ const layers: MapLayer[] = [
     wmsLayerName: 'annual_precip_totals_mm',
     style: 'ardac_pr_cmip5_midcentury_era',
     legend: 'pr',
+    rasdamanConfiguration: {
+      dim_model: 6,
+      dim_scenario: 3,
+    },
   },
   {
     id: 'pr_cmip5_latecentury_era',
@@ -37,6 +45,10 @@ const layers: MapLayer[] = [
     wmsLayerName: 'annual_precip_totals_mm',
     style: 'ardac_pr_cmip5_latecentury_era',
     legend: 'pr',
+    rasdamanConfiguration: {
+      dim_model: 6,
+      dim_scenario: 3,
+    },
   },
 ]
 
