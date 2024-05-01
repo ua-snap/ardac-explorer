@@ -160,8 +160,14 @@ const layers: MapLayer[] = [
       '2020–2049, NCAR CCSM4, RCP 8.5, Duration: 24 Hours, Return Interval: 100',
     source: 'rasdaman',
     wmsLayerName: 'dot_precip',
-    style: 'ardac_pf_earlycentury_era',
+    style: 'ardac_pf',
     legend: 'pf',
+    rasdamanConfiguration: {
+      dim_model: 1,
+      dim_duration: 3,
+      dim_era: 0,
+      dim_interval: 100,
+    },
   },
   {
     id: 'pf_midcentury_era',
@@ -169,8 +175,14 @@ const layers: MapLayer[] = [
       '2050–2079, NCAR CCSM4, RCP 8.5, Duration: 24 Hours, Return Interval: 100',
     source: 'rasdaman',
     wmsLayerName: 'dot_precip',
-    style: 'ardac_pf_midcentury_era',
+    style: 'ardac_pf',
     legend: 'pf',
+    rasdamanConfiguration: {
+      dim_model: 1,
+      dim_duration: 3,
+      dim_era: 1,
+      dim_interval: 100,
+    },
   },
   {
     id: 'pf_latecentury_era',
@@ -178,8 +190,14 @@ const layers: MapLayer[] = [
       '2080–2099, NCAR CCSM4, RCP 8.5, Duration: 24 Hours, Return Interval: 100',
     source: 'rasdaman',
     wmsLayerName: 'dot_precip',
-    style: 'ardac_pf_latecentury_era',
+    style: 'ardac_pf',
     legend: 'pf',
+    rasdamanConfiguration: {
+      dim_model: 1,
+      dim_duration: 3,
+      dim_era: 2,
+      dim_interval: 100,
+    },
   },
 ]
 
