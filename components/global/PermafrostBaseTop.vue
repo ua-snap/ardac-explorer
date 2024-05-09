@@ -106,29 +106,27 @@ onUnmounted(() => {
 
       <MapBlock :mapId="mapId" class="mb-6">
         <template v-slot:layers>
+          <h4 class="title is-4 mb-3">Permafrost Base Depth</h4>
           <MapLayer :mapId="mapId" :layer="layers[0]" default>
             <template v-slot:title>{{ layers[0].title }}</template>
-            <template v-slot:subtext>{{ layers[0].subtext }}</template>
           </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[1]">
-            <template v-slot:title>{{ layers[1].title }}</template>
-            <template v-slot:subtext>{{ layers[1].subtext }}</template>
-          </MapLayer>
+
           <MapLayer :mapId="mapId" :layer="layers[2]">
             <template v-slot:title>{{ layers[2].title }}</template>
-            <template v-slot:subtext>{{ layers[2].subtext }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[3]">
-            <template v-slot:title>{{ layers[3].title }}</template>
-            <template v-slot:subtext>{{ layers[3].subtext }}</template>
           </MapLayer>
           <MapLayer :mapId="mapId" :layer="layers[4]">
             <template v-slot:title>{{ layers[4].title }}</template>
-            <template v-slot:subtext>{{ layers[4].subtext }}</template>
+          </MapLayer>
+          <hr>
+          <h4 class="title is-4 mb-3">Permafrost Top Depth</h4>
+          <MapLayer :mapId="mapId" :layer="layers[1]">
+            <template v-slot:title>{{ layers[1].title }}</template>
+          </MapLayer>
+          <MapLayer :mapId="mapId" :layer="layers[3]">
+            <template v-slot:title>{{ layers[3].title }}</template>
           </MapLayer>
           <MapLayer :mapId="mapId" :layer="layers[5]">
             <template v-slot:title>{{ layers[5].title }}</template>
-            <template v-slot:subtext>{{ layers[5].subtext }}</template>
           </MapLayer>
         </template>
       </MapBlock>
