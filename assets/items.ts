@@ -95,7 +95,7 @@ export default [
     tags: ['Climate', 'Programming'],
   },
   {
-    slug: 'notebook-frosth-depth',
+    slug: 'notebook-frost-depth',
     title: 'Modified Berggren Frost Depth',
     blurb: 'Learn how to calculate compute the ModBerg frost depth',
     tags: ['Climate', 'Programming'],
