@@ -82,7 +82,6 @@ watch([latLng, modelInput, scenarioInput], async () => {
         </div>
       </div>
     </div>
-    <HydrologyChart />
   </div>
 </template>
 
