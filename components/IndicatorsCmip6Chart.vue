@@ -1,7 +1,8 @@
 <script lang="ts" setup>
 const props = defineProps<{
-  endpoint: string
   label: string
+  units?: string
+  dataKey: string
 }>()
 
 import type { Data } from 'plotly.js-dist-min'
@@ -9,33 +10,47 @@ import type { Data } from 'plotly.js-dist-min'
 const { $Plotly, $_ } = useNuxtApp()
 const dataStore = useDataStore()
 const placesStore = usePlacesStore()
+const chartStore = useChartStore()
 
 const apiData = computed<any[]>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
+const chartLabels = computed<IndicatorsCmip6ChartLabelsObj>(
+  () => chartStore.labels as IndicatorsCmip6ChartLabelsObj
+)
+const chartInputs = computed<IndicatorsCmip6ChartInputsObj>(
+  () => chartStore.inputs as IndicatorsCmip6ChartInputsObj
+)
+
 let chartData: any
 
-const getPlotValues = (minYear: number, maxYear: number, model: string) => {
-  let years = $_.range(minYear, maxYear + 1)
+const getPlotValues = (params: any) => {
+  let years = $_.range(params.minYear, params.maxYear + 1)
 
   // Pad projected decades with nulls to align properly on chart.
-  let xTickPaddingLength: number = (minYear - 1980) / 10
+  let xTickPaddingLength: number = (params.minYear - 1950) / 10
   let xTickPadding = $_.fill(Array(xTickPaddingLength), null)
 
-  let degreeDays: number[] = []
+  let values: number[] = []
 
-  years.forEach((year: number) => {
-    degreeDays.push(chartData[model][year]['dd'])
-  })
+  if (params.historical) {
+    years.forEach((year: number) => {
+      values.push(chartData['historical'][params.model][year][props.dataKey])
+    })
+  } else {
+    years.forEach((year: number) => {
+      values.push(chartData[params.scenario][params.model][year][props.dataKey])
+    })
+  }
 
   // Group yearly values into decade buckets to make it easier to calculate
   // min/mean/max for each decade.
   let decadeBuckets: Record<string, number[]> = {}
-  for (let i = 0; i < degreeDays.length; i += 10) {
+  for (let i = 0; i < values.length; i += 10) {
     let yearRange = years[i] + '-' + years[i + 9]
     decadeBuckets[yearRange] = []
     for (let j = 0; j < 10; j++) {
-      decadeBuckets[yearRange].push(degreeDays[i + j])
+      decadeBuckets[yearRange].push(values[i + j])
     }
   }
 
@@ -48,7 +63,7 @@ const getPlotValues = (minYear: number, maxYear: number, model: string) => {
   let minOffsets: number[] = []
 
   decades.forEach(decade => {
-    let mean = Math.round($_.mean(decadeBuckets[decade]))
+    let mean = $_.mean(decadeBuckets[decade])
     let min = $_.min(decadeBuckets[decade])
     let max = $_.max(decadeBuckets[decade])
 
@@ -81,62 +96,46 @@ const getPlotValues = (minYear: number, maxYear: number, model: string) => {
 }
 
 const buildChart = () => {
-  if (apiData.value) {
+  if (apiData.value && chartLabels.value && chartInputs.value) {
     let traces: Data[] = []
-    let allDecades: string[] = ['']
+    let allDecades: string[] = []
     chartData = dataStore.apiData
 
-    for (let i = 1980; i <= 2090; i += 10) {
+    for (let i = 1950; i <= 2100; i += 10) {
       allDecades.push(i + '-' + (i + 9))
     }
 
     let traceParams = [
       {
-        model: 'ERA-Interim',
-        minYear: 1980,
+        model: chartInputs.value?.model,
+        scenario: chartInputs.value?.scenario,
+        minYear: 1950,
         maxYear: 2009,
+        historical: true,
       },
       {
-        model: 'GFDL-CM3',
-        minYear: 2010,
+        model: chartInputs.value?.model,
+        scenario: chartInputs.value?.scenario,
+        minYear: 2020,
         maxYear: 2099,
-      },
-      {
-        model: 'NCAR-CCSM4',
-        minYear: 2010,
-        maxYear: 2099,
+        historical: false,
       },
     ]
 
     let symbols: Record<string, string> = {
-      'ERA-Interim': 'circle',
-      'GFDL-CM3': 'square',
-      'NCAR-CCSM4': 'diamond',
-    }
-
-    let offsets: Record<string, number> = {
-      'ERA-Interim': 0,
-      'GFDL-CM3': -0.15,
-      'NCAR-CCSM4': 0.15,
+      historical: 'circle',
+      projected: 'square',
     }
 
     traceParams.forEach(params => {
-      let plotValues = getPlotValues(
-        params.minYear,
-        params.maxYear,
-        params.model
-      )
-      let ticks = $_.range(0, plotValues.decades.length + 1)
+      let plotValues = getPlotValues(params)
+      let ticks = $_.range(1, plotValues.decades.length + 1)
 
-      // Offset the chart markers/bars slightly so they don't overlap.
-      // Omit the first tick mark because it's just the placeholder for the
-      // 0 x-axis position, where the y-axis line is drawn.
-      let offsetTicks = ticks
-        .slice(1)
-        .map((tick: number) => tick + offsets[params.model])
+      let symbolKey = params.historical ? 'historical' : 'projected'
+      let traceLabel = params.historical ? 'Historical' : 'Projected'
 
       traces.push({
-        x: offsetTicks,
+        x: ticks,
         y: plotValues.means,
         error_y: {
           type: 'data',
@@ -146,9 +145,9 @@ const buildChart = () => {
         },
         mode: 'markers',
         type: 'scatter',
-        name: params.model,
+        name: traceLabel,
         marker: {
-          symbol: symbols[params.model],
+          symbol: symbols[symbolKey],
           size: 8,
         },
         hovertemplate:
@@ -158,6 +157,11 @@ const buildChart = () => {
         customdata: $_.zip(plotValues.maxes, plotValues.mins),
       })
     })
+
+    let yAxisLabel = props.label
+    if (props.units) {
+      yAxisLabel += ' (' + props.units + ')'
+    }
 
     $Plotly.newPlot(
       'chart',
@@ -169,7 +173,11 @@ const buildChart = () => {
             ' for ' +
             placesStore.latLng?.lat +
             ', ' +
-            placesStore.latLng?.lng,
+            placesStore.latLng?.lng +
+            '<br />Model: ' +
+            chartInputs.value.model +
+            ', Scenario: ' +
+            chartLabels.value.scenarios[chartInputs.value.scenario],
           font: {
             size: 24,
           },
@@ -177,12 +185,12 @@ const buildChart = () => {
         xaxis: {
           // Pad x-axis with one null to avoid overlapping y-axis line.
           tickvals: [null].concat($_.range(1, allDecades.length)),
-          ticktext: allDecades,
+          ticktext: [''].concat(allDecades),
           dtick: 1,
         },
         yaxis: {
           title: {
-            text: props.label + ' (°F⋅days)',
+            text: yAxisLabel,
             font: {
               size: 18,
             },
@@ -208,14 +216,14 @@ const buildChart = () => {
   }
 }
 
-watch(apiData, async () => {
+watch([apiData, chartLabels, chartInputs], async () => {
   buildChart()
 })
 
 watch(latLng, async () => {
   $Plotly.purge('chart')
   dataStore.apiData = null
-  dataStore.fetchData(props.endpoint)
+  dataStore.fetchData('indicatorsCmip6')
 })
 
 onUnmounted(() => {
@@ -224,7 +232,6 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Gimme />
   <div id="chart"></div>
 </template>
 

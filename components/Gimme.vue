@@ -3,7 +3,6 @@
 // [ lower-left lng, lower-left lat, upper-right lng, upper-right lat ]
 const props = defineProps<{
   bbox?: number[]
-  label?: string
 }>()
 
 const placesStore = usePlacesStore()

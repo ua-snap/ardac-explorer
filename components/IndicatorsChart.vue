@@ -8,16 +8,13 @@ const props = defineProps<{
 import type { Data } from 'plotly.js-dist-min'
 
 const { $Plotly, $_ } = useNuxtApp()
-const store = useStore()
 const dataStore = useDataStore()
 const placesStore = usePlacesStore()
 
 const scenarioInput = defineModel({ default: 'rcp85' })
 
 const apiData = computed<any[]>(() => dataStore.apiData)
-const dataError = computed<boolean>(() => dataStore.dataError)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
-const errorMsg = ref('')
 
 const scenarionLabels: Record<string, string> = {
   rcp45: 'RCP 4.5',
@@ -203,16 +200,9 @@ watch([apiData, scenarioInput], async () => {
 })
 
 watch(latLng, async () => {
-  errorMsg.value = ''
   $Plotly.purge('chart')
+  dataStore.apiData = null
   dataStore.fetchData('indicators')
-})
-
-watch(dataError, async () => {
-  if (dataError.value === true) {
-    errorMsg.value =
-      'There was an error fetching data for this location. Please try another location.'
-  }
 })
 
 onUnmounted(() => {
@@ -221,8 +211,8 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <LatLngSelector label="Get chart for lat/lon point:" :errorMsg="errorMsg" />
-  <div v-if="apiData">
+  <Gimme />
+  <div v-if="latLng && apiData">
     <div class="control mb-5">
       <label class="radio mr-3">
         <input

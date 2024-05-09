@@ -1,15 +1,5 @@
 export default [
   {
-    slug: 'indicator-ftc',
-    title: 'Freeze/Thaw Cycle',
-    blurb:
-      'Annual count of days with low temperature below freezing and high temps above freezing',
-    tags: ['Climate'],
-    image: 'freeze-thaw_ilona-frey-unsplash.jpg',
-    imageAlt:
-      'Photo of icicles demonstrating a freeze/thaw cycle.  Photo by Ilona Frey on Unsplash.',
-  },
-  {
     slug: 'indicator-su',
     title: 'Summer Days',
     blurb: 'Annual count when daily max temperature (threshold) >25°C',
@@ -43,7 +33,7 @@ export default [
     tags: ['Climate'],
   },
   {
-    slug: 'indicator-cdsi',
+    slug: 'indicator-csdi',
     title: 'Cold Spell Duration Index',
     blurb:
       'Annual count of occurrences of at least 5 consecutive days with daily mean 2 m air temperature below 10th percentile of historical values for the date',
@@ -105,7 +95,7 @@ export default [
     tags: ['Climate', 'Programming'],
   },
   {
-    slug: 'notebook-frosth-depth',
+    slug: 'notebook-frost-depth',
     title: 'Modified Berggren Frost Depth',
     blurb: 'Learn how to calculate compute the ModBerg frost depth',
     tags: ['Climate', 'Programming'],
@@ -390,5 +380,33 @@ export default [
     title: 'Snow, CMIP6',
     blurb: 'Snow amount, snowfall flux and surface snow thickness',
     tags: ['Cryosphere', 'Snow', 'CMIP6'],
+  },
+  {
+    slug: 'indicator-ftc-cmip6',
+    title: 'Freeze/Thaw Cycle, CMIP6',
+    blurb:
+      'Annual count of days with low temperature below freezing and high temps above freezing',
+    tags: ['Climate', 'CMIP6'],
+    image: 'freeze-thaw_ilona-frey-unsplash.jpg',
+    imageAlt:
+      'Photo of icicles demonstrating a freeze/thaw cycle.  Photo by Ilona Frey on Unsplash.',
+  },
+  {
+    slug: 'indicator-su-cmip6',
+    title: 'Summer Days, CMIP6',
+    blurb: 'Annual count when daily max temperature (threshold) >25°C',
+    tags: ['Climate', 'CMIP6'],
+  },
+  {
+    slug: 'indicator-dw-cmip6',
+    title: 'Deep Winter Days, CMIP6',
+    blurb: 'Annual count when daily min temperature (threshold) <-30°C',
+    tags: ['Climate', 'CMIP6'],
+  },
+  {
+    slug: 'indicator-rx1day-cmip6',
+    title: 'Maximum 1-day Precipitation, CMIP6',
+    blurb: 'Maximum precipitation in a single calendar year.',
+    tags: ['Precipitation', 'Climate', 'CMIP6'],
   },
 ] satisfies Item[]
