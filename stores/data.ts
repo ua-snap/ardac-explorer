@@ -3,17 +3,23 @@ const runtimeConfig = useRuntimeConfig()
 const placesStore = usePlacesStore()
 
 const endpoints: Record<string, string> = {
+  elevation: '/elevation/point/',
+  flammability: '/alfresco/flammability/local/',
   beetles: '/beetles/point/',
   indicatorsCmip6: '/indicators/cmip6/point/',
   degreeDaysBelow0: '/degree_days/below_zero/',
   heatingDegreeDays: '/degree_days/heating/',
+  hydrology: '/hydrology/point/',
   indicators: '/indicators/base/point/',
   landfastSeaIce: '/landfastice/point/',
   freezingIndex: '/degree_days/freezing_index/',
+  permafrost: '/permafrost/point/gipl/',
   precipitation: '/precipitation/point/',
   precipitationFrequency: '/precipitation/frequency/point/',
+  seaIceConcentration: '/seaice/point/',
   temperature: '/temperature/point/',
   thawingIndex: '/degree_days/thawing_index/',
+  vegType: '/alfresco/veg_type/local/',
   wetDaysPerYear: '/wet_days_per_year/all/point/',
 }
 

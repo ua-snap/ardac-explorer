@@ -156,6 +156,15 @@ const placeName = computed(() => {
   }
 })
 
+const dataStore = useDataStore()
+const dataError = computed<boolean>(() => dataStore.dataError)
+watch(dataError, async () => {
+  if (dataError.value == true) {
+    fieldMessage.value =
+      '⚠️ Failed to load data for the selected location. Please choose a different location.'
+  }
+})
+
 onUnmounted(() => {
   placesStore.latLng = undefined
   placesStore.selectedCommunity = undefined
@@ -164,7 +173,7 @@ onUnmounted(() => {
 
 <template>
   <div class="my-3">
-    <div v-show="placeIsSelected" class="selected-place">
+    <div v-show="placeIsSelected && !dataError" class="selected-place">
       <div class="content is-size-5">
         <p>
           Showing data for {{ placeName }}.
@@ -174,7 +183,7 @@ onUnmounted(() => {
         </p>
       </div>
     </div>
-    <div v-show="!placeIsSelected" class="field">
+    <div v-show="!placeIsSelected || dataError" class="field">
       <div class="control">
         <label class="label">Get data for a community or by lat/long</label>
 
