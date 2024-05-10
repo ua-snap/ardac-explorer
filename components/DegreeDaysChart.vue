@@ -24,8 +24,10 @@ const getPlotValues = (minYear: number, maxYear: number, model: string) => {
 
   let degreeDays: number[] = []
 
+  let scenario = model == 'daymet' ? 'modeled_baseline' : 'rcp85'
+
   years.forEach((year: number) => {
-    degreeDays.push(chartData[model][year]['dd'])
+    degreeDays.push(chartData[model][scenario][year]['dd'])
   })
 
   // Group yearly values into decade buckets to make it easier to calculate
@@ -92,32 +94,32 @@ const buildChart = () => {
 
     let traceParams = [
       {
-        model: 'ERA-Interim',
+        model: 'daymet',
         minYear: 1980,
         maxYear: 2009,
       },
       {
-        model: 'GFDL-CM3',
+        model: 'GFDL-ESM2M',
         minYear: 2010,
         maxYear: 2099,
       },
       {
-        model: 'NCAR-CCSM4',
+        model: 'CCSM4',
         minYear: 2010,
         maxYear: 2099,
       },
     ]
 
     let symbols: Record<string, string> = {
-      'ERA-Interim': 'circle',
-      'GFDL-CM3': 'square',
-      'NCAR-CCSM4': 'diamond',
+      daymet: 'circle',
+      'GFDL-ESM2M': 'square',
+      CCSM4: 'diamond',
     }
 
     let offsets: Record<string, number> = {
-      'ERA-Interim': 0,
-      'GFDL-CM3': -0.15,
-      'NCAR-CCSM4': 0.15,
+      daymet: 0,
+      'GFDL-ESM2M': -0.15,
+      CCSM4: 0.15,
     }
 
     traceParams.forEach(params => {
