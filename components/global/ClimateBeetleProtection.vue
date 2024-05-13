@@ -93,6 +93,73 @@ onUnmounted(() => {
   <section class="section">
     <div class="content is-size-5">
       <h3 class="title is-3">Climate Protection from Spruce Beetles</h3>
+      <h3 class="title is-5">Introduction</h3>
+      <p class="mb-6">
+        Spruce beetles are small insects that play a significant role in
+        Alaska's forests, particularly in infesting spruce trees such as white
+        spruce, Sitka spruce, and Lutz spruce. These outbreaks can cause
+        substantial damage to forest ecosystems and have economic repercussions.
+        In recent years, the frequency and severity of spruce beetle outbreaks
+        in Alaska have increased, prompting researchers to delve deeper into
+        understanding the factors influencing these outbreaks.
+      </p>
+      <h3 class="title is-5">The Beetle Lifecycle and Climate Connection</h3>
+      <p class="mb-6">
+        Spruce beetles have a lifecycle closely tied to climate conditions.
+        Adult beetles typically fly to new trees in the spring, where females
+        lay eggs. The timing of beetle flight is often linked to temperature,
+        with flight occurring when temperatures reach approximately 16°C or
+        warmer. Once hatched, larvae develop over the summer, with some maturing
+        into adults by the end of the season. The rate of maturation, termed
+        univoltinism, depends on the accumulation of heat during the summer
+        months. Beetles that mature in a single summer (univoltine) have a
+        higher chance of survival compared to those that overwinter as larvae
+        (semivoltine).
+      </p>
+      <h3 class="title is-5">Climate Factors and Outbreak Patterns</h3>
+      <p class="mb-6">
+        Climate plays a crucial role in shaping spruce beetle outbreaks. Warmer
+        temperatures can accelerate beetle development, leading to more frequent
+        outbreaks. Conversely, cold temperatures during fall and winter can
+        limit beetle survival. Predation by woodpeckers also influences beetle
+        populations, with larvae being particularly vulnerable. Understanding
+        these climate factors is essential for predicting and mitigating
+        outbreaks.
+      </p>
+      <h3 class="title is-5">Modeling Spruce Beetle Outbreaks</h3>
+      <p class="mb-6">
+        To better understand and predict spruce beetle outbreaks, researchers
+        developed a comprehensive model that incorporates various climate
+        factors and beetle lifecycle stages. The model assesses the risk of
+        outbreaks across different time periods, considering historical climate
+        data and beetle population dynamics. By calibrating the model with
+        observed outbreak patterns, researchers can categorize climate
+        protection levels and identify regions at higher risk of outbreaks.
+      </p>
+      <h3 class="title is-5">Implications for Forest Management</h3>
+      <p class="mb-6">
+        Understanding the factors driving spruce beetle outbreaks is essential
+        for effective forest management and conservation efforts. By identifying
+        areas with elevated outbreak risk, forest managers can implement
+        proactive measures to mitigate beetle infestations, such as targeted
+        tree removal, forest thinning, and monitoring programs. These management
+        practices can help maintain the health and resilience of Alaska's
+        forests in the face of changing climate conditions.
+      </p>
+      <h3 class="title is-5">Conclusion</h3>
+
+      <p class="mb-6">
+        Spruce beetle outbreaks pose significant challenges to Alaska's forests,
+        but through interdisciplinary research and advanced modeling techniques,
+        scientists are gaining valuable insights into the complex interactions
+        between climate, beetle populations, and forest ecosystems. By applying
+        this knowledge, stakeholders can work towards sustainable forest
+        management practices that help protect Alaska's valuable spruce forests
+        for future generations.
+      </p>
+    </div>
+    <div class="content is-size-5">
+      <h3 class="title is-3">Climate Protection from Spruce Beetles</h3>
       <p class="mb-6">
         The map below shows the 30-year mean of climate protection from spruce
         beetles for three eras with medium snowpack. The historical era
