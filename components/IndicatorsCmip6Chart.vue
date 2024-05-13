@@ -63,9 +63,9 @@ const getPlotValues = (params: any) => {
   let minOffsets: number[] = []
 
   decades.forEach(decade => {
-    let mean = $_.mean(decadeBuckets[decade])
-    let min = $_.min(decadeBuckets[decade])
-    let max = $_.max(decadeBuckets[decade])
+    let mean = $_.mean(decadeBuckets[decade].map(Number))
+    let min = $_.min(decadeBuckets[decade].map(Number))
+    let max = $_.max(decadeBuckets[decade].map(Number))
 
     // Calculate max/min as offsets from mean for error bars.
     let maxOffset = max - mean
