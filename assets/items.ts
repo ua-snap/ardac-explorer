@@ -409,4 +409,10 @@ export default [
     blurb: 'Maximum precipitation in a single calendar year.',
     tags: ['Precipitation', 'Climate', 'CMIP6'],
   },
+  {
+    slug: 'Beetle-Risk-Story',
+    title: 'Beetle Risk Data Story',
+    blurb: 'Learn about changes in climate protection from Spruce Beetles in Alaska.',
+    tags: ['Story', 'CMIP-5', 'Climate', 'Terrestrial'],
+  },
 ] satisfies Item[]
