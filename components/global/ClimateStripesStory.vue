@@ -19,11 +19,6 @@ let historicalYears = $_.range(1901, 2006)
 let projectedYears = $_.range(2007, 2100)
 
 const buildChart = () => {
-  // Package the data into a 2D array (months x days) for the heatmap chart.
-  // 0 = sea ice absent
-  // 1 = sea ice present
-  // 2 = no data
-  // 3 = grid padding for invalid dates
   let dataByScenario: number[][] = []
 
   Object.keys(scenarioLabels).forEach(scenario => {
@@ -46,17 +41,7 @@ const buildChart = () => {
       y: Object.values(scenarioLabels).reverse(),
       z: dataByScenario,
       type: 'heatmap',
-      // colorscale: [
-      //   [0.0, 'rgb(255,255,255)'],
-      //   [0.33, 'rgb(0,0,255)'],
-      //   [0.66, 'rgb(180,180,180)'],
-      //   [1.0, 'rgb(96,96,96)'],
-      // ],
       showscale: false,
-      // xgap: 2,
-      // ygap: 2,
-      // zmin: 0,
-      // zmax: 3,
     } satisfies Data,
   ]
 
