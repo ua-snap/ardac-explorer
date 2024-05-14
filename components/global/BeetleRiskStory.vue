@@ -558,14 +558,17 @@ const data: any = {
         </div>
       </div>
     </div>
-    <h4 class="title is-4">Climate protection from beetle risk transitions</h4>
+    <h4 class="title is-4">
+      Transitions in climate protection from spruce beetle outbreaks
+    </h4>
     <table class="is-size-5">
       <tr v-for="key in Object.keys(dataLabels)">
         <th>
           {{ dataLabels[key] }}
         </th>
         <td>
-          {{ data[modelInput][scenarioInput][eraInput][snowpackInput][key] }} km
+          {{ data[modelInput][scenarioInput][eraInput][snowpackInput][key] }}
+          km<sup>2</sup>
         </td>
       </tr>
     </table>
