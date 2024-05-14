@@ -1,7 +1,6 @@
 <script lang="ts" setup>
 const placesStore = usePlacesStore()
 const dataStore = useDataStore()
-const runtimeConfig = useRuntimeConfig()
 
 const { $Plotly, $_ } = useNuxtApp()
 import type { Data } from 'plotly.js-dist-min'
@@ -20,20 +19,31 @@ let projectedYears = $_.range(2007, 2100)
 
 const buildChart = () => {
   let dataByScenario: number[][] = []
-
+  let allValues: number[] = []
+  let maxHistoricalValue: number = 0
   Object.keys(scenarioLabels).forEach(scenario => {
     let scenarioData: number[] = []
     historicalYears.forEach((year: any) => {
-      scenarioData.push(apiData.value['CRU-TS']['historical'][year]['tas'])
+      let temperature = apiData.value['CRU-TS']['historical'][year]['tas']
+      scenarioData.push(temperature)
+      allValues.push(temperature)
+      maxHistoricalValue = $_.max(scenarioData)
     })
     projectedYears.forEach((year: any) => {
-      scenarioData.push(apiData.value['NCAR-CCSM4'][scenario][year]['tas'])
+      let temperature = apiData.value['NCAR-CCSM4'][scenario][year]['tas']
+      scenarioData.push(temperature)
+      allValues.push(temperature)
     })
     dataByScenario.push(scenarioData)
   })
 
-  // Reverse these arrays so they are ordered correctly on chart.
+  // Reverse array so it is ordered correctly on chart.
   dataByScenario = dataByScenario.reverse()
+
+  let minValue = $_.min(allValues)
+  let maxValue = $_.max(allValues)
+  let range = maxValue - minValue
+  let whitePoint = (maxHistoricalValue - minValue) / range
 
   let plotData = [
     {
@@ -41,6 +51,12 @@ const buildChart = () => {
       y: Object.values(scenarioLabels).reverse(),
       z: dataByScenario,
       type: 'heatmap',
+      colorscale: [
+        [0, 'rgb(3,67,223)'],
+        [whitePoint / 2, 'rgb(255,255,255)'],
+        [whitePoint, 'rgb(255,0,0)'],
+        [1, 'rgb(64,0,64)'],
+      ],
       showscale: false,
     } satisfies Data,
   ]
