@@ -83,8 +83,7 @@ onMounted(() => {
           Introducing the <span>Arctic Climate Data Node</span>
         </h2>
         <h3 class="subtitle is-3">
-          Unlocking research potential through fast local access to CMIP6
-          climate model data
+          Unlocking research potential for CMIP6 climate model data
         </h3>
 
         <div class="content is-size-4">
@@ -126,9 +125,23 @@ onMounted(() => {
             they address the ongoing challenges of a changing climate.
           </p>
         </div>
-        <div class="column is-one-third">&nbsp;</div>
+      </div>
+      <div class="column">
+        <figure class="image is-square">
+          <img src="/images/story-acdn-cmip6/summer-days-cmip6.png" />
+          <figcaption>
+            Example CMIP6 data showing change in warm summer days
+          </figcaption>
+        </figure>
+        <figure class="image mt-6">
+          <img src="/images/story-acdn-cmip6/servers_massimo-botturi.jpg" />
+          <figcaption>
+            Part of the server technology used by the ACDN
+          </figcaption>
+        </figure>
       </div>
     </div>
+
     <h3 class="title is-3">What does ACDN offer researchers?</h3>
     <div class="columns">
       <div class="column is-two-thirds">
@@ -138,54 +151,81 @@ onMounted(() => {
             CMIP6 data as well as associated utilities and data products.
           </p>
         </div>
-        <h3 class="subtitle is-4 mt-4 mb-1">
-          Data ready for use in research
-        </h3>
+        <h3 class="subtitle is-4 mt-4 mb-1">Data ready for use in research</h3>
         <div class="content is-size-5">
           <ul>
-            <li>curated a suite of CMIP6 models and scenarios that perform best
-            in Alaska and the pan&ndash;Arctic: 13 global climate models, 4 emissions scenarios, 15 variables</li>
-            <li>preprocessed: data are available on a common grid, allowing researchers to focus on applying the data and solving significant geospatial data hurdles</li>
-            <li><a href="#technical-information">&#x2192; see available data</a></li>
+            <li>
+              curated a suite of CMIP6 models and scenarios that perform best in
+              Alaska and the pan&ndash;Arctic: 13 global climate models, 4
+              emissions scenarios, 15 variables
+            </li>
+            <li>
+              preprocessed: data are available on a common grid, allowing
+              researchers to focus on applying the data and solving significant
+              geospatial data hurdles
+            </li>
+            <li>
+              <a href="#technical-information">&#x2192; see available data</a>
+            </li>
           </ul>
         </div>
       </div>
     </div>
     <h3 class="subtitle is-4 mb-1">Multiple data access pathways</h3>
     <div class="content is-size-5">
-      <ul><li><strong>local data access</strong> and workspace for University of Alaska affiliated researchers.  The repository of CMIP6 data is attached directly to the <a href="https://uaf-rcs.gitbook.io/uaf-rcs-hpc-docs/hpc">Chinook compute cluster</a>, allowing fast access and use</li>
+      <ul>
         <li>
-          
-            <strong
-              ><a href="https://earthmaps.io">simple data API</a></strong
-            >
-            provides programmatic access to CMIP6 data, allowing users to query
-            and download data directly from the command line or within their own
-            applications. The API supports a wide range of query parameters,
-            including model, scenario, variable, and geographic region, enabling
-            users to extract specific subsets of data or perform complex
-            analyses directly within the API.
-            <br />
-            Example:
-            <a href="https://earthmaps.io/indicators/cmip6/point/61.5/-147"
-              ><code
-                >https://earthmaps.io/indicators/cmip6/point/61.5/-147</code
-              >
-            </a>
-          
+          <strong>local data access</strong> and workspace for University of
+          Alaska affiliated researchers. The repository of CMIP6 data is
+          attached directly to the
+          <a href="https://uaf-rcs.gitbook.io/uaf-rcs-hpc-docs/hpc"
+            >Chinook compute cluster</a
+          >, allowing fast access and use
+        </li>
+        <li>
+          <strong><a href="https://earthmaps.io">simple data API</a></strong>
+          provides programmatic access to CMIP6 data, allowing users to query
+          and download data directly from the command line or within their own
+          applications. The API supports a wide range of query parameters,
+          including model, scenario, variable, and geographic region, enabling
+          users to extract specific subsets of data or perform complex analyses
+          directly within the API.
+          <br />
+          Example:
+          <a href="https://earthmaps.io/indicators/cmip6/point/61.5/-147"
+            ><code>https://earthmaps.io/indicators/cmip6/point/61.5/-147</code>
+          </a>
+        </li>
+
+        <li>
+          rasdaman: a <strong>multidimensional raster datacube</strong> for data
+          analysis and mapping. Users can access CMIP6 data from rasdaman using
+          the standards-based OGC formats for web mapping and coverage requests:
+          WMS, and WCS/WCPS. This can be integrated into GIS platforms or used
+          to extract data for local analysis.
+          <a href="#rasdaman">&#x2192; read more about rasdaman</a>
+        </li>
+
+        <li>
+          <strong>remote data access</strong> via <code>globus</code>. Users
+          equipped with a Globus account can seamlessly navigate the ACDN file
+          storage system to retrieve data, transferring it to any system where
+          they hold a Globus account.
         </li>
       </ul>
     </div>
 
-    <div>
-
+    <div id="rasdaman">
       <h3 class="title is-5">Rasdaman</h3>
       <p>
         Rasdaman is an open&ndash;source software for managing massive arrays of
         multi&ndash;dimensional data, primarily used in scientific and
-        geospatial applications. It&rsquo;s designed to efficiently store,
-        retrieve, and analyze large&ndash;scale raster data, such as satellite
-        imagery, climate data, and simulations.
+        geospatial applications.
+        <a href="http://rasdaman.org">&#x2192; read more about rasdaman</a>
+        <br />
+        It&rsquo;s designed to efficiently store, retrieve, and analyze
+        large&ndash;scale raster data, such as satellite imagery, climate data,
+        and simulations.
       </p>
       <p>
         One of Rasdaman&rsquo;s key features is its ability to handle
@@ -211,12 +251,7 @@ onMounted(() => {
           >https://zeus.snap.uaf.edu/rasdaman/ows?&SERVICE=WCS&VERSION=2.1.0&REQUEST=GetCoverage&COVERAGEID=tas_2km_projected&SUBSET=year(0,9)&SUBSET=X(0,400000)&SUBSET=Y(1000000,1400000)&FORMAT=application/netcdf</a
         >
       </p>
-      <p>
-        <strong
-          >(this is not actually CMIP6 data, just faking with another
-          coverage!)</strong
-        >
-      </p>
+
       <p>
         Data can be analyzed and visualized directly from the WCS response,
         e.g.:
@@ -511,4 +546,10 @@ onMounted(() => {
   </section>
 </template>
 
-<style scoped lang="scss"></style>
+<style scoped lang="scss">
+figure {
+  figcaption {
+    float: left;
+  }
+}
+</style>
