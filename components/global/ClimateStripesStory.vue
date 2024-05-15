@@ -49,6 +49,7 @@ const buildChart = () => {
     let range = maxValue - minValue
     let redPoint = (maxHistoricalValue - minValue) / range
     let whitePoint = redPoint / 2
+    let plumPoint = redPoint + (maxValue - maxHistoricalValue) / range / 2
 
     // Create hover labels for each data point and pass them into the chart
     // using the "customdata" property to give us more conditional logic. This is
@@ -88,7 +89,8 @@ const buildChart = () => {
           [0, 'rgb(3,67,223)'],
           [whitePoint, 'rgb(255,255,255)'],
           [redPoint, 'rgb(255,0,0)'],
-          [1, 'rgb(64,0,64)'],
+          [plumPoint, 'rgb(64,0,64)'],
+          [1, 'rgb(255,0,255)'],
         ],
         showscale: false,
         hovertemplate: '%{customdata}',
