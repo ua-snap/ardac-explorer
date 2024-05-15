@@ -416,4 +416,10 @@ export default [
       'Learn about the lifecycle of spruce beetles and how the climate protects against outbreaks.',
     tags: ['Climate', 'Terrestrial'],
   },
+  {
+    slug: 'Climate-Stripes-Story-1',
+    title: 'Climate Stripes and Data Scale',
+    blurb: 'Climate stripes are a powerful climate data visualization both for understanding your local environment, and understanding how scale impacts climate variability.',
+    tags: ['Story', 'Climate', 'Terrestrial', 'Temperature'],
+  },
 ] satisfies Item[]

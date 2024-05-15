@@ -62,3 +62,4 @@ type Slug =
   | 'indicator-dw-cmip6'
   | 'indicator-rx1day-cmip6'
   | 'story-beetle-climate-protection'
+  | 'Climate-Stripes-Story-1'
