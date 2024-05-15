@@ -155,148 +155,102 @@ onMounted(() => {
         <div class="content is-size-5">
           <ul>
             <li>
-              curated a suite of CMIP6 models and scenarios that perform best in
-              Alaska and the pan&ndash;Arctic: 13 global climate models, 4
-              emissions scenarios, 15 variables
+              curated a suite of
+              <strong>
+                <span class="bling">CMIP6</span> models and scenarios that
+                perform best in Alaska and the pan&ndash;Arctic </strong
+              >: 13 global climate models, 4 emissions scenarios, 15 variables
+              <br />
+              Compared to prior CMIP5 data housed at UAF, the CMIP6 data through
+              the ACDN offers more models, more variables, and represents the
+              current state of the art of climate model output.
             </li>
             <li>
-              preprocessed: data are available on a common grid, allowing
+              preprocessed:
+              <strong>data are available on a common grid</strong>, allowing
               researchers to focus on applying the data and solving significant
               geospatial data hurdles
+            </li>
+            <li>
+              derived products: standardized
+              <strong>climate indicators</strong>&mdash;such as how many days
+              per year exceed 25&deg;C, or how many days per year have
+              temperatures above and below freezing&mdash;make baseline
+              temperature and precipitation more useful
             </li>
             <li>
               <a href="#technical-information">&#x2192; see available data</a>
             </li>
           </ul>
         </div>
+
+        <h3 class="subtitle is-4 mb-1">Multiple data access pathways</h3>
+        <div class="content is-size-5">
+          <ul>
+            <li>
+              <strong>local data access</strong> and workspace for University of
+              Alaska affiliated researchers. The repository of CMIP6 data is
+              attached directly to the
+              <a href="https://uaf-rcs.gitbook.io/uaf-rcs-hpc-docs/hpc"
+                >Chinook compute cluster</a
+              >, allowing fast access and scratch space for working with data.
+              <a href="#beegeefs">&#x2192; read more about ACDN storage</a>
+            </li>
+            <li>
+              <strong
+                ><a href="https://earthmaps.io">simple data API</a></strong
+              >
+              provides programmatic access to CMIP6 data, allowing users to
+              query and download data directly from the command line or within
+              their own applications. The API supports a wide range of query
+              parameters, including model, scenario, variable, and geographic
+              region, enabling users to extract specific subsets of data or
+              perform complex analyses directly within the API.
+              <br />
+              Example:
+              <a href="https://earthmaps.io/indicators/cmip6/point/61.5/-147"
+                ><code
+                  >https://earthmaps.io/indicators/cmip6/point/61.5/-147</code
+                >
+              </a>
+            </li>
+
+            <li>
+              rasdaman: a <strong>multidimensional raster datacube</strong> for
+              data analysis and mapping. Users can access CMIP6 data from
+              rasdaman using the standards-based OGC formats for web mapping and
+              coverage requests: WMS, and WCS/WCPS. This can be integrated into
+              GIS platforms or used to extract data for local analysis.
+              <a href="#rasdaman">&#x2192; read more about rasdaman</a>
+            </li>
+
+            <li>
+              <strong>remote data access</strong> via Globus. Users equipped
+              with a Globus account can seamlessly navigate the ACDN file
+              storage system to retrieve data, transferring it to any system
+              where they hold a Globus account.
+              <a href="#globus">&#x2192; read more about Globus</a>
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
-    <h3 class="subtitle is-4 mb-1">Multiple data access pathways</h3>
-    <div class="content is-size-5">
-      <ul>
-        <li>
-          <strong>local data access</strong> and workspace for University of
-          Alaska affiliated researchers. The repository of CMIP6 data is
-          attached directly to the
-          <a href="https://uaf-rcs.gitbook.io/uaf-rcs-hpc-docs/hpc"
-            >Chinook compute cluster</a
-          >, allowing fast access and use
-        </li>
-        <li>
-          <strong><a href="https://earthmaps.io">simple data API</a></strong>
-          provides programmatic access to CMIP6 data, allowing users to query
-          and download data directly from the command line or within their own
-          applications. The API supports a wide range of query parameters,
-          including model, scenario, variable, and geographic region, enabling
-          users to extract specific subsets of data or perform complex analyses
-          directly within the API.
-          <br />
-          Example:
-          <a href="https://earthmaps.io/indicators/cmip6/point/61.5/-147"
-            ><code>https://earthmaps.io/indicators/cmip6/point/61.5/-147</code>
-          </a>
-        </li>
+  </section>
 
-        <li>
-          rasdaman: a <strong>multidimensional raster datacube</strong> for data
-          analysis and mapping. Users can access CMIP6 data from rasdaman using
-          the standards-based OGC formats for web mapping and coverage requests:
-          WMS, and WCS/WCPS. This can be integrated into GIS platforms or used
-          to extract data for local analysis.
-          <a href="#rasdaman">&#x2192; read more about rasdaman</a>
-        </li>
-
-        <li>
-          <strong>remote data access</strong> via <code>globus</code>. Users
-          equipped with a Globus account can seamlessly navigate the ACDN file
-          storage system to retrieve data, transferring it to any system where
-          they hold a Globus account.
-        </li>
-      </ul>
-    </div>
-
-    <div id="rasdaman">
-      <h3 class="title is-5">Rasdaman</h3>
-      <p>
-        Rasdaman is an open&ndash;source software for managing massive arrays of
-        multi&ndash;dimensional data, primarily used in scientific and
-        geospatial applications.
-        <a href="http://rasdaman.org">&#x2192; read more about rasdaman</a>
-        <br />
-        It&rsquo;s designed to efficiently store, retrieve, and analyze
-        large&ndash;scale raster data, such as satellite imagery, climate data,
-        and simulations.
-      </p>
-      <p>
-        One of Rasdaman&rsquo;s key features is its ability to handle
-        multi&ndash;dimensional data sets, enabling users to store and query
-        data along multiple axes, such as time, space, and spectral dimensions.
-        It supports a wide range of data formats and provides powerful query
-        capabilities for extracting specific subsets of data or performing
-        complex analyses directly within the database.
-      </p>
-      <p>
-        Learn more at: <a href="https://rasdaman.org">https://rasdaman.org</a>
-      </p>
-
-      <p>
-        Users can quickly access CMIP6 data using SNAP&rsquo;s Rasdaman server
-        and WCS, WCPS, or WMS queries. For example, the WCS query below returns
-        a subset of the multidimensional CMIP6 data in NetCDF format that can be
-        processed in various environments:
-      </p>
-      <p>
-        <a
-          href="https://zeus.snap.uaf.edu/rasdaman/ows?&SERVICE=WCS&VERSION=2.1.0&REQUEST=GetCoverage&COVERAGEID=tas_2km_projected&SUBSET=year(0,9)&SUBSET=X(0,400000)&SUBSET=Y(1000000,1400000)&FORMAT=application/netcdf"
-          >https://zeus.snap.uaf.edu/rasdaman/ows?&SERVICE=WCS&VERSION=2.1.0&REQUEST=GetCoverage&COVERAGEID=tas_2km_projected&SUBSET=year(0,9)&SUBSET=X(0,400000)&SUBSET=Y(1000000,1400000)&FORMAT=application/netcdf</a
-        >
-      </p>
-
-      <p>
-        Data can be analyzed and visualized directly from the WCS response,
-        e.g.:
-      </p>
-      <img
-        src="/assets/images/mean_june_air_temperature.png"
-        alt="Mean June Air Temperature"
-      />
-      <p>
-        Many of SNAP&rsquo;s datasets are available as Rasdaman coverages. See
-        <a href="#replacethis">this notebook</a> for a tutorial on how to use
-        these services in your own work.
-      </p>
-
-      <h3 class="title is-5">Globus</h3>
-      <p>
-        Globus is a secure, reliable, and scalable data management platform that
-        enables researchers to easily move, share, and analyze large volumes of
-        data. It provides a user-friendly interface for transferring data
-        between storage systems, sharing data with collaborators, and automating
-        data workflows. Globus&rsquo; powerful data management capabilities make
-        it an ideal solution for researchers working with large datasets, such
-        as CMIP6 climate model data.
-      </p>
-      <p>
-        Users equipped with a Globus account can seamlessly navigate the ACDN
-        file storage system to retrieve data, transferring it to any system
-        where they hold a Globus account. This encompasses an array of major
-        national laboratories furnished with supercomputing capabilities.
-      </p>
-      <p>
-        Learn more at:
-        <a href="https://www.globus.org">https://www.globus.org</a>
-      </p>
-
-      <h3 class="title is-5">Example Climate Indicator: Summer Days, CMIP6</h3>
-      <p>
-        Summer days are the number of days per year that are above 77&deg;F. The
-        map below shows the 30-year mean of CMIP6 temperature data for three
-        eras showing the number of summer days over that era. The historical era
-        (1980&ndash;2009) uses model baseline data from the GFDL-ESM4 dataset.
-        The mid-century era (2040&ndash;2069) and late-century era
-        (2070&ndash;2099) use GFDL-ESM4 data under the climate scenario SSP5-8.5
-        scenario.
-      </p>
+  <section class="section">
+    <div class="block clamp">
+      <h3 class="title is-3">CMIP6 Climate Indicator In Action: Summer Days</h3>
+      <div class="content is-size-5">
+        <p>
+          Summer days are the number of days per year that are above 77&deg;F.
+          The map below shows the 30-year mean of CMIP6 temperature data for
+          three eras showing the number of summer days over that era. The
+          historical era (1980&ndash;2009) uses model baseline data from the
+          GFDL-ESM4 dataset. The mid-century era (2040&ndash;2069) and
+          late-century era (2070&ndash;2099) use GFDL-ESM4 data under the
+          climate scenario SSP5-8.5 scenario.
+        </p>
+      </div>
       <MapBlock :mapId="mapId">
         <template v-slot:layers>
           <MapLayer :mapId="mapId" :layer="layers[0]" default>
@@ -310,44 +264,16 @@ onMounted(() => {
           </MapLayer>
         </template>
       </MapBlock>
-    </div>
-    <IndicatorsCmip6ChartControls />
-    <IndicatorsCmip6Chart label="Summer days" dataKey="su" />
-    &nbsp;
-    <h3 class="title is-4">CMIP6 vs CMIP5 data: What&rsquo;s the big deal?</h3>
-    <div class="content is-size-5">
-      <p>
-        The Coupled Model Intercomparison Project (CMIP) is a collaborative
-        international effort to improve climate models. The CMIP6 data is the
-        latest iteration of this project and includes data from 2014 to 2020.
-        The CMIP6 data is more detailed and accurate than the CMIP5 data, which
-        was released in 2012. The CMIP6 data includes more models, more
-        variables, and more scenarios than the CMIP5 data. This makes the CMIP6
-        data more useful for researchers and policymakers who are studying
-        climate change and its impacts.
-      </p>
-    </div>
-    <p>Probably needs more information here! <---</p>
 
-    <h3 id="technical-information" class="title is-4">Technical information</h3>
-    <h3 class="title is-5">Arctic Climate Data Node (ACDN)</h3>
-    <p>
-      The ACDN operates as a robust storage infrastructure employing BeeGFS, a
-      distributed file system technology. This setup ensures swift access to
-      object storage servers via a blazing-fast 100 Gb/s network. Leveraging the
-      ample storage capacity of this system, SNAP can efficiently store, regrid,
-      and bias-correct data pertinent to the state of Alaska. Future endeavors
-      include
-      <a
-        href="https://www.sciencedirect.com/science/article/pii/S1364815217305662"
-        >downscaling the model data to higher resolutions</a
-      >
-      across Alaska's expanse and crafting additional climate indicators, beyond
-      the current offerings of summer days, winter days, maximum 1-day
-      precipitation, and freeze/thaw cycles.
-    </p>
+      <IndicatorsCmip6ChartControls />
+      <IndicatorsCmip6Chart label="Summer days" dataKey="su" />
+    </div>
+  </section>
 
-    <div class="tabs is-left">
+  <section class="section">
+    <h3 class="title is-3">Overview of CMIP6 data in the ACDN</h3>
+
+    <div class="tabs is-medium is-left">
       <ul>
         <li :class="{ 'is-active': activeTab === 'models' }">
           <a @click="changeTab('models')">Models</a>
@@ -362,191 +288,293 @@ onMounted(() => {
     </div>
 
     <div v-if="activeTab === 'models'">
-      <h3 class="title is-5">CMIP6 Models</h3>
-      <table>
-        <tr class="header-text">
-          <th>CLIMATE MODEL</th>
-          <th>INSTITUTION</th>
-        </tr>
-        <tr class="small-text">
-          <td>ACCESS-CM2</td>
-          <td>
-            Commonwealth Scientific and Industrial Research Organisation,
-            Australian Research Council Centre of Excellence for Climate System
-            Science
-          </td>
-        </tr>
-        <tr class="small-text">
-          <td>CESM2</td>
-          <td>
-            National Center for Atmospheric Research, Climate and Global
-            Dynamics Laboratory
-          </td>
-        </tr>
-        <tr class="small-text">
-          <td>CESM2-WACCM</td>
-          <td>
-            National Center for Atmospheric Research, Climate and Global
-            Dynamics Laboratory
-          </td>
-        </tr>
-        <tr class="small-text">
-          <td>CNRM-CM6-1-HR</td>
-          <td>
-            Centre National de Recherches Meteorologiques, Centre Europeen de
-            Recherche et de Formation Avancee en Calcul Scientifique
-          </td>
-        </tr>
-        <tr class="small-text">
-          <td>EC-Earth3-Veg</td>
-          <td>
-            EC-Earth, Rossby Center, Swedish Meteorological and Hydrological
-            Institute
-          </td>
-        </tr>
-        <tr class="small-text">
-          <td>GFDL-ESM4</td>
-          <td>
-            National Oceanic and Atmospheric Administration, Geophysical Fluid
-            Dynamics Laboratory
-          </td>
-        </tr>
-        <tr class="small-text">
-          <td>HadGEM3-GC31-LL</td>
-          <td>Met Office Hadley Centre for Climate Science and Services</td>
-        </tr>
-        <tr class="small-text">
-          <td>HadGEM3-GC31-MM</td>
-          <td>Met Office Hadley Centre for Climate Science and Services</td>
-        </tr>
-        <tr class="small-text">
-          <td>KACE-1-0-G</td>
-          <td>
-            National Institute of Meteorological Sciences/Korea Meteorological
-            Administration, Climate Research Division
-          </td>
-        </tr>
-        <tr class="small-text">
-          <td>MIROC6</td>
-          <td>
-            Japan Agency for Marine-Earth Science and Technology; Atmosphere and
-            Ocean Research Institute, The University of Tokyo; National
-            Institute for Environmental Studies; RIKEN Center for Computational
-            Science
-          </td>
-        </tr>
-        <tr class="small-text">
-          <td>MPI-ESM1-2-LR</td>
-          <td>Max Planck Institute for Meteorology</td>
-        </tr>
-        <tr class="small-text">
-          <td>NorESM2-MM</td>
-          <td>NorESM Climate Modeling Consortium</td>
-        </tr>
-        <tr class="small-text">
-          <td>TaiESM1</td>
-          <td>Research Center for Environmental Changes, Academia Sinica</td>
-        </tr>
-      </table>
+      <div class="content is-size-5">
+        <table>
+          <tr class="header-text">
+            <th scope="col" class="model">Climate Model</th>
+            <th>Institutions</th>
+          </tr>
+          <tr class="small-text">
+            <td>ACCESS-CM2</td>
+            <td>
+              Commonwealth Scientific and Industrial Research Organisation,
+              Australian Research Council Centre of Excellence for Climate
+              System Science
+            </td>
+          </tr>
+          <tr class="small-text">
+            <td>CESM2</td>
+            <td>
+              National Center for Atmospheric Research, Climate and Global
+              Dynamics Laboratory
+            </td>
+          </tr>
+          <tr class="small-text">
+            <td>CESM2-WACCM</td>
+            <td>
+              National Center for Atmospheric Research, Climate and Global
+              Dynamics Laboratory
+            </td>
+          </tr>
+          <tr class="small-text">
+            <td>CNRM-CM6-1-HR</td>
+            <td>
+              Centre National de Recherches Meteorologiques, Centre Europeen de
+              Recherche et de Formation Avancee en Calcul Scientifique
+            </td>
+          </tr>
+          <tr class="small-text">
+            <td>EC-Earth3-Veg</td>
+            <td>
+              EC-Earth, Rossby Center, Swedish Meteorological and Hydrological
+              Institute
+            </td>
+          </tr>
+          <tr class="small-text">
+            <td>GFDL-ESM4</td>
+            <td>
+              National Oceanic and Atmospheric Administration, Geophysical Fluid
+              Dynamics Laboratory
+            </td>
+          </tr>
+          <tr class="small-text">
+            <td>HadGEM3-GC31-LL</td>
+            <td>Met Office Hadley Centre for Climate Science and Services</td>
+          </tr>
+          <tr class="small-text">
+            <td>HadGEM3-GC31-MM</td>
+            <td>Met Office Hadley Centre for Climate Science and Services</td>
+          </tr>
+          <tr class="small-text">
+            <td>KACE-1-0-G</td>
+            <td>
+              National Institute of Meteorological Sciences/Korea Meteorological
+              Administration, Climate Research Division
+            </td>
+          </tr>
+          <tr class="small-text">
+            <td>MIROC6</td>
+            <td>
+              Japan Agency for Marine-Earth Science and Technology; Atmosphere
+              and Ocean Research Institute, The University of Tokyo; National
+              Institute for Environmental Studies; RIKEN Center for
+              Computational Science
+            </td>
+          </tr>
+          <tr class="small-text">
+            <td>MPI-ESM1-2-LR</td>
+            <td>Max Planck Institute for Meteorology</td>
+          </tr>
+          <tr class="small-text">
+            <td>NorESM2-MM</td>
+            <td>NorESM Climate Modeling Consortium</td>
+          </tr>
+          <tr class="small-text">
+            <td>TaiESM1</td>
+            <td>Research Center for Environmental Changes, Academia Sinica</td>
+          </tr>
+        </table>
+      </div>
     </div>
     <div v-if="activeTab === 'scenarios'">
-      <h3 class="title is-5">CMIP6 Scenarios</h3>
-      <table>
-        <tr class="header-text">
-          <th>SSP</th>
-          <th>Description</th>
-        </tr>
-        <tr></tr>
-        <tr class="small-text">
-          <td>SSP126</td>
-          <td>
-            This pathway represents a sustainable world where global population
-            peaks around 2050 and declines thereafter, leading to rapid
-            improvements in education, health, and economic development. It
-            emphasizes low material consumption, reduced greenhouse gas
-            emissions, and efficient resource use. Policies prioritize
-            environmental sustainability, social equity, and international
-            cooperation. Renewable energy sources dominate the energy mix, and
-            technologies for carbon dioxide removal are widely deployed to
-            achieve net-negative emissions by the end of the century.
-          </td>
-        </tr>
-        <tr class="small-text">
-          <td>SSP245</td>
-          <td>
-            SSP245 depicts a future where the world follows a moderate path of
-            development with uneven progress across regions. Population growth
-            continues, albeit at a slower pace, and income inequality persists.
-            Economic growth is driven by a combination of fossil fuels and
-            renewable energy sources, resulting in moderate increases in
-            greenhouse gas emissions. Technological progress is moderate, and
-            adaptation measures are implemented to address climate change
-            impacts. International cooperation varies, with some efforts to
-            mitigate emissions but limited success in achieving ambitious
-            climate targets.
-          </td>
-        </tr>
-        <tr class="small-text">
-          <td>SSP370</td>
-          <td>
-            In this scenario, the world experiences a fragmented and
-            regionalized future characterized by high population growth, slow
-            economic development in some regions, and geopolitical tensions.
-            Fossil fuels remain the dominant energy source, leading to
-            substantial greenhouse gas emissions and environmental degradation.
-            Efforts to address climate change are hindered by geopolitical
-            conflicts, limited international cooperation, and inadequate
-            mitigation policies. Adaptation measures are primarily reactive and
-            insufficient to prevent significant climate impacts, resulting in
-            widespread vulnerabilities and disruptions.
-          </td>
-        </tr>
-        <tr class="small-text">
-          <td>SSP585</td>
-          <td>
-            SSP585 represents a future where the world pursues a pathway of high
-            fossil fuel use and rapid economic growth, leading to continued
-            population growth and increasing demand for energy and resources.
-            Despite technological advancements, efforts to mitigate greenhouse
-            gas emissions are limited, resulting in a high-forcing scenario with
-            extensive climate change impacts. Environmental degradation,
-            biodiversity loss, and social inequalities escalate, exacerbating
-            global challenges. Adaptation measures are reactive and often
-            inadequate, leading to significant disruptions and irreversible
-            damage to ecosystems and societies.
-          </td>
-        </tr>
-      </table>
+      <div class="content is-size-5">
+        <table>
+          <tr class="header-text">
+            <th>SSP</th>
+            <th>Description</th>
+          </tr>
+          <tr></tr>
+          <tr class="small-text">
+            <td>SSP126</td>
+            <td>
+              This pathway represents a sustainable world where global
+              population peaks around 2050 and declines thereafter, leading to
+              rapid improvements in education, health, and economic development.
+              It emphasizes low material consumption, reduced greenhouse gas
+              emissions, and efficient resource use. Policies prioritize
+              environmental sustainability, social equity, and international
+              cooperation. Renewable energy sources dominate the energy mix, and
+              technologies for carbon dioxide removal are widely deployed to
+              achieve net-negative emissions by the end of the century.
+            </td>
+          </tr>
+          <tr class="small-text">
+            <td>SSP245</td>
+            <td>
+              SSP245 depicts a future where the world follows a moderate path of
+              development with uneven progress across regions. Population growth
+              continues, albeit at a slower pace, and income inequality
+              persists. Economic growth is driven by a combination of fossil
+              fuels and renewable energy sources, resulting in moderate
+              increases in greenhouse gas emissions. Technological progress is
+              moderate, and adaptation measures are implemented to address
+              climate change impacts. International cooperation varies, with
+              some efforts to mitigate emissions but limited success in
+              achieving ambitious climate targets.
+            </td>
+          </tr>
+          <tr class="small-text">
+            <td>SSP370</td>
+            <td>
+              In this scenario, the world experiences a fragmented and
+              regionalized future characterized by high population growth, slow
+              economic development in some regions, and geopolitical tensions.
+              Fossil fuels remain the dominant energy source, leading to
+              substantial greenhouse gas emissions and environmental
+              degradation. Efforts to address climate change are hindered by
+              geopolitical conflicts, limited international cooperation, and
+              inadequate mitigation policies. Adaptation measures are primarily
+              reactive and insufficient to prevent significant climate impacts,
+              resulting in widespread vulnerabilities and disruptions.
+            </td>
+          </tr>
+          <tr class="small-text">
+            <td>SSP585</td>
+            <td>
+              SSP585 represents a future where the world pursues a pathway of
+              high fossil fuel use and rapid economic growth, leading to
+              continued population growth and increasing demand for energy and
+              resources. Despite technological advancements, efforts to mitigate
+              greenhouse gas emissions are limited, resulting in a high-forcing
+              scenario with extensive climate change impacts. Environmental
+              degradation, biodiversity loss, and social inequalities escalate,
+              exacerbating global challenges. Adaptation measures are reactive
+              and often inadequate, leading to significant disruptions and
+              irreversible damage to ecosystems and societies.
+            </td>
+          </tr>
+        </table>
+      </div>
     </div>
     <div v-if="activeTab === 'variables'">
-      <h3 class="title is-5">CMIP6 Variables</h3>
-      <table>
-        <tr>
-          <th>VARIABLE</th>
-          <th>UPDATE FREQUENCY</th>
-        </tr>
-        <tr>
-          <td>Near surface air temperature (tas)</td>
-          <td>Monthly, daily</td>
-        </tr>
-        <tr>
-          <td>Maximum near surface air temperature (tasmax)</td>
-          <td>Monthly, daily</td>
-        </tr>
-        <tr>
-          <td>Minimum near surface air temperature (tasmin)</td>
-          <td>Monthly, daily</td>
-        </tr>
-        <tr>
-          <td>There are more!</td>
-          <td>Fill this in later!</td>
-        </tr>
-      </table>
+      <div class="content is-size-5">
+        <table>
+          <tr>
+            <th scope="col" class="variable">Variable</th>
+            <th scope="col">Temporal frequency</th>
+          </tr>
+          <tr>
+            <td>Near surface air temperature (tas)</td>
+            <td>Monthly, daily</td>
+          </tr>
+          <tr>
+            <td>Maximum near surface air temperature (tasmax)</td>
+            <td>Monthly, daily</td>
+          </tr>
+          <tr>
+            <td>Minimum near surface air temperature (tasmin)</td>
+            <td>Monthly, daily</td>
+          </tr>
+        </table>
+      </div>
+    </div>
+
+</section>
+<section class="section">
+    <h3 id="technical-information" class="title is-3">Technical information</h3>
+
+    <div id="acdn" class="block clamp">
+      <h4 class="title is-4">Arctic Climate Data Node (ACDN)</h4>
+      <div class="content is-size-5">
+        <p>
+          The ACDN operates as a robust storage infrastructure employing BeeGFS,
+          a distributed file system technology. This setup ensures swift access
+          to object storage servers via a blazing-fast 100 Gb/s network.
+          Leveraging the ample storage capacity of this system, SNAP can
+          efficiently store, regrid, and bias-correct data pertinent to the
+          state of Alaska. Future endeavors include
+          <a
+            href="https://www.sciencedirect.com/science/article/pii/S1364815217305662"
+            >downscaling the model data to higher resolutions</a
+          >
+          across Alaska's expanse and crafting additional climate indicators,
+          beyond the current offerings of summer days, winter days, maximum
+          1-day precipitation, and freeze/thaw cycles.
+        </p>
+      </div>
+    </div>
+
+    <div id="rasdaman" class="block clamp">
+      <h4 class="title is-4">Rasdaman, an array database</h4>
+      <div class="content is-size-5">
+        <p>
+          Rasdaman is an open&ndash;source software for managing massive arrays
+          of multi&ndash;dimensional data, primarily used in scientific and
+          geospatial applications. It&rsquo;s designed to efficiently store,
+          retrieve, and analyze large&ndash;scale raster data, such as satellite
+          imagery, climate data, and simulations.
+        </p>
+        <p>
+          One of Rasdaman&rsquo;s key features is its ability to handle
+          multi&ndash;dimensional data sets, enabling users to store and query
+          data along multiple axes, such as time, space, and spectral
+          dimensions. It supports a wide range of data formats and provides
+          powerful query capabilities for extracting specific subsets of data or
+          performing complex analyses directly within the database.
+        </p>
+        <p>
+          Learn more at: <a href="https://rasdaman.org">https://rasdaman.org</a>
+        </p>
+
+        <p>
+          Users can quickly access CMIP6 data using SNAP&rsquo;s Rasdaman server
+          and WCS, WCPS, or WMS queries. For example, the WCS query below
+          returns a subset of the multidimensional CMIP6 data in NetCDF format
+          that can be processed in various environments:
+        </p>
+
+        <p>
+          Data can be analyzed and visualized directly from the WCS response,
+          e.g.:
+        </p>
+        <img
+          src="/assets/images/mean_june_air_temperature.png"
+          alt="Mean June Air Temperature"
+        />
+        <p>
+          Many of SNAP&rsquo;s datasets are available as Rasdaman coverages. See
+          <a href="#replacethis">this notebook</a> for a tutorial on how to use
+          these services in your own work.
+        </p>
+      </div>
+    </div>
+
+    <div id="globus" class="block clamp">
+      <h4 class="title is-4">Globus</h4>
+      <div class="content is-size-5">
+        <p>
+          Globus is a secure, reliable, and scalable data management platform
+          that enables researchers to easily move, share, and analyze large
+          volumes of data. It provides a user-friendly interface for
+          transferring data between storage systems, sharing data with
+          collaborators, and automating data workflows. Globus&rsquo; powerful
+          data management capabilities make it an ideal solution for researchers
+          working with large datasets, such as CMIP6 climate model data.
+        </p>
+        <p>
+          Users equipped with a Globus account can seamlessly navigate the ACDN
+          file storage system to retrieve data, transferring it to any system
+          where they hold a Globus account. This encompasses an array of major
+          national laboratories furnished with supercomputing capabilities.
+        </p>
+        <p>
+          Learn more at:
+          <a href="https://www.globus.org">https://www.globus.org</a>
+        </p>
+      </div>
     </div>
   </section>
 </template>
 
 <style scoped lang="scss">
+table {
+  th[scope='col'] {
+    &.model,
+    &.variable {
+      width: 20rem;
+    }
+  }
+}
 figure {
   figcaption {
     float: left;
