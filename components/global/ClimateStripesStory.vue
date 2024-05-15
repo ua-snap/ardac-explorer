@@ -11,156 +11,189 @@ const selectedCommunity = computed<CommunityValue>(
   () => placesStore.selectedCommunity
 )
 
-console.log(selectedCommunity)
-
-const scenarioLabels = {
+const scenarioLabels: Record<string, string> = {
   rcp45: 'RCP 4.5',
   rcp60: 'RCP 6.0',
   rcp85: 'RCP 8.5',
 }
 
-let historicalYears = $_.range(1901, 2006)
-let projectedYears = $_.range(2007, 2100)
+let historicalYears = $_.range(1901, 2006 + 1)
+let projectedYears = $_.range(2007, 2100 + 1)
 
 const buildChart = () => {
-  let dataByScenario: number[][] = []
-  let allValues: number[] = []
-  let maxHistoricalValue: number = 0
-  Object.keys(scenarioLabels).forEach(scenario => {
-    let scenarioData: number[] = []
-    historicalYears.forEach((year: any) => {
-      let temperature = apiData.value['CRU-TS']['historical'][year]['tas']
-      scenarioData.push(temperature)
-      allValues.push(temperature)
-      maxHistoricalValue = $_.max(scenarioData)
+  if (apiData.value) {
+    let dataByScenario: number[][] = []
+    let allValues: number[] = []
+    let maxHistoricalValue: number = 0
+    Object.keys(scenarioLabels).forEach(scenario => {
+      let scenarioData: number[] = []
+      historicalYears.forEach((year: any) => {
+        let temperature = apiData.value['CRU-TS']['historical'][year]['tas']
+        scenarioData.push(temperature)
+        allValues.push(temperature)
+        maxHistoricalValue = $_.max(scenarioData)
+      })
+      projectedYears.forEach((year: any) => {
+        let temperature = apiData.value['NCAR-CCSM4'][scenario][year]['tas']
+        scenarioData.push(temperature)
+        allValues.push(temperature)
+      })
+      dataByScenario.push(scenarioData)
     })
-    projectedYears.forEach((year: any) => {
-      let temperature = apiData.value['NCAR-CCSM4'][scenario][year]['tas']
-      scenarioData.push(temperature)
-      allValues.push(temperature)
-    })
-    dataByScenario.push(scenarioData)
-  })
 
-  // Reverse array so it is ordered correctly on chart.
-  dataByScenario = dataByScenario.reverse()
+    // Reverse array so it is ordered correctly on chart.
+    dataByScenario = dataByScenario.reverse()
 
-  let minValue = $_.min(allValues)
-  let maxValue = $_.max(allValues)
-  let range = maxValue - minValue
-  let redPoint = (maxHistoricalValue - minValue) / range
-  let whitePoint = redPoint / 2
+    let minValue = $_.min(allValues)
+    let maxValue = $_.max(allValues)
+    let range = maxValue - minValue
+    let redPoint = (maxHistoricalValue - minValue) / range
+    let whitePoint = redPoint / 2
 
-  let plotData = [
-    {
-      x: $_.range(1901, 2100),
-      y: Object.values(scenarioLabels).reverse(),
-      z: dataByScenario,
-      type: 'heatmap',
-      colorscale: [
-        [0, 'rgb(3,67,223)'],
-        [whitePoint, 'rgb(255,255,255)'],
-        [redPoint, 'rgb(255,0,0)'],
-        [1, 'rgb(64,0,64)'],
-      ],
-      showscale: false,
-      hovertemplate:
-        'Year: %{x}<br>Scenario: %{y}<br>Mean Annual Temperature: %{z}°C',
-      xhoverformat: '.0f',
-      hoverlabel: {
-        namelength: 0,
-      },
-    } satisfies Data,
-  ]
-
-  let titleText =
-    'Climate stripes for ' + latLng.value?.lat + ', ' + latLng.value?.lng
-  if (selectedCommunity.value && selectedCommunity.value.name) {
-    titleText =
-      'Climate stripes for ' +
-      selectedCommunity.value.name +
-      ', ' +
-      selectedCommunity.value.region
-  }
-
-  $Plotly.newPlot(
-    'chart',
-    plotData,
-    {
-      title: {
-        text: titleText,
-        font: {
-          size: 24,
-        },
-      },
-      xaxis: {
-        title: {
-          text: 'Year',
-          font: {
-            size: 18,
-          },
-        },
-        showgrid: false,
-      },
-      yaxis: {
-        showgrid: false,
-        side: 'right',
-      },
-      shapes: [
-        {
-          type: 'line',
-          x0: 2006,
-          y0: -0.1,
-          x1: 2006,
-          y1: 1.1,
-          yref: 'paper',
-          line: {
-            color: '#333333',
-            width: 3,
-          },
-        },
-      ],
-      annotations: [
-        {
-          x: 1952,
-          y: 1.1,
-          xref: 'x',
-          yref: 'paper',
-          text: 'Modeled Baseline',
-          showarrow: false,
-          font: {
-            size: 16,
-          },
-        },
-        {
-          x: 2052,
-          y: 1.1,
-          xref: 'x',
-          yref: 'paper',
-          text: 'Projected',
-          showarrow: false,
-          font: {
-            size: 16,
-          },
-        },
-      ],
-    },
-    {
-      responsive: true, // changes the height / width dynamically for charts
-      displayModeBar: true, // always show the camera icon
-      displaylogo: false,
-      modeBarButtonsToRemove: [
-        'zoom2d',
-        'pan2d',
-        'select2d',
-        'lasso2d',
-        'zoomIn2d',
-        'zoomOut2d',
-        'autoScale2d',
-        'resetScale2d',
-      ],
+    // Create hover labels for each data point and pass them into the chart
+    // using the "customdata" property to give us more conditional logic. This is
+    // necessary to hide the "Scenarios" label for modeled baseline data.
+    let dataLabels: string[][] = []
+    for (let i = 0; i < dataByScenario.length; i++) {
+      dataLabels[i] = []
+      for (let j = 0; j < dataByScenario[i].length; j++) {
+        let year = j + 1901
+        if (year < 2007) {
+          dataLabels[i][j] =
+            'Year: ' +
+            year +
+            '<br />Mean Annual Temperature: ' +
+            dataByScenario[i][j] +
+            '°C'
+        } else {
+          dataLabels[i][j] =
+            'Year: ' +
+            year +
+            '<br />Scenario: ' +
+            scenarioLabels[Object.keys(scenarioLabels)[i]] +
+            '<br />Mean Annual Temperature: ' +
+            dataByScenario[i][j] +
+            '°C'
+        }
+      }
     }
-  )
+
+    let plotData = [
+      {
+        x: $_.range(1901, 2100 + 1),
+        y: Object.values(scenarioLabels).reverse(),
+        z: dataByScenario,
+        type: 'heatmap',
+        colorscale: [
+          [0, 'rgb(3,67,223)'],
+          [whitePoint, 'rgb(255,255,255)'],
+          [redPoint, 'rgb(255,0,0)'],
+          [1, 'rgb(64,0,64)'],
+        ],
+        showscale: false,
+        hovertemplate: '%{customdata}',
+        xhoverformat: '.0f',
+        hoverlabel: {
+          namelength: 0,
+        },
+        customdata: dataLabels,
+      } satisfies Data,
+    ]
+
+    let titleText = 'Climate stripes for '
+    if (selectedCommunity.value && selectedCommunity.value.name) {
+      titleText +=
+        selectedCommunity.value.name + ', ' + selectedCommunity.value.region
+    } else {
+      titleText += latLng.value?.lat + ', ' + latLng.value?.lng
+    }
+    titleText += '<br />Model: NCAR CCSM4'
+
+    $Plotly.newPlot(
+      'chart',
+      plotData,
+      {
+        title: {
+          text: titleText,
+          font: {
+            size: 24,
+          },
+          y: 0.9,
+          yanchor: 'top',
+        },
+        xaxis: {
+          title: {
+            text: 'Year',
+            font: {
+              size: 18,
+            },
+          },
+          showgrid: false,
+        },
+        yaxis: {
+          showgrid: false,
+          side: 'right',
+        },
+        shapes: [
+          {
+            type: 'line',
+            x0: 2006.5,
+            y0: -0.1,
+            x1: 2006.5,
+            y1: 1.1,
+            yref: 'paper',
+            line: {
+              color: '#333333',
+              width: 2,
+            },
+          },
+        ],
+        annotations: [
+          {
+            x: 1952,
+            y: 1.1,
+            xref: 'x',
+            yref: 'paper',
+            text: 'Modeled Baseline',
+            showarrow: false,
+            font: {
+              size: 16,
+            },
+          },
+          {
+            x: 2052,
+            y: 1.1,
+            xref: 'x',
+            yref: 'paper',
+            text: 'Projected',
+            showarrow: false,
+            font: {
+              size: 16,
+            },
+          },
+        ],
+        height: 500,
+        margin: {
+          t: 130,
+        },
+      },
+      {
+        responsive: true, // changes the height / width dynamically for charts
+        displayModeBar: true, // always show the camera icon
+        displaylogo: false,
+        modeBarButtonsToRemove: [
+          'zoom2d',
+          'pan2d',
+          'select2d',
+          'lasso2d',
+          'zoomIn2d',
+          'zoomOut2d',
+          'autoScale2d',
+          'resetScale2d',
+        ],
+      }
+    )
+  }
 }
 
 watch(latLng, async () => {
@@ -170,9 +203,7 @@ watch(latLng, async () => {
 })
 
 watch([apiData], async () => {
-  if (apiData.value) {
-    buildChart()
-  }
+  buildChart()
 })
 
 onUnmounted(() => {
