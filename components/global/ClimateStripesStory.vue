@@ -106,6 +106,44 @@ const buildChart = () => {
         showgrid: false,
         side: 'right',
       },
+      shapes: [
+        {
+          type: 'line',
+          x0: 2006,
+          y0: -0.1,
+          x1: 2006,
+          y1: 1.1,
+          yref: 'paper',
+          line: {
+            color: '#333333',
+            width: 3,
+          },
+        },
+      ],
+      annotations: [
+        {
+          x: 1952,
+          y: 1.1,
+          xref: 'x',
+          yref: 'paper',
+          text: 'Modeled Baseline',
+          showarrow: false,
+          font: {
+            size: 16,
+          },
+        },
+        {
+          x: 2052,
+          y: 1.1,
+          xref: 'x',
+          yref: 'paper',
+          text: 'Projected',
+          showarrow: false,
+          font: {
+            size: 16,
+          },
+        },
+      ],
     },
     {
       responsive: true, // changes the height / width dynamically for charts
