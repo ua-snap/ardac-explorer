@@ -77,84 +77,130 @@ onMounted(() => {
 
 <template>
   <section class="section">
+    <div class="columns">
+      <div class="column is-two-thirds">
+        <h2 class="title is-2">
+          Introducing the <span>Arctic Climate Data Node</span>
+        </h2>
+        <h3 class="subtitle is-3">
+          Unlocking research potential through fast local access to CMIP6
+          climate model data
+        </h3>
+
+        <div class="content is-size-4">
+          <p>
+            Access to large distributed data volumes has been a limiting factor
+            for researchers in Alaska, which puts them at a disadvantage and
+            represents a key hurdle to research advancements. Establishing the
+            Arctic Climate Data Node (ACDN) at UAF provides never&ndash;before
+            realized local access to cutting-edge global climate model data.
+          </p>
+        </div>
+        <div class="content is-size-5">
+          <p>
+            Through support from the Department of Energy&rsquo;s
+            <a
+              href="https://science.osti.gov/ber/Research/eessd/Data-Management"
+            >
+              Earth and Environmental Systems Sciences Division Data Management
+              program
+            </a>
+            the University of Alaska Fairbanks (UAF) has established the Arctic
+            Climate Data Node. The ACDN provides local access to
+            <a href="https://pcmdi.llnl.gov/CMIP6/"
+              >Coupled Model Intercomparison Project Phase 6</a
+            >
+            (CMIP6) data and includes associated computational resources
+            required to facilitate data transfer, analysis, and evaluation
+            activities as well as aid in the development of new derived data
+            products.
+          </p>
+          <p>
+            The ACDN will facilitate the development of new research themes,
+            process and mechanistic&ndash;based modeling activities, and
+            regional synthesis activities at UAF and within the broader Arctic
+            science community. Developing and establishing research computing
+            infrastructure to support local storage and access to key datasets
+            will provide significant capacity building to the research community
+            in Alaska and to Alaska&rsquo;s rightsholders and stakeholders as
+            they address the ongoing challenges of a changing climate.
+          </p>
+        </div>
+        <div class="column is-one-third">&nbsp;</div>
+      </div>
+    </div>
+    <h3 class="title is-3">What does ACDN offer researchers?</h3>
+    <div class="columns">
+      <div class="column is-two-thirds">
+        <div class="content is-size-5">
+          <p>
+            The Arctic Data Collaborative (ARDAC) provides researchers access to
+            CMIP6 data as well as associated utilities and data products.
+          </p>
+        </div>
+        <h3 class="subtitle is-4 mt-4 mb-1">
+          Data ready for use in research
+        </h3>
+        <div class="content is-size-5">
+          <ul>
+            <li>curated a suite of CMIP6 models and scenarios that perform best
+            in Alaska and the pan&ndash;Arctic: 13 global climate models, 4 emissions scenarios, 15 variables</li>
+            <li>preprocessed: data are available on a common grid, allowing researchers to focus on applying the data and solving significant geospatial data hurdles</li>
+            <li><a href="#technical-information">&#x2192; see available data</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    <h3 class="subtitle is-4 mb-1">Multiple data access pathways</h3>
     <div class="content is-size-5">
-      <h3 class="title is-3">
-        The Arctic in 2100: New climate model data for Arctic researchers
-      </h3>
-      <p class="mb-6">
-        Through support from the Department of Energy&apos;s Earth and
-        Environmental Systems Sciences Division&apos;s Data Management program
-        the University of Alaska Fairbanks (UAF) has established the Arctic
-        Climate Data Node (ACDN). The ACDN provides local access to
-        <a href="https://pcmdi.llnl.gov/CMIP6/"
-          >Coupled Model Intercomparison Project Phase 6</a
-        >
-        (CMIP6) data and includes associated computational resources required to
-        facilitate data transfer, analysis, and evaluation activities as well as
-        aid in the development of new derived data products.
-      </p>
-      <p class="mb-6">
-        Access to large distributed data volumes has been a limiting factor for
-        researchers in Alaska, which puts them at a disadvantage and represents
-        a key hurdle to research advancements. Establishing the ACDN at UAF
-        provides never&ndash;before realized local access to cutting-edge global
-        climate model data. The ACDN will facilitate the development of new
-        research themes, process and mechanistic&ndash;based modeling
-        activities, and regional synthesis activities at UAF and within the
-        broader Arctic science community. Developing and establishing research
-        computing infrastructure to support local storage and access to key
-        datasets will provide significant capacity building to the research
-        community in Alaska and to Alaska&apos;s rights holders and stakeholders
-        as they address the ongoing challenges of a changing climate.
-      </p>
+      <ul><li><strong>local data access</strong> and workspace for University of Alaska affiliated researchers.  The repository of CMIP6 data is attached directly to the <a href="https://uaf-rcs.gitbook.io/uaf-rcs-hpc-docs/hpc">Chinook compute cluster</a>, allowing fast access and use</li>
+        <li>
+          
+            <strong
+              ><a href="https://earthmaps.io">simple data API</a></strong
+            >
+            provides programmatic access to CMIP6 data, allowing users to query
+            and download data directly from the command line or within their own
+            applications. The API supports a wide range of query parameters,
+            including model, scenario, variable, and geographic region, enabling
+            users to extract specific subsets of data or perform complex
+            analyses directly within the API.
+            <br />
+            Example:
+            <a href="https://earthmaps.io/indicators/cmip6/point/61.5/-147"
+              ><code
+                >https://earthmaps.io/indicators/cmip6/point/61.5/-147</code
+              >
+            </a>
+          
+        </li>
+      </ul>
+    </div>
 
-      <h3 class="title is-4">CMIP6 Data Curation and Preprocessing</h3>
-      <p class="mb-6">
-        The Arctic Data Collaborative (ARDAC) provides researchers access to
-        CMIP6 data as well as associated utilities and data products. ARDAC has
-        curated a suite of CMIP6 models and scenarios that perform best in
-        Alaska and the pan&ndash;Arctic. This data package includes 13 regridded
-        global climate models across 4 emission scenarios for 15 variables. For
-        additional details regarding the data available, please see
-        <a href="#technical-information">here</a>.
-      </p>
+    <div>
 
-      <h3 class="title is-4">CMIP6 Data Access Options</h3>
-      <h3 class="title is-5">SNAP&apos;s Data API</h3>
-      <p class="mb-6">
-        SNAP&apos;s data API provides programmatic access to CMIP6 data,
-        allowing users to query and download data directly from the command line
-        or within their own applications. The API supports a wide range of query
-        parameters, including model, scenario, variable, and geographic region,
-        enabling users to extract specific subsets of data or perform complex
-        analyses directly within the API.
-      </p>
-
-      <p class="mb-6">
-        <a href="https://earthmaps.io">Replace with API link</a>
-      </p>
       <h3 class="title is-5">Rasdaman</h3>
-      <p class="mb-6">
+      <p>
         Rasdaman is an open&ndash;source software for managing massive arrays of
         multi&ndash;dimensional data, primarily used in scientific and
-        geospatial applications. It&apos;s designed to efficiently store,
+        geospatial applications. It&rsquo;s designed to efficiently store,
         retrieve, and analyze large&ndash;scale raster data, such as satellite
         imagery, climate data, and simulations.
       </p>
-      <p class="mb-6">
-        One of Rasdaman&apos;s key features is its ability to handle
+      <p>
+        One of Rasdaman&rsquo;s key features is its ability to handle
         multi&ndash;dimensional data sets, enabling users to store and query
         data along multiple axes, such as time, space, and spectral dimensions.
         It supports a wide range of data formats and provides powerful query
         capabilities for extracting specific subsets of data or performing
         complex analyses directly within the database.
       </p>
-      <p class="mb-6">
+      <p>
         Learn more at: <a href="https://rasdaman.org">https://rasdaman.org</a>
       </p>
 
-      <p class="mb-6">
-        Users can quickly access CMIP6 data using SNAP&apos;s Rasdaman server
+      <p>
+        Users can quickly access CMIP6 data using SNAP&rsquo;s Rasdaman server
         and WCS, WCPS, or WMS queries. For example, the WCS query below returns
         a subset of the multidimensional CMIP6 data in NetCDF format that can be
         processed in various environments:
@@ -165,13 +211,13 @@ onMounted(() => {
           >https://zeus.snap.uaf.edu/rasdaman/ows?&SERVICE=WCS&VERSION=2.1.0&REQUEST=GetCoverage&COVERAGEID=tas_2km_projected&SUBSET=year(0,9)&SUBSET=X(0,400000)&SUBSET=Y(1000000,1400000)&FORMAT=application/netcdf</a
         >
       </p>
-      <p class="mb-6">
+      <p>
         <strong
           >(this is not actually CMIP6 data, just faking with another
           coverage!)</strong
         >
       </p>
-      <p class="mb-6">
+      <p>
         Data can be analyzed and visualized directly from the WCS response,
         e.g.:
       </p>
@@ -179,35 +225,35 @@ onMounted(() => {
         src="/assets/images/mean_june_air_temperature.png"
         alt="Mean June Air Temperature"
       />
-      <p class="mb-6">
-        Many of SNAP&apos;s datasets are available as Rasdaman coverages. See
+      <p>
+        Many of SNAP&rsquo;s datasets are available as Rasdaman coverages. See
         <a href="#replacethis">this notebook</a> for a tutorial on how to use
         these services in your own work.
       </p>
 
       <h3 class="title is-5">Globus</h3>
-      <p class="mb-6">
+      <p>
         Globus is a secure, reliable, and scalable data management platform that
         enables researchers to easily move, share, and analyze large volumes of
         data. It provides a user-friendly interface for transferring data
         between storage systems, sharing data with collaborators, and automating
-        data workflows. Globus&apos; powerful data management capabilities make
+        data workflows. Globus&rsquo; powerful data management capabilities make
         it an ideal solution for researchers working with large datasets, such
         as CMIP6 climate model data.
       </p>
-      <p class="mb-6">
+      <p>
         Users equipped with a Globus account can seamlessly navigate the ACDN
         file storage system to retrieve data, transferring it to any system
         where they hold a Globus account. This encompasses an array of major
         national laboratories furnished with supercomputing capabilities.
       </p>
-      <p class="mb-6">
+      <p>
         Learn more at:
         <a href="https://www.globus.org">https://www.globus.org</a>
       </p>
 
       <h3 class="title is-5">Example Climate Indicator: Summer Days, CMIP6</h3>
-      <p class="mb-6">
+      <p>
         Summer days are the number of days per year that are above 77&deg;F. The
         map below shows the 30-year mean of CMIP6 temperature data for three
         eras showing the number of summer days over that era. The historical era
@@ -216,7 +262,7 @@ onMounted(() => {
         (2070&ndash;2099) use GFDL-ESM4 data under the climate scenario SSP5-8.5
         scenario.
       </p>
-      <MapBlock :mapId="mapId" class="mb-6">
+      <MapBlock :mapId="mapId">
         <template v-slot:layers>
           <MapLayer :mapId="mapId" :layer="layers[0]" default>
             <template v-slot:title>{{ layers[0].title }}</template>
@@ -233,22 +279,24 @@ onMounted(() => {
     <IndicatorsCmip6ChartControls />
     <IndicatorsCmip6Chart label="Summer days" dataKey="su" />
     &nbsp;
-    <h3 class="title is-4">CMIP6 vs CMIP5 data: What&apos;s the big deal?</h3>
-    <p class="mb-6">
-      The Coupled Model Intercomparison Project (CMIP) is a collaborative
-      international effort to improve climate models. The CMIP6 data is the
-      latest iteration of this project and includes data from 2014 to 2020. The
-      CMIP6 data is more detailed and accurate than the CMIP5 data, which was
-      released in 2012. The CMIP6 data includes more models, more variables, and
-      more scenarios than the CMIP5 data. This makes the CMIP6 data more useful
-      for researchers and policymakers who are studying climate change and its
-      impacts.
-    </p>
-    <p class="mb-6">Probably needs more information here! <---</p>
+    <h3 class="title is-4">CMIP6 vs CMIP5 data: What&rsquo;s the big deal?</h3>
+    <div class="content is-size-5">
+      <p>
+        The Coupled Model Intercomparison Project (CMIP) is a collaborative
+        international effort to improve climate models. The CMIP6 data is the
+        latest iteration of this project and includes data from 2014 to 2020.
+        The CMIP6 data is more detailed and accurate than the CMIP5 data, which
+        was released in 2012. The CMIP6 data includes more models, more
+        variables, and more scenarios than the CMIP5 data. This makes the CMIP6
+        data more useful for researchers and policymakers who are studying
+        climate change and its impacts.
+      </p>
+    </div>
+    <p>Probably needs more information here! <---</p>
 
     <h3 id="technical-information" class="title is-4">Technical information</h3>
     <h3 class="title is-5">Arctic Climate Data Node (ACDN)</h3>
-    <p class="mb-6">
+    <p>
       The ACDN operates as a robust storage infrastructure employing BeeGFS, a
       distributed file system technology. This setup ensures swift access to
       object storage servers via a blazing-fast 100 Gb/s network. Leveraging the
@@ -263,6 +311,7 @@ onMounted(() => {
       the current offerings of summer days, winter days, maximum 1-day
       precipitation, and freeze/thaw cycles.
     </p>
+
     <div class="tabs is-left">
       <ul>
         <li :class="{ 'is-active': activeTab === 'models' }">
@@ -281,7 +330,7 @@ onMounted(() => {
       <h3 class="title is-5">CMIP6 Models</h3>
       <table>
         <tr class="header-text">
-          <th style="width: 20%">CLIMATE MODEL</th>
+          <th>CLIMATE MODEL</th>
           <th>INSTITUTION</th>
         </tr>
         <tr class="small-text">
@@ -369,7 +418,7 @@ onMounted(() => {
       <h3 class="title is-5">CMIP6 Scenarios</h3>
       <table>
         <tr class="header-text">
-          <th style="width: 20%">SSP</th>
+          <th>SSP</th>
           <th>Description</th>
         </tr>
         <tr></tr>
@@ -437,23 +486,23 @@ onMounted(() => {
     <div v-if="activeTab === 'variables'">
       <h3 class="title is-5">CMIP6 Variables</h3>
       <table>
-        <tr class="header-text">
-          <th style="width: 70%">VARIABLE</th>
+        <tr>
+          <th>VARIABLE</th>
           <th>UPDATE FREQUENCY</th>
         </tr>
-        <tr class="small-text">
+        <tr>
           <td>Near surface air temperature (tas)</td>
           <td>Monthly, daily</td>
         </tr>
-        <tr class="small-text">
+        <tr>
           <td>Maximum near surface air temperature (tasmax)</td>
           <td>Monthly, daily</td>
         </tr>
-        <tr class="small-text">
+        <tr>
           <td>Minimum near surface air temperature (tasmin)</td>
           <td>Monthly, daily</td>
         </tr>
-        <tr class="small-text">
+        <tr>
           <td>There are more!</td>
           <td>Fill this in later!</td>
         </tr>
@@ -462,12 +511,4 @@ onMounted(() => {
   </section>
 </template>
 
-<style scoped>
-.header-text {
-  font-size: 18px;
-}
-.small-text {
-  font-size: 16px;
-  padding-top: 10px !important;
-}
-</style>
+<style scoped lang="scss"></style>

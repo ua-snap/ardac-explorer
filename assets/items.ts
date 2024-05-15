@@ -71,10 +71,10 @@ export default [
     tags: ['Climate'],
   },
   {
-    slug: 'story-arctic-in-2100',
-    title: 'The Arctic in 2100',
+    slug: 'story-arctic-climate-data-node',
+    title: 'Introducing the Arctic Climate Data Node',
     blurb:
-      'What could the climate of Alaska and the Arctic look like in 2100?  New CMIP6 climate data provides more tools for research',
+      'New CMIP6 climate data for Alaska and the Arctic, providing local access to cutting-edge global climate model data',
     tags: ['Climate'],
     image: 'arctic2100_drew-beamer-unsplash.jpg',
     imageAlt:

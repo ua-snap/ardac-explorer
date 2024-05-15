@@ -31,3 +31,10 @@ a:hover {
     border-bottom: 1px dashed $gray-lighter;
   }
 }
+
+// // Clamp some content types to more readable width.
+// .clamp {
+//   p, h2, h3 {
+//     max-width: 50rem;
+//   }
+// }
