@@ -67,6 +67,9 @@ const buildChart = () => {
       hovertemplate:
         'Year: %{x}<br>Scenario: %{y}<br>Mean Annual Temperature: %{z}°C',
       xhoverformat: '.0f',
+      hoverlabel: {
+        namelength: 0,
+      },
     } satisfies Data,
   ]
 
