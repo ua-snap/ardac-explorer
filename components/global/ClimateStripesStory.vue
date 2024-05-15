@@ -7,6 +7,11 @@ import type { Data } from 'plotly.js-dist-min'
 
 const apiData = computed<Record<string, any>>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
+const selectedCommunity = computed<CommunityValue>(
+  () => placesStore.selectedCommunity
+)
+
+console.log(selectedCommunity)
 
 const scenarioLabels = {
   rcp45: 'RCP 4.5',
@@ -62,13 +67,22 @@ const buildChart = () => {
     } satisfies Data,
   ]
 
+  let titleText =
+    'Climate stripes for ' + latLng.value?.lat + ', ' + latLng.value?.lng
+  if (selectedCommunity.value && selectedCommunity.value.name) {
+    titleText =
+      'Climate stripes for ' +
+      selectedCommunity.value.name +
+      ', ' +
+      selectedCommunity.value.region
+  }
+
   $Plotly.newPlot(
     'chart',
     plotData,
     {
       title: {
-        text:
-          'Climate stripes for ' + latLng.value?.lat + ', ' + latLng.value?.lng,
+        text: titleText,
         font: {
           size: 24,
         },
