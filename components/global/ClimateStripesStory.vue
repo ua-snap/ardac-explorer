@@ -102,7 +102,7 @@ const buildChart = () => {
       } satisfies Data,
     ]
 
-    let titleText = 'Climate stripes for '
+    let titleText = 'Mean annual temperature for '
     if (selectedCommunity.value && selectedCommunity.value.name) {
       titleText +=
         selectedCommunity.value.name + ', ' + selectedCommunity.value.region
@@ -124,12 +124,6 @@ const buildChart = () => {
           yanchor: 'top',
         },
         xaxis: {
-          title: {
-            text: 'Year',
-            font: {
-              size: 18,
-            },
-          },
           showgrid: false,
         },
         yaxis: {
@@ -152,22 +146,22 @@ const buildChart = () => {
         ],
         annotations: [
           {
-            x: 1952,
+            x: 1990,
             y: 1.1,
             xref: 'x',
             yref: 'paper',
-            text: 'Modeled Baseline',
+            text: '← Modeled Baseline',
             showarrow: false,
             font: {
               size: 16,
             },
           },
           {
-            x: 2052,
+            x: 2017,
             y: 1.1,
             xref: 'x',
             yref: 'paper',
-            text: 'Projected',
+            text: 'Projected →',
             showarrow: false,
             font: {
               size: 16,
