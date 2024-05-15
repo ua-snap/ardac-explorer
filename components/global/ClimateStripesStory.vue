@@ -43,7 +43,8 @@ const buildChart = () => {
   let minValue = $_.min(allValues)
   let maxValue = $_.max(allValues)
   let range = maxValue - minValue
-  let whitePoint = (maxHistoricalValue - minValue) / range
+  let redPoint = (maxHistoricalValue - minValue) / range
+  let whitePoint = redPoint / 2
 
   let plotData = [
     {
@@ -53,8 +54,8 @@ const buildChart = () => {
       type: 'heatmap',
       colorscale: [
         [0, 'rgb(3,67,223)'],
-        [whitePoint / 2, 'rgb(255,255,255)'],
-        [whitePoint, 'rgb(255,0,0)'],
+        [whitePoint, 'rgb(255,255,255)'],
+        [redPoint, 'rgb(255,0,0)'],
         [1, 'rgb(64,0,64)'],
       ],
       showscale: false,
