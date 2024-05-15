@@ -64,6 +64,9 @@ const buildChart = () => {
         [1, 'rgb(64,0,64)'],
       ],
       showscale: false,
+      hovertemplate:
+        'Year: %{x}<br>Scenario: %{y}<br>Mean Annual Temperature: %{z}°C',
+      xhoverformat: '.0f',
     } satisfies Data,
   ]
 
