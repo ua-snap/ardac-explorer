@@ -84,6 +84,7 @@ const buildChart = () => {
       },
       yaxis: {
         showgrid: false,
+        side: 'right',
       },
     },
     {
