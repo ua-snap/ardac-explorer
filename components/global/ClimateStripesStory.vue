@@ -41,9 +41,6 @@ const buildChart = () => {
       dataByScenario.push(scenarioData)
     })
 
-    // Reverse array so it is ordered correctly on chart.
-    dataByScenario = dataByScenario.reverse()
-
     let minValue = $_.min(allValues)
     let maxValue = $_.max(allValues)
     let range = maxValue - minValue
@@ -78,6 +75,10 @@ const buildChart = () => {
         }
       }
     }
+
+    // Reverse arrays so they are ordered correctly on chart.
+    dataByScenario = dataByScenario.reverse()
+    dataLabels = dataLabels.reverse()
 
     let plotData = [
       {
