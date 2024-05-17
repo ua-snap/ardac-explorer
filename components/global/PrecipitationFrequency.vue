@@ -240,12 +240,33 @@ onUnmounted(() => {
   <section class="section">
     <div class="content is-size-5">
       <h3 class="title is-3">Precipitation Frequency</h3>
-      <p class="mb-6">
-        Precipitation frequency is the expected maximum precipitation in
-        millimeters for the provided duration and return interval. The map below
-        shows the mean projected precipitation frequency for three eras using a
-        24-hour duration and a return interval of 100. These projections are
-        from the NCAR CCSM4 model under the RCP 8.5 emissions scenario.
+
+      <p>
+        The following results are precipitation frequencies by duration and
+        exceedance probability derived from two CMIP5 climate simulations
+        (GFDL-CM3 and NCAR-CCSM4) and one emissions scenario (RCP 8.5). Model
+        selection was based on the models' superior historical performance for
+        the Alaska region for three variables: surface air temperature,
+        precipitation, and sea level pressure. Data are summarized by three
+        future eras. The available data extent is the terrestrial area of
+        Alaska.
+      </p>
+      <p>
+        These data were dynamically downscaled using the Advanced Research
+        version of the Weather Research and Forecasting (WRF) Model configured
+        with specific physical parameterizations for Alaska. The WRF Model is a
+        mesoscale numerical weather prediction system designed for both
+        atmospheric research and operational forecasting applications and is
+        supported by the National Center for Atmospheric Research. Data were
+        then further statistically downscaled and bias corrected via the delta
+        method using the NOAA Atlas 14 (Volume 7, Version 2.0: Alaska) dataset
+        which provides precipitation frequency estimates for Alaska for 5-minute
+        through 60-day durations at 1-year through 1,000-year average recurrence
+        intervals.
+      </p>
+      <p>
+        See the report and academic paper, linked below, for more information.
+        The spatial resolution (grid cell size) of all data is 481 m by 481 m.
       </p>
 
       <MapBlock :mapId="mapId" class="mb-6">
@@ -337,11 +358,71 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
+
+      <h4 class="title is-4">Get &amp; use this data</h4>
+      <div class="content is-size-5">
+        <ul>
+          <li>
+            Access this data in the context of additional data for engineers at
+            the
+            <a href="https://arcticeds.org"
+              >Arctic Engineering Decision Support (Arctic-EDS)</a
+            >
+          </li>
+          <li>
+            Use this data in an
+            <a
+              href="https://ua-snap.github.io/ardac-notebooks/lab/?path=design_discharge%2Fdesign_discharge.ipynb"
+              >interactive computational module for computing design
+              discharge</a
+            >
+          </li>
+          <li>
+            Query this and other precipitation and temperature datasets from an
+            <a href="" ref="https://earthmaps.io/taspr/"
+              >API that provides data in CSV and JSON format</a
+            >
+          </li>
+          <li>
+            <a
+              href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/304b6d89-961e-417d-b6ba-4139c7fe5ff6"
+              >Download the source dataset and access metadata</a
+            >
+          </li>
+
+          <li>
+            Read a
+            <a
+              href="https://uaf-snap.org/wp-content/uploads/2021/05/dot-precip_FINAL-REPORT_20210526.pdf"
+              >detailed report and overview of the data preparation and research
+              methodology</a
+            >
+            used to prepare this dataset
+          </li>
+
+          <li>
+            Academic reference:
+            <blockquote>
+              Bieniek P, Walsh J, Fresco N, Tauxe C, Redilla K. Anticipated
+              changes in Alaska extreme precipitation. Journal of Applied
+              Meteorology and Climatology. 2022; 61(2):97-108.
+              <a href="https://doi.org/10.1175/JAMC-D-21-0106.1"
+                >https://doi.org/10.1175/JAMC-D-21-0106.1</a
+              >
+            </blockquote>
+          </li>
+        </ul>
+      </div>
     </div>
   </section>
 </template>
 
 <style lang="scss" scoped>
+.content {
+  p {
+    max-width: 50rem;
+  }
+}
 .chart-input {
   display: inline-block;
   select {
