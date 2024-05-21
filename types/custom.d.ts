@@ -31,6 +31,7 @@ interface MapLayer {
   default?: boolean
   legend: string
   rasdamanConfiguration?: any
+  coastline?: boolean
 }
 
 interface MapLayerInstance {
