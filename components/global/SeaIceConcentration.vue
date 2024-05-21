@@ -201,7 +201,7 @@ onUnmounted(() => {
       <h3 class="title is-3">Sea Ice Concentration</h3>
       <p class="mb-6">
         The map below shows pan-Arctic sea ice concentration for March at
-        25-year intervals from 1980&ndash;2000.
+        25-year intervals from 1850&ndash;2000.
       </p>
 
       <MapBlock :mapId="mapId" class="mb-6">
