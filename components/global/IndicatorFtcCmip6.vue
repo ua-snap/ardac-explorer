@@ -16,6 +16,7 @@ const layers: MapLayer[] = [
     style: 'ardac_indicator_ftc_historical_era',
     legend: 'freeze_thaw_cycle',
     rasdamanConfiguration: { dim_model: 4, dim_scenario: 0 },
+    coastline: true,
   },
   {
     id: 'indicator_ftc_midcentury_era',
@@ -25,6 +26,7 @@ const layers: MapLayer[] = [
     style: 'ardac_indicator_ftc_midcentury_era',
     legend: 'freeze_thaw_cycle',
     rasdamanConfiguration: { dim_model: 4, dim_scenario: 4 },
+    coastline: true,
   },
   {
     id: 'indicator_ftc_latecentury_era',
@@ -34,6 +36,7 @@ const layers: MapLayer[] = [
     style: 'ardac_indicator_ftc_latecentury_era',
     legend: 'freeze_thaw_cycle',
     rasdamanConfiguration: { dim_model: 4, dim_scenario: 4 },
+    coastline: true,
   },
 ]
 
