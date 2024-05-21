@@ -134,7 +134,10 @@ export const useMapStore = defineStore('map', () => {
     // Remove existing active layer & coastline from map
     if (layerObjects[layerObj.mapId]) {
       maps[layerObj.mapId].removeLayer(layerObjects[layerObj.mapId])
-      if (maps[layerObj.mapId].hasLayer(coastlineLayer)) {
+      if (
+        coastlineLayer != undefined &&
+        maps[layerObj.mapId].hasLayer(coastlineLayer)
+      ) {
         maps[layerObj.mapId].removeLayer(coastlineLayer)
       }
     }
