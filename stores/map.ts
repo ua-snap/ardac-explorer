@@ -15,6 +15,8 @@ var legendItems: { [index: string]: any } = {}
 
 import { tileLayer, latLng, latLngBounds, type MapOptions } from 'leaflet'
 
+var coastlineLayer: MapLayerInstance
+
 function getBaseMapAndLayers(): MapOptions {
   const config = useRuntimeConfig()
 
@@ -126,6 +128,7 @@ export const useMapStore = defineStore('map', () => {
     // Remove existing active layer from map
     if (layerObjects[layerObj.mapId]) {
       maps[layerObj.mapId].removeLayer(layerObjects[layerObj.mapId])
+      maps[layerObj.mapId].removeLayer(coastlineLayer)
     }
 
     // Build new layer configuration
@@ -148,7 +151,7 @@ export const useMapStore = defineStore('map', () => {
     layerObjects[layerObj.mapId] = tileLayer.wms(wmsUrl, layerConfiguration)
     maps[layerObj.mapId]?.addLayer(layerObjects[layerObj.mapId])
 
-    const coastlineLayer = tileLayer.wms(config.public.geoserverUrl, {
+    coastlineLayer = tileLayer.wms(config.public.geoserverUrl, {
       transparent: true,
       format: 'image/png',
       version: '1.3.0',
