@@ -30,8 +30,7 @@ const buildChart = () => {
     let whitePoint = redPoint / 2
 
     // Create hover labels for each data point and pass them into the chart
-    // using the "customdata" property to give us more conditional logic. This is
-    // necessary to hide the "Scenarios" label for modeled baseline data.
+    // using the "customdata" property.
     let dataLabels: string[][] = []
     for (let i = 0; i < dataByScenario.length; i++) {
       dataLabels[i] = []
