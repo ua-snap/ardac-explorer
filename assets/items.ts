@@ -410,15 +410,10 @@ export default [
     tags: ['Precipitation', 'Climate', 'CMIP6'],
   },
   {
-    slug: 'Beetle-Risk-Story',
-    title: 'Beetle Risk Data Story',
-    blurb: 'Learn about changes in climate protection from Spruce Beetles in Alaska.',
-    tags: ['Story', 'CMIP-5', 'Climate', 'Terrestrial'],
-  },
-  {
-    slug: 'Climate-Stripes-Story-1',
+    slug: 'story-climate-stripes-1',
     title: 'Climate Stripes and Data Scale',
-    blurb: 'Climate stripes are a powerful climate data visualization both for understanding your local environment, and understanding how scale impacts climate variability.',
-    tags: ['Story', 'Climate', 'Terrestrial', 'Temperature'],
+    blurb:
+      'Climate stripes are a powerful climate data visualization both for understanding your local environment, and understanding how scale impacts climate variability.',
+    tags: ['Climate', 'Terrestrial', 'Temperature'],
   },
 ] satisfies Item[]
