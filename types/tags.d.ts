@@ -17,4 +17,3 @@ type Tag =
   | 'Solar Radiation'
   | 'Snow'
   | 'Story'
-  | 'CMIP-5'

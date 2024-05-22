@@ -410,9 +410,10 @@ export default [
     tags: ['Precipitation', 'Climate', 'CMIP6'],
   },
   {
-    slug: 'Beetle-Risk-Story',
+    slug: 'story-beetle-climate-protection',
     title: 'Beetle Risk Data Story',
-    blurb: 'Learn about changes in climate protection from Spruce Beetles in Alaska.',
-    tags: ['Story', 'CMIP-5', 'Climate', 'Terrestrial'],
+    blurb:
+      'Learn about the lifecycle of spruce beetles and how the climate protects against outbreaks.',
+    tags: ['Climate', 'Terrestrial'],
   },
 ] satisfies Item[]
