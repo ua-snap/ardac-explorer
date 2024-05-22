@@ -417,9 +417,10 @@ export default [
     tags: ['Climate', 'Terrestrial'],
   },
   {
-    slug: 'Climate-Stripes-Story-1',
+    slug: 'story-climate-stripes-1',
     title: 'Climate Stripes and Data Scale',
-    blurb: 'Climate stripes are a powerful climate data visualization both for understanding your local environment, and understanding how scale impacts climate variability.',
-    tags: ['Story', 'Climate', 'Terrestrial', 'Temperature'],
+    blurb:
+      'Climate stripes are a powerful climate data visualization both for understanding your local environment, and understanding how scale impacts climate variability.',
+    tags: ['Climate', 'Terrestrial', 'Temperature'],
   },
 ] satisfies Item[]

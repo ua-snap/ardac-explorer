@@ -1,3 +1,151 @@
+<script lang="ts" setup>
+const placesStore = usePlacesStore()
+const dataStore = useDataStore()
+
+const { $Plotly, $_ } = useNuxtApp()
+import type { Data } from 'plotly.js-dist-min'
+
+const apiData = computed<Record<string, any>>(() => dataStore.apiData)
+const latLng = computed<LatLngValue>(() => placesStore.latLng)
+const selectedCommunity = computed<CommunityValue>(
+  () => placesStore.selectedCommunity
+)
+
+let historicalYears = $_.range(1901, 2006 + 1)
+
+const buildChart = () => {
+  if (apiData.value) {
+    let dataByScenario: number[][] = []
+    let stripeData: number[] = []
+    historicalYears.forEach((year: any) => {
+      let temperature = apiData.value['CRU-TS']['historical'][year]['tas']
+      stripeData.push(temperature)
+    })
+    dataByScenario.push(stripeData)
+
+    let minValue = $_.min(stripeData)
+    let maxValue = $_.max(stripeData)
+    let range = maxValue - minValue
+    let redPoint = (maxValue - minValue) / range
+    let whitePoint = redPoint / 2
+
+    // Create hover labels for each data point and pass them into the chart
+    // using the "customdata" property to give us more conditional logic. This is
+    // necessary to hide the "Scenarios" label for modeled baseline data.
+    let dataLabels: string[][] = []
+    for (let i = 0; i < dataByScenario.length; i++) {
+      dataLabels[i] = []
+      for (let j = 0; j < dataByScenario[i].length; j++) {
+        let year = j + 1901
+        dataLabels[i][j] =
+          'Year: ' +
+          year +
+          '<br />Mean Annual Temperature: ' +
+          dataByScenario[i][j] +
+          '°C'
+      }
+    }
+
+    // Reverse arrays so they are ordered correctly on chart.
+    dataByScenario = dataByScenario.reverse()
+    dataLabels = dataLabels.reverse()
+
+    let plotData = [
+      {
+        x: $_.range(1901, 2100 + 1),
+        z: dataByScenario,
+        type: 'heatmap',
+        colorscale: [
+          [0, 'rgb(3,67,223)'],
+          [whitePoint, 'rgb(255,255,255)'],
+          [1, 'rgb(255,0,0)'],
+        ],
+        showscale: false,
+        hovertemplate: '%{customdata}',
+        xhoverformat: '.0f',
+        hoverlabel: {
+          namelength: 0,
+        },
+        customdata: dataLabels,
+      } satisfies Data,
+    ]
+
+    let titleText = 'Modeled mean annual temperature for '
+    if (selectedCommunity.value && selectedCommunity.value.name) {
+      titleText +=
+        selectedCommunity.value.name + ', ' + selectedCommunity.value.region
+    } else {
+      titleText += latLng.value?.lat + ', ' + latLng.value?.lng
+    }
+    titleText += '<br />Model: NCAR CCSM4'
+
+    $Plotly.newPlot(
+      'chart',
+      plotData,
+      {
+        title: {
+          text: titleText,
+          font: {
+            size: 24,
+          },
+          y: 0.9,
+          yanchor: 'top',
+        },
+        xaxis: {
+          showgrid: false,
+          fixedrange: true,
+        },
+        yaxis: {
+          showgrid: false,
+          fixedrange: true,
+          ticklen: 0,
+          showticklabels: false,
+        },
+        height: 500,
+        margin: {
+          t: 110,
+          b: 50,
+          l: 50,
+          r: 50
+        },
+      },
+      {
+        responsive: true, // changes the height / width dynamically for charts
+        displayModeBar: true, // always show the camera icon
+        displaylogo: false,
+        modeBarButtonsToRemove: [
+          'zoom2d',
+          'pan2d',
+          'select2d',
+          'lasso2d',
+          'zoomIn2d',
+          'zoomOut2d',
+          'autoScale2d',
+          'resetScale2d',
+        ],
+        toImageButtonOptions: {
+          filename: 'climate_stripes',
+        },
+      }
+    )
+  }
+}
+
+watch(latLng, async () => {
+  $Plotly.purge('chart')
+  dataStore.apiData = null
+  dataStore.fetchData('meanAnnualTemperature')
+})
+
+watch([apiData], async () => {
+  buildChart()
+})
+
+onUnmounted(() => {
+  dataStore.apiData = null
+})
+</script>
+
 <template>
   <section class="section">
     <div class="content is-size-5">
@@ -62,18 +210,13 @@
       <h4>The power, and shortcomings, of a good climate graphic</h4>
       <p>Overall the Climate Stripes graphics for points and for regions are a powerful tool. They are (mostly) colorblind-friendly and show clearly and obviously the facts of climate change: the trend toward a warmer climate is both clear and striking.</p>
       <p>It also allows people to see the effect in their specific place.</p>
-      <img src="assets/images/beetle_voltinism.png"><img src="assets/images/beetle_voltinism.png"><img src="assets/images/beetle_voltinism.png">
+      <Gimme label="Get climate stripes for a community or by lat/long:" class="mt-5" />
+      <div id="chart" class="mb-5"></div>
       <p>But there are shortcomings. If you want to know the precise values of any given year from these stripes you’ll have to dive into the data behind it, and a less clear trend in one specific area can be improperly generalized without the right context.</p>
       <p>Additionally these stripes typically only display historical data, so they don’t offer insights into   the possible futures in a given place.</p>
       <p>Unless….</p>
       <p>With just a few tweaks, they can do precisely that. Read this DataStory to use what you’ve learned about the climate stripes to understand RCPs, SSPs, and our possible climate futures.</p>
       <p>Also, do you wish you had your own climate stripes for your part of Alaska? Maybe your home town, your hunting spot, your ethnolinguistic region, or your lifelong favorite hydrological unit code level 10? (Mine is 1908040302) This JupyterNotebook will help you do just that!</p>
-
-
-
-
-
-
 
     </div>
     </section>
