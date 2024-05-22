@@ -55,7 +55,7 @@
         <div class="tile is-ancestor">
           <div class="tile is-parent is-vertical">
             <div class="tile lead is-child border-bottom">
-              <ItemTextPicture slug="story-arctic-in-2100" />
+              <ItemTextPicture slug="story-arctic-climate-data-node" />
             </div>
             <div class="general">
               <div class="row tile is-parent mb-4">
