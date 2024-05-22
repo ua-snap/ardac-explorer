@@ -76,7 +76,7 @@ const buildChart = () => {
     } else {
       titleText += latLng.value?.lat + ', ' + latLng.value?.lng
     }
-    titleText += '<br />Model: NCAR CCSM4'
+    titleText += '<br />Model: CRU TS 4.0'
 
     $Plotly.newPlot(
       'chart',
