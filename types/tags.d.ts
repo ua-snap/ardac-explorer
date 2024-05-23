@@ -16,3 +16,5 @@ type Tag =
   | 'Sea Ice'
   | 'Solar Radiation'
   | 'Snow'
+  | 'Story'
+  | 'CMIP-5'

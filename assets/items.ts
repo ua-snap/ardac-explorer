@@ -409,4 +409,11 @@ export default [
     blurb: 'Maximum precipitation in a single calendar year.',
     tags: ['Precipitation', 'Climate', 'CMIP6'],
   },
+  {
+    slug: 'story-climate-stripes-1',
+    title: 'Climate Stripes and Data Scale',
+    blurb:
+      'Climate stripes are a powerful climate data visualization both for understanding your local environment, and understanding how scale impacts climate variability.',
+    tags: ['Climate', 'Terrestrial', 'Temperature'],
+  },
 ] satisfies Item[]
