@@ -304,7 +304,7 @@ onUnmounted(() => {
         </div>
       </div>
       <div id="chart"></div>
-      <div v-if="latLng" class="my-6">
+      <div v-if="latLng && apiData" class="my-6">
         <h4 class="title is-4">
           Download precipitation frequency data for {{ latLng.lat }},
           {{ latLng.lng }}
