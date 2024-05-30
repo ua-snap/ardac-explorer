@@ -127,6 +127,7 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
+      <GetAndUseDataHydrology />
     </div>
   </section>
 </template>

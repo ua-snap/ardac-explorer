@@ -122,6 +122,24 @@ mapStore.setLegendItems(mapId, legend)
           </li>
         </ul>
       </div>
+      <GetAndUseDataDegreeDays :presentInEds="true">
+        <li>
+          Use this data in an
+          <a
+            href="https://ua-snap.github.io/ardac-notebooks/lab/?path=frost_depth%2FModified+Berggren+Frost+Depth.ipynb"
+            >interactive computational module for computing modified Berggren
+            frost depth</a
+          >
+        </li>
+        <li>
+          Use this data in an
+          <a
+            href="https://ua-snap.github.io/ardac-notebooks/lab/index.html?path=design_freezing_index%2Fdesign_freezing_index_module.ipynb"
+            >interactive computational module for computing design freezing
+            index</a
+          >
+        </li>
+      </GetAndUseDataDegreeDays>
     </div>
   </section>
 </template>

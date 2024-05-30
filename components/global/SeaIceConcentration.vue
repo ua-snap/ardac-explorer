@@ -292,6 +292,30 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
+      <GetAndUseData
+        apiUrl="https://earthmaps.io/seaice/"
+        geonetworkUrl="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/047e91c7-35c6-410a-a1ef-95539c1ee328"
+      >
+        <li>
+          Explore interactive visualizations of this data at the
+          <a href="https://snap.uaf.edu/tools/sea-ice-atlas/"
+            >Historical Sea Ice Atlas</a
+          >
+        </li>
+        <li>
+          Academic reference:
+          <blockquote>
+            <p>
+              John E. Walsh, Florence Fetterer, J. Scott stewart &amp; William
+              L. Chapman (2017) A database for depicting Arctic sea ice
+              variations back to 1850, Geographical Review, 107:1, 89-107, DOI:
+              <a href="10.1111/j.1931-0846.2016.12195.x"
+                >10.1111/j.1931-0846.2016.12195.x</a
+              >
+            </p>
+          </blockquote>
+        </li>
+      </GetAndUseData>
     </div>
   </section>
 </template>

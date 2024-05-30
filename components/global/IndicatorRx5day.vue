@@ -151,6 +151,7 @@ mapStore.setLegendItems(mapId, legend)
           </li>
         </ul>
       </div>
+      <GetAndUseDataIndicators :presentInNcr="true" />
     </div>
   </section>
 </template>

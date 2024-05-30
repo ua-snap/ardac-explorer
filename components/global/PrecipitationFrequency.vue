@@ -358,61 +358,52 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
-
-      <h4 class="title is-4">Get &amp; use this data</h4>
-      <div class="content is-size-5">
-        <ul>
-          <li>
-            Access this data in the context of additional data for engineers at
-            the
-            <a href="https://arcticeds.org"
-              >Arctic Engineering Decision Support (Arctic-EDS)</a
-            >
-          </li>
-          <li>
-            Use this data in an
-            <a
-              href="https://ua-snap.github.io/ardac-notebooks/lab/?path=design_discharge%2Fdesign_discharge.ipynb"
-              >interactive computational module for computing design
-              discharge</a
-            >
-          </li>
-          <li>
-            Query this and other precipitation and temperature datasets from an
-            <a href="" ref="https://earthmaps.io/taspr/"
-              >API that provides data in CSV and JSON format</a
-            >
-          </li>
-          <li>
-            <a
-              href="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/304b6d89-961e-417d-b6ba-4139c7fe5ff6"
-              >Download the source dataset and access metadata</a
-            >
-          </li>
-
-          <li>
-            Read a
-            <a
-              href="https://uaf-snap.org/wp-content/uploads/2021/05/dot-precip_FINAL-REPORT_20210526.pdf"
-              >detailed report and overview of the data preparation and research
-              methodology</a
-            >
-            used to prepare this dataset
-          </li>
-
-          <li>
-            Academic reference:
-            <blockquote>
-              Bieniek P, Walsh J, Fresco N, Tauxe C, Redilla K. Anticipated
-              changes in Alaska extreme precipitation. Journal of Applied
-              Meteorology and Climatology. 2022; 61(2):97-108.
+      <GetAndUseData
+        :presentInEds="true"
+        apiUrl="https://earthmaps.io/taspr/"
+        geonetworkUrl="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/304b6d89-961e-417d-b6ba-4139c7fe5ff6"
+      >
+        <li>
+          Use this data in an
+          <a
+            href="https://ua-snap.github.io/ardac-notebooks/lab/?path=design_discharge%2Fdesign_discharge.ipynb"
+            >interactive computational module for computing design discharge</a
+          >
+        </li>
+        <li>
+          Read a
+          <a
+            href="https://uaf-snap.org/wp-content/uploads/2021/05/dot-precip_FINAL-REPORT_20210526.pdf"
+            >detailed report and overview of the data preparation and research
+            methodology</a
+          >
+          used to prepare this dataset
+        </li>
+        <li>
+          Academic reference:
+          <blockquote>
+            <p>
+              Bieniek, P. A., Bhatt, U. S., Walsh, J. E., Rupp, T. S., Zhang,
+              J., Krieger, J. R. &amp; Lader, R. (2016). Dynamical Downscaling
+              of ERA-Interim Temperature and Precipitation for Alaska.
+              <i>Journal of Applied Meteorology and Climatology, 55</i>(03),
+              635&ndash;654.
+              <a href="https://doi.org/10.1175/JAMC-D-15-0153.1"
+                >https://doi.org/10.1175/JAMC-D-15-0153.1</a
+              >
+            </p>
+            <p>
+              Bieniek P.A., Walsh J.E., Fresco N., Tauxe C., Redilla K. (2022).
+              Anticipated changes in Alaska extreme precipitation.
+              <i>Journal of Applied Meteorology and Climatology, 61</i>(2),
+              97&ndash;108.
               <a href="https://doi.org/10.1175/JAMC-D-21-0106.1"
                 >https://doi.org/10.1175/JAMC-D-21-0106.1</a
               >
-            </blockquote>
-          </li>
-        </ul>
-      </div>
+            </p>
+          </blockquote>
+        </li>
+      </GetAndUseData>
     </div>
   </section>
 </template>

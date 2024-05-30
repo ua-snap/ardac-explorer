@@ -127,6 +127,7 @@ mapStore.setLegendItems(mapId, legend)
           </li>
         </ul>
       </div>
+      <GetAndUseDataDegreeDays :presentInEds="true" />
     </div>
   </section>
 </template>

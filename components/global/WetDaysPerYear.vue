@@ -343,6 +343,36 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
+      <GetAndUseData
+        apiUrl="https://earthmaps.io/wet_days_per_year/"
+        geonetworkUrl="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/8b51ce8c-7fd9-4541-9736-990c0a008005"
+      >
+        <li>
+          Academic references:
+          <blockquote>
+            <p>
+              Bieniek P.A., Bhatt U.S, Walsh J.E., Rupp T.S., Zhang J., Krieger
+              J.R., &amp; Lader R (2016). Dynamical Downscaling of ERA-Interim
+              Temperature and Precipitation for Alaska,
+              <i>Journal of Applied Meterology and Climatology 55</i>(3)
+              635&ndash;654;
+              <a href="https://doi.org/10.1175/JAMC-D-15-0153.1"
+                >https://doi.org/10.1175/JAMC-D-15-0153.1</a
+              >
+            </p>
+            <p>
+              Lader R., Walsh J.E., Bhatt U.S. &amp; Bieniek P.A. (2017)
+              Projections of Twenty-First-Century Climate Extremes for Alaska
+              via Dynamical Downscaling and Quantile Mapping
+              <i>Journal of Applied Meterology and Climatology 56</i>(9)
+              2393&ndash;2409;
+              <a href="https://doi.org/10.1175/JAMC-D-16-0415.1"
+                >https://doi.org/10.1175/JAMC-D-16-0415.1</a
+              >
+            </p>
+          </blockquote>
+        </li>
+      </GetAndUseData>
     </div>
   </section>
 </template>

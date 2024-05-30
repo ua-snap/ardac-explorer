@@ -301,6 +301,10 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
+      <GetAndUseDataAlfresco
+        :presentInNcr="true"
+        geonetworkUrl="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/a077b382-c7e5-44a7-8b2a-1cf764c448f6"
+      />
     </div>
   </section>
 </template>
