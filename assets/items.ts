@@ -409,4 +409,11 @@ export default [
     blurb: 'Maximum precipitation in a single calendar year.',
     tags: ['Precipitation', 'Climate', 'CMIP6'],
   },
+  {
+    slug: 'story-beetle-climate-protection',
+    title: 'Beetle Risk Data Story',
+    blurb:
+      'Learn about the lifecycle of spruce beetles and how the climate protects against outbreaks.',
+    tags: ['Climate', 'Terrestrial'],
+  },
 ] satisfies Item[]
