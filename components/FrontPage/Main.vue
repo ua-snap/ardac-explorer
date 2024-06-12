@@ -68,10 +68,10 @@
               </div>
               <div class="tile is-parent">
                 <div class="left tile is-child">
-                  <ItemText slug="hydrology-sm" showTag />
+                  <ItemText slug="story-beetle-climate-protection" showTag />
                 </div>
                 <div class="right tile is-child">
-                  <ItemText slug="notebook-perm-obs-temp" showTag />
+                  <ItemText slug="notebook-precip-poly" showTag />
                 </div>
               </div>
             </div>
@@ -82,20 +82,17 @@
         <ItemText slug="communities-boundaries" />
         <div class="content is-size-5">
           <hr class="light" />
-          <p>Did you know people are awesome?</p>
+          <p>Resources</p>
           <ul>
-            <li>Sign up for our newsletter</li>
-            <li>Email us with questions</li>
-            <li>Visit data API</li>
-            <li>
-              <NuxtLink
-                href="https://archive.org/details/INTERNETCLUB-REDEFININGTHEWORKPLACE/04+SYNERGIZE.mp3"
-                >Redefining the workplace</NuxtLink
-              >
-            </li>
-            <li>Who are these people anyways?</li>
-            <li>&hellip;and other content.</li>
+            <li>Sign up for our <a href="">newsletter</a></li>
+            <li><a href="mailto:">Email us</a> with questions</li>
+            <li>Visit <a href="https://earthmaps.io">data API</a></li>
+            <li>Learn about <a href="">our team and who we are</a></li>
           </ul>
+          <hr/>
+          <h4 class="title is-4">Get involved!</h4>
+          <p>You can help build this!  Do you have an idea for a data story?  Do you create datasets?  We would love to hear your ideas!</p>
+          <button class="button is-info">Chat with us</button>
         </div>
       </div>
     </div>

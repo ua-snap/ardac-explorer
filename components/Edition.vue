@@ -2,7 +2,7 @@
 
 <template>
   <div class="edition">
-    &mdash; First Edition, March 2024 &mdash;
+    &mdash; <span class="warn">PRE-RELEASE</span> Edition, June 2024 &mdash;
   </div>
 </template>
 
@@ -12,5 +12,8 @@
   font-family: "Patrick Hand";
   font-size: 2rem;
   color: $gray;
+  .warn {
+    background-color: #ff0;
+  }
 }
 </style>
