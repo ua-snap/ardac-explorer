@@ -10,7 +10,7 @@ type Slug =
   | 'dd-below-0'
   | 'thawing-index'
   | 'freezing-index'
-  | 'story-arctic-in-2100'
+  | 'story-arctic-climate-data-node'
   | 'notebook-corporation-hdd'
   | 'notebook-raster-database'
   | 'notebook-frost-depth'

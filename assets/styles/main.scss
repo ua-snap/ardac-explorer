@@ -7,6 +7,10 @@
 // Overrides to Bulma varibles go in styles/_variables.scss
 @import '~/node_modules/bulma/bulma.sass';
 
+.bling {
+  background-color: #F1EF93;
+}
+
 hr {
   border: 1px solid $black;
   &.light {
@@ -29,5 +33,12 @@ a:hover {
 
   .border-bottom {
     border-bottom: 1px dashed $gray-lighter;
+  }
+}
+
+// Clamp some content types to more readable width.
+.clamp {
+  p, h2, h3, code {
+    max-width: 50rem;
   }
 }
