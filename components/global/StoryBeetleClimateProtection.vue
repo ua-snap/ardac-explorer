@@ -489,7 +489,7 @@ const data: any = {
       </p>
 
       <p>
-        Use the following interactive widget to explore the how climate
+        Use the following interactive widget to explore how climate
         protection from spruce beetle outbreaks changes under different models
         and model parameters for the entire state of Alaska.
       </p>
