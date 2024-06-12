@@ -389,6 +389,7 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
+      <GetAndUseData apiUrl="https://earthmaps.io/landfastice/" />
     </div>
   </section>
 </template>

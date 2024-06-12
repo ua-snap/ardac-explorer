@@ -117,7 +117,7 @@ onUnmounted(() => {
           <MapLayer :mapId="mapId" :layer="layers[4]">
             <template v-slot:title>{{ layers[4].title }}</template>
           </MapLayer>
-          <hr>
+          <hr />
           <h4 class="title is-4 mb-3">Permafrost Top Depth</h4>
           <MapLayer :mapId="mapId" :layer="layers[1]">
             <template v-slot:title>{{ layers[1].title }}</template>
@@ -191,6 +191,7 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
+      <GetAndUseDataPermafrost :presentInNcr="true" :presentInEds="true" />
     </div>
   </section>
 </template>

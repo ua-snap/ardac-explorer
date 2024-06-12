@@ -130,6 +130,7 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
+      <GetAndUseDataPermafrost />
     </div>
   </section>
 </template>

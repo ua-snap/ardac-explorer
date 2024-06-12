@@ -129,6 +129,27 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
+      <GetAndUseData
+        :presentInNcr="true"
+        :presentInEds="true"
+        apiUrl="https://earthmaps.io/elevation/"
+      >
+        <li>
+          Academic reference:
+          <blockquote>
+            <p>
+              NASA/METI/AIST/Japan Spacesystems and U.S./Japan ASTER Science
+              Team (2019).
+              <i>ASTER Global Digital Elevation Model V003</i> [Data set]. NASA
+              EOSDIS Land Processes Distributed Active Archive Center. Accessed
+              2023-09-08 from
+              <a href="https://doi.org/10.5067/ASTER/ASTGTM.003"
+                >https://doi.org/10.5067/ASTER/ASTGTM.003</a
+              >
+            </p>
+          </blockquote>
+        </li>
+      </GetAndUseData>
     </div>
   </section>
 </template>

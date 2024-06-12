@@ -183,6 +183,7 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
+      <GetAndUseDataPermafrost :presentInNcr="true" :presentInEds="true" />
     </div>
   </section>
 </template>

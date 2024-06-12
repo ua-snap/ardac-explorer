@@ -122,6 +122,16 @@ mapStore.setLegendItems(mapId, legend)
           </li>
         </ul>
       </div>
+      <GetAndUseDataDegreeDays :presentInEds="true">
+        <li>
+          Use this data in an
+          <a
+            href="https://ua-snap.github.io/ardac-notebooks/lab/index.html?path=design_thawing_index%2Fdesign_thawing_index_module.ipynb"
+            >interactive computational module for computing design thawing
+            index</a
+          >
+        </li>
+      </GetAndUseDataDegreeDays>
     </div>
   </section>
 </template>
