@@ -18,11 +18,11 @@ const snowpackLabels: Record<string, string> = {
 }
 
 const dataLabels: Record<string, string> = {
-  '1 to 1': 'High to High',
-  '2 to 2': 'Minimal to Minimal',
-  '1 to 2': 'High to Minimal',
-  '2 to 3': 'Minimal to None',
-  '1 to 3': 'High to None',
+  '1 to 1': 'High → High',
+  '2 to 2': 'Minimal → Minimal',
+  '1 to 2': 'High → Minimal',
+  '2 to 3': 'Minimal → None',
+  '1 to 3': 'High → None',
 }
 
 const data: any = {
@@ -30,100 +30,100 @@ const data: any = {
     rcp45: {
       '2010-2039': {
         low: {
-          '1 to 1': '586512',
-          '2 to 2': '25488',
-          '1 to 2': '2880',
+          '1 to 1': '586,512',
+          '2 to 2': '25,488',
+          '1 to 2': '2,880',
           '2 to 3': '576',
           '1 to 3': '0',
         },
         medium: {
-          '1 to 1': '561600',
-          '2 to 2': '31248',
-          '1 to 2': '5904',
-          '2 to 3': '1008',
+          '1 to 1': '561,600',
+          '2 to 2': '31,248',
+          '1 to 2': '5,904',
+          '2 to 3': '1,008',
           '1 to 3': '144',
         },
       },
       '2040-2069': {
         low: {
-          '1 to 1': '574416',
-          '2 to 2': '18864',
-          '1 to 2': '14688',
-          '2 to 3': '8208',
+          '1 to 1': '574,416',
+          '2 to 2': '18,864',
+          '1 to 2': '14,688',
+          '2 to 3': '8,208',
           '1 to 3': '288',
         },
         medium: {
-          '1 to 1': '537984',
-          '2 to 2': '28224',
-          '1 to 2': '27648',
-          '2 to 3': '18000',
-          '1 to 3': '2016',
+          '1 to 1': '537,984',
+          '2 to 2': '28,224',
+          '1 to 2': '27,648',
+          '2 to 3': '18,000',
+          '1 to 3': '2,016',
         },
       },
       '2070-2099': {
         low: {
-          '1 to 1': '558576',
-          '2 to 2': '6912',
-          '1 to 2': '23328',
-          '2 to 3': '20880',
-          '1 to 3': '7488',
+          '1 to 1': '558,576',
+          '2 to 2': '6,912',
+          '1 to 2': '23,328',
+          '2 to 3': '20,880',
+          '1 to 3': '7,488',
         },
         medium: {
-          '1 to 1': '351648',
-          '2 to 2': '11232',
-          '1 to 2': '176256',
-          '2 to 3': '38160',
-          '1 to 3': '39744',
+          '1 to 1': '351,648',
+          '2 to 2': '11,232',
+          '1 to 2': '176,256',
+          '2 to 3': '38,160',
+          '1 to 3': '39,744',
         },
       },
     },
     rcp85: {
       '2010-2039': {
         low: {
-          '1 to 1': '587232',
-          '2 to 2': '22032',
-          '1 to 2': '2160',
+          '1 to 1': '587,232',
+          '2 to 2': '22,032',
+          '1 to 2': '2,160',
           '2 to 3': '432',
           '1 to 3': '0',
         },
         medium: {
-          '1 to 1': '562176',
-          '2 to 2': '29088',
-          '1 to 2': '5472',
+          '1 to 1': '562,176',
+          '2 to 2': '29,088',
+          '1 to 2': '5,472',
           '2 to 3': '720',
           '1 to 3': '0',
         },
       },
       '2040-2069': {
         low: {
-          '1 to 1': '559152',
-          '2 to 2': '5328',
-          '1 to 2': '21456',
-          '2 to 3': '22464',
-          '1 to 3': '8784',
+          '1 to 1': '559,152',
+          '2 to 2': '5,328',
+          '1 to 2': '21,456',
+          '2 to 3': '22,464',
+          '1 to 3': '8,784',
         },
         medium: {
-          '1 to 1': '416160',
-          '2 to 2': '11808',
-          '1 to 2': '119952',
-          '2 to 3': '36432',
-          '1 to 3': '31536',
+          '1 to 1': '416,160',
+          '2 to 2': '11,808',
+          '1 to 2': '119,952',
+          '2 to 3': '36,432',
+          '1 to 3': '31,536',
         },
       },
       '2070-2099': {
         low: {
-          '1 to 1': '465840',
+          '1 to 1': '465,840',
           '2 to 2': '0',
-          '1 to 2': '88416',
-          '2 to 3': '27792',
-          '1 to 3': '35136',
+          '1 to 2': '88,416',
+          '2 to 3': '27,792',
+          '1 to 3': '35,136',
         },
         medium: {
-          '1 to 1': '122544',
+          '1 to 1': '122,544',
           '2 to 2': '288',
-          '1 to 2': '199008',
-          '2 to 3': '49104',
-          '1 to 3': '246096',
+          '1 to 2': '199,008',
+          '2 to 3': '49,104',
+          '1 to 3': '246,096',
         },
       },
     },
@@ -132,49 +132,49 @@ const data: any = {
     rcp45: {
       '2010-2039': {
         low: {
-          '1 to 1': '587376',
-          '2 to 2': '23904',
-          '1 to 2': '2016',
+          '1 to 1': '587,376',
+          '2 to 2': '23,904',
+          '1 to 2': '2,016',
           '2 to 3': '0',
           '1 to 3': '0',
         },
         medium: {
-          '1 to 1': '563616',
-          '2 to 2': '30384',
-          '1 to 2': '4032',
+          '1 to 1': '563,616',
+          '2 to 2': '30,384',
+          '1 to 2': '4,032',
           '2 to 3': '0',
           '1 to 3': '0',
         },
       },
       '2040-2069': {
         low: {
-          '1 to 1': '588240',
-          '2 to 2': '22896',
-          '1 to 2': '1152',
+          '1 to 1': '588,240',
+          '2 to 2': '22,896',
+          '1 to 2': '1,152',
           '2 to 3': '0',
           '1 to 3': '0',
         },
         medium: {
-          '1 to 1': '563760',
-          '2 to 2': '29664',
-          '1 to 2': '3888',
+          '1 to 1': '563,760',
+          '2 to 2': '29,664',
+          '1 to 2': '3,888',
           '2 to 3': '0',
           '1 to 3': '0',
         },
       },
       '2070-2099': {
         low: {
-          '1 to 1': '588240',
-          '2 to 2': '19584',
-          '1 to 2': '1152',
-          '2 to 3': '2304',
+          '1 to 1': '588,240',
+          '2 to 2': '19,584',
+          '1 to 2': '1,152',
+          '2 to 3': '2,304',
           '1 to 3': '0',
         },
         medium: {
-          '1 to 1': '537264',
-          '2 to 2': '31968',
-          '1 to 2': '30240',
-          '2 to 3': '2880',
+          '1 to 1': '537,264',
+          '2 to 2': '31,968',
+          '1 to 2': '30,240',
+          '2 to 3': '2,880',
           '1 to 3': '144',
         },
       },
@@ -182,15 +182,15 @@ const data: any = {
     rcp85: {
       '2010-2039': {
         low: {
-          '1 to 1': '589392',
-          '2 to 2': '15408',
+          '1 to 1': '589,392',
+          '2 to 2': '15,408',
           '1 to 2': '0',
           '2 to 3': '0',
           '1 to 3': '0',
         },
         medium: {
-          '1 to 1': '567648',
-          '2 to 2': '17712',
+          '1 to 1': '567,648',
+          '2 to 2': '17,712',
           '1 to 2': '0',
           '2 to 3': '0',
           '1 to 3': '0',
@@ -198,34 +198,34 @@ const data: any = {
       },
       '2040-2069': {
         low: {
-          '1 to 1': '588384',
-          '2 to 2': '22752',
-          '1 to 2': '1008',
+          '1 to 1': '588,384',
+          '2 to 2': '22,752',
+          '1 to 2': '1,008',
           '2 to 3': '0',
           '1 to 3': '0',
         },
         medium: {
-          '1 to 1': '537408',
-          '2 to 2': '34704',
-          '1 to 2': '30096',
-          '2 to 3': '3024',
+          '1 to 1': '537,408',
+          '2 to 2': '34,704',
+          '1 to 2': '30,096',
+          '2 to 3': '3,024',
           '1 to 3': '144',
         },
       },
       '2070-2099': {
         low: {
-          '1 to 1': '580032',
-          '2 to 2': '21312',
-          '1 to 2': '9216',
-          '2 to 3': '6480',
+          '1 to 1': '580,032',
+          '2 to 2': '21,312',
+          '1 to 2': '9,216',
+          '2 to 3': '6,480',
           '1 to 3': '144',
         },
         medium: {
-          '1 to 1': '424080',
-          '2 to 2': '28512',
-          '1 to 2': '140112',
-          '2 to 3': '16416',
-          '1 to 3': '3456',
+          '1 to 1': '424,080',
+          '2 to 2': '28,512',
+          '1 to 2': '140,112',
+          '2 to 3': '16,416',
+          '1 to 3': '3,456',
         },
       },
     },
@@ -234,100 +234,100 @@ const data: any = {
     rcp45: {
       '2010-2039': {
         low: {
-          '1 to 1': '582912',
-          '2 to 2': '26640',
-          '1 to 2': '6480',
+          '1 to 1': '582,912',
+          '2 to 2': '26,640',
+          '1 to 2': '6,480',
           '2 to 3': '288',
           '1 to 3': '0',
         },
         medium: {
-          '1 to 1': '544752',
-          '2 to 2': '42048',
-          '1 to 2': '22752',
-          '2 to 3': '2592',
+          '1 to 1': '544,752',
+          '2 to 2': '42,048',
+          '1 to 2': '22,752',
+          '2 to 3': '2,592',
           '1 to 3': '144',
         },
       },
       '2040-2069': {
         low: {
-          '1 to 1': '573264',
-          '2 to 2': '10368',
-          '1 to 2': '14688',
-          '2 to 3': '16848',
-          '1 to 3': '1440',
+          '1 to 1': '573,264',
+          '2 to 2': '10,368',
+          '1 to 2': '14,688',
+          '2 to 3': '16,848',
+          '1 to 3': '1,440',
         },
         medium: {
-          '1 to 1': '461952',
-          '2 to 2': '20160',
-          '1 to 2': '94608',
-          '2 to 3': '28224',
-          '1 to 3': '11088',
+          '1 to 1': '461,952',
+          '2 to 2': '20,160',
+          '1 to 2': '94,608',
+          '2 to 3': '28,224',
+          '1 to 3': '11,088',
         },
       },
       '2070-2099': {
         low: {
-          '1 to 1': '561888',
-          '2 to 2': '3168',
-          '1 to 2': '24336',
-          '2 to 3': '24624',
-          '1 to 3': '3168',
+          '1 to 1': '561,888',
+          '2 to 2': '3,168',
+          '1 to 2': '24,336',
+          '2 to 3': '24,624',
+          '1 to 3': '3,168',
         },
         medium: {
-          '1 to 1': '361584',
-          '2 to 2': '10512',
-          '1 to 2': '176544',
-          '2 to 3': '35424',
-          '1 to 3': '29520',
+          '1 to 1': '361,584',
+          '2 to 2': '10,512',
+          '1 to 2': '176,544',
+          '2 to 3': '35,424',
+          '1 to 3': '29,520',
         },
       },
     },
     rcp85: {
       '2010-2039': {
         low: {
-          '1 to 1': '583632',
-          '2 to 2': '26928',
-          '1 to 2': '5760',
+          '1 to 1': '583,632',
+          '2 to 2': '26,928',
+          '1 to 2': '5,760',
           '2 to 3': '432',
           '1 to 3': '0',
         },
         medium: {
-          '1 to 1': '545904',
-          '2 to 2': '41616',
-          '1 to 2': '21744',
-          '2 to 3': '2304',
+          '1 to 1': '545,904',
+          '2 to 2': '41,616',
+          '1 to 2': '21,744',
+          '2 to 3': '2,304',
           '1 to 3': '0',
         },
       },
       '2040-2069': {
         low: {
-          '1 to 1': '557712',
-          '2 to 2': '2304',
-          '1 to 2': '21744',
-          '2 to 3': '25488',
-          '1 to 3': '9936',
+          '1 to 1': '557,712',
+          '2 to 2': '2,304',
+          '1 to 2': '21,744',
+          '2 to 3': '25,488',
+          '1 to 3': '9,936',
         },
         medium: {
-          '1 to 1': '384048',
-          '2 to 2': '9072',
-          '1 to 2': '153360',
-          '2 to 3': '36864',
-          '1 to 3': '30240',
+          '1 to 1': '384,048',
+          '2 to 2': '9,072',
+          '1 to 2': '153,360',
+          '2 to 3': '36,864',
+          '1 to 3': '30,240',
         },
       },
       '2070-2099': {
         low: {
-          '1 to 1': '538128',
+          '1 to 1': '538,128',
           '2 to 2': '720',
-          '1 to 2': '27504',
-          '2 to 3': '27072',
-          '1 to 3': '23760',
+          '1 to 2': '27,504',
+          '2 to 3': '27,072',
+          '1 to 3': '23,760',
         },
         medium: {
-          '1 to 1': '233712',
-          '2 to 2': '1872',
-          '1 to 2': '169776',
-          '2 to 3': '46368',
-          '1 to 3': '164160',
+          '1 to 1': '233,712',
+          '2 to 2': '1,872',
+          '1 to 2': '169,776',
+          '2 to 3': '46,368',
+          '1 to 3': '164,160',
         },
       },
     },
@@ -336,100 +336,100 @@ const data: any = {
     rcp45: {
       '2010-2039': {
         low: {
-          '1 to 1': '588528',
-          '2 to 2': '19584',
+          '1 to 1': '588,528',
+          '2 to 2': '19,584',
           '1 to 2': '864',
           '2 to 3': '0',
           '1 to 3': '0',
         },
         medium: {
-          '1 to 1': '561888',
-          '2 to 2': '31824',
-          '1 to 2': '5760',
+          '1 to 1': '561,888',
+          '2 to 2': '31,824',
+          '1 to 2': '5,760',
           '2 to 3': '144',
           '1 to 3': '0',
         },
       },
       '2040-2069': {
         low: {
-          '1 to 1': '586512',
-          '2 to 2': '20880',
-          '1 to 2': '2880',
+          '1 to 1': '586,512',
+          '2 to 2': '20,880',
+          '1 to 2': '2,880',
           '2 to 3': '0',
           '1 to 3': '0',
         },
         medium: {
-          '1 to 1': '499536',
-          '2 to 2': '32112',
-          '1 to 2': '68112',
+          '1 to 1': '499,536',
+          '2 to 2': '32,112',
+          '1 to 2': '68,112',
           '2 to 3': '432',
           '1 to 3': '0',
         },
       },
       '2070-2099': {
         low: {
-          '1 to 1': '578736',
-          '2 to 2': '23184',
-          '1 to 2': '10656',
-          '2 to 3': '3744',
+          '1 to 1': '578,736',
+          '2 to 2': '23,184',
+          '1 to 2': '10,656',
+          '2 to 3': '3,744',
           '1 to 3': '0',
         },
         medium: {
-          '1 to 1': '500688',
-          '2 to 2': '34560',
-          '1 to 2': '57888',
-          '2 to 3': '8208',
-          '1 to 3': '9072',
+          '1 to 1': '500,688',
+          '2 to 2': '34,560',
+          '1 to 2': '57,888',
+          '2 to 3': '8,208',
+          '1 to 3': '9,072',
         },
       },
     },
     rcp85: {
       '2010-2039': {
         low: {
-          '1 to 1': '587808',
-          '2 to 2': '24912',
-          '1 to 2': '1584',
+          '1 to 1': '587,808',
+          '2 to 2': '24,912',
+          '1 to 2': '1,584',
           '2 to 3': '0',
           '1 to 3': '0',
         },
         medium: {
-          '1 to 1': '562608',
-          '2 to 2': '34416',
-          '1 to 2': '5040',
+          '1 to 1': '562,608',
+          '2 to 2': '34,416',
+          '1 to 2': '5,040',
           '2 to 3': '144',
           '1 to 3': '0',
         },
       },
       '2040-2069': {
         low: {
-          '1 to 1': '576720',
-          '2 to 2': '26640',
-          '1 to 2': '12672',
+          '1 to 1': '576,720',
+          '2 to 2': '26,640',
+          '1 to 2': '12,672',
           '2 to 3': '288',
           '1 to 3': '0',
         },
         medium: {
-          '1 to 1': '525888',
-          '2 to 2': '34992',
-          '1 to 2': '35712',
-          '2 to 3': '5760',
-          '1 to 3': '6048',
+          '1 to 1': '525,888',
+          '2 to 2': '34,992',
+          '1 to 2': '35,712',
+          '2 to 3': '5,760',
+          '1 to 3': '6,048',
         },
       },
       '2070-2099': {
         low: {
-          '1 to 1': '568944',
-          '2 to 2': '12960',
-          '1 to 2': '18576',
-          '2 to 3': '14832',
-          '1 to 3': '1872',
+          '1 to 1': '568,944',
+          '2 to 2': '12,960',
+          '1 to 2': '18,576',
+          '2 to 3': '14,832',
+          '1 to 3': '1,872',
         },
         medium: {
-          '1 to 1': '464688',
-          '2 to 2': '17856',
-          '1 to 2': '77472',
-          '2 to 3': '29520',
-          '1 to 3': '25488',
+          '1 to 1': '464,688',
+          '2 to 2': '17,856',
+          '1 to 2': '77,472',
+          '2 to 3': '29,520',
+          '1 to 3': '25,488',
         },
       },
     },
@@ -440,7 +440,7 @@ const data: any = {
 <template>
   <section class="section">
     <div class="content is-size-5">
-      <h3 class="title is-3">Climate Protection from Spruce Beetles, by Bob</h3>
+      <h3 class="title is-3">Climate Protection from Spruce Beetles</h3>
       <p class="mb-6"></p>
       <h4>Introduction</h4>
       <p>
@@ -487,6 +487,77 @@ const data: any = {
         categorized climate protection levels and identified regions that might
         lose past climate-linked protections from outbreaks.
       </p>
+
+      <p>
+        Use the following interactive widget to explore the how climate
+        protection from spruce beetle outbreaks changes under different models
+        and model parameters for the entire state of Alaska.
+      </p>
+
+      <div class="my-6">
+        <div class="content is-size-5">
+          <div class="parameter mb-5">
+            <label for="model" class="label">Model:</label>
+            <div class="select mr-3">
+              <select id="model" v-model="modelInput">
+                <option v-for="model in models" :value="model">
+                  {{ model }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="parameter mb-5">
+            <label for="scenario" class="label">Scenario:</label>
+            <div class="select mr-3">
+              <select id="scenario" v-model="scenarioInput">
+                <option
+                  v-for="scenario in Object.keys(scenarioLabels)"
+                  :value="scenario"
+                >
+                  {{ scenarioLabels[scenario] }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="parameter mb-5 mr-3">
+            <label for="era" class="label">Era:</label>
+            <div class="select">
+              <select id="era" v-model="eraInput">
+                <option v-for="era in eras" :value="era">
+                  {{ era }}
+                </option>
+              </select>
+            </div>
+          </div>
+          <div class="parameter">
+            <label for="snowpack" class="label">Snowpack:</label>
+            <div class="select mb-5">
+              <select id="snowpack" v-model="snowpackInput">
+                <option
+                  v-for="snowpack in Object.keys(snowpackLabels)"
+                  :value="snowpack"
+                >
+                  {{ snowpackLabels[snowpack] }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+        <table class="is-size-5">
+          <tr v-for="key in Object.keys(dataLabels)">
+            <th>
+              {{ dataLabels[key] }}
+            </th>
+            <td>
+              {{
+                data[modelInput][scenarioInput][eraInput][snowpackInput][key]
+              }}
+              km<sup>2</sup>
+            </td>
+          </tr>
+        </table>
+      </div>
+
       <h4>Implications for Forest Management</h4>
       <p>
         Understanding the factors driving spruce beetle outbreaks is essential
@@ -508,70 +579,6 @@ const data: any = {
         for future generations.
       </p>
     </div>
-
-    <div class="content is-size-5">
-      <h3 class="title is-3">Climate Protection from Spruce Beetles</h3>
-      <div class="parameter mb-5">
-        <label for="model" class="label">Model:</label>
-        <div class="select mr-3">
-          <select id="model" v-model="modelInput">
-            <option v-for="model in models" :value="model">
-              {{ model }}
-            </option>
-          </select>
-        </div>
-      </div>
-      <div class="parameter mb-5">
-        <label for="scenario" class="label">Scenario:</label>
-        <div class="select mr-3">
-          <select id="scenario" v-model="scenarioInput">
-            <option
-              v-for="scenario in Object.keys(scenarioLabels)"
-              :value="scenario"
-            >
-              {{ scenarioLabels[scenario] }}
-            </option>
-          </select>
-        </div>
-      </div>
-      <div class="parameter mb-5 mr-3">
-        <label for="era" class="label">Era:</label>
-        <div class="select">
-          <select id="era" v-model="eraInput">
-            <option v-for="era in eras" :value="era">
-              {{ era }}
-            </option>
-          </select>
-        </div>
-      </div>
-      <div class="parameter">
-        <label for="snowpack" class="label">Snowpack:</label>
-        <div class="select mb-5">
-          <select id="snowpack" v-model="snowpackInput">
-            <option
-              v-for="snowpack in Object.keys(snowpackLabels)"
-              :value="snowpack"
-            >
-              {{ snowpackLabels[snowpack] }}
-            </option>
-          </select>
-        </div>
-      </div>
-    </div>
-    <h4 class="title is-4">
-      Transitions in climate protection from spruce beetle outbreaks
-    </h4>
-    <table class="is-size-5">
-      <tr v-for="key in Object.keys(dataLabels)">
-        <th>
-          {{ dataLabels[key] }}
-        </th>
-        <td>
-          {{ data[modelInput][scenarioInput][eraInput][snowpackInput][key] }}
-          km<sup>2</sup>
-        </td>
-      </tr>
-    </table>
   </section>
 </template>
 
