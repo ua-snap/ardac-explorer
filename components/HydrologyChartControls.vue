@@ -8,7 +8,7 @@ const placesStore = usePlacesStore()
 const chartStore = useChartStore()
 
 const scenarioInput = defineModel('scenario', { default: 'rcp85' })
-const monthInput = defineModel('month', { default: 'jun' })
+const monthInput = defineModel('month', { default: 'mar' })
 
 if (props.defaultMonth) {
   monthInput.value = props.defaultMonth

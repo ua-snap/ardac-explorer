@@ -66,7 +66,7 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   iwe: [
-    { color: '#9ecae1', label: '&ge;0m, &lt;200m' },
+    { color: '#9ecae1', label: '&gt;0m, &lt;200m' },
     { color: '#6baed6', label: '&ge;200m, &lt;400m' },
     { color: '#4292c6', label: '&ge;400m, &lt;600m' },
     { color: '#2171b5', label: '&ge;600m, &lt;800m' },
