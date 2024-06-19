@@ -16,7 +16,7 @@ const scenarioInput = defineModel({ default: 'rcp85' })
 const apiData = computed<any[]>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
-const scenarionLabels: Record<string, string> = {
+const scenarioLabels: Record<string, string> = {
   rcp45: 'RCP 4.5',
   rcp85: 'RCP 8.5',
 }
@@ -156,7 +156,7 @@ const buildChart = () => {
             placesStore.latLng?.lng +
             '<br />' +
             'Scenario: ' +
-            scenarionLabels[scenarioInput.value],
+            scenarioLabels[scenarioInput.value],
           font: {
             size: 24,
           },
