@@ -6,6 +6,7 @@ const props = defineProps<{
 }>()
 
 import type { Data } from 'plotly.js-dist-min'
+import { precisionMean } from '~/utils/math'
 
 const { $Plotly, $_ } = useNuxtApp()
 const dataStore = useDataStore()
@@ -63,7 +64,7 @@ const getPlotValues = (params: any) => {
   let minOffsets: number[] = []
 
   decades.forEach(decade => {
-    let mean = $_.mean(decadeBuckets[decade].map(Number))
+    let mean = precisionMean(decadeBuckets[decade].map(Number))
     let min = $_.min(decadeBuckets[decade].map(Number))
     let max = $_.max(decadeBuckets[decade].map(Number))
 
