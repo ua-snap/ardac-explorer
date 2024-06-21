@@ -86,7 +86,7 @@ onUnmounted(() => {
         chart.
       </p>
 
-      <Gimme />
+      <Gimme extent="mizukami" />
       <HydrologyChartControls />
       <HydrologyChart label="Evapotranspiration" units="㎜" dataKey="evap" />
 

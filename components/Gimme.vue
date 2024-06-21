@@ -1,12 +1,43 @@
 <script lang="ts" setup>
 // bbox order is
 // [ lower-left lng, lower-left lat, upper-right lng, upper-right lat ]
-const props = defineProps<{
+interface Props {
   bbox?: number[]
-}>()
+  extent?: Extent
+}
+const props = withDefaults(defineProps<Props>(), {
+  bbox: () => [-179.1506, 51.229, -129.9795, 71.3526],
+  extent: null,
+})
+
+let bbox = props.bbox
+let extent = props.extent
+
+import { point } from '@turf/helpers'
+import booleanPointInPolygon from '@turf/boolean-point-in-polygon'
+
+import alaskaGeoJson from '@/assets/alaska.geojson?raw'
+import mizukamiGeoJson from '@/assets/mizukami.geojson?raw'
+import elevationGeoJson from '@/assets/elevation.geojson?raw'
+import oceansGeoJson from '@/assets/oceans.geojson?raw'
+
+let parsedGeoJson: any
+if (extent) {
+  let extentGeoJson: string
+  if (extent == 'alaska') {
+    extentGeoJson = alaskaGeoJson
+  } else if (extent == 'mizukami') {
+    extentGeoJson = mizukamiGeoJson
+  } else if (extent == 'elevation') {
+    extentGeoJson = elevationGeoJson
+  } else if (extent == 'ocean') {
+    extentGeoJson = oceansGeoJson
+  }
+  parsedGeoJson = JSON.parse(extentGeoJson!)
+}
 
 const placesStore = usePlacesStore()
-let communities = placesStore.fetchCommunities()
+let communities = await placesStore.fetchCommunities()
 
 const { $autoComplete, $parseDMS } = useNuxtApp()
 
@@ -23,10 +54,7 @@ onMounted(() => {
   let config = {
     selector: '#gimme',
     placeHolder: 'Search community names or enter a lat/long',
-    data: {
-      src: communities,
-      keys: ['name', 'alt_name'],
-    },
+    data: {},
     threshold: 3,
     resultsList: {
       maxResults: 999,
@@ -47,6 +75,18 @@ onMounted(() => {
       return input
     },
   }
+
+  let extentCommunities = communitiesWithinExtent()
+  if (extentCommunities.length > 0) {
+    config.data = {
+      src: extentCommunities,
+      keys: ['name', 'alt_name'],
+    }
+  } else {
+    config.data = {
+      src: [],
+    }
+  }
   new $autoComplete(config)
 
   // When a placename is selected, populate the store.
@@ -63,11 +103,33 @@ onMounted(() => {
   })
 })
 
-let bbox: number[]
-if (props.bbox) {
-  bbox = props.bbox
-} else {
-  bbox = [-179.1506, 51.229, -129.9795, 71.3526]
+const withinExtent = (lat: number, lng: number) => {
+  if (extent == null) {
+    return true
+  }
+
+  let latLngPoint = point([lng, lat])
+  for (let feature of parsedGeoJson.features) {
+    if (booleanPointInPolygon(latLngPoint, feature)) {
+      return true
+    }
+  }
+
+  return false
+}
+
+const communitiesWithinExtent = () => {
+  if (extent == null) {
+    return communities
+  }
+
+  let communitiesInExtent = []
+  for (let community of communities) {
+    if (withinExtent(community.latitude, community.longitude)) {
+      communitiesInExtent.push(community)
+    }
+  }
+  return communitiesInExtent
 }
 
 const validate = (latLng: string) => {
@@ -88,25 +150,11 @@ const validate = (latLng: string) => {
       lat = parsedDms.lat
       lon = parsedDms.lon
 
-      // Make sure lat/lon is within BBOX.
       // This currently does not support BBOXes that cross the antimeridian.
-      if (
-        lat >= bbox[1] &&
-        lat <= bbox[3] &&
-        lon >= bbox[0] &&
-        lon <= bbox[2]
-      ) {
-        // It's a valid lat/lng: update the button so it can
-        // trigger setting the store.
-        fieldMessage.value = ''
+      let isInsideBBOX =
+        lat >= bbox[1] && lat <= bbox[3] && lon >= bbox[0] && lon <= bbox[2]
 
-        // Rounding!
-        lat = +lat.toFixed(4)
-        lon = +lon.toFixed(4)
-        parsedLatLng.value = { lat: lat, lng: lon } as LatLng
-        latLngIsValid.value = true
-        return parsedLatLng.value
-      } else {
+      if (!isInsideBBOX) {
         fieldMessage.value =
           '⚠️ This point is outside the bounding box of data: latitude between ' +
           bbox[1] +
@@ -116,6 +164,28 @@ const validate = (latLng: string) => {
           bbox[0] +
           ' – ' +
           bbox[2]
+        latLngIsValid.value = false
+        return false
+      }
+
+      let validPoint: boolean
+      if (withinExtent(lat, lon)) {
+        validPoint = true
+      } else {
+        validPoint = false
+      }
+
+      fieldMessage.value = ''
+      if (validPoint) {
+        // Rounding!
+        lat = +lat.toFixed(4)
+        lon = +lon.toFixed(4)
+        parsedLatLng.value = { lat: lat, lng: lon } as LatLng
+        latLngIsValid.value = true
+        return parsedLatLng.value
+      } else {
+        latLngIsValid.value = false
+        fieldMessage.value += '⚠️ This point is outside the data extent.'
         return false
       }
     }

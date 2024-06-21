@@ -226,7 +226,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Gimme />
+  <Gimme extent="mizukami" />
   <div id="chart"></div>
 </template>
 

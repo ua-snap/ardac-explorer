@@ -308,7 +308,7 @@ onUnmounted(() => {
         download the data that is used to populate the chart.
       </p>
 
-      <Gimme />
+      <Gimme extent="alaska" />
       <div id="chart"></div>
       <div v-if="latLng && apiData" class="my-6">
         <h4 class="title is-4">

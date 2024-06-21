@@ -241,6 +241,7 @@ onUnmounted(() => {
       <Gimme
         label="Get chart and data for lat/lon point:"
         :bbox="[-179.1506, 0, -129.9795, 90]"
+        extent="ocean"
       />
 
       <div v-if="latLng && apiData">

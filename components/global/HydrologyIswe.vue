@@ -130,7 +130,7 @@ onUnmounted(() => {
         populate the charts.
       </p>
 
-      <Gimme />
+      <Gimme extent="mizukami" />
       <HydrologyChartControls />
       <HydrologyChart
         label="Ice water equivalent"
