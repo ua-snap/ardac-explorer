@@ -85,7 +85,7 @@ onUnmounted(() => {
         data that is used to populate the chart.
       </p>
 
-      <Gimme />
+      <Gimme extent="alaska" />
       <PermafrostChartControls />
       <PermafrostChart
         label="Talik thickness"

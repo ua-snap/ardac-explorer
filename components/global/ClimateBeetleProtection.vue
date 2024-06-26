@@ -131,7 +131,7 @@ onUnmounted(() => {
         download the data that is used to populate the table.
       </p>
 
-      <Gimme />
+      <Gimme extent="blockyAlaska" />
 
       <div v-if="latLng && apiData">
         <div class="parameter">

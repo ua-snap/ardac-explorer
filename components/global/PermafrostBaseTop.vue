@@ -138,7 +138,7 @@ onUnmounted(() => {
         can download the data that is used to populate the charts.
       </p>
 
-      <Gimme />
+      <Gimme extent="alaska" />
       <PermafrostChartControls />
       <PermafrostChart
         label="Depth of permafrost base"

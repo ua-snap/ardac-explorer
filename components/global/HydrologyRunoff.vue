@@ -85,7 +85,7 @@ onUnmounted(() => {
         where you can download the data that is used to populate the chart.
       </p>
 
-      <Gimme />
+      <Gimme extent="mizukami" />
       <HydrologyChartControls />
       <HydrologyChart label="Runoff" units="㎜" dataKey="runoff" />
 
