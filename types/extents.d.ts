@@ -1,1 +1,7 @@
-type Extent = 'alaska' | 'mizukami' | 'elevation' | 'ocean' | null
+type Extent =
+  | 'alaska'
+  | 'blockyAlaska'
+  | 'mizukami'
+  | 'elevation'
+  | 'ocean'
+  | null

@@ -240,7 +240,7 @@ onUnmounted(() => {
       </p>
 
       <!-- HUC-12 API summaries return data only for Alaska, not Canada -->
-      <Gimme extent="alaska" />
+      <Gimme extent="blockyAlaska" />
 
       <div v-if="latLng && apiData">
         <div class="chart-input">

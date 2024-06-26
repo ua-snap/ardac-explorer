@@ -21,6 +21,8 @@ const getGeoJson = async (extent: Extent) => {
   let geoJsonString: typeof import('*?raw')
   if (extent == 'alaska') {
     geoJsonString = await import('~/assets/alaska.geojson?raw')
+  } else if (extent == 'blockyAlaska') {
+    geoJsonString = await import('~/assets/blocky_alaska.geojson?raw')
   } else if (extent == 'mizukami') {
     geoJsonString = await import('~/assets/mizukami.geojson?raw')
   } else if (extent == 'elevation') {
