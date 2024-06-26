@@ -16,25 +16,22 @@ let extent = props.extent
 import { point } from '@turf/helpers'
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon'
 
-import alaskaGeoJson from '@/assets/alaska.geojson?raw'
-import mizukamiGeoJson from '@/assets/mizukami.geojson?raw'
-import elevationGeoJson from '@/assets/elevation.geojson?raw'
-
-let parsedGeoJson: any
-if (extent) {
-  let extentGeoJson: string
+// Import needed extent GeoJSON file dynamically.
+const getGeoJson = async (extent: Extent) => {
+  let geoJsonString: typeof import('*?raw')
   if (extent == 'alaska') {
-    extentGeoJson = alaskaGeoJson
+    geoJsonString = await import('~/assets/alaska.geojson?raw')
   } else if (extent == 'mizukami') {
-    extentGeoJson = mizukamiGeoJson
+    geoJsonString = await import('~/assets/mizukami.geojson?raw')
   } else if (extent == 'elevation') {
-    extentGeoJson = elevationGeoJson
+    geoJsonString = await import('~/assets/elevation.geojson?raw')
   } else if (extent == 'ocean') {
-    const oceansGeoJson = await import('~/assets/oceans.geojson?raw')
-    extentGeoJson = { ...oceansGeoJson }.default
+    geoJsonString = await import('~/assets/oceans.geojson?raw')
   }
-  parsedGeoJson = JSON.parse(extentGeoJson!)
+  return JSON.parse(geoJsonString!.default)
 }
+
+let parsedGeoJson = await getGeoJson(extent)
 
 const placesStore = usePlacesStore()
 let communities = await placesStore.fetchCommunities()
