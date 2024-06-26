@@ -19,7 +19,6 @@ import booleanPointInPolygon from '@turf/boolean-point-in-polygon'
 import alaskaGeoJson from '@/assets/alaska.geojson?raw'
 import mizukamiGeoJson from '@/assets/mizukami.geojson?raw'
 import elevationGeoJson from '@/assets/elevation.geojson?raw'
-import oceansGeoJson from '@/assets/oceans.geojson?raw'
 
 let parsedGeoJson: any
 if (extent) {
@@ -31,7 +30,8 @@ if (extent) {
   } else if (extent == 'elevation') {
     extentGeoJson = elevationGeoJson
   } else if (extent == 'ocean') {
-    extentGeoJson = oceansGeoJson
+    const oceansGeoJson = await import('~/assets/oceans.geojson?raw')
+    extentGeoJson = { ...oceansGeoJson }.default
   }
   parsedGeoJson = JSON.parse(extentGeoJson!)
 }
