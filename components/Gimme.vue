@@ -252,8 +252,14 @@ onUnmounted(() => {
     </div>
     <div v-show="!placeIsSelected || dataError" class="field">
       <div class="control">
-        <label class="label">Get data for a community or by lat/long</label>
-
+        <label v-if="extent != 'ocean'" class="label"
+          >Get data for a community or by lat/long</label
+        >
+        <label v-else class="label">Get data by lat/long</label>
+        <p v-if="extent != 'ocean'">
+          Only communities within the footprint of the data are included in this
+          search.
+        </p>
         <input id="gimme" v-model="inputValue" ref="gimmeInput" />
         <button
           v-if="latLngIsValid"
