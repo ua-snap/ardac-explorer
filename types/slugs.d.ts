@@ -61,3 +61,4 @@ type Slug =
   | 'indicator-su-cmip6'
   | 'indicator-dw-cmip6'
   | 'indicator-rx1day-cmip6'
+  | 'story-climate-stripes-2'

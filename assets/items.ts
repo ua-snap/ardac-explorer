@@ -409,4 +409,10 @@ export default [
     blurb: 'Maximum precipitation in a single calendar year.',
     tags: ['Precipitation', 'Climate', 'CMIP6'],
   },
+  {
+    slug: 'story-climate-stripes-2',
+    title: 'Climate Stripes Part 2 (Modeled Baseline + Projected)',
+    blurb: 'Modeled baseline + projected climate stripes',
+    tags: ['Climate', 'Terrestrial', 'Temperature'],
+  },
 ] satisfies Item[]

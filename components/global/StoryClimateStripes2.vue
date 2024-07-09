@@ -211,7 +211,9 @@ onUnmounted(() => {
 <template>
   <section class="section">
     <div class="content is-size-5">
-      <h3 class="title is-3">Climate Stripes!</h3>
+      <h3 class="title is-3">
+        Climate Stripes Part 2 (Modeled Baseline + Projected)
+      </h3>
       <Gimme label="Get chart and data for lat/lon point:" />
       <div id="chart"></div>
     </div>
