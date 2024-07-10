@@ -199,6 +199,7 @@ onUnmounted(() => {
       <p class="help" v-html="fieldMessage" />
     </div>
   </div>
+  <LoadIndicator />
 </template>
 
 <style lang="scss" scoped>
