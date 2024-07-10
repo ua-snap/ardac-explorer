@@ -1,8 +1,8 @@
 <template>
   <div>
-    <div v-if="store.showBetaNotice" class="notification is-warning my-5">
+    <div v-if="store.showBetaNotice" class="notification is-warning is-size-4 my-5">
       <button class="delete" @click="hideNotification"></button>
-      Thanks for checking out this tool! This is a public beta, which means that
+      Thanks for trying out this site! This is a <strong>public pre-release</strong>, which means that
       we&rsquo;re still gathering feedback, testing data outputs and fixing
       bugs. Please contact
       <a href="mailto:uaf-snap-data-tools@alaska.edu"
@@ -22,7 +22,6 @@ const hideNotification = () => {
 
 <style lang="scss" scoped>
 .notification {
-  max-width: 800px;
   margin: 0 auto;
 }
 </style>
