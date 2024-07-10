@@ -13,7 +13,15 @@ var legendControls: { [index: string]: any } = {}
 // Legend items for each map, keyed like `maps` var above.
 var legendItems: { [index: string]: any } = {}
 
-import { tileLayer, latLng, latLngBounds, type MapOptions } from 'leaflet'
+import {
+  tileLayer,
+  latLng,
+  latLngBounds,
+  type TileLayer,
+  type MapOptions,
+} from 'leaflet'
+
+var coastlineLayer: TileLayer.WMS
 
 function getBaseMapAndLayers(): MapOptions {
   const config = useRuntimeConfig()
@@ -123,9 +131,15 @@ export const useMapStore = defineStore('map', () => {
   function toggleLayer(layerObj: MapLayerInstance) {
     const config = useRuntimeConfig()
 
-    // Remove existing active layer from map
+    // Remove existing active layer & coastline from map
     if (layerObjects[layerObj.mapId]) {
       maps[layerObj.mapId].removeLayer(layerObjects[layerObj.mapId])
+      if (
+        coastlineLayer != undefined &&
+        maps[layerObj.mapId].hasLayer(coastlineLayer)
+      ) {
+        maps[layerObj.mapId].removeLayer(coastlineLayer)
+      }
     }
 
     // Build new layer configuration
@@ -147,6 +161,16 @@ export const useMapStore = defineStore('map', () => {
 
     layerObjects[layerObj.mapId] = tileLayer.wms(wmsUrl, layerConfiguration)
     maps[layerObj.mapId]?.addLayer(layerObjects[layerObj.mapId])
+
+    if (layerObj.layer.coastline) {
+      coastlineLayer = tileLayer.wms(config.public.geoserverUrl, {
+        transparent: true,
+        format: 'image/png',
+        version: '1.3.0',
+        layers: 'natural_earth:ne_10m_coastline',
+      })
+      maps[layerObj.mapId]?.addLayer(coastlineLayer)
+    }
 
     activeLayers.value[layerObj.mapId] = layer
 

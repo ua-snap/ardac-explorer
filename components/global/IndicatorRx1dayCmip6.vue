@@ -16,6 +16,7 @@ const layers: MapLayer[] = [
     style: 'ardac_indicator_rx1day_historical_era',
     legend: 'rx1day',
     rasdamanConfiguration: { dim_model: 4, dim_scenario: 0 },
+    coastline: true,
   },
   {
     id: 'indicator_rx1day_midcentury_era',
@@ -25,6 +26,7 @@ const layers: MapLayer[] = [
     style: 'ardac_indicator_rx1day_midcentury_era',
     legend: 'rx1day',
     rasdamanConfiguration: { dim_model: 4, dim_scenario: 4 },
+    coastline: true,
   },
   {
     id: 'indicator_rx1day_latecentury_era',
@@ -34,6 +36,7 @@ const layers: MapLayer[] = [
     style: 'ardac_indicator_rx1day_latecentury_era',
     legend: 'rx1day',
     rasdamanConfiguration: { dim_model: 4, dim_scenario: 4 },
+    coastline: true,
   },
 ]
 
