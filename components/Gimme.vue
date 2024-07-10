@@ -33,7 +33,13 @@ const getGeoJson = async (extent: Extent) => {
   return JSON.parse(geoJsonString!.default)
 }
 
-let parsedGeoJson = await getGeoJson(extent)
+// TypeScript types for Turf.js are currently in flux, so use "any" for now.
+// See https://github.com/Turfjs/turf/issues/2617
+let parsedGeoJson: any
+
+if (extent != null) {
+  parsedGeoJson = await getGeoJson(extent)
+}
 
 const placesStore = usePlacesStore()
 let communities = await placesStore.fetchCommunities()
