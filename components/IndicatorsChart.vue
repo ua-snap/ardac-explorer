@@ -211,7 +211,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Gimme />
+  <Gimme extent="mizukami" />
   <div v-if="latLng && apiData">
     <div class="control mb-5">
       <label class="radio mr-3">

@@ -86,7 +86,7 @@ onUnmounted(() => {
         chart.
       </p>
 
-      <Gimme />
+      <Gimme extent="mizukami" />
       <HydrologyChartControls />
       <HydrologyChart label="Glacier melt" units="㎜" dataKey="glacier_melt" />
 

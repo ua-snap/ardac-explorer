@@ -173,7 +173,7 @@ onUnmounted(() => {
         charts.
       </p>
 
-      <Gimme />
+      <Gimme extent="mizukami" />
       <HydrologyChartControls />
       <HydrologyChart
         label="Soil moisture, layer 1"
