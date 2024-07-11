@@ -171,18 +171,17 @@ onUnmounted(() => {
 
 <p>Mean annual temperatures in Utqiagvik are around -10°C (15°F) while in Metlakatla, the southernmost community in the state near the border with British Columbia, the annual average temperature is closer to +10C (50°F). The common color palette across very different places, with different baseline climates, allows us to compare warming trends easily across latitudes and climates.</p>
 
-<p>Looking across the world we can see that this means that in spite of their different climate both Maine and Arizona are warming, though this means different things for each place. </p>
-<p>Less snow for snow-machining in Maine...</p><img src="assets/images/ClimateStripesStory1/ME-tavg.png">
+<p>Looking across the world we can see that this means that in spite of their different climate both Maine and Arizona are warming, though this means different things for each place: </p>
+<p>less snow for snow-machining in Maine...</p><img src="assets/images/ClimateStripesStory1/ME-tavg.png">
 <p> ...and possible water scarcity in Arizona...</p><img src="assets/images/ClimateStripesStory1/AZ-tavg.png">
 
       </p>
 
       <h4>Year-to-year variation is obvious, but trends are pronounced</h4>
 
-      <p>Okay okay, let’s stick closer to home. Alaska’s state capitol, Juneau, is a very neat but also pretty weird place. (we love you Juneau but you know it’s true). Off the road system, the state’s 3rd largest city is surrounded by mountains, islands, and America’s largest national forest. Here are the climate strips for Juneau:</p>
+      <p>Okay okay, let’s stick closer to home. Alaska’s state capitol, Juneau, is a very neat but also pretty weird place. Off the road system, the state’s 3rd largest city is surrounded by mountains, islands, and America’s largest national forest. Here are the climate stripes for Juneau:</p>
       <img src="assets/images/beetle_voltinism.png">
       <p>The variation of local weather is obvious across these stripes. This deep blue line represents 1972, the coldest year in the record with an average annual temperature of just 3.7°C (39°F). The warmest year though, is the most recent for this data…2017.</p>
-      <img src="assets/images/beetle_voltinism.png">
       <p>Overall though the trend is clear. Some warmer than average years do exist in the beginning of the record and a few colder than average years occurred more recently, but overall a trend toward more red and less blue is obvious across the stripes. Year to year variability can be caused by specific storm patterns, recurring cycles like el nino, or just plain chance. Understanding this variability is key to understanding why climate science comes with ranges and variability built in.</p>
       <p>The world is messy and our data should reflect that.</p>
 
@@ -201,21 +200,28 @@ onUnmounted(() => {
       <p>As you can see, an even wider area means an even greater smoothing of the trends. As we consider a broader area, the local impacts of rivers, elevation, mountain ranges, proximity to the ocean, and other factors get averaged out. At these wider scales fewer years stand out and the stripes begin to look more like a slow but steady march from blue to red reflecting the broader climate’s warming trends. </p>
       <p>For good measure let’s take a peek at the stripes for the entire circumpolar Arctic:</p>
       <img src="assets/images/ClimateStripesStory1/Arctic Climate Stripes 2022 (1).png">
-      <p>The Arctic is warming faster than any other area of the globe so it’s not surprising to see things looking this clear. At this scale the last colder-than-average year in the Arctic was 1992 when I was just 2 years old.</p>
+      <p>The Arctic is warming faster than any other area of the globe so it’s not surprising to see things looking this clear. At this scale the last colder-than-average year in the Arctic was 1992.</p>
       <p>And as we look at the stripes for the globe:</p>
       <img src="assets/images/ClimateStripesStory1/GLOBE---1850-2023-MO.png">
-      <p>The trend dominates the graphic. We got these stripes from another tool [url] by the way. SNAP doesn’t handle global data.</p>
+      <p>The trend dominates the graphic. We got these non-Arctic stripes from <a href="https://showyourstripes.info">another tool</a> by the way. We don't handle global data.</p>
 
       <h4>The power, and shortcomings, of a good climate graphic</h4>
       <p>Overall the Climate Stripes graphics for points and for regions are a powerful tool. They are (mostly) colorblind-friendly and show clearly and obviously the facts of climate change: the trend toward a warmer climate is both clear and striking.</p>
       <p>It also allows people to see the effect in their specific place.</p>
+      <p>My Region</p>
+      <img src="assets/images/ClimateStripesStory1/ArcticStripesWaterisStripes.png">
+      <p>My State</p>
+      <img src="assets/images/ClimateStripesStory1/AKStripesAKShaped.png">
+      <p>My City</p>
+      <img src="assets/images/ClimateStripesStory1/Fairbanks Climate Stripes 2022.png">
+      <p></p>
       <Gimme label="Get climate stripes for a community or by lat/long:" class="mt-5" />
       <div id="chart" class="mb-5"></div>
       <p>But there are shortcomings. If you want to know the precise values of any given year from these stripes you’ll have to dive into the data behind it, and a less clear trend in one specific area can be improperly generalized without the right context.</p>
       <p>Additionally these stripes typically only display historical data, so they don’t offer insights into   the possible futures in a given place.</p>
       <p>Unless….</p>
       <p>With just a few tweaks, they can do precisely that. Read this DataStory to use what you’ve learned about the climate stripes to understand RCPs, SSPs, and our possible climate futures.</p>
-      <p>Also, do you wish you had your own climate stripes for your part of Alaska? Maybe your home town, your hunting spot, your ethnolinguistic region, or your lifelong favorite hydrological unit code level 10? (Mine is 1908040302) This JupyterNotebook will help you do just that!</p>
+      <p>Also, do you wish you had your own climate stripes for your part of Alaska? Maybe your home town, your hunting spot, your ethnolinguistic region, or your lifelong favorite hydrological unit code level 10? (ours is 1908040302) This JupyterNotebook will help you do just that!</p>
 
     </div>
     </section>
