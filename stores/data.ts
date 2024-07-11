@@ -13,6 +13,7 @@ const endpoints: Record<string, string> = {
   indicators: '/indicators/base/point/',
   landfastSeaIce: '/landfastice/point/',
   freezingIndex: '/degree_days/freezing_index/',
+  meanAnnualTemperature: '/temperature/',
   permafrost: '/permafrost/point/gipl/',
   precipitation: '/precipitation/point/',
   precipitationFrequency: '/precipitation/frequency/point/',

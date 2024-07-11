@@ -125,21 +125,21 @@ export default [
     title: 'Landfast Sea Ice Extent',
     blurb:
       'Historical daily landfast ice extent information for the Alaska coastline',
-    tags: ['Cryosphere'],
+    tags: ['Cryosphere', 'Sea Ice'],
   },
   {
     slug: 'sea-ice-concentration',
     title: 'Sea Ice Concentration',
     blurb:
       'Monthly pan-Arctic sea ice concentration data at a resolution of approximately 17.1km for years 1850–2021',
-    tags: ['Cryosphere'],
+    tags: ['Cryosphere', 'Sea Ice'],
   },
   {
     slug: 'notebook-sea-ice-traffic',
     title: 'Marine Vessel Traffic and Sea Ice Concentration',
     blurb:
       'Learn how to combine Arctic marine vessel traffic with historical sea ice concentration data',
-    tags: ['Cryosphere', 'Programming'],
+    tags: ['Cryosphere', 'Programming', 'Sea Ice'],
   },
   {
     slug: 'communities-boundaries',
@@ -415,5 +415,12 @@ export default [
     blurb:
       'Learn about the lifecycle of spruce beetles and how the climate protects against outbreaks.',
     tags: ['Climate', 'Terrestrial'],
+  },
+  {
+    slug: 'story-climate-stripes-1',
+    title: 'Climate Stripes and Data Scale',
+    blurb:
+      'Climate stripes are a powerful climate data visualization both for understanding your local environment, and understanding how scale impacts climate variability.',
+    tags: ['Climate', 'Terrestrial', 'Temperature'],
   },
 ] satisfies Item[]
