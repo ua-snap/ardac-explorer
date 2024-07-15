@@ -9,17 +9,15 @@ const bio = bios.find(i => {
   return i.person === props.person
 })
 
-const path = '/images/people/' + bio?.image
-
 </script>
 
 <template>
-  <div v-if="bio" class="bio block tile is-ancestor">
+  <div v-if="bio && bio.image" class="bio block tile is-ancestor">
     <div class="tile content is-size-5 is-parent">
       <figure class="tile is-child is-2 image">
         <img
           class="is-rounded"
-          :src="path"
+          :src="'/images/people/' + bio.image"
           :alt="`Photo of ${bio.person}`"
         />
       </figure>

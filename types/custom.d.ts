@@ -10,7 +10,7 @@ interface Item {
 
 interface Bio {
   person: Person
-  image?: string
+  image: string
   blurb: string
 }
 type BioValue = Bio | undefined
