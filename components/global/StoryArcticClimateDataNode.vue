@@ -563,6 +563,9 @@ onMounted(() => {
         </p>
       </div>
     </div>
+
+    <Bios :people="['Scott Rupp', 'Nancy Fresco']" />
+
   </section>
 </template>
 

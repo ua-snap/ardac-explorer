@@ -8,6 +8,13 @@ interface Item {
   priority?: number
 }
 
+interface Bio {
+  person: Person
+  image?: string
+  blurb: string
+}
+type BioValue = Bio | undefined
+
 interface Community {
   id: string
   name: string
