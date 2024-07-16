@@ -47,7 +47,7 @@ const legend: Record<string, LegendItem[]> = {
   ],
 }
 
-let activeTab = ref('models')
+let activeTab = ref('variables')
 
 const changeTab = (tab: string) => {
   activeTab.value = tab
@@ -101,7 +101,7 @@ onMounted(() => {
               href="https://science.osti.gov/ber/Research/eessd/Data-Management"
             >
               Earth and Environmental Systems Sciences Division Data Management
-              program
+              program,
             </a>
             the University of Alaska Fairbanks (UAF) has established the Arctic
             Climate Data Node. The ACDN provides local access to
@@ -117,11 +117,10 @@ onMounted(() => {
             The ACDN will facilitate the development of new research themes,
             process&ndash;based modeling, mechanistic modeling, and
             regional synthesis at UAF and within the broader Arctic
-            science community. Developing and establishing research computing
-            infrastructure to support local storage and access to key datasets
-            will provide significant capacity&ndash;building to Alaska's research community 
-            members and rightsholders as
-            they address the ongoing challenges of a changing climate.
+            science community. The node establishes research computing
+            infrastructure to support local storage and access to key datasets.
+            This will provide significant capacity&ndash;building to Alaska's research community 
+            members and rightsholders as they address the ongoing challenges of a changing climate.
           </p>
         </div>
       </div>
@@ -144,12 +143,6 @@ onMounted(() => {
     <h3 class="title is-3">What does ACDN offer researchers?</h3>
     <div class="columns">
       <div class="column is-two-thirds">
-        <div class="content is-size-5">
-          <p>
-            The Arctic Data Collaborative (ARDAC) provides researchers access to
-            CMIP6 data and associated utilities and data products.
-          </p>
-        </div>
         <h3 class="subtitle is-4 mt-4 mb-1">Data ready for use in research</h3>
         <div class="content is-size-5">
           <ul>
@@ -157,25 +150,22 @@ onMounted(() => {
               A curated suite of
               <strong>
                 <span class="bling">CMIP6</span> models and scenarios that
-                perform best in Alaska and the pan&ndash;Arctic </strong
-              >: These include 13 global climate models, 4 emissions scenarios, and 15 variables.
-              <br />
-              Compared to prior CMIP5 data housed at UAF, the CMIP6 data available through
+                perform best in Alaska and the pan&ndash;Arctic: </strong
+              >These include 13 global climate models, 4 emissions scenarios, and 15 variables. Compared to prior CMIP5 data housed at UAF, the CMIP6 data available through
               the ACDN offers more models and more variables, while representing the
               current state-of-the-art climate model outputs.
             </li>
             <li>
-              preprocessed:
-              <strong>Preprocessed data are available on a common grid.</strong> This allows
+              <strong>Preprocessed data on a common grid:</strong> This allows
               researchers to focus on applying the data and solving significant
               geospatial data problems.
             </li>
             <li>
-              Derived products: standardized
+              Derived products: These include standardized
               <strong>climate indicators</strong>&mdash;such as how many days
               per year exceed 25&deg;C, or how many days per year have
-              temperatures above and below freezing&mdash;make baseline
-              temperature and precipitation more useful
+              temperatures above and below freezing&mdash;making baseline
+              temperature and precipitation more useful.
             </li>
             <li>
               <a href="#technical-information">&#x2192; see available data</a>
@@ -187,19 +177,19 @@ onMounted(() => {
         <div class="content is-size-5">
           <ul>
             <li>
-              <strong>Local data access</strong> and workspace for University of
-              Alaska affiliated researchers. The repository of CMIP6 data is
+              <strong>Local data access:</strong> The ACDN is a workspace for University of
+              Alaska affiliated researchers with a repository of CMIP6 data
               attached directly to the
               <a href="https://uaf-rcs.gitbook.io/uaf-rcs-hpc-docs/hpc"
                 >Chinook compute cluster</a
-              >, allowing fast access and scratch space for working with data.
+              >. This allows for fast access and scratch space for working with data.
               <a href="#beegeefs">&#x2192; read more about ACDN storage</a>
             </li>
             <li>
               <strong
-                ><a href="https://earthmaps.io">A simple data API</a></strong
+                ><a href="https://earthmaps.io">A simple data API:</a></strong
               >
-              provides programmatic access to CMIP6 data, allowing users to
+              The SNAP Application Program Interface (API) provides programmatic access to CMIP6 data, allowing users to
               query and download data directly from the command line or within
               their own applications. The API supports a wide range of query
               parameters, including model, scenario, variable, and geographic
@@ -215,7 +205,7 @@ onMounted(() => {
             </li>
 
             <li>
-              Rasdaman: a <strong>multidimensional raster datacube</strong> for
+              Rasdaman: The ACDN provides a <strong>multidimensional raster datacube</strong> for
               data analysis and mapping. Users can access CMIP6 data from
               rasdaman using the standards-based OGC formats for web mapping and
               coverage requests: WMS, and WCS/WCPS. This can be integrated into
@@ -224,7 +214,7 @@ onMounted(() => {
             </li>
 
             <li>
-              <strong>Remote data access</strong> via Globus. Users equipped
+              <strong>Remote data access</strong> via Globus: Users equipped
               with a Globus account can seamlessly navigate the ACDN file
               storage system to retrieve data, transferring it to any system
               where they hold a Globus account.
@@ -242,8 +232,8 @@ onMounted(() => {
       <div class="content is-size-5">
         <p>
           Summer days are the number of days per year that are above 25&deg;C &lpar;77&deg;F&rpar;.
-          The map below shows the 30-year mean of CMIP6 temperature data for
-          three eras showing the number of summer days over that era. The
+          The map below shows the 30-year mean of summer days using CMIP6 temperature data for
+          three eras. The
           historical era (1980&ndash;2009) uses model baseline data from the
           GFDL-ESM4 dataset. The mid-century era (2040&ndash;2069) and
           late-century era (2070&ndash;2099) use GFDL-ESM4 data under the
@@ -274,14 +264,14 @@ onMounted(() => {
 
     <div class="tabs is-medium is-left">
       <ul>
+        <li :class="{ 'is-active': activeTab === 'variables' }">
+          <a @click="changeTab('variables')">Variables</a>
+        </li>
         <li :class="{ 'is-active': activeTab === 'models' }">
           <a @click="changeTab('models')">Models</a>
         </li>
         <li :class="{ 'is-active': activeTab === 'scenarios' }">
           <a @click="changeTab('scenarios')">Scenarios</a>
-        </li>
-        <li :class="{ 'is-active': activeTab === 'variables' }">
-          <a @click="changeTab('variables')">Variables</a>
         </li>
       </ul>
     </div>
@@ -481,7 +471,7 @@ onMounted(() => {
           to object storage servers via a blazing-fast 100 Gb/s network.
           Leveraging the ample storage capacity of this system, SNAP can
           efficiently store, regrid, and bias-correct data pertinent to the
-          state of Alaska. Future endeavors include
+          state of Alaska. Future opportunities include
           <a
             href="https://www.sciencedirect.com/science/article/pii/S1364815217305662"
             >downscaling the model data to higher resolutions</a
@@ -554,7 +544,7 @@ onMounted(() => {
           Users equipped with a Globus account can seamlessly navigate the ACDN
           file storage system to retrieve data, transferring it to any system
           where they hold a Globus account. This encompasses an array of major
-          national laboratories furnished with supercomputing capabilities.
+          national laboratories with supercomputing capabilities.
         </p>
         <p>
           Learn more at:
