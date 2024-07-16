@@ -180,7 +180,7 @@ onUnmounted(() => {
       <h4>Year-to-year variation is obvious, but trends are pronounced</h4>
 
       <p>Okay okay, let’s stick closer to home. Alaska’s state capitol, Juneau, is a very neat but also pretty weird place. Off the road system, the state’s 3rd largest city is surrounded by mountains, islands, and America’s largest national forest. Here are the climate stripes for Juneau:</p>
-      <img src="assets/images/beetle_voltinism.png">
+      <img src="assets/images/ClimateStripesStory1/Juneau Climate Stripes 2022.png">
       <p>The variation of local weather is obvious across these stripes. This deep blue line represents 1972, the coldest year in the record with an average annual temperature of just 3.7°C (39°F). The warmest year though, is the most recent for this data…2017.</p>
       <p>Overall though the trend is clear. Some warmer than average years do exist in the beginning of the record and a few colder than average years occurred more recently, but overall a trend toward more red and less blue is obvious across the stripes. Year to year variability can be caused by specific storm patterns, recurring cycles like el nino, or just plain chance. Understanding this variability is key to understanding why climate science comes with ranges and variability built in.</p>
       <p>The world is messy and our data should reflect that.</p>
