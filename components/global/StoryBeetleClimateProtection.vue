@@ -447,7 +447,7 @@ const data: any = {
         Spruce beetles are small insects that play a significant role in
         Alaska's forests, infesting white spruce, Sitka spruce, and Lutz spruce.
         These outbreaks can cause substantial damage to forest ecosystems and
-        have economic repercussions. In recent years, the frequency and severity
+        have economic repercussions. In recent years the frequency and severity
         of spruce beetle outbreaks in Alaska have increased, prompting
         researchers to delve deeper into understanding the factors influencing
         these outbreaks.
@@ -455,12 +455,12 @@ const data: any = {
       <h4>The Beetle Life Cycle and Climate Connection</h4>
       <p>
         Spruce beetles have a lifecycle closely tied to climate conditions.
-        Adult beetles typically fly to new trees in the spring, where females
-        lay eggs. The timing of beetle flight is linked to temperature, with
+        Adult beetles typically fly to new trees in the spring where females then
+        lay their eggs. The timing of beetle flight is linked to temperature with
         flight occurring when temperatures reach approximately 16°C or warmer.
-        Once hatched, larvae develop over the summer, with some maturing into
+        Once hatched larvae develop over the summer with some maturing into
         adults by the end of the season. Maturation within a single summer
-        season termed univoltinism, depends on the accumulation of heat during
+        season, termed univoltinism, depends on the accumulation of heat during
         the summer months. Beetles that mature in a single summer (univoltine)
         have a higher chance of survival compared to those that overwinter as
         larvae (semivoltine), not only because they can breed sooner, but also
@@ -481,7 +481,7 @@ const data: any = {
         To better understand and predict spruce beetle outbreaks, researchers
         developed a comprehensive model that incorporates various climate
         factors and beetle life cycle stages. The model assesses the risk of
-        outbreaks across different time periods, considering historical climate
+        outbreaks across different time periods considering historical climate
         data, climate projections, and beetle population dynamics. By
         calibrating the model with observed outbreak patterns, researchers
         categorized climate protection levels and identified regions that might
@@ -489,7 +489,7 @@ const data: any = {
       </p>
 
       <p>
-        Use the following interactive widget to explore how climate
+        Use this interactive widget to explore how climate
         protection from spruce beetle outbreaks changes under different models
         and model parameters for the entire state of Alaska.
       </p>
@@ -563,7 +563,7 @@ const data: any = {
         Understanding the factors driving spruce beetle outbreaks is essential
         for effective forest management and conservation efforts. By identifying
         areas that may become more vulnerable, forest managers can implement
-        proactive measures to mitigate beetle infestations, such as targeted
+        proactive measures to mitigate beetle infestations such as targeted
         tree removal, forest thinning, and monitoring programs. These management
         practices can help maintain the health and resilience of Alaska's
         forests in the face of changing climate conditions.
@@ -571,10 +571,10 @@ const data: any = {
       <h4>Conclusion</h4>
       <p>
         Spruce beetle outbreaks pose significant challenges to Alaska's forests,
-        but through interdisciplinary research and advanced modeling techniques,
+        but through interdisciplinary research and advanced modeling techniques
         scientists are gaining valuable insights into the complex interactions
         between climate, beetle populations, and forest ecosystems. By applying
-        this knowledge, stakeholders can work towards sustainable forest
+        this knowledge stakeholders can work towards sustainable forest
         management practices that help protect Alaska's valuable spruce forests
         for future generations.
       </p>
