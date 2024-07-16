@@ -89,8 +89,7 @@ onMounted(() => {
         <div class="content is-size-4">
           <p>
             Access to large distributed data volumes has been a limiting factor
-            for researchers in Alaska, which puts them at a disadvantage and
-            represents a key hurdle to research advancements. Establishing the
+            for researchers in Alaska, which puts them at a disadvantage. Establishing the
             Arctic Climate Data Node (ACDN) at UAF provides never&ndash;before
             realized local access to cutting-edge global climate model data.
           </p>
@@ -111,17 +110,17 @@ onMounted(() => {
             >
             (CMIP6) data and includes associated computational resources
             required to facilitate data transfer, analysis, and evaluation
-            activities as well as aid in the development of new derived data
+            as well as aid in the development of new derived data
             products.
           </p>
           <p>
             The ACDN will facilitate the development of new research themes,
-            process and mechanistic&ndash;based modeling activities, and
-            regional synthesis activities at UAF and within the broader Arctic
+            process&ndash;based modeling, mechanistic modeling, and
+            regional synthesis at UAF and within the broader Arctic
             science community. Developing and establishing research computing
             infrastructure to support local storage and access to key datasets
-            will provide significant capacity building to the research community
-            in Alaska and to Alaska&rsquo;s rightsholders and stakeholders as
+            will provide significant capacity&ndash;building to Alaska's research community 
+            members and rightsholders as
             they address the ongoing challenges of a changing climate.
           </p>
         </div>
@@ -148,31 +147,31 @@ onMounted(() => {
         <div class="content is-size-5">
           <p>
             The Arctic Data Collaborative (ARDAC) provides researchers access to
-            CMIP6 data as well as associated utilities and data products.
+            CMIP6 data and associated utilities and data products.
           </p>
         </div>
         <h3 class="subtitle is-4 mt-4 mb-1">Data ready for use in research</h3>
         <div class="content is-size-5">
           <ul>
             <li>
-              curated a suite of
+              A curated suite of
               <strong>
                 <span class="bling">CMIP6</span> models and scenarios that
                 perform best in Alaska and the pan&ndash;Arctic </strong
-              >: 13 global climate models, 4 emissions scenarios, 15 variables
+              >: These include 13 global climate models, 4 emissions scenarios, and 15 variables.
               <br />
-              Compared to prior CMIP5 data housed at UAF, the CMIP6 data through
-              the ACDN offers more models, more variables, and represents the
-              current state of the art of climate model output.
+              Compared to prior CMIP5 data housed at UAF, the CMIP6 data available through
+              the ACDN offers more models and more variables, while representing the
+              current state-of-the-art climate model outputs.
             </li>
             <li>
               preprocessed:
-              <strong>data are available on a common grid</strong>, allowing
+              <strong>Preprocessed data are available on a common grid.</strong> This allows
               researchers to focus on applying the data and solving significant
-              geospatial data hurdles
+              geospatial data problems.
             </li>
             <li>
-              derived products: standardized
+              Derived products: standardized
               <strong>climate indicators</strong>&mdash;such as how many days
               per year exceed 25&deg;C, or how many days per year have
               temperatures above and below freezing&mdash;make baseline
@@ -188,7 +187,7 @@ onMounted(() => {
         <div class="content is-size-5">
           <ul>
             <li>
-              <strong>local data access</strong> and workspace for University of
+              <strong>Local data access</strong> and workspace for University of
               Alaska affiliated researchers. The repository of CMIP6 data is
               attached directly to the
               <a href="https://uaf-rcs.gitbook.io/uaf-rcs-hpc-docs/hpc"
@@ -198,7 +197,7 @@ onMounted(() => {
             </li>
             <li>
               <strong
-                ><a href="https://earthmaps.io">simple data API</a></strong
+                ><a href="https://earthmaps.io">A simple data API</a></strong
               >
               provides programmatic access to CMIP6 data, allowing users to
               query and download data directly from the command line or within
@@ -216,7 +215,7 @@ onMounted(() => {
             </li>
 
             <li>
-              rasdaman: a <strong>multidimensional raster datacube</strong> for
+              Rasdaman: a <strong>multidimensional raster datacube</strong> for
               data analysis and mapping. Users can access CMIP6 data from
               rasdaman using the standards-based OGC formats for web mapping and
               coverage requests: WMS, and WCS/WCPS. This can be integrated into
@@ -225,7 +224,7 @@ onMounted(() => {
             </li>
 
             <li>
-              <strong>remote data access</strong> via Globus. Users equipped
+              <strong>Remote data access</strong> via Globus. Users equipped
               with a Globus account can seamlessly navigate the ACDN file
               storage system to retrieve data, transferring it to any system
               where they hold a Globus account.
@@ -242,7 +241,7 @@ onMounted(() => {
       <h3 class="title is-3">CMIP6 Climate Indicator In Action: Summer Days</h3>
       <div class="content is-size-5">
         <p>
-          Summer days are the number of days per year that are above 77&deg;F.
+          Summer days are the number of days per year that are above 25&deg;C &lpar;77&deg;F&rpar;.
           The map below shows the 30-year mean of CMIP6 temperature data for
           three eras showing the number of summer days over that era. The
           historical era (1980&ndash;2009) uses model baseline data from the
