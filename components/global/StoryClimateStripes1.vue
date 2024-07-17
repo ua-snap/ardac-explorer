@@ -213,12 +213,22 @@ onUnmounted(() => {
       <h4>The power, and shortcomings, of a good climate graphic</h4>
       <p>Overall the Climate Stripes graphics for points and for regions are a powerful tool. They are (mostly) colorblind-friendly and simply show the facts of climate change: the trend toward a warmer climate is both clear and striking.</p>
       <p>It also allows people to see the effect in their specific place.</p>
+      <div class="tile is-ancestor">
+        <div class="tile is-parent">
+      <div class="tile is-child">
       <p>My Region</p>
       <img src="assets/images/ClimateStripesStory1/ArcticStripesWaterisStripes.png">
+      </div>
+      <div class="tile is-child">
       <p>My State</p>
       <img src="assets/images/ClimateStripesStory1/AKStripesAKShaped.png">
+      </div>
+      <div class="tile is-child">
       <p>My City</p>
-      <img src="assets/images/ClimateStripesStory1/Fairbanks Climate Stripes 2022.png">
+      <img src="assets/images/ClimateStripesStory1/Fairbanks Climate Stripes 2022-01 (square).png">
+    </div>
+    </div>
+    </div>
       <p>But there are shortcomings. If you want to know the precise values of any given year from these stripes you’ll have to dive into the data behind it, and a less clear trend in one specific area can be improperly generalized without the right context.</p>
       <p>Additionally these stripes typically only display historical data, so they don’t offer insights into   the possible futures in a given place. With just a few tweaks, they can do precisely that. Read this DataStory to expand on this story, and understand RCPs, SSPs, and the possible futures climate scientists are trying to understand.</p>
 
