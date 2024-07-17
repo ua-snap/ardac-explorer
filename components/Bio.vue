@@ -25,6 +25,9 @@ const bio = bios.find(i => {
         <h4 class="mb-1">{{ bio?.person }}</h4>
         <p v-html="bio?.blurb"></p>
       </div>
+      <div v-if="$slots.default" class="tile is-child">
+        <slot />
+      </div>
     </div>
   </div>
 </template>

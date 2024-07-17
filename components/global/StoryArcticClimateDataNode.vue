@@ -564,7 +564,7 @@ onMounted(() => {
       </div>
     </div>
 
-    <Bios :people="['Scott Rupp', 'Nancy Fresco']" />
+    <Bios :people="['Scott Rupp', 'Bruce Crevensten']" />
 
   </section>
 </template>

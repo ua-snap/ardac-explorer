@@ -394,6 +394,7 @@ onUnmounted(() => {
         </ul>
       </div>
       <GetAndUseData apiUrl="https://earthmaps.io/landfastice/" />
+      <Bios :people="['Andy Mahoney', 'Hajo Eicken']" />
     </div>
   </section>
 </template>
