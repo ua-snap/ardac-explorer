@@ -167,7 +167,7 @@ onUnmounted(() => {
 
 <p>And here are the climate stripes for Metlakatla, Alaska using the same historical dataset:</p>
 
-<img src="assets/images/beetle_voltinism.png">
+<img src="assets/images/ClimateStripesStory1/Metlakatla_stripes_2023_cropped.png">
 
 <p>Mean annual temperatures in Utqiagvik are around -10°C (15°F) while in Metlakatla, the southernmost community in the state near the border with British Columbia, the annual average temperature is closer to +10°C (50°F). The common color palette across very different places, with different baseline climates, allows us to compare warming trends easily across latitudes and climates.</p>
 
@@ -193,12 +193,12 @@ onUnmounted(() => {
       <h4>Variation is smoothed by scale</h4>
       <p>As humans we’re only ever in one place at any given time, so the climate stripes of your home community feel powerful. You remember that warm year with no snow, or that frigid year that drove up your heating bill. This is powerful, but data also allows us to expand beyond the single point and understand our local climate in the context of the trends at broader scales.</p>
       <p>288,000 Alaskans live in our largest city, Anchorage. Here’s what the climate stripes for the City and Borough of Anchorage look like:</p>
-      <img src="assets/images/beetle_voltinism.png">
+      <img src="assets/images/ClimateStripesStory1/AnchorageMuni_ERA5_stripes_2023_cropped.png">
       <p>But most folks who know the state will tell you that Anchorage is part of a broader ‘population core’ in the south-central part of Alaska. While it can be hard to draw precise lines around this population core we’ll expand out using a climatological perspective.</p>
       <img src="assets/images/ClimateStripesStory1/CookInletMap.png">
       <p>The “Cook Inlet Climate Division” encompasses most of the larger towns of the area including Soldotna, Wasilla, Palmer, and Homer. All told this region covers the Matanuska-Susitna Valley and the northern half of the Kenai Peninsula hemmed in by mountains on three sides and with its local climate dominated by the temperature-moderating waters of the Cook Inlet.</p>
       <p>Here’s what the climate stripes for this area with a population of over 400,000, well over half the state, looks like:</p>
-      <img src="assets/images/beetle_voltinism.png">
+      <img src="assets/images/ClimateStripesStory1/CookInlet_ERA5_2023_cropped.png">
       <p>Local weather and unique climates can seriously affect how climate change in these stripes look at the community level. A loss of sea ice cover or a shortening winter snow cover season may amplify the change.</p>
       <p>Let’s zoom out further. Here are the climate stripes for the state of Alaska, from Attu to Kaktovik to Sitka to Kodiak and all:</p>
       <img src="assets/images/ClimateStripesStory1/Alaska Climate Stripes 2022 (1).png">
