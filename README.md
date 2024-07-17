@@ -59,6 +59,7 @@ When adding an item, consider if you should tag a person with the bio brief.  Th
 
 When adding someone new:
 
+ * add an image to `/public/images/people`
  * add them to the `types/people.d.ts`
  * add the bio itself in `assets/bios.ts`
  * add the person to the `/people` page
