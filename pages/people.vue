@@ -4,7 +4,7 @@
   <div class="section">
     <div class="content is-size-5">
       <h2 class="title is-2">People</h2>
-      <p>Placeholder text for why collaboration is important for us!</p>
+      <p>The Arctic Data Collaborative is increasing access to high quality climate information for the Arctic by partnering with experts committed to accessible data and trans-disciplinary research.</p>
     </div>
   </div>
   <div class="section bios">

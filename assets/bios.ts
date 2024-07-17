@@ -27,7 +27,7 @@ export default [
   {
     person: 'Hajo Eicken',
     image: 'eicken.jpg',
-    blurb: `I am the director of UAF's International Arctic research center and an expert in the growth and evolution of sea ice, its role in the climate system and its importance for ecosystems and people.`,
+    blurb: `I am the director of UAF's International Arctic Research Center and an expert in the growth and evolution of sea ice, its role in the climate system and its importance for ecosystems and people.`,
   },
   {
     person: 'Kyle Redilla',
