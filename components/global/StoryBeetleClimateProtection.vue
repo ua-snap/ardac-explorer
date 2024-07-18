@@ -455,20 +455,20 @@ const data: any = {
       <h4>The Beetle Life Cycle and Climate Connection</h4>
       <p>
         Spruce beetles have a lifecycle closely tied to climate conditions.
-        Adult beetles typically fly to new trees in the spring where females then
-        lay their eggs. The timing of beetle flight is linked to temperature with
-        flight occurring when temperatures reach approximately 16°C or warmer.
-        Once hatched larvae develop over the summer with some maturing into
-        adults by the end of the season. Maturation within a single summer
-        season, termed univoltinism, depends on the accumulation of heat during
-        the summer months. Beetles that mature in a single summer (univoltine)
-        have a higher chance of survival compared to those that overwinter as
-        larvae (semivoltine), not only because they can breed sooner, but also
-        because over-winter predation of larvae by woodpeckers is high. Beetles
-        are also moderated by cold temperatures. Rapid cooling during the fall
-        or extreme cold temperatures during winter can limit beetle survival.
-        Understanding these climate factors is essential for predicting and
-        mitigating outbreaks.
+        Adult beetles typically fly to new trees in the spring where females
+        then lay their eggs. The timing of beetle flight is linked to
+        temperature with flight occurring when temperatures reach approximately
+        16°C or warmer. Once hatched larvae develop over the summer with some
+        maturing into adults by the end of the season. Maturation within a
+        single summer season, termed univoltinism, depends on the accumulation
+        of heat during the summer months. Beetles that mature in a single summer
+        (univoltine) have a higher chance of survival compared to those that
+        overwinter as larvae (semivoltine), not only because they can breed
+        sooner, but also because over-winter predation of larvae by woodpeckers
+        is high. Beetles are also moderated by cold temperatures. Rapid cooling
+        during the fall or extreme cold temperatures during winter can limit
+        beetle survival. Understanding these climate factors is essential for
+        predicting and mitigating outbreaks.
       </p>
 
       <div>
@@ -489,9 +489,9 @@ const data: any = {
       </p>
 
       <p>
-        Use this interactive widget to explore how climate
-        protection from spruce beetle outbreaks changes under different models
-        and model parameters for the entire state of Alaska.
+        Use this interactive widget to explore how climate protection from
+        spruce beetle outbreaks changes under different models and model
+        parameters for the entire state of Alaska.
       </p>
 
       <div class="my-6">
@@ -563,8 +563,8 @@ const data: any = {
         Understanding the factors driving spruce beetle outbreaks is essential
         for effective forest management and conservation efforts. By identifying
         areas that may become more vulnerable, forest managers can implement
-        proactive measures to mitigate beetle infestations such as targeted
-        tree removal, forest thinning, and monitoring programs. These management
+        proactive measures to mitigate beetle infestations such as targeted tree
+        removal, forest thinning, and monitoring programs. These management
         practices can help maintain the health and resilience of Alaska's
         forests in the face of changing climate conditions.
       </p>
@@ -578,6 +578,16 @@ const data: any = {
         management practices that help protect Alaska's valuable spruce forests
         for future generations.
       </p>
+      <GetAndUseDataBeetle>
+        <template #preamble
+          ><p>
+            See
+            <NuxtLink to="/item/climate-beetle-protection"
+              >maps and charts of this data here</NuxtLink
+            >.
+          </p>
+        </template>
+      </GetAndUseDataBeetle>
     </div>
     <Bios :people="['Nancy Fresco']" />
   </section>
