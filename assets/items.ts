@@ -423,4 +423,11 @@ export default [
       'Climate stripes are a powerful climate data visualization both for understanding your local environment, and understanding how scale impacts climate variability.',
     tags: ['Climate', 'Terrestrial', 'Temperature'],
   },
+  {
+    slug: 'summary-landfast-sea-ice',
+    title: 'Summarized Landfast Sea Ice',
+    blurb:
+    'A summary and interactive element for exploring the seaward landfast ice edge (SLIE) for the Beaufort Sea region.',
+    tags: ['Sea Ice', 'Cryosphere'],
+  },
 ] satisfies Item[]
