@@ -317,6 +317,7 @@ onUnmounted(() => {
           </blockquote>
         </li>
       </GetAndUseData>
+      <Bios :people="['John Walsh']" />
     </div>
   </section>
 </template>

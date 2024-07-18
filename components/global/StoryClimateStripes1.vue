@@ -224,5 +224,6 @@ onUnmounted(() => {
       <p>Also, do you wish you had your own climate stripes for your part of Alaska? Maybe your home town, your hunting spot, your ethnolinguistic region, or your lifelong favorite hydrological unit code level 10? (ours is 1908040302) This JupyterNotebook will help you do just that!</p>
 
     </div>
+    <Bios :people="['Mike DeLue']" />
     </section>
     </template>

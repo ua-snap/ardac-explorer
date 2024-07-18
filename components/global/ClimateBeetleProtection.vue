@@ -250,6 +250,7 @@ onUnmounted(() => {
         geonetworkUrl="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/090daa3e-b1f1-4dc5-81f2-b7817bd011ee"
       />
     </div>
+    <Bios :people="['Nancy Fresco', 'Kyle Redilla']" />
   </section>
 </template>
 
