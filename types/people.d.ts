@@ -12,3 +12,4 @@ type Person =
 	| 'Mike DeLue'
 	| 'Craig Stephenson'
 	| 'Josh Paul'
+	| 'Rick Thoman'

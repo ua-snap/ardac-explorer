@@ -58,5 +58,10 @@ export default [
     person: 'Josh Paul',
     image: 'paul_bw.jpg',
     blurb: `I am a Geospatial Data Analyst with SNAP with a background in soil science and GIS programming who analyzes geospatial data, conducts data quality assurance and quality control, and to manages metadata.`,
+  },  
+  {
+    person: 'Rick Thoman',
+    image: 'Rick2_bw.png',
+    blurb: `I am a longtime Alaska resident and expert in Alaska climate and weather who shares reliable climate change information through webinars and graphics.`,
   },
 ] satisfies Bio[]
