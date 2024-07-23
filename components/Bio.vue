@@ -12,7 +12,7 @@ const bio = bios.find(i => {
 </script>
 
 <template>
-  <div v-if="bio && bio.image" class="bio block tile is-ancestor">
+  <div v-if="bio && bio.image" class="bio block tile is-ancestor mb-5">
     <div class="tile content is-size-5 is-parent">
       <figure class="tile is-child is-2 image">
         <img
@@ -33,6 +33,10 @@ const bio = bios.find(i => {
 </template>
 
 <style lang="scss" scoped>
+img {
+  max-width: 150px;
+}
+
 .bio p {
   max-width: 50rem;
   line-height: 1.3;
