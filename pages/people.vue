@@ -8,23 +8,30 @@
     </div>
   </div>
   <div class="section bios">
-    <Bio person="Scott Rupp">
-      <ul>
-        <li><ItemBrief slug="story-arctic-climate-data-node" /></li>
-        <li><ItemBrief slug="alfresco-flammability" /></li>
-        <li><ItemBrief slug="alfresco-vegetation" /></li>
-      </ul>
-    </Bio>
-    <Bio person="Andy Mahoney">
-      <ul>
-        <li><ItemBrief slug="landfast-sea-ice" /></li>
-      </ul>
-    </Bio>
     <Bio person="Peter Bieniek">
       <ul>
         <li><ItemBrief slug="lightning-climatology" /></li>
       </ul>
     </Bio>
+    
+    <Bio person="Bruce Crevensten">
+      <ul>
+        <li><ItemBrief slug="story-arctic-climate-data-node" /></li>
+      </ul>
+    </Bio>
+
+    <Bio person="Mike DeLue">
+      <ul>
+        <li><ItemBrief slug="story-climate-stripes-1" /></li>
+      </ul>
+    </Bio>
+
+    <Bio person="Hajo Eicken">
+      <ul>
+        <li><ItemBrief slug="landfast-sea-ice" /></li>
+      </ul>
+    </Bio>
+    
     <Bio person="Nancy Fresco">
       <ul>
         <li><ItemBrief slug="story-beetle-climate-protection" /></li>
@@ -33,21 +40,20 @@
         <li><ItemBrief slug="alfresco-flammability" /></li>
       </ul>
     </Bio>
-    <Bio person="Hajo Eicken">
+
+    <Bio person="Andy Mahoney">
       <ul>
         <li><ItemBrief slug="landfast-sea-ice" /></li>
       </ul>
     </Bio>
-    <Bio person="Bruce Crevensten">
+    
+    <Bio person="Josh Paul">
       <ul>
-        <li><ItemBrief slug="story-arctic-climate-data-node" /></li>
+        <li><ItemBrief slug="notebook-corporation-hdd" /></li>
+        <li><ItemBrief slug="notebook-fmz-flammability" /></li>
       </ul>
     </Bio>
-    <Bio person="John Walsh">
-      <ul>
-        <li><ItemBrief slug="sea-ice-concentration" /></li>
-      </ul>
-    </Bio>
+
     <Bio person="Charlie Parr">
       <ul>
         <li><ItemBrief slug="notebook-frost-depth" /></li>
@@ -55,6 +61,7 @@
         <li><ItemBrief slug="notebook-design-thawing-index" /></li>
       </ul>
     </Bio>
+
     <Bio person="Kyle Redilla">
       <ul>
         <li><ItemBrief slug="notebook-raster-database" /></li>
@@ -62,22 +69,28 @@
         <li><ItemBrief slug="notebook-era5-cds-api" /></li>
       </ul>
     </Bio>
-    <Bio person="Mike DeLue">
+
+    <Bio person="Scott Rupp">
       <ul>
-        <li><ItemBrief slug="story-climate-stripes-1" /></li>
+        <li><ItemBrief slug="story-arctic-climate-data-node" /></li>
+        <li><ItemBrief slug="alfresco-flammability" /></li>
+        <li><ItemBrief slug="alfresco-vegetation" /></li>
       </ul>
     </Bio>
-    <Bio person="Josh Paul">
+
+    <Bio person="John Walsh">
       <ul>
-        <li><ItemBrief slug="notebook-corporation-hdd" /></li>
-        <li><ItemBrief slug="notebook-fmz-flammability" /></li>
+        <li><ItemBrief slug="sea-ice-concentration" /></li>
       </ul>
     </Bio>
+   
   </div>
 </template>
 
 <style lang="scss" scoped>
-::v-deep ul li .item.brief a h3 {
+@import '~/assets/styles/items.scss';
+
+:deep(ul li .item.brief a h3) {
   color: $link;
 }
 </style>

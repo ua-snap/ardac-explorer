@@ -11,7 +11,7 @@
   img {
     filter: grayscale(1);
   }
-  
+
   &:hover {
     transition: 0.3s;
     background-color: $white-lighter !important;
@@ -29,7 +29,16 @@
     }
   }
 
-  &.missing:hover {
-    cursor: not-allowed;
+  &.missing {
+    h3::after {
+      color: #888;
+      display: block;
+      font-size: 80%;
+      content: ' (not implemented yet)';
+    }
+    &:hover {
+      cursor: not-allowed;
+    }
   }
+
 }
