@@ -45,6 +45,25 @@ npx nuxi add component global/MapPermafrost
 
 ...which will add a Vue SFC file in the right place.  Now, that component can be accessed by clicking on the item you just created.
 
+#### Connecting people / bios 
+
+When adding an item, consider if you should tag a person with the bio brief.  The guidelines are approximate, but consider doing this when:
+
+ * It's a narrative story item
+ * It's a new thing
+ * The people you'd tag created the data or tech.  (If SNAP techs just do QA/QC and ingest/prep, we would not tag them; same for programmers who worked on features).  
+
+ Use the `Bios` component, for example,
+
+ `<Bios :people="['Hajo Eicken', 'Scott Rupp']" />`
+
+When adding someone new:
+
+ * add an image to `/public/images/people`
+ * add them to the `types/people.d.ts`
+ * add the bio itself in `assets/bios.ts`
+ * add the person to the `/people` page
+
 #### Converting Jupyter notebooks to items
 
 Follow the pattern used in the `global/NotebookPermObsTemp` component.  To transform the HTML before copy/pasting it into the slot, activate a Conda environment with Jupyter and `nbconvert` and `tidy` (probably already installed in MacOS) then:

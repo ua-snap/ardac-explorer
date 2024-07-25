@@ -312,6 +312,8 @@ onUnmounted(() => {
         geonetworkUrl="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/eeaaca2c-0280-4226-b126-fda42a2b6214"
       />
     </div>
+
+    <Bios :people="['Scott Rupp', 'Nancy Fresco']" />
   </section>
 </template>
 
