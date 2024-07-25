@@ -26,6 +26,7 @@
 			<div class="navbar-start">
 				<NuxtLink class="navbar-item" to="/">Home</NuxtLink>
 				<NuxtLink class="navbar-item" to="/about">About</NuxtLink>
+				<NuxtLink class="navbar-item" to="/people">People</NuxtLink>
 			</div>
 
 			<div class="navbar-end">

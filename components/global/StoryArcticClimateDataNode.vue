@@ -552,6 +552,9 @@ onMounted(() => {
         </p>
       </div>
     </div>
+
+    <Bios :people="['Scott Rupp', 'Bruce Crevensten']" />
+
   </section>
 </template>
 

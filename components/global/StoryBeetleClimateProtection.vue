@@ -579,6 +579,7 @@ const data: any = {
         for future generations.
       </p>
     </div>
+    <Bios :people="['Nancy Fresco']" />
   </section>
 </template>
 

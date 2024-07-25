@@ -16,9 +16,11 @@ let item = store.itemBySlug(props.slug)
       <h3 class="title is-5" v-html="item.title"></h3>
     </NuxtLink>
   </div>
-  <div v-else class="item brief missing" title="Content not impemented yet">
+  <div v-else class="item brief missing cats" title="Content not impemented yet">
     <!-- If missing component -->
     <Tag v-if="showTag" :tag="item.tags[0]" />
     <h3 class="title is-5" v-html="item.title"></h3>
   </div>
 </template>
+
+<style lang="scss" scoped></style>
