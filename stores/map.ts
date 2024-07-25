@@ -57,6 +57,7 @@ function getBaseMapAndLayers(): MapOptions {
   // Map base configuration
   let layerConfig: MapOptions = {
     zoom: 1,
+    zoomSnap: 0.1,
     minZoom: 1,
     maxZoom: 6,
     center: [64.7, -155],
@@ -161,6 +162,14 @@ export const useMapStore = defineStore('map', () => {
 
     layerObjects[layerObj.mapId] = tileLayer.wms(wmsUrl, layerConfiguration)
     maps[layerObj.mapId]?.addLayer(layerObjects[layerObj.mapId])
+
+    if (layerObj.layer.bbox) {
+      const bounds = latLngBounds(
+        latLng(layerObj.layer.bbox[1], layerObj.layer.bbox[0]),
+        latLng(layerObj.layer.bbox[3], layerObj.layer.bbox[2])
+      )
+      maps[layerObj.mapId]?.fitBounds(bounds)
+    }
 
     if (layerObj.layer.coastline) {
       coastlineLayer = tileLayer.wms(config.public.geoserverUrl, {

@@ -1,35 +1,179 @@
+<script lang="ts" setup>
+const mapStore = useMapStore()
+
+const layers: MapLayer[] = [
+  {
+    id: 'slie_early_era',
+    title: 'January, 1996–2005',
+    source: 'rasdaman',
+    wmsLayerName: 'ardac_landfast_sea_ice_mmm',
+    style: 'ardac_landfast_ice_MMM',
+    legend: 'slie',
+    rasdamanConfiguration: { dim_month: 0, dim_era: 0 },
+    bbox: [-170, 71, -131, 76],
+  },
+  {
+    id: 'slie_mid_era',
+    title: 'January, 2005–2014',
+    source: 'rasdaman',
+    wmsLayerName: 'ardac_landfast_sea_ice_mmm',
+    style: 'ardac_landfast_ice_MMM',
+    legend: 'slie',
+    rasdamanConfiguration: { dim_month: 0, dim_era: 1 },
+    bbox: [-170, 71, -131, 76],
+  },
+  {
+    id: 'slie_late_era',
+    title: 'January, 2014–2023',
+    source: 'rasdaman',
+    wmsLayerName: 'ardac_landfast_sea_ice_mmm',
+    style: 'ardac_landfast_ice_MMM',
+    legend: 'slie',
+    rasdamanConfiguration: { dim_month: 0, dim_era: 2 },
+    bbox: [-170, 71, -131, 76],
+  },
+]
+
+const legend: Record<string, LegendItem[]> = {
+  slie: [
+    { color: '#2b8cbe', label: 'Mimumum extent' },
+    { color: '#a6bddb', label: 'Median extent' },
+    { color: '#000000', label: 'Mean extent' },
+    { color: '#ece7f2', label: 'Maximum extent' },
+  ],
+}
+
+const mapId = 'slie'
+mapStore.setLegendItems(mapId, legend)
+</script>
+
 <template>
-    <section class="section">
-      <div class="columns">
-        <div class="column is-two-thirds">
-          <h2 class="title is-2">
-            Landfast Sea Ice
-          </h2>
-          <div class="content is-size-5">
-            <p>
-              Landfast ice is sea ice that is effectively stationary and attached to land. Landfast sea ice is an integral component of Arctic coastal systems and controls numerous geological and biological processes as well as human activities (e.g., Mahoney, 2018). In the dataset presented here landfast sea ice is defined as being contiguous to the coast and lacking detectable motion for approximately 20 consecutive days (<a href="https://seaice.alaska.edu/gi/publications/mahoney/Mahoney_2005_POAC_DefiningLFI.pdf">Mahoney et al. 2005</a>). In this case, the limit of  detectable motion is estimated to be approximately 200 m.
-            </p>
-            </div>
+  <section class="section">
+    <div class="columns">
+      <div class="column is-two-thirds">
+        <h2 class="title is-2">Landfast Sea Ice</h2>
+        <div class="content is-size-5">
+          <p>
+            Landfast ice is sea ice that is effectively stationary and attached
+            to land. Landfast sea ice is an integral component of Arctic coastal
+            systems and controls numerous geological and biological processes as
+            well as human activities (e.g., Mahoney, 2018). In the dataset
+            presented here landfast sea ice is defined as being contiguous to
+            the coast and lacking detectable motion for approximately 20
+            consecutive days (<a
+              href="https://seaice.alaska.edu/gi/publications/mahoney/Mahoney_2005_POAC_DefiningLFI.pdf"
+              >Mahoney et al. 2005</a
+            >). In this case, the limit of detectable motion is estimated to be
+            approximately 200 m.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="my-6">
+      <MapBlock :mapId="mapId" class="mb-6">
+        <template v-slot:layers>
+          <MapLayer :mapId="mapId" :layer="layers[0]" default>
+            <template v-slot:title>{{ layers[0].title }}</template>
+          </MapLayer>
+          <MapLayer :mapId="mapId" :layer="layers[1]">
+            <template v-slot:title>{{ layers[1].title }}</template>
+          </MapLayer>
+          <MapLayer :mapId="mapId" :layer="layers[2]">
+            <template v-slot:title>{{ layers[2].title }}</template>
+          </MapLayer>
+        </template>
+      </MapBlock>
+    </div>
+
+    <div class="columns">
+      <div class="column is-two-thirds">
         <h4 class="title is-4">Summarizing ice edge data</h4>
         <div class="content is-size-5">
           <p>
-            This data visualization summarizes the position of the seaward landfast ice edge (SLIE) for the Beaufort Sea region. Each month of the ice season (October through July) is summarized over three 9-year periods (1996-2005, 2005-2014, 2014-2023) using the minimum, maximum, median, and mean distance of SLIE from the coastline. The minimum extent is shown in the darkest shade of blue and indicates the region that was always occupied by landfast ice during a particular calendar month. The median extent is shown by the mid-shade of blue and indicates where landfast occurred at least 50% of the time. The lightest shade of blue indicates the maximum landfast ice, which represents regions that may only have been landfast ice on one occasion during the selected time period. The black line represents the mean SLIE position for the selected months and time period and, together with the median, provides an alternative way to visualize the typical extent of landfast ice.
+            This data visualization summarizes the position of the seaward
+            landfast ice edge (SLIE) for the Beaufort Sea region. Each month of
+            the ice season (October through July) is summarized over three
+            9-year periods (1996-2005, 2005-2014, 2014-2023) using the minimum,
+            maximum, median, and mean distance of SLIE from the coastline. The
+            minimum extent is shown in the darkest shade of blue and indicates
+            the region that was always occupied by landfast ice during a
+            particular calendar month. The median extent is shown by the
+            mid-shade of blue and indicates where landfast occurred at least 50%
+            of the time. The lightest shade of blue indicates the maximum
+            landfast ice, which represents regions that may only have been
+            landfast ice on one occasion during the selected time period. The
+            black line represents the mean SLIE position for the selected months
+            and time period and, together with the median, provides an
+            alternative way to visualize the typical extent of landfast ice.
           </p>
         </div>
         <h4 class="title is-4">The consequences of a changing ice regime</h4>
         <div class="content is-size-5">
           <p>
-            Landfast sea ice is diminishing throughout the Arctic (Mahoney, 2018) and this can be seen in both its extent and timing. The reduction in landfast ice extent over time can be visualized by comparing the data for a given calendar month over all three 9-year periods. In most locations, and for most months, the area of landfast decreases over the course of the record. However we note that there is comparatively little change in the median extent of landfast ice the Beaufort Sea during April. This represents the maximum stable extent of the landfast ice which, in most of the Beaufort Sea, is primarily controlled by bathymetry. In comparison, landfast sea ice in the Chukchi Sea in April shows more substantial declines, particularly in the most recent 9-year period. One illustration of the change in timing is the striking similarity between the landfast ice extent in October in the Chukchi Sea during the first 9-year period (1996-2005) with that for the month of November during the last 9-year period (2014-2023). These changes in the seasonality of landfast ice can have important impacts on other natural and human components of the Arctic coastal system. The shortened duration of the landfast ice season limits the useful period for ice road operations while shifts in seasonal landfast ice extent, duration, and timing can impact Indigenous peoples' subsistence activities, marine vessel navigation, natural resource development, coastal dynamics, and wildlife. Later formation of early season ice  results in increased opportunities for coastal erosion from winter storms - seen in the data visualization here where the January minimum SLIE extent declines to zero (this is why the dark blue color is largely absent from the map) for much of the Beaufort region for the 2014-2023 ice era. 
+            Landfast sea ice is diminishing throughout the Arctic (Mahoney,
+            2018) and this can be seen in both its extent and timing. The
+            reduction in landfast ice extent over time can be visualized by
+            comparing the data for a given calendar month over all three 9-year
+            periods. In most locations, and for most months, the area of
+            landfast decreases over the course of the record. However we note
+            that there is comparatively little change in the median extent of
+            landfast ice the Beaufort Sea during April. This represents the
+            maximum stable extent of the landfast ice which, in most of the
+            Beaufort Sea, is primarily controlled by bathymetry. In comparison,
+            landfast sea ice in the Chukchi Sea in April shows more substantial
+            declines, particularly in the most recent 9-year period. One
+            illustration of the change in timing is the striking similarity
+            between the landfast ice extent in October in the Chukchi Sea during
+            the first 9-year period (1996-2005) with that for the month of
+            November during the last 9-year period (2014-2023). These changes in
+            the seasonality of landfast ice can have important impacts on other
+            natural and human components of the Arctic coastal system. The
+            shortened duration of the landfast ice season limits the useful
+            period for ice road operations while shifts in seasonal landfast ice
+            extent, duration, and timing can impact Indigenous peoples'
+            subsistence activities, marine vessel navigation, natural resource
+            development, coastal dynamics, and wildlife. Later formation of
+            early season ice results in increased opportunities for coastal
+            erosion from winter storms - seen in the data visualization here
+            where the January minimum SLIE extent declines to zero (this is why
+            the dark blue color is largely absent from the map) for much of the
+            Beaufort region for the 2014-2023 ice era.
           </p>
         </div>
         <h4 class="title is-4">Bringing diverse data together</h4>
         <div class="content is-size-5">
           <p>
-            The data explored here are a novel assemblage of several data sources including satellite imagery, ice chart products, and expert interpretations. Two synthetic aperture radar (SAR) platforms (RADARSAT-1 and EnviSAT) were leveraged to classify landfast sea ice between 1995 and 2008. RADARSAT-1 data were acquired using the moderate-resolution ScanSAR operation mode of the SAR sensor using the C-Band (5.3 GHz), 5.6 cm wavelength, HH polarized microwave frequency. Landfast ice has a distinct backscatter signature compared to surrounding pack ice, land, or open water which enables broad scale classification of landfast sea ice. Several agencies publish daily charts of sea ice chart concentrations for navigational purposes that can also be used to infer the presence or absence of landfast sea ice. Such charts are produced by fusing several different data sources under the guidance of sea ice experts. Chart data sources include the <a href="https://www.weather.gov/afc/ice">Alaska Sea Ice Program (ASIP)</a> and the G10013 SIGID-3 Arctic Ice Charts produced by the <a href="https://usicecenter.gov/">National Ice Center (NIC)</a>.
+            The data explored here are a novel assemblage of several data
+            sources including satellite imagery, ice chart products, and expert
+            interpretations. Two synthetic aperture radar (SAR) platforms
+            (RADARSAT-1 and EnviSAT) were leveraged to classify landfast sea ice
+            between 1995 and 2008. RADARSAT-1 data were acquired using the
+            moderate-resolution ScanSAR operation mode of the SAR sensor using
+            the C-Band (5.3 GHz), 5.6 cm wavelength, HH polarized microwave
+            frequency. Landfast ice has a distinct backscatter signature
+            compared to surrounding pack ice, land, or open water which enables
+            broad scale classification of landfast sea ice. Several agencies
+            publish daily charts of sea ice chart concentrations for
+            navigational purposes that can also be used to infer the presence or
+            absence of landfast sea ice. Such charts are produced by fusing
+            several different data sources under the guidance of sea ice
+            experts. Chart data sources include the
+            <a href="https://www.weather.gov/afc/ice"
+              >Alaska Sea Ice Program (ASIP)</a
+            >
+            and the G10013 SIGID-3 Arctic Ice Charts produced by the
+            <a href="https://usicecenter.gov/">National Ice Center (NIC)</a>.
           </p>
         </div>
-        </div>
       </div>
+    </div>
     <Bios :people="['Hajo Eicken', 'Andy Mahoney']" />
-    </section>
-  </template>
+  </section>
+</template>
+
+<style lang="scss" scoped>
+:deep(.map) {
+  aspect-ratio: 2/1;
+}
+</style>

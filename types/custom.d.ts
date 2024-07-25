@@ -39,6 +39,7 @@ interface MapLayer {
   legend: string
   rasdamanConfiguration?: any
   coastline?: boolean
+  bbox?: number[]
 }
 
 interface MapLayerInstance {
