@@ -57,7 +57,7 @@ export default [
   {
     person: 'Josh Paul',
     image: 'paul_bw.jpg',
-    blurb: `I am a Geospatial Data Analyst with SNAP with a background in soil science and GIS programming who analyzes geospatial data, conducts data quality assurance and quality control, and to manages metadata.`,
+    blurb: `I am a Geospatial Data Analyst with SNAP with a background in soil science and GIS programming who analyzes geospatial data, conducts data quality assurance and quality control, and manages metadata.`,
   },  
   {
     person: 'Rick Thoman',
