@@ -439,7 +439,7 @@ const data: any = {
 
 <template>
   <section class="section">
-    <div class="content is-size-5">
+    <div class="content clamp is-size-5">
       <h3 class="title is-3">Climate Protection from Spruce Beetles</h3>
       <p class="mb-6"></p>
       <h4>Introduction</h4>
@@ -471,10 +471,8 @@ const data: any = {
         predicting and mitigating outbreaks.
       </p>
 
-      <div>
-        <img src="assets/images/beetle_voltinism.png" />
-      </div>
-
+      <img src="assets/images/beetle_voltinism.png" />
+      
       <h4>Modeling Spruce Beetle Outbreaks</h4>
 
       <p>
@@ -495,9 +493,9 @@ const data: any = {
       </p>
 
       <div class="my-6">
-        <div class="content is-size-5">
+        <div>
           <div class="parameter mb-5">
-            <label for="model" class="label">Model:</label>
+            <label for="model" class="label">Model</label>
             <div class="select mr-3">
               <select id="model" v-model="modelInput">
                 <option v-for="model in models" :value="model">
@@ -507,7 +505,7 @@ const data: any = {
             </div>
           </div>
           <div class="parameter mb-5">
-            <label for="scenario" class="label">Scenario:</label>
+            <label for="scenario" class="label">Scenario</label>
             <div class="select mr-3">
               <select id="scenario" v-model="scenarioInput">
                 <option
@@ -520,7 +518,7 @@ const data: any = {
             </div>
           </div>
           <div class="parameter mb-5 mr-3">
-            <label for="era" class="label">Era:</label>
+            <label for="era" class="label">Era</label>
             <div class="select">
               <select id="era" v-model="eraInput">
                 <option v-for="era in eras" :value="era">
@@ -530,7 +528,7 @@ const data: any = {
             </div>
           </div>
           <div class="parameter">
-            <label for="snowpack" class="label">Snowpack:</label>
+            <label for="snowpack" class="label">Snowpack</label>
             <div class="select mb-5">
               <select id="snowpack" v-model="snowpackInput">
                 <option
@@ -603,5 +601,17 @@ const data: any = {
 
 th {
   min-width: 200px;
+}
+
+img {
+  float: right;
+  max-width: calc(100% - 50rem - 1.5rem);
+}
+
+@media only screen and (max-width: 1170px) {
+  img {
+    float: none;
+    max-width: 300px;
+  }
 }
 </style>

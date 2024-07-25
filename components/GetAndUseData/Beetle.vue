@@ -9,20 +9,9 @@
     <template #preamble>
       <slot name="preamble"></slot>
     </template>
-    <li>Read all about this project...</li>
+    <li><a href="https://uaf-snap.org/wp-content/uploads/2023/06/20230627_spruce-beetle-climate-model-white-paper.pdf">Read a report about this project</a></li>
     <li>
-      Academic reference (to be corrected but leaving as template):
-      <blockquote>
-        <p>
-          Johnstone, J. F., Rupp, T. S., Olson, M. &amp; Verbyla, D. (2011).
-          Modeling impacts of fire severity on successional trajectories and
-          future fire behavior in Alaskan boreal forests.
-          <i>Landscape Ecology, 26</i>, 487&ndash;500.
-          <a href="https://doi.org/10.1007/s10980-011-9574-6"
-            >https://doi.org/10.1007/s10980-011-9574-6</a
-          >
-        </p>
-      </blockquote>
+      Academic paper submission is in progress.  Reach out to us at uaf-snap-data-tools@alaska.edu if you have questions
     </li>
   </GetAndUseData>
 </template>
