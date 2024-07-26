@@ -20,6 +20,7 @@ const props = defineProps({
 
 <template>
   <h4 class="title is-4 mt-6">Get &amp; use this data</h4>
+  <slot name="preamble"></slot>
   <div class="content is-size-5">
     <ul>
       <li v-if="props.presentInNcr && props.presentInEds">
