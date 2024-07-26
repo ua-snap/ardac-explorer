@@ -193,6 +193,7 @@ onUnmounted(() => {
       <h4>Variation is smoothed by scale</h4>
       <p>As humans we’re only ever in one place at any given time, so the climate stripes of your home community feel powerful. You remember that warm year with no snow, or that frigid year that drove up your heating bill. This is powerful, but data also allows us to expand beyond the single point and understand our local climate in the context of the trends at broader scales.</p>
       <p>288,000 Alaskans live in our largest city, Anchorage. Here’s what the climate stripes for the City and Borough of Anchorage look like:</p>
+      <div class="content is-size-6"><p>Note because of the data used that these stripes begin in 1940, not 1900.</p></div>
       <img src="assets/images/ClimateStripesStory1/AnchorageMuni_ERA5_stripes_2023_cropped.png">
       <p>But most folks who know the state will tell you that Anchorage is part of a broader ‘population core’ in the south-central part of Alaska. While it can be hard to draw precise lines around this population core we’ll expand out using a climatological perspective.</p>
       <img src="assets/images/ClimateStripesStory1/CookInletMap.png">
