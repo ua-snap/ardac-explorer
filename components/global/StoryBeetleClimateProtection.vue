@@ -439,7 +439,7 @@ const data: any = {
 
 <template>
   <section class="section">
-    <div class="content is-size-5">
+    <div class="content clamp is-size-5">
       <h3 class="title is-3">Climate Protection from Spruce Beetles</h3>
       <p class="mb-6"></p>
       <h4>Introduction</h4>
@@ -447,7 +447,7 @@ const data: any = {
         Spruce beetles are small insects that play a significant role in
         Alaska's forests, infesting white spruce, Sitka spruce, and Lutz spruce.
         These outbreaks can cause substantial damage to forest ecosystems and
-        have economic repercussions. In recent years, the frequency and severity
+        have economic repercussions. In recent years the frequency and severity
         of spruce beetle outbreaks in Alaska have increased, prompting
         researchers to delve deeper into understanding the factors influencing
         these outbreaks.
@@ -455,33 +455,31 @@ const data: any = {
       <h4>The Beetle Life Cycle and Climate Connection</h4>
       <p>
         Spruce beetles have a lifecycle closely tied to climate conditions.
-        Adult beetles typically fly to new trees in the spring, where females
-        lay eggs. The timing of beetle flight is linked to temperature, with
-        flight occurring when temperatures reach approximately 16°C or warmer.
-        Once hatched, larvae develop over the summer, with some maturing into
-        adults by the end of the season. Maturation within a single summer
-        season termed univoltinism, depends on the accumulation of heat during
-        the summer months. Beetles that mature in a single summer (univoltine)
-        have a higher chance of survival compared to those that overwinter as
-        larvae (semivoltine), not only because they can breed sooner, but also
-        because over-winter predation of larvae by woodpeckers is high. Beetles
-        are also moderated by cold temperatures. Rapid cooling during the fall
-        or extreme cold temperatures during winter can limit beetle survival.
-        Understanding these climate factors is essential for predicting and
-        mitigating outbreaks.
+        Adult beetles typically fly to new trees in the spring where females
+        then lay their eggs. The timing of beetle flight is linked to
+        temperature with flight occurring when temperatures reach approximately
+        16°C or warmer. Once hatched larvae develop over the summer with some
+        maturing into adults by the end of the season. Maturation within a
+        single summer season, termed univoltinism, depends on the accumulation
+        of heat during the summer months. Beetles that mature in a single summer
+        (univoltine) have a higher chance of survival compared to those that
+        overwinter as larvae (semivoltine), not only because they can breed
+        sooner, but also because over-winter predation of larvae by woodpeckers
+        is high. Beetles are also moderated by cold temperatures. Rapid cooling
+        during the fall or extreme cold temperatures during winter can limit
+        beetle survival. Understanding these climate factors is essential for
+        predicting and mitigating outbreaks.
       </p>
 
-      <div>
-        <img src="assets/images/beetle_voltinism.png" />
-      </div>
-
+      <img src="assets/images/beetle_voltinism.png" />
+      
       <h4>Modeling Spruce Beetle Outbreaks</h4>
 
       <p>
         To better understand and predict spruce beetle outbreaks, researchers
         developed a comprehensive model that incorporates various climate
         factors and beetle life cycle stages. The model assesses the risk of
-        outbreaks across different time periods, considering historical climate
+        outbreaks across different time periods considering historical climate
         data, climate projections, and beetle population dynamics. By
         calibrating the model with observed outbreak patterns, researchers
         categorized climate protection levels and identified regions that might
@@ -489,15 +487,15 @@ const data: any = {
       </p>
 
       <p>
-        Use the following interactive widget to explore how climate
-        protection from spruce beetle outbreaks changes under different models
-        and model parameters for the entire state of Alaska.
+        Use this interactive widget to explore how climate protection from
+        spruce beetle outbreaks changes under different models and model
+        parameters for the entire state of Alaska.
       </p>
 
       <div class="my-6">
-        <div class="content is-size-5">
+        <div>
           <div class="parameter mb-5">
-            <label for="model" class="label">Model:</label>
+            <label for="model" class="label">Model</label>
             <div class="select mr-3">
               <select id="model" v-model="modelInput">
                 <option v-for="model in models" :value="model">
@@ -507,7 +505,7 @@ const data: any = {
             </div>
           </div>
           <div class="parameter mb-5">
-            <label for="scenario" class="label">Scenario:</label>
+            <label for="scenario" class="label">Scenario</label>
             <div class="select mr-3">
               <select id="scenario" v-model="scenarioInput">
                 <option
@@ -520,7 +518,7 @@ const data: any = {
             </div>
           </div>
           <div class="parameter mb-5 mr-3">
-            <label for="era" class="label">Era:</label>
+            <label for="era" class="label">Era</label>
             <div class="select">
               <select id="era" v-model="eraInput">
                 <option v-for="era in eras" :value="era">
@@ -530,7 +528,7 @@ const data: any = {
             </div>
           </div>
           <div class="parameter">
-            <label for="snowpack" class="label">Snowpack:</label>
+            <label for="snowpack" class="label">Snowpack</label>
             <div class="select mb-5">
               <select id="snowpack" v-model="snowpackInput">
                 <option
@@ -563,21 +561,31 @@ const data: any = {
         Understanding the factors driving spruce beetle outbreaks is essential
         for effective forest management and conservation efforts. By identifying
         areas that may become more vulnerable, forest managers can implement
-        proactive measures to mitigate beetle infestations, such as targeted
-        tree removal, forest thinning, and monitoring programs. These management
+        proactive measures to mitigate beetle infestations such as targeted tree
+        removal, forest thinning, and monitoring programs. These management
         practices can help maintain the health and resilience of Alaska's
         forests in the face of changing climate conditions.
       </p>
       <h4>Conclusion</h4>
       <p>
         Spruce beetle outbreaks pose significant challenges to Alaska's forests,
-        but through interdisciplinary research and advanced modeling techniques,
+        but through interdisciplinary research and advanced modeling techniques
         scientists are gaining valuable insights into the complex interactions
         between climate, beetle populations, and forest ecosystems. By applying
-        this knowledge, stakeholders can work towards sustainable forest
+        this knowledge stakeholders can work towards sustainable forest
         management practices that help protect Alaska's valuable spruce forests
         for future generations.
       </p>
+      <GetAndUseDataBeetle>
+        <template #preamble
+          ><p>
+            See
+            <NuxtLink to="/item/climate-beetle-protection"
+              >maps and charts of this data here</NuxtLink
+            >.
+          </p>
+        </template>
+      </GetAndUseDataBeetle>
     </div>
     <Bios :people="['Nancy Fresco']" />
   </section>
@@ -593,5 +601,17 @@ const data: any = {
 
 th {
   min-width: 200px;
+}
+
+img {
+  float: right;
+  max-width: calc(100% - 50rem - 1.5rem);
+}
+
+@media only screen and (max-width: 1170px) {
+  img {
+    float: none;
+    max-width: 300px;
+  }
 }
 </style>
