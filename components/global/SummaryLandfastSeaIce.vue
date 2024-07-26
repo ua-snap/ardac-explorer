@@ -36,7 +36,7 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   slie: [
-    { color: '#2b8cbe', label: 'Mimumum extent' },
+    { color: '#2b8cbe', label: 'Minimum extent' },
     { color: '#a6bddb', label: 'Median extent' },
     { color: '#000000', label: 'Mean extent' },
     { color: '#ece7f2', label: 'Maximum extent' },
