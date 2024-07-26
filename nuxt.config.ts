@@ -32,7 +32,6 @@ export default defineNuxtConfig({
         scss: {
           additionalData: `
             @use "~/assets/styles/_variables.scss" as *;
-            @import "~/node_modules/bulma/sass/utilities/mixins.sass";
           `,
         },
       },
@@ -51,6 +50,7 @@ export default defineNuxtConfig({
         process.env.RASDAMAN_URL || 'https://maps.earthmaps.io/rasdaman/ows',
     },
   },
+
   app: {
     head: {
       noscript: [
@@ -60,4 +60,6 @@ export default defineNuxtConfig({
       ],
     },
   },
+
+  compatibilityDate: '2024-07-25',
 })

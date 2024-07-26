@@ -52,28 +52,22 @@
         </ul>
       </div>
       <div class="featured column is-6 px-5">
-        <div class="tile is-ancestor">
-          <div class="tile is-parent is-vertical">
-            <div class="tile lead is-child border-bottom">
-              <ItemTextPicture slug="story-arctic-climate-data-node" />
+        <div class="lead">
+          <ItemTextPicture slug="story-arctic-climate-data-node" />
+        </div>
+        <div class="fixed-grid has-2-cols">
+          <div class="grid is-col-min-12 py-5">
+            <div class="cell left">
+              <ItemText slug="sea-ice-concentration" showTag />
             </div>
-            <div class="general">
-              <div class="row tile is-parent mb-4">
-                <div class="left tile is-child">
-                  <ItemText slug="sea-ice-concentration" showTag />
-                </div>
-                <div class="right tile is-child">
-                  <ItemTextPicture slug="alfresco-flammability" showTag />
-                </div>
-              </div>
-              <div class="tile is-parent">
-                <div class="left tile is-child">
-                  <ItemText slug="story-beetle-climate-protection" showTag />
-                </div>
-                <div class="right tile is-child">
-                  <ItemText slug="notebook-precip-poly" showTag />
-                </div>
-              </div>
+            <div class="cell">
+              <ItemTextPicture slug="alfresco-flammability" showTag />
+            </div>
+            <div class="cell left">
+              <ItemText slug="story-beetle-climate-protection" showTag />
+            </div>
+            <div class="cell">
+              <ItemText slug="notebook-precip-poly" showTag />
             </div>
           </div>
         </div>
@@ -89,9 +83,12 @@
             <li>Visit <a href="https://earthmaps.io">data API</a></li>
             <li>Learn about <a href="">our team and who we are</a></li>
           </ul>
-          <hr/>
+          <hr />
           <h4 class="title is-4">Get involved!</h4>
-          <p>You can help build this!  Do you have an idea for a data story?  Do you create datasets?  We would love to hear your ideas!</p>
+          <p>
+            You can help build this! Do you have an idea for a data story? Do
+            you create datasets? We would love to hear your ideas!
+          </p>
           <button class="button is-info">Chat with us</button>
         </div>
       </div>
@@ -105,7 +102,7 @@
 .hello {
   background-color: $white-darker;
   padding: 1rem;
-  border: 1px dashed $gray-lighter;
+  border: 1px dashed $grey-lighter;
 }
 
 .briefs {
@@ -119,18 +116,14 @@
 }
 
 @media (min-width: 769px) {
-  .tile.row {
-    border-bottom: 1px dashed $gray-lighter;
-  }
-
-  .general .tile.left {
-    &:deep(.item) {
-      padding-right: 1rem;
-      border-right: 1px dashed $gray-lighter;
+  .cell {
+    border-bottom: 1px dashed $grey-lighter;
+    &.left {
+      &:deep(.item) {
+        padding-right: 1rem;
+        border-right: 1px dashed $grey-lighter;
+      }
     }
-  }
-  .general .tile.right {
-    margin-left: 1rem !important;
   }
 }
 
