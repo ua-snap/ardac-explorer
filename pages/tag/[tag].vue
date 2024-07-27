@@ -51,14 +51,9 @@ for (let row = 0; row < store.sortedFilteredItems.length / 4; row++) {
       <h3 class="subtitle is-4">
         Showing all matching items ({{ filteredItemsCount }})
       </h3>
-      <div v-for="row in gridItems" class="tile is-ancestor">
-        <div class="tile is-parent">
-          <div
-            v-for="item in row"
-            class="tile is-child is-3 block border-right border-bottom"
-          >
-            <ItemTextPicture :slug="item.slug" />
-          </div>
+      <div v-for="row in gridItems" class="grid is-col-min-12 is-gap-2">
+        <div v-for="item in row" class="cell block border-right border-bottom">
+          <ItemTextPicture :slug="item.slug" />
         </div>
       </div>
     </div>
@@ -67,9 +62,8 @@ for (let row = 0; row < store.sortedFilteredItems.length / 4; row++) {
 
 <style lang="scss" scoped>
 @import '~/assets/styles/items.scss';
-.tile.is-child {
-  padding: 0 1rem 1rem 1rem;
-  margin-right: 1rem;
+.cell {
+  padding-right: 0.75rem;
   &:first-of-type {
     padding-left: 0;
   }

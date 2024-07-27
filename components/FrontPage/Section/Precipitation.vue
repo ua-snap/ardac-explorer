@@ -2,24 +2,20 @@
 
 <template>
   <FrontPageSectionWrapper tag="Precipitation">
-    <div class="tile is-ancestor">
-      <div class="tile is-vertical is-parent pr-5 border-right">
-        <div class="tile is-child border-bottom">
-          <ItemText slug="indicator-rx1day" />
-        </div>
-        <div class="tile is-child">
-          <ItemText slug="indicator-rx5day" />
-        </div>
+    <div class="grid is-col-min-12">
+      <div class="cell border-bottom">
+        <ItemText slug="indicator-rx1day" />
       </div>
-      <div class="tile is-parent px-5">
-        <div class="tile is-child">
-          <ItemTextPicture slug="precipitation-frequency" />
-        </div>
+      <div class="cell">
+        <ItemText slug="indicator-rx5day" />
       </div>
-      <div class="tile is-parent pl-5 border-left">
-        <div class="tile is-child">
-          <ItemTextPicture slug="notebook-precip-poly" />
-        </div>
+
+      <div class="cell">
+        <ItemTextPicture slug="precipitation-frequency" />
+      </div>
+
+      <div class="cell">
+        <ItemTextPicture slug="notebook-precip-poly" />
       </div>
     </div>
   </FrontPageSectionWrapper>

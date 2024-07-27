@@ -2,29 +2,21 @@
 
 <template>
   <FrontPageSectionWrapper tag="Climate">
-    <div class="tile is-ancestor">
-      <div class="tile is-parent pr-5 border-right">
-        <div class="tile is-child">
-          <ItemTextPicture slug="climate-beetle-protection" />
-        </div>
+    <div class="grid is-col-min-12">
+      <div class="cell">
+        <ItemTextPicture slug="climate-beetle-protection" />
       </div>
-
-      <div class="tile is-parent">
-        <div class="tile is-child">
-          <ItemTextPicture slug="indicator-ftc-cmip6" />
-        </div>
+      <div class="cell">
+        <ItemTextPicture slug="indicator-ftc-cmip6" />
       </div>
-
-      <div class="tile is-vertical is-parent">
-        <div class="tile is-child border-bottom">
-          <ItemText slug="notebook-design-discharge" />
-        </div>
-        <div class="tile is-child border-bottom">
-          <ItemText slug="indicator-wsdi" />
-        </div>
-        <div class="tile is-child">
-          <ItemText slug="notebook-raster-database" />
-        </div>
+      <div class="cell">
+        <ItemText slug="notebook-design-discharge" />
+      </div>
+      <div class="cell">
+        <ItemText slug="indicator-wsdi" />
+      </div>
+      <div class="cell">
+        <ItemText slug="notebook-raster-database" />
       </div>
     </div>
   </FrontPageSectionWrapper>
