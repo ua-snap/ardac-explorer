@@ -42,8 +42,8 @@ const expandedText = computed(() => {
 
 <style lang="scss" scoped>
 .tagbar {
-  border-top: 1px solid $gray-darker;
-  border-bottom: 1px solid $gray-darker;
+  border-top: 1px solid $grey-darker;
+  border-bottom: 1px solid $grey-darker;
   padding: 1rem 4rem;
   font-size: 1.5rem;
   font-weight: 600;

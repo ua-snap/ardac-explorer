@@ -2,25 +2,18 @@
 
 <template>
   <FrontPageSectionWrapper tag="Permafrost">
-    <div class="tile is-ancestor">
-      <div class="tile is-vertical is-parent pr-5 border-right">
-        <div class="tile is-child border-bottom">
-          <ItemText slug="permafrost-talik" />
-        </div>
-        <div class="tile is-child">
-          
-          <ItemTextPicture slug="map-permafrost" />
-        </div>
+    <div class="grid is-col-min-12">
+      <div class="cell border-bottom">
+        <ItemText slug="permafrost-talik" />
       </div>
-      <div class="tile is-parent px-5">
-        <div class="tile is-child">
-          <ItemTextPicture slug="permafrost-base-top" />
-        </div>
+      <div class="cell">
+        <ItemTextPicture slug="map-permafrost" />
       </div>
-      <div class="tile is-parent pl-5 border-left">
-        <div class="tile is-child">
-          <ItemTextPicture slug="permafrost-magt" />
-        </div>
+      <div class="cell">
+        <ItemTextPicture slug="permafrost-base-top" />
+      </div>
+      <div class="cell">
+        <ItemTextPicture slug="permafrost-magt" />
       </div>
     </div>
   </FrontPageSectionWrapper>

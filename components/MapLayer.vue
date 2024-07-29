@@ -32,16 +32,16 @@ onMounted(() => {
 <template>
   <div
     @click="toggleLayer"
-    class="layer tile is-ancestor is-parent"
+    class="layer grid"
     :class="{ active: active }"
   >
-    <span class="tile is-child layer-wrapper">
+    <span class="cell layer-wrapper">
       <div class="layer-title">
         <slot name="title">{{ layer.title }}</slot>
       </div>
       <div class="subtext"><slot name="subtext"></slot></div>
     </span>
-    <span class="tile is-child active-pointer">
+    <span class="cell active-pointer">
       <div v-if="active">&#x25b6;</div>
     </span>
   </div>
@@ -71,6 +71,7 @@ onMounted(() => {
   }
 
   .active-pointer {
+     max-width: 3rem;
     display: flex;
     align-items: center;
     font-size: 125%;

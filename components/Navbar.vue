@@ -35,3 +35,9 @@
 		</div>
 	</nav>
 </template>
+
+<style scoped lang="scss">
+	nav {
+		background-color: $white;
+	}
+</style>

@@ -2,27 +2,17 @@
 
 <template>
   <FrontPageSectionWrapper tag="Climate">
-    <div class="tile is-ancestor">
-      <div class="tile is-parent pr-5 border-right">
-        <div class="tile is-child">
+    <div class="fixed-grid has-3-cols">
+      <div class="grid">
+        <div class="cell border-right">
           <ItemTextPicture slug="climate-beetle-protection" />
         </div>
-      </div>
-
-      <div class="tile is-parent">
-        <div class="tile is-child">
+        <div class="cell border-right">
           <ItemTextPicture slug="indicator-ftc-cmip6" />
         </div>
-      </div>
-
-      <div class="tile is-vertical is-parent">
-        <div class="tile is-child border-bottom">
+        <div class="cell">
           <ItemText slug="notebook-design-discharge" />
-        </div>
-        <div class="tile is-child border-bottom">
           <ItemText slug="indicator-wsdi" />
-        </div>
-        <div class="tile is-child">
           <ItemText slug="notebook-raster-database" />
         </div>
       </div>
@@ -32,4 +22,8 @@
 
 <style scoped lang="scss">
 @import '~/assets/styles/items.scss';
+.border-right {
+  padding-right: 1em;
+  border-right: 1px dashed $grey-lighter !important;
+}
 </style>

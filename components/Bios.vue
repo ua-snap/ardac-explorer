@@ -6,7 +6,9 @@ const props = defineProps<{
 
 <template>
   <hr class="light" />
-  <Bio v-for="person in people" :person="person" />
+  <div class="pt-5">
+    <Bio v-for="person in people" :person="person" />
+  </div>
 </template>
 
 <style lang="scss" scoped></style>

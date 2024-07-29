@@ -1,6 +1,11 @@
 :deep(.item) {
+
+  h3.title {
+    font-weight: 600;
+  }
+
   p {
-    color: $gray-darker !important;
+    color: $grey-darker !important;
   }
 
   &.text h3,

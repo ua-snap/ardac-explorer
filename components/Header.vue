@@ -9,12 +9,14 @@
 </template>
 
 <style lang="scss" scoped>
+@use "bulma/sass/utilities/mixins";
+
 .brand {
   h1 {
     font-weight: 800;
     line-height: 0.9;
     font-size: 5rem;
-    @include until($desktop) {
+    @include mixins.until($desktop) {
       font-size: 2.75rem;
     }
   }
