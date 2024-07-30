@@ -8,7 +8,7 @@
 @import '~/node_modules/bulma/bulma.sass';
 
 .bling {
-  background-color: #F1EF93;
+  background-color: #f1ef93;
 }
 
 hr {
@@ -38,7 +38,7 @@ a:hover {
 
 // Clamp some content types to more readable width.
 .clamp {
-  p, h2, h3, code {
-    max-width: 50rem;
-  }
+  max-width: 50rem;
+  margin-left: auto;
+  margin-right: auto;
 }
