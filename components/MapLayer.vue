@@ -32,18 +32,20 @@ onMounted(() => {
 <template>
   <div
     @click="toggleLayer"
-    class="layer grid"
+    class="layer fixed-grid has-9-cols"
     :class="{ active: active }"
   >
-    <span class="cell layer-wrapper">
-      <div class="layer-title">
-        <slot name="title">{{ layer.title }}</slot>
-      </div>
-      <div class="subtext"><slot name="subtext"></slot></div>
-    </span>
-    <span class="cell active-pointer">
-      <div v-if="active">&#x25b6;</div>
-    </span>
+    <div class="grid">
+      <span class="cell is-col-span-8 layer-wrapper">
+        <div class="layer-title">
+          <slot name="title">{{ layer.title }}</slot>
+        </div>
+        <div class="subtext"><slot name="subtext"></slot></div>
+      </span>
+      <span class="cell active-pointer">
+        <div v-if="active">&#x25b6;</div>
+      </span>
+    </div>
   </div>
 </template>
 
@@ -52,11 +54,17 @@ onMounted(() => {
   line-height: 1.2;
   font-size: 1.25rem;
   cursor: pointer;
-  padding-right: 0;
+
+  .layer-title {
+    display: flex;
+    align-items: center;
+    height: 100%;
+  }
 
   &.active {
     font-weight: 600;
     background-color: #f2c716;
+    padding: 0.5rem 0 0.5rem 0.5rem;
   }
 
   .layer-wrapper {
@@ -71,10 +79,13 @@ onMounted(() => {
   }
 
   .active-pointer {
-     max-width: 3rem;
+    float: right;
+    font-size: 125%;
+    height: 100%;
     display: flex;
     align-items: center;
-    font-size: 125%;
+    margin-right: 0.5rem;
+    line-height: 0.9;
   }
 }
 </style>
