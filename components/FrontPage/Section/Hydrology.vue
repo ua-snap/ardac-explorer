@@ -1,6 +1,7 @@
 <script lang="ts" setup></script>
 
 <template>
+  <!-- Hiding until Rasdaman update complete
   <FrontPageSectionWrapper tag="Hydrology">
     <div class="tile is-ancestor">
       <div class="tile is-vertical is-parent pr-5 border-right">
@@ -29,6 +30,7 @@
       </div>
     </div>
   </FrontPageSectionWrapper>
+-->
 </template>
 
 <style scoped lang="scss">

@@ -147,6 +147,7 @@ export default [
     blurb: 'Names, coordinates, and boundaries to integrate with other data',
     tags: ['GIS'],
   },
+  /* Suspending until launch against updated Rasdaman 
   {
     slug: 'hydrology-evap',
     title: 'Evapotranspiration',
@@ -186,6 +187,7 @@ export default [
     blurb: 'Monthly sum of daily snowmelt',
     tags: ['Hydrology'],
   },
+  */
   {
     slug: 'lightning-climatology',
     title: 'Lightning climatology',
@@ -253,6 +255,7 @@ export default [
     blurb: 'Annual means, decadal means up to monthly temporal resolution',
     tags: ['Precipitation'],
   },
+  /* Hiding until we can launch against updated Rasdaman 
   {
     slug: 'precipitation-frequency',
     title: 'Precipitation Frequency',
@@ -262,6 +265,7 @@ export default [
     image: 'precip_ben-wicks-unsplash.jpg',
     imageAlt: 'Image of water splashing by Ben Wicks on Unsplash',
   },
+  */
   {
     slug: 'indicator-rx1day',
     title: 'Maximum 1-day Precipitation',
