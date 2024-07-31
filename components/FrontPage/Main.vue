@@ -20,7 +20,7 @@
             <ItemBrief slug="indicator-rx1day-cmip6" showTag />
           </li>
           <li>
-            <ItemBrief slug="precipitation-frequency" showTag />
+            <ItemBrief slug="alfresco-flammability" showTag />
           </li>
           <li>
             <ItemBrief slug="alfresco-vegetation" showTag />
@@ -29,7 +29,7 @@
             <ItemBrief slug="indicator-hd" showTag />
           </li>
           <li>
-            <ItemBrief slug="hydrology-sm" showTag />
+            <ItemBrief slug="map-permafrost" showTag />
           </li>
           <li>
             <ItemBrief slug="indicator-wsdi" showTag />
