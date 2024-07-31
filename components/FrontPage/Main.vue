@@ -92,7 +92,7 @@
           <hr/>
           <h4 class="title is-4">Get involved!</h4>
           <p>You can help build this!  Do you have an idea for a data story?  Do you create datasets?  We would love to hear your ideas!</p>
-          <button class="button is-info">Chat with us</button>
+          <a href="mailto:mailto:uaf-snap-data-tools@alaska.edu" class="button is-info">Get in touch</a>
         </div>
       </div>
     </div>
