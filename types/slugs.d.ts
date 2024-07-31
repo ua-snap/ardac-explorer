@@ -63,3 +63,4 @@ type Slug =
   | 'indicator-rx1day-cmip6'
   | 'story-beetle-climate-protection'
   | 'story-climate-stripes-1'
+  | 'summary-landfast-sea-ice'
