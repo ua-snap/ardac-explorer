@@ -1,11 +1,9 @@
 <script lang="ts" setup>
-
 // true if "see all" is expanded
 const expanded = ref(false)
 const expandedText = computed(() => {
-  return expanded.value === false ? '&#x2192; see all' : '&#x2715; close'  
+  return expanded.value === false ? '&#x2192; see all' : '&#x2715; close'
 })
-
 </script>
 
 <template>
@@ -17,9 +15,7 @@ const expandedText = computed(() => {
       <li>
         <NuxtLink to="/tag/Precipitation">Precipitation</NuxtLink>
       </li>
-      <li>
-        <NuxtLink to="/tag/Hydrology">Hydrology</NuxtLink>
-      </li>
+      <li><NuxtLink to="/tag/Wildfire">Wildfire</NuxtLink></li>
       <li>
         <NuxtLink to="/tag/Cryosphere">Cryosphere</NuxtLink>
       </li>
@@ -30,7 +26,6 @@ const expandedText = computed(() => {
     </ul>
     <ul v-show="expanded">
       <li><NuxtLink to="/tag/GIS">GIS</NuxtLink></li>
-      <li><NuxtLink to="/tag/Wildfire">Wildfire</NuxtLink></li>
       <li><NuxtLink to="/tag/Terrestrial">Terrestrial</NuxtLink></li>
       <li><NuxtLink to="/tag/Programming">Programming</NuxtLink></li>
       <li><NuxtLink to="/tag/Temperature">Temperature</NuxtLink></li>
