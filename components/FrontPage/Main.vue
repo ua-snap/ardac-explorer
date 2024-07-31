@@ -7,8 +7,8 @@
         <div class="content is-size-5 hello">
           <p>
             Hello! Looking for an
-            <NuxtLink to="/overview">overview of the content</NuxtLink>
-            available here? <NuxtLink to="/overview">&#x2192; read</NuxtLink>
+            <NuxtLink to="/about">overview of the content</NuxtLink>
+            available here? <NuxtLink to="/about">&#x2192; read</NuxtLink>
           </p>
         </div>
 
@@ -17,7 +17,7 @@
             <ItemBrief slug="indicator-ftc-cmip6" showTag />
           </li>
           <li>
-            <ItemBrief slug="indicator-rx1day" showTag />
+            <ItemBrief slug="indicator-rx1day-cmip6" showTag />
           </li>
           <li>
             <ItemBrief slug="precipitation-frequency" showTag />
@@ -60,10 +60,10 @@
             <div class="general">
               <div class="row tile is-parent mb-4">
                 <div class="left tile is-child">
-                  <ItemText slug="sea-ice-concentration" showTag />
+                  <ItemTextPicture slug="summary-landfast-sea-ice" showTag />
                 </div>
                 <div class="right tile is-child">
-                  <ItemTextPicture slug="alfresco-flammability" showTag />
+                  <ItemTextPicture slug="story-climate-stripes-1" showTag />
                 </div>
               </div>
               <div class="tile is-parent">
@@ -84,10 +84,10 @@
           <hr class="light" />
           <p>Resources</p>
           <ul>
-            <li>Sign up for our <a href="">newsletter</a></li>
-            <li><a href="mailto:">Email us</a> with questions</li>
+            <li>Sign up for our <a href="https://uaf-snap.org/keep-up-with-snap/">newsletter</a></li>
+            <li><a href="mailto:uaf-snap-data-tools@alaska.edu">Email us</a> with questions</li>
             <li>Visit <a href="https://earthmaps.io">data API</a></li>
-            <li>Learn about <a href="">our team and who we are</a></li>
+            <li>Learn about <NuxtLink to="/people">our team and who we are</NuxtLink></li>
           </ul>
           <hr/>
           <h4 class="title is-4">Get involved!</h4>

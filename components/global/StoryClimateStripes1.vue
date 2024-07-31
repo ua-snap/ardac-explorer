@@ -158,7 +158,7 @@ onUnmounted(() => {
       <h4>What are they and where do they come from?</h4>
       <p>
         <img
-          src="assets/images/ClimateStripesStory1/ClimateStripesCollage.png"
+          src="assets/images/ClimateStripesStory1/ClimateStripesCollage.jpg"
         />
       </p>
 
@@ -313,21 +313,21 @@ onUnmounted(() => {
       </figure>
       <p>
         But most folks who know the state will tell you that Anchorage is part
-        of a broader ‘population core&rsquo; in the south-central part of
+        of a broader &lsquo;population core&rsquo; in the south-central part of
         Alaska. While it can be hard to draw precise lines around this
         population core we&rsquo;ll expand out using a climatological
         perspective.
       </p>
       <figure class="image">
-        <img src="assets/images/ClimateStripesStory1/CookInletMap.png" />
+        <img src="assets/images/ClimateStripesStory1/CookInletMap.jpg" />
       </figure>
       <p>
-        The “Cook Inlet Climate Division” encompasses most of the larger towns
-        of the area including Soldotna, Wasilla, Palmer, and Homer. All told
-        this region covers the Matanuska-Susitna Valley and the northern half of
-        the Kenai Peninsula hemmed in by mountains on three sides and with its
-        local climate dominated by the temperature-moderating waters of the Cook
-        Inlet.
+        The &ldquo;Cook Inlet Climate Division&rdquo; encompasses most of the
+        larger towns of the area including Soldotna, Wasilla, Palmer, and Homer.
+        All told this region covers the Matanuska-Susitna Valley and the
+        northern half of the Kenai Peninsula hemmed in by mountains on three
+        sides and with its local climate dominated by the temperature-moderating
+        waters of the Cook Inlet.
       </p>
       <p>
         Here&rsquo;s what the climate stripes for this area with a population of
@@ -366,7 +366,7 @@ onUnmounted(() => {
       </p>
       <figure class="image">
         <img
-          src="assets/images/ClimateStripesStory1/Arctic Climate Stripes 2022 (1).png"
+          src="assets/images/ClimateStripesStory1/ClimateStripes_Arctic_2022.png"
         />
       </figure>
       <p>

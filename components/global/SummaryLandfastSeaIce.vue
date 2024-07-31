@@ -51,15 +51,24 @@ mapStore.setLegendItems(mapId, legend)
   <section class="section">
     <div class="clamp">
       <h2 class="title is-2">Landfast Sea Ice</h2>
-      <div class="content is-size-5">
+      <figure class="image">
+        <img src="/previews/ARC18_Landfast_Fig2.jpg" />
+        <figcaption>
+          Two community members returning by snowmobile from a flaw lead at the
+          seaward edge of the landfast ice near Utqiaġvik, Alaska.
+        </figcaption>
+      </figure>
+      <div class="content is-size-5 mt-5">
         <p>
-          Landfast ice is sea ice that is effectively stationary and attached to
-          land. Landfast sea ice is an integral component of Arctic coastal
-          systems and controls numerous geological and biological processes as
-          well as human activities (e.g., Mahoney, 2018). In the dataset
-          presented here landfast sea ice is defined as being contiguous to the
-          coast and lacking detectable motion for approximately 20 consecutive
-          days (<a
+          <strong>
+            Landfast ice is sea ice that is effectively stationary and attached
+            to land.
+          </strong>
+          Landfast sea ice is an integral component of Arctic coastal systems
+          and controls numerous geological and biological processes as well as
+          human activities (e.g., Mahoney, 2018). In the dataset presented here
+          landfast sea ice is defined as being contiguous to the coast and
+          lacking detectable motion for approximately 20 consecutive days (<a
             href="https://seaice.alaska.edu/gi/publications/mahoney/Mahoney_2005_POAC_DefiningLFI.pdf"
             >Mahoney et al. 2005</a
           >). In this case, the limit of detectable motion is estimated to be
@@ -87,7 +96,6 @@ mapStore.setLegendItems(mapId, legend)
     <div class="clamp">
       <div class="content is-size-5">
         <h4 class="title is-4">Summarizing ice edge data</h4>
-
         <p>
           This data visualization summarizes the position of the seaward
           landfast ice edge (SLIE) for the Beaufort Sea region. Each month of
@@ -163,6 +171,16 @@ mapStore.setLegendItems(mapId, legend)
           and the G10013 SIGID-3 Arctic Ice Charts produced by the
           <a href="https://usicecenter.gov/">National Ice Center (NIC)</a>.
         </p>
+      </div>
+      <div class="references content">
+        <h4 class="title is-4">References</h4>
+<blockquote>Mahoney, A., Eicken, H., Shapiro, L., & Graves, A. (2005). Defining and locating the seaward landfast ice edge in northern Alaska. In 18th International Conference on Port and Ocean Engineering under Arctic Conditions (POAC’05), Potsdam, NY (pp. 991-1001).</blockquote>
+<blockquote>Eicken, H., L. Shapiro, A. G. Gaylord, A. Mahoney, and P. Cotter. 2006. Mapping and Characterization of Recurring Spring Leads and Landfast Ice in the Beaufort and Chukchi Seas. Final Report, Minerals Management Service OCS Study MMS 2005-068.</blockquote>
+<blockquote>Mahoney, A., Eicken, H., Gaylord, A. G., and Shapiro, L. (2007), Alaska landfast sea ice: Links with bathymetry and atmospheric circulation, J. Geophys. Res., 112, C02001, doi:10.1029/2006JC003559.</blockquote>
+<blockquote>Eicken, H., L. Shapiro, A. G. Gaylord, A. Mahoney, and P. W. Cotter. 2009. Recurring Spring Leads and Landfast Ice in the Beaufort and Chukchi Seas, 1993-2004, Version 1. Boulder, Colorado USA. NSIDC: National Snow and Ice Data Center. doi: <a href="https://doi.org/10.7265/N5SB43P0">https://doi.org/10.7265/N5SB43P0</a>.</blockquote>
+<blockquote>Mahoney, A. R., Eicken, H., Gaylord, A. G., & Gens, R. (2014). Landfast sea ice extent in the Chukchi and Beaufort Seas: The annual cycle and decadal variability. <em>Cold Regions Science and Technology</em>, 103, 41-56.</blockquote>
+<blockquote>Mahoney, A. R. (2018), <a href="https://arctic.noaa.gov/Report-Card/Report-Card-2018/ArtMID/7878/ArticleID/788/Landfast-Sea-Ice-in-a-Changing-Arctic">Landfast Sea Ice in a Changing Arctic</a>, in <em>Arctic Report Card 2018</em>, edited by E. Osborne, J. A. Richter-Menge and M. O. Jeffries. <a href="https://arctic.noaa.gov/Report-Card/Report-Card-2018/ArtMID/7878/ArticleID/788/Landfast-Sea-Ice-in-a-Changing-Arctic">https://arctic.noaa.gov/Report-Card/Report-Card-2018/ArtMID/7878/ArticleID/788/Landfast-Sea-Ice-in-a-Changing-Arctic</a></blockquote>
+
       </div>
     </div>
     <Bios :people="['Hajo Eicken', 'Andy Mahoney']" />
