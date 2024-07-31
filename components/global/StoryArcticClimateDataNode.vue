@@ -633,8 +633,10 @@ onMounted(() => {
         </p>
       </div>
     </div>
+
     <Bios :people="['Scott Rupp', 'Bruce Crevensten']" />
-  </section>
+
+</section>
 </template>
 
 <style scoped lang="scss">
