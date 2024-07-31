@@ -12,7 +12,9 @@ const year = new Date().getFullYear()
         >
         located at the
         <a href="https://uaf-iarc.org">International Arctic Research Center</a>.
-        Funding provided by the U.S. Department of Energy.
+      </p>
+      <p>
+        Funding provided by the <a href="https://science.osti.gov/ber/Research/eessd/Data-Management">Data Management Program</a>, Climate and Environmental Sciences Division, US Department of Energy.
       </p>
 
       <p class="lighter">
