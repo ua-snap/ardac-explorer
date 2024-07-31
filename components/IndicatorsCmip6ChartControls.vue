@@ -21,9 +21,10 @@ const chartLabels = computed<IndicatorsCmip6ChartLabels>(
 
 chartStore.labels = {
   models: {
-    CESM2: 'CESM2',
+    // Restore these models when things are settled
+    // CESM2: 'CESM2',
     'CNRM-CM6-1-HR': 'CNRM-CM6-1-HR',
-    'EC-Earth3-Veg': 'EC-Earth3-Veg',
+    // 'EC-Earth3-Veg': 'EC-Earth3-Veg',
     'GFDL-ESM4': 'GFDL-ESM4',
     'HadGEM-GC31-LL': 'HadGEM-GC31-LL',
     'HadGEM-GC31-MM': 'HadGEM-GC31-MM',
