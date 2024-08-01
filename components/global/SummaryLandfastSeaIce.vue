@@ -168,7 +168,7 @@ mapStore.setLegendItems(mapId, legend)
           <a href="https://www.weather.gov/afc/ice"
             >Alaska Sea Ice Program (ASIP)</a
           >
-          and the G10013 SIGID-3 Arctic Ice Charts produced by the
+          and the G10013 SIGRID-3 Arctic Ice Charts produced by the
           <a href="https://usicecenter.gov/">National Ice Center (NIC)</a>.
         </p>
       </div>
