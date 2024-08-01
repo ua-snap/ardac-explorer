@@ -471,8 +471,10 @@ const data: any = {
         predicting and mitigating outbreaks.
       </p>
 
-      <img src="assets/images/beetle_voltinism.png" />
-      
+      <figure class="image">
+        <img src="assets/images/beetle_voltinism.png" />
+      </figure>
+
       <h4>Modeling Spruce Beetle Outbreaks</h4>
 
       <p>
@@ -601,17 +603,5 @@ const data: any = {
 
 th {
   min-width: 200px;
-}
-
-img {
-  float: right;
-  max-width: calc(100% - 50rem - 1.5rem);
-}
-
-@media only screen and (max-width: 1170px) {
-  img {
-    float: none;
-    max-width: 300px;
-  }
 }
 </style>
