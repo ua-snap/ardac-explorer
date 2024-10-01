@@ -85,6 +85,18 @@ interface IndicatorsCmip6ChartInputs {
   scenario: string
 }
 
+interface Cmip6MonthlyChartLabels {
+  models: Record<string, string>
+  scenarios: Record<string, string>
+  months: Record<string, string>
+}
+
+interface Cmip6MonthlyChartInputs {
+  model: string
+  scenario: string
+  month: string
+}
+
 type LatLngValue = LatLng | undefined
 
 type PlaceType = 'community' | 'latLng' | undefined
@@ -97,3 +109,6 @@ type PermafrostChartInputsObj = PermafrostChartInputs | undefined
 
 type IndicatorsCmip6ChartLabelsObj = IndicatorsCmip6ChartLabels | undefined
 type IndicatorsCmip6ChartInputsObj = IndicatorsCmip6ChartInputs | undefined
+
+type Cmip6MonthlyChartLabelsObj = Cmip6MonthlyChartLabels | undefined
+type Cmip6MonthlyChartInputsObj = Cmip6MonthlyChartInputs | undefined

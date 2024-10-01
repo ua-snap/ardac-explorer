@@ -39,5 +39,10 @@ onUnmounted(() => {
     width: 20px;
     height: 20px;
   }
+  sup {
+    position: relative;
+    top: -0.2em;
+    font-size: 0.8em;
+  }
 }
 </style>

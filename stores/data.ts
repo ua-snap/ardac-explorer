@@ -6,6 +6,7 @@ const endpoints: Record<string, string> = {
   elevation: '/elevation/point/',
   flammability: '/alfresco/flammability/local/',
   beetles: '/beetles/point/',
+  cmip6Monthly: '/cmip6/point/',
   indicatorsCmip6: '/indicators/cmip6/point/',
   degreeDaysBelow0: '/degree_days/below_zero/',
   heatingDegreeDays: '/degree_days/heating/',
@@ -30,7 +31,7 @@ export const useDataStore = defineStore('data', () => {
   const apiData: any = ref(null)
   const dataError: Ref<boolean> = ref(false)
 
-  const fetchData = async (dataset: string) => {
+  const fetchData = async (dataset: string, params: string = '') => {
     if (placesStore.latLng === undefined) {
       return // do not try
     }
@@ -42,6 +43,11 @@ export const useDataStore = defineStore('data', () => {
       placesStore.latLng.lat +
       '/' +
       placesStore.latLng.lng
+
+    if (params) {
+      url += params
+    }
+
     try {
       const response = await fetch(url)
       const data = await response.json()
