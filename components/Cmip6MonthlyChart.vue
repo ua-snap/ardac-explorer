@@ -1,0 +1,183 @@
+<script lang="ts" setup>
+const props = defineProps<{
+  label: string
+  units?: string
+  dataKey: string
+}>()
+
+import type { Data } from 'plotly.js-dist-min'
+
+const { $Plotly, $_ } = useNuxtApp()
+const dataStore = useDataStore()
+const placesStore = usePlacesStore()
+const chartStore = useChartStore()
+
+const apiData = computed<any[]>(() => dataStore.apiData)
+const latLng = computed<LatLngValue>(() => placesStore.latLng)
+
+const chartLabels = computed<Cmip6MonthlyChartLabelsObj>(
+  () => chartStore.labels as Cmip6MonthlyChartLabelsObj
+)
+const chartInputs = computed<Cmip6MonthlyChartInputsObj>(
+  () => chartStore.inputs as Cmip6MonthlyChartInputsObj
+)
+
+const chartId = computed<string>(() => props.dataKey + '-chart')
+const validChart = ref(true)
+
+const buildChart = () => {
+  if (apiData.value && chartLabels.value && chartInputs.value) {
+    let traces: Data[] = []
+    let chartData = dataStore.apiData
+    let projectedStartYear = 2015
+
+    // Pad the historical/projected with nulls as needed to line up properly
+    // with the chart x-axis ticks.
+    let traceConfig = [
+      {
+        label: 'Modeled Baseline',
+        years: $_.range(1950, projectedStartYear).concat(
+          Array(2100 - projectedStartYear + 1).fill(null)
+        ),
+        symbol: 'circle',
+      },
+      {
+        label: 'Projected',
+        years: $_.range(projectedStartYear, 2101).concat(
+          Array(2100 - projectedStartYear + 1).fill(null)
+        ),
+        symbol: 'square',
+      },
+    ]
+
+    let model = chartInputs.value!.model
+    let month = chartInputs.value!.month
+    let scenario: string
+    let allChartValues: Array<number | null> = []
+
+    traceConfig.forEach(config => {
+      let values: Array<number | null> = []
+      config.years.forEach((year: number) => {
+        let yearMonth = year + '-' + month
+        if (year < projectedStartYear) {
+          scenario = 'historical'
+        } else {
+          scenario = chartInputs.value!.scenario
+        }
+
+        if (year == null) {
+          values.push(null)
+          return
+        }
+
+        if (!chartData[model][scenario]) {
+          values.push(null)
+          return
+        }
+
+        let yearMonthData = chartData[model][scenario][yearMonth]
+        let value = yearMonthData[props.dataKey]
+        values.push(value)
+      })
+
+      traces.push({
+        x: config.years,
+        y: values,
+        mode: 'markers',
+        type: 'scatter',
+        name: config.label,
+        marker: {
+          symbol: config.symbol,
+        },
+      })
+
+      allChartValues = allChartValues.concat(values)
+    })
+
+    // If trace values are nothing but a mixture of nulls and undefineds,
+    // then this is not a valid chart. Hide the chart.
+    if (allChartValues.every(value => value == null || value === undefined)) {
+      validChart.value = false
+      return
+    }
+
+    let yAxisLabel = props.label
+    if (props.units) {
+      yAxisLabel += ' (' + props.units + ')'
+    }
+
+    $Plotly.newPlot(
+      chartId.value,
+      traces,
+      {
+        title: {
+          text:
+            props.label +
+            ' for ' +
+            placesStore.latLng?.lat +
+            ', ' +
+            placesStore.latLng?.lng +
+            '<br />' +
+            'Model: ' +
+            chartLabels.value.models[chartInputs.value.model] +
+            ', Scenario: ' +
+            chartLabels.value.scenarios[chartInputs.value.scenario] +
+            ', Month: ' +
+            chartLabels.value.months[chartInputs.value.month],
+          font: {
+            size: 24,
+          },
+        },
+        xaxis: {
+          tickangle: 45,
+        },
+        yaxis: {
+          title: {
+            text: yAxisLabel,
+            font: {
+              size: 18,
+            },
+          },
+        },
+      },
+      {
+        responsive: true, // changes the height / width dynamically for charts
+        displayModeBar: true, // always show the camera icon
+        displaylogo: false,
+        modeBarButtonsToRemove: [
+          'zoom2d',
+          'pan2d',
+          'select2d',
+          'lasso2d',
+          'zoomIn2d',
+          'zoomOut2d',
+          'autoScale2d',
+          'resetScale2d',
+        ],
+      }
+    )
+  }
+}
+
+watch([apiData, chartLabels, chartInputs], async () => {
+  validChart.value = true
+  $Plotly.purge(chartId.value)
+  if (apiData.value) {
+    buildChart()
+  }
+})
+
+watch(latLng, async () => {
+  $Plotly.purge(chartId.value)
+})
+
+onUnmounted(() => {
+  dataStore.apiData = null
+})
+</script>
+
+<template>
+  <div :id="chartId" v-if="validChart"></div>
+</template>
+
+<style lang="scss" scoped></style>

@@ -303,8 +303,9 @@ export default [
   },
   {
     slug: 'temperature-cmip6',
-    title: 'Temperature & Humidity, CMIP6',
-    blurb: 'Coarse-resolution temperature model outputs, CMIP6',
+    title: 'Temperature, CMIP6',
+    blurb:
+      'Monthly model outputs for mean near-surface air temperature, min/max near-surface air temperature, and mean surface temperature',
     tags: ['Temperature', 'CMIP6'],
   },
   {
@@ -348,7 +349,8 @@ export default [
   {
     slug: 'wind-cmip6',
     title: 'Wind, CMIP6',
-    blurb: 'Near-surface and surface, including maximums and wind component',
+    blurb:
+      'Monthly model outputs for mean near-surface wind speed, mean near-surface eastward wind speed, and mean near-surface northward wind speed',
     tags: ['Wind', 'CMIP6'],
   },
   {
@@ -360,8 +362,21 @@ export default [
   {
     slug: 'precipitation-cmip6',
     title: 'Precipitation, CMIP6',
-    blurb: 'Total precipitation, daily and monthly',
+    blurb: 'Monthly total precipitation model outputs',
     tags: ['Precipitation', 'CMIP6'],
+  },
+  {
+    slug: 'evaporation-cmip6',
+    title: 'Evaporation, CMIP6',
+    blurb:
+      'Monthly model outputs for total evaporation, including sublimation and transpiration',
+    tags: ['Climate', 'CMIP6'],
+  },
+  {
+    slug: 'sea-level-pressure-cmip6',
+    title: 'Sea Level Pressure, CMIP6',
+    blurb: 'Monthly mean sea level pressure model outputs',
+    tags: ['Climate', 'CMIP6'],
   },
   {
     slug: 'sea-ice-cmip6',
@@ -378,7 +393,8 @@ export default [
   {
     slug: 'solar-radiation-cloud-cover-cmip6',
     title: 'Solar Radiation & Cloud Cover, CMIP6',
-    blurb: 'Cloud fraction, shortwave and longwave and heat fluxes',
+    blurb:
+      'Monthly model outputs for mean cloud area fraction, mean downwelling shortwave and longwave flux, and mean surface upward sensible and latent heat fluxes',
     tags: ['Solar Radiation', 'CMIP6'],
   },
   {

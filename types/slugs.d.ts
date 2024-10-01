@@ -64,3 +64,5 @@ type Slug =
   | 'story-beetle-climate-protection'
   | 'story-climate-stripes-1'
   | 'summary-landfast-sea-ice'
+  | 'evaporation-cmip6'
+  | 'sea-level-pressure-cmip6'
