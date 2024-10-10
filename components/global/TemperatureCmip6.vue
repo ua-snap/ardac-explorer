@@ -109,7 +109,7 @@ const legend: Record<string, LegendItem[]> = {
   ],
 }
 
-const mapId = 'tas_and_ts'
+const mapId = 'tas'
 mapStore.setLegendItems(mapId, legend)
 
 onUnmounted(() => {
@@ -164,18 +164,17 @@ onUnmounted(() => {
       </MapBlock>
 
       <p>
-        Enter a location below to see charts of near-surface air temperature and
-        surface temperature for a point location using the selected model,
-        emissions scenario, and month. After entering a location, links will be
-        provided where you can download the data that is used to populate the
-        charts.
+        Enter a location below to see charts of near-surface air temperature for
+        a point location using the selected model, emissions scenario, and
+        month. After entering a location, links will be provided where you can
+        download the data that is used to populate the charts.
       </p>
 
       <Gimme />
       <Cmip6MonthlyChartControls
         defaultModel="GFDL-ESM4"
         defaultMonth="07"
-        :datasetKeys="['tas', 'tasmax', 'tasmin', 'ts']"
+        :datasetKeys="['tas', 'tasmax', 'tasmin']"
       />
       <Cmip6MonthlyChart
         label="Mean Near-surface Air Temperature"
@@ -195,11 +194,6 @@ onUnmounted(() => {
         dataKey="tasmin"
         class="mb-5"
       />
-      <Cmip6MonthlyChart
-        label="Mean Surface Temperature"
-        units="°C"
-        dataKey="ts"
-      />
 
       <div v-if="latLng && apiData" class="my-6">
         <h4 class="title is-4">
@@ -215,7 +209,7 @@ onUnmounted(() => {
                 latLng.lat +
                 '/' +
                 latLng.lng +
-                '?vars=tas,tasmax,tasmin,ts&format=csv'
+                '?vars=tas,tasmax,tasmin&format=csv'
               "
               >Download as CSV</a
             >
@@ -228,7 +222,7 @@ onUnmounted(() => {
                 latLng.lat +
                 '/' +
                 latLng.lng +
-                '?vars=tas,tasmax,tasmin,ts'
+                '?vars=tas,tasmax,tasmin'
               "
               >Download as JSON</a
             >

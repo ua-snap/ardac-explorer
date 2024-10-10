@@ -305,7 +305,7 @@ export default [
     slug: 'temperature-cmip6',
     title: 'Temperature, CMIP6',
     blurb:
-      'Monthly model outputs for mean near-surface air temperature, min/max near-surface air temperature, and mean surface temperature',
+      'Monthly model outputs for min/mean/max near-surface air temperature',
     tags: ['Temperature', 'CMIP6'],
   },
   {
@@ -350,19 +350,20 @@ export default [
     slug: 'wind-cmip6',
     title: 'Wind, CMIP6',
     blurb:
-      'Monthly model outputs for mean near-surface wind speed, mean near-surface eastward wind speed, and mean near-surface northward wind speed',
+      'Monthly model outputs for mean near-surface wind speed, near-surface eastward wind speed, and near-surface northward wind speed',
     tags: ['Wind', 'CMIP6'],
   },
   {
     slug: 'oceanography-cmip6',
     title: 'Oceanography, CMIP6',
-    blurb: 'Sea level pressure, surface temperature and mixed layer thickness',
+    blurb:
+      'Monthly model outputs for mean sea level pressure and surface temperature',
     tags: ['Oceanography', 'CMIP6'],
   },
   {
     slug: 'precipitation-cmip6',
     title: 'Precipitation, CMIP6',
-    blurb: 'Monthly total precipitation model outputs',
+    blurb: 'Monthly model outputs for total precipitation',
     tags: ['Precipitation', 'CMIP6'],
   },
   {
@@ -373,29 +374,17 @@ export default [
     tags: ['Climate', 'CMIP6'],
   },
   {
-    slug: 'sea-level-pressure-cmip6',
-    title: 'Sea Level Pressure, CMIP6',
-    blurb: 'Monthly mean sea level pressure model outputs',
-    tags: ['Climate', 'CMIP6'],
+    slug: 'solar-radiation-cloud-cover-cmip6',
+    title: 'Solar Radiation & Cloud Cover, CMIP6',
+    blurb:
+      'Monthly model outputs for mean downwelling shortwave and longwave fluxes, surface upward sensible and latent heat fluxes, and cloud area fraction',
+    tags: ['Solar Radiation', 'CMIP6'],
   },
   {
     slug: 'sea-ice-cmip6',
     title: 'Sea Ice Concentration, CMIP6',
     blurb: 'Sea ice fraction',
     tags: ['Sea Ice', 'CMIP6', 'Cryosphere'],
-  },
-  {
-    slug: 'hydrology-cmip6',
-    title: 'Hydrology, CMIP6',
-    blurb: 'Evapotranspiration, total runoff and soil moisture',
-    tags: ['Hydrology', 'CMIP6'],
-  },
-  {
-    slug: 'solar-radiation-cloud-cover-cmip6',
-    title: 'Solar Radiation & Cloud Cover, CMIP6',
-    blurb:
-      'Monthly model outputs for mean cloud area fraction, mean downwelling shortwave and longwave flux, and mean surface upward sensible and latent heat fluxes',
-    tags: ['Solar Radiation', 'CMIP6'],
   },
   {
     slug: 'snow-cmip6',
