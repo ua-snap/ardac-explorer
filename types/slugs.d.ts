@@ -54,7 +54,6 @@ type Slug =
   | 'oceanography-cmip6'
   | 'precipitation-cmip6'
   | 'sea-ice-cmip6'
-  | 'hydrology-cmip6'
   | 'solar-radiation-cloud-cover-cmip6'
   | 'snow-cmip6'
   | 'indicator-ftc-cmip6'
@@ -65,4 +64,3 @@ type Slug =
   | 'story-climate-stripes-1'
   | 'summary-landfast-sea-ice'
   | 'evaporation-cmip6'
-  | 'sea-level-pressure-cmip6'
