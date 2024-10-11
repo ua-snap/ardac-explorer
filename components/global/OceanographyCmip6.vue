@@ -140,7 +140,12 @@ onUnmounted(() => {
         defaultMonth="08"
         :datasetKeys="['psl', 'ts']"
       />
-      <Cmip6MonthlyChart label="Sea Level Pressure" units="Pa" dataKey="psl" />
+      <Cmip6MonthlyChart
+        label="Sea Level Pressure"
+        units="Pa"
+        dataKey="psl"
+        class="mb-5"
+      />
       <Cmip6MonthlyChart label="Surface Temperature" units="°C" dataKey="ts" />
 
       <div v-if="latLng && apiData" class="my-6">
