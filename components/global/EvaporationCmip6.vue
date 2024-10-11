@@ -217,7 +217,7 @@ onUnmounted(() => {
                 latLng.lat +
                 '/' +
                 latLng.lng +
-                'vars=evspsbl'
+                '?vars=evspsbl'
               "
               >Download as JSON</a
             >
