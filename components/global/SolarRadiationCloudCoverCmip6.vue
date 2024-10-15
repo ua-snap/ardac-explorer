@@ -65,6 +65,20 @@ const layers: MapLayer[] = [
     coastline: true,
   },
   {
+    id: 'clt_cmip6_2000',
+    title: 'August 2000, HadGEM3-GC31-MM',
+    source: 'rasdaman',
+    wmsLayerName: 'cmip6_monthly',
+    style: 'ardac_clt',
+    legend: 'clt',
+    rasdamanConfiguration: {
+      dim_model: 5,
+      dim_scenario: 0,
+      time: '2000-08-15T12:00:00.000Z',
+    },
+    coastline: true,
+  },
+  {
     id: 'clt_cmip6_2100',
     title: 'August 2100, HadGEM3-GC31-MM, SSP5-8.5',
     source: 'rasdaman',
@@ -174,6 +188,9 @@ onUnmounted(() => {
           <h4 class="title is-4 mb-3">Cloud Area Fraction (Cloud Cover)</h4>
           <MapLayer :mapId="mapId" :layer="layers[4]">
             <template v-slot:title>{{ layers[4].title }}</template>
+          </MapLayer>
+          <MapLayer :mapId="mapId" :layer="layers[5]">
+            <template v-slot:title>{{ layers[5].title }}</template>
           </MapLayer>
         </template>
       </MapBlock>
