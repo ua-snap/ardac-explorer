@@ -10,30 +10,33 @@ const latLng = computed<LatLngValue>(() => placesStore.latLng)
 const layers: MapLayer[] = [
   {
     id: 'indicator_su_historical_era',
-    title: '1980–2009, GFDL-ESM4',
+    title: '1980–2009, TaiESM1',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_indicators',
+    wmsLayerName: 'cmip6_indicators_new',
     style: 'ardac_indicator_su_historical_era',
     legend: 'summer_days',
-    rasdamanConfiguration: { dim_model: 4, dim_scenario: 0 },
+    rasdamanConfiguration: { dim_model: 11, dim_scenario: 0 },
+    coastline: true,
   },
   {
     id: 'indicator_su_midcentury_era',
-    title: '2040–2069, GFDL-ESM4, SSP5-8.5',
+    title: '2040–2069, TaiESM1, SSP5-8.5',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_indicators',
+    wmsLayerName: 'cmip6_indicators_new',
     style: 'ardac_indicator_su_midcentury_era',
     legend: 'summer_days',
-    rasdamanConfiguration: { dim_model: 4, dim_scenario: 4 },
+    rasdamanConfiguration: { dim_model: 11, dim_scenario: 4 },
+    coastline: true,
   },
   {
     id: 'indicator_su_latecentury_era',
-    title: '2070–2099, GFDL-ESM4, SSP5-8.5',
+    title: '2070–2099, TaiESM1, SSP5-8.5',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_indicators',
+    wmsLayerName: 'cmip6_indicators_new',
     style: 'ardac_indicator_su_latecentury_era',
     legend: 'summer_days',
-    rasdamanConfiguration: { dim_model: 4, dim_scenario: 4 },
+    rasdamanConfiguration: { dim_model: 11, dim_scenario: 4 },
+    coastline: true,
   },
 ]
 
@@ -59,9 +62,9 @@ mapStore.setLegendItems(mapId, legend)
         Summer days are the number of days per year that are above 77&deg;F. The
         map below shows the 30-year mean of CMIP6 summer days for three eras.
         The historical era (1980&ndash;2009) uses historical modeled data
-        provided by the GFDL-ESM4 model. The mid-century (2040&ndash;2069) and
+        provided by the TaiESM1 model. The mid-century (2040&ndash;2069) and
         late-century (2070&ndash;2099) eras use modeled projections from the
-        GFDL-ESM4 model under the SSP5-8.5 emissions scenario.
+        TaiESM1 model under the SSP5-8.5 emissions scenario.
       </p>
 
       <MapBlock :mapId="mapId" class="mb-6">
