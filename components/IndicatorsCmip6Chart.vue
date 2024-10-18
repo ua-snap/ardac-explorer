@@ -57,13 +57,23 @@ const getPlotValues = (params: any) => {
 
   let decades = Object.keys(decadeBuckets)
 
-  let means: number[] = []
-  let maxes: number[] = []
-  let mins: number[] = []
-  let maxOffsets: number[] = []
-  let minOffsets: number[] = []
+  let means: Array<number | null> = []
+  let maxes: Array<number | null> = []
+  let mins: Array<number | null> = []
+  let maxOffsets: Array<number | null> = []
+  let minOffsets: Array<number | null> = []
 
   decades.forEach(decade => {
+    // Add null placeholders for min/mean/max if all decade's years are null.
+    if (decadeBuckets[decade].every(v => v === null)) {
+      means.push(null)
+      mins.push(null)
+      maxes.push(null)
+      maxOffsets.push(null)
+      minOffsets.push(null)
+      return
+    }
+
     let mean = precisionMean(decadeBuckets[decade].map(Number))
     let min = $_.min(decadeBuckets[decade].map(Number))
     let max = $_.max(decadeBuckets[decade].map(Number))
@@ -133,7 +143,7 @@ const buildChart = () => {
       let ticks = $_.range(1, plotValues.decades.length + 1)
 
       let symbolKey = params.historical ? 'historical' : 'projected'
-      let traceLabel = params.historical ? 'Historical' : 'Projected'
+      let traceLabel = params.historical ? 'Modeled Baseline' : 'Projected'
 
       traces.push({
         x: ticks,

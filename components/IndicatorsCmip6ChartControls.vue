@@ -9,7 +9,7 @@ const chartStore = useChartStore()
 
 const defaultScenario = 'ssp585'
 
-const modelInput = defineModel('model', { default: 'GFDL-ESM4' })
+const modelInput = defineModel('model', { default: 'TaiESM1' })
 const scenarioInput = defineModel('scenario', { default: defaultScenario })
 
 const apiData = computed<any[]>(() => dataStore.apiData)
@@ -21,16 +21,18 @@ const chartLabels = computed<IndicatorsCmip6ChartLabels>(
 
 chartStore.labels = {
   models: {
-    // Restore these models when things are settled
-    // CESM2: 'CESM2',
+    CESM2: 'CESM2',
     'CNRM-CM6-1-HR': 'CNRM-CM6-1-HR',
-    // 'EC-Earth3-Veg': 'EC-Earth3-Veg',
+    'EC-Earth3-Veg': 'EC-Earth3-Veg',
     'GFDL-ESM4': 'GFDL-ESM4',
     'HadGEM-GC31-LL': 'HadGEM-GC31-LL',
     'HadGEM-GC31-MM': 'HadGEM-GC31-MM',
     'KACE-1-0-G': 'KACE-1-0-G',
     MIROC6: 'MIROC6',
     'MPI-ESM1-2-LR': 'MPI-ESM1-2-LR',
+    'MRI-ESM2-0': 'MRI-ESM2-0',
+    'NorESM2-MM': 'NorESM2-MM',
+    TaiESM1: 'TaiESM1',
   },
   scenarios: {
     ssp126: 'SSP1-2.6',
