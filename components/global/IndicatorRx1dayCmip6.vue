@@ -33,7 +33,7 @@ const layers: MapLayer[] = [
     title: '2070–2099, TaiESM1, SSP5-8.5',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_indicators',
-    style: 'ardac_indicator_rx1day_latecentury',
+    style: 'ardac_indicator_rx1day_latecentury_era',
     legend: 'rx1day',
     rasdamanConfiguration: { dim_model: 11, dim_scenario: 4 },
     coastline: true,
