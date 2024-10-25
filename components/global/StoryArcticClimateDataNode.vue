@@ -92,6 +92,10 @@ onMounted(() => {
         realized local access to cutting-edge global climate model data.
       </p>
 
+      <p class="is-size-4">
+        <NuxtLink to="/tag/CMIP6">&#x2192; browse available CMIP6 ACDN data on this site</NuxtLink>
+      </p>
+
       <div class="is-size-5">
         <p>
           Through support from the Department of Energy&rsquo;s
