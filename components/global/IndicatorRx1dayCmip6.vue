@@ -94,7 +94,7 @@ mapStore.setLegendItems(mapId, legend)
       <IndicatorsCmip6ChartControls />
       <IndicatorsCmip6Chart
         label="Maximum 1-day precipitation"
-        units="m"
+        units="㎜"
         dataKey="rx1day"
       />
 
