@@ -51,6 +51,11 @@ const scenarioPresent = (value: string) => {
   }
 }
 
+watch(latLng, async () => {
+  dataStore.apiData = null
+  dataStore.fetchData('indicatorsCmip6')
+})
+
 watch([latLng, modelInput, scenarioInput], async () => {
   if (!scenarioPresent(scenarioInput.value)) {
     scenarioInput.value = defaultScenario

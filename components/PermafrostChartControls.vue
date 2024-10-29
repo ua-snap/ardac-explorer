@@ -20,6 +20,11 @@ chartStore.labels = {
   scenarios: { 'RCP 4.5': 'RCP 4.5', 'RCP 8.5': 'RCP 8.5' },
 }
 
+watch(latLng, async () => {
+  dataStore.apiData = null
+  dataStore.fetchData('permafrost')
+})
+
 watch([latLng, scenarioInput], async () => {
   chartStore.inputs = {
     scenario: scenarioInput.value,

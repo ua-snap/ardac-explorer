@@ -233,8 +233,6 @@ watch([apiData, chartLabels, chartInputs], async () => {
 
 watch(latLng, async () => {
   $Plotly.purge('chart')
-  dataStore.apiData = null
-  dataStore.fetchData('indicatorsCmip6')
 })
 
 onUnmounted(() => {

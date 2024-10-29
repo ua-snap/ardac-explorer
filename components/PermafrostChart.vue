@@ -221,8 +221,6 @@ watch([apiData, chartInputs], async () => {
 
 watch(latLng, async () => {
   $Plotly.purge(chartId.value)
-  dataStore.apiData = null
-  dataStore.fetchData('permafrost')
 })
 
 onUnmounted(() => {

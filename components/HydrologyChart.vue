@@ -132,8 +132,6 @@ watch([apiData, chartLabels, chartInputs], async () => {
 
 watch(latLng, async () => {
   $Plotly.purge(chartId.value)
-  dataStore.apiData = null
-  dataStore.fetchData('hydrology')
 })
 
 onUnmounted(() => {
