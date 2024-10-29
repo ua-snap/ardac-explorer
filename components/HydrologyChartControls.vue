@@ -48,6 +48,12 @@ watch([latLng, scenarioInput, monthInput], async () => {
     month: monthInput.value,
   }
 })
+
+watch(latLng, async () => {
+  dataStore.apiData = null
+  dataStore.fetchData('hydrology')
+})
+
 </script>
 
 <template>
