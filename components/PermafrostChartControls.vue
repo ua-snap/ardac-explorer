@@ -12,8 +12,8 @@ const scenarioInput = defineModel({ default: 'RCP 8.5' })
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 const apiData = computed<any[]>(() => dataStore.apiData)
 
-const chartLabels = computed<HydrologyChartLabels>(
-  () => chartStore.labels as HydrologyChartLabels
+const chartLabels = computed<PermafrostChartLabels>(
+  () => chartStore.labels as PermafrostChartLabels
 )
 
 chartStore.labels = {
