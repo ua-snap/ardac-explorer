@@ -157,7 +157,7 @@ onMounted(() => {
             precipitation more useful.
           </li>
           <li>
-            <a href="#technical-information">&#x2192; see available data</a>
+            <a href="#available-data">&#x2192; see available data</a>
           </li>
         </ul>
       </div>
@@ -256,11 +256,11 @@ onMounted(() => {
 
   <section class="section">
     <div class="clamp">
-      <h3 class="title is-3">Overview of CMIP6 data in the ACDN</h3>
+      <h3 id="available-data" class="title is-3">Overview of CMIP6 data in the ACDN</h3>
       <div class="content is-size-5">
         <p>
           Some data listed below are not fully integrated into the web site, but
-          work is in progress to add all data assets.
+          work is in progress to add all data assets.  <NuxtLink to="/tag/CMIP6">&#x2192; browse available CMIP6 ACDN data on this site</NuxtLink>
         </p>
       </div>
       <div class="tabs is-large">
