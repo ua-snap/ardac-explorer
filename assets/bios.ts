@@ -55,6 +55,11 @@ export default [
     blurb: `I am a Software Developer with a background developing web applications and web service APIs, post-processing geospatial datasets into value-added products, and Linux server administration.`,
   },
   {
+    person: 'Jeremy Littell',
+    image: 'littell3_bw.jpg',
+    blurb: `I am a Research Ecologist with the Alaska Climate Adaptation Science Center (CASC), and I conduct research on the role of climate and ecological drought in Alaska and other forested ecosystems`,
+  },
+  {
     person: 'Josh Paul',
     image: 'paul_bw.jpg',
     blurb: `I am a Geospatial Data Analyst with SNAP with a background in soil science and GIS programming who analyzes geospatial data, conducts data quality assurance and quality control, and manages metadata.`,

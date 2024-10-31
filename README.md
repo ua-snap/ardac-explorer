@@ -64,6 +64,14 @@ When adding someone new:
  * add the bio itself in `assets/bios.ts`
  * add the person to the `/people` page
 
+#### Adding 'topic pages'
+
+Each tag (=topic) page can have a Vue component loaded above the list of matching results.  This would be shown if a user clicks on a topic in the Tagbar, for example.
+
+To customize this, add a new file with the exact name of the tag in the `components/Topic` directory.  Use the `.global.vue` file extension.
+
+For example, for the topic/tag "CMIP6", the component would be in the file `components/Topic/CMIP6.global.vue`
+
 #### Converting Jupyter notebooks to items
 
 Follow the pattern used in the `global/NotebookPermObsTemp` component.  To transform the HTML before copy/pasting it into the slot, activate a Conda environment with Jupyter and `nbconvert` and `tidy` (probably already installed in MacOS) then:
