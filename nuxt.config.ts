@@ -63,7 +63,7 @@ export default defineNuxtConfig({
           src: 'https://umami.snap.uaf.edu/script.js',
           'data-website-id': '29d337b9-9cf3-4962-a319-f4944161b550',
           'data-do-not-track': 'true',
-          // 'data-domains': 'arcticdatascience.org',
+          'data-domains': 'arcticdatascience.org',
           async: 'true',
           defer: 'true',
         },
