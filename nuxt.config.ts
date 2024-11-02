@@ -70,8 +70,9 @@ const noscriptHtml = `
     Python.
   </p>
 </section>
-
 `
+
+import { metas } from './utils/metas'
 
 // https://nuxt.com/docs/api/configuration/nuxt-config
 export default defineNuxtConfig({
@@ -110,7 +111,7 @@ export default defineNuxtConfig({
           children: noscriptHtml,
         },
       ],
-      title: 'ARDAC',
+      title: 'Arctic Data Collaborative: ARDAC',
       script: [
         {
           src: 'https://umami.snap.uaf.edu/script.js',
@@ -122,6 +123,13 @@ export default defineNuxtConfig({
         },
       ],
       link: [{ rel: 'icon', type: 'image/png', href: '/favicon.png' }],
+      meta: [
+        { name: 'description', content: metas.description },
+        { name: 'og:title', content: metas.title },
+        { name: 'og:image', content: metas.image },
+        { name: 'og:description', content: metas.description },
+        { name: 'twitterCard', content: "summary_large_image" },
+      ]
     },
   },
 })
