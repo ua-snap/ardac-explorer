@@ -7,7 +7,7 @@ const year = new Date().getFullYear()
     <div class="container is-fullhd content">
       <p class="bolder">
         Made by the
-        <a href="https://www.snap.uaf.edu/" title="🥗🥗"
+        <a href="https://www.snap.uaf.edu/" title="Boo! 👻 The SNAP tech team data ghost says hi!"
           >Scenarios Network for Alaska + Arctic Planning</a
         >
         located at the
