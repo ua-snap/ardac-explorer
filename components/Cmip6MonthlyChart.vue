@@ -6,6 +6,8 @@ const props = defineProps<{
 }>()
 
 import type { Data } from 'plotly.js-dist-min'
+import { deepMaxMeanMonth, deepMinMeanMonth } from '~/utils/math'
+import { isProxy, toRaw } from 'vue';
 
 const { $Plotly, $_ } = useNuxtApp()
 const dataStore = useDataStore()
@@ -25,11 +27,19 @@ const chartInputs = computed<Cmip6MonthlyChartInputsObj>(
 const chartId = computed<string>(() => props.dataKey + '-chart')
 const validChart = ref(true)
 
+const chartMin = ref(undefined)
+const chartMax = ref(undefined)
+
 const buildChart = () => {
   if (apiData.value && chartLabels.value && chartInputs.value) {
     let traces: Data[] = []
     let chartData = dataStore.apiData
     let projectedStartYear = 2015
+
+    // Unwrap for performance reasons
+    if(isProxy(chartData)) {
+      chartData = toRaw(chartData)
+    }
 
     // Pad the historical/projected with nulls as needed to line up properly
     // with the chart x-axis ticks.
@@ -54,6 +64,9 @@ const buildChart = () => {
     let month = chartInputs.value!.month
     let scenario: string
     let allChartValues: Array<number | null> = []
+
+    let min = deepMinMeanMonth(chartData, month)
+    let max = deepMaxMeanMonth(chartData, month)
 
     traceConfig.forEach(config => {
       let values: Array<number | null> = []
@@ -138,6 +151,8 @@ const buildChart = () => {
               size: 18,
             },
           },
+          range: [min, max],
+          fixedrange: true,
         },
       },
       {
