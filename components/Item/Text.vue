@@ -11,7 +11,11 @@ let item = store.itemBySlug(props.slug)
 <template>
   <div v-if="store.itemHasComponent(item)" class="item text">
     <Tag v-if="showTag" :tag="item.tags[0]" />
-    <NuxtLink :to="{ name: 'item-slug', params: { slug: item.slug } }">
+    <NuxtLink
+      :to="{ name: 'item-slug', params: { slug: item.slug } }"
+      data-umami-event="Item Clicked"
+      :data-umami-event-title="item.title"
+    >
       <h3 class="title is-4" v-html="item.title"></h3>
       <p v-html="item.blurb" class="mb-4" />
     </NuxtLink>
