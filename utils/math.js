@@ -7,49 +7,20 @@ export const precisionMean = values => {
   return diff < 10 ? $_.round(mean, 1) : $_.round(mean)
 }
 
-export const deepMinMeanMonth = (values, month) => {
-  let monthRegexp = new RegExp(`\\d\\d\\d\\d-${month}`)
-  let picked = $_.pickDeep(values, monthRegexp)
-  let min = deepMin(picked)
-  return min
-}
-
-export const deepMaxMeanMonth = (values, month) => {
-  let monthRegexp = new RegExp(`\\d\\d\\d\\d-${month}`)
-  let picked = $_.pickDeep(values, monthRegexp)
-  let max = deepMax(picked)
-  return max
-}
-
-export const deepMin = values => {
-  let min = deepCompare(values, (a, b) => { return a < b })
-  return min
-}
-
-export const deepMax = values => {
-  let min = deepCompare(values, (a, b) => { return a > b })
-  return min
-}
-
-// Comparator is a function that takes two arguments (value, acc)
-// and returns a boolean.
-export const deepCompare = (values, comparator) => {
-  let min = $_.reduceDeep(values,
-    (acc, value) => {
-      if(typeof acc == 'number' && typeof value == 'number') {
-        if(comparator(value, acc)) {
-          return value
-        } else {
-          return acc
+// Get min/max values for the selected month of CMIP6 monthly charts.
+export const monthMinMax = (values, month, dataKey) => {
+  let monthValues = []
+  Object.values(values).forEach(scenarios => {
+    Object.values(scenarios).forEach(months => {
+      Object.entries(months).forEach(([key, value]) => {
+        let last2 = key.slice(-2)
+        if (last2 == month) {
+          monthValues.push(value[dataKey])
         }
-      } else {
-        // Waiting for tree navigation to hit its first leaf
-        if(typeof value == 'number') {
-          return value
-        }
-      }
-      return acc
-    }
-  );
-  return min
+      })
+    })
+  })
+  let min = $_.min(monthValues)
+  let max = $_.max(monthValues)
+  return { min: min, max: max }
 }

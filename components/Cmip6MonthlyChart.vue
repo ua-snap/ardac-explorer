@@ -6,8 +6,8 @@ const props = defineProps<{
 }>()
 
 import type { Data } from 'plotly.js-dist-min'
-import { deepMaxMeanMonth, deepMinMeanMonth } from '~/utils/math'
-import { isProxy, toRaw } from 'vue';
+import { monthMinMax } from '~/utils/math'
+import { isProxy, toRaw } from 'vue'
 
 const { $Plotly, $_ } = useNuxtApp()
 const dataStore = useDataStore()
@@ -37,7 +37,7 @@ const buildChart = () => {
     let projectedStartYear = 2015
 
     // Unwrap for performance reasons
-    if(isProxy(chartData)) {
+    if (isProxy(chartData)) {
       chartData = toRaw(chartData)
     }
 
@@ -65,8 +65,7 @@ const buildChart = () => {
     let scenario: string
     let allChartValues: Array<number | null> = []
 
-    let min = deepMinMeanMonth(chartData, month)
-    let max = deepMaxMeanMonth(chartData, month)
+    let { min, max } = monthMinMax(chartData, month, props.dataKey)
 
     traceConfig.forEach(config => {
       let values: Array<number | null> = []
