@@ -6,7 +6,6 @@ const props = defineProps<{
 }>()
 
 import type { Data } from 'plotly.js-dist-min'
-import { monthMinMax } from '~/utils/math'
 import { isProxy, toRaw } from 'vue'
 
 const { $Plotly, $_ } = useNuxtApp()
@@ -29,6 +28,25 @@ const validChart = ref(true)
 
 const chartMin = ref(undefined)
 const chartMax = ref(undefined)
+
+// Get min/max values for the selected month of CMIP6 monthly charts.
+const monthMinMax = (values: any, month: string, dataKey: string) => {
+  let monthValues = <any>[]
+  Object.values(values).forEach((scenarios:any) => {
+    Object.values(scenarios).forEach((months:any) => {
+      Object.entries(months).forEach(([key, value]) => {
+        let last2 = key.slice(-2)
+        if (last2 == month) {
+          let typed = value as any
+          monthValues.push(typed[dataKey])
+        }
+      })
+    })
+  })
+  let min = $_.min(monthValues)
+  let max = $_.max(monthValues)
+  return { min: min, max: max }
+}
 
 const buildChart = () => {
   if (apiData.value && chartLabels.value && chartInputs.value) {
