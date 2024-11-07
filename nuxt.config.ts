@@ -28,7 +28,7 @@ const noscriptHtml = `
 
   <h3>Content available on this site</h3>
   <p>
-    This tool has a wide arrange of best-available climate science datasets and
+    This tool has a wide range of best-available climate science datasets and
     supporting content. Datasets include:
   </p>
   <ul>
