@@ -37,8 +37,8 @@ const noscriptHtml = `
       at 2km resolution over Alaska and western Canada
     </li>
     <li>
-      Derived climate indicators, such as Wet Days Per Year and Deep Winter
-      Days, provide additional meaning and context for changing climate
+      Derived climate indicators, such as &lsquo;wet days per year&rsquo; and &lsquo;deep winter
+      days&rsquo;, provide additional meaning and context for changing climate
       conditions
     </li>
     <li>Hydrology, including evapotranspiration and soil moisture content</li>
@@ -128,8 +128,8 @@ export default defineNuxtConfig({
         { name: 'og:title', content: metas.title },
         { name: 'og:image', content: metas.image },
         { name: 'og:description', content: metas.description },
-        { name: 'twitterCard', content: "summary_large_image" },
-      ]
+        { name: 'twitterCard', content: 'summary_large_image' },
+      ],
     },
   },
 })
