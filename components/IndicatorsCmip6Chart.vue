@@ -25,6 +25,29 @@ const chartInputs = computed<IndicatorsCmip6ChartInputsObj>(
 
 let chartData: any
 
+// Get min/max values for the selected month of CMIP6 monthly charts.
+const minMax = (chartData: any) => {
+  let dataKey = 'ftc'
+
+  let flatValues: number[] = []
+  Object.values(chartData).forEach((scenarios: any) => {
+    Object.values(scenarios).forEach((model: any) => {
+      if (model) {
+        Object.entries(model).forEach(([key, value]) => {
+          if (value) {
+            let indicatorObj = value as any
+            let v = parseFloat(indicatorObj[dataKey])
+            flatValues.push(v)
+          }
+        })
+      }
+    })
+  })
+  let min = $_.min(flatValues)
+  let max = $_.max(flatValues)
+  return { min: min, max: max }
+}
+
 const getPlotValues = (params: any) => {
   let years = $_.range(params.minYear, params.maxYear + 1)
 
@@ -111,6 +134,13 @@ const buildChart = () => {
     let traces: Data[] = []
     let allDecades: string[] = []
     chartData = dataStore.apiData
+
+    // Unwrap for performance reasons
+    if (isProxy(chartData)) {
+      chartData = toRaw(chartData)
+    }
+
+    let { min, max } = minMax(chartData)
 
     for (let i = 1950; i <= 2100; i += 10) {
       allDecades.push(i + '-' + (i + 9))
@@ -206,6 +236,8 @@ const buildChart = () => {
               size: 18,
             },
           },
+          range: [min, max],
+          fixedrange: true,
         },
       },
       {
