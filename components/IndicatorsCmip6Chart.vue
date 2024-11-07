@@ -27,8 +27,6 @@ let chartData: any
 
 // Get min/max values for the selected month of CMIP6 monthly charts.
 const minMax = (chartData: any) => {
-  let dataKey = 'ftc'
-
   let flatValues: number[] = []
   Object.values(chartData).forEach((scenarios: any) => {
     Object.values(scenarios).forEach((model: any) => {
@@ -36,7 +34,7 @@ const minMax = (chartData: any) => {
         Object.entries(model).forEach(([key, value]) => {
           if (value) {
             let indicatorObj = value as any
-            let v = parseFloat(indicatorObj[dataKey])
+            let v = parseFloat(indicatorObj[props.dataKey])
             flatValues.push(v)
           }
         })
