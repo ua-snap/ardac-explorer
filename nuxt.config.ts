@@ -21,7 +21,7 @@ const noscriptHtml = `
     the North.
   </p>
   <p>
-    ⚠️ We&rsquo;re sorry, but this web tool requires Javascript to be enabled to
+    ⚠️ We&rsquo;re sorry, but this web tool requires JavaScript to be enabled to
     run. <strong>Please email us at uaf-snap-data-tools@alaska.edu</strong> if
     you would like assistance to access content on this site.
   </p>
