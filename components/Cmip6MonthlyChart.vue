@@ -6,6 +6,7 @@ const props = defineProps<{
 }>()
 
 import type { Data } from 'plotly.js-dist-min'
+import { isProxy, toRaw } from 'vue'
 
 const { $Plotly, $_ } = useNuxtApp()
 const dataStore = useDataStore()
@@ -25,11 +26,38 @@ const chartInputs = computed<Cmip6MonthlyChartInputsObj>(
 const chartId = computed<string>(() => props.dataKey + '-chart')
 const validChart = ref(true)
 
+const chartMin = ref(undefined)
+const chartMax = ref(undefined)
+
+// Get min/max values for the selected month of CMIP6 monthly charts.
+const monthMinMax = (values: any, month: string, dataKey: string) => {
+  let monthValues = <any>[]
+  Object.values(values).forEach((scenarios:any) => {
+    Object.values(scenarios).forEach((months:any) => {
+      Object.entries(months).forEach(([key, value]) => {
+        let last2 = key.slice(-2)
+        if (last2 == month) {
+          let typed = value as any
+          monthValues.push(typed[dataKey])
+        }
+      })
+    })
+  })
+  let min = $_.min(monthValues)
+  let max = $_.max(monthValues)
+  return { min: min, max: max }
+}
+
 const buildChart = () => {
   if (apiData.value && chartLabels.value && chartInputs.value) {
     let traces: Data[] = []
     let chartData = dataStore.apiData
     let projectedStartYear = 2015
+
+    // Unwrap for performance reasons
+    if (isProxy(chartData)) {
+      chartData = toRaw(chartData)
+    }
 
     // Pad the historical/projected with nulls as needed to line up properly
     // with the chart x-axis ticks.
@@ -54,6 +82,8 @@ const buildChart = () => {
     let month = chartInputs.value!.month
     let scenario: string
     let allChartValues: Array<number | null> = []
+
+    let { min, max } = monthMinMax(chartData, month, props.dataKey)
 
     traceConfig.forEach(config => {
       let values: Array<number | null> = []
@@ -138,6 +168,8 @@ const buildChart = () => {
               size: 18,
             },
           },
+          range: [min, max],
+          fixedrange: true,
         },
       },
       {
