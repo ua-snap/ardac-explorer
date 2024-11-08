@@ -6,6 +6,19 @@ onBeforeMount(() => {
     navigateTo(route.hash.substring(2))
   }
 })
+
+import { metas } from '@/utils/metas'
+
+// SEO meta tag configuration
+useSeoMeta({
+  title: metas.title,
+  ogTitle: metas.title,
+  description: metas.description,
+  ogDescription: metas.description,
+  ogImage: metas.image,
+  twitterCard: 'summary_large_image',
+})
+
 </script>
 
 <template>
