@@ -28,13 +28,13 @@ const noscriptHtml = `
 
   <h3>Content available on this site</h3>
   <p>
-    This tool has a wide range of best-available climate science datasets and
+    This tool has a wide range of best-available circumpolar climate science datasets and
     supporting content. Datasets include:
   </p>
   <ul>
     <li>
       Temperature and precipitation, from both CMIP5 and CMIP6 climate models,
-      at 2km resolution over Alaska and western Canada
+      at resolutions up to 2km, over Alaska and western Canada
     </li>
     <li>
       Derived climate indicators, such as &lsquo;wet days per year&rsquo; and &lsquo;deep winter
