@@ -66,18 +66,18 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   iwe: [
-    { color: '#9ecae1', label: '&gt;0m, &lt;200m' },
-    { color: '#6baed6', label: '&ge;200m, &lt;400m' },
-    { color: '#4292c6', label: '&ge;400m, &lt;600m' },
-    { color: '#2171b5', label: '&ge;600m, &lt;800m' },
-    { color: '#084594', label: '&ge;800m' },
+    { color: '#9ecae1', label: '&gt;0m, &lt;15m' },
+    { color: '#6baed6', label: '&ge;15m, &lt;30m' },
+    { color: '#4292c6', label: '&ge;30m, &lt;45m' },
+    { color: '#2171b5', label: '&ge;45m, &lt;60m' },
+    { color: '#084594', label: '&ge;60m' },
   ],
   swe: [
-    { color: '#9ecae1', label: '&ge;0㎜, &lt;200㎜' },
-    { color: '#6baed6', label: '&ge;200㎜, &lt;400㎜' },
-    { color: '#4292c6', label: '&ge;400㎜, &lt;600㎜' },
-    { color: '#2171b5', label: '&ge;600㎜, &lt;800㎜' },
-    { color: '#084594', label: '&ge;800㎜' },
+    { color: '#9ecae1', label: '&ge;0㎜, &lt;15㎜' },
+    { color: '#6baed6', label: '&ge;15㎜, &lt;30㎜' },
+    { color: '#4292c6', label: '&ge;30㎜, &lt;45㎜' },
+    { color: '#2171b5', label: '&ge;45㎜, &lt;60㎜' },
+    { color: '#084594', label: '&ge;60㎜' },
   ],
 }
 
@@ -94,7 +94,7 @@ onUnmounted(() => {
     <div class="content is-size-5">
       <h3 class="title is-3">Ice/Snow Water Equivalent</h3>
       <p class="mb-6">
-        The map below shows the 30-year mean annual ice/snow water equivalent
+        The map below shows the 30-year mean monthly ice/snow water equivalent
         for three eras using the CanESM2 model under the RCP 8.5 emissions
         scenario.
       </p>
@@ -123,10 +123,10 @@ onUnmounted(() => {
       </MapBlock>
 
       <p>
-        Enter a location below to see charts of mean annual ice/snow water
-        equivalent per decade for a point location using the CanESM2 model and
-        the selected emissions scenario and month. After entering a location,
-        links will be provided where you can download the data that is used to
+        Enter a location below to see decadal charts of monthly mean ice/snow
+        water equivalent for a point location using the CanESM2 model and the
+        selected emissions scenario and month. After entering a location, links
+        will be provided where you can download the data that is used to
         populate the charts.
       </p>
 
