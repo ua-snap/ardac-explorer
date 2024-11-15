@@ -26,14 +26,11 @@ const chartInputs = computed<Cmip6MonthlyChartInputsObj>(
 const chartId = computed<string>(() => props.dataKey + '-chart')
 const validChart = ref(true)
 
-const chartMin = ref(undefined)
-const chartMax = ref(undefined)
-
 // Get min/max values for the selected month of CMIP6 monthly charts.
 const monthMinMax = (values: any, month: string, dataKey: string) => {
   let monthValues = <any>[]
-  Object.values(values).forEach((scenarios:any) => {
-    Object.values(scenarios).forEach((months:any) => {
+  Object.values(values).forEach((scenarios: any) => {
+    Object.values(scenarios).forEach((months: any) => {
       Object.entries(months).forEach(([key, value]) => {
         let last2 = key.slice(-2)
         if (last2 == month) {
@@ -191,16 +188,26 @@ const buildChart = () => {
   }
 }
 
+const purgeChart = () => {
+  if (validChart.value) {
+    $Plotly.purge(chartId.value)
+  }
+}
+
 watch([apiData, chartLabels, chartInputs], async () => {
+  purgeChart()
+
+  // Need to wait until nextTick to trigger v-if of the chart div.
   validChart.value = true
-  $Plotly.purge(chartId.value)
+  await nextTick()
+
   if (apiData.value) {
     buildChart()
   }
 })
 
 watch(latLng, async () => {
-  $Plotly.purge(chartId.value)
+  purgeChart()
 })
 
 onUnmounted(() => {
