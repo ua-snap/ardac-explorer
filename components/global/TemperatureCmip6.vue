@@ -96,16 +96,16 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   tas: [
-    { color: '#313695', label: '&lt;-20°C' },
-    { color: '#4575b4', label: '&ge;-20°C, &lt;-15°C' },
-    { color: '#74add1', label: '&ge;-15°C, &lt;-10°C' },
-    { color: '#abd9e9', label: '&ge;-10°C, &lt;-5°C' },
-    { color: '#e0f3f8', label: '&ge;-5°C, &lt;0°C' },
-    { color: '#fee090', label: '&ge;0°C, &lt;5°C' },
-    { color: '#fdae61', label: '&ge;5°C, &lt;10°C' },
-    { color: '#f46d43', label: '&ge;10°C, &lt;15°C' },
-    { color: '#d73027', label: '&ge;15°C, &lt;20°C' },
-    { color: '#a50026', label: '&ge;20°C' },
+    { color: '#4b50a0', label: '&lt;-20°C' },
+    { color: '#5c85ba', label: '&ge;-20°C, &lt;-15°C' },
+    { color: '#85b4d3', label: '&ge;-15°C, &lt;-10°C' },
+    { color: '#b2dae8', label: '&ge;-10°C, &lt;-5°C' },
+    { color: '#e0f0f5', label: '&ge;-5°C, &lt;0°C' },
+    { color: '#fae09d', label: '&ge;0°C, &lt;5°C' },
+    { color: '#f9b675', label: '&ge;5°C, &lt;10°C' },
+    { color: '#f17f5c', label: '&ge;10°C, &lt;15°C' },
+    { color: '#da4d44', label: '&ge;15°C, &lt;20°C' },
+    { color: '#af2f43', label: '&ge;20°C' },
   ],
 }
 

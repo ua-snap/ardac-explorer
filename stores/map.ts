@@ -22,6 +22,7 @@ import {
 } from 'leaflet'
 
 var coastlineLayer: TileLayer.WMS
+var naturalEarth: TileLayer.WMS
 
 function getBaseMapAndLayers(): MapOptions {
   const config = useRuntimeConfig()
@@ -41,13 +42,24 @@ function getBaseMapAndLayers(): MapOptions {
     }
   )
 
-  const baseLayer = tileLayer.wms(config.public.geoserverUrl, {
-    transparent: true,
-    crs: proj,
-    format: 'image/png',
-    version: '1.3.0',
-    layers: 'atlas_mapproxy:alaska_osm_retina',
-  })
+  // const baseLayer = tileLayer.wms(config.public.geoserverUrl, {
+  //   transparent: true,
+  //   crs: proj,
+  //   format: 'image/png',
+  //   version: '1.3.0',
+  //   layers: 'arctic_osm_3572',
+  // })
+
+  const baseLayer = tileLayer.wms(
+    'https://basemap.nationalmap.gov/arcgis/services/USGSShadedReliefOnly/MapServer/WMSServer',
+    {
+      transparent: true,
+      crs: proj,
+      format: 'image/png',
+      version: '1.3.0',
+      layers: '0',
+    }
+  )
 
   // Set maximum bounds of main map
   const southWest = latLng(50.5, 155)
@@ -135,6 +147,9 @@ export const useMapStore = defineStore('map', () => {
     // Remove existing active layer & coastline from map
     if (layerObjects[layerObj.mapId]) {
       maps[layerObj.mapId].removeLayer(layerObjects[layerObj.mapId])
+      if (maps[layerObj.mapId]?.hasLayer(naturalEarth)) {
+        maps[layerObj.mapId].removeLayer(naturalEarth)
+      }
       if (
         coastlineLayer != undefined &&
         maps[layerObj.mapId].hasLayer(coastlineLayer)
@@ -152,6 +167,7 @@ export const useMapStore = defineStore('map', () => {
       layers: layer.wmsLayerName,
       id: layer.id,
       styles: layer.style,
+      opacity: 0.85,
       ...layer.rasdamanConfiguration,
     }
 
@@ -162,6 +178,15 @@ export const useMapStore = defineStore('map', () => {
 
     layerObjects[layerObj.mapId] = tileLayer.wms(wmsUrl, layerConfiguration)
     maps[layerObj.mapId]?.addLayer(layerObjects[layerObj.mapId])
+
+    naturalEarth = tileLayer.wms(config.public.geoserverUrl, {
+      transparent: true,
+      format: 'image/png',
+      layers: 'ne_10m_populated_places',
+      styles: 'playground:ardac_places',
+      zIndex: 10,
+    })
+    maps[layerObj.mapId]?.addLayer(naturalEarth)
 
     if (layerObj.layer.bbox) {
       const bounds = latLngBounds(
