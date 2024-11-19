@@ -4,10 +4,13 @@ const mapStore = useMapStore()
 
 const props = defineProps<{
   mapId: string
+  crs?: string
 }>()
 
+let crs = props.crs || 'EPSG:3338'
+
 onMounted(() => {
-  mapStore.create(props.mapId)
+  mapStore.create(props.mapId, crs)
 })
 
 onUnmounted(() => {
@@ -16,7 +19,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <div :id="mapId" class="map"></div>
+  <div :id="mapId" :crs="crs" class="map"></div>
 </template>
 
 <style lang="scss" scoped>
