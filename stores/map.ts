@@ -22,33 +22,26 @@ import {
 } from 'leaflet'
 
 var coastlineLayer: TileLayer.WMS
-var naturalEarth: TileLayer.WMS
+var populatedPlaces: TileLayer.WMS
+var mask: TileLayer.WMS
 
 function getBaseMapAndLayers(): MapOptions {
   const config = useRuntimeConfig()
 
   // Projection definition.
   const proj = new $L.Proj.CRS(
-    'EPSG:3338',
-    '+proj=aea +lat_1=55 +lat_2=65 +lat_0=50 +lon_0=-154 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs',
+    'EPSG:3572',
+    '+proj=laea +lat_0=90 +lon_0=-150 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs',
     {
-      resolutions: [4096, 2048, 1024, 512, 256, 128, 64],
+      resolutions: [12000, 6000, 3000, 1500, 750],
 
       // Origin should be lower-left coordinate
       // in projected space.  Use GeoServer to
       // find this:
       // TileSet > Gridset Bounds > compute from maximum extent of SRS
-      origin: [-4648005.934316417, 444809.882955059],
+      origin: [0.0, -1915741.27],
     }
   )
-
-  // const baseLayer = tileLayer.wms(config.public.geoserverUrl, {
-  //   transparent: true,
-  //   crs: proj,
-  //   format: 'image/png',
-  //   version: '1.3.0',
-  //   layers: 'arctic_osm_3572',
-  // })
 
   const baseLayer = tileLayer.wms(
     'https://basemap.nationalmap.gov/arcgis/services/USGSShadedReliefOnly/MapServer/WMSServer',
@@ -68,18 +61,17 @@ function getBaseMapAndLayers(): MapOptions {
 
   // Map base configuration
   let layerConfig: MapOptions = {
-    zoom: 1,
+    zoom: 0,
     zoomSnap: 0.1,
-    minZoom: 1,
+    minZoom: 0,
     maxZoom: 6,
-    center: [64.7, -155],
+    center: [90, 0],
     scrollWheelZoom: false,
     crs: proj,
     zoomControl: false,
     doubleClickZoom: false,
     attributionControl: false,
     layers: [baseLayer],
-    maxBounds: bounds,
   }
 
   return layerConfig
@@ -147,8 +139,11 @@ export const useMapStore = defineStore('map', () => {
     // Remove existing active layer & coastline from map
     if (layerObjects[layerObj.mapId]) {
       maps[layerObj.mapId].removeLayer(layerObjects[layerObj.mapId])
-      if (maps[layerObj.mapId]?.hasLayer(naturalEarth)) {
-        maps[layerObj.mapId].removeLayer(naturalEarth)
+      if (maps[layerObj.mapId]?.hasLayer(populatedPlaces)) {
+        maps[layerObj.mapId].removeLayer(populatedPlaces)
+      }
+      if (maps[layerObj.mapId]?.hasLayer(mask)) {
+        maps[layerObj.mapId].removeLayer(mask)
       }
       if (
         coastlineLayer != undefined &&
@@ -179,14 +174,23 @@ export const useMapStore = defineStore('map', () => {
     layerObjects[layerObj.mapId] = tileLayer.wms(wmsUrl, layerConfiguration)
     maps[layerObj.mapId]?.addLayer(layerObjects[layerObj.mapId])
 
-    naturalEarth = tileLayer.wms(config.public.geoserverUrl, {
+    populatedPlaces = tileLayer.wms(config.public.geoserverUrl, {
       transparent: true,
       format: 'image/png',
       layers: 'ne_10m_populated_places',
-      styles: 'playground:ardac_places',
+      styles: 'playground:ardac_places_filtered',
       zIndex: 10,
     })
-    maps[layerObj.mapId]?.addLayer(naturalEarth)
+    maps[layerObj.mapId]?.addLayer(populatedPlaces)
+
+    mask = tileLayer.wms(config.public.geoserverUrl, {
+      transparent: true,
+      format: 'image/png',
+      layers: 'playground:cmip6_epsg3572_mask',
+      styles: 'playground:mask_epsg3572',
+      zIndex: 20,
+    })
+    maps[layerObj.mapId]?.addLayer(mask)
 
     if (layerObj.layer.bbox) {
       const bounds = latLngBounds(
@@ -201,7 +205,7 @@ export const useMapStore = defineStore('map', () => {
         transparent: true,
         format: 'image/png',
         version: '1.3.0',
-        layers: 'natural_earth:ne_10m_coastline',
+        layers: 'playground:ne_10m_coastline_epsg3572',
       })
       maps[layerObj.mapId]?.addLayer(coastlineLayer)
     }
