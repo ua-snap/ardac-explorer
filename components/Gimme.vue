@@ -259,15 +259,19 @@ onUnmounted(() => {
       </div>
     </div>
     <div v-show="!placeIsSelected || dataError" class="field">
+      <div class="content">
+        <h5 class="title is-4 mt-6">Get a chart of this data for a place</h5>
+        <p>Enter a <strong>community name</strong> or <strong>latitude/longitude</strong> below to generate downloadable charts of this data for a place.</p>
+        <ul>
+          <li>only communities within the extent of this dataset are available</li>
+          <li v-if="extent === 'ocean'">because this dataset is only for ocean/sea areas, communities within 10&#8239;km of land are included and the exact lat/long used to query the dataset is taken from a nearby offshore point</li>
+          <li><NuxtLink to="/item/communities-boundaries">&#x2192; read</NuxtLink> more about what places are available</li>
+        </ul>
+      </div>
       <div class="control">
-        <label v-if="extent != 'ocean'" class="label"
+        <label class="label"
           >Get data for a community or by lat/long</label
         >
-        <label v-else class="label">Get data by lat/long</label>
-        <p v-if="extent != 'ocean'">
-          Only communities within the footprint of the data are included in this
-          search.
-        </p>
         <input id="gimme" v-model="inputValue" ref="gimmeInput" />
         <button
           v-if="latLngIsValid"
