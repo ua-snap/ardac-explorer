@@ -209,7 +209,7 @@ onUnmounted(() => {
       <MapBlock :mapId="mapId" class="mb-6">
         <template v-slot:layers>
           <MapLayer v-for="layer in layers" :mapId="mapId" :layer="layer" :key="layer.id" :default="layer.default">
-            <template v-slot:title>{{ layers[0].title }}</template>
+            <template v-slot:title>{{ layer.title }}</template>
           </MapLayer>
         </template>
       </MapBlock>
