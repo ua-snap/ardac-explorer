@@ -49,9 +49,10 @@ mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Degree Days Below 65&deg;F</h3>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5" />
       <p class="mb-6">
         Degree days below 65&deg;F, also known as heating degree days, are used
         to approximate the energy needed to heat a building in a given year. The

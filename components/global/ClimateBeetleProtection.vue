@@ -90,9 +90,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Climate Protection from Spruce Beetles</h3>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5" />
       <p class="mb-6">
         The map below shows the 30-year mean of climate protection from spruce
         beetles for three eras with medium snowpack. The historical era

@@ -46,7 +46,7 @@ export default [
       'Number of days per calendar year where the total precipitation amount is ≥ 1.0 mm',
     tags: ['Climate'],
   },
-  /* Restore after updating Rasdaman 
+  
   {
     slug: 'dd-below-65',
     title: 'Degree Days Below 65°F',
@@ -71,7 +71,6 @@ export default [
     blurb: 'Total annual cumulative degree days below 32°F',
     tags: ['Climate'],
   },
-  */
   {
     slug: 'story-arctic-climate-data-node',
     title: 'Introducing the Arctic Climate Data Node',
@@ -149,7 +148,6 @@ export default [
     blurb: 'Names, coordinates, and boundaries to integrate with other data',
     tags: ['GIS'],
   },
-  /* Suspending until launch against updated Rasdaman 
   {
     slug: 'hydrology-evap',
     title: 'Evapotranspiration',
@@ -189,7 +187,6 @@ export default [
     blurb: 'Monthly sum of daily snowmelt',
     tags: ['Hydrology'],
   },
-  */
   {
     slug: 'lightning-climatology',
     title: 'Lightning climatology',
