@@ -199,9 +199,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Vegetation Type</h3>
+      <XrayIntroblurb resolution="1" unit="km" cmip="5" />
       <p class="mb-6">
         The map below shows a 5-model mode of ALFRESCO dominant vegetation type
         outputs across four eras. Historical eras show model spinup outputs.

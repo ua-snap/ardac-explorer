@@ -49,9 +49,10 @@ mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Degree Days Below 0&deg;F</h3>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5" />
       <p class="mb-6">
         The map below shows the 30-year mean of degree days below 0&deg;F for
         three eras. The historical era (1980&ndash;2009) uses historical modeled
