@@ -100,6 +100,7 @@ onUnmounted(() => {
   <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Oceanography, CMIP6</h3>
+      <NotPeerReviewed />
       <XrayIntroblurb resolution="100" unit="km" cmip="6"/>
       <p class="mb-6">
         The map below shows modeled mean sea level pressure and surface
