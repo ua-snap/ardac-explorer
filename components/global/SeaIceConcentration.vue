@@ -196,9 +196,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Sea Ice Concentration</h3>
+      <XrayIntroblurb resolution="25" unit="km" />
       <p class="mb-6">
         The map below shows pan-Arctic sea ice concentration for March at
         25-year intervals from 1850&ndash;2000.

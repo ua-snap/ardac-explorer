@@ -269,9 +269,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Wet Days Per Year</h3>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
       <p class="mb-6">
         A wet day is defined as a day with precipitation accumulation greater
         than or equal to 1.0㎜. The map below shows the 30-year mean of wet days
