@@ -58,6 +58,7 @@ onUnmounted(() => {
   <section class="section">
     <div class="content is-size-5">
       <h3 class="title is-3">Elevation</h3>
+      <XrayIntroblurb resolution="1" unit="km"/>
       <p class="mb-6">
         The map below shows minimum, mean, and maximum elevation at a resolution
         of 1km:

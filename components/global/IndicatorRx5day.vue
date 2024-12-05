@@ -67,9 +67,10 @@ mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Maximum 5-day Precipitation</h3>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
       <p class="mb-6">
         The map below shows the 30-year mean of the maximum 5-day precipitation
         for three eras. The historical era (1980&ndash;2009) uses historical

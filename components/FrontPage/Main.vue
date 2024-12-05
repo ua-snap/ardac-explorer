@@ -80,14 +80,14 @@
       </div>
       <div class="column right pl-5 border-left">
         <ItemText slug="communities-boundaries" />
-        <div class="content is-size-5">
+        <div class="content resources is-size-5">
           <hr class="light" />
           <p>Resources</p>
           <ul>
-            <li>Sign up for our <a href="https://uaf-snap.org/keep-up-with-snap/">newsletter</a></li>
-            <li><a href="mailto:uaf-snap-data-tools@alaska.edu">Email us</a> with questions</li>
-            <li>Visit <a href="https://earthmaps.io">data API</a></li>
-            <li>Learn about <NuxtLink to="/people">our team and who we are</NuxtLink></li>
+            <li class="mb-3">Sign up for our occasional, yet riveting, <a href="https://uaf-snap.org/keep-up-with-snap/">newsletter</a></li>
+            <li class="mb-3"><a href="mailto:uaf-snap-data-tools@alaska.edu">Email us</a> with questions</li>
+            <li class="mb-3">Visit the <a href="https://earthmaps.io">data API</a> that this webapp uses to provide data access</li>
+            <li class="mb-3">Learn about <NuxtLink to="/people">our team and who we are</NuxtLink></li>
           </ul>
           <hr/>
           <h4 class="title is-4">Get involved!</h4>
@@ -116,6 +116,10 @@
       font-size: 25rem;
     }
   }
+}
+
+.resources li {
+  line-height: 1.35;
 }
 
 @media (min-width: 769px) {

@@ -140,9 +140,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Evaporation, CMIP6</h3>
+      <NotPeerReviewed />
+      <XrayIntroblurb resolution="100" unit="km" cmip="6"/>
       <p class="mb-6">
         The map below shows modeled total evaporation for the month of August
         using the EC-Earth3-Veg model at 25-year intervals from 1950–2000.

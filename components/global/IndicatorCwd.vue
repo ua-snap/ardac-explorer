@@ -67,9 +67,10 @@ mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Consecutive Wet Days</h3>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
       <p class="mb-6">
         Consecutive wet days are the number of the most consecutive days with at
         least 1㎜ precipitation. The map below shows the 30-year mean of
