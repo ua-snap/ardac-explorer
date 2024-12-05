@@ -118,10 +118,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Temperature, CMIP6</h3>
-      <XrayIntroblurb resolution="100" unit="km" />
+      <XrayIntroblurb resolution="100" unit="km" cmip="6" />
       <p class="mb-6">
         The map below shows modeled mean near-surface air temperature for the
         month of July, the maximum near-surface air temperature for the month of

@@ -36,9 +36,15 @@ a:hover {
   }
 }
 
+.xray {
+  p, li {
+    max-width: 65rem;
+  }
+}
+
 // Clamp some content types to more readable width.
 .clamp {
-  max-width: 50rem;
+  max-width: 65rem;
   margin-left: auto;
   margin-right: auto;
 }
