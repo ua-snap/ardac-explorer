@@ -49,9 +49,10 @@ mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Thawing Index</h3>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
       <p class="mb-6">
         The thawing index is the number of degree days above freezing per year.
         The map below shows the 30-year mean of the thawing index for three

@@ -284,9 +284,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Landfast Sea Ice Extent</h3>
+      <XrayIntroblurb resolution="100" unit="m" />
       <p class="mb-6">
         Landfast ice is sea ice that is mostly stationary and attached to land. In the dataset presented here landfast sea ice is defined as being contiguous to the coast and lacking detectable motion for approximately 20 consecutive days (<a href="https://seaice.alaska.edu/gi/publications/mahoney/Mahoney_2005_POAC_DefiningLFI.pdf">Mahoney et al. 2005</a>). Landfast sea ice is an integral component of Arctic coastal systems and hosts numerous geological and biological processes as well as human activities.
       </p>
