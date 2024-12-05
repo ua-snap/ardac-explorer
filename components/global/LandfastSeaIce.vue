@@ -23,6 +23,7 @@ const layers: MapLayer[] = [
     style: 'ardac_landfast_sea_ice_extent',
     legend: 'landfast_sea_ice',
     rasdamanConfiguration: { time: '1997-06-01T00:00:00.000Z' },
+    default: true,
   },
   {
     id: 'landfast_sea_ice_1998',
@@ -289,47 +290,31 @@ onUnmounted(() => {
       <h3 class="title is-3">Landfast Sea Ice Extent</h3>
       <XrayIntroblurb resolution="100" unit="m" />
       <p class="mb-6">
-        Landfast ice is sea ice that is mostly stationary and attached to land. In the dataset presented here landfast sea ice is defined as being contiguous to the coast and lacking detectable motion for approximately 20 consecutive days (<a href="https://seaice.alaska.edu/gi/publications/mahoney/Mahoney_2005_POAC_DefiningLFI.pdf">Mahoney et al. 2005</a>). Landfast sea ice is an integral component of Arctic coastal systems and hosts numerous geological and biological processes as well as human activities.
+        Landfast ice is sea ice that is mostly stationary and attached to land.
+        In the dataset presented here landfast sea ice is defined as being
+        contiguous to the coast and lacking detectable motion for approximately
+        20 consecutive days (<a
+          href="https://seaice.alaska.edu/gi/publications/mahoney/Mahoney_2005_POAC_DefiningLFI.pdf"
+          >Mahoney et al. 2005</a
+        >). Landfast sea ice is an integral component of Arctic coastal systems
+        and hosts numerous geological and biological processes as well as human
+        activities.
       </p>
-        <p>
+      <p>
         The map below shows landfast sea ice extent for June 1st from
         1997&ndash;2007.
       </p>
 
       <MapBlock :mapId="mapId" class="mb-6">
         <template v-slot:layers>
-          <MapLayer :mapId="mapId" :layer="layers[0]" default>
-            <template v-slot:title>{{ layers[0].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[1]">
-            <template v-slot:title>{{ layers[1].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[2]">
-            <template v-slot:title>{{ layers[2].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[3]">
-            <template v-slot:title>{{ layers[3].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[4]">
-            <template v-slot:title>{{ layers[4].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[5]">
-            <template v-slot:title>{{ layers[5].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[6]">
-            <template v-slot:title>{{ layers[6].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[7]">
-            <template v-slot:title>{{ layers[7].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[8]">
-            <template v-slot:title>{{ layers[8].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[9]">
-            <template v-slot:title>{{ layers[9].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[10]">
-            <template v-slot:title>{{ layers[10].title }}</template>
+          <MapLayer
+            v-for="layer in layers"
+            :mapId="mapId"
+            :layer="layer"
+            :key="layer.id"
+            :default="layer.default"
+          >
+            <template v-slot:title>{{ layer.title }}</template>
           </MapLayer>
         </template>
       </MapBlock>
