@@ -144,7 +144,7 @@ onUnmounted(() => {
         SSP5-8.5 emissions scenario.
       </p>
 
-      <MapBlock :mapId="mapId" class="mb-6">
+      <MapBlock :mapId="mapId" crs="EPSG:3572" class="mb-6">
         <template v-slot:layers>
           <h4 class="title is-4 mb-3">August Near-surface Wind Speed</h4>
           <MapLayer :mapId="mapId" :layer="layers[0]" default>

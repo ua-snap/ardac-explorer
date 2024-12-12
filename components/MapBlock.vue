@@ -1,6 +1,7 @@
 <script setup lang="ts">
 const props = defineProps<{
   mapId: string
+  crs?: string
 }>()
 </script>
 
@@ -10,7 +11,7 @@ const props = defineProps<{
       <slot name="layers"></slot>
     </div>
     <div class="column">
-      <Map :mapId="mapId" class="map" />
+      <Map :mapId="mapId" :crs="crs" class="map" />
     </div>
   </div>
 </template>

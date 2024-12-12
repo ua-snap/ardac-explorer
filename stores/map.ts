@@ -1,5 +1,6 @@
 import { defineStore } from 'pinia'
 const { $L } = useNuxtApp()
+const config = useRuntimeConfig()
 
 // Leaflet map objects, keys equal to ID of Leaflet map
 const maps: { [index: string]: any } = {}
@@ -17,50 +18,97 @@ import {
   tileLayer,
   latLng,
   latLngBounds,
+  LatLngBounds,
   type TileLayer,
   type MapOptions,
 } from 'leaflet'
 
 var coastlineLayer: TileLayer.WMS
+var circumpolarPlaces: L.GeoJSON
+var dataLayerOpacity: number
+var mask: TileLayer.WMS
+var baseLayer: TileLayer
+var southWest: LatLng
+var northEast: LatLng
+var viscosity = 0.0
 
-function getBaseMapAndLayers(): MapOptions {
-  const config = useRuntimeConfig()
+function getBaseMapAndLayers(crs: string): MapOptions {
+  let proj: any
+  let resolutions: number[]
+  let center: LatLng
+  let zoom: number
+  if (crs == 'EPSG:3572') {
+    resolutions = [12000, 6000, 3000, 1500, 750]
+    zoom = 0
+    center = latLng(90, 0)
+    dataLayerOpacity = 0.7
+    proj = new $L.Proj.CRS(
+      'EPSG:3572',
+      '+proj=laea +lat_0=90 +lon_0=-150 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs',
+      {
+        // Lower-left corner of GeoServer's gridset bounds for EPSG:3572
+        origin: [-4889334.802954878, -4889334.802954878],
+        resolutions: resolutions,
+      }
+    )
+    baseLayer = tileLayer.wms(
+      'https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer',
+      {
+        transparent: true,
+        crs: proj,
+        format: 'image/png',
+        version: '1.3.0',
+        layers: '0',
+      }
+    )
 
-  // Projection definition.
-  const proj = new $L.Proj.CRS(
-    'EPSG:3338',
-    '+proj=aea +lat_1=55 +lat_2=65 +lat_0=50 +lon_0=-154 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs',
-    {
-      resolutions: [4096, 2048, 1024, 512, 256, 128, 64],
+    // EPSG:3572 has strange bounds. These values were determined by using
+    // getBounds() on Leaflet's map object after loading a map in EPSG:3572,
+    // then tweaking the latitude values until the maxBounds behaved as
+    // expected. The maxBounds behavior isn't perfect, but maybe as good as it
+    // gets for the EPSG:3572 projection.
+    southWest = latLng(20, -15)
+    northEast = latLng(20, 165)
 
-      // Origin should be lower-left coordinate
-      // in projected space.  Use GeoServer to
-      // find this:
-      // TileSet > Gridset Bounds > compute from maximum extent of SRS
-      origin: [-4648005.934316417, 444809.882955059],
-    }
-  )
+    // Set viscosity to maximum because the map produces (harmless) JavaScript
+    // errors if you drag too far outside the maxBounds. This prevents errors
+    // vertically but not horizontally, but might be as good as it gets for
+    // the EPSG:3572 projection.
+    viscosity = 1.0
+  } else {
+    resolutions = [4096, 2048, 1024, 512, 256, 128, 64]
+    zoom = 1
+    center = latLng(64.7, -155)
+    dataLayerOpacity = 1.0
+    proj = new $L.Proj.CRS(
+      'EPSG:3338',
+      '+proj=aea +lat_1=55 +lat_2=65 +lat_0=50 +lon_0=-154 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs',
+      {
+        // Lower-left corner of GeoServer's gridset bounds for EPSG:3338
+        origin: [-4648005.934316417, 444809.882955059],
+        resolutions: resolutions,
+      }
+    )
+    baseLayer = tileLayer.wms(config.public.geoserverUrl, {
+      transparent: true,
+      crs: proj,
+      format: 'image/png',
+      version: '1.3.0',
+      layers: 'atlas_mapproxy:alaska_osm_retina',
+    })
+    southWest = latLng(50.5, 155)
+    northEast = latLng(64, -131)
+  }
 
-  const baseLayer = tileLayer.wms(config.public.geoserverUrl, {
-    transparent: true,
-    crs: proj,
-    format: 'image/png',
-    version: '1.3.0',
-    layers: 'atlas_mapproxy:alaska_osm_retina',
-  })
-
-  // Set maximum bounds of main map
-  const southWest = latLng(50.5, 155)
-  const northEast = latLng(64, -131)
   const bounds = latLngBounds(southWest, northEast)
 
   // Map base configuration
   let layerConfig: MapOptions = {
-    zoom: 1,
+    zoom: zoom,
     zoomSnap: 0.1,
-    minZoom: 1,
-    maxZoom: 6,
-    center: [64.7, -155],
+    minZoom: 0,
+    maxZoom: resolutions.length,
+    center: center,
     scrollWheelZoom: false,
     crs: proj,
     zoomControl: false,
@@ -68,6 +116,7 @@ function getBaseMapAndLayers(): MapOptions {
     attributionControl: false,
     layers: [baseLayer],
     maxBounds: bounds,
+    maxBoundsViscosity: viscosity,
   }
 
   return layerConfig
@@ -79,8 +128,8 @@ export const useMapStore = defineStore('map', () => {
 
   // Create the Leaflet map object.
   // mapID = string corresponding to element ID.
-  function create(mapId: string) {
-    maps[mapId] = $L.map(mapId, getBaseMapAndLayers())
+  function create(mapId: string, crs: string) {
+    maps[mapId] = $L.map(mapId, getBaseMapAndLayers(crs))
     new $L.Control.Zoom({ position: 'topright' }).addTo(maps[mapId])
   }
 
@@ -130,11 +179,18 @@ export const useMapStore = defineStore('map', () => {
   }
 
   function toggleLayer(layerObj: MapLayerInstance) {
-    const config = useRuntimeConfig()
-
-    // Remove existing active layer & coastline from map
+    // Remove existing active layer, coastline, and mask from map
     if (layerObjects[layerObj.mapId]) {
       maps[layerObj.mapId].removeLayer(layerObjects[layerObj.mapId])
+      if (
+        circumpolarPlaces &&
+        maps[layerObj.mapId]?.hasLayer(circumpolarPlaces)
+      ) {
+        maps[layerObj.mapId].removeLayer(circumpolarPlaces)
+      }
+      if (mask && maps[layerObj.mapId]?.hasLayer(mask)) {
+        maps[layerObj.mapId].removeLayer(mask)
+      }
       if (
         coastlineLayer != undefined &&
         maps[layerObj.mapId].hasLayer(coastlineLayer)
@@ -143,8 +199,21 @@ export const useMapStore = defineStore('map', () => {
       }
     }
 
-    // Build new layer configuration
     let layer = layerObj.layer
+    let crs = maps[layerObj.mapId].options.crs.code
+
+    // Add EPSG:3572 mask layer first to hide map artifacts before they load
+    if (crs == 'EPSG:3572') {
+      mask = tileLayer.wms(config.public.geoserverUrl, {
+        transparent: true,
+        format: 'image/png',
+        layers: 'playground:cmip6_epsg3572_mask',
+        styles: 'playground:mask_epsg3572',
+        zIndex: 20,
+      })
+      maps[layerObj.mapId]?.addLayer(mask)
+    }
+
     let layerConfiguration = {
       transparent: true,
       format: 'image/png',
@@ -152,6 +221,7 @@ export const useMapStore = defineStore('map', () => {
       layers: layer.wmsLayerName,
       id: layer.id,
       styles: layer.style,
+      opacity: dataLayerOpacity,
       ...layer.rasdamanConfiguration,
     }
 
@@ -162,6 +232,10 @@ export const useMapStore = defineStore('map', () => {
 
     layerObjects[layerObj.mapId] = tileLayer.wms(wmsUrl, layerConfiguration)
     maps[layerObj.mapId]?.addLayer(layerObjects[layerObj.mapId])
+
+    if (crs == 'EPSG:3572') {
+      addCircumpolarPlaces(layerObj.mapId)
+    }
 
     if (layerObj.layer.bbox) {
       const bounds = latLngBounds(
@@ -176,7 +250,8 @@ export const useMapStore = defineStore('map', () => {
         transparent: true,
         format: 'image/png',
         version: '1.3.0',
-        layers: 'natural_earth:ne_10m_coastline',
+        layers: 'playground:ne_10m_coastline_epsg3572',
+        styles: 'playground:ardac_coastline',
       })
       maps[layerObj.mapId]?.addLayer(coastlineLayer)
     }
@@ -195,3 +270,37 @@ export const useMapStore = defineStore('map', () => {
     addLegend,
   }
 })
+
+const addCircumpolarPlaces = (mapId: string) => {
+  let url =
+    config.public.geoserverUrl +
+    '/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=playground:places_with_russian_names&outputFormat=application/json&srsName=EPSG:4326'
+
+  fetch(url)
+    .then(response => response.json())
+    .then(data => {
+      circumpolarPlaces = $L.geoJSON(data, {
+        pointToLayer: function (feature, latlng) {
+          return $L.circleMarker(latlng, {
+            radius: 3,
+            fillColor: 'black',
+            color: 'black',
+            weight: 1,
+            opacity: 0.5,
+            fillOpacity: 0.8,
+          })
+        },
+        onEachFeature: function (feature, layer) {
+          const label = $L.divIcon({
+            className: 'label',
+            html: `<div style="white-space: nowrap; margin-left: 15px; margin-top: -4px; font-size: 13px;">${feature.properties.NAME}</div>`,
+          })
+          $L.marker((layer as L.Marker).getLatLng(), { icon: label }).addTo(
+            maps[mapId]
+          )
+        },
+      })
+
+      circumpolarPlaces.addTo(maps[mapId])
+    })
+}
