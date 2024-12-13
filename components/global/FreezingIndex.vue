@@ -52,6 +52,7 @@ mapStore.setLegendItems(mapId, legend)
   <section class="section">
     <div class="content is-size-5">
       <h3 class="title is-3">Freezing Index</h3>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
       <p class="mb-6">
         The freezing index is the number of degree days above freezing per year.
         The map below shows the 30-year mean of the freezing index for three
