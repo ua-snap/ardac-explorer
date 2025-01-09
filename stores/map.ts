@@ -38,7 +38,7 @@ function getBaseMapAndLayers(crs: string): MapOptions {
   let center: LatLng
   let zoom: number
   if (crs == 'EPSG:3572') {
-    resolutions = [12000, 6000, 3000, 1500, 750]
+    resolutions = [12000, 6000, 3000, 1500]
     zoom = 0
     center = latLng(90, 0)
     dataLayerOpacity = 0.7
@@ -107,7 +107,7 @@ function getBaseMapAndLayers(crs: string): MapOptions {
     zoom: zoom,
     zoomSnap: 0.1,
     minZoom: 0,
-    maxZoom: resolutions.length,
+    maxZoom: resolutions.length - 1,
     center: center,
     scrollWheelZoom: false,
     crs: proj,
@@ -207,8 +207,8 @@ export const useMapStore = defineStore('map', () => {
       mask = tileLayer.wms(config.public.geoserverUrl, {
         transparent: true,
         format: 'image/png',
-        layers: 'playground:cmip6_epsg3572_mask',
-        styles: 'playground:mask_epsg3572',
+        layers: 'ardac:cmip6_mask',
+        styles: 'ardac:cmip6_mask',
         zIndex: 20,
       })
       maps[layerObj.mapId]?.addLayer(mask)
@@ -250,8 +250,7 @@ export const useMapStore = defineStore('map', () => {
         transparent: true,
         format: 'image/png',
         version: '1.3.0',
-        layers: 'playground:ne_10m_coastline_epsg3572',
-        styles: 'playground:ardac_coastline',
+        layers: 'natural_earth:ne_10m_coastline',
       })
       maps[layerObj.mapId]?.addLayer(coastlineLayer)
     }
@@ -272,9 +271,23 @@ export const useMapStore = defineStore('map', () => {
 })
 
 const addCircumpolarPlaces = (mapId: string) => {
+  let handpickedPlaces = [
+    'FI409', // Helsinki
+    'NU29', // Iqaluit
+    'AK172', // Juneau
+    'RU444', // Moscow
+    'GL80', // Nuuk
+    'NO230', // Oslo
+    'IS6', // Reykjavík
+    'FO1', // Tórshavn
+    'YT73', // Whitehorse
+    'NT46', // Yellowknife
+  ]
   let url =
     config.public.geoserverUrl +
-    '/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=playground:places_with_russian_names&outputFormat=application/json&srsName=EPSG:4326'
+    '/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=all_boundaries:all_communities&outputFormat=application/json&srsName=EPSG:4326'
+
+  url += '&cql_filter="id" IN (\'' + handpickedPlaces.join("','") + "')"
 
   fetch(url)
     .then(response => response.json())
@@ -293,7 +306,7 @@ const addCircumpolarPlaces = (mapId: string) => {
         onEachFeature: function (feature, layer) {
           const label = $L.divIcon({
             className: 'label',
-            html: `<div style="white-space: nowrap; margin-left: 15px; margin-top: -4px; font-size: 13px;">${feature.properties.NAME}</div>`,
+            html: `<div style="white-space: nowrap; margin-left: 15px; margin-top: -4px; font-size: 13px;">${feature.properties.name}</div>`,
           })
           $L.marker((layer as L.Marker).getLatLng(), { icon: label }).addTo(
             maps[mapId]
