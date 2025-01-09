@@ -26,7 +26,7 @@ var coastlineLayer: TileLayer.WMS
 var circumpolarPlaces: L.GeoJSON
 var dataLayerOpacity: number
 var mask: TileLayer.WMS
-var baseLayer: TileLayer
+var baseLayer: TileLayer | null
 var southWest: LatLng
 var northEast: LatLng
 var viscosity = 0.0
@@ -50,16 +50,8 @@ function getBaseMapAndLayers(crs: string): MapOptions {
         resolutions: resolutions,
       }
     )
-    baseLayer = tileLayer.wms(
-      'https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer',
-      {
-        transparent: true,
-        crs: proj,
-        format: 'image/png',
-        version: '1.3.0',
-        layers: '0',
-      }
-    )
+
+    baseLayer = null
 
     // EPSG:3572 has strange bounds. These values were determined by using
     // getBounds() on Leaflet's map object after loading a map in EPSG:3572,
@@ -113,9 +105,12 @@ function getBaseMapAndLayers(crs: string): MapOptions {
     zoomControl: false,
     doubleClickZoom: false,
     attributionControl: false,
-    layers: [baseLayer],
     maxBounds: bounds,
     maxBoundsViscosity: viscosity,
+  }
+
+  if (baseLayer) {
+    layerConfig.layers = [baseLayer]
   }
 
   return layerConfig
