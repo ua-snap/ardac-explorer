@@ -18,7 +18,6 @@ import {
   tileLayer,
   latLng,
   latLngBounds,
-  LatLngBounds,
   type TileLayer,
   type MapOptions,
 } from 'leaflet'
@@ -283,10 +282,12 @@ const addCircumpolarPlaces = (mapId: string) => {
     'YT73', // Whitehorse
     'NT46', // Yellowknife
   ]
+
+  // Get name and geometry (lat/lon) of handpicked places.
   let url =
     config.public.geoserverUrl +
-    '/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=all_boundaries:all_communities&outputFormat=application/json&srsName=EPSG:4326'
-
+    '/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=all_boundaries:all_communities' +
+    '&outputFormat=application/json&srsName=EPSG:4326&PropertyName=(name,the_geom)'
   url += '&cql_filter="id" IN (\'' + handpickedPlaces.join("','") + "')"
 
   fetch(url)
@@ -301,6 +302,7 @@ const addCircumpolarPlaces = (mapId: string) => {
             weight: 1,
             opacity: 0.5,
             fillOpacity: 0.8,
+            interactive: false,
           })
         },
         onEachFeature: function (feature, layer) {
@@ -313,7 +315,6 @@ const addCircumpolarPlaces = (mapId: string) => {
           )
         },
       })
-
       circumpolarPlaces.addTo(maps[mapId])
     })
 }

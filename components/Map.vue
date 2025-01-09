@@ -48,4 +48,7 @@ onUnmounted(() => {
     font-size: 0.8em;
   }
 }
+:deep(.leaflet-marker-icon) {
+  cursor: grab;
+}
 </style>
