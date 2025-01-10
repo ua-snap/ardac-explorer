@@ -6,7 +6,7 @@ export const usePlacesStore = defineStore('places', () => {
 
   async function fetchCommunities(): Promise<Community[]> {
     let communities = (await $fetch(
-      'http://localhost:5000/places/communities'
+      'https://earthmaps.io/places/communities'
     )) satisfies Community[]
     return communities
   }
