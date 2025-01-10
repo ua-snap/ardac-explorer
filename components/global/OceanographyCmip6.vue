@@ -68,23 +68,23 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   psl: [
-    { color: '#4575b4', label: '&ge;100000 Pa, &lt;100250 Pa' },
-    { color: '#91bfdb', label: '&ge;100250 Pa, &lt;100500 Pa' },
-    { color: '#e0f3f8', label: '&ge;100500 Pa, &lt;100750 Pa' },
-    { color: '#fee090', label: '&ge;100750 Pa, &lt;101000 Pa' },
-    { color: '#fc8d59', label: '&ge;101000 Pa' },
+    { color: '#7394c1', label: '&ge;100000 Pa, &lt;100250 Pa' },
+    { color: '#a8c8db', label: '&ge;100250 Pa, &lt;100500 Pa' },
+    { color: '#e0ecf1', label: '&ge;100500 Pa, &lt;100750 Pa' },
+    { color: '#f4e0a9', label: '&ge;100750 Pa, &lt;101000 Pa' },
+    { color: '#f4a582', label: '&ge;101000 Pa' },
   ],
   ts: [
-    { color: '#313695', label: '&lt;-20°C' },
-    { color: '#4575b4', label: '&ge;-20°C, &lt;-15°C' },
-    { color: '#74add1', label: '&ge;-15°C, &lt;-10°C' },
-    { color: '#abd9e9', label: '&ge;-10°C, &lt;-5°C' },
-    { color: '#e0f3f8', label: '&ge;-5°C, &lt;0°C' },
-    { color: '#fee090', label: '&ge;0°C, &lt;5°C' },
-    { color: '#fdae61', label: '&ge;5°C, &lt;10°C' },
-    { color: '#f46d43', label: '&ge;10°C, &lt;15°C' },
-    { color: '#d73027', label: '&ge;15°C, &lt;20°C' },
-    { color: '#a50026', label: '&ge;20°C' },
+    { color: '#6468ac', label: '&lt;-20°C' },
+    { color: '#7394c1', label: '&ge;-20°C, &lt;-15°C' },
+    { color: '#94bcd5', label: '&ge;-15°C, &lt;-10°C' },
+    { color: '#badae5', label: '&ge;-10°C, &lt;-5°C' },
+    { color: '#e0ecf1', label: '&ge;-5°C, &lt;0°C' },
+    { color: '#f4e0a9', label: '&ge;0°C, &lt;5°C' },
+    { color: '#f4bc88', label: '&ge;5°C, &lt;10°C' },
+    { color: '#ef9073', label: '&ge;10°C, &lt;15°C' },
+    { color: '#dc6961', label: '&ge;15°C, &lt;20°C' },
+    { color: '#ba505e', label: '&ge;20°C' },
   ],
 }
 

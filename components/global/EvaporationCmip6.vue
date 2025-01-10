@@ -110,24 +110,24 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   evspsbl: [
-    { color: '#006837', label: '&lt;0µ kg/m<sup>2</sup>/s' },
+    { color: '#538b69', label: '&lt;0µ kg/m<sup>2</sup>/s' },
     {
-      color: '#31a354',
+      color: '#6eb47e',
       label: '&ge;0µ kg/m<sup>2</sup>/s, &lt;10µ kg/m<sup>2</sup>/s',
     },
     {
-      color: '#78c679',
+      color: '#98cd97',
       label: '&ge;10µ kg/m<sup>2</sup>/s, &lt;20µ kg/m<sup>2</sup>/s',
     },
     {
-      color: '#addd8e',
+      color: '#bbdea6',
       label: '&ge;20µ kg/m<sup>2</sup>/s, &lt;30µ kg/m<sup>2</sup>/s',
     },
     {
-      color: '#d9f0a3',
+      color: '#dbebb5',
       label: '&ge;30µ kg/m<sup>2</sup>/s, &lt;40µ kg/m<sup>2</sup>/s',
     },
-    { color: '#ffffcc', label: '&ge;40µ kg/m<sup>2</sup>/s' },
+    { color: '#f5f5d1', label: '&ge;40µ kg/m<sup>2</sup>/s' },
   ],
 }
 

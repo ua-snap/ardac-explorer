@@ -110,11 +110,11 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   pr: [
-    { color: '#edf8fbff', label: '&ge;0㎜, &lt;50㎜' },
-    { color: '#b2e2e2ff', label: '&ge;50㎜, &lt;100㎜' },
-    { color: '#66c2a4ff', label: '&ge;100㎜, &lt;150㎜' },
-    { color: '#2ca25fff', label: '&ge;150㎜, &lt;200㎜' },
-    { color: '#006d2cff', label: '&ge;200㎜' },
+    { color: '#e9f0f2', label: '&ge;0㎜, &lt;50㎜' },
+    { color: '#c0e1e2', label: '&ge;50㎜, &lt;100㎜' },
+    { color: '#8dcbb5', label: '&ge;100㎜, &lt;150㎜' },
+    { color: '#6ab385', label: '&ge;150㎜, &lt;200㎜' },
+    { color: '#548f62', label: '&ge;200㎜' },
   ],
 }
 
