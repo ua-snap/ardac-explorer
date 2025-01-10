@@ -261,51 +261,95 @@ export const useMapStore = defineStore('map', () => {
 })
 
 const addCircumpolarPlaces = (mapId: string) => {
-  let handpickedPlaces = [
-    'FI409', // Helsinki
-    'NU29', // Iqaluit
-    'AK172', // Juneau
-    'RU444', // Moscow
-    'GL80', // Nuuk
-    'NO230', // Oslo
-    'IS6', // Reykjavík
-    'FO1', // Tórshavn
-    'YT73', // Whitehorse
-    'NT46', // Yellowknife
-  ]
+  const communities = {
+    Helsinki: {
+      lat: 60.1695,
+      lon: 24.9355,
+    },
+    Iqaluit: {
+      lat: 63.75,
+      lon: -68.5167,
+    },
+    Juneau: {
+      lat: 58.3019,
+      lon: -134.42,
+    },
+    Москва: {
+      lat: 55.6256,
+      lon: 37.6064,
+    },
+    Nuuk: {
+      lat: 64.1814,
+      lon: -51.6942,
+    },
+    Oslo: {
+      lat: 59.9127,
+      lon: 10.7461,
+    },
+    Reykjavík: {
+      lat: 64.1333,
+      lon: -21.9,
+    },
+    Tórshavn: {
+      lat: 62.012,
+      lon: -6.768,
+    },
+    Whitehorse: {
+      lat: 60.727,
+      lon: -135.074,
+    },
+    Yellowknife: {
+      lat: 62.4536,
+      lon: -114.37,
+    },
+  }
 
-  // Get name and geometry (lat/lon) of handpicked places.
-  let url =
-    config.public.geoserverUrl +
-    '/wfs?service=WFS&version=1.1.0&request=GetFeature&typeName=all_boundaries:all_communities' +
-    '&outputFormat=application/json&srsName=EPSG:4326&PropertyName=(name,the_geom)'
-  url += '&cql_filter="id" IN (\'' + handpickedPlaces.join("','") + "')"
+  let data: {
+    type: 'FeatureCollection'
+    features: {
+      type: string
+      properties: { name: string }
+      geometry: { type: string; coordinates: number[] }
+    }[]
+  } = {
+    type: 'FeatureCollection',
+    features: [],
+  }
 
-  fetch(url)
-    .then(response => response.json())
-    .then(data => {
-      circumpolarPlaces = $L.geoJSON(data, {
-        pointToLayer: function (feature, latlng) {
-          return $L.circleMarker(latlng, {
-            radius: 3,
-            fillColor: 'black',
-            color: 'black',
-            weight: 1,
-            opacity: 0.5,
-            fillOpacity: 0.8,
-            interactive: false,
-          })
-        },
-        onEachFeature: function (feature, layer) {
-          const label = $L.divIcon({
-            className: 'label',
-            html: `<div style="white-space: nowrap; margin-left: 15px; margin-top: -4px; font-size: 13px;">${feature.properties.name}</div>`,
-          })
-          $L.marker((layer as L.Marker).getLatLng(), { icon: label }).addTo(
-            maps[mapId]
-          )
-        },
-      })
-      circumpolarPlaces.addTo(maps[mapId])
+  for (const [key, value] of Object.entries(communities)) {
+    data.features.push({
+      type: 'Feature',
+      properties: {
+        name: key,
+      },
+      geometry: {
+        type: 'Point',
+        coordinates: [value.lon, value.lat],
+      },
     })
+  }
+
+  circumpolarPlaces = $L.geoJSON(data, {
+    pointToLayer: function (feature, latlng) {
+      return $L.circleMarker(latlng, {
+        radius: 3,
+        fillColor: 'black',
+        color: 'black',
+        weight: 1,
+        opacity: 0.5,
+        fillOpacity: 0.8,
+        interactive: false,
+      })
+    },
+    onEachFeature: function (feature, layer) {
+      const label = $L.divIcon({
+        className: 'label',
+        html: `<div style="white-space: nowrap; margin-left: 15px; margin-top: -4px; font-size: 13px;">${feature.properties.name}</div>`,
+      })
+      $L.marker((layer as L.Marker).getLatLng(), { icon: label }).addTo(
+        maps[mapId]
+      )
+    },
+  })
+  circumpolarPlaces.addTo(maps[mapId])
 }
