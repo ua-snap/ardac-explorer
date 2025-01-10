@@ -42,11 +42,11 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   rx1day: [
-    { color: '#edf8fb', label: '&ge;0㎜, &lt;10㎜' },
-    { color: '#b2e2e2', label: '&ge;10㎜, &lt;20㎜' },
-    { color: '#66c2a4', label: '&ge;20㎜, &lt;30㎜' },
-    { color: '#2ca25f', label: '&ge;30㎜, &lt;40㎜' },
-    { color: '#006d2c', label: '&ge;40㎜' },
+    { color: '#e9f0f2', label: '&ge;0㎜, &lt;10㎜' },
+    { color: '#c0e1e2', label: '&ge;10㎜, &lt;20㎜' },
+    { color: '#8dcbb5', label: '&ge;20㎜, &lt;30㎜' },
+    { color: '#6ab385', label: '&ge;30㎜, &lt;40㎜' },
+    { color: '#548f62', label: '&ge;40㎜' },
   ],
 }
 

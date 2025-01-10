@@ -42,11 +42,11 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   freeze_thaw_cycle: [
-    { color: '#f7f7f7', label: '&ge;1 day, &lt;20 days' },
-    { color: '#cccccc', label: '&ge;20 days, &lt;40 days' },
-    { color: '#969696', label: '&ge;40 days, &lt;60 days' },
-    { color: '#636363', label: '&ge;60 days, &lt;80 days' },
-    { color: '#252525', label: '&ge;80 days' },
+    { color: '#efefef', label: '&ge;0 days, &lt;20 days' },
+    { color: '#dddddd', label: '&ge;20 days, &lt;40 days' },
+    { color: '#ababab', label: '&ge;40 days, &lt;60 days' },
+    { color: '#878787', label: '&ge;60 days, &lt;80 days' },
+    { color: '#5c5c5c', label: '&ge;80 days' },
   ],
 }
 

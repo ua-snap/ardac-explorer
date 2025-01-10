@@ -42,11 +42,11 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   deep_winter_days: [
-    { color: '#c6dbef', label: '&ge;1 day, &lt;10 days' },
-    { color: '#9ecae1', label: '&ge;10 days, &lt;20 days' },
-    { color: '#6baed6', label: '&ge;20 days, &lt;40 days' },
-    { color: '#3182bd', label: '&ge;40 days, &lt;80 days' },
-    { color: '#08519c', label: '&ge;80 days' },
+    { color: '#cddce9', label: '&ge;0 days, &lt;10 days' },
+    { color: '#b1d0e0', label: '&ge;10 days, &lt;20 days' },
+    { color: '#8fbcd8', label: '&ge;20 days, &lt;40 days' },
+    { color: '#699dc7', label: '&ge;40 days, &lt;80 days' },
+    { color: '#507bb0', label: '&ge;80 days' },
   ],
 }
 

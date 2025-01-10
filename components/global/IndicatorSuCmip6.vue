@@ -42,11 +42,11 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   summer_days: [
-    { color: '#fdd0a2', label: '&ge;1 day, &lt;5 days' },
-    { color: '#fdae6b', label: '&ge;5 days, &lt;10 days' },
-    { color: '#fd8d3c', label: '&ge;10 days, &lt;20 days' },
-    { color: '#e6550d', label: '&ge;20 days, &lt;40 days' },
-    { color: '#a63603', label: '&ge;40 days' },
+    { color: '#f4d4b4', label: '&ge;0 days, &lt;5 days' },
+    { color: '#f4bc8f', label: '&ge;5 days, &lt;10 days' },
+    { color: '#f5a570', label: '&ge;10 days, &lt;20 days' },
+    { color: '#e58057', label: '&ge;20 days, &lt;40 days' },
+    { color: '#b8694d', label: '&ge;40 days' },
   ],
 }
 
