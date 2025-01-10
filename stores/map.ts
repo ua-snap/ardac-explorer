@@ -24,7 +24,6 @@ import {
 
 var coastlineLayer: TileLayer.WMS
 var circumpolarPlaces: L.GeoJSON
-var dataLayerOpacity: number
 var mask: TileLayer.WMS
 var baseLayer: TileLayer | null
 var southWest: LatLng
@@ -40,7 +39,6 @@ function getBaseMapAndLayers(crs: string): MapOptions {
     resolutions = [12000, 6000, 3000, 1500]
     zoom = 0
     center = latLng(90, 0)
-    dataLayerOpacity = 0.7
     proj = new $L.Proj.CRS(
       'EPSG:3572',
       '+proj=laea +lat_0=90 +lon_0=-150 +x_0=0 +y_0=0 +ellps=WGS84 +datum=WGS84 +units=m +no_defs',
@@ -70,7 +68,6 @@ function getBaseMapAndLayers(crs: string): MapOptions {
     resolutions = [4096, 2048, 1024, 512, 256, 128, 64]
     zoom = 1
     center = latLng(64.7, -155)
-    dataLayerOpacity = 1.0
     proj = new $L.Proj.CRS(
       'EPSG:3338',
       '+proj=aea +lat_1=55 +lat_2=65 +lat_0=50 +lon_0=-154 +x_0=0 +y_0=0 +ellps=GRS80 +datum=NAD83 +units=m +no_defs',
@@ -215,7 +212,6 @@ export const useMapStore = defineStore('map', () => {
       layers: layer.wmsLayerName,
       id: layer.id,
       styles: layer.style,
-      opacity: dataLayerOpacity,
       ...layer.rasdamanConfiguration,
     }
 
