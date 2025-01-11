@@ -1,4 +1,5 @@
 import { defineStore } from 'pinia'
+const runtimeConfig = useRuntimeConfig()
 
 export const usePlacesStore = defineStore('places', () => {
   const selectedCommunity: Ref<CommunityValue> = ref(undefined)
@@ -6,7 +7,7 @@ export const usePlacesStore = defineStore('places', () => {
 
   async function fetchCommunities(): Promise<Community[]> {
     let communities = (await $fetch(
-      'https://earthmaps.io/places/communities'
+      runtimeConfig.public.apiUrl + '/places/communities?tags=ardac'
     )) satisfies Community[]
     return communities
   }

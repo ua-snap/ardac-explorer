@@ -95,6 +95,15 @@ onMounted(() => {
           element.innerHTML =
             element.innerHTML + ' <span>/ ' + community.alt_name + '</span>'
         }
+        if (community.region) {
+          element.innerHTML =
+            element.innerHTML +
+            ', <span class="region"> ' +
+            community.region +
+            '</span>'
+        }
+        element.innerHTML +=
+          '<span class="country">, ' + community.country + '</span>'
       },
     },
     // Intercept/test for valid Lat/Lng
@@ -137,13 +146,16 @@ onMounted(() => {
     if (community.alt_name) {
       selectedCommunityName.value += ' / ' + community.alt_name
     }
+    if (community.region) {
+      selectedCommunityName.value += ', ' + community.region
+    }
+    selectedCommunityName.value += ', ' + community.country
   })
 })
 
 const withinExtent = (lat: number, lng: number) => {
   let latLngPoint = point([lng, lat])
   for (let feature of parsedGeoJson.features) {
-    console.log(feature, latLngPoint)
     if (booleanPointInPolygon(latLngPoint, feature)) {
       return true
     }
@@ -154,12 +166,16 @@ const withinExtent = (lat: number, lng: number) => {
 const communitiesWithinExtent = () => {
   let communitiesInExtent = []
   for (let community of communities) {
-    console.log("testing", community)
     if (withinExtent(community.latitude, community.longitude)) {
       // If it's an ocean-type selector and the place is coastal,
       // or it's not an oacean-type selector, add the community.
-      if ((props.ocean && community.is_coastal) || !props.ocean)
+      if (
+        (props.ocean && community.is_coastal == 1) ||
+        !props.ocean
+      ) {
         communitiesInExtent.push(community)
+        console.log('pushing', community)
+      }
     }
   }
 
@@ -289,11 +305,17 @@ onUnmounted(() => {
     </div>
     <div v-show="!placeIsSelected || dataError" class="field">
       <div class="control">
-        <label class="label">Get data for a community or by lat/long</label>
-
-        <p>
+        <label class="label is-size-4"
+          >Get data for a community or by lat/long</label
+        >
+        <p class="is-size-5">
           Only communities within the footprint of the data are included in this
           search.
+          <span v-if="ocean"
+            >Because this dataset covers the ocean,
+            <strong>only coastal communities are available</strong>, and the
+            closest point in the ocean is used to retrieve data.</span
+          >
         </p>
         <input id="gimme" v-model="inputValue" ref="gimmeInput" />
         <button
