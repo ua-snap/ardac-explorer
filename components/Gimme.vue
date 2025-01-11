@@ -4,10 +4,12 @@
 interface Props {
   bbox?: number[]
   extent?: Extent
+  ocean?: boolean
 }
 const props = withDefaults(defineProps<Props>(), {
   bbox: () => [-179.1506, 51.229, -129.9795, 71.3526],
   extent: null,
+  ocean: false,
 })
 
 let bbox = props.bbox
@@ -27,8 +29,6 @@ const getGeoJson = async (extent: Extent) => {
     geoJsonString = await import('~/assets/mizukami.geojson?raw')
   } else if (extent == 'elevation') {
     geoJsonString = await import('~/assets/elevation.geojson?raw')
-  } else if (extent == 'ocean') {
-    geoJsonString = await import('~/assets/oceans.geojson?raw')
   }
   return JSON.parse(geoJsonString!.default)
 }
@@ -39,6 +39,29 @@ let parsedGeoJson: any
 
 if (extent != null) {
   parsedGeoJson = await getGeoJson(extent)
+} else {
+  // Turn the BBOX into GeoJSON
+  parsedGeoJson = {
+    type: 'FeatureCollection',
+    features: [
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Polygon',
+          coordinates: [
+            [
+              [bbox[0], bbox[1]],
+              [bbox[0], bbox[3]],
+              [bbox[2], bbox[3]],
+              [bbox[2], bbox[1]],
+              [bbox[0], bbox[1]],
+            ],
+          ],
+        },
+        properties: {},
+      },
+    ],
+  }
 }
 
 const placesStore = usePlacesStore()
@@ -97,7 +120,16 @@ onMounted(() => {
   // When a placename is selected, populate the store.
   gimmeInput.value.addEventListener('selection', function (event: CustomEvent) {
     let community = event.detail.selection.value
-    placesStore.latLng = { lat: community.latitude, lng: community.longitude }
+
+    // If it's an ocean type selector, choose the associated ocean pixel.
+    if (props.ocean) {
+      placesStore.latLng = {
+        lat: community.ocean_lati,
+        lng: community.ocean_long,
+      }
+    } else {
+      placesStore.latLng = { lat: community.latitude, lng: community.longitude }
+    }
     placesStore.selectedCommunity = community
     placeIsSelected.value = true
     placeSelectionType.value = 'community'
@@ -109,31 +141,28 @@ onMounted(() => {
 })
 
 const withinExtent = (lat: number, lng: number) => {
-  if (extent == null) {
-    return true
-  }
-
   let latLngPoint = point([lng, lat])
   for (let feature of parsedGeoJson.features) {
+    console.log(feature, latLngPoint)
     if (booleanPointInPolygon(latLngPoint, feature)) {
       return true
     }
   }
-
   return false
 }
 
 const communitiesWithinExtent = () => {
-  if (extent == null) {
-    return communities
-  }
-
   let communitiesInExtent = []
   for (let community of communities) {
+    console.log("testing", community)
     if (withinExtent(community.latitude, community.longitude)) {
-      communitiesInExtent.push(community)
+      // If it's an ocean-type selector and the place is coastal,
+      // or it's not an oacean-type selector, add the community.
+      if ((props.ocean && community.is_coastal) || !props.ocean)
+        communitiesInExtent.push(community)
     }
   }
+
   return communitiesInExtent
 }
 
@@ -260,11 +289,9 @@ onUnmounted(() => {
     </div>
     <div v-show="!placeIsSelected || dataError" class="field">
       <div class="control">
-        <label v-if="extent != 'ocean'" class="label"
-          >Get data for a community or by lat/long</label
-        >
-        <label v-else class="label">Get data by lat/long</label>
-        <p v-if="extent != 'ocean'">
+        <label class="label">Get data for a community or by lat/long</label>
+
+        <p>
           Only communities within the footprint of the data are included in this
           search.
         </p>
