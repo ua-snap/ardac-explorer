@@ -2,7 +2,7 @@
 
 <template>
   <div class="edition">
-    &mdash; <span class="warn">PRE-RELEASE</span> 🎄 Edition, December 2024 &mdash;
+    &mdash; <span class="warn">PRE-RELEASE</span>&nbsp;&nbsp;☃️&nbsp;Edition, January 2025 &mdash;
   </div>
 </template>
 
