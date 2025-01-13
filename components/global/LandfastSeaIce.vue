@@ -7,117 +7,112 @@ const runtimeConfig = useRuntimeConfig()
 const { $Plotly, $_ } = useNuxtApp()
 import type { Data } from 'plotly.js-dist-min'
 
-const yearInput = defineModel('snowpack', { default: '2007' })
+const yearInput = defineModel('snowpack', { default: '2023' })
 
 const apiData = computed<Record<string, any>>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
-const years = $_.range(1996, 2009)
+const years = $_.range(1996, 2024)
 
 const layers: MapLayer[] = [
   {
-    id: 'landfast_sea_ice_1997',
-    title: 'June 1st, 1997',
-    source: 'rasdaman',
-    wmsLayerName: 'landfast_sea_ice_extent',
-    style: 'ardac_landfast_sea_ice_extent',
-    legend: 'landfast_sea_ice',
-    rasdamanConfiguration: { time: '1997-06-01T00:00:00.000Z' },
-  },
-  {
-    id: 'landfast_sea_ice_1998',
-    title: 'June 1st, 1998',
-    source: 'rasdaman',
-    wmsLayerName: 'landfast_sea_ice_extent',
-    style: 'ardac_landfast_sea_ice_extent',
-    legend: 'landfast_sea_ice',
-    rasdamanConfiguration: { time: '1998-06-01T00:00:00.000Z' },
-  },
-  {
-    id: 'landfast_sea_ice_1999',
-    title: 'June 1st, 1999',
-    source: 'rasdaman',
-    wmsLayerName: 'landfast_sea_ice_extent',
-    style: 'ardac_landfast_sea_ice_extent',
-    legend: 'landfast_sea_ice',
-    rasdamanConfiguration: { time: '1999-06-01T00:00:00.000Z' },
-  },
-  {
-    id: 'landfast_sea_ice_2000',
+    id: 'ardac_beaufort_daily_slie_2000',
     title: 'June 1st, 2000',
     source: 'rasdaman',
-    wmsLayerName: 'landfast_sea_ice_extent',
-    style: 'ardac_landfast_sea_ice_extent',
+    wmsLayerName: 'ardac_beaufort_daily_slie',
+    style: 'ardac_daily_slie',
     legend: 'landfast_sea_ice',
     rasdamanConfiguration: { time: '2000-06-01T00:00:00.000Z' },
   },
   {
-    id: 'landfast_sea_ice_2001',
-    title: 'June 1st, 2001',
-    source: 'rasdaman',
-    wmsLayerName: 'landfast_sea_ice_extent',
-    style: 'ardac_landfast_sea_ice_extent',
-    legend: 'landfast_sea_ice',
-    rasdamanConfiguration: { time: '2001-06-01T00:00:00.000Z' },
-  },
-  {
-    id: 'landfast_sea_ice_2002',
-    title: 'June 1st, 2002',
-    source: 'rasdaman',
-    wmsLayerName: 'landfast_sea_ice_extent',
-    style: 'ardac_landfast_sea_ice_extent',
-    legend: 'landfast_sea_ice',
-    rasdamanConfiguration: { time: '2002-06-01T00:00:00.000Z' },
-  },
-  {
-    id: 'landfast_sea_ice_2003',
-    title: 'June 1st, 2003',
-    source: 'rasdaman',
-    wmsLayerName: 'landfast_sea_ice_extent',
-    style: 'ardac_landfast_sea_ice_extent',
-    legend: 'landfast_sea_ice',
-    rasdamanConfiguration: { time: '2003-06-01T00:00:00.000Z' },
-  },
-  {
-    id: 'landfast_sea_ice_2004',
-    title: 'June 1st, 2004',
-    source: 'rasdaman',
-    wmsLayerName: 'landfast_sea_ice_extent',
-    style: 'ardac_landfast_sea_ice_extent',
-    legend: 'landfast_sea_ice',
-    rasdamanConfiguration: { time: '2004-06-01T00:00:00.000Z' },
-  },
-  {
-    id: 'landfast_sea_ice_2005',
+    id: 'ardac_beaufort_daily_slie_2005',
     title: 'June 1st, 2005',
     source: 'rasdaman',
-    wmsLayerName: 'landfast_sea_ice_extent',
-    style: 'ardac_landfast_sea_ice_extent',
+    wmsLayerName: 'ardac_beaufort_daily_slie',
+    style: 'ardac_daily_slie',
     legend: 'landfast_sea_ice',
     rasdamanConfiguration: { time: '2005-06-01T00:00:00.000Z' },
   },
   {
-    id: 'landfast_sea_ice_2006',
-    title: 'June 1st, 2006',
+    id: 'ardac_beaufort_daily_slie_2010',
+    title: 'June 1st, 2010',
     source: 'rasdaman',
-    wmsLayerName: 'landfast_sea_ice_extent',
-    style: 'ardac_landfast_sea_ice_extent',
+    wmsLayerName: 'ardac_beaufort_daily_slie',
+    style: 'ardac_daily_slie',
     legend: 'landfast_sea_ice',
-    rasdamanConfiguration: { time: '2006-06-01T00:00:00.000Z' },
+    rasdamanConfiguration: { time: '2010-06-01T00:00:00.000Z' },
   },
   {
-    id: 'landfast_sea_ice_2007',
-    title: 'June 1st, 2007',
+    id: 'ardac_beaufort_daily_slie_2015',
+    title: 'June 1st, 2015',
     source: 'rasdaman',
-    wmsLayerName: 'landfast_sea_ice_extent',
-    style: 'ardac_landfast_sea_ice_extent',
+    wmsLayerName: 'ardac_beaufort_daily_slie',
+    style: 'ardac_daily_slie',
     legend: 'landfast_sea_ice',
-    rasdamanConfiguration: { time: '2007-06-01T00:00:00.000Z' },
+    rasdamanConfiguration: { time: '2015-06-01T00:00:00.000Z' },
+  },
+  {
+    id: 'ardac_beaufort_daily_slie_2020',
+    title: 'June 1st, 2020',
+    source: 'rasdaman',
+    wmsLayerName: 'ardac_beaufort_daily_slie',
+    style: 'ardac_daily_slie',
+    legend: 'landfast_sea_ice',
+    rasdamanConfiguration: { time: '2020-06-01T00:00:00.000Z' },
+  },
+  {
+    id: 'ardac_chukchi_daily_slie_2000',
+    title: 'June 1st, 2000',
+    source: 'rasdaman',
+    wmsLayerName: 'ardac_chukchi_daily_slie',
+    style: 'ardac_daily_slie',
+    legend: 'landfast_sea_ice',
+    rasdamanConfiguration: { time: '2000-06-01T00:00:00.000Z' },
+  },
+  {
+    id: 'ardac_chukchi_daily_slie_2005',
+    title: 'June 1st, 2005',
+    source: 'rasdaman',
+    wmsLayerName: 'ardac_chukchi_daily_slie',
+    style: 'ardac_daily_slie',
+    legend: 'landfast_sea_ice',
+    rasdamanConfiguration: { time: '2005-06-01T00:00:00.000Z' },
+  },
+  {
+    id: 'ardac_chukchi_daily_slie_2010',
+    title: 'June 1st, 2010',
+    source: 'rasdaman',
+    wmsLayerName: 'ardac_chukchi_daily_slie',
+    style: 'ardac_daily_slie',
+    legend: 'landfast_sea_ice',
+    rasdamanConfiguration: { time: '2010-06-01T00:00:00.000Z' },
+  },
+  {
+    id: 'ardac_chukchi_daily_slie_2015',
+    title: 'June 1st, 2015',
+    source: 'rasdaman',
+    wmsLayerName: 'ardac_chukchi_daily_slie',
+    style: 'ardac_daily_slie',
+    legend: 'landfast_sea_ice',
+    rasdamanConfiguration: { time: '2015-06-01T00:00:00.000Z' },
+  },
+  {
+    id: 'ardac_chukchi_daily_slie_2020',
+    title: 'June 1st, 2020',
+    source: 'rasdaman',
+    wmsLayerName: 'ardac_chukchi_daily_slie',
+    style: 'ardac_daily_slie',
+    legend: 'landfast_sea_ice',
+    rasdamanConfiguration: { time: '2020-06-01T00:00:00.000Z' },
   },
 ]
 
 const legend: Record<string, LegendItem[]> = {
-  landfast_sea_ice: [{ color: '#0000FF', label: 'Sea Ice' }],
+  landfast_sea_ice: [
+    { color: '#ffffff', label: 'Absent' },
+    { color: '#ccccff', label: 'Present' },
+    { color: '#cce6cc', label: 'Land' },
+  ],
 }
 
 const mapId = 'landfast_sea_ice'
@@ -126,9 +121,10 @@ mapStore.setLegendItems(mapId, legend)
 const buildChart = () => {
   // Package the data into a 2D array (months x days) for the heatmap chart.
   // 0 = sea ice absent
-  // 1 = sea ice present
-  // 2 = no data
-  // 3 = grid padding for invalid dates
+  // 1 = land (converted from 128 to work with heatmap colormap)
+  // 2 = sea ice present (converted from 255 to work with heatmap colormap)
+  // 3 = no data
+  // 4 = grid padding for invalid dates
   let dataByMonth: number[][] = []
   for (let month = 1; month < 13; month++) {
     let monthData: number[] = []
@@ -136,20 +132,33 @@ const buildChart = () => {
     let paddedMonth = month.toString().padStart(2, '0')
     for (let dayOfMonth = 1; dayOfMonth < daysInMonth + 1; dayOfMonth++) {
       let paddedDay = dayOfMonth.toString().padStart(2, '0')
-      let date = `${paddedMonth}-${paddedDay}-${yearInput.value}`
+      let date = `${yearInput.value}-${paddedMonth}-${paddedDay}`
       if (!apiData.value.hasOwnProperty(date)) {
-        monthData.push(2)
+        monthData.push(3)
         continue
       }
       let data = parseInt(apiData.value[date])
-      if (data == 1) {
-        monthData.push(1)
-      } else {
-        monthData.push(0)
+      switch (data) {
+        case 0:
+          // Sea ice absent.
+          monthData.push(0)
+          break
+        case 128:
+          // Land. Convert 128 to 1 for heatmap colormap to work properly.
+          monthData.push(1)
+          break
+        case 255:
+          // Sea ice present. Convert 255 to 2 for heatmap colormap to work properly.
+          monthData.push(2)
+          break
+        default:
+          // This shouldn't happen, but mark as nodata if value is unrecognized.
+          monthData.push(3)
+          break
       }
     }
     let paddingLength = Math.abs(31 - daysInMonth)
-    let monthPadding = $_.fill(Array(paddingLength), 3, 0, paddingLength)
+    let monthPadding = $_.fill(Array(paddingLength), 4, 0, paddingLength)
     monthData = monthData.concat(monthPadding)
     dataByMonth.push(monthData)
   }
@@ -184,11 +193,13 @@ const buildChart = () => {
       let dayofMonth = j + 1
       if (dataByMonth[i][j] == 0) {
         dataLabels[i][j] =
-          abbreviatedMonths[i] + ' ' + dayofMonth + ': No sea ice present'
+          abbreviatedMonths[i] + ' ' + dayofMonth + ': Sea ice absent'
       } else if (dataByMonth[i][j] == 1) {
+        dataLabels[i][j] = abbreviatedMonths[i] + ' ' + dayofMonth + ': Land'
+      } else if (dataByMonth[i][j] == 2) {
         dataLabels[i][j] =
           abbreviatedMonths[i] + ' ' + dayofMonth + ': Sea ice present'
-      } else if (dataByMonth[i][j] == 2) {
+      } else if (dataByMonth[i][j] == 3) {
         dataLabels[i][j] = abbreviatedMonths[i] + ' ' + dayofMonth + ': No data'
       } else {
         dataLabels[i][j] = 'Invalid date'
@@ -204,15 +215,16 @@ const buildChart = () => {
       type: 'heatmap',
       colorscale: [
         [0.0, 'rgb(255,255,255)'],
-        [0.33, 'rgb(0,0,255)'],
-        [0.66, 'rgb(180,180,180)'],
+        [0.25, 'rgb(204,230,204)'],
+        [0.5, 'rgb(204,204,255)'],
+        [0.75, 'rgb(180,180,180)'],
         [1.0, 'rgb(96,96,96)'],
       ],
       showscale: false,
       xgap: 2,
       ygap: 2,
       zmin: 0,
-      zmax: 3,
+      zmax: 4,
       hovertemplate: '%{customdata}<extra></extra>',
       customdata: dataLabels,
     } satisfies Data,
@@ -288,22 +300,32 @@ onUnmounted(() => {
     <div class="content is-size-5">
       <h3 class="title is-3">Landfast Sea Ice Extent</h3>
       <p class="mb-6">
-        Landfast ice is sea ice that is mostly stationary and attached to land. In the dataset presented here landfast sea ice is defined as being contiguous to the coast and lacking detectable motion for approximately 20 consecutive days (<a href="https://seaice.alaska.edu/gi/publications/mahoney/Mahoney_2005_POAC_DefiningLFI.pdf">Mahoney et al. 2005</a>). Landfast sea ice is an integral component of Arctic coastal systems and hosts numerous geological and biological processes as well as human activities.
+        Landfast ice is sea ice that is mostly stationary and attached to land.
+        In the dataset presented here landfast sea ice is defined as being
+        contiguous to the coast and lacking detectable motion for approximately
+        20 consecutive days (<a
+          href="https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a5467a7bbec6a6e31e9898f89041fbb5378a26c2"
+          >Mahoney et al. 2005</a
+        >). Landfast sea ice is an integral component of Arctic coastal systems
+        and hosts numerous geological and biological processes as well as human
+        activities.
       </p>
-        <p>
-        The map below shows landfast sea ice extent for June 1st from
-        1997&ndash;2007.
+      <p>
+        The map below shows the June 1st landfast sea ice extent for the
+        Beaufort Sea and Chukchi Sea from 2000&ndash;2020 at five-year
+        intervals.
       </p>
 
       <MapBlock :mapId="mapId" class="mb-6">
         <template v-slot:layers>
+          <h4 class="title is-4 mb-3">Beaufort Sea</h4>
           <MapLayer :mapId="mapId" :layer="layers[0]" default>
             <template v-slot:title>{{ layers[0].title }}</template>
           </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[1]">
+          <MapLayer :mapId="mapId" :layer="layers[1]" default>
             <template v-slot:title>{{ layers[1].title }}</template>
           </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[2]">
+          <MapLayer :mapId="mapId" :layer="layers[2]" default>
             <template v-slot:title>{{ layers[2].title }}</template>
           </MapLayer>
           <MapLayer :mapId="mapId" :layer="layers[3]">
@@ -312,6 +334,8 @@ onUnmounted(() => {
           <MapLayer :mapId="mapId" :layer="layers[4]">
             <template v-slot:title>{{ layers[4].title }}</template>
           </MapLayer>
+          <hr />
+          <h4 class="title is-4 mb-3">Chukchi Sea</h4>
           <MapLayer :mapId="mapId" :layer="layers[5]">
             <template v-slot:title>{{ layers[5].title }}</template>
           </MapLayer>
@@ -326,9 +350,6 @@ onUnmounted(() => {
           </MapLayer>
           <MapLayer :mapId="mapId" :layer="layers[9]">
             <template v-slot:title>{{ layers[9].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[10]">
-            <template v-slot:title>{{ layers[10].title }}</template>
           </MapLayer>
         </template>
       </MapBlock>
