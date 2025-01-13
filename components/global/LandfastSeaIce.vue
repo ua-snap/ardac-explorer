@@ -341,7 +341,7 @@ onUnmounted(() => {
       </p>
 
       <Gimme
-        :bbox="[-180, 45, 180, 90]"
+        extent="slie"
         ocean
       />
 

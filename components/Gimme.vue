@@ -6,6 +6,7 @@ interface Props {
   extent?: Extent
   ocean?: boolean
 }
+
 const props = withDefaults(defineProps<Props>(), {
   bbox: () => [-179.1506, 51.229, -129.9795, 71.3526],
   extent: null,
@@ -29,6 +30,10 @@ const getGeoJson = async (extent: Extent) => {
     geoJsonString = await import('~/assets/mizukami.geojson?raw')
   } else if (extent == 'elevation') {
     geoJsonString = await import('~/assets/elevation.geojson?raw')
+  } else if (extent == 'slie') {
+    geoJsonString = await import('~/assets/slie.geojson?raw')
+  } else {
+    throw 'unknown extent type in gimme.vue'
   }
   return JSON.parse(geoJsonString!.default)
 }
@@ -169,12 +174,8 @@ const communitiesWithinExtent = () => {
     if (withinExtent(community.latitude, community.longitude)) {
       // If it's an ocean-type selector and the place is coastal,
       // or it's not an oacean-type selector, add the community.
-      if (
-        (props.ocean && community.is_coastal == 1) ||
-        !props.ocean
-      ) {
+      if ((props.ocean && community.is_coastal == 1) || !props.ocean) {
         communitiesInExtent.push(community)
-        console.log('pushing', community)
       }
     }
   }
