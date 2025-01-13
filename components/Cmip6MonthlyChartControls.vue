@@ -11,9 +11,9 @@ const chartStore = useChartStore()
 
 const defaultScenario = 'ssp585'
 
-const modelInput = defineModel('model', { default: 'EC-Earth3-Veg' })
+let modelInput = defineModel('model', { default: 'EC-Earth3-Veg' })
 const scenarioInput = defineModel('scenario', { default: defaultScenario })
-const monthInput = defineModel('month', { default: '08' })
+let monthInput = defineModel('month', { default: '08' })
 
 if (props.defaultModel) {
   modelInput.value = props.defaultModel
@@ -65,6 +65,39 @@ chartStore.labels = {
     '11': 'November',
     '12': 'December',
   },
+}
+
+// Sea ice concentration data is only available for some models.
+if (props.datasetKeys?.includes('siconc')) {
+  chartStore.labels = {
+    models: {
+      'HadGEM3-GC31-LL': 'HadGEM3-GC31-LL',
+      'HadGEM3-GC31-MM': 'HadGEM3-GC31-MM',
+      MIROC6: 'MIROC6',
+      'NorESM2-MM': 'NorESM2-MM',
+      TaiESM1: 'TaiESM1',
+    },
+    scenarios: {
+      ssp126: 'SSP1-2.6',
+      ssp245: 'SSP2-4.5',
+      ssp370: 'SSP3-7.0',
+      ssp585: 'SSP5-8.5',
+    },
+    months: {
+      '01': 'January',
+      '02': 'February',
+      '03': 'March',
+      '04': 'April',
+      '05': 'May',
+      '06': 'June',
+      '07': 'July',
+      '08': 'August',
+      '09': 'September',
+      '10': 'October',
+      '11': 'November',
+      '12': 'December',
+    },
+  }
 }
 
 // Some models do not have data for all scenarios. Use this function to react

@@ -107,16 +107,30 @@ const buildChart = () => {
         values.push(value)
       })
 
-      traces.push({
-        x: config.years,
-        y: values,
-        mode: 'markers',
-        type: 'scatter',
-        name: config.label,
-        marker: {
-          symbol: config.symbol,
-        },
-      })
+      // Makes chart for sea ice concentration into a line chart
+      if (props.dataKey === 'siconc') {
+        traces.push({
+          x: config.years,
+          y: values,
+          mode: 'lines',
+          type: 'scatter',
+          name: config.label,
+          line: {
+            shape: 'spline',
+          },
+        })
+      } else {
+        traces.push({
+          x: config.years,
+          y: values,
+          mode: 'markers',
+          type: 'scatter',
+          name: config.label,
+          marker: {
+            symbol: config.symbol,
+          },
+        })
+      }
 
       allChartValues = allChartValues.concat(values)
     })

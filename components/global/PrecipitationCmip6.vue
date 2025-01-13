@@ -134,8 +134,9 @@ onUnmounted(() => {
       <XrayIntroblurb resolution="100" unit="km" cmip="6" beta />
       <p class="mb-6">
         The map below shows modeled total precipitation for the month of August
-        using the EC-Earth3-Veg model at 25-year intervals from 1950–2000.
-        Intervals from 2025–2100 are based on the SSP5-8.5 emissions scenario.
+        using the EC-Earth3-Veg model at 25-year intervals from 1950&ndash;2000.
+        Intervals from 2025&ndash;2100 are based on the SSP5-8.5 emissions
+        scenario.
       </p>
 
       <MapBlock :mapId="mapId" crs="EPSG:3572" class="mb-6">
