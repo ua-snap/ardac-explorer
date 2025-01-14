@@ -15,6 +15,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'cmip6_monthly',
     style: 'ardac_siconc',
     legend: 'siconc',
+    default: true,
     rasdamanConfiguration: {
       dim_model: 7,
       dim_scenario: 0,
@@ -122,8 +123,9 @@ mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
+      <XrayIntroblurb resolution="100" unit="km" cmip="6" beta />
       <h3 class="title is-3">Sea Ice Concentration, CMIP6</h3>
       <p class="mb-6">
         The map below shows modeled sea ice concentration for the month of March
@@ -134,26 +136,14 @@ mapStore.setLegendItems(mapId, legend)
 
       <MapBlock :mapId="mapId" class="mb-6">
         <template v-slot:layers>
-          <MapLayer :mapId="mapId" :layer="layers[0]" default>
-            <template v-slot:title>{{ layers[0].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[1]">
-            <template v-slot:title>{{ layers[1].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[2]">
-            <template v-slot:title>{{ layers[2].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[3]">
-            <template v-slot:title>{{ layers[3].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[4]">
-            <template v-slot:title>{{ layers[4].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[5]">
-            <template v-slot:title>{{ layers[5].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[6]">
-            <template v-slot:title>{{ layers[6].title }}</template>
+          <MapLayer
+            v-for="layer in layers"
+            :mapId="mapId"
+            :layer="layer"
+            :key="layer.id"
+            :default="layer.default"
+          >
+            <template v-slot:title>{{ layer.title }}</template>
           </MapLayer>
         </template>
       </MapBlock>

@@ -7,7 +7,7 @@ const runtimeConfig = useRuntimeConfig()
 const apiData = computed<Record<string, any>>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
-const layers: MapLayer[] = [
+const prsn_layers: MapLayer[] = [
   {
     id: 'prsn_cmip6_1950',
     title: 'March 1950, MIROC6',
@@ -15,6 +15,7 @@ const layers: MapLayer[] = [
     wmsLayerName: 'cmip6_monthly',
     style: 'ardac_prsn',
     legend: 'prsn',
+    default: true,
     rasdamanConfiguration: {
       dim_model: 7,
       dim_scenario: 0,
@@ -106,6 +107,9 @@ const layers: MapLayer[] = [
     },
     coastline: true,
   },
+]
+
+const swe_layers: MapLayer[] = [
   {
     id: 'swe_cmip6_1950',
     title: 'March 1950, MIROC6',
@@ -244,8 +248,9 @@ mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
+      <XrayIntroblurb resolution="100" unit="km" cmip="6" beta />
       <h3 class="title is-3">Snow, CMIP6</h3>
       <p class="mb-6">
         The map below shows modeled snow variables for the month of March using
@@ -256,48 +261,24 @@ mapStore.setLegendItems(mapId, legend)
       <MapBlock :mapId="mapId" class="mb-6">
         <template v-slot:layers>
           <h4 class="title is-4 mb-3">March Precipitation as Snow</h4>
-          <MapLayer :mapId="mapId" :layer="layers[0]" default>
-            <template v-slot:title>{{ layers[0].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[1]">
-            <template v-slot:title>{{ layers[1].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[2]">
-            <template v-slot:title>{{ layers[2].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[3]">
-            <template v-slot:title>{{ layers[3].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[4]">
-            <template v-slot:title>{{ layers[4].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[5]">
-            <template v-slot:title>{{ layers[5].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[6]">
-            <template v-slot:title>{{ layers[6].title }}</template>
+          <MapLayer
+            v-for="layer in prsn_layers"
+            :mapId="mapId"
+            :layer="layer"
+            :key="layer.id"
+            :default="layer.default"
+          >
+            <template v-slot:title>{{ layer.title }}</template>
           </MapLayer>
           <h4 class="title is-4 mb-3">March Snow Water Equivalent</h4>
-          <MapLayer :mapId="mapId" :layer="layers[7]">
-            <template v-slot:title>{{ layers[7].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[8]">
-            <template v-slot:title>{{ layers[8].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[9]">
-            <template v-slot:title>{{ layers[9].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[10]">
-            <template v-slot:title>{{ layers[10].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[11]">
-            <template v-slot:title>{{ layers[11].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[12]">
-            <template v-slot:title>{{ layers[12].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[13]">
-            <template v-slot:title>{{ layers[13].title }}</template>
+          <MapLayer
+            v-for="layer in swe_layers"
+            :mapId="mapId"
+            :layer="layer"
+            :key="layer.id"
+            :default="layer.default"
+          >
+            <template v-slot:title>{{ layer.title }}</template>
           </MapLayer>
         </template>
       </MapBlock>
