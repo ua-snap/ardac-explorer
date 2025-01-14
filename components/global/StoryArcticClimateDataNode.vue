@@ -42,11 +42,11 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   summer_days: [
-    { color: '#fdd0a2', label: '&ge;1 day, &lt;5 days' },
-    { color: '#fdae6b', label: '&ge;5 days, &lt;10 days' },
-    { color: '#fd8d3c', label: '&ge;10 days, &lt;20 days' },
-    { color: '#e6550d', label: '&ge;20 days, &lt;40 days' },
-    { color: '#a63603', label: '&ge;40 days' },
+    { color: '#f4d4b4', label: '&ge;0 days, &lt;5 days' },
+    { color: '#f4bc8f', label: '&ge;5 days, &lt;10 days' },
+    { color: '#f5a570', label: '&ge;10 days, &lt;20 days' },
+    { color: '#e58057', label: '&ge;20 days, &lt;40 days' },
+    { color: '#b8694d', label: '&ge;40 days' },
   ],
 }
 
@@ -96,7 +96,9 @@ onMounted(() => {
       </p>
 
       <p class="is-size-4">
-        <NuxtLink to="/tag/CMIP6">&#x2192; browse available CMIP6 ACDN data on this site</NuxtLink>
+        <NuxtLink to="/tag/CMIP6"
+          >&#x2192; browse available CMIP6 ACDN data on this site</NuxtLink
+        >
       </p>
 
       <div class="is-size-5">
@@ -227,15 +229,15 @@ onMounted(() => {
           days using CMIP6 temperature data for three eras. The historical era
           (1980&ndash;2009) uses model baseline data from the TaiESM1 dataset.
           The mid-century era (2040&ndash;2069) and late-century era
-          (2070&ndash;2099) use TaiESM1 data under the climate scenario
-          SSP5-8.5 scenario.
+          (2070&ndash;2099) use TaiESM1 data under the climate scenario SSP5-8.5
+          scenario.
         </p>
       </div>
     </div>
   </section>
   <section class="section">
     <div class="block mt-5">
-      <MapBlock :mapId="mapId">
+      <MapBlock :mapId="mapId" crs="EPSG:3572">
         <template v-slot:layers>
           <MapLayer :mapId="mapId" :layer="layers[0]" default>
             <template v-slot:title>{{ layers[0].title }}</template>
@@ -256,11 +258,16 @@ onMounted(() => {
 
   <section class="section">
     <div class="clamp">
-      <h3 id="available-data" class="title is-3">Overview of CMIP6 data in the ACDN</h3>
+      <h3 id="available-data" class="title is-3">
+        Overview of CMIP6 data in the ACDN
+      </h3>
       <div class="content is-size-5">
         <p>
           Some data listed below are not fully integrated into the web site, but
-          work is in progress to add all data assets.  <NuxtLink to="/tag/CMIP6">&#x2192; browse available CMIP6 ACDN data on this site</NuxtLink>
+          work is in progress to add all data assets.
+          <NuxtLink to="/tag/CMIP6"
+            >&#x2192; browse available CMIP6 ACDN data on this site</NuxtLink
+          >
         </p>
       </div>
       <div class="tabs is-large">
@@ -642,8 +649,7 @@ onMounted(() => {
     </div>
 
     <Bios :people="['Scott Rupp', 'Bruce Crevensten']" />
-
-</section>
+  </section>
 </template>
 
 <style scoped lang="scss">
