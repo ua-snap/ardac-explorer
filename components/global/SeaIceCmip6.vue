@@ -165,7 +165,7 @@ mapStore.setLegendItems(mapId, legend)
         where you can download the data that is used to populate the chart.
       </p>
 
-      <Gimme />
+      <Gimme :bbox="[-180, 45, 180, 90]" ocean />
       <Cmip6MonthlyChartControls
         defaultModel="MIROC6"
         defaultMonth="03"

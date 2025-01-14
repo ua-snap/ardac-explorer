@@ -116,7 +116,7 @@ const buildChart = () => {
           type: 'scatter',
           name: config.label,
           line: {
-            shape: 'spline',
+            shape: 'linear',
           },
         })
       } else {
