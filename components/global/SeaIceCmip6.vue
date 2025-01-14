@@ -12,7 +12,7 @@ const layers: MapLayer[] = [
     id: 'siconc_cmip6_1950',
     title: 'March 1950, MIROC6',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_cryo_test',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
@@ -26,7 +26,7 @@ const layers: MapLayer[] = [
     id: 'siconc_cmip6_1975',
     title: 'March 1975, MIROC6',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_cryo_test',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
@@ -40,7 +40,7 @@ const layers: MapLayer[] = [
     id: 'siconc_cmip6_2000',
     title: 'March 2000, MIROC6',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_cryo_test',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
@@ -54,7 +54,7 @@ const layers: MapLayer[] = [
     id: 'siconc_cmip6_2025',
     title: 'March 2025, MIROC6',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_cryo_test',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
@@ -68,7 +68,7 @@ const layers: MapLayer[] = [
     id: 'siconc_cmip6_2050',
     title: 'March 2050, MIROC6',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_cryo_test',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
@@ -82,7 +82,7 @@ const layers: MapLayer[] = [
     id: 'siconc_cmip6_2075',
     title: 'March 2075, MIROC6',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_cryo_test',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
@@ -96,7 +96,7 @@ const layers: MapLayer[] = [
     id: 'siconc_cmip6_2100',
     title: 'March 2100, MIROC6',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_cryo_test',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
@@ -110,7 +110,6 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   siconc: [
-    { color: '#f1eef6', label: 'Not Modeled' },
     { color: '#045a8d', label: '0&#37; &ndash; 70&#37;' },
     { color: '#2b8cbe', label: '70&#37; &ndash; 80&#37;' },
     { color: '#74a9cf', label: '80&#37; &ndash; 90&#37;' },
