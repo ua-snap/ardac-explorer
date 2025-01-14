@@ -24,6 +24,9 @@ interface Community {
   latitude: number
   longitude: number
   type: string
+  is_coastal?: number
+  ocean_lati?: number
+  ocean_long?: number
 }
 
 type CommunityValue = Community | undefined
