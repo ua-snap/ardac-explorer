@@ -54,10 +54,10 @@ const expandedText = computed(() => {
     <ul v-show="expanded">
       <li>
         <NuxtLink
-          to="/tag/GIS"
+          to="/tag/Hydrology"
           data-umami-event="Tagbar Clicked"
-          data-umami-event-tag="GIS"
-          >GIS</NuxtLink
+          data-umami-event-tag="Hydrology"
+          >Hydrology</NuxtLink
         >
       </li>
       <li>
