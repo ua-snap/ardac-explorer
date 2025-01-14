@@ -297,7 +297,9 @@ onUnmounted(() => {
     <div v-show="placeIsSelected && !dataError" class="selected-place">
       <div class="content is-size-5">
         <p>
-          Showing data for {{ placeName }}.
+          Showing data for
+          <span v-if="props.ocean">an ocean location near</span>
+          {{ placeName }}.
           <button class="button is-link is-light" @click="clearSelectedPlace">
             &#x21BA; Pick a new place
           </button>

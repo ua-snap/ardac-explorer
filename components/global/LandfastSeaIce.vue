@@ -299,7 +299,7 @@ onUnmounted(() => {
   <section class="section">
     <div class="content is-size-5">
       <h3 class="title is-3">Landfast Sea Ice Extent</h3>
-      <p class="mb-6">
+      <p>
         Landfast ice is sea ice that is mostly stationary and attached to land.
         In the dataset presented here landfast sea ice is defined as being
         contiguous to the coast and lacking detectable motion for approximately
@@ -310,7 +310,7 @@ onUnmounted(() => {
         and hosts numerous geological and biological processes as well as human
         activities.
       </p>
-      <p>
+      <p class="mb-6">
         The map below shows the June 1st landfast sea ice extent for the
         Beaufort Sea and Chukchi Sea from 2000&ndash;2020 at five-year
         intervals.
@@ -361,10 +361,7 @@ onUnmounted(() => {
         is used to populate the chart.
       </p>
 
-      <Gimme
-        extent="slie"
-        ocean
-      />
+      <Gimme extent="slie" ocean />
 
       <div v-if="latLng && apiData">
         <div class="parameter">
@@ -380,6 +377,40 @@ onUnmounted(() => {
       </div>
       <div id="chart"></div>
       <div v-if="latLng && apiData" class="my-6">
+        <div class="legend mb-6">
+          <div class="color is-flex is-flex-direction-row">
+            <div
+              class="swatch bordered"
+              style="background-color: rgb(255, 255, 255)"
+            ></div>
+            <div>Sea ice absent</div>
+          </div>
+          <div class="color is-flex is-flex-direction-row">
+            <div
+              class="swatch"
+              style="background-color: rgb(204, 204, 255)"
+            ></div>
+            <div>Sea ice present</div>
+          </div>
+          <div class="color is-flex is-flex-direction-row">
+            <div
+              class="swatch"
+              style="background-color: rgb(204, 230, 204)"
+            ></div>
+            <div>Land</div>
+          </div>
+          <div class="color is-flex is-flex-direction-row">
+            <div
+              class="swatch"
+              style="background-color: rgb(180, 180, 180)"
+            ></div>
+            <div>No data</div>
+          </div>
+          <div class="color is-flex is-flex-direction-row">
+            <div class="swatch" style="background-color: rgb(96, 96, 96)"></div>
+            <div>Invalid date</div>
+          </div>
+        </div>
         <h4 class="title is-4">
           Download landfast sea ice data for {{ latLng.lat }},
           {{ latLng.lng }}
@@ -423,6 +454,26 @@ onUnmounted(() => {
   display: inline-block;
   select {
     background-color: $white-lighter;
+  }
+}
+.legend {
+  overflow: hidden;
+  max-width: 630px;
+  margin: 20px auto;
+  line-height: 1.2;
+}
+.color {
+  width: 210px;
+  padding: 0 10px;
+  float: left;
+  margin: 4px 0;
+}
+.swatch {
+  width: 20px;
+  height: 20px;
+  margin-right: 8px;
+  &.bordered {
+    border: 1px solid #ccc;
   }
 }
 </style>
