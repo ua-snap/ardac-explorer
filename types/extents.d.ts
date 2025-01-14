@@ -3,5 +3,5 @@ type Extent =
   | 'blockyAlaska'
   | 'mizukami'
   | 'elevation'
-  | 'ocean'
+  | 'slie'
   | null
