@@ -258,7 +258,7 @@ mapStore.setLegendItems(mapId, legend)
         from 2025&ndash;2100 are based on the SSP5-8.5 emissions scenario.
       </p>
 
-      <MapBlock :mapId="mapId" class="mb-6">
+      <MapBlock :mapId="mapId" crs="EPSG:3572" class="mb-6">
         <template v-slot:layers>
           <h4 class="title is-4 mb-3">March Precipitation as Snow</h4>
           <MapLayer
