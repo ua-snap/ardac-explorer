@@ -81,10 +81,9 @@ onUnmounted(() => {
 
       <p>
         Enter a location below to see a chart of mean annual snow melt per
-        decade for a point location using the CanESM2 model and the selected
-        emissions scenario and month. After entering a location, links will be
-        provided where you can download the data that is used to populate the
-        chart.
+        decade for a point location using the selected model, emissions
+        scenario, and month. After entering a location, links will be provided
+        where you can download the data that is used to populate the chart.
       </p>
 
       <Gimme extent="mizukami" />
