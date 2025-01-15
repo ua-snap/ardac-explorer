@@ -11,9 +11,9 @@ const chartStore = useChartStore()
 
 const defaultScenario = 'ssp585'
 
-let modelInput = defineModel('model', { default: 'EC-Earth3-Veg' })
+const modelInput = defineModel('model', { default: 'EC-Earth3-Veg' })
 const scenarioInput = defineModel('scenario', { default: defaultScenario })
-let monthInput = defineModel('month', { default: '08' })
+const monthInput = defineModel('month', { default: '08' })
 
 if (props.defaultModel) {
   modelInput.value = props.defaultModel
