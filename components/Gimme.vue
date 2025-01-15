@@ -138,8 +138,8 @@ onMounted(() => {
     // If it's an ocean type selector, choose the associated ocean pixel.
     if (props.ocean) {
       placesStore.latLng = {
-        lat: community.ocean_lati,
-        lng: community.ocean_long,
+        lat: community.ocean_lat1,
+        lng: community.ocean_lon1,
       }
     } else {
       placesStore.latLng = { lat: community.latitude, lng: community.longitude }
