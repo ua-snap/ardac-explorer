@@ -29,7 +29,7 @@
             <ItemBrief slug="indicator-hd" showTag />
           </li>
           <li>
-            <ItemBrief slug="map-permafrost" showTag />
+            <ItemBrief slug="sea-ice-cmip6" showTag />
           </li>
           <li>
             <ItemBrief slug="indicator-wsdi" showTag />
@@ -84,15 +84,32 @@
           <hr class="light" />
           <p>Resources</p>
           <ul>
-            <li class="mb-3">Sign up for our occasional, yet riveting, <a href="https://uaf-snap.org/keep-up-with-snap/">newsletter</a></li>
-            <li class="mb-3"><a href="mailto:uaf-snap-data-tools@alaska.edu">Email us</a> with questions</li>
-            <li class="mb-3">Visit the <a href="https://earthmaps.io">data API</a> that this webapp uses to provide data access</li>
-            <li class="mb-3">Learn about <NuxtLink to="/people">our team and who we are</NuxtLink></li>
+            <li class="mb-3">
+              Sign up for our occasional, yet riveting,
+              <a href="https://uaf-snap.org/keep-up-with-snap/">newsletter</a>
+            </li>
+            <li class="mb-3">
+              <a href="mailto:uaf-snap-data-tools@alaska.edu">Email us</a> with
+              questions
+            </li>
+            <li class="mb-3">
+              Visit the <a href="https://earthmaps.io">data API</a> that this
+              webapp uses to provide data access
+            </li>
+            <li class="mb-3">
+              Learn about
+              <NuxtLink to="/people">our team and who we are</NuxtLink>
+            </li>
           </ul>
-          <hr/>
+          <hr />
           <h4 class="title is-4">Get involved!</h4>
-          <p>You can help build this!  Do you have an idea for a data story?  Do you create datasets?  We would love to hear your ideas!</p>
-          <a href="mailto:uaf-snap-data-tools@alaska.edu" class="button is-info">Get in touch</a>
+          <p>
+            You can help build this! Do you have an idea for a data story? Do
+            you create datasets? We would love to hear your ideas!
+          </p>
+          <a href="mailto:uaf-snap-data-tools@alaska.edu" class="button is-info"
+            >Get in touch</a
+          >
         </div>
       </div>
     </div>
