@@ -171,7 +171,7 @@ onUnmounted(() => {
         download the data that is used to populate the charts.
       </p>
 
-      <Gimme />
+      <Gimme :bbox="[-180, 50, 180, 90]" />
       <Cmip6MonthlyChartControls
         defaultModel="GFDL-ESM4"
         defaultMonth="07"
