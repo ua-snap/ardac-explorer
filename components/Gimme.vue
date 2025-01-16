@@ -138,8 +138,8 @@ onMounted(() => {
     // If it's an ocean type selector, choose the associated ocean pixel.
     if (props.ocean) {
       placesStore.latLng = {
-        lat: community.ocean_lati,
-        lng: community.ocean_long,
+        lat: community.ocean_lat1,
+        lng: community.ocean_lon1,
       }
     } else {
       placesStore.latLng = { lat: community.latitude, lng: community.longitude }
@@ -297,7 +297,9 @@ onUnmounted(() => {
     <div v-show="placeIsSelected && !dataError" class="selected-place">
       <div class="content is-size-5">
         <p>
-          Showing data for {{ placeName }}.
+          Showing data for
+          <span v-if="props.ocean">an ocean location near</span>
+          {{ placeName }}.
           <button class="button is-link is-light" @click="clearSelectedPlace">
             &#x21BA; Pick a new place
           </button>
