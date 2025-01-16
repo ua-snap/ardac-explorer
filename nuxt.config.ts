@@ -98,7 +98,7 @@ export default defineNuxtConfig({
   runtimeConfig: {
     public: {
       geoserverUrl:
-        process.env.GEOSERVER_URL || 'https://gs.mapventure.org/geoserver/wms',
+        process.env.GEOSERVER_URL || 'https://gs.earthmaps.io/geoserver/wms',
       apiUrl: process.env.SNAP_API_URL || 'https://earthmaps.io',
       rasdamanUrl:
         process.env.RASDAMAN_URL || 'https://maps.earthmaps.io/rasdaman/ows',

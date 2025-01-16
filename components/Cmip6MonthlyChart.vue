@@ -3,6 +3,7 @@ const props = defineProps<{
   label: string
   units?: string
   dataKey: string
+  chartType?: string
 }>()
 
 import type { Data } from 'plotly.js-dist-min'
@@ -107,16 +108,30 @@ const buildChart = () => {
         values.push(value)
       })
 
-      traces.push({
-        x: config.years,
-        y: values,
-        mode: 'markers',
-        type: 'scatter',
-        name: config.label,
-        marker: {
-          symbol: config.symbol,
-        },
-      })
+      // Makes chart for sea ice concentration into a line chart
+      if (props.chartType === 'lines') {
+        traces.push({
+          x: config.years,
+          y: values,
+          mode: 'lines',
+          type: 'scatter',
+          name: config.label,
+          line: {
+            shape: 'linear',
+          },
+        })
+      } else {
+        traces.push({
+          x: config.years,
+          y: values,
+          mode: 'markers',
+          type: 'scatter',
+          name: config.label,
+          marker: {
+            symbol: config.symbol,
+          },
+        })
+      }
 
       allChartValues = allChartValues.concat(values)
     })

@@ -67,6 +67,22 @@ chartStore.labels = {
   },
 }
 
+// Sea ice concentration data is only available for some models.
+if (props.datasetKeys?.includes('siconc')) {
+  if (props.datasetKeys?.includes('siconc')) {
+    chartStore.labels = {
+      ...chartStore.labels,
+      models: {
+        'HadGEM3-GC31-LL': 'HadGEM3-GC31-LL',
+        'HadGEM3-GC31-MM': 'HadGEM3-GC31-MM',
+        MIROC6: 'MIROC6',
+        'NorESM2-MM': 'NorESM2-MM',
+        TaiESM1: 'TaiESM1',
+      },
+    }
+  }
+}
+
 // Some models do not have data for all scenarios. Use this function to react
 // accordingly by graying out scenario options or reverting back to the default
 // scenario if user accidentally lands on an invalid model/scenrio combination.
