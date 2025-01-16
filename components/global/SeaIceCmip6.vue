@@ -129,7 +129,7 @@ mapStore.setLegendItems(mapId, legend)
       <h3 class="title is-3">Sea Ice Concentration, CMIP6</h3>
       <p class="mb-6">
         The map below shows modeled sea ice concentration for the month of March
-        using the EC-Earth3-Veg model at 25-year intervals from 1950&ndash;2000.
+        using the MIROC6 model at 25-year intervals from 1950&ndash;2100.
         Intervals from 2025&ndash;2100 are based on the SSP5-8.5 emissions
         scenario.
       </p>
