@@ -301,6 +301,7 @@ mapStore.setLegendItems(mapId, legend)
         label="Precipitation as Snow in kg m⁻² s⁻¹"
         units="kg m⁻² s⁻¹"
         dataKey="prsn"
+        class="mb-5"
       />
       <Cmip6MonthlyChart
         label="Snow Water Equivalent in mm"
