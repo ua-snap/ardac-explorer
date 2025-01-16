@@ -96,31 +96,31 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   sfcWind: [
-    { color: '#252525', label: '&ge;0 m/s, &lt;1.5 m/s' },
-    { color: '#636363', label: '&ge;1.5 m/s, &lt;3 m/s' },
-    { color: '#969696', label: '&ge;3 m/s, &lt;4.5 m/s' },
-    { color: '#cccccc', label: '&ge;4.5 m/s, &lt;6 m/s' },
-    { color: '#f7f7f7', label: '&ge;6 m/s' },
+    { color: '#5c5c5c', label: '&ge;0 m/s, &lt;1.5 m/s' },
+    { color: '#878787', label: '&ge;1.5 m/s, &lt;3 m/s' },
+    { color: '#ababab', label: '&ge;3 m/s, &lt;4.5 m/s' },
+    { color: '#d1d1d1', label: '&ge;4.5 m/s, &lt;6 m/s' },
+    { color: '#efefef', label: '&ge;6 m/s' },
   ],
   uas: [
-    { color: '#c51b7d', label: '&lt;-3 m/s' },
-    { color: '#de77ae', label: '&ge;-3 m/s, &lt;-2 m/s' },
-    { color: '#f1b6da', label: '&ge;-2 m/s, &lt;-1 m/s' },
-    { color: '#fde0ef', label: '&ge;-1 m/s, &lt;0 m/s' },
-    { color: '#e6f5d0', label: '&ge;0 m/s, &lt;1 m/s' },
-    { color: '#b8e186', label: '&ge;1 m/s, &lt;2 m/s' },
-    { color: '#7fbc41', label: '&ge;2 m/s, &lt;3 m/s' },
-    { color: '#4d9221', label: '&ge;3 m/s' },
+    { color: '#cf5c9a', label: '&lt;-3 m/s' },
+    { color: '#e096bd', label: '&ge;-3 m/s, &lt;-2 m/s' },
+    { color: '#ecc2da', label: '&ge;-2 m/s, &lt;-1 m/s' },
+    { color: '#f3dfea', label: '&ge;-1 m/s, &lt;0 m/s' },
+    { color: '#e3eed5', label: '&ge;0 m/s, &lt;1 m/s' },
+    { color: '#c4dfa1', label: '&ge;1 m/s, &lt;2 m/s' },
+    { color: '#9cc674', label: '&ge;2 m/s, &lt;3 m/s' },
+    { color: '#7aa95f', label: '&ge;3 m/s' },
   ],
   vas: [
-    { color: '#c51b7d', label: '&lt;-3 m/s' },
-    { color: '#de77ae', label: '&ge;-3 m/s, &lt;-2 m/s' },
-    { color: '#f1b6da', label: '&ge;-2 m/s, &lt;-1 m/s' },
-    { color: '#fde0ef', label: '&ge;-1 m/s, &lt;0 m/s' },
-    { color: '#e6f5d0', label: '&ge;0 m/s, &lt;1 m/s' },
-    { color: '#b8e186', label: '&ge;1 m/s, &lt;2 m/s' },
-    { color: '#7fbc41', label: '&ge;2 m/s, &lt;3 m/s' },
-    { color: '#4d9221', label: '&ge;3 m/s' },
+    { color: '#cf5c9a', label: '&lt;-3 m/s' },
+    { color: '#e096bd', label: '&ge;-3 m/s, &lt;-2 m/s' },
+    { color: '#ecc2da', label: '&ge;-2 m/s, &lt;-1 m/s' },
+    { color: '#f3dfea', label: '&ge;-1 m/s, &lt;0 m/s' },
+    { color: '#e3eed5', label: '&ge;0 m/s, &lt;1 m/s' },
+    { color: '#c4dfa1', label: '&ge;1 m/s, &lt;2 m/s' },
+    { color: '#9cc674', label: '&ge;2 m/s, &lt;3 m/s' },
+    { color: '#7aa95f', label: '&ge;3 m/s' },
   ],
 }
 
@@ -133,9 +133,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Wind, CMIP6</h3>
+      <XrayIntroblurb resolution="100" unit="km" cmip="6" beta />
       <p class="mb-6">
         The map below shows modeled mean near-surface wind speed, mean
         near-surface eastward wind speed, and near-surface northward wind speed
@@ -144,7 +145,7 @@ onUnmounted(() => {
         SSP5-8.5 emissions scenario.
       </p>
 
-      <MapBlock :mapId="mapId" class="mb-6">
+      <MapBlock :mapId="mapId" crs="EPSG:3572" class="mb-6">
         <template v-slot:layers>
           <h4 class="title is-4 mb-3">August Near-surface Wind Speed</h4>
           <MapLayer :mapId="mapId" :layer="layers[0]" default>

@@ -67,9 +67,10 @@ mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Heavy Precipitation Days</h3>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
       <p class="mb-6">
         Heavy precipitation days are the number of days in a year with at least
         10㎜ precipitation. The map below shows the 30-year mean of heavy

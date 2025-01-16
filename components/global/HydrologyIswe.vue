@@ -90,9 +90,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Ice/Snow Water Equivalent</h3>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
       <p class="mb-6">
         The map below shows the 30-year mean monthly ice/snow water equivalent
         for three eras using the CanESM2 model under the RCP 8.5 emissions
@@ -123,11 +124,11 @@ onUnmounted(() => {
       </MapBlock>
 
       <p>
-        Enter a location below to see decadal charts of monthly mean ice/snow
-        water equivalent for a point location using the CanESM2 model and the
-        selected emissions scenario and month. After entering a location, links
-        will be provided where you can download the data that is used to
-        populate the charts.
+        Enter a location below to see charts of mean annual ice/snow water
+        equivalent per decade for a point location using the selected model,
+        emissions scenario, and month. After entering a location, links will be
+        provided where you can download the data that is used to populate the
+        charts.
       </p>
 
       <Gimme extent="mizukami" />

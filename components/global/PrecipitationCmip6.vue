@@ -21,6 +21,7 @@ const layers: MapLayer[] = [
       time: '1950-08-15T12:00:00.000Z',
     },
     coastline: true,
+    default: true,
   },
   {
     id: 'precipitation_cmip6_1975',
@@ -110,11 +111,11 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   pr: [
-    { color: '#edf8fbff', label: '&ge;0㎜, &lt;50㎜' },
-    { color: '#b2e2e2ff', label: '&ge;50㎜, &lt;100㎜' },
-    { color: '#66c2a4ff', label: '&ge;100㎜, &lt;150㎜' },
-    { color: '#2ca25fff', label: '&ge;150㎜, &lt;200㎜' },
-    { color: '#006d2cff', label: '&ge;200㎜' },
+    { color: '#e9f0f2', label: '&ge;0㎜, &lt;50㎜' },
+    { color: '#c0e1e2', label: '&ge;50㎜, &lt;100㎜' },
+    { color: '#8dcbb5', label: '&ge;100㎜, &lt;150㎜' },
+    { color: '#6ab385', label: '&ge;150㎜, &lt;200㎜' },
+    { color: '#548f62', label: '&ge;200㎜' },
   ],
 }
 
@@ -127,37 +128,26 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Precipitation, CMIP6</h3>
+      <XrayIntroblurb resolution="100" unit="km" cmip="6" beta />
       <p class="mb-6">
         The map below shows modeled total precipitation for the month of August
         using the EC-Earth3-Veg model at 25-year intervals from 1950–2000.
         Intervals from 2025–2100 are based on the SSP5-8.5 emissions scenario.
       </p>
 
-      <MapBlock :mapId="mapId" class="mb-6">
+      <MapBlock :mapId="mapId" crs="EPSG:3572" class="mb-6">
         <template v-slot:layers>
-          <MapLayer :mapId="mapId" :layer="layers[0]" default>
-            <template v-slot:title>{{ layers[0].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[1]">
-            <template v-slot:title>{{ layers[1].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[2]">
-            <template v-slot:title>{{ layers[2].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[3]">
-            <template v-slot:title>{{ layers[3].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[4]">
-            <template v-slot:title>{{ layers[4].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[5]">
-            <template v-slot:title>{{ layers[5].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[6]">
-            <template v-slot:title>{{ layers[6].title }}</template>
+          <MapLayer
+            v-for="layer in layers"
+            :mapId="mapId"
+            :layer="layer"
+            :key="layer.id"
+            :default="layer.default"
+          >
+            <template v-slot:title>{{ layer.title }}</template>
           </MapLayer>
         </template>
       </MapBlock>

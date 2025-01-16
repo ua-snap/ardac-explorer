@@ -126,6 +126,7 @@ const layers: MapLayer[] = [
     style: 'ardac_flammability',
     legend: 'flammability',
     rasdamanConfiguration: { dim_era: 0, dim_model: 0, dim_scenario: 0 },
+    default: true,
   },
   {
     id: 'flammability_latehistorical_era',
@@ -193,9 +194,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Flammability</h3>
+      <XrayIntroblurb resolution="1" unit="km" cmip="5" />
       <p class="mb-6">
         Flammability is defined as the percentage of times a pixel at a
         particular location has burned in model simulations. The map below shows
@@ -206,20 +208,8 @@ onUnmounted(() => {
 
       <MapBlock :mapId="mapId" class="mb-6">
         <template v-slot:layers>
-          <MapLayer :mapId="mapId" :layer="layers[0]" default>
-            <template v-slot:title>{{ layers[0].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[1]">
-            <template v-slot:title>{{ layers[1].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[2]">
-            <template v-slot:title>{{ layers[2].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[3]">
-            <template v-slot:title>{{ layers[3].title }}</template>
-          </MapLayer>
-          <MapLayer :mapId="mapId" :layer="layers[4]">
-            <template v-slot:title>{{ layers[4].title }}</template>
+          <MapLayer v-for="layer in layers" :mapId="mapId" :layer="layer" :key="layer.id" :default="layer.default">
+            <template v-slot:title>{{ layer.title }}</template>
           </MapLayer>
         </template>
       </MapBlock>

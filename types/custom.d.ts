@@ -61,11 +61,13 @@ interface LatLng {
 }
 
 interface HydrologyChartLabels {
+  models: Record<string, string>
   scenarios: Record<string, string>
   months: Record<string, string>
 }
 
 interface HydrologyChartInputs {
+  model: string
   scenario: string
   month: string
 }

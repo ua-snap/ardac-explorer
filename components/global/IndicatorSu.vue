@@ -67,9 +67,10 @@ mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Summer Days</h3>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
       <p class="mb-6">
         Summer days are the number of days per year that are above 77&deg;F. The
         map below shows the 30-year mean of summer days for three eras. The

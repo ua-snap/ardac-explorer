@@ -124,9 +124,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Soil Moisture</h3>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
       <p class="mb-6">
         The map below shows the mean monthly soil moisture for soil layers
         1&ndash;3 across three 30-year eras using the CanESM2 model under the
@@ -167,10 +168,9 @@ onUnmounted(() => {
 
       <p>
         Enter a location below to see charts of mean monthly soil moisture per
-        decade for a point location using the CanESM2 model and the selected
-        emissions scenario and month. After entering a location, links will be
-        provided where you can download the data that is used to populate the
-        charts.
+        decade for a point location using the selected model, emissions
+        scenario, and month. After entering a location, links will be provided
+        where you can download the data that is used to populate the charts.
       </p>
 
       <Gimme extent="mizukami" />

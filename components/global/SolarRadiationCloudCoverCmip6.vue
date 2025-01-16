@@ -97,54 +97,54 @@ const layers: MapLayer[] = [
 const legend: Record<string, LegendItem[]> = {
   rsds: [
     {
-      color: '#ffffbf',
+      color: '#f5f5c8',
       label: '&ge;0 W/m<sup>2</sup>, &lt;50 W/m<sup>2</sup>',
     },
     {
-      color: '#fee090',
+      color: '#f4e0a9',
       label: '&ge;50 W/m<sup>2</sup>, &lt;100 W/m<sup>2</sup>',
     },
     {
-      color: '#fdae61',
+      color: '#f4bc88',
       label: '&ge;100 W/m<sup>2</sup>, &lt;150 W/m<sup>2</sup>',
     },
     {
-      color: '#f46d43',
+      color: '#ef9073',
       label: '&ge;150 W/m<sup>2</sup>, &lt;200 W/m<sup>2</sup>',
     },
     {
-      color: '#d73027',
+      color: '#dc6961',
       label: '&ge;200 W/m<sup>2</sup>',
     },
   ],
   rlds: [
     {
-      color: '#ffffbf',
+      color: '#f5f5c8',
       label: '&ge;100 W/m<sup>100</sup>, &lt;175 W/m<sup>2</sup>',
     },
     {
-      color: '#fee090',
+      color: '#f4e0a9',
       label: '&ge;175 W/m<sup>2</sup>, &lt;250 W/m<sup>2</sup>',
     },
     {
-      color: '#fdae61',
+      color: '#f4bc88',
       label: '&ge;250 W/m<sup>2</sup>, &lt;325 W/m<sup>2</sup>',
     },
     {
-      color: '#f46d43',
+      color: '#ef9073',
       label: '&ge;325 W/m<sup>2</sup>, &lt;400 W/m<sup>2</sup>',
     },
     {
-      color: '#d73027',
+      color: '#dc6961',
       label: '&ge;400 W/m<sup>2</sup>',
     },
   ],
   clt: [
-    { color: '#045a8d', label: '&ge;0%, &lt;60%' },
-    { color: '#2b8cbe', label: '&ge;60%, &lt;70%' },
-    { color: '#74a9cf', label: '&ge;70%, &lt;80%' },
-    { color: '#bdc9e1', label: '&ge;80%, &lt;90%' },
-    { color: '#f1eef6', label: '&ge;90%' },
+    { color: '#5082a5', label: '&ge;0%, &lt;60%' },
+    { color: '#67a4c7', label: '&ge;60%, &lt;70%' },
+    { color: '#94b9d4', label: '&ge;70%, &lt;80%' },
+    { color: '#c7cfe0', label: '&ge;80%, &lt;90%' },
+    { color: '#ebe9f0', label: '&ge;90%' },
   ],
 }
 
@@ -157,9 +157,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Solar Radiation & Cloud Cover, CMIP6</h3>
+      <XrayIntroblurb resolution="100" unit="km" cmip="6" beta />
       <p class="mb-6">
         The map below shows modeled mean downwelling shortwave and longwave flux
         and cloud area fraction (cloud cover) for the month of August in the
@@ -167,7 +168,7 @@ onUnmounted(() => {
         year 2100 are based on the SSP5-8.5 emissions scenario.
       </p>
 
-      <MapBlock :mapId="mapId" class="mb-6">
+      <MapBlock :mapId="mapId" crs="EPSG:3572" class="mb-6">
         <template v-slot:layers>
           <h4 class="title is-4 mb-3">Downwelling Shortwave Flux</h4>
           <MapLayer :mapId="mapId" :layer="layers[0]" default>

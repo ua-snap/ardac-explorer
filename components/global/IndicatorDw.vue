@@ -67,9 +67,10 @@ mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Deep Winter Days</h3>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
       <p class="mb-6">
         Deep winter days are the number of days per year that are below
         -22&deg;F. The map below shows the 30-year mean of deep winter days for

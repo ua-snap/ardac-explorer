@@ -42,11 +42,11 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   deep_winter_days: [
-    { color: '#c6dbef', label: '&ge;1 day, &lt;10 days' },
-    { color: '#9ecae1', label: '&ge;10 days, &lt;20 days' },
-    { color: '#6baed6', label: '&ge;20 days, &lt;40 days' },
-    { color: '#3182bd', label: '&ge;40 days, &lt;80 days' },
-    { color: '#08519c', label: '&ge;80 days' },
+    { color: '#cddce9', label: '&ge;0 days, &lt;10 days' },
+    { color: '#b1d0e0', label: '&ge;10 days, &lt;20 days' },
+    { color: '#8fbcd8', label: '&ge;20 days, &lt;40 days' },
+    { color: '#699dc7', label: '&ge;40 days, &lt;80 days' },
+    { color: '#507bb0', label: '&ge;80 days' },
   ],
 }
 
@@ -55,9 +55,10 @@ mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Deep Winter Days, CMIP6</h3>
+      <XrayIntroblurb resolution="100" unit="km" cmip="6" beta/>
       <p class="mb-6">
         Deep winter days are the number of days per year that are below
         -22&deg;F. The map below shows the 30-year mean of CMIP6 deep winter
@@ -68,7 +69,7 @@ mapStore.setLegendItems(mapId, legend)
         scenario.
       </p>
 
-      <MapBlock :mapId="mapId" class="mb-6">
+      <MapBlock :mapId="mapId" crs="EPSG:3572" class="mb-6">
         <template v-slot:layers>
           <MapLayer :mapId="mapId" :layer="layers[0]" default>
             <template v-slot:title>{{ layers[0].title }}</template>

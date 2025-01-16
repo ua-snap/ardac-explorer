@@ -296,10 +296,11 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Landfast Sea Ice Extent</h3>
-      <p>
+      <XrayIntroblurb resolution="100" unit="m" />
+      <p class="mb-6">
         Landfast ice is sea ice that is mostly stationary and attached to land.
         In the dataset presented here landfast sea ice is defined as being
         contiguous to the coast and lacking detectable motion for approximately

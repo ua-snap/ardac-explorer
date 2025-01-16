@@ -110,24 +110,24 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   evspsbl: [
-    { color: '#006837', label: '&lt;0µ kg/m<sup>2</sup>/s' },
+    { color: '#538b69', label: '&lt;0µ kg/m<sup>2</sup>/s' },
     {
-      color: '#31a354',
+      color: '#6eb47e',
       label: '&ge;0µ kg/m<sup>2</sup>/s, &lt;10µ kg/m<sup>2</sup>/s',
     },
     {
-      color: '#78c679',
+      color: '#98cd97',
       label: '&ge;10µ kg/m<sup>2</sup>/s, &lt;20µ kg/m<sup>2</sup>/s',
     },
     {
-      color: '#addd8e',
+      color: '#bbdea6',
       label: '&ge;20µ kg/m<sup>2</sup>/s, &lt;30µ kg/m<sup>2</sup>/s',
     },
     {
-      color: '#d9f0a3',
+      color: '#dbebb5',
       label: '&ge;30µ kg/m<sup>2</sup>/s, &lt;40µ kg/m<sup>2</sup>/s',
     },
-    { color: '#ffffcc', label: '&ge;40µ kg/m<sup>2</sup>/s' },
+    { color: '#f5f5d1', label: '&ge;40µ kg/m<sup>2</sup>/s' },
   ],
 }
 
@@ -140,16 +140,17 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Evaporation, CMIP6</h3>
+      <XrayIntroblurb resolution="100" unit="km" cmip="6" beta />
       <p class="mb-6">
         The map below shows modeled total evaporation for the month of August
-        using the EC-Earth3-Veg model at 25-year intervals from 1950–2000.
+        using the EC-Earth3-Veg model at 25-year intervals from 1950–2100.
         Intervals from 2025–2100 are based on the SSP5-8.5 emissions scenario.
       </p>
 
-      <MapBlock :mapId="mapId" class="mb-6">
+      <MapBlock :mapId="mapId" crs="EPSG:3572" class="mb-6">
         <template v-slot:layers>
           <MapLayer :mapId="mapId" :layer="layers[0]" default>
             <template v-slot:title>{{ layers[0].title }}</template>

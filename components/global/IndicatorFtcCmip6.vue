@@ -42,11 +42,11 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   freeze_thaw_cycle: [
-    { color: '#f7f7f7', label: '&ge;1 day, &lt;20 days' },
-    { color: '#cccccc', label: '&ge;20 days, &lt;40 days' },
-    { color: '#969696', label: '&ge;40 days, &lt;60 days' },
-    { color: '#636363', label: '&ge;60 days, &lt;80 days' },
-    { color: '#252525', label: '&ge;80 days' },
+    { color: '#efefef', label: '&ge;0 days, &lt;20 days' },
+    { color: '#dddddd', label: '&ge;20 days, &lt;40 days' },
+    { color: '#ababab', label: '&ge;40 days, &lt;60 days' },
+    { color: '#878787', label: '&ge;60 days, &lt;80 days' },
+    { color: '#5c5c5c', label: '&ge;80 days' },
   ],
 }
 
@@ -55,9 +55,10 @@ mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Freeze/Thaw Cycle</h3>
+      <XrayIntroblurb resolution="100" unit="km" cmip="6" beta />
       <p class="mb-6">
         Freeze/thaw cycle is the number of days where maximum daily temperatures
         are above freezing and minimum daily temperatures are at or below
@@ -69,7 +70,7 @@ mapStore.setLegendItems(mapId, legend)
         scenario.
       </p>
 
-      <MapBlock :mapId="mapId" class="mb-6">
+      <MapBlock :mapId="mapId" crs="EPSG:3572" class="mb-6">
         <template v-slot:layers>
           <MapLayer :mapId="mapId" :layer="layers[0]" default>
             <template v-slot:title>{{ layers[0].title }}</template>

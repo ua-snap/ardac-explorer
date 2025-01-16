@@ -42,11 +42,11 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   rx1day: [
-    { color: '#edf8fb', label: '&ge;0㎜, &lt;10㎜' },
-    { color: '#b2e2e2', label: '&ge;10㎜, &lt;20㎜' },
-    { color: '#66c2a4', label: '&ge;20㎜, &lt;30㎜' },
-    { color: '#2ca25f', label: '&ge;30㎜, &lt;40㎜' },
-    { color: '#006d2c', label: '&ge;40㎜' },
+    { color: '#e9f0f2', label: '&ge;0㎜, &lt;10㎜' },
+    { color: '#c0e1e2', label: '&ge;10㎜, &lt;20㎜' },
+    { color: '#8dcbb5', label: '&ge;20㎜, &lt;30㎜' },
+    { color: '#6ab385', label: '&ge;30㎜, &lt;40㎜' },
+    { color: '#548f62', label: '&ge;40㎜' },
   ],
 }
 
@@ -55,9 +55,10 @@ mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Maximum 1-day Precipitation, CMIP6</h3>
+      <XrayIntroblurb resolution="100" unit="km" cmip="6" beta />
       <p class="mb-6">
         The map below shows the 30-year mean of CMIP6 maximum 1-day
         precipitation for three eras. The historical era (1980&ndash;2009) uses
@@ -67,7 +68,7 @@ mapStore.setLegendItems(mapId, legend)
         scenario.
       </p>
 
-      <MapBlock :mapId="mapId" class="mb-6">
+      <MapBlock :mapId="mapId" crs="EPSG:3572" class="mb-6">
         <template v-slot:layers>
           <MapLayer :mapId="mapId" :layer="layers[0]" default>
             <template v-slot:title>{{ layers[0].title }}</template>

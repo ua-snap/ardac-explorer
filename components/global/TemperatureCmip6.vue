@@ -96,16 +96,16 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   tas: [
-    { color: '#313695', label: '&lt;-20°C' },
-    { color: '#4575b4', label: '&ge;-20°C, &lt;-15°C' },
-    { color: '#74add1', label: '&ge;-15°C, &lt;-10°C' },
-    { color: '#abd9e9', label: '&ge;-10°C, &lt;-5°C' },
-    { color: '#e0f3f8', label: '&ge;-5°C, &lt;0°C' },
-    { color: '#fee090', label: '&ge;0°C, &lt;5°C' },
-    { color: '#fdae61', label: '&ge;5°C, &lt;10°C' },
-    { color: '#f46d43', label: '&ge;10°C, &lt;15°C' },
-    { color: '#d73027', label: '&ge;15°C, &lt;20°C' },
-    { color: '#a50026', label: '&ge;20°C' },
+    { color: '#6468ac', label: '&lt;-20°C' },
+    { color: '#7394c1', label: '&ge;-20°C, &lt;-15°C' },
+    { color: '#94bcd5', label: '&ge;-15°C, &lt;-10°C' },
+    { color: '#badae5', label: '&ge;-10°C, &lt;-5°C' },
+    { color: '#e0ecf1', label: '&ge;-5°C, &lt;0°C' },
+    { color: '#f4e0a9', label: '&ge;0°C, &lt;5°C' },
+    { color: '#f4bc88', label: '&ge;5°C, &lt;10°C' },
+    { color: '#ef9073', label: '&ge;10°C, &lt;15°C' },
+    { color: '#dc6961', label: '&ge;15°C, &lt;20°C' },
+    { color: '#ba505e', label: '&ge;20°C' },
   ],
 }
 
@@ -118,9 +118,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Temperature, CMIP6</h3>
+      <XrayIntroblurb resolution="100" unit="km" cmip="6" beta />
       <p class="mb-6">
         The map below shows modeled mean near-surface air temperature for the
         month of July, the maximum near-surface air temperature for the month of
@@ -129,7 +130,7 @@ onUnmounted(() => {
         for the year 2100 are based on the SSP5-8.5 emissions scenario.
       </p>
 
-      <MapBlock :mapId="mapId" class="mb-6">
+      <MapBlock :mapId="mapId" crs="EPSG:3572" class="mb-6">
         <template v-slot:layers>
           <h4 class="title is-4 mb-3">
             July Mean Near-surface Air Temperature
