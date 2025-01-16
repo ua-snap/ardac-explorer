@@ -6,7 +6,7 @@ const layers: MapLayer[] = [
     id: 'slie_early_era',
     title: 'January, 1996–2005',
     source: 'rasdaman',
-    wmsLayerName: 'ardac_landfast_sea_ice_mmm',
+    wmsLayerName: 'ardac_beaufort_landfast_sea_ice_mmm',
     style: 'ardac_landfast_ice_MMM',
     legend: 'slie',
     rasdamanConfiguration: { dim_month: 0, dim_era: 0 },
@@ -16,7 +16,7 @@ const layers: MapLayer[] = [
     id: 'slie_mid_era',
     title: 'January, 2005–2014',
     source: 'rasdaman',
-    wmsLayerName: 'ardac_landfast_sea_ice_mmm',
+    wmsLayerName: 'ardac_beaufort_landfast_sea_ice_mmm',
     style: 'ardac_landfast_ice_MMM',
     legend: 'slie',
     rasdamanConfiguration: { dim_month: 0, dim_era: 1 },
@@ -26,7 +26,7 @@ const layers: MapLayer[] = [
     id: 'slie_late_era',
     title: 'January, 2014–2023',
     source: 'rasdaman',
-    wmsLayerName: 'ardac_landfast_sea_ice_mmm',
+    wmsLayerName: 'ardac_beaufort_landfast_sea_ice_mmm',
     style: 'ardac_landfast_ice_MMM',
     legend: 'slie',
     rasdamanConfiguration: { dim_month: 0, dim_era: 2 },
@@ -174,13 +174,50 @@ mapStore.setLegendItems(mapId, legend)
       </div>
       <div class="references content">
         <h4 class="title is-4">References</h4>
-<blockquote>Mahoney, A., Eicken, H., Shapiro, L., & Graves, A. (2005). Defining and locating the seaward landfast ice edge in northern Alaska. In 18th International Conference on Port and Ocean Engineering under Arctic Conditions (POAC’05), Potsdam, NY (pp. 991-1001).</blockquote>
-<blockquote>Eicken, H., L. Shapiro, A. G. Gaylord, A. Mahoney, and P. Cotter. 2006. Mapping and Characterization of Recurring Spring Leads and Landfast Ice in the Beaufort and Chukchi Seas. Final Report, Minerals Management Service OCS Study MMS 2005-068.</blockquote>
-<blockquote>Mahoney, A., Eicken, H., Gaylord, A. G., and Shapiro, L. (2007), Alaska landfast sea ice: Links with bathymetry and atmospheric circulation, J. Geophys. Res., 112, C02001, doi:10.1029/2006JC003559.</blockquote>
-<blockquote>Eicken, H., L. Shapiro, A. G. Gaylord, A. Mahoney, and P. W. Cotter. 2009. Recurring Spring Leads and Landfast Ice in the Beaufort and Chukchi Seas, 1993-2004, Version 1. Boulder, Colorado USA. NSIDC: National Snow and Ice Data Center. doi: <a href="https://doi.org/10.7265/N5SB43P0">https://doi.org/10.7265/N5SB43P0</a>.</blockquote>
-<blockquote>Mahoney, A. R., Eicken, H., Gaylord, A. G., & Gens, R. (2014). Landfast sea ice extent in the Chukchi and Beaufort Seas: The annual cycle and decadal variability. <em>Cold Regions Science and Technology</em>, 103, 41-56.</blockquote>
-<blockquote>Mahoney, A. R. (2018), <a href="https://arctic.noaa.gov/Report-Card/Report-Card-2018/ArtMID/7878/ArticleID/788/Landfast-Sea-Ice-in-a-Changing-Arctic">Landfast Sea Ice in a Changing Arctic</a>, in <em>Arctic Report Card 2018</em>, edited by E. Osborne, J. A. Richter-Menge and M. O. Jeffries. <a href="https://arctic.noaa.gov/Report-Card/Report-Card-2018/ArtMID/7878/ArticleID/788/Landfast-Sea-Ice-in-a-Changing-Arctic">https://arctic.noaa.gov/Report-Card/Report-Card-2018/ArtMID/7878/ArticleID/788/Landfast-Sea-Ice-in-a-Changing-Arctic</a></blockquote>
-
+        <blockquote>
+          Mahoney, A., Eicken, H., Shapiro, L., & Graves, A. (2005). Defining
+          and locating the seaward landfast ice edge in northern Alaska. In 18th
+          International Conference on Port and Ocean Engineering under Arctic
+          Conditions (POAC’05), Potsdam, NY (pp. 991-1001).
+        </blockquote>
+        <blockquote>
+          Eicken, H., L. Shapiro, A. G. Gaylord, A. Mahoney, and P. Cotter.
+          2006. Mapping and Characterization of Recurring Spring Leads and
+          Landfast Ice in the Beaufort and Chukchi Seas. Final Report, Minerals
+          Management Service OCS Study MMS 2005-068.
+        </blockquote>
+        <blockquote>
+          Mahoney, A., Eicken, H., Gaylord, A. G., and Shapiro, L. (2007),
+          Alaska landfast sea ice: Links with bathymetry and atmospheric
+          circulation, J. Geophys. Res., 112, C02001, doi:10.1029/2006JC003559.
+        </blockquote>
+        <blockquote>
+          Eicken, H., L. Shapiro, A. G. Gaylord, A. Mahoney, and P. W. Cotter.
+          2009. Recurring Spring Leads and Landfast Ice in the Beaufort and
+          Chukchi Seas, 1993-2004, Version 1. Boulder, Colorado USA. NSIDC:
+          National Snow and Ice Data Center. doi:
+          <a href="https://doi.org/10.7265/N5SB43P0"
+            >https://doi.org/10.7265/N5SB43P0</a
+          >.
+        </blockquote>
+        <blockquote>
+          Mahoney, A. R., Eicken, H., Gaylord, A. G., & Gens, R. (2014).
+          Landfast sea ice extent in the Chukchi and Beaufort Seas: The annual
+          cycle and decadal variability.
+          <em>Cold Regions Science and Technology</em>, 103, 41-56.
+        </blockquote>
+        <blockquote>
+          Mahoney, A. R. (2018),
+          <a
+            href="https://arctic.noaa.gov/Report-Card/Report-Card-2018/ArtMID/7878/ArticleID/788/Landfast-Sea-Ice-in-a-Changing-Arctic"
+            >Landfast Sea Ice in a Changing Arctic</a
+          >, in <em>Arctic Report Card 2018</em>, edited by E. Osborne, J. A.
+          Richter-Menge and M. O. Jeffries.
+          <a
+            href="https://arctic.noaa.gov/Report-Card/Report-Card-2018/ArtMID/7878/ArticleID/788/Landfast-Sea-Ice-in-a-Changing-Arctic"
+            >https://arctic.noaa.gov/Report-Card/Report-Card-2018/ArtMID/7878/ArticleID/788/Landfast-Sea-Ice-in-a-Changing-Arctic</a
+          >
+        </blockquote>
       </div>
     </div>
     <Bios :people="['Hajo Eicken', 'Andy Mahoney']" />
