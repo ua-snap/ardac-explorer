@@ -254,7 +254,7 @@ mapStore.setLegendItems(mapId, legend)
       <h3 class="title is-3">Snow, CMIP6</h3>
       <p class="mb-6">
         The map below shows modeled snow variables for the month of March using
-        the MIROC6 model at 25-year intervals from 1950&ndash;2000. Intervals
+        the MIROC6 model at 25-year intervals from 1950&ndash;2100. Intervals
         from 2025&ndash;2100 are based on the SSP5-8.5 emissions scenario.
       </p>
 
