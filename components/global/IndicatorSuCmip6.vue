@@ -90,7 +90,7 @@ mapStore.setLegendItems(mapId, legend)
         where you can download the data that is used to populate the chart.
       </p>
 
-      <Gimme />
+      <Gimme :bbox="[-180, 50, 180, 90]" />
       <IndicatorsCmip6ChartControls />
       <IndicatorsCmip6Chart label="Summer days" dataKey="su" />
 

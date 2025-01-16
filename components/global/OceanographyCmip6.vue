@@ -136,7 +136,7 @@ onUnmounted(() => {
         charts.
       </p>
 
-      <Gimme />
+      <Gimme :bbox="[-180, 50, 180, 90]" />
       <Cmip6MonthlyChartControls
         defaultMonth="08"
         :datasetKeys="['psl', 'ts']"

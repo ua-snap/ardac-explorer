@@ -58,7 +58,7 @@ mapStore.setLegendItems(mapId, legend)
   <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Deep Winter Days, CMIP6</h3>
-      <XrayIntroblurb resolution="100" unit="km" cmip="6" beta/>
+      <XrayIntroblurb resolution="100" unit="km" cmip="6" beta />
       <p class="mb-6">
         Deep winter days are the number of days per year that are below
         -22&deg;F. The map below shows the 30-year mean of CMIP6 deep winter
@@ -91,7 +91,7 @@ mapStore.setLegendItems(mapId, legend)
         where you can download the data that is used to populate the chart.
       </p>
 
-      <Gimme />
+      <Gimme :bbox="[-180, 50, 180, 90]" />
       <IndicatorsCmip6ChartControls />
       <IndicatorsCmip6Chart label="Deep winter days" dataKey="dw" />
 
