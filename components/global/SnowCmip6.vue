@@ -260,7 +260,7 @@ mapStore.setLegendItems(mapId, legend)
 
       <MapBlock :mapId="mapId" crs="EPSG:3572" class="mb-6">
         <template v-slot:layers>
-          <h4 class="title is-4 mb-3">March Precipitation as Snow</h4>
+          <h4 class="title is-4 mb-3">Precipitation as Snow</h4>
           <MapLayer
             v-for="layer in prsn_layers"
             :mapId="mapId"
