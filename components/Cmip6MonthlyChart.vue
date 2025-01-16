@@ -3,6 +3,7 @@ const props = defineProps<{
   label: string
   units?: string
   dataKey: string
+  chartType?: string
 }>()
 
 import type { Data } from 'plotly.js-dist-min'
@@ -108,7 +109,7 @@ const buildChart = () => {
       })
 
       // Makes chart for sea ice concentration into a line chart
-      if (props.dataKey === 'siconc') {
+      if (props.chartType === 'lines') {
         traces.push({
           x: config.years,
           y: values,

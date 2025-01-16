@@ -165,6 +165,7 @@ mapStore.setLegendItems(mapId, legend)
         label="Sea Ice Concentration"
         units="%"
         dataKey="siconc"
+        chartType="lines"
       />
 
       <div v-if="latLng && apiData" class="my-6">
