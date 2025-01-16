@@ -270,7 +270,7 @@ mapStore.setLegendItems(mapId, legend)
           >
             <template v-slot:title>{{ layer.title }}</template>
           </MapLayer>
-          <h4 class="title is-4 mb-3">March Snow Water Equivalent</h4>
+          <h4 class="title is-4 mb-3">Snow Water Equivalent</h4>
           <MapLayer
             v-for="layer in swe_layers"
             :mapId="mapId"
