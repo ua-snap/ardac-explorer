@@ -119,12 +119,13 @@ onUnmounted(() => {
 
       <p>
         Enter lat/lon coordinates below to see a table of climate protection
-        from spruce beetles for a point location. This table displays risk
-        levels for the historical modeled era (1980&ndash;2009) using Daymet and
-        projections for the mid-century (2040&ndash;2069) and late-century
-        (2070&ndash;2099) eras using the NCAR CCSM4, GFDL ESM2M, HadGEM2 ES, and
-        MRI CGCM3 models under two different emissions scenarios (RCP 4.5 and
-        RCP 8.5) and two different snowpack levels (low and medium).
+        from spruce beetles for a point location. This table displays climate
+        protection levels for the historical modeled era (1980&ndash;2009) using
+        Daymet and projections for the mid-century (2040&ndash;2069) and
+        late-century (2070&ndash;2099) eras using the NCAR CCSM4, GFDL ESM2M,
+        HadGEM2 ES, and MRI CGCM3 models under two different emissions scenarios
+        (RCP 4.5 and RCP 8.5) and two different snowpack levels (low and
+        medium).
       </p>
 
       <p>
