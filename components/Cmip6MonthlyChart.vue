@@ -4,10 +4,18 @@ const props = defineProps<{
   units?: string
   dataKey: string
   chartType?: string
+  multiplier?: number
 }>()
 
 import type { Data } from 'plotly.js-dist-min'
 import { isProxy, toRaw } from 'vue'
+
+// Multiplier is an optional prop that can be used to change the scale of units
+// during chart population.
+let multiplier = 1
+if (props.multiplier) {
+  multiplier = props.multiplier
+}
 
 const { $Plotly, $_ } = useNuxtApp()
 const dataStore = useDataStore()
@@ -36,7 +44,7 @@ const monthMinMax = (values: any, month: string, dataKey: string) => {
         let last2 = key.slice(-2)
         if (last2 == month) {
           let typed = value as any
-          monthValues.push(typed[dataKey])
+          monthValues.push(typed[dataKey] * multiplier)
         }
       })
     })
@@ -105,7 +113,7 @@ const buildChart = () => {
 
         let yearMonthData = chartData[model][scenario][yearMonth]
         let value = yearMonthData[props.dataKey]
-        values.push(value)
+        values.push(value * multiplier)
       })
 
       // Makes chart for sea ice concentration into a line chart
