@@ -110,24 +110,36 @@ const layers: MapLayer[] = [
 
 const legend: Record<string, LegendItem[]> = {
   evspsbl: [
-    { color: '#538b69', label: '&lt;0µ kg/m<sup>2</sup>/s' },
+    {
+      color: '#538b69',
+      label:
+        '&lt;0 (1 &times; 10<sup>-6</sup>&nbsp;kg m<sup>-2</sup>&nbsp;s<sup>-1</sup>)',
+    },
     {
       color: '#6eb47e',
-      label: '&ge;0µ kg/m<sup>2</sup>/s, &lt;10µ kg/m<sup>2</sup>/s',
+      label:
+        '&ge;0, &lt;10 (1 &times; 10<sup>-6</sup>&nbsp;kg m<sup>-2</sup>&nbsp;s<sup>-1</sup>)',
     },
     {
       color: '#98cd97',
-      label: '&ge;10µ kg/m<sup>2</sup>/s, &lt;20µ kg/m<sup>2</sup>/s',
+      label:
+        '&ge;10, &lt;20 (1 &times; 10<sup>-6</sup>&nbsp;kg m<sup>-2</sup>&nbsp;s<sup>-1</sup>)',
     },
     {
       color: '#bbdea6',
-      label: '&ge;20µ kg/m<sup>2</sup>/s, &lt;30µ kg/m<sup>2</sup>/s',
+      label:
+        '&ge;20, &lt;30 (1 &times; 10<sup>-6</sup>&nbsp;kg m<sup>-2</sup>&nbsp;s<sup>-1</sup>)',
     },
     {
       color: '#dbebb5',
-      label: '&ge;30µ kg/m<sup>2</sup>/s, &lt;40µ kg/m<sup>2</sup>/s',
+      label:
+        '&ge;30, &lt;40, (1 &times; 10<sup>-6</sup>&nbsp;kg m<sup>-2</sup>&nbsp;s<sup>-1</sup>)',
     },
-    { color: '#f5f5d1', label: '&ge;40µ kg/m<sup>2</sup>/s' },
+    {
+      color: '#f5f5d1',
+      label:
+        '&ge;40 (1 &times; 10<sup>-6</sup>&nbsp;kg m<sup>-2</sup>&nbsp;s<sup>-1</sup>)',
+    },
   ],
 }
 
@@ -187,8 +199,9 @@ onUnmounted(() => {
       <Cmip6MonthlyChartControls defaultMonth="08" :datasetKeys="['evspsbl']" />
       <Cmip6MonthlyChart
         label="Evaporation"
-        units="kg/m<sup>2</sup>/s"
+        units="1 × 10<sup>-6</sup> kg m<sup>-2</sup> s<sup>-1</sup>"
         dataKey="evspsbl"
+        :multiplier="1000000"
       />
 
       <div v-if="latLng && apiData" class="my-6">
