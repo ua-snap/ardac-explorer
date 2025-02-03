@@ -5,16 +5,19 @@ interface Props {
   bbox?: number[]
   extent?: Extent
   ocean?: boolean
+  communitiesEnabled: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
   bbox: () => [-179.1506, 51.229, -129.9795, 71.3526],
   extent: null,
   ocean: false,
+  communitiesEnabled: true,
 })
 
 let bbox = props.bbox
 let extent = props.extent
+let communitiesEnabled = props.communitiesEnabled
 
 import { point } from '@turf/helpers'
 import booleanPointInPolygon from '@turf/boolean-point-in-polygon'
@@ -84,9 +87,15 @@ const inputValue = ref('') // input value for autocompleter
 const gimmeInput = ref() // DOM element of #gimme
 
 onMounted(() => {
+  let placeHolderText: string
+  if (communitiesEnabled) {
+    placeHolderText = 'Search community names or enter a lat/long'
+  } else {
+    placeHolderText = 'Enter a lat/long'
+  }
   let config = {
     selector: '#gimme',
-    placeHolder: 'Search community names or enter a lat/long',
+    placeHolder: placeHolderText,
     data: {},
     threshold: 3,
     resultsList: {
@@ -118,15 +127,21 @@ onMounted(() => {
     },
   }
 
-  let extentCommunities = communitiesWithinExtent()
-  if (extentCommunities.length > 0) {
-    config.data = {
-      src: extentCommunities,
-      keys: ['name', 'alt_name'],
-    }
-  } else {
+  if (!communitiesEnabled) {
     config.data = {
       src: [],
+    }
+  } else {
+    let extentCommunities = communitiesWithinExtent()
+    if (extentCommunities.length > 0) {
+      config.data = {
+        src: extentCommunities,
+        keys: ['name', 'alt_name'],
+      }
+    } else {
+      config.data = {
+        src: [],
+      }
     }
   }
   new $autoComplete(config)
@@ -298,7 +313,9 @@ onUnmounted(() => {
       <div class="content is-size-5">
         <p>
           Showing data for
-          <span v-if="props.ocean">an ocean location near</span>
+          <span v-if="props.ocean && communitiesEnabled"
+            >an ocean location near</span
+          >
           {{ placeName }}.
           <button class="button is-link is-light" @click="clearSelectedPlace">
             &#x21BA; Pick a new place
@@ -309,9 +326,11 @@ onUnmounted(() => {
     <div v-show="!placeIsSelected || dataError" class="field">
       <div class="control">
         <label class="label is-size-4"
-          >Get data for a community or by lat/long</label
+          >Get data for
+          <span v-if="communitiesEnabled">a community or by</span>
+          lat/long</label
         >
-        <p class="is-size-5">
+        <p v-if="communitiesEnabled" class="is-size-5">
           Only communities within the footprint of the data are included in this
           search.
           <span v-if="ocean"
@@ -319,6 +338,10 @@ onUnmounted(() => {
             <strong>only coastal communities are available</strong>, and the
             closest point in the ocean is used to retrieve data.</span
           >
+        </p>
+        <p v-else>
+          <strong>Communities are not available for this dataset.</strong>
+          Please choose a lat/long coordinate.
         </p>
         <input id="gimme" v-model="inputValue" ref="gimmeInput" />
         <button
