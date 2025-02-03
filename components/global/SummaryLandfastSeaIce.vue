@@ -69,7 +69,7 @@ mapStore.setLegendItems(mapId, legend)
           human activities (e.g., Mahoney, 2018). In the dataset presented here
           landfast sea ice is defined as being contiguous to the coast and
           lacking detectable motion for approximately 20 consecutive days (<a
-            href="https://seaice.alaska.edu/gi/publications/mahoney/Mahoney_2005_POAC_DefiningLFI.pdf"
+            href="https://citeseerx.ist.psu.edu/document?repid=rep1&type=pdf&doi=a5467a7bbec6a6e31e9898f89041fbb5378a26c2"
             >Mahoney et al. 2005</a
           >). In this case, the limit of detectable motion is estimated to be
           approximately 200 m.
