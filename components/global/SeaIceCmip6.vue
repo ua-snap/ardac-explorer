@@ -155,6 +155,11 @@ mapStore.setLegendItems(mapId, legend)
         where you can download the data that is used to populate the chart.
       </p>
 
+      <p>
+        Coastal community queries are not supported due to the coarse resolution
+        of this dataset.
+      </p>
+
       <Gimme :bbox="[-180, 45, 180, 90]" ocean :communitiesEnabled="false" />
       <Cmip6MonthlyChartControls
         defaultModel="MIROC6"
