@@ -298,13 +298,13 @@ mapStore.setLegendItems(mapId, legend)
         :datasetKeys="['prsn', 'swe']"
       />
       <Cmip6MonthlyChart
-        label="Precipitation as Snow in kg m⁻² s⁻¹"
+        label="Precipitation as Snow"
         units="kg m⁻² s⁻¹"
         dataKey="prsn"
         class="mb-5"
       />
       <Cmip6MonthlyChart
-        label="Snow Water Equivalent in mm"
+        label="Snow Water Equivalent"
         units="mm"
         dataKey="swe"
       />
