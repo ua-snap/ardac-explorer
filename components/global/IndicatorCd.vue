@@ -70,7 +70,7 @@ mapStore.setLegendItems(mapId, legend)
   <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Cold Day Threshold</h3>
-      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5" />
       <p class="mb-6">
         The cold day threshold is the temperature at which only five days in a
         year are colder. The map below shows the 30-year mean of the cold day
@@ -109,7 +109,7 @@ mapStore.setLegendItems(mapId, legend)
         download the data that is used to populate the chart.
       </p>
 
-      <IndicatorsChart label="Cold day threshold" dataKey="cd" />
+      <IndicatorsChart label="Cold day threshold" units="&deg;C" dataKey="cd" />
 
       <div v-if="latLng && apiData" class="my-6">
         <h4 class="title is-4">
