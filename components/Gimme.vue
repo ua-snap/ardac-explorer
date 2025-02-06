@@ -5,7 +5,7 @@ interface Props {
   bbox?: number[]
   extent?: Extent
   ocean?: boolean
-  communitiesEnabled: boolean
+  communitiesEnabled?: boolean
 }
 
 const props = withDefaults(defineProps<Props>(), {
