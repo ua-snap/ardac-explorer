@@ -91,7 +91,7 @@ mapStore.setLegendItems(mapId, legend)
         populate the chart.
       </p>
 
-      <Gimme :bbox="[-180, 50, 180, 90]" />
+      <GimmeLoader :bbox="[-180, 50, 180, 90]" />
       <IndicatorsCmip6ChartControls />
       <IndicatorsCmip6Chart
         label="Maximum 1-day precipitation"

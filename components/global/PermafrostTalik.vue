@@ -59,7 +59,7 @@ onUnmounted(() => {
   <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Talik Thickness</h3>
-      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5" />
       <p class="mb-6">
         The map below shows talik thickness for three eras using the GFDL CM3
         model under the RCP 8.5 emissions scenario.
@@ -86,7 +86,7 @@ onUnmounted(() => {
         data that is used to populate the chart.
       </p>
 
-      <Gimme extent="alaska" />
+      <GimmeLoader extent="alaska" />
       <PermafrostChartControls />
       <PermafrostChart
         label="Talik thickness"

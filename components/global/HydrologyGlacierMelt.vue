@@ -59,7 +59,7 @@ onUnmounted(() => {
   <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Glacier Melt</h3>
-      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5" />
       <p class="mb-6">
         The map below shows the 30-year mean annual glacier melt for three eras
         using the CanESM2 model under the RCP 8.5 emissions scenario.
@@ -86,7 +86,7 @@ onUnmounted(() => {
         where you can download the data that is used to populate the chart.
       </p>
 
-      <Gimme extent="mizukami" />
+      <GimmeLoader extent="mizukami" />
       <HydrologyChartControls />
       <HydrologyChart label="Glacier melt" units="㎜" dataKey="glacier_melt" />
 

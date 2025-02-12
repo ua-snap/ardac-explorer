@@ -195,7 +195,7 @@ onUnmounted(() => {
         the data that is used to populate the chart.
       </p>
 
-      <Gimme :bbox="[-180, 50, 180, 90]" />
+      <GimmeLoader :bbox="[-180, 50, 180, 90]" />
       <Cmip6MonthlyChartControls defaultMonth="08" :datasetKeys="['evspsbl']" />
       <Cmip6MonthlyChart
         label="Evaporation"

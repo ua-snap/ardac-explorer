@@ -240,7 +240,7 @@ onUnmounted(() => {
   <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Precipitation Frequency</h3>
-      <XrayIntroblurb resolution="20" unit="km" cmip="5"/>
+      <XrayIntroblurb resolution="20" unit="km" cmip="5" />
       <p>
         The following results are precipitation frequencies by duration and
         exceedance probability derived from two CMIP5 climate simulations
@@ -297,7 +297,7 @@ onUnmounted(() => {
         download the data that is used to populate the chart.
       </p>
 
-      <Gimme extent="alaska" />
+      <GimmeLoader extent="alaska" />
 
       <div v-if="latLng && apiData">
         <div class="chart-input">

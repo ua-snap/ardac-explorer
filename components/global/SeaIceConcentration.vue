@@ -238,10 +238,7 @@ onUnmounted(() => {
         populate the chart.
       </p>
 
-      <Gimme
-        :bbox="[-180, 45, 180, 90]"
-        ocean
-      />
+      <GimmeLoader :bbox="[-180, 45, 180, 90]" ocean />
 
       <div v-if="latLng && apiData">
         <div class="parameter">
