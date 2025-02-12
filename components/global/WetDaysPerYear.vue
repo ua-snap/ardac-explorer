@@ -272,7 +272,7 @@ onUnmounted(() => {
   <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Wet Days Per Year</h3>
-      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5" />
       <p class="mb-6">
         A wet day is defined as a day with precipitation accumulation greater
         than or equal to 1.0㎜. The map below shows the 30-year mean of wet days
@@ -310,7 +310,7 @@ onUnmounted(() => {
         download the data that is used to populate the chart.
       </p>
 
-      <Gimme extent="blockyAlaska" />
+      <GimmeLoader extent="blockyAlaska" />
       <div id="chart"></div>
       <div v-if="latLng && apiData" class="my-6">
         <h4 class="title is-4">

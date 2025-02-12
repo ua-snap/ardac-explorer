@@ -362,7 +362,7 @@ onUnmounted(() => {
         is used to populate the chart.
       </p>
 
-      <Gimme extent="slie" ocean />
+      <GimmeLoader extent="slie" ocean />
 
       <div v-if="latLng && apiData">
         <div class="parameter">

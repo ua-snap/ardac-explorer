@@ -204,7 +204,7 @@ onUnmounted(() => {
         used to populate the charts.
       </p>
 
-      <Gimme :bbox="[-180, 50, 180, 90]" />
+      <GimmeLoader :bbox="[-180, 50, 180, 90]" />
       <Cmip6MonthlyChartControls
         defaultModel="HadGEM3-GC31-MM"
         defaultMonth="08"
