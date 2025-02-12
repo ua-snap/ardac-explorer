@@ -11,8 +11,8 @@ https://github.com/nvm-sh/nvm
 Then run:
 
 ```bash
-$ nvm use lts/hydrogen
-$ npm install
+nvm use lts/hydrogen
+npm install
 ```
 
 ### Set environment variables if necessary
@@ -26,62 +26,19 @@ endpoints:
 | RASDAMAN_URL         | https://maps.earthmaps.io/rasdaman/ows |
 | SNAP_API_URL         | https://earthmaps.io                   |
 
-### Enable website hosting on the AWS S3 bucket:
+## Development
 
-**_The following command should be run only during the initial setup of the S3
-bucket. Do not run this command again or it will wipe out the S3 website
-redirection rules._**
+### Run locally in development mode
 
-```
-aws s3 website s3://arcticdatascience.org/ --index-document index.html --error-document index.html
-```
-
-### Add website redirection rules to S3 bucket
-
-Website redirection rules need to be added to the S3 bucket for data to hydrate
-properly when a report is referenced directly by its URL (permalink).
-
-From the AWS web interface for the S3 bucket, go to:
-
-Properties → Static website hosting → Edit
-
-In the "Redirection rules" text area, add the following:
+Serve with hot reload at http://localhost:3000:
 
 ```
-[
-    {
-        "Condition": {
-            "HttpErrorCodeReturnedEquals": "404"
-        },
-        "Redirect": {
-            "HostName": "arcticdatascience.org",
-            "Protocol": "http",
-            "ReplaceKeyPrefixWith": "#!/"
-        }
-    },
-    {
-        "Condition": {
-            "HttpErrorCodeReturnedEquals": "403"
-        },
-        "Redirect": {
-            "HostName": "arcticdatascience.org",
-            "Protocol": "http",
-            "ReplaceKeyPrefixWith": "#!/"
-        }
-    }
-]
+npm run dev
 ```
 
-Code in `app.vue` catches and routes these redirects into fully hydrated report pages.
+### Development notes
 
-# Production
-
-npm run build # release
-npm run preview # preview the release
-
-````
-
-### Adding a new item
+#### Adding a new item
 
 Determine a 'slug' for the item.  The slug is a unique but human-readable ID for the item that will be visible in the URL.
 
@@ -146,3 +103,78 @@ sed -i '' 's/class\=\"input\"//' notebook.html
 ```
 
 This does a bit of cleanup and removes one class that will clash with Bulma. Finally, copy paste everything in the `<body>` tag of the cleaned HTML into the `<slot>` in the `NotebookTemplate` component.
+
+## Production
+
+### Enable website hosting on the AWS S3 bucket:
+
+**_The following command should be run only during the initial setup of the S3
+bucket. Do not run this command again or it will wipe out the S3 website
+redirection rules._**
+
+```bash
+aws s3 website s3://arcticdatascience.org/ --index-document index.html --error-document index.html
+```
+
+### Add website redirection rules to S3 bucket
+
+Website redirection rules need to be added to the S3 bucket for data to hydrate
+properly when a report is referenced directly by its URL (permalink).
+
+From the AWS web interface for the S3 bucket, go to:
+
+Properties → Static website hosting → Edit
+
+In the "Redirection rules" text area, add the following:
+
+```
+[
+    {
+        "Condition": {
+            "HttpErrorCodeReturnedEquals": "404"
+        },
+        "Redirect": {
+            "HostName": "arcticdatascience.org",
+            "Protocol": "http",
+            "ReplaceKeyPrefixWith": "#!/"
+        }
+    },
+    {
+        "Condition": {
+            "HttpErrorCodeReturnedEquals": "403"
+        },
+        "Redirect": {
+            "HostName": "arcticdatascience.org",
+            "Protocol": "http",
+            "ReplaceKeyPrefixWith": "#!/"
+        }
+    }
+]
+```
+
+Code in `app.vue` catches and routes these redirects into fully hydrated report pages.
+
+### Build preview
+
+Run the statically built website locally:
+
+```bash
+npm run build
+npm run preview
+```
+
+### Deployment
+
+Set environment variables if necessary, then run:
+
+```bash
+npm run generate
+aws s3 cp dist s3://arcticdatascience.org/ --acl public-read --recursive
+```
+
+You will also need to invalidate the CloudFront cache for arcticdatascience.org.
+Use the following CLI command:
+
+```bash
+aws cloudfront create-invalidation --distribution-id EW659H9IK8XAT --paths "/*"
+```
