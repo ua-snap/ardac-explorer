@@ -477,6 +477,16 @@ onMounted(() => {
               <td>Monthly, daily</td>
             </tr>
             <tr>
+              <td>Precipitation as snow</td>
+              <td><code>prsn</code></td>
+              <td>Monthly, daily</td>
+            </tr>
+            <tr>
+              <td>Snow Water Equivalent</td>
+              <td><code>swe</code></td>
+              <td>Monthly, daily</td>
+            </tr>
+            <tr>
               <td>Maximum near surface air temperature</td>
               <td><code>tasmax</code></td>
               <td>Monthly, daily</td>
@@ -542,8 +552,8 @@ onMounted(() => {
               <td>Monthly, daily</td>
             </tr>
             <tr>
-              <td>Surface wind maximum</td>
-              <td><code>sfcWindMax</code></td>
+              <td>Sea Ice Concentration</td>
+              <td><code>siconc</code></td>
               <td>Monthly, daily</td>
             </tr>
           </table>
