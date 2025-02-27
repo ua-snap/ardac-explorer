@@ -7,14 +7,19 @@ const year = new Date().getFullYear()
     <div class="container is-fullhd content">
       <p class="bolder">
         Made by the
-        <a href="https://www.snap.uaf.edu/" title="Boo! 👻 The SNAP tech team data ghost says hi!"
+        <a
+          href="https://www.snap.uaf.edu/"
+          title="Boo! 👻 The SNAP tech team data ghost says hi!"
           >Scenarios Network for Alaska + Arctic Planning</a
         >
         located at the
         <a href="https://uaf-iarc.org">International Arctic Research Center</a>.
       </p>
       <p>
-        Funding provided by the <a href="https://science.osti.gov/ber/Research/eessd/Data-Management">Data Management Program</a>, Climate and Environmental Sciences Division, US Department of Energy.
+        Funding provided by the
+        <a href="https://science.osti.gov/ber/Research/eessd/Data-Management"
+          >Data Management Program</a
+        >, Climate and Environmental Sciences Division, US Department of Energy.
       </p>
 
       <p class="lighter">
@@ -27,17 +32,13 @@ const year = new Date().getFullYear()
 
       <p>
         Copyright &copy; {{ year }} University of Alaska Fairbanks. All rights
-        reserved. UA is an affirmative action / equal opportunity employer,
-        educational institution and provider, and prohibits illegal
-        discrimination against any individual.
+        reserved. The <a href="www.alaska.edu">University of Alaska</a> is an
+        Equal Opportunity/Equal Access Employer and Educational Institution. The
+        University is committed to a
         <a href="https://www.alaska.edu/nondiscrimination/"
-          >Statement of Nondiscrimination</a
+          >policy of non-discrimination</a
         >
-        and
-        <a
-          href="https://www.alaska.edu/records/records/compliance/gdpr/ua-privacy-statement/"
-          >Privacy Statement</a
-        >
+        against individuals on the basis of any legally protected status.
       </p>
     </div>
   </footer>
