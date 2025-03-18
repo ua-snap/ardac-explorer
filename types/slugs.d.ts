@@ -20,7 +20,6 @@ type Slug =
   | 'landfast-sea-ice'
   | 'sea-ice-concentration'
   | 'notebook-sea-ice-traffic'
-  | 'communities-boundaries'
   | 'hydrology-evap'
   | 'hydrology-glacier-melt'
   | 'hydrology-iswe'
@@ -64,3 +63,4 @@ type Slug =
   | 'story-climate-stripes-1'
   | 'summary-landfast-sea-ice'
   | 'evaporation-cmip6'
+  | 'places-and-polygons'
