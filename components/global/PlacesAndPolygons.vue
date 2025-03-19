@@ -122,8 +122,6 @@ defineOptions({
                   <th>id</th>
                   <th>name</th>
                   <th>alt_name</th>
-                  <th>region</th>
-                  <th>country</th>
                   <th>latitude</th>
                   <th>longitude</th>
                   <th>km to ocean</th>
@@ -134,8 +132,6 @@ defineOptions({
                   <td>AK1</td>
                   <td>Afognak</td>
                   <td>Agw'aneq</td>
-                  <td>Alaska</td>
-                  <td>US</td>
                   <td>58.0078</td>
                   <td>-152.768</td>
                   <td>1</td>
@@ -144,8 +140,6 @@ defineOptions({
                   <td>AK2</td>
                   <td>Akhiok</td>
                   <td>Kasukuak</td>
-                  <td>Alaska</td>
-                  <td>US</td>
                   <td>56.9455</td>
                   <td>-154.170</td>
                   <td>0.8</td>
@@ -154,8 +148,6 @@ defineOptions({
                   <td>AK3</td>
                   <td>Akiachak</td>
                   <td>Akiacuar</td>
-                  <td>Alaska</td>
-                  <td>US</td>
                   <td>60.9094</td>
                   <td>-161.431</td>
                   <td>33.5</td>
@@ -164,8 +156,6 @@ defineOptions({
                   <td>AK4</td>
                   <td>Akiak</td>
                   <td>Akiaq</td>
-                  <td>Alaska</td>
-                  <td>US</td>
                   <td>60.9122</td>
                   <td>-161.214</td>
                   <td>43</td>
@@ -174,8 +164,6 @@ defineOptions({
                   <td>AK5</td>
                   <td>Akutan</td>
                   <td>Achan-ingiiga</td>
-                  <td>Alaska</td>
-                  <td>US</td>
                   <td>54.1385</td>
                   <td>-165.778</td>
                   <td>1.4</td>
@@ -203,7 +191,6 @@ defineOptions({
             <table class="table is-bordered is-striped is-narrow">
               <thead>
                 <tr>
-                  <th>id</th>
                   <th>name</th>
                   <th>type</th>
                   <th>geometry</th>
@@ -211,31 +198,26 @@ defineOptions({
               </thead>
               <tbody>
                 <tr>
-                  <td>CD3</td>
                   <td>Central Interior</td>
                   <td>climate_division</td>
                   <td>POLYGON ((-152.9662 62.2662, ...))</td>
                 </tr>
                 <tr>
-                  <td>NC7</td>
                   <td>Cook Inlet Region, Incorporated</td>
                   <td>corporation</td>
                   <td>POLYGON ((-153.3263 58.9128, ...))</td>
                 </tr>
                 <tr>
-                  <td>AKECO11</td>
                   <td>Copper Plateau</td>
                   <td>ecoregion</td>
                   <td>POLYGON ((-143.5992 62.7129, ...))</td>
                 </tr>
                 <tr>
-                  <td>EL27</td>
                   <td>Upper Tanana</td>
                   <td>ethnolinguistic_region</td>
                   <td>POLYGON ((-140.9682 61.5069, ...))</td>
                 </tr>
                 <tr>
-                  <td>FIRE12</td>
                   <td>Tok Area</td>
                   <td>fire_zone</td>
                   <td>POLYGON ((-143.4561 64.5467, ...))</td>
@@ -244,8 +226,8 @@ defineOptions({
             </table>
           </div>
           <small class="is-size-7 has-text-grey">
-            Example polygon features showing different boundary types and their
-            geometries
+            Some example polygon features of different types: a view similar to
+            a GIS attribute table.
           </small>
         </div>
       </div>
