@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+import RandomLocationMap from '~/components/RandomLocationMap.vue'
+
 // Change the component name to match the slug pattern
 defineOptions({
   name: 'PlacesAndPolygons',
@@ -78,6 +80,11 @@ defineOptions({
             communities for different climate futures. **Consider linking to a
             code example here**
           </p>
+
+          <!-- Random Location Map Component -->
+          <div class="mt-4">
+            <RandomLocationMap />
+          </div>
         </div>
       </div>
 
