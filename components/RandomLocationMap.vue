@@ -17,12 +17,34 @@ const baseLayer = ref<any>(null)
 const loading = computed(() => placesStore.isLoading)
 const error = computed(() => placesStore.error)
 const location = computed(() => placesStore.randomLocation)
+
 const locationLabel = computed(() => {
   if (!location.value) return ''
 
   return location.value.alt_name
     ? `${location.value.name} (${location.value.alt_name})`
     : location.value.name
+})
+
+const headerLabel = computed(() => {
+  if (!location.value) return ''
+
+  let label = locationLabel.value
+
+  // Add region and country if available
+  const parts = []
+  if (location.value.region && location.value.region.trim()) {
+    parts.push(location.value.region)
+  }
+  if (location.value.country && location.value.country.trim()) {
+    parts.push(location.value.country)
+  }
+
+  if (parts.length > 0) {
+    label += `, ${parts.join(', ')}`
+  }
+
+  return label
 })
 
 async function showRandomLocation() {
@@ -114,12 +136,12 @@ onBeforeUnmount(() => {
       :class="{ 'is-loading': loading }"
       :disabled="loading"
     >
-      Show me a random point location
+      Show me a random ARDAC point location
     </button>
 
     <div v-if="isMapVisible && location" class="map-container mt-4">
       <div class="map-header">
-        <h4 class="title is-5">{{ locationLabel }}</h4>
+        <h4 class="title is-5">{{ headerLabel }}</h4>
         <button class="button is-small is-light" @click="closeMap">
           Close
         </button>
