@@ -104,7 +104,7 @@ defineOptions({
           <ul>
             <li>Izembek National Wildlife Refuge</li>
             <li>Yukon Game Management Subzone 3-14</li>
-            <li>Middle Fork-North Fork Chandalar Rivers (HUC 19080201)</li>
+            <li>Pikmiktalik River (HUC 1903050230)</li>
             <li>Matanuska-Susitna Borough</li>
             <li>Vuntut Gwitchin First Nation Traditional Territory</li>
           </ul>
@@ -129,7 +129,13 @@ defineOptions({
       <div class="columns">
         <div class="column is-6 pr-5 border-right">
           <h4 class="title is-5">Point Location Features</h4>
+          <p>
+            Thousands of point locations are manually vetted for geographic
+            accuracy. Place name correctness is with third party governmental
+            organizations and research institutions.
+          </p>
           <ul>
+            <li>Geographic extent: the circumpolar North</li>
             <li>Decimal degree precision to 4 places (≈11m accuracy)</li>
             <li>Pre-computed shortest distance between point and ocean</li>
             <li>Multiple name variants where available</li>
@@ -199,13 +205,20 @@ defineOptions({
         </div>
         <div class="column is-6 pl-5">
           <h4 class="title is-5">Polygon Boundary Features</h4>
+          <p>
+            <a href="https://earthmaps.io/places/"
+              >Polygons are sourced from governmental agencies, research
+              institutions, and international organizations.</a
+            >
+            Data are lightly curated to ensure usefulness for web applications
+            and statistical analysis.
+          </p>
           <ul>
-            <li>
-              Optimized geometries for web performance and statistical analysis
-            </li>
+            <li>Optimized geometries for web performance and analysis</li>
             <li>Minimum area threshold: 10 km²</li>
             <li>Topological integrity: geometries are valid</li>
             <li>Consistency across political boundaries</li>
+            <li>Data do not constitute legal or official boundaries</li>
           </ul>
 
           <div class="table-container mt-3">
@@ -221,27 +234,27 @@ defineOptions({
                 <tr>
                   <td>Central Interior</td>
                   <td>climate_division</td>
-                  <td>POLYGON ((-152.9662 62.2662, ...))</td>
+                  <td>POLYGON ((-152.9662...))</td>
                 </tr>
                 <tr>
-                  <td>Cook Inlet Region, Incorporated</td>
+                  <td>Sealaska Corporation</td>
                   <td>corporation</td>
-                  <td>POLYGON ((-153.3263 58.9128, ...))</td>
+                  <td>POLYGON ((-153.3263...))</td>
                 </tr>
                 <tr>
                   <td>Copper Plateau</td>
                   <td>ecoregion</td>
-                  <td>POLYGON ((-143.5992 62.7129, ...))</td>
+                  <td>POLYGON ((-143.5992...))</td>
                 </tr>
                 <tr>
                   <td>Upper Tanana</td>
                   <td>ethnolinguistic_region</td>
-                  <td>POLYGON ((-140.9682 61.5069, ...))</td>
+                  <td>POLYGON ((-140.9682...))</td>
                 </tr>
                 <tr>
                   <td>Tok Area</td>
                   <td>fire_zone</td>
-                  <td>POLYGON ((-143.4561 64.5467, ...))</td>
+                  <td>POLYGON ((-143.4561...))</td>
                 </tr>
               </tbody>
             </table>
