@@ -1,7 +1,7 @@
 import { defineStore } from 'pinia'
 
 export interface PolygonFeature {
-  id: string
+  id: string | number
   name: string
   type: string
 }
@@ -33,7 +33,7 @@ export const usePolygonsStore = defineStore('polygons', () => {
     { name: 'Alaska Native Corporation', endpoint: '/places/corporations' },
     { name: 'Alaska Climate Division', endpoint: '/places/climate_divisions' },
     { name: 'Fire Management Zone', endpoint: '/places/fire_zones' },
-    { name: 'Alaska Ethnolinguistic Region', endpoint: '/places/ethnolinguistic_regions' },
+    { name: 'Ethnolinguistic Region', endpoint: '/places/ethnolinguistic_regions' },
     { name: 'Alaska Borough', endpoint: '/places/boroughs' },
     { name: 'Alaska Census Area', endpoint: '/places/census_areas' },
     { name: 'Game Management Unit', endpoint: '/places/game_management_units' },
@@ -88,7 +88,7 @@ export const usePolygonsStore = defineStore('polygons', () => {
   }
   
   // Function to fetch the geometry for a specific feature ID
-  async function fetchFeatureGeometry(featureId: string) {
+  async function fetchFeatureGeometry(featureId: string | number) {
     try {
       const geometryUrl = `${config.public.apiUrl}/boundary/area/${featureId}`
       const geometryResponse = await fetch(geometryUrl)
