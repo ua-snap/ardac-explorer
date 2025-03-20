@@ -28,19 +28,19 @@ defineOptions({
             Wildlife Refuges. Climate Divisions. Fire Management Zones. Game
             Management Units. And more. Place names are how humans navigate
             their daily geospatial context, and representation matters because
-            that context is varies across space, time, and cultures. Every
-            single named location in Alaska (and many throughout the circumpolar
-            North) are available in ARDAC. Every community is on the map. In
-            some instances, an Indigenous name is included when it was possible
-            to verify the name with the
+            that context varies across space, time, and cultures. Every single
+            named location in Alaska (and many throughout the circumpolar North)
+            are available in ARDAC. Every community is on the map. In some
+            instances, an Indigenous name is included when it was possible to
+            verify the name with the
             <a href="https://www.uaf.edu/anlc" target="_blank"
               >Alaska Native Language Center at the University of Alaska
               Fairbanks</a
             >. From Afognak (Agw'aneq) to Yakutat (Yaakwdáat), over 500 named
-            Alaska communities and locations are represented in ARDAC. But that
-            is just the beginning: ARDAC has numerous other geographic lenses
-            for analyzing climate and envinronmental data, inlcuding polygon
-            vector data such as:
+            Alaska communities and locations are in ARDAC. But that is just the
+            beginning: ARDAC has numerous other geographic lenses for analyzing
+            climate and envinronmental data, inlcuding polygon vector data such
+            as:
           </p>
           <ul>
             <li>
@@ -112,7 +112,7 @@ defineOptions({
             <a href="/item/notebook-precip-poly"
               >Example: Fetch a polygon from the SNAP Data API, subset
               historical baseline daily precipitation data using the polygon,
-              compute statistics, and compare results with USGS stream gauge
+              compute statistics, and compare results with USGS streamgage
               data.</a
             >
           </p>
@@ -131,7 +131,7 @@ defineOptions({
           <h4 class="title is-5">Point Location Features</h4>
           <ul>
             <li>Decimal degree precision to 4 places (≈11m accuracy)</li>
-            <li>Pre-computed shortest distance point and the ocean</li>
+            <li>Pre-computed shortest distance between point and ocean</li>
             <li>Multiple name variants where available</li>
             <li>Unique alphanumeric ID for each point</li>
           </ul>
