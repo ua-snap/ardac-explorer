@@ -67,10 +67,10 @@ function initMap() {
 
   // Set the base layer to OpenStreetMap
   baseLayer.value = $L.tileLayer(
-    'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
+    'https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}',
     {
-      attribution:
-        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      attribution: 'USGS The National Map',
+      maxZoom: 16,
     }
   )
 
