@@ -65,36 +65,34 @@ function initMap() {
     mapInstance.value.remove()
   }
 
-  const isInAlaska = placesStore.isLocationInAlaska(location.value)
-
   // Create the map
   const map = $L.map(mapId, {
     center: [location.value.latitude, location.value.longitude],
-    zoom: 9,
+    zoom: 8,
     scrollWheelZoom: false,
     zoomControl: true,
     attributionControl: true,
   })
 
-  // Set the base layer
-  if (isInAlaska) {
-    // Use Alaska basemap for Alaska locations
-    baseLayer.value = $L.tileLayer.wms(config.public.geoserverUrl, {
-      transparent: true,
-      format: 'image/png',
-      version: '1.3.0',
-      layers: 'atlas_mapproxy:alaska_osm_retina',
-    })
-  } else {
-    // Use OpenStreetMap for non-Alaska locations
-    baseLayer.value = $L.tileLayer(
-      'https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png',
-      {
-        attribution:
-          '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      }
-    )
+  // Determine maxZoom based on country
+  let maxZoom = 8 // Default for most of the world
+  if (location.value.country) {
+    const country = location.value.country.trim().toLowerCase()
+    if (country === 'us' || country === 'usa' || country === 'united states') {
+      maxZoom = 16
+    } else if (country === 'canada' || country === 'ca') {
+      maxZoom = 12
+    }
   }
+
+  // Use USGS National Map for all locations
+  baseLayer.value = $L.tileLayer(
+    'https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}',
+    {
+      attribution: 'USGS The National Map',
+      maxZoom: maxZoom,
+    }
+  )
 
   baseLayer.value.addTo(map)
 
