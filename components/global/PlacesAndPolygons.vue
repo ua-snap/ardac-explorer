@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import RandomLocationMap from '~/components/RandomLocationMap.vue'
+import RandomPolygonMap from '~/components/RandomPolygonMap.vue'
 
 // Change the component name to match the slug pattern
 defineOptions({
@@ -76,9 +77,9 @@ defineOptions({
             <li>Bjørnøya, Svalbard, Norway</li>
           </ul>
           <p class="has-text-weight-semibold mt-3">
-            Compare projected permafrost thaw rates between Interior Alaska
-            communities for different climate futures. **Consider linking to a
-            code example here**
+            Example: Compare projected permafrost thaw rates between Interior
+            Alaska communities for different climate futures. **Consider linking
+            to a code example here**
           </p>
 
           <!-- Random Location Map Component -->
@@ -92,7 +93,7 @@ defineOptions({
         <div class="tile is-child">
           <h3 class="title is-4">Polygon Boundaries</h3>
           <p>
-            Choose from over 17,000 polygon features enable that enable zonal
+            Choose from over 17,000 polygon features that enable zonal
             statistics (imagine cookie cutters, for data) - for example:
           </p>
           <ul>
@@ -107,6 +108,11 @@ defineOptions({
             increase in projected relative flammability between now and 2050.
             **Consider linking to a code example here**
           </p>
+
+          <!-- Random Polygon Map Component -->
+          <div class="mt-4">
+            <RandomPolygonMap />
+          </div>
         </div>
       </div>
     </section>
