@@ -31,9 +31,9 @@ defineOptions({
             every single named location in Alaska (and many throughout the
             Arctic) are available in ARDAC. Anchorage and Girdwood are different
             places, and those names mean different things. Every community is on
-            the map. For some communities, an Indigenous name was also included
-            when it was possible to verify the name with the Alaska Native
-            Language Center at the University of Alaska Fairbanks. From Afognak
+            the map. In some instances, an Indigenous name is included when it
+            was possible to verify the name with the Alaska Native Language
+            Center at the University of Alaska Fairbanks. From Afognak
             (Agw'aneq) to Yakutat (Yaakwdáat), over 500 named Alaska communities
             and locations are represented in ARDAC. ARDAC provides multiple
             geographic perspectives to analyze climate data through geographic
@@ -77,9 +77,11 @@ defineOptions({
             <li>Bjørnøya, Svalbard, Norway</li>
           </ul>
           <p class="has-text-weight-semibold mt-3">
-            Example: Compare projected permafrost thaw rates between Interior
-            Alaska communities for different climate futures. **Consider linking
-            to a code example here**
+            <a href="/item/notebook-perm-obs-temp"
+              >Example: Combine and compare permafrost observations with modeled
+              baseline air temperature data using SNAP Data API point location
+              queries.</a
+            >
           </p>
 
           <!-- Random Location Map Component -->
@@ -104,9 +106,12 @@ defineOptions({
             <li>Vuntut Gwitchin First Nation Traditional Territory</li>
           </ul>
           <p class="has-text-weight-semibold mt-3">
-            Example: Determine which fire managment zone has the greatest
-            increase in projected relative flammability between now and 2050.
-            **Consider linking to a code example here**
+            <a href="/item/notebook-precip-poly"
+              >Example: Fetch a polygon from the SNAP Data API, subset
+              historical baseline daily precipitation data using the polygon,
+              compute statistics, and compare results with USGS stream gauge
+              data.</a
+            >
           </p>
 
           <!-- Random Polygon Map Component -->
