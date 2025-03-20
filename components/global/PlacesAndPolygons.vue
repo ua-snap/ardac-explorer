@@ -19,24 +19,27 @@ defineOptions({
         <div class="tile is-child">
           <h3 class="title is-4">Why Geographic Context Matters</h3>
           <p>
-            Geospatial data is at a minimum two-dimensional: we use a coordinate
-            pair (latitude and longitude, or y and x) to attach data to a
-            location on Earth. And while coordinates like (68.1399, -151.7321)
-            or (-419837, 1225439) are perfectly suited to computational
-            extraction of data, they fail to convey a sense of place. That's why
-            ARDAC includes place names. Communities. Airports. National Parks.
+            Geospatial data is at a minimum two-dimensional: a coordinate pair
+            (latitude and longitude, or y and x) attaches data to a location on
+            Earth. And while coordinates like (68.1399, -151.7321) or (-419837,
+            1225439) are perfectly suited to computational data mapping and
+            extraction, they fail to convey a sense of place. That's why ARDAC
+            includes place names. Communities. Airports. National Parks.
             Wildlife Refuges. Climate Divisions. Fire Management Zones. Game
-            Management Units. And more. Place names are how we navigate our
-            daily geospatial context, and representation matters. That's why
-            every single named location in Alaska (and many throughout the
-            Arctic) are available in ARDAC. Anchorage and Girdwood are different
-            places, and those names mean different things. Every community is on
-            the map. In some instances, an Indigenous name is included when it
-            was possible to verify the name with the Alaska Native Language
-            Center at the University of Alaska Fairbanks. From Afognak
-            (Agw'aneq) to Yakutat (Yaakwdáat), over 500 named Alaska communities
-            and locations are represented in ARDAC. ARDAC provides multiple
-            geographic perspectives to analyze climate data through geographic
+            Management Units. And more. Place names are how humans navigate
+            their daily geospatial context, and representation matters because
+            that context is varies across space, time, and cultures. Every
+            single named location in Alaska (and many throughout the circumpolar
+            North) are available in ARDAC. Every community is on the map. In
+            some instances, an Indigenous name is included when it was possible
+            to verify the name with the
+            <a href="https://www.uaf.edu/anlc" target="_blank"
+              >Alaska Native Language Center at the University of Alaska
+              Fairbanks</a
+            >. From Afognak (Agw'aneq) to Yakutat (Yaakwdáat), over 500 named
+            Alaska communities and locations are represented in ARDAC. But that
+            is just the beginning: ARDAC has numerous other geographic lenses
+            for analyzing climate and envinronmental data, inlcuding polygon
             vector data such as:
           </p>
           <ul>
@@ -66,8 +69,8 @@ defineOptions({
           <h3 class="title is-4">Point Locations</h3>
           <p>
             Over 25,000 named point locations across the circumpolar North are
-            available in ARDAC. We include Indigenous toponyms and/or proper
-            orthography where appropriate, for example:
+            available in ARDAC. Indigenous toponyms and/or proper orthography
+            are included where appropriate, for example:
           </p>
           <ul>
             <li>Utqiaġvik (Barrow), Alaska</li>
