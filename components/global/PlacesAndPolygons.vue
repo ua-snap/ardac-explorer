@@ -331,7 +331,7 @@ defineOptions({
     top: -12px;
     left: 50%;
     transform: translateX(-50%);
-    background-color: $primary;
+    background-color: $primary-dark;
     color: white;
     padding: 2px 12px;
     border-radius: 16px;
