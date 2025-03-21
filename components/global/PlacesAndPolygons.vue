@@ -86,12 +86,6 @@ defineOptions({
               queries.</a
             >
           </p>
-
-          <!-- Random Location Map Component -->
-          <div class="mt-4 interactive-feature">
-            <div class="interactive-label">Interactive Feature</div>
-            <RandomLocationMap />
-          </div>
         </div>
       </div>
 
@@ -117,9 +111,26 @@ defineOptions({
               data.</a
             >
           </p>
+        </div>
+      </div>
+    </section>
 
-          <!-- Random Polygon Map Component -->
-          <div class="mt-4 interactive-feature">
+    <!-- New section specifically for the interactive features -->
+    <section class="tile is-ancestor">
+      <div class="tile is-parent pr-5 border-right">
+        <div class="tile is-child">
+          <div class="horizontal-divider mb-6"></div>
+          <div class="interactive-feature">
+            <div class="interactive-label">Interactive Feature</div>
+            <RandomLocationMap />
+          </div>
+        </div>
+      </div>
+
+      <div class="tile is-parent px-5">
+        <div class="tile is-child">
+          <div class="horizontal-divider mb-6"></div>
+          <div class="interactive-feature">
             <div class="interactive-label">Interactive Feature</div>
             <RandomPolygonMap />
           </div>
@@ -296,6 +307,12 @@ defineOptions({
 
 .border-right {
   border-right: 1px solid $gray-lighter;
+}
+
+.horizontal-divider {
+  height: 1px;
+  background-color: $gray-lighter;
+  width: 100%;
 }
 
 .notification a {
