@@ -67,8 +67,41 @@ export const usePlacesStore = defineStore('places', () => {
       // Get locations for the selected country
       const countryLocations = locationsByCountry.get(randomCountry)!
       
-      // Select a random location from the selected country
-      const selectedLocation = countryLocations[Math.floor(Math.random() * countryLocations.length)]
+      let selectedLocation: PointLocation
+      
+      // Special handling for Canada - select by province first
+      if (randomCountry === 'CA') {
+        // Group Canadian locations by region/province
+        const locationsByRegion = new Map<string, PointLocation[]>()
+        
+        countryLocations.forEach((location: PointLocation) => {
+          const region = location.region?.trim() || 'Unknown'
+          if (!locationsByRegion.has(region)) {
+            locationsByRegion.set(region, [])
+          }
+          locationsByRegion.get(region)!.push(location)
+        })
+        
+        // Get array of available regions
+        const regions = Array.from(locationsByRegion.keys())
+        
+        if (regions.length === 0) {
+          // Fallback to normal selection if no region data
+          selectedLocation = countryLocations[Math.floor(Math.random() * countryLocations.length)]
+        } else {
+          // Select a random region
+          const randomRegion = regions[Math.floor(Math.random() * regions.length)]
+          
+          // Get locations for the selected region
+          const regionLocations = locationsByRegion.get(randomRegion)!
+          
+          // Select a random location from the selected region
+          selectedLocation = regionLocations[Math.floor(Math.random() * regionLocations.length)]
+        }
+      } else {
+        // For non-Canadian locations, select randomly as before
+        selectedLocation = countryLocations[Math.floor(Math.random() * countryLocations.length)]
+      }
       
       // Assign the selected location to the ref
       randomLocation.value = selectedLocation
