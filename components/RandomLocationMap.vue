@@ -129,12 +129,15 @@ onBeforeUnmount(() => {
 <template>
   <div class="random-location-container">
     <button
-      class="button is-primary"
+      class="button is-primary is-medium is-fullwidth"
       @click="showRandomLocation"
       :class="{ 'is-loading': loading }"
       :disabled="loading"
     >
-      Show me a random ARDAC point location
+      <span class="icon mr-2">
+        <i class="fas fa-map-marker-alt"></i>
+      </span>
+      <span>Show me a random ARDAC point location</span>
     </button>
 
     <div v-if="isMapVisible && location" class="map-container mt-4">
@@ -167,6 +170,18 @@ onBeforeUnmount(() => {
 <style lang="scss" scoped>
 .random-location-container {
   margin: 2rem 0;
+
+  .button.is-primary.is-medium.is-fullwidth {
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+    border: 2px solid darken($primary, 5%);
+    font-weight: 600;
+
+    &:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    }
+  }
 }
 
 .map-container {

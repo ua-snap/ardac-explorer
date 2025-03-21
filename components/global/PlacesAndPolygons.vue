@@ -88,7 +88,8 @@ defineOptions({
           </p>
 
           <!-- Random Location Map Component -->
-          <div class="mt-4">
+          <div class="mt-4 interactive-feature">
+            <div class="interactive-label">Interactive Feature</div>
             <RandomLocationMap />
           </div>
         </div>
@@ -118,7 +119,8 @@ defineOptions({
           </p>
 
           <!-- Random Polygon Map Component -->
-          <div class="mt-4">
+          <div class="mt-4 interactive-feature">
+            <div class="interactive-label">Interactive Feature</div>
             <RandomPolygonMap />
           </div>
         </div>
@@ -298,5 +300,28 @@ defineOptions({
 
 .notification a {
   text-decoration: underline;
+}
+
+.interactive-feature {
+  position: relative;
+  border: 2px dashed $primary-light;
+  border-radius: 8px;
+  padding: 2rem 1rem 1rem;
+  background-color: rgba($primary-light, 0.05);
+
+  .interactive-label {
+    position: absolute;
+    top: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: $primary;
+    color: white;
+    padding: 2px 12px;
+    border-radius: 16px;
+    font-size: 0.8rem;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  }
 }
 </style>
