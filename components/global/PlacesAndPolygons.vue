@@ -1,6 +1,13 @@
 <script lang="ts" setup>
-import RandomLocationMap from '~/components/RandomLocationMap.vue'
-import RandomPolygonMap from '~/components/RandomPolygonMap.vue'
+import { defineAsyncComponent } from 'vue'
+
+// Lazy load the map components
+const RandomLocationMap = defineAsyncComponent(
+  () => import('~/components/RandomLocationMap.vue')
+)
+const RandomPolygonMap = defineAsyncComponent(
+  () => import('~/components/RandomPolygonMap.vue')
+)
 
 defineOptions({
   name: 'PlacesAndPolygons',
