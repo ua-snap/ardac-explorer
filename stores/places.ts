@@ -44,6 +44,9 @@ export const usePlacesStore = defineStore('places', () => {
       }
       
       // Group locations by country
+      // This is extra logic because the API doesn't return point locations grouped by country
+      // And if we randomly select from all locations, Canada, especially Ontario and Quebec,
+      // will be overrepresented.
       const locationsByCountry = new Map<string, PointLocation[]>()
       
       data.forEach((location: PointLocation) => {
