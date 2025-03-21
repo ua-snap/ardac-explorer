@@ -17,6 +17,4 @@ type Tag =
   | 'Solar Radiation'
   | 'Snow'
   | 'Story'
-  | 'geography'
-  | 'DataMethods'
-  | 'IndigenousKnowledge'
+
