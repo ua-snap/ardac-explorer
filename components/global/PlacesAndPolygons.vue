@@ -15,7 +15,7 @@ defineOptions({
 </script>
 
 <template>
-  <article class="clamp content is-size-5">
+  <article class="clamp content">
     <h2 class="title is-2">
       Places & Polygons: Geographic Lenses for Arctic Data
     </h2>
