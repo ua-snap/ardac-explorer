@@ -43,9 +43,35 @@ export const usePlacesStore = defineStore('places', () => {
         throw new Error('Invalid or empty data received from API')
       }
       
-      // Select a random location from the array
-      const randomIndex = Math.floor(Math.random() * data.length)
-      randomLocation.value = data[randomIndex]
+      // Group locations by country
+      const locationsByCountry = new Map<string, PointLocation[]>()
+      
+      data.forEach((location: PointLocation) => {
+        const country = location.country?.trim() || 'Unknown'
+        if (!locationsByCountry.has(country)) {
+          locationsByCountry.set(country, [])
+        }
+        locationsByCountry.get(country)!.push(location)
+      })
+      
+      // Get array of available countries
+      const countries = Array.from(locationsByCountry.keys())
+      
+      if (countries.length === 0) {
+        throw new Error('No country data available')
+      }
+      
+      // Select a random country
+      const randomCountry = countries[Math.floor(Math.random() * countries.length)]
+      
+      // Get locations for the selected country
+      const countryLocations = locationsByCountry.get(randomCountry)!
+      
+      // Select a random location from the selected country
+      const selectedLocation = countryLocations[Math.floor(Math.random() * countryLocations.length)]
+      
+      // Assign the selected location to the ref
+      randomLocation.value = selectedLocation
     } catch (err) {
       console.error('Error fetching random location:', err)
       error.value = err instanceof Error ? err.message : 'Unknown error occurred'
