@@ -2,7 +2,6 @@
 import RandomLocationMap from '~/components/RandomLocationMap.vue'
 import RandomPolygonMap from '~/components/RandomPolygonMap.vue'
 
-// Change the component name to match the slug pattern
 defineOptions({
   name: 'PlacesAndPolygons',
 })
@@ -299,26 +298,31 @@ defineOptions({
 </template>
 
 <style lang="scss" scoped>
+/* Main container with constrained width for readability */
 .clamp {
   max-width: 80rem;
   margin: 0 auto;
   padding: 2rem;
 }
 
+/* Vertical separator between columns */
 .border-right {
   border-right: 1px solid $gray-lighter;
 }
 
+/* Horizontal separator between content sections */
 .horizontal-divider {
   height: 1px;
   background-color: $gray-lighter;
   width: 100%;
 }
 
+/* Ensure notification links are visually distinct */
 .notification a {
   text-decoration: underline;
 }
 
+/* Container for interactive map components with visual indication */
 .interactive-feature {
   position: relative;
   border: 2px dashed $primary-light;
@@ -326,6 +330,7 @@ defineOptions({
   padding: 2rem 1rem 1rem;
   background-color: rgba($primary-light, 0.05);
 
+  /* Floating label that sits on top of the interactive feature container */
   .interactive-label {
     position: absolute;
     top: -12px;
