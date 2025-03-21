@@ -39,7 +39,7 @@ defineOptions({
             >. From Afognak (Agw'aneq) to Yakutat (Yaakwdáat), over 500 named
             Alaska communities and locations are in ARDAC. But that is just the
             beginning: ARDAC has numerous other geographic lenses for analyzing
-            climate and envinronmental data, inlcuding polygon vector data such
+            climate and environmental data, including polygon vector data such
             as:
           </p>
           <ul>
