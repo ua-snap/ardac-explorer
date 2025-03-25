@@ -100,7 +100,7 @@ defineOptions({
           <h3 class="title is-4">Polygon Boundaries</h3>
           <p>
             Choose from over 17,000 polygon features that enable zonal
-            statistics (imagine cookie cutters, for data) - for example:
+            statistics (imagine cookie cutters, for data) &mdash; for example:
           </p>
           <ul>
             <li>Izembek National Wildlife Refuge</li>
