@@ -31,7 +31,7 @@ export const usePlacesStore = defineStore('places', () => {
     error.value = null
     
     try {
-      const response = await fetch('https://earthmaps.io/places/communities')
+      const response = await fetch(runtimeConfig.public.apiUrl + '/places/communities')
       
       if (!response.ok) {
         throw new Error(`API request failed with status ${response.status}`)
