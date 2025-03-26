@@ -127,23 +127,23 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="random-location-container">
+  <div class="random-location-container has-text-centered">
     <button
-      class="button is-primary is-medium is-fullwidth"
+      class="button is-primary is-medium px-3"
       @click="showRandomLocation"
       :class="{ 'is-loading': loading }"
       :disabled="loading"
     >
-      <span class="icon mr-2">
+      <span class="icon ml-0 mr-2">
         <i class="fas fa-map-marker-alt"></i>
       </span>
-      <span>Show me a random ARDAC point location</span>
+      <span>Show a random point location</span>
     </button>
 
     <div v-if="isMapVisible && location" class="map-container mt-4">
       <div class="map-header">
         <h4 class="title is-5">{{ headerLabel }}</h4>
-        <button class="button is-small is-light" @click="closeMap">
+        <button class="button is-small is-light px-2" @click="closeMap">
           Close
         </button>
       </div>
@@ -171,15 +171,20 @@ onBeforeUnmount(() => {
 .random-location-container {
   margin: 2rem 0;
 
-  .button.is-primary.is-medium.is-fullwidth {
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    transition: all 0.3s ease;
-    border: 2px solid darken($primary, 5%);
-    font-weight: 600;
+  .button {
+    padding-left: 0;
+    padding-right: 0;
 
-    &:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+    &.is-primary.is-medium {
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease;
+      border: 2px solid darken($primary, 5%);
+      font-weight: 600;
+
+      &:hover {
+        transform: translateY(-2px);
+        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
+      }
     }
   }
 }
