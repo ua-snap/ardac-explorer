@@ -11,6 +11,23 @@ const selectedCommunity = computed<CommunityValue>(
   () => placesStore.selectedCommunity
 )
 
+const modelInput = defineModel('model', { default: 'EC-Earth3-Veg' })
+
+const models: string[] = [
+  'CESM2',
+  'CNRM-CM6-1-HR',
+  'EC-Earth3-Veg',
+  'GFDL-ESM4',
+  'HadGEM3-GC31-LL',
+  'HadGEM3-GC31-MM',
+  'KACE-1-0-G',
+  'MIROC6',
+  'MPI-ESM1-2-HR',
+  'MRI-ESM2-0',
+  'NorESM2-MM',
+  'TaiESM1',
+]
+
 const scenarioLabels: Record<string, string> = {
   ssp126: 'SSP1-2.6',
   ssp245: 'SSP2-4.5',
@@ -35,7 +52,7 @@ const buildChart = () => {
         maxHistoricalValue = $_.max(scenarioData)
       })
       projectedYears.forEach((year: any) => {
-        let temperature = apiData.value['EC-Earth3-Veg'][scenario][year]
+        let temperature = apiData.value[modelInput.value][scenario][year]
         scenarioData.push(temperature)
         allValues.push(temperature)
       })
@@ -200,7 +217,7 @@ watch(latLng, async () => {
   dataStore.fetchData('temperatureAnomalies')
 })
 
-watch([apiData], async () => {
+watch([apiData, modelInput], async () => {
   buildChart()
 })
 
@@ -216,9 +233,30 @@ onUnmounted(() => {
         Climate Stripes Part 2 (Historical + Projected)
       </h3>
       <Gimme label="Get chart and data for lat/lon point:" />
+      <div v-if="latLng" class="my-6">
+        <div>
+          <div class="parameter mb-5">
+            <label for="model" class="label">Model</label>
+            <div class="select mr-3">
+              <select id="model" v-model="modelInput">
+                <option v-for="model in models" :value="model">
+                  {{ model }}
+                </option>
+              </select>
+            </div>
+          </div>
+        </div>
+      </div>
       <div id="chart"></div>
     </div>
   </section>
 </template>
 
-<style lang="scss" scoped></style>
+<style lang="scss" scoped>
+.parameter {
+  display: inline-block;
+  select {
+    background-color: $white-lighter;
+  }
+}
+</style>
