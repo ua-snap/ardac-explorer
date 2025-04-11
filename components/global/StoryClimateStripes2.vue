@@ -43,7 +43,10 @@ const buildChart = () => {
     let dataByScenario: number[][] = []
     let allValues: number[] = []
     let maxHistoricalValue: number = 0
-    Object.keys(scenarioLabels).forEach(scenario => {
+
+    // Get available scenarios for the selected model.
+    let availableScenarios = Object.keys(apiData.value[modelInput.value])
+    availableScenarios.forEach(scenario => {
       let scenarioData: number[] = []
       historicalYears.forEach((year: any) => {
         let temperature = apiData.value['Berkeley-Earth']['historical'][year]
@@ -98,10 +101,17 @@ const buildChart = () => {
     dataByScenario = dataByScenario.reverse()
     dataLabels = dataLabels.reverse()
 
+    // Get subset of scenarioLabels corresponding to model's scenarios.
+    let scenarioLabelsSubset: Record<string, string> = {}
+    for (let i = 0; i < availableScenarios.length; i++) {
+      scenarioLabelsSubset[availableScenarios[i]] =
+        scenarioLabels[availableScenarios[i]]
+    }
+
     let plotData = [
       {
         x: $_.range(1850, 2100 + 1),
-        y: Object.values(scenarioLabels).reverse(),
+        y: Object.values(scenarioLabelsSubset).reverse(),
         z: dataByScenario,
         type: 'heatmap',
         colorscale: [
