@@ -243,7 +243,7 @@ onUnmounted(() => {
         Climate Stripes Part 2 (Historical + Projected)
       </h3>
       <Gimme label="Get chart and data for lat/lon point:" />
-      <div v-if="latLng" class="my-6">
+      <div v-if="latLng">
         <div>
           <div class="parameter mb-5">
             <label for="model" class="label">Model</label>
