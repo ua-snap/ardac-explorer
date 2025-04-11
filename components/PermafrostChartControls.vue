@@ -3,19 +3,27 @@ const props = defineProps<{
   defaultMonth?: string
 }>()
 
+const dataStore = useDataStore()
 const placesStore = usePlacesStore()
 const chartStore = useChartStore()
 
 const scenarioInput = defineModel({ default: 'RCP 8.5' })
-const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
-const chartLabels = computed<HydrologyChartLabels>(
-  () => chartStore.labels as HydrologyChartLabels
+const latLng = computed<LatLngValue>(() => placesStore.latLng)
+const apiData = computed<any[]>(() => dataStore.apiData)
+
+const chartLabels = computed<PermafrostChartLabels>(
+  () => chartStore.labels as PermafrostChartLabels
 )
 
 chartStore.labels = {
   scenarios: { 'RCP 4.5': 'RCP 4.5', 'RCP 8.5': 'RCP 8.5' },
 }
+
+watch(latLng, async () => {
+  dataStore.apiData = null
+  dataStore.fetchData('permafrost')
+})
 
 watch([latLng, scenarioInput], async () => {
   chartStore.inputs = {
@@ -25,7 +33,7 @@ watch([latLng, scenarioInput], async () => {
 </script>
 
 <template>
-  <div v-if="latLng && chartLabels">
+  <div v-if="latLng && chartLabels && apiData">
     <div class="parameter">
       <label for="scenario" class="label">Scenario:</label>
       <div class="select mb-5 mr-3">

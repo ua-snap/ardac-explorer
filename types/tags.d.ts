@@ -16,3 +16,4 @@ type Tag =
   | 'Sea Ice'
   | 'Solar Radiation'
   | 'Snow'
+  | 'Story'

@@ -10,40 +10,43 @@ const latLng = computed<LatLngValue>(() => placesStore.latLng)
 const layers: MapLayer[] = [
   {
     id: 'indicator_su_historical_era',
-    title: '1980–2009, GFDL-ESM4',
+    title: '1980–2009, TaiESM1',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_indicators',
     style: 'ardac_indicator_su_historical_era',
     legend: 'summer_days',
-    rasdamanConfiguration: { dim_model: 4, dim_scenario: 0 },
+    rasdamanConfiguration: { dim_model: 11, dim_scenario: 0 },
+    coastline: true,
   },
   {
     id: 'indicator_su_midcentury_era',
-    title: '2040–2069, GFDL-ESM4, SSP5-8.5',
+    title: '2040–2069, TaiESM1, SSP5-8.5',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_indicators',
     style: 'ardac_indicator_su_midcentury_era',
     legend: 'summer_days',
-    rasdamanConfiguration: { dim_model: 4, dim_scenario: 4 },
+    rasdamanConfiguration: { dim_model: 11, dim_scenario: 4 },
+    coastline: true,
   },
   {
     id: 'indicator_su_latecentury_era',
-    title: '2070–2099, GFDL-ESM4, SSP5-8.5',
+    title: '2070–2099, TaiESM1, SSP5-8.5',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_indicators',
     style: 'ardac_indicator_su_latecentury_era',
     legend: 'summer_days',
-    rasdamanConfiguration: { dim_model: 4, dim_scenario: 4 },
+    rasdamanConfiguration: { dim_model: 11, dim_scenario: 4 },
+    coastline: true,
   },
 ]
 
 const legend: Record<string, LegendItem[]> = {
   summer_days: [
-    { color: '#fdd0a2', label: '&ge;1 day, &lt;5 days' },
-    { color: '#fdae6b', label: '&ge;5 days, &lt;10 days' },
-    { color: '#fd8d3c', label: '&ge;10 days, &lt;20 days' },
-    { color: '#e6550d', label: '&ge;20 days, &lt;40 days' },
-    { color: '#a63603', label: '&ge;40 days' },
+    { color: '#f4d4b4', label: '&ge;0 days, &lt;5 days' },
+    { color: '#f4bc8f', label: '&ge;5 days, &lt;10 days' },
+    { color: '#f5a570', label: '&ge;10 days, &lt;20 days' },
+    { color: '#e58057', label: '&ge;20 days, &lt;40 days' },
+    { color: '#b8694d', label: '&ge;40 days' },
   ],
 }
 
@@ -52,19 +55,20 @@ mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Summer Days, CMIP6</h3>
+      <XrayIntroblurb resolution="100" unit="km" cmip="6" beta />
       <p class="mb-6">
         Summer days are the number of days per year that are above 77&deg;F. The
         map below shows the 30-year mean of CMIP6 summer days for three eras.
         The historical era (1980&ndash;2009) uses historical modeled data
-        provided by the GFDL-ESM4 model. The mid-century (2040&ndash;2069) and
+        provided by the TaiESM1 model. The mid-century (2040&ndash;2069) and
         late-century (2070&ndash;2099) eras use modeled projections from the
-        GFDL-ESM4 model under the SSP5-8.5 emissions scenario.
+        TaiESM1 model under the SSP5-8.5 emissions scenario.
       </p>
 
-      <MapBlock :mapId="mapId" class="mb-6">
+      <MapBlock :mapId="mapId" crs="EPSG:3572" class="mb-6">
         <template v-slot:layers>
           <MapLayer :mapId="mapId" :layer="layers[0]" default>
             <template v-slot:title>{{ layers[0].title }}</template>
@@ -86,7 +90,7 @@ mapStore.setLegendItems(mapId, legend)
         where you can download the data that is used to populate the chart.
       </p>
 
-      <Gimme />
+      <Gimme :bbox="[-180, 50, 180, 90]" />
       <IndicatorsCmip6ChartControls />
       <IndicatorsCmip6Chart label="Summer days" dataKey="su" />
 

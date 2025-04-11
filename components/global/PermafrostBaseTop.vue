@@ -96,9 +96,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Permafrost Depth: Base & Top</h3>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
       <p class="mb-6">
         The map below shows permafrost base and top depth for three eras using
         the GFDL CM3 under the RCP 8.5 emissions scenario.
@@ -117,7 +118,7 @@ onUnmounted(() => {
           <MapLayer :mapId="mapId" :layer="layers[4]">
             <template v-slot:title>{{ layers[4].title }}</template>
           </MapLayer>
-          <hr>
+          <hr />
           <h4 class="title is-4 mb-3">Permafrost Top Depth</h4>
           <MapLayer :mapId="mapId" :layer="layers[1]">
             <template v-slot:title>{{ layers[1].title }}</template>
@@ -138,7 +139,7 @@ onUnmounted(() => {
         can download the data that is used to populate the charts.
       </p>
 
-      <Gimme />
+      <Gimme extent="alaska" />
       <PermafrostChartControls />
       <PermafrostChart
         label="Depth of permafrost base"
@@ -191,6 +192,7 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
+      <GetAndUseDataPermafrost :presentInNcr="true" :presentInEds="true" />
     </div>
   </section>
 </template>

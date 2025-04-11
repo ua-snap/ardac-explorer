@@ -7,8 +7,9 @@ const dataStore = useDataStore()
 const placesStore = usePlacesStore()
 const chartStore = useChartStore()
 
+const modelInput = defineModel('model', { default: 'CanESM2' })
 const scenarioInput = defineModel('scenario', { default: 'rcp85' })
-const monthInput = defineModel('month', { default: 'jun' })
+const monthInput = defineModel('month', { default: 'mar' })
 
 if (props.defaultMonth) {
   monthInput.value = props.defaultMonth
@@ -22,6 +23,18 @@ const chartLabels = computed<HydrologyChartLabels>(
 )
 
 chartStore.labels = {
+  models: {
+    'ACCESS1-3': 'ACCESS1-3',
+    CCSM4: 'CCSM4',
+    'CSIRO-Mk3-6-0': 'CSIRO-Mk3-6-0',
+    CanESM2: 'CanESM2',
+    'GFDL-ESM2M': 'GFDL-ESM2M',
+    'HadGEM2-ES': 'HadGEM2-ES',
+    inmcm4: 'INMCM4.0',
+    MIROC5: 'MIROC5',
+    'MPI-ESM-MR': 'MPI-ESM-MR',
+    'MRI-CGCM3': 'MRI-CGCM3',
+  },
   scenarios: {
     rcp45: 'RCP 4.5',
     rcp85: 'RCP 8.5',
@@ -42,16 +55,35 @@ chartStore.labels = {
   },
 }
 
-watch([latLng, scenarioInput, monthInput], async () => {
+watch([latLng, modelInput, scenarioInput, monthInput], async () => {
   chartStore.inputs = {
+    model: modelInput.value,
     scenario: scenarioInput.value,
     month: monthInput.value,
   }
+})
+
+watch(latLng, async () => {
+  dataStore.apiData = null
+  dataStore.fetchData('hydrology')
 })
 </script>
 
 <template>
   <div v-if="latLng && chartLabels && apiData">
+    <div class="parameter">
+      <label for="model" class="label">Model:</label>
+      <div class="select mb-5 mr-3">
+        <select id="model" v-model="modelInput">
+          <option
+            v-for="model in Object.keys(chartLabels.models)"
+            :value="model"
+          >
+            {{ chartLabels.models[model] }}
+          </option>
+        </select>
+      </div>
+    </div>
     <div class="parameter">
       <label for="scenario" class="label">Scenario:</label>
       <div class="select mb-5 mr-3">

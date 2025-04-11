@@ -7,8 +7,10 @@ const dataStore = useDataStore()
 const placesStore = usePlacesStore()
 const chartStore = useChartStore()
 
-const modelInput = defineModel('model', { default: 'GFDL-ESM4' })
-const scenarioInput = defineModel('scenario', { default: 'ssp585' })
+const defaultScenario = 'ssp585'
+
+const modelInput = defineModel('model', { default: 'TaiESM1' })
+const scenarioInput = defineModel('scenario', { default: defaultScenario })
 
 const apiData = computed<any[]>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
@@ -19,6 +21,7 @@ const chartLabels = computed<IndicatorsCmip6ChartLabels>(
 
 chartStore.labels = {
   models: {
+    CESM2: 'CESM2',
     'CNRM-CM6-1-HR': 'CNRM-CM6-1-HR',
     'EC-Earth3-Veg': 'EC-Earth3-Veg',
     'GFDL-ESM4': 'GFDL-ESM4',
@@ -27,6 +30,7 @@ chartStore.labels = {
     'KACE-1-0-G': 'KACE-1-0-G',
     MIROC6: 'MIROC6',
     'MPI-ESM1-2-LR': 'MPI-ESM1-2-LR',
+    'MRI-ESM2-0': 'MRI-ESM2-0',
     'NorESM2-MM': 'NorESM2-MM',
     TaiESM1: 'TaiESM1',
   },
@@ -38,7 +42,24 @@ chartStore.labels = {
   },
 }
 
+// Some models do not have data for all scenarios. Use this function to react
+// accordingly by graying out scenario options or reverting back to the default
+// scenario if user accidentally lands on an invalid model/scenrio combination.
+const scenarioPresent = (value: string) => {
+  if (apiData.value) {
+    return apiData.value[value as any][modelInput.value] != null
+  }
+}
+
+watch(latLng, async () => {
+  dataStore.apiData = null
+  dataStore.fetchData('indicatorsCmip6')
+})
+
 watch([latLng, modelInput, scenarioInput], async () => {
+  if (!scenarioPresent(scenarioInput.value)) {
+    scenarioInput.value = defaultScenario
+  }
   chartStore.inputs = {
     model: modelInput.value,
     scenario: scenarioInput.value,
@@ -48,38 +69,33 @@ watch([latLng, modelInput, scenarioInput], async () => {
 
 <template>
   <div v-if="latLng && chartLabels && apiData">
-    <div class="columns is-multiline">
-      <div class="column is-6">
-        <div class="parameter">
-          <label for="model" class="label">Model:</label>
-          <div class="select">
-            <select v-model="modelInput">
-              <option
-                v-for="(label, value) in chartLabels.models"
-                :key="value"
-                :value="value"
-              >
-                {{ label }}
-              </option>
-            </select>
-          </div>
-        </div>
+    <div class="parameter">
+      <label for="model" class="label">Model:</label>
+      <div class="select mb-5 mr-3">
+        <select v-model="modelInput">
+          <option
+            v-for="(label, value) in chartLabels.models"
+            :key="value"
+            :value="value"
+          >
+            {{ label }}
+          </option>
+        </select>
       </div>
-      <div class="column is-6">
-        <div class="parameter">
-          <label for="scenario" class="label">Scenario:</label>
-          <div class="select">
-            <select v-model="scenarioInput">
-              <option
-                v-for="(label, value) in chartLabels.scenarios"
-                :key="value"
-                :value="value"
-              >
-                {{ label }}
-              </option>
-            </select>
-          </div>
-        </div>
+    </div>
+    <div class="parameter">
+      <label for="scenario" class="label">Scenario:</label>
+      <div class="select">
+        <select v-model="scenarioInput">
+          <option
+            v-for="(label, value) in chartLabels.scenarios"
+            :key="value"
+            :value="value"
+            :disabled="!scenarioPresent(value)"
+          >
+            {{ label }}
+          </option>
+        </select>
       </div>
     </div>
   </div>

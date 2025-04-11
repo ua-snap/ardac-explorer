@@ -196,12 +196,13 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Sea Ice Concentration</h3>
+      <XrayIntroblurb resolution="25" unit="km" />
       <p class="mb-6">
         The map below shows pan-Arctic sea ice concentration for March at
-        25-year intervals from 1980&ndash;2000.
+        25-year intervals from 1850&ndash;2000.
       </p>
 
       <MapBlock :mapId="mapId" class="mb-6">
@@ -237,10 +238,9 @@ onUnmounted(() => {
         populate the chart.
       </p>
 
-      <!-- TODO: Put some thought into the bbox. -->
       <Gimme
-        label="Get chart and data for lat/lon point:"
-        :bbox="[-179.1506, 0, -129.9795, 90]"
+        :bbox="[-180, 45, 180, 90]"
+        ocean
       />
 
       <div v-if="latLng && apiData">
@@ -292,6 +292,31 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
+      <GetAndUseData
+        apiUrl="https://earthmaps.io/seaice/"
+        geonetworkUrl="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/047e91c7-35c6-410a-a1ef-95539c1ee328"
+      >
+        <li>
+          Explore interactive visualizations of this data at the
+          <a href="https://snap.uaf.edu/tools/sea-ice-atlas/"
+            >Historical Sea Ice Atlas</a
+          >
+        </li>
+        <li>
+          Academic reference:
+          <blockquote>
+            <p>
+              John E. Walsh, Florence Fetterer, J. Scott stewart &amp; William
+              L. Chapman (2017) A database for depicting Arctic sea ice
+              variations back to 1850, Geographical Review, 107:1, 89-107, DOI:
+              <a href="10.1111/j.1931-0846.2016.12195.x"
+                >10.1111/j.1931-0846.2016.12195.x</a
+              >
+            </p>
+          </blockquote>
+        </li>
+      </GetAndUseData>
+      <Bios :people="['John Walsh']" />
     </div>
   </section>
 </template>

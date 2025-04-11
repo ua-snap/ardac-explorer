@@ -49,9 +49,10 @@ const buildChart = () => {
     let means: number[] = []
 
     decades.forEach(decade => {
+      let model = chartInputs.value!.model
       let scenario = chartInputs.value!.scenario
       let month = chartInputs.value!.month
-      let decadeData = chartData['CanESM2'][scenario][month][decade]
+      let decadeData = chartData[model][scenario][month][decade]
       let mean = decadeData[props.dataKey]
       means.push(mean)
     })
@@ -84,7 +85,9 @@ const buildChart = () => {
             ', ' +
             placesStore.latLng?.lng +
             '<br />' +
-            'Scenario: ' +
+            'Model: ' +
+            chartLabels.value.models[chartInputs.value.model] +
+            ', Scenario: ' +
             chartLabels.value.scenarios[chartInputs.value.scenario] +
             ', Month: ' +
             chartLabels.value.months[chartInputs.value.month],
@@ -132,8 +135,6 @@ watch([apiData, chartLabels, chartInputs], async () => {
 
 watch(latLng, async () => {
   $Plotly.purge(chartId.value)
-  dataStore.apiData = null
-  dataStore.fetchData('hydrology')
 })
 
 onUnmounted(() => {

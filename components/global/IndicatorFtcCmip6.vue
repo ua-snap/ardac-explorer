@@ -10,40 +10,43 @@ const latLng = computed<LatLngValue>(() => placesStore.latLng)
 const layers: MapLayer[] = [
   {
     id: 'indicator_ftc_historical_era',
-    title: '1980–2009, GFDL-ESM4',
+    title: '1980–2009, TaiESM1',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_indicators',
     style: 'ardac_indicator_ftc_historical_era',
     legend: 'freeze_thaw_cycle',
-    rasdamanConfiguration: { dim_model: 4, dim_scenario: 0 },
+    rasdamanConfiguration: { dim_model: 11, dim_scenario: 0 },
+    coastline: true,
   },
   {
     id: 'indicator_ftc_midcentury_era',
-    title: '2040–2069, GFDL-ESM4, SSP5-8.5',
+    title: '2040–2069, TaiESM1, SSP5-8.5',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_indicators',
     style: 'ardac_indicator_ftc_midcentury_era',
     legend: 'freeze_thaw_cycle',
-    rasdamanConfiguration: { dim_model: 4, dim_scenario: 4 },
+    rasdamanConfiguration: { dim_model: 11, dim_scenario: 4 },
+    coastline: true,
   },
   {
     id: 'indicator_ftc_latecentury_era',
-    title: '2070–2099, GFDL-ESM4, SSP5-8.5',
+    title: '2070–2099, TaiESM1, SSP5-8.5',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_indicators',
     style: 'ardac_indicator_ftc_latecentury_era',
     legend: 'freeze_thaw_cycle',
-    rasdamanConfiguration: { dim_model: 4, dim_scenario: 4 },
+    rasdamanConfiguration: { dim_model: 11, dim_scenario: 4 },
+    coastline: true,
   },
 ]
 
 const legend: Record<string, LegendItem[]> = {
   freeze_thaw_cycle: [
-    { color: '#f7f7f7', label: '&ge;1 day, &lt;20 days' },
-    { color: '#cccccc', label: '&ge;20 days, &lt;40 days' },
-    { color: '#969696', label: '&ge;40 days, &lt;60 days' },
-    { color: '#636363', label: '&ge;60 days, &lt;80 days' },
-    { color: '#252525', label: '&ge;80 days' },
+    { color: '#efefef', label: '&ge;0 days, &lt;20 days' },
+    { color: '#dddddd', label: '&ge;20 days, &lt;40 days' },
+    { color: '#ababab', label: '&ge;40 days, &lt;60 days' },
+    { color: '#878787', label: '&ge;60 days, &lt;80 days' },
+    { color: '#5c5c5c', label: '&ge;80 days' },
   ],
 }
 
@@ -52,21 +55,22 @@ mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Freeze/Thaw Cycle</h3>
+      <XrayIntroblurb resolution="100" unit="km" cmip="6" beta />
       <p class="mb-6">
         Freeze/thaw cycle is the number of days where maximum daily temperatures
         are above freezing and minimum daily temperatures are at or below
         freezing. The map below shows the 30-year mean of CMIP6 freeze/thaw
         cycle for three eras. The historical era (1980&ndash;2009) uses
-        historical modeled data provided by the GFDL-ESM4 model. The mid-century
+        historical modeled data provided by the TaiESM1 model. The mid-century
         (2040&ndash;2069) and late-century (2070&ndash;2099) eras use modeled
-        projections from the GFDL-ESM4 model under the SSP5-8.5 emissions
+        projections from the TaiESM1 model under the SSP5-8.5 emissions
         scenario.
       </p>
 
-      <MapBlock :mapId="mapId" class="mb-6">
+      <MapBlock :mapId="mapId" crs="EPSG:3572" class="mb-6">
         <template v-slot:layers>
           <MapLayer :mapId="mapId" :layer="layers[0]" default>
             <template v-slot:title>{{ layers[0].title }}</template>
@@ -88,7 +92,7 @@ mapStore.setLegendItems(mapId, legend)
         where you can download the data that is used to populate the chart.
       </p>
 
-      <Gimme />
+      <Gimme :bbox="[-180, 50, 180, 90]" />
       <IndicatorsCmip6ChartControls />
       <IndicatorsCmip6Chart
         label="Freeze/thaw cycle"

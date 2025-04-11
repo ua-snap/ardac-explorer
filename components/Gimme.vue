@@ -1,12 +1,79 @@
 <script lang="ts" setup>
 // bbox order is
 // [ lower-left lng, lower-left lat, upper-right lng, upper-right lat ]
-const props = defineProps<{
+interface Props {
   bbox?: number[]
-}>()
+  extent?: Extent
+  ocean?: boolean
+  communitiesEnabled?: boolean
+}
+
+const props = withDefaults(defineProps<Props>(), {
+  bbox: () => [-179.1506, 51.229, -129.9795, 71.3526],
+  extent: null,
+  ocean: false,
+  communitiesEnabled: true,
+})
+
+let bbox = props.bbox
+let extent = props.extent
+let communitiesEnabled = props.communitiesEnabled
+
+import { point } from '@turf/helpers'
+import booleanPointInPolygon from '@turf/boolean-point-in-polygon'
+
+// Import needed extent GeoJSON file dynamically.
+const getGeoJson = async (extent: Extent) => {
+  let geoJsonString: typeof import('*?raw')
+  if (extent == 'alaska') {
+    geoJsonString = await import('~/assets/alaska.geojson?raw')
+  } else if (extent == 'blockyAlaska') {
+    geoJsonString = await import('~/assets/blocky_alaska.geojson?raw')
+  } else if (extent == 'mizukami') {
+    geoJsonString = await import('~/assets/mizukami.geojson?raw')
+  } else if (extent == 'elevation') {
+    geoJsonString = await import('~/assets/elevation.geojson?raw')
+  } else if (extent == 'slie') {
+    geoJsonString = await import('~/assets/slie.geojson?raw')
+  } else {
+    throw 'unknown extent type in gimme.vue'
+  }
+  return JSON.parse(geoJsonString!.default)
+}
+
+// TypeScript types for Turf.js are currently in flux, so use "any" for now.
+// See https://github.com/Turfjs/turf/issues/2617
+let parsedGeoJson: any
+
+if (extent != null) {
+  parsedGeoJson = await getGeoJson(extent)
+} else {
+  // Turn the BBOX into GeoJSON
+  parsedGeoJson = {
+    type: 'FeatureCollection',
+    features: [
+      {
+        type: 'Feature',
+        geometry: {
+          type: 'Polygon',
+          coordinates: [
+            [
+              [bbox[0], bbox[1]],
+              [bbox[0], bbox[3]],
+              [bbox[2], bbox[3]],
+              [bbox[2], bbox[1]],
+              [bbox[0], bbox[1]],
+            ],
+          ],
+        },
+        properties: {},
+      },
+    ],
+  }
+}
 
 const placesStore = usePlacesStore()
-let communities = placesStore.fetchCommunities()
+let communities = await placesStore.fetchCommunities()
 
 const { $autoComplete, $parseDMS } = useNuxtApp()
 
@@ -20,13 +87,16 @@ const inputValue = ref('') // input value for autocompleter
 const gimmeInput = ref() // DOM element of #gimme
 
 onMounted(() => {
+  let placeHolderText: string
+  if (communitiesEnabled) {
+    placeHolderText = 'Search community names or enter a lat/long'
+  } else {
+    placeHolderText = 'Enter a lat/long'
+  }
   let config = {
     selector: '#gimme',
-    placeHolder: 'Search community names or enter a lat/long',
-    data: {
-      src: communities,
-      keys: ['name', 'alt_name'],
-    },
+    placeHolder: placeHolderText,
+    data: {},
     threshold: 3,
     resultsList: {
       maxResults: 999,
@@ -39,6 +109,15 @@ onMounted(() => {
           element.innerHTML =
             element.innerHTML + ' <span>/ ' + community.alt_name + '</span>'
         }
+        if (community.region) {
+          element.innerHTML =
+            element.innerHTML +
+            ', <span class="region"> ' +
+            community.region +
+            '</span>'
+        }
+        element.innerHTML +=
+          '<span class="country">, ' + community.country + '</span>'
       },
     },
     // Intercept/test for valid Lat/Lng
@@ -47,12 +126,39 @@ onMounted(() => {
       return input
     },
   }
+
+  if (!communitiesEnabled) {
+    config.data = {
+      src: [],
+    }
+  } else {
+    let extentCommunities = communitiesWithinExtent()
+    if (extentCommunities.length > 0) {
+      config.data = {
+        src: extentCommunities,
+        keys: ['name', 'alt_name'],
+      }
+    } else {
+      config.data = {
+        src: [],
+      }
+    }
+  }
   new $autoComplete(config)
 
   // When a placename is selected, populate the store.
   gimmeInput.value.addEventListener('selection', function (event: CustomEvent) {
     let community = event.detail.selection.value
-    placesStore.latLng = { lat: community.latitude, lng: community.longitude }
+
+    // If it's an ocean type selector, choose the associated ocean pixel.
+    if (props.ocean) {
+      placesStore.latLng = {
+        lat: community.ocean_lat1,
+        lng: community.ocean_lon1,
+      }
+    } else {
+      placesStore.latLng = { lat: community.latitude, lng: community.longitude }
+    }
     placesStore.selectedCommunity = community
     placeIsSelected.value = true
     placeSelectionType.value = 'community'
@@ -60,14 +166,36 @@ onMounted(() => {
     if (community.alt_name) {
       selectedCommunityName.value += ' / ' + community.alt_name
     }
+    if (community.region) {
+      selectedCommunityName.value += ', ' + community.region
+    }
+    selectedCommunityName.value += ', ' + community.country
   })
 })
 
-let bbox: number[]
-if (props.bbox) {
-  bbox = props.bbox
-} else {
-  bbox = [-179.1506, 51.229, -129.9795, 71.3526]
+const withinExtent = (lat: number, lng: number) => {
+  let latLngPoint = point([lng, lat])
+  for (let feature of parsedGeoJson.features) {
+    if (booleanPointInPolygon(latLngPoint, feature)) {
+      return true
+    }
+  }
+  return false
+}
+
+const communitiesWithinExtent = () => {
+  let communitiesInExtent = []
+  for (let community of communities) {
+    if (withinExtent(community.latitude, community.longitude)) {
+      // If it's an ocean-type selector and the place is coastal,
+      // or it's not an oacean-type selector, add the community.
+      if ((props.ocean && community.is_coastal == 1) || !props.ocean) {
+        communitiesInExtent.push(community)
+      }
+    }
+  }
+
+  return communitiesInExtent
 }
 
 const validate = (latLng: string) => {
@@ -88,25 +216,11 @@ const validate = (latLng: string) => {
       lat = parsedDms.lat
       lon = parsedDms.lon
 
-      // Make sure lat/lon is within BBOX.
       // This currently does not support BBOXes that cross the antimeridian.
-      if (
-        lat >= bbox[1] &&
-        lat <= bbox[3] &&
-        lon >= bbox[0] &&
-        lon <= bbox[2]
-      ) {
-        // It's a valid lat/lng: update the button so it can
-        // trigger setting the store.
-        fieldMessage.value = ''
+      let isInsideBBOX =
+        lat >= bbox[1] && lat <= bbox[3] && lon >= bbox[0] && lon <= bbox[2]
 
-        // Rounding!
-        lat = +lat.toFixed(4)
-        lon = +lon.toFixed(4)
-        parsedLatLng.value = { lat: lat, lng: lon } as LatLng
-        latLngIsValid.value = true
-        return parsedLatLng.value
-      } else {
+      if (!isInsideBBOX) {
         fieldMessage.value =
           '⚠️ This point is outside the bounding box of data: latitude between ' +
           bbox[1] +
@@ -116,6 +230,28 @@ const validate = (latLng: string) => {
           bbox[0] +
           ' – ' +
           bbox[2]
+        latLngIsValid.value = false
+        return false
+      }
+
+      let validPoint: boolean
+      if (withinExtent(lat, lon)) {
+        validPoint = true
+      } else {
+        validPoint = false
+      }
+
+      fieldMessage.value = ''
+      if (validPoint) {
+        // Rounding!
+        lat = +lat.toFixed(4)
+        lon = +lon.toFixed(4)
+        parsedLatLng.value = { lat: lat, lng: lon } as LatLng
+        latLngIsValid.value = true
+        return parsedLatLng.value
+      } else {
+        latLngIsValid.value = false
+        fieldMessage.value += '⚠️ This point is outside the data extent.'
         return false
       }
     }
@@ -176,7 +312,11 @@ onUnmounted(() => {
     <div v-show="placeIsSelected && !dataError" class="selected-place">
       <div class="content is-size-5">
         <p>
-          Showing data for {{ placeName }}.
+          Showing data for
+          <span v-if="props.ocean && communitiesEnabled"
+            >an ocean location near</span
+          >
+          {{ placeName }}.
           <button class="button is-link is-light" @click="clearSelectedPlace">
             &#x21BA; Pick a new place
           </button>
@@ -185,8 +325,24 @@ onUnmounted(() => {
     </div>
     <div v-show="!placeIsSelected || dataError" class="field">
       <div class="control">
-        <label class="label">Get data for a community or by lat/long</label>
-
+        <label class="label is-size-4"
+          >Get data for
+          <span v-if="communitiesEnabled">a community or by</span>
+          lat/long</label
+        >
+        <p v-if="communitiesEnabled" class="is-size-5">
+          Only communities within the footprint of the data are included in this
+          search.
+          <span v-if="ocean"
+            >Because this dataset covers the ocean,
+            <strong>only coastal communities are available</strong>, and the
+            closest point in the ocean is used to retrieve data.</span
+          >
+        </p>
+        <p v-else>
+          <strong>Communities are not available for this dataset.</strong>
+          Please choose a lat/long coordinate.
+        </p>
         <input id="gimme" v-model="inputValue" ref="gimmeInput" />
         <button
           v-if="latLngIsValid"
@@ -199,6 +355,7 @@ onUnmounted(() => {
       <p class="help" v-html="fieldMessage" />
     </div>
   </div>
+  <LoadIndicator />
 </template>
 
 <style lang="scss" scoped>

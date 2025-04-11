@@ -1,41 +1,105 @@
 <script lang="ts" setup>
-
 // true if "see all" is expanded
 const expanded = ref(false)
 const expandedText = computed(() => {
-  return expanded.value === false ? '&#x2192; see all' : '&#x2715; close'  
+  return expanded.value === false ? '&#x2192; see all' : '&#x2715; close'
 })
-
 </script>
 
 <template>
   <div class="tagbar">
     <ul>
       <li>
-        <NuxtLink to="/tag/Climate">Climate</NuxtLink>
+        <NuxtLink
+          data-umami-event="Tagbar Clicked"
+          data-umami-event-tag="Climate"
+          to="/tag/Climate"
+          >Climate</NuxtLink
+        >
       </li>
       <li>
-        <NuxtLink to="/tag/Precipitation">Precipitation</NuxtLink>
+        <NuxtLink
+          to="/tag/Precipitation"
+          data-umami-event="Tagbar Clicked"
+          data-umami-event-tag="Precipitation"
+          >Precipitation</NuxtLink
+        >
       </li>
       <li>
-        <NuxtLink to="/tag/Hydrology">Hydrology</NuxtLink>
+        <NuxtLink
+          to="/tag/Wildfire"
+          data-umami-event="Tagbar Clicked"
+          data-umami-event-tag="Wildfire"
+          >Wildfire</NuxtLink
+        >
       </li>
       <li>
-        <NuxtLink to="/tag/Cryosphere">Cryosphere</NuxtLink>
+        <NuxtLink
+          to="/tag/Cryosphere"
+          data-umami-event="Tagbar Clicked"
+          data-umami-event-tag="Cryosphere"
+          >Cryosphere</NuxtLink
+        >
       </li>
       <li>
-        <NuxtLink to="/tag/Permafrost">Permafrost</NuxtLink>
+        <NuxtLink
+          to="/tag/Permafrost"
+          data-umami-event="Tagbar Clicked"
+          data-umami-event-tag="Permafrost"
+          >Permafrost</NuxtLink
+        >
       </li>
       <li @click="expanded = !expanded" class="more" v-html="expandedText"></li>
     </ul>
     <ul v-show="expanded">
-      <li><NuxtLink to="/tag/GIS">GIS</NuxtLink></li>
-      <li><NuxtLink to="/tag/Wildfire">Wildfire</NuxtLink></li>
-      <li><NuxtLink to="/tag/Terrestrial">Terrestrial</NuxtLink></li>
-      <li><NuxtLink to="/tag/Programming">Programming</NuxtLink></li>
-      <li><NuxtLink to="/tag/Temperature">Temperature</NuxtLink></li>
-      <li><NuxtLink to="/tag/Lightning">Lightning</NuxtLink></li>
-      <li><NuxtLink to="/tag/CMIP6">CMIP6</NuxtLink></li>
+      <li>
+        <NuxtLink
+          to="/tag/Hydrology"
+          data-umami-event="Tagbar Clicked"
+          data-umami-event-tag="Hydrology"
+          >Hydrology</NuxtLink
+        >
+      </li>
+      <li>
+        <NuxtLink
+          to="/tag/Terrestrial"
+          data-umami-event="Tagbar Clicked"
+          data-umami-event-tag="Terrestrial"
+          >Terrestrial</NuxtLink
+        >
+      </li>
+      <li>
+        <NuxtLink
+          to="/tag/Programming"
+          data-umami-event="Tagbar Clicked"
+          data-umami-event-tag="Programming"
+          >Programming</NuxtLink
+        >
+      </li>
+      <li>
+        <NuxtLink
+          to="/tag/Temperature"
+          data-umami-event="Tagbar Clicked"
+          data-umami-event-tag="Temperature"
+          >Temperature</NuxtLink
+        >
+      </li>
+      <li>
+        <NuxtLink
+          to="/tag/Lightning"
+          data-umami-event="Tagbar Clicked"
+          data-umami-event-tag="Lightning"
+          >Lightning</NuxtLink
+        >
+      </li>
+      <li>
+        <NuxtLink
+          to="/tag/CMIP6"
+          data-umami-event="Tagbar Clicked"
+          data-umami-event-tag="CMIP6"
+          >CMIP6</NuxtLink
+        >
+      </li>
     </ul>
   </div>
 </template>

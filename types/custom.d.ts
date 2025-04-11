@@ -8,6 +8,13 @@ interface Item {
   priority?: number
 }
 
+interface Bio {
+  person: Person
+  image: string
+  blurb: string
+}
+type BioValue = Bio | undefined
+
 interface Community {
   id: string
   name: string
@@ -17,6 +24,9 @@ interface Community {
   latitude: number
   longitude: number
   type: string
+  is_coastal?: number
+  ocean_lat1?: number
+  ocean_lon1?: number
 }
 
 type CommunityValue = Community | undefined
@@ -31,6 +41,8 @@ interface MapLayer {
   default?: boolean
   legend: string
   rasdamanConfiguration?: any
+  coastline?: boolean
+  bbox?: number[]
 }
 
 interface MapLayerInstance {
@@ -49,11 +61,13 @@ interface LatLng {
 }
 
 interface HydrologyChartLabels {
+  models: Record<string, string>
   scenarios: Record<string, string>
   months: Record<string, string>
 }
 
 interface HydrologyChartInputs {
+  model: string
   scenario: string
   month: string
 }
@@ -76,6 +90,18 @@ interface IndicatorsCmip6ChartInputs {
   scenario: string
 }
 
+interface Cmip6MonthlyChartLabels {
+  models: Record<string, string>
+  scenarios: Record<string, string>
+  months: Record<string, string>
+}
+
+interface Cmip6MonthlyChartInputs {
+  model: string
+  scenario: string
+  month: string
+}
+
 type LatLngValue = LatLng | undefined
 
 type PlaceType = 'community' | 'latLng' | undefined
@@ -88,3 +114,6 @@ type PermafrostChartInputsObj = PermafrostChartInputs | undefined
 
 type IndicatorsCmip6ChartLabelsObj = IndicatorsCmip6ChartLabels | undefined
 type IndicatorsCmip6ChartInputsObj = IndicatorsCmip6ChartInputs | undefined
+
+type Cmip6MonthlyChartLabelsObj = Cmip6MonthlyChartLabels | undefined
+type Cmip6MonthlyChartInputsObj = Cmip6MonthlyChartInputs | undefined

@@ -46,6 +46,7 @@ export default [
       'Number of days per calendar year where the total precipitation amount is ≥ 1.0 mm',
     tags: ['Climate'],
   },
+
   {
     slug: 'dd-below-65',
     title: 'Degree Days Below 65°F',
@@ -71,10 +72,10 @@ export default [
     tags: ['Climate'],
   },
   {
-    slug: 'story-arctic-in-2100',
-    title: 'The Arctic in 2100',
+    slug: 'story-arctic-climate-data-node',
+    title: 'Introducing the Arctic Climate Data Node',
     blurb:
-      'What could the climate of Alaska and the Arctic look like in 2100?  New CMIP6 climate data provides more tools for research',
+      'New CMIP6 climate data for Alaska and the Arctic, providing local access to cutting-edge global climate model data',
     tags: ['Climate'],
     image: 'arctic2100_drew-beamer-unsplash.jpg',
     imageAlt:
@@ -125,21 +126,21 @@ export default [
     title: 'Landfast Sea Ice Extent',
     blurb:
       'Historical daily landfast ice extent information for the Alaska coastline',
-    tags: ['Cryosphere'],
+    tags: ['Cryosphere', 'Sea Ice'],
   },
   {
     slug: 'sea-ice-concentration',
     title: 'Sea Ice Concentration',
     blurb:
       'Monthly pan-Arctic sea ice concentration data at a resolution of approximately 17.1km for years 1850–2021',
-    tags: ['Cryosphere'],
+    tags: ['Cryosphere', 'Sea Ice'],
   },
   {
     slug: 'notebook-sea-ice-traffic',
     title: 'Marine Vessel Traffic and Sea Ice Concentration',
     blurb:
       'Learn how to combine Arctic marine vessel traffic with historical sea ice concentration data',
-    tags: ['Cryosphere', 'Programming'],
+    tags: ['Cryosphere', 'Programming', 'Sea Ice'],
   },
   {
     slug: 'communities-boundaries',
@@ -297,8 +298,9 @@ export default [
   },
   {
     slug: 'temperature-cmip6',
-    title: 'Temperature & Humidity, CMIP6',
-    blurb: 'Coarse-resolution temperature model outputs, CMIP6',
+    title: 'Temperature, CMIP6',
+    blurb:
+      'Monthly model outputs for min/mean/max near-surface air temperature',
     tags: ['Temperature', 'CMIP6'],
   },
   {
@@ -342,38 +344,42 @@ export default [
   {
     slug: 'wind-cmip6',
     title: 'Wind, CMIP6',
-    blurb: 'Near-surface and surface, including maximums and wind component',
+    blurb:
+      'Monthly model outputs for mean near-surface wind speed, near-surface eastward wind speed, and near-surface northward wind speed',
     tags: ['Wind', 'CMIP6'],
   },
   {
     slug: 'oceanography-cmip6',
     title: 'Oceanography, CMIP6',
-    blurb: 'Sea level pressure, surface temperature and mixed layer thickness',
+    blurb:
+      'Monthly model outputs for mean sea level pressure and surface temperature',
     tags: ['Oceanography', 'CMIP6'],
   },
   {
     slug: 'precipitation-cmip6',
     title: 'Precipitation, CMIP6',
-    blurb: 'Total precipitation, daily and monthly',
+    blurb: 'Monthly model outputs for total precipitation',
     tags: ['Precipitation', 'CMIP6'],
+  },
+  {
+    slug: 'evaporation-cmip6',
+    title: 'Evaporation, CMIP6',
+    blurb:
+      'Monthly model outputs for total evaporation, including sublimation and transpiration',
+    tags: ['Climate', 'CMIP6'],
+  },
+  {
+    slug: 'solar-radiation-cloud-cover-cmip6',
+    title: 'Solar Radiation & Cloud Cover, CMIP6',
+    blurb:
+      'Monthly model outputs for mean downwelling shortwave and longwave fluxes, surface upward sensible and latent heat fluxes, and cloud area fraction',
+    tags: ['Solar Radiation', 'CMIP6'],
   },
   {
     slug: 'sea-ice-cmip6',
     title: 'Sea Ice Concentration, CMIP6',
     blurb: 'Sea ice fraction',
     tags: ['Sea Ice', 'CMIP6', 'Cryosphere'],
-  },
-  {
-    slug: 'hydrology-cmip6',
-    title: 'Hydrology, CMIP6',
-    blurb: 'Evapotranspiration, total runoff and soil moisture',
-    tags: ['Hydrology', 'CMIP6'],
-  },
-  {
-    slug: 'solar-radiation-cloud-cover-cmip6',
-    title: 'Solar Radiation & Cloud Cover, CMIP6',
-    blurb: 'Cloud fraction, shortwave and longwave and heat fluxes',
-    tags: ['Solar Radiation', 'CMIP6'],
   },
   {
     slug: 'snow-cmip6',
@@ -414,5 +420,28 @@ export default [
     title: 'Climate Stripes Part 2 (Modeled Baseline + Projected)',
     blurb: 'Modeled baseline + projected climate stripes',
     tags: ['Climate', 'Terrestrial', 'Temperature'],
+  },
+  {
+    slug: 'story-beetle-climate-protection',
+    title: 'Beetle Risk Data Story',
+    blurb:
+      'Learn about the lifecycle of spruce beetles and how the climate protects against outbreaks.',
+    tags: ['Climate', 'Terrestrial'],
+  },
+  {
+    slug: 'story-climate-stripes-1',
+    title: 'Climate Stripes and Data Scale',
+    blurb:
+      'Climate stripes are a powerful climate data visualization both for understanding your local environment, and understanding how scale impacts climate variability.',
+    tags: ['Climate', 'Terrestrial', 'Temperature'],
+    image: 'ClimateStripes_Arctic_2022.jpg',
+  },
+  {
+    slug: 'summary-landfast-sea-ice',
+    title: 'Summarized Landfast Sea Ice',
+    image: 'ARC18_Landfast_Fig2.jpg',
+    blurb:
+      'A summary and interactive map for exploring the seaward landfast ice edge (SLIE) for the Beaufort Sea region.',
+    tags: ['Sea Ice', 'Cryosphere'],
   },
 ] satisfies Item[]

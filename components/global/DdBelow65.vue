@@ -49,15 +49,16 @@ mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Degree Days Below 65&deg;F</h3>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5" />
       <p class="mb-6">
         Degree days below 65&deg;F, also known as heating degree days, are used
         to approximate the energy needed to heat a building in a given year. The
         map below shows the 30-year mean of degree bays below 65&deg;F for three
         eras. The historical era (1980&ndash;2009) uses historical modeled data
-        provided by the ERA-Interim model. The mid-century (2040&ndash;2069) and
+        provided by the Daymet model. The mid-century (2040&ndash;2069) and
         late-century (2070&ndash;2099) eras use modeled projections from the
         NCAR CCSM4 model under the RCP 8.5 emissions scenario.
       </p>
@@ -79,7 +80,7 @@ mapStore.setLegendItems(mapId, legend)
       <p>
         Enter lat/lon coordinates below to see a chart of degree days below
         65&deg;F for a point location. This chart displays min/mean/max values
-        for historical decades using the ERA-Interim model and projected decades
+        for historical decades using the Daymet model and projected decades
         using both the GFDL CM3 and NCAR CCSM4 models under the RCP 8.5
         emissions scenario.
       </p>
@@ -127,6 +128,7 @@ mapStore.setLegendItems(mapId, legend)
           </li>
         </ul>
       </div>
+      <GetAndUseDataDegreeDays :presentInEds="true" />
     </div>
   </section>
 </template>

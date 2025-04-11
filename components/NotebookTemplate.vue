@@ -52,8 +52,10 @@ const props = defineProps(['jupyterlabUrl', 'githubUrl'])
 .robot {
   font-size: 2rem;
   vertical-align: baseline;
+  display: inline-block;
+  margin-right: 0.35rem;
 }
-::v-deep(*) {
+:deep(*) {
   h1 {
     font-size: 1.65rem;
   }

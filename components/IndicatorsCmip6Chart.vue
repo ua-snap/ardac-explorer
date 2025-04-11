@@ -6,6 +6,7 @@ const props = defineProps<{
 }>()
 
 import type { Data } from 'plotly.js-dist-min'
+import { precisionMean } from '~/utils/math'
 
 const { $Plotly, $_ } = useNuxtApp()
 const dataStore = useDataStore()
@@ -23,6 +24,27 @@ const chartInputs = computed<IndicatorsCmip6ChartInputsObj>(
 )
 
 let chartData: any
+
+// Get min/max values for the selected month of CMIP6 monthly charts.
+const minMax = (chartData: any) => {
+  let flatValues: number[] = []
+  Object.values(chartData).forEach((scenarios: any) => {
+    Object.values(scenarios).forEach((model: any) => {
+      if (model) {
+        Object.entries(model).forEach(([key, value]) => {
+          if (value) {
+            let indicatorObj = value as any
+            let v = parseFloat(indicatorObj[props.dataKey])
+            flatValues.push(v)
+          }
+        })
+      }
+    })
+  })
+  let min = $_.min(flatValues)
+  let max = $_.max(flatValues)
+  return { min: min, max: max }
+}
 
 const getPlotValues = (params: any) => {
   let years = $_.range(params.minYear, params.maxYear + 1)
@@ -56,16 +78,26 @@ const getPlotValues = (params: any) => {
 
   let decades = Object.keys(decadeBuckets)
 
-  let means: number[] = []
-  let maxes: number[] = []
-  let mins: number[] = []
-  let maxOffsets: number[] = []
-  let minOffsets: number[] = []
+  let means: Array<number | null> = []
+  let maxes: Array<number | null> = []
+  let mins: Array<number | null> = []
+  let maxOffsets: Array<number | null> = []
+  let minOffsets: Array<number | null> = []
 
   decades.forEach(decade => {
-    let mean = $_.mean(decadeBuckets[decade])
-    let min = $_.min(decadeBuckets[decade])
-    let max = $_.max(decadeBuckets[decade])
+    // Add null placeholders for min/mean/max if all decade's years are null.
+    if (decadeBuckets[decade].every(v => v === null)) {
+      means.push(null)
+      mins.push(null)
+      maxes.push(null)
+      maxOffsets.push(null)
+      minOffsets.push(null)
+      return
+    }
+
+    let mean = precisionMean(decadeBuckets[decade].map(Number))
+    let min = $_.min(decadeBuckets[decade].map(Number))
+    let max = $_.max(decadeBuckets[decade].map(Number))
 
     // Calculate max/min as offsets from mean for error bars.
     let maxOffset = max - mean
@@ -101,6 +133,13 @@ const buildChart = () => {
     let allDecades: string[] = []
     chartData = dataStore.apiData
 
+    // Unwrap for performance reasons
+    if (isProxy(chartData)) {
+      chartData = toRaw(chartData)
+    }
+
+    let { min, max } = minMax(chartData)
+
     for (let i = 1950; i <= 2100; i += 10) {
       allDecades.push(i + '-' + (i + 9))
     }
@@ -132,7 +171,7 @@ const buildChart = () => {
       let ticks = $_.range(1, plotValues.decades.length + 1)
 
       let symbolKey = params.historical ? 'historical' : 'projected'
-      let traceLabel = params.historical ? 'Historical' : 'Projected'
+      let traceLabel = params.historical ? 'Modeled Baseline' : 'Projected'
 
       traces.push({
         x: ticks,
@@ -195,6 +234,8 @@ const buildChart = () => {
               size: 18,
             },
           },
+          range: [min, max],
+          fixedrange: true,
         },
       },
       {
@@ -222,8 +263,6 @@ watch([apiData, chartLabels, chartInputs], async () => {
 
 watch(latLng, async () => {
   $Plotly.purge('chart')
-  dataStore.apiData = null
-  dataStore.fetchData('indicatorsCmip6')
 })
 
 onUnmounted(() => {

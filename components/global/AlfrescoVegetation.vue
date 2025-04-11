@@ -199,9 +199,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Vegetation Type</h3>
+      <XrayIntroblurb resolution="1" unit="km" cmip="5" />
       <p class="mb-6">
         The map below shows a 5-model mode of ALFRESCO dominant vegetation type
         outputs across four eras. Historical eras show model spinup outputs.
@@ -239,7 +240,8 @@ onUnmounted(() => {
         download the data that is used to populate the chart.
       </p>
 
-      <Gimme />
+      <!-- HUC-12 API summaries return data only for Alaska, not Canada -->
+      <Gimme extent="blockyAlaska" />
 
       <div v-if="latLng && apiData">
         <div class="chart-input">
@@ -301,7 +303,12 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
+      <GetAndUseDataAlfresco
+        :presentInNcr="true"
+        geonetworkUrl="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/a077b382-c7e5-44a7-8b2a-1cf764c448f6"
+      />
     </div>
+    <Bios :people="['Scott Rupp', 'Nancy Fresco']" />
   </section>
 </template>
 

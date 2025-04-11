@@ -56,9 +56,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Runoff</h3>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
       <p class="mb-6">
         The map below shows the 30-year mean annual runoff for three eras using
         the CanESM2 model under the RCP 8.5 emissions scenario.
@@ -80,12 +81,12 @@ onUnmounted(() => {
 
       <p>
         Enter a location below to see a chart of mean annual runoff per decade
-        for a point location using the CanESM2 model and the selected emissions
-        scenario and month. After entering a location, links will be provided
-        where you can download the data that is used to populate the chart.
+        for a point location using the selected model, emissions scenario, and
+        month. After entering a location, links will be provided where you can
+        download the data that is used to populate the chart.
       </p>
 
-      <Gimme />
+      <Gimme extent="mizukami" />
       <HydrologyChartControls />
       <HydrologyChart label="Runoff" units="㎜" dataKey="runoff" />
 
@@ -126,6 +127,7 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
+      <GetAndUseDataHydrology :presentInNcr="true" />
     </div>
   </section>
 </template>

@@ -10,40 +10,43 @@ const latLng = computed<LatLngValue>(() => placesStore.latLng)
 const layers: MapLayer[] = [
   {
     id: 'indicator_dw_historical_era',
-    title: '1980–2009, GFDL-ESM4',
+    title: '1980–2009, TaiESM1',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_indicators',
     style: 'ardac_indicator_dw_historical_era',
     legend: 'deep_winter_days',
-    rasdamanConfiguration: { dim_model: 4, dim_scenario: 0 },
+    rasdamanConfiguration: { dim_model: 11, dim_scenario: 0 },
+    coastline: true,
   },
   {
     id: 'indicator_dw_midcentury_era',
-    title: '2040–2069, GFDL-ESM4, SSP5-8.5',
+    title: '2040–2069, TaiESM1, SSP5-8.5',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_indicators',
     style: 'ardac_indicator_dw_midcentury_era',
     legend: 'deep_winter_days',
-    rasdamanConfiguration: { dim_model: 4, dim_scenario: 4 },
+    rasdamanConfiguration: { dim_model: 11, dim_scenario: 4 },
+    coastline: true,
   },
   {
     id: 'indicator_dw_latecentury_era',
-    title: '2070–2099, GFDL-ESM4, SSP5-8.5',
+    title: '2070–2099, TaiESM1, SSP5-8.5',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_indicators',
     style: 'ardac_indicator_dw_latecentury_era',
     legend: 'deep_winter_days',
-    rasdamanConfiguration: { dim_model: 4, dim_scenario: 4 },
+    rasdamanConfiguration: { dim_model: 11, dim_scenario: 4 },
+    coastline: true,
   },
 ]
 
 const legend: Record<string, LegendItem[]> = {
   deep_winter_days: [
-    { color: '#c6dbef', label: '&ge;1 day, &lt;10 days' },
-    { color: '#9ecae1', label: '&ge;10 days, &lt;20 days' },
-    { color: '#6baed6', label: '&ge;20 days, &lt;40 days' },
-    { color: '#3182bd', label: '&ge;40 days, &lt;80 days' },
-    { color: '#08519c', label: '&ge;80 days' },
+    { color: '#cddce9', label: '&ge;0 days, &lt;10 days' },
+    { color: '#b1d0e0', label: '&ge;10 days, &lt;20 days' },
+    { color: '#8fbcd8', label: '&ge;20 days, &lt;40 days' },
+    { color: '#699dc7', label: '&ge;40 days, &lt;80 days' },
+    { color: '#507bb0', label: '&ge;80 days' },
   ],
 }
 
@@ -52,20 +55,21 @@ mapStore.setLegendItems(mapId, legend)
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Deep Winter Days, CMIP6</h3>
+      <XrayIntroblurb resolution="100" unit="km" cmip="6" beta />
       <p class="mb-6">
         Deep winter days are the number of days per year that are below
         -22&deg;F. The map below shows the 30-year mean of CMIP6 deep winter
         days for three eras. The historical era (1980&ndash;2009) uses
-        historical modeled data provided by the GFDL-ESM4 model. The mid-century
+        historical modeled data provided by the TaiESM1 model. The mid-century
         (2040&ndash;2069) and late-century (2070&ndash;2099) eras use modeled
-        projections from the GFDL-ESM4 model under the SSP5-8.5 emissions
+        projections from the TaiESM1 model under the SSP5-8.5 emissions
         scenario.
       </p>
 
-      <MapBlock :mapId="mapId" class="mb-6">
+      <MapBlock :mapId="mapId" crs="EPSG:3572" class="mb-6">
         <template v-slot:layers>
           <MapLayer :mapId="mapId" :layer="layers[0]" default>
             <template v-slot:title>{{ layers[0].title }}</template>
@@ -87,7 +91,7 @@ mapStore.setLegendItems(mapId, legend)
         where you can download the data that is used to populate the chart.
       </p>
 
-      <Gimme />
+      <Gimme :bbox="[-180, 50, 180, 90]" />
       <IndicatorsCmip6ChartControls />
       <IndicatorsCmip6Chart label="Deep winter days" dataKey="dw" />
 

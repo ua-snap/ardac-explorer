@@ -26,6 +26,8 @@
   "dependencies": {
     "@pinia/nuxt": "^0.5.1",
     "@tarekraafat/autocomplete.js": "^10.2.7",
+    "@turf/boolean-point-in-polygon": "^7.0.0",
+    "@turf/helpers": "^7.0.0",
     "bulma": "^0.9.4",
     "deepdash": "^5.3.9",
     "leaflet": "^1.9.4",

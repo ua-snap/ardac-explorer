@@ -1,5 +1,6 @@
 <script lang="ts" setup>
 import type { Data } from 'plotly.js-dist-min'
+import { precisionMean } from '~/utils/math'
 import { useMapStore } from '~/stores/map'
 
 const { $Plotly, $_ } = useNuxtApp()
@@ -89,7 +90,7 @@ const getPlotValues = (minYear: number, maxYear: number, model: string) => {
   let minOffsets: number[] = []
 
   decades.forEach(decade => {
-    let mean = Math.round($_.mean(decadeBuckets[decade]))
+    let mean = precisionMean(decadeBuckets[decade])
     let min = $_.min(decadeBuckets[decade])
     let max = $_.max(decadeBuckets[decade])
 
@@ -268,9 +269,10 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <section class="section">
+  <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Wet Days Per Year</h3>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
       <p class="mb-6">
         A wet day is defined as a day with precipitation accumulation greater
         than or equal to 1.0㎜. The map below shows the 30-year mean of wet days
@@ -308,7 +310,7 @@ onUnmounted(() => {
         download the data that is used to populate the chart.
       </p>
 
-      <Gimme />
+      <Gimme extent="blockyAlaska" />
       <div id="chart"></div>
       <div v-if="latLng && apiData" class="my-6">
         <h4 class="title is-4">
@@ -343,6 +345,36 @@ onUnmounted(() => {
           </li>
         </ul>
       </div>
+      <GetAndUseData
+        apiUrl="https://earthmaps.io/wet_days_per_year/"
+        geonetworkUrl="https://catalog.snap.uaf.edu/geonetwork/srv/eng/catalog.search#/metadata/8b51ce8c-7fd9-4541-9736-990c0a008005"
+      >
+        <li>
+          Academic references:
+          <blockquote>
+            <p>
+              Bieniek P.A., Bhatt U.S, Walsh J.E., Rupp T.S., Zhang J., Krieger
+              J.R., &amp; Lader R (2016). Dynamical Downscaling of ERA-Interim
+              Temperature and Precipitation for Alaska,
+              <i>Journal of Applied Meterology and Climatology 55</i>(3)
+              635&ndash;654;
+              <a href="https://doi.org/10.1175/JAMC-D-15-0153.1"
+                >https://doi.org/10.1175/JAMC-D-15-0153.1</a
+              >
+            </p>
+            <p>
+              Lader R., Walsh J.E., Bhatt U.S. &amp; Bieniek P.A. (2017)
+              Projections of Twenty-First-Century Climate Extremes for Alaska
+              via Dynamical Downscaling and Quantile Mapping
+              <i>Journal of Applied Meterology and Climatology 56</i>(9)
+              2393&ndash;2409;
+              <a href="https://doi.org/10.1175/JAMC-D-16-0415.1"
+                >https://doi.org/10.1175/JAMC-D-16-0415.1</a
+              >
+            </p>
+          </blockquote>
+        </li>
+      </GetAndUseData>
     </div>
   </section>
 </template>

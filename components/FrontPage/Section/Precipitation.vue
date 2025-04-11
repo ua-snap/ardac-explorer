@@ -13,7 +13,7 @@
       </div>
       <div class="tile is-parent px-5">
         <div class="tile is-child">
-          <ItemTextPicture slug="precipitation-frequency" />
+          <ItemTextPicture slug="indicator-rx1day-cmip6" />
         </div>
       </div>
       <div class="tile is-parent pl-5 border-left">

@@ -52,11 +52,12 @@ mapStore.setLegendItems(mapId, legend)
   <section class="section">
     <div class="content is-size-5">
       <h3 class="title is-3">Freezing Index</h3>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
       <p class="mb-6">
         The freezing index is the number of degree days above freezing per year.
         The map below shows the 30-year mean of the freezing index for three
         eras. The historical era (1980&ndash;2009) uses historical modeled data
-        provided by the ERA-Interim model. The mid-century (2040&ndash;2069) and
+        provided by the Daymet model. The mid-century (2040&ndash;2069) and
         late-century (2070&ndash;2099) eras use modeled projections from the
         NCAR CCSM4 model under the RCP 8.5 emissions scenario.
       </p>
@@ -78,8 +79,8 @@ mapStore.setLegendItems(mapId, legend)
       <p>
         Enter lat/lon coordinates below to see a chart of the freezing index for
         a point location. This chart displays min/mean/max values for historical
-        decades using the ERA-Interim model and projected decades using both the
-        GFDL CM3 and NCAR CCSM4 models under the RCP 8.5 emissions scenario.
+        decades using the Daymet model and projected decades using both the GFDL
+        CM3 and NCAR CCSM4 models under the RCP 8.5 emissions scenario.
       </p>
 
       <p>
@@ -122,6 +123,24 @@ mapStore.setLegendItems(mapId, legend)
           </li>
         </ul>
       </div>
+      <GetAndUseDataDegreeDays :presentInEds="true">
+        <li>
+          Use this data in an
+          <a
+            href="https://ua-snap.github.io/ardac-notebooks/lab/?path=frost_depth%2FModified+Berggren+Frost+Depth.ipynb"
+            >interactive computational module for computing modified Berggren
+            frost depth</a
+          >
+        </li>
+        <li>
+          Use this data in an
+          <a
+            href="https://ua-snap.github.io/ardac-notebooks/lab/index.html?path=design_freezing_index%2Fdesign_freezing_index_module.ipynb"
+            >interactive computational module for computing design freezing
+            index</a
+          >
+        </li>
+      </GetAndUseDataDegreeDays>
     </div>
   </section>
 </template>
