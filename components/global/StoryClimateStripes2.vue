@@ -152,11 +152,11 @@ const buildChart = () => {
     // Numbers to be used as the numerator for annotationOffset calculation
     let numerator
     if (viewportWidth > 1500) {
-      numerator = 32000
+      numerator = 30000
     } else if (viewportWidth > 800) {
-      numerator = 20000
+      numerator = 17000
     } else {
-      numerator = 24000
+      numerator = 22000
     }
 
     let annotationOffset = numerator / viewportWidth
