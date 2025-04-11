@@ -144,6 +144,20 @@ const buildChart = () => {
     }
     titleText += '<br />Model: EC-Earth3-Veg'
 
+    let viewportWidth = window.innerWidth
+
+    // Numbers to be used as the numerator for annotationOffset calculation
+    let numerator
+    if (viewportWidth > 1500) {
+      numerator = 32000
+    } else if (viewportWidth > 800) {
+      numerator = 20000
+    } else {
+      numerator = 24000
+    }
+
+    let annotationOffset = numerator / viewportWidth
+
     $Plotly.newPlot(
       'chart',
       plotData,
@@ -179,7 +193,7 @@ const buildChart = () => {
         ],
         annotations: [
           {
-            x: 2009,
+            x: 2024.5 - annotationOffset,
             y: 1.1,
             xref: 'x',
             yref: 'paper',
@@ -190,7 +204,7 @@ const buildChart = () => {
             },
           },
           {
-            x: 2039,
+            x: 2024.5 + annotationOffset,
             y: 1.1,
             xref: 'x',
             yref: 'paper',
@@ -224,6 +238,11 @@ const buildChart = () => {
     )
   }
 }
+
+window.addEventListener('resize', () => {
+  $Plotly.purge('chart')
+  buildChart()
+})
 
 watch(latLng, async () => {
   $Plotly.purge('chart')
