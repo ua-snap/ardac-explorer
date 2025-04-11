@@ -142,7 +142,7 @@ const buildChart = () => {
     } else {
       titleText += latLng.value?.lat + ', ' + latLng.value?.lng
     }
-    titleText += '<br />Model: EC-Earth3-Veg'
+    titleText += '<br />Model: ' + modelInput.value
 
     let viewportWidth = window.innerWidth
 
