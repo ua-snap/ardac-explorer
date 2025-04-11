@@ -35,8 +35,11 @@ const scenarioLabels: Record<string, string> = {
   ssp585: 'SSP5-8.5',
 }
 
-let historicalYears = $_.range(1850, 2024 + 1)
-let projectedYears = $_.range(2025, 2100 + 1)
+let startYear = 1900
+let endYear = 2100
+
+let historicalYears = $_.range(startYear, 2024 + 1)
+let projectedYears = $_.range(2025, endYear + 1)
 
 const buildChart = () => {
   if (apiData.value) {
@@ -80,7 +83,7 @@ const buildChart = () => {
     for (let i = 0; i < dataByScenario.length; i++) {
       dataLabels[i] = []
       for (let j = 0; j < dataByScenario[i].length; j++) {
-        let year = j + 1850
+        let year = j + startYear
         if (year < 2025) {
           dataLabels[i][j] =
             'Year: ' +
@@ -114,7 +117,7 @@ const buildChart = () => {
 
     let plotData = [
       {
-        x: $_.range(1850, 2100 + 1),
+        x: $_.range(startYear, endYear + 1),
         y: Object.values(scenarioLabelsSubset).reverse(),
         z: dataByScenario,
         type: 'heatmap',
