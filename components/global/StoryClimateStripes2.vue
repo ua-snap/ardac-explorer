@@ -12,13 +12,14 @@ const selectedCommunity = computed<CommunityValue>(
 )
 
 const scenarioLabels: Record<string, string> = {
-  rcp45: 'RCP 4.5',
-  rcp60: 'RCP 6.0',
-  rcp85: 'RCP 8.5',
+  ssp126: 'SSP1-2.6',
+  ssp245: 'SSP2-4.5',
+  ssp370: 'SSP3-7.0',
+  ssp585: 'SSP5-8.5',
 }
 
-let historicalYears = $_.range(1901, 2006 + 1)
-let projectedYears = $_.range(2007, 2100 + 1)
+let historicalYears = $_.range(1850, 2024 + 1)
+let projectedYears = $_.range(2025, 2100 + 1)
 
 const buildChart = () => {
   if (apiData.value) {
@@ -28,13 +29,13 @@ const buildChart = () => {
     Object.keys(scenarioLabels).forEach(scenario => {
       let scenarioData: number[] = []
       historicalYears.forEach((year: any) => {
-        let temperature = apiData.value['CRU-TS']['historical'][year]['tas']
+        let temperature = apiData.value['Berkeley-Earth']['historical'][year]
         scenarioData.push(temperature)
         allValues.push(temperature)
         maxHistoricalValue = $_.max(scenarioData)
       })
       projectedYears.forEach((year: any) => {
-        let temperature = apiData.value['NCAR-CCSM4'][scenario][year]['tas']
+        let temperature = apiData.value['EC-Earth3-Veg'][scenario][year]
         scenarioData.push(temperature)
         allValues.push(temperature)
       })
@@ -50,13 +51,13 @@ const buildChart = () => {
 
     // Create hover labels for each data point and pass them into the chart
     // using the "customdata" property to give us more conditional logic. This is
-    // necessary to hide the "Scenarios" label for modeled baseline data.
+    // necessary to hide the "Scenarios" label for historical data.
     let dataLabels: string[][] = []
     for (let i = 0; i < dataByScenario.length; i++) {
       dataLabels[i] = []
       for (let j = 0; j < dataByScenario[i].length; j++) {
-        let year = j + 1901
-        if (year < 2007) {
+        let year = j + 1850
+        if (year < 2025) {
           dataLabels[i][j] =
             'Year: ' +
             year +
@@ -82,7 +83,7 @@ const buildChart = () => {
 
     let plotData = [
       {
-        x: $_.range(1901, 2100 + 1),
+        x: $_.range(1850, 2100 + 1),
         y: Object.values(scenarioLabels).reverse(),
         z: dataByScenario,
         type: 'heatmap',
@@ -110,7 +111,7 @@ const buildChart = () => {
     } else {
       titleText += latLng.value?.lat + ', ' + latLng.value?.lng
     }
-    titleText += '<br />Model: NCAR CCSM4'
+    titleText += '<br />Model: EC-Earth3-Veg'
 
     $Plotly.newPlot(
       'chart',
@@ -134,9 +135,9 @@ const buildChart = () => {
         shapes: [
           {
             type: 'line',
-            x0: 2006.5,
+            x0: 2024.5,
             y0: -0.1,
-            x1: 2006.5,
+            x1: 2024.5,
             y1: 1.1,
             yref: 'paper',
             line: {
@@ -147,18 +148,18 @@ const buildChart = () => {
         ],
         annotations: [
           {
-            x: 1990,
+            x: 2009,
             y: 1.1,
             xref: 'x',
             yref: 'paper',
-            text: '← Modeled Baseline',
+            text: '← Historical',
             showarrow: false,
             font: {
               size: 16,
             },
           },
           {
-            x: 2017,
+            x: 2039,
             y: 1.1,
             xref: 'x',
             yref: 'paper',
@@ -196,7 +197,7 @@ const buildChart = () => {
 watch(latLng, async () => {
   $Plotly.purge('chart')
   dataStore.apiData = null
-  dataStore.fetchData('meanAnnualTemperature')
+  dataStore.fetchData('temperatureAnomalies')
 })
 
 watch([apiData], async () => {
@@ -212,7 +213,7 @@ onUnmounted(() => {
   <section class="section">
     <div class="content is-size-5">
       <h3 class="title is-3">
-        Climate Stripes Part 2 (Modeled Baseline + Projected)
+        Climate Stripes Part 2 (Historical + Projected)
       </h3>
       <Gimme label="Get chart and data for lat/lon point:" />
       <div id="chart"></div>
