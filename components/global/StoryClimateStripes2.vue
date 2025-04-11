@@ -49,13 +49,17 @@ const buildChart = () => {
     availableScenarios.forEach(scenario => {
       let scenarioData: number[] = []
       historicalYears.forEach((year: any) => {
-        let temperature = apiData.value['Berkeley-Earth']['historical'][year]
+        let temperature =
+          apiData.value['Berkeley-Earth']['historical'][year][
+            'temperature_anomaly'
+          ]
         scenarioData.push(temperature)
         allValues.push(temperature)
         maxHistoricalValue = $_.max(scenarioData)
       })
       projectedYears.forEach((year: any) => {
-        let temperature = apiData.value[modelInput.value][scenario][year]
+        let temperature =
+          apiData.value[modelInput.value][scenario][year]['temperature_anomaly']
         scenarioData.push(temperature)
         allValues.push(temperature)
       })
