@@ -48,23 +48,35 @@ const buildChart = () => {
     let maxHistoricalValue: number = 0
 
     // Get available scenarios for the selected model.
-    let availableScenarios = Object.keys(apiData.value[modelInput.value])
+    let availableScenarios = Object.keys(
+      apiData.value[modelInput.value]['temperature_anomalies']
+    )
     availableScenarios.forEach(scenario => {
       let scenarioData: number[] = []
+      let historicalBaseline =
+        apiData.value['Berkeley-Earth']['temperature_baseline']
+      let projectedBaseline =
+        apiData.value[modelInput.value]['temperature_baseline']
       historicalYears.forEach((year: any) => {
-        let temperature =
-          apiData.value['Berkeley-Earth']['historical'][year][
-            'temperature_anomaly'
-          ]
-        scenarioData.push(temperature)
-        allValues.push(temperature)
-        maxHistoricalValue = $_.max(scenarioData)
+        let anomaly =
+          apiData.value['Berkeley-Earth']['temperature_anomalies'][
+            'historical'
+          ][year]
+        let absoluteTemperature = historicalBaseline + anomaly
+        absoluteTemperature = parseFloat(absoluteTemperature.toFixed(2))
+        scenarioData.push(absoluteTemperature)
+        allValues.push(absoluteTemperature)
       })
+      maxHistoricalValue = $_.max(scenarioData)
       projectedYears.forEach((year: any) => {
-        let temperature =
-          apiData.value[modelInput.value][scenario][year]['temperature_anomaly']
-        scenarioData.push(temperature)
-        allValues.push(temperature)
+        let anomaly =
+          apiData.value[modelInput.value]['temperature_anomalies'][scenario][
+            year
+          ]
+        let absoluteTemperature = projectedBaseline + anomaly
+        absoluteTemperature = parseFloat(absoluteTemperature.toFixed(2))
+        scenarioData.push(absoluteTemperature)
+        allValues.push(absoluteTemperature)
       })
       dataByScenario.push(scenarioData)
     })
