@@ -229,6 +229,17 @@ const buildChart = () => {
               size: 16,
             },
           },
+
+          {
+            xref: 'paper',
+            yref: 'paper',
+            x: 0.5,
+            y: -0.15,
+            xanchor: 'center',
+            yanchor: 'top',
+            text: 'Historical data provided by Berkeley Earth',
+            showarrow: false,
+          },
         ],
         height: 500,
         margin: {
