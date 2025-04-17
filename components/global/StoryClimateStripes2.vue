@@ -237,7 +237,7 @@ const buildChart = () => {
             y: -0.15,
             xanchor: 'center',
             yanchor: 'top',
-            text: 'Historical data provided by Berkeley Earth',
+            text: "Historical data provided by Berkeley Earth's Global Monthly Land + Ocean dataset",
             showarrow: false,
           },
         ],
