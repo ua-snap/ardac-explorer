@@ -13,7 +13,7 @@
   font-size: 2rem;
   color: $gray;
   .warn {
-    background-color: #ff0;
+    background-color: lch(96.607% 131.712 99.572);
   }
 }
 </style>

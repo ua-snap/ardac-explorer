@@ -2,7 +2,7 @@
   <div>
     <div
       v-if="store.showBetaNotice"
-      class="notification is-warning is-size-4 my-5"
+      class="beta-notice notification is-warning is-size-4 my-5"
     >
       <button class="delete" @click="hideNotification"></button>
       Thanks for trying out this site! This is a
@@ -25,7 +25,8 @@ const hideNotification = () => {
 </script>
 
 <style lang="scss" scoped>
-.notification {
+.beta-notice.notification.is-warning {
   margin: 0 auto;
+  background-color: lch(95.426% 58.15 81.243);
 }
 </style>
