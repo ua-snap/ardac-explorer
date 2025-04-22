@@ -96,6 +96,9 @@ const buildChart = () => {
     for (let i = 0; i < dataByScenario.length; i++) {
       dataLabels[i] = []
       for (let j = 0; j < dataByScenario[i].length; j++) {
+        if (dataByScenario[i][j] > 0) {
+          dataByScenario[i][j] = '+' + dataByScenario[i][j]
+        }
         let year = j + startYear
         if (year < 2025) {
           dataLabels[i][j] =
@@ -128,6 +131,22 @@ const buildChart = () => {
         scenarioLabels[availableScenarios[i]]
     }
 
+    // Calculate step for colorscale legend tick marks.
+    let step = 1
+    if (range > 10) {
+      step = 2
+    }
+    let tickvals = $_.range(Math.floor(minValue), Math.max(maxValue) + 1, step)
+
+    // Add a "+" sign to any tickval that is positive, and set it to ticktext variable.
+    let ticktext = tickvals.map((tickval: any) => {
+      if (tickval > 0) {
+        return '+' + tickval + '°C'
+      } else {
+        return tickval + '°C'
+      }
+    })
+
     let plotData = [
       {
         x: $_.range(startYear, endYear + 1),
@@ -141,14 +160,15 @@ const buildChart = () => {
           [plumPoint, 'rgb(64,0,64)'],
           [1, 'rgb(255,0,255)'],
         ],
-        // showscale: false,
         colorbar: {
           orientation: 'h',
           x: 0.5,
           y: -0.15,
           xanchor: 'center',
           yanchor: 'top',
-          ticksuffix: '°C',
+          tickmode: 'array',
+          tickvals: tickvals,
+          ticktext: ticktext,
         },
         hovertemplate: '%{customdata}',
         xhoverformat: '.0f',
@@ -198,7 +218,7 @@ const buildChart = () => {
           font: {
             size: 24,
           },
-          y: 0.9,
+          y: 0.92,
           yanchor: 'top',
         },
         xaxis: {
