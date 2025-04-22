@@ -154,11 +154,11 @@ const buildChart = () => {
         z: dataByScenario,
         type: 'heatmap',
         colorscale: [
-          [0, 'rgb(3,67,223)'],
-          [whitePoint, 'rgb(255,255,255)'],
-          [redPoint, 'rgb(255,0,0)'],
-          [plumPoint, 'rgb(64,0,64)'],
-          [1, 'rgb(255,0,255)'],
+          [0, 'hsl(223, 97%, 44%)'],
+          [whitePoint, 'hsl(0, 0%, 100%)'],
+          [redPoint, 'hsl(0, 100%, 50%)'],
+          [plumPoint, 'hsl(300, 100%, 35%)'],
+          [1, 'hsl(300, 100%, 50%)'],
         ],
         colorbar: {
           orientation: 'h',
