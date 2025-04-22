@@ -1,4 +1,5 @@
 <script lang="ts" setup>
+// @ts-nocheck
 const placesStore = usePlacesStore()
 const dataStore = useDataStore()
 
@@ -62,7 +63,7 @@ const buildChart = () => {
           apiData.value['Berkeley-Earth']['temperature_anomalies'][
             'historical'
           ][year]
-        let absoluteTemperature = historicalBaseline + anomaly
+        let absoluteTemperature = anomaly
         absoluteTemperature = parseFloat(absoluteTemperature.toFixed(2))
         scenarioData.push(absoluteTemperature)
         allValues.push(absoluteTemperature)
@@ -73,7 +74,7 @@ const buildChart = () => {
           apiData.value[modelInput.value]['temperature_anomalies'][scenario][
             year
           ]
-        let absoluteTemperature = projectedBaseline + anomaly
+        let absoluteTemperature = anomaly
         absoluteTemperature = parseFloat(absoluteTemperature.toFixed(2))
         scenarioData.push(absoluteTemperature)
         allValues.push(absoluteTemperature)
@@ -85,7 +86,7 @@ const buildChart = () => {
     let maxValue = $_.max(allValues)
     let range = maxValue - minValue
     let redPoint = (maxHistoricalValue - minValue) / range
-    let whitePoint = redPoint / 2
+    let whitePoint = (0 - minValue) / range
     let plumPoint = redPoint + (maxValue - maxHistoricalValue) / range / 2
 
     // Create hover labels for each data point and pass them into the chart
@@ -140,7 +141,15 @@ const buildChart = () => {
           [plumPoint, 'rgb(64,0,64)'],
           [1, 'rgb(255,0,255)'],
         ],
-        showscale: false,
+        // showscale: false,
+        colorbar: {
+          orientation: 'h',
+          x: 0.5,
+          y: -0.15,
+          xanchor: 'center',
+          yanchor: 'top',
+          ticksuffix: '°C',
+        },
         hovertemplate: '%{customdata}',
         xhoverformat: '.0f',
         hoverlabel: {
@@ -150,14 +159,14 @@ const buildChart = () => {
       } satisfies Data,
     ]
 
-    let titleText = 'Mean annual temperature for '
+    let titleText = 'Temperature Change (°C)<br />'
     if (selectedCommunity.value && selectedCommunity.value.name) {
       titleText +=
         selectedCommunity.value.name + ', ' + selectedCommunity.value.region
     } else {
       titleText += latLng.value?.lat + ', ' + latLng.value?.lng
     }
-    titleText += '<br />Model: ' + modelInput.value
+    titleText += ', Model: ' + modelInput.value
 
     let viewportWidth = window.innerWidth
 
@@ -172,6 +181,13 @@ const buildChart = () => {
     }
 
     let annotationOffset = numerator / viewportWidth
+
+    let footerText =
+      "Historical data is provided by Berkeley Earth's Global Monthly Land + Ocean dataset.<br />" +
+      'Historical temperature anomalies were calculated from the Berkeley Earth 1951-1980 baseline temperature.<br />' +
+      'Projected temperature anomalies were calculated from the ' +
+      modelInput.value +
+      ' 1951-1980 baseline temperature.'
 
     $Plotly.newPlot(
       'chart',
@@ -234,16 +250,17 @@ const buildChart = () => {
             xref: 'paper',
             yref: 'paper',
             x: 0.5,
-            y: -0.15,
+            y: -0.45,
             xanchor: 'center',
             yanchor: 'top',
-            text: "Historical data provided by Berkeley Earth's Global Monthly Land + Ocean dataset",
+            text: footerText,
             showarrow: false,
           },
         ],
-        height: 500,
+        height: 600,
         margin: {
           t: 130,
+          b: 200,
         },
       },
       {
