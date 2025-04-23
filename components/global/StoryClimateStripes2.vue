@@ -42,6 +42,27 @@ let endYear = 2100
 let historicalYears = $_.range(startYear, 2024 + 1)
 let projectedYears = $_.range(2025, endYear + 1)
 
+let locationMin: number
+let locationMax: number
+
+// Get the overall min and max temperature anomalies across all models and
+// scenarios for the selected location.
+const setLocationMinMax = () => {
+  let anomalies = []
+  $_.eachDeep(apiData.value, (value, key, parent, context) => {
+    // Collect all temperature anomalies from 1900 onward.
+    if (
+      context.parents.length == 4 &&
+      context.parents[2].key == 'temperature_anomalies' &&
+      parseInt(key) >= 1900
+    ) {
+      anomalies.push(value)
+    }
+  })
+  locationMin = $_.min(anomalies)
+  locationMax = $_.max(anomalies)
+}
+
 const buildChart = () => {
   if (apiData.value) {
     let dataByScenario: number[][] = []
@@ -82,12 +103,14 @@ const buildChart = () => {
       dataByScenario.push(scenarioData)
     })
 
-    let minValue = $_.min(allValues)
-    let maxValue = $_.max(allValues)
-    let range = maxValue - minValue
-    let redPoint = (maxHistoricalValue - minValue) / range
-    let whitePoint = (0 - minValue) / range
-    let plumPoint = redPoint + (maxValue - maxHistoricalValue) / range / 2
+    if (locationMin == undefined || locationMax == undefined) {
+      setLocationMinMax()
+    }
+
+    let range = locationMax - locationMin
+    let redPoint = (maxHistoricalValue - locationMin) / range
+    let whitePoint = (0 - locationMin) / range
+    let plumPoint = redPoint + (locationMax - maxHistoricalValue) / range / 2
 
     // Create hover labels for each data point and pass them into the chart
     // using the "customdata" property to give us more conditional logic. This is
@@ -136,7 +159,11 @@ const buildChart = () => {
     if (range > 10) {
       step = 2
     }
-    let tickvals = $_.range(Math.floor(minValue), Math.max(maxValue) + 1, step)
+    let tickvals = $_.range(
+      Math.floor(locationMin),
+      Math.ceil(locationMax) + 1,
+      step
+    )
 
     // Add a "+" sign to any tickval that is positive, and set it to ticktext variable.
     let ticktext = tickvals.map((tickval: any) => {
@@ -160,6 +187,8 @@ const buildChart = () => {
           [plumPoint, 'hsl(300, 100%, 35%)'],
           [1, 'hsl(300, 100%, 50%)'],
         ],
+        zmin: locationMin,
+        zmax: locationMax,
         colorbar: {
           orientation: 'h',
           x: 0.5,
@@ -309,7 +338,9 @@ window.addEventListener('resize', () => {
 
 watch(latLng, async () => {
   $Plotly.purge('chart')
-  dataStore.apiData = null
+  dataStore.apiData = undefined
+  locationMin = undefined
+  locationMax = undefined
   dataStore.fetchData('temperatureAnomalies')
 })
 
@@ -318,7 +349,7 @@ watch([apiData, modelInput], async () => {
 })
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData = undefined
 })
 </script>
 
