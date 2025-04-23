@@ -12,6 +12,44 @@ const RandomPolygonMap = defineAsyncComponent(
 defineOptions({
   name: 'PlacesAndPolygons',
 })
+
+const regionsList = [
+  { name: 'Alaska', key: 'alaska', countryCode: 'US' },
+  { name: 'Alberta', key: 'alberta', countryCode: 'CA' },
+  { name: 'British Columbia', key: 'british_columbia', countryCode: 'CA' },
+  { name: 'Faroe Islands', key: 'faroe', countryCode: 'FO' },
+  { name: 'Finland', key: 'finland', countryCode: 'FI' },
+  { name: 'Greenland', key: 'greenland', countryCode: 'GL' },
+  { name: 'Iceland', key: 'iceland', countryCode: 'IS' },
+  { name: 'Manitoba', key: 'manitoba', countryCode: 'CA' },
+  {
+    name: 'Newfoundland and Labrador',
+    key: 'newfoundland_and_labrador',
+    countryCode: 'CA',
+  },
+  {
+    name: 'Northwest Territories',
+    key: 'northwest_territories',
+    countryCode: 'CA',
+  },
+  { name: 'Norway', key: 'norway', countryCode: 'NO' },
+  { name: 'Nunavut', key: 'nunavut', countryCode: 'CA' },
+  { name: 'Ontario', key: 'ontario', countryCode: 'CA' },
+  { name: 'Quebec', key: 'quebec', countryCode: 'CA' },
+  { name: 'Russia', key: 'russia', countryCode: 'RU' },
+  { name: 'Saskatchewan', key: 'saskatchewan', countryCode: 'CA' },
+  { name: 'Sweden', key: 'sweden', countryCode: 'SE' },
+  { name: 'Yukon', key: 'yukon', countryCode: 'CA' },
+]
+
+const getFlagEmoji = (countryCode: string) => {
+  const codePoints = countryCode
+    .toUpperCase()
+    .split('')
+    .map(char => 127397 + char.charCodeAt(0))
+  return String.fromCodePoint(...codePoints)
+}
+
 </script>
 
 <template>
@@ -304,10 +342,33 @@ defineOptions({
     </div>
 
     <GetAndUseData
-      pointDataRegion="all"
       apiUrl="https://earthmaps.io/places/"
       gitHubRepo="https://github.com/ua-snap/geospatial-vector-veracity"
     >
+      <li>
+        Download point location CSV files for:
+        <div class="columns is-multiline">
+          <div
+            class="column is-one-third"
+            v-for="(col, index) in 3"
+            :key="index"
+          >
+            <ul class="region-list">
+              <li
+                v-for="region in regionsList.slice(index * 6, (index + 1) * 6)"
+                :key="region.key"
+              >
+                <span class="mr-2">{{ getFlagEmoji(region.countryCode) }}</span>
+                <a
+                  :href="`https://github.com/ua-snap/geospatial-vector-veracity/raw/main/vector_data/point/${region.key}_point_locations.csv`"
+                >
+                  {{ region.name }}
+                </a>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </li>
     </GetAndUseData>
 
     <div class="notification is-info is-light mt-6">
@@ -393,5 +454,9 @@ defineOptions({
 ul {
   list-style: disc outside;
   margin: 1em 0 1.5em 1em;
+}
+
+.region-list {
+  list-style: none;
 }
 </style>
