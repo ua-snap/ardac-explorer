@@ -353,7 +353,7 @@ const getFlagEmoji = (countryCode: string) => {
             v-for="(col, index) in 3"
             :key="index"
           >
-            <ul class="region-list">
+            <ul class="region-list mb-0">
               <li
                 v-for="region in regionsList.slice(index * 6, (index + 1) * 6)"
                 :key="region.key"
