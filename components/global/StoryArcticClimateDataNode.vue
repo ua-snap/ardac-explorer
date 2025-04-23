@@ -140,8 +140,8 @@ onMounted(() => {
             <strong>
               <span class="bling">CMIP6</span> models and scenarios that perform
               best in Alaska and the pan&ndash;Arctic: </strong
-            >These include 13 global climate models, 4 emissions scenarios, and
-            15 variables. Compared to prior CMIP5 data housed at UAF, the CMIP6
+            >These include 12 global climate models, 4 emissions scenarios, and
+            18 variables. Compared to prior CMIP5 data housed at UAF, the CMIP6
             data available through the ACDN offers more models and more
             variables, while representing the current state-of-the-art climate
             model outputs.
@@ -292,32 +292,7 @@ onMounted(() => {
               <th>Institutions</th>
             </tr>
             <tr>
-              <td>E3SM-Project E3SM-2-0</td>
-              <td>
-                The Department of Energy&rsquo;s
-                <a href="https://e3sm.org">E3SM</a> is a state-of-the-science
-                Earth system model development and simulation project to
-                investigate energy-relevant science using code optimized for
-                DOE's advanced computers
-              </td>
-            </tr>
-            <tr>
-              <td>ACCESS-CM2</td>
-              <td>
-                Commonwealth Scientific and Industrial Research Organisation,
-                Australian Research Council Centre of Excellence for Climate
-                System Science
-              </td>
-            </tr>
-            <tr>
               <td>CESM2</td>
-              <td>
-                National Center for Atmospheric Research, Climate and Global
-                Dynamics Laboratory
-              </td>
-            </tr>
-            <tr>
-              <td>CESM2-WACCM</td>
               <td>
                 National Center for Atmospheric Research, Climate and Global
                 Dynamics Laboratory
@@ -369,8 +344,12 @@ onMounted(() => {
               </td>
             </tr>
             <tr>
-              <td>MPI-ESM1-2-LR</td>
+              <td>MPI-ESM1-2-HR</td>
               <td>Max Planck Institute for Meteorology</td>
+            </tr>
+            <tr>
+              <td>MRI-ESM2-0</td>
+              <td>Meteorological Research Institute</td>
             </tr>
             <tr>
               <td>NorESM2-MM</td>
@@ -469,82 +448,92 @@ onMounted(() => {
             <tr>
               <td>Near surface air temperature</td>
               <td><code>tas</code></td>
-              <td>Monthly, daily</td>
+              <td>Monthly</td>
             </tr>
             <tr>
               <td>Precipitation</td>
               <td><code>pr</code></td>
-              <td>Monthly, daily</td>
+              <td>Monthly</td>
             </tr>
             <tr>
               <td>Maximum near surface air temperature</td>
               <td><code>tasmax</code></td>
-              <td>Monthly, daily</td>
+              <td>Monthly</td>
             </tr>
             <tr>
               <td>Minimum near surface air temperature</td>
               <td><code>tasmin</code></td>
-              <td>Monthly, daily</td>
+              <td>Monthly</td>
             </tr>
             <tr>
               <td>Surface air temperature</td>
               <td><code>ts</code></td>
-              <td>Monthly, daily</td>
+              <td>Monthly</td>
             </tr>
             <tr>
               <td>Near-surface eastward wind</td>
               <td><code>uas</code></td>
-              <td>Monthly, daily</td>
+              <td>Monthly</td>
             </tr>
             <tr>
               <td>Near-surface northward wind</td>
               <td><code>vas</code></td>
-              <td>Monthly, daily</td>
+              <td>Monthly</td>
             </tr>
             <tr>
               <td>Cloud area fraction</td>
               <td><code>clt</code></td>
-              <td>Monthly, daily</td>
+              <td>Monthly</td>
             </tr>
             <tr>
               <td>Evaporation, including sublimation and transpiration</td>
               <td><code>evspsbl</code></td>
-              <td>Monthly, daily</td>
+              <td>Monthly</td>
             </tr>
             <tr>
               <td>Surface upward latent heat flux</td>
               <td><code>hfls</code></td>
-              <td>Monthly, daily</td>
+              <td>Monthly</td>
             </tr>
             <tr>
               <td>Surface upward sensible heat flux</td>
               <td><code>hfss</code></td>
-              <td>Monthly, daily</td>
+              <td>Monthly</td>
             </tr>
             <tr>
               <td>Sea level pressure</td>
               <td><code>psl</code></td>
-              <td>Monthly, daily</td>
+              <td>Monthly</td>
             </tr>
             <tr>
               <td>Surface downwelling longwave radiation</td>
               <td><code>rlds</code></td>
-              <td>Monthly, daily</td>
+              <td>Monthly</td>
             </tr>
             <tr>
               <td>Surface downwelling shortwavewave radiation</td>
               <td><code>rsds</code></td>
-              <td>Monthly, daily</td>
+              <td>Monthly</td>
             </tr>
             <tr>
               <td>Surface wind</td>
               <td><code>sfcWind</code></td>
-              <td>Monthly, daily</td>
+              <td>Monthly</td>
             </tr>
             <tr>
-              <td>Surface wind maximum</td>
-              <td><code>sfcWindMax</code></td>
-              <td>Monthly, daily</td>
+              <td>Precipitation as snow</td>
+              <td><code>prsn</code></td>
+              <td>Monthly</td>
+            </tr>
+            <tr>
+              <td>Snow water equivalent</td>
+              <td><code>swe</code></td>
+              <td>Monthly</td>
+            </tr>
+            <tr>
+              <td>Sea ice concentration</td>
+              <td><code>siconc</code></td>
+              <td>Monthly</td>
             </tr>
           </table>
         </div>
