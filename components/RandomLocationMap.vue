@@ -1,5 +1,5 @@
 <script setup lang="ts">
-import { usePlacesStore, type PointLocation } from '~/stores/places'
+import { usePlacesStore } from '~/stores/places'
 import { useMapStore } from '~/stores/map'
 import type { LatLngTuple } from 'leaflet'
 
@@ -17,6 +17,16 @@ const baseLayer = ref<any>(null)
 const loading = computed(() => placesStore.isLoading)
 const error = computed(() => placesStore.error)
 const location = computed(() => placesStore.randomLocation)
+
+const locationLongitudeDisplay = computed(() => {
+  if (!location.value) return ''
+  let long = Number.parseFloat(location.value.longitude.toFixed(4))
+  if(long < 0) {
+    return Math.abs(long) + '&deg;W'
+  } else {
+    return long + '&deg;E'
+  }
+})
 
 const locationLabel = computed(() => {
   if (!location.value) return ''
@@ -110,15 +120,6 @@ function initMap() {
   mapInstance.value = map
 }
 
-function closeMap() {
-  isMapVisible.value = false
-  placesStore.clearRandomLocation()
-  if (mapInstance.value) {
-    mapInstance.value.remove()
-    mapInstance.value = null
-  }
-}
-
 onBeforeUnmount(() => {
   if (mapInstance.value) {
     mapInstance.value.remove()
@@ -127,38 +128,26 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="random-location-container has-text-centered">
+  <div class="mb-5">
     <button
-      class="button is-primary is-medium px-3"
+      class="button is-info is-medium"
       @click="showRandomLocation"
       :class="{ 'is-loading': loading }"
       :disabled="loading"
     >
-      <span class="icon ml-0 mr-2">
-        <i class="fas fa-map-marker-alt"></i>
-      </span>
-      <span>Show a random point location</span>
+      Show a random point location
     </button>
 
     <div v-if="isMapVisible && location" class="map-container mt-4">
       <div class="map-header">
         <h4 class="title is-5">{{ headerLabel }}</h4>
-        <button class="button is-small is-light px-2" @click="closeMap">
-          Close
-        </button>
+        <h5 class="subtitle is-6">
+          {{ location.latitude.toFixed(4) }}&deg;N,
+          <span v-html="locationLongitudeDisplay"></span>
+        </h5>
       </div>
 
       <div :id="mapId" class="map-element"></div>
-
-      <div class="location-details mt-2">
-        <p>
-          <strong>Coordinates:</strong> {{ location.latitude.toFixed(4) }}°,
-          {{ location.longitude.toFixed(4) }}°
-        </p>
-        <p v-if="location.km_to_ocean">
-          <strong>Distance to ocean:</strong> {{ location.km_to_ocean }} km
-        </p>
-      </div>
     </div>
 
     <div v-if="error" class="notification is-danger mt-4">
@@ -168,60 +157,8 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="scss" scoped>
-.random-location-container {
-  margin: 2rem 0;
-
-  .button {
-    padding-left: 0;
-    padding-right: 0;
-
-    &.is-primary.is-medium {
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      border: 2px solid darken($primary, 5%);
-      font-weight: 600;
-
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-      }
-    }
-  }
-}
-
-.map-container {
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  overflow: hidden;
-
-  .map-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 1rem;
-    background-color: #f5f5f5;
-
-    .title {
-      margin-bottom: 0;
-    }
-  }
-
-  .map-element {
-    height: 400px;
-    width: 100%;
-  }
-
-  .location-details {
-    padding: 0.75rem 1rem;
-    background-color: #f5f5f5;
-
-    p {
-      margin-bottom: 0.25rem;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
+.map-element {
+  height: 400px;
+  width: 100%;
 }
 </style>
