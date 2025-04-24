@@ -129,10 +129,11 @@ const getFlagEmoji = (countryCode: string) => {
           </ul>
 
           <p class="item-example">
+            &#x2192; see an example:
             <a href="/item/notebook-perm-obs-temp"
-              >&#x2192; see an example: Combine and compare permafrost
-              observations with modeled baseline air temperature data using SNAP
-              Data API point location queries.</a
+              >Combine and compare permafrost observations with modeled baseline
+              air temperature data using SNAP Data API point location
+              queries.</a
             >
           </p>
 
@@ -221,8 +222,8 @@ const getFlagEmoji = (countryCode: string) => {
           <h3 class="title is-4">Polygon Boundaries</h3>
 
           <p>
-            Choose from over <strong>17,000 polygon features</strong> that enable
-            zonal statistics&mdash;cookie cutters, for data.
+            Choose from over <strong>17,000 polygon features</strong> that
+            enable zonal statistics&mdash;cookie cutters, for data.
           </p>
           <RandomPolygonMap />
           <p>Examples of types of places included:</p>
