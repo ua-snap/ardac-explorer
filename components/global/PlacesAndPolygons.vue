@@ -107,8 +107,8 @@ const getFlagEmoji = (countryCode: string) => {
     </div>
   </section>
   <section class="section">
-    <div class="columns">
-      <div class="column is-half">
+    <div class="columns is-desktop">
+      <div class="column">
         <div class="content is-size-5">
           <h3 class="title is-4">Point Locations</h3>
           <p>
@@ -210,14 +210,6 @@ const getFlagEmoji = (countryCode: string) => {
                   <td>-165.778</td>
                   <td>1.4</td>
                 </tr>
-                <tr>
-                  <td>&vellip;</td>
-                  <td>&vellip;</td>
-                  <td>&vellip;</td>
-                  <td>&vellip;</td>
-                  <td>&vellip;</td>
-                  <td>&vellip;</td>
-                </tr>
               </tbody>
             </table>
           </div>
@@ -229,7 +221,7 @@ const getFlagEmoji = (countryCode: string) => {
           <h3 class="title is-4">Polygon Boundaries</h3>
 
           <p>
-            Choose from over <strong>3,000 polygon features</strong> that enable
+            Choose from over <strong>17,000 polygon features</strong> that enable
             zonal statistics&mdash;cookie cutters, for data.
           </p>
           <RandomPolygonMap />
@@ -306,11 +298,6 @@ const getFlagEmoji = (countryCode: string) => {
                   <td>fire_zone</td>
                   <td>POLYGON ((-143.4561...))</td>
                 </tr>
-                <tr>
-                  <td>&vellip;</td>
-                  <td>&vellip;</td>
-                  <td>&vellip;</td>
-                </tr>
               </tbody>
             </table>
           </div>
@@ -329,7 +316,7 @@ const getFlagEmoji = (countryCode: string) => {
           Download point location CSV files for:
           <div class="columns is-multiline">
             <div
-              class="column is-one-third"
+              class="column is-one-third py-0"
               v-for="(col, index) in 3"
               :key="index"
             >
