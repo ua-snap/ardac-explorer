@@ -137,8 +137,8 @@ onBeforeUnmount(() => {
       <div :id="mapId" class="map-element"></div>
     </div>
 
-    <div v-if="error" class="notification is-danger mt-4">
-      <p>Error: {{ error }}</p>
+    <div v-if="error" class="notification is-danger is-light mt-4">
+      Argh! Something went wrong. Try again later!
     </div>
   </div>
 </template>

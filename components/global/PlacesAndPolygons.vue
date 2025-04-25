@@ -77,7 +77,7 @@ const getFlagEmoji = (countryCode: string) => {
         the circumpolar North) are available in ARDAC. Every community is on the
         map. In some instances, an Indigenous name is included when it was
         possible to verify the name with the
-        <a href="https://www.uaf.edu/anlc" target="_blank"
+        <a href="https://www.uaf.edu/anlc"
           >Alaska Native Language Center at the University of Alaska
           Fairbanks</a
         >.
@@ -128,12 +128,12 @@ const getFlagEmoji = (countryCode: string) => {
             <li>Bjørnøya, Svalbard, Norway</li>
           </ul>
 
-          <p class="item-example">
+          <p>
             &#x2192; see an example:
-            <a href="/item/notebook-perm-obs-temp"
+            <NuxtLink to="/item/notebook-perm-obs-temp"
               >Combine and compare permafrost observations with modeled baseline
               air temperature data using SNAP Data API point location
-              queries.</a
+              queries.</NuxtLink
             >
           </p>
 
@@ -234,12 +234,13 @@ const getFlagEmoji = (countryCode: string) => {
             <li>Matanuska-Susitna Borough</li>
             <li>Vuntut Gwitchin First Nation Traditional Territory</li>
           </ul>
-          <p class="item-example">
+          <p>
             &#x2192; see an example:
-            <a href="/item/notebook-precip-poly"
+            <NuxtLink to="/item/notebook-precip-poly"
               >Fetch a polygon from the SNAP Data API, subset historical
               baseline daily precipitation data using the polygon, compute
-              statistics, and compare results with USGS streamgage data.</a
+              statistics, and compare results with USGS streamgage
+              data.</NuxtLink
             >
           </p>
 
@@ -306,7 +307,7 @@ const getFlagEmoji = (countryCode: string) => {
       </div>
     </div>
   </section>
-  <section class="section">
+  <section class="section mb-6">
     <div class="clamp">
       <GetAndUseData
         presentInNcr

@@ -21,7 +21,7 @@ const location = computed(() => placesStore.randomLocation)
 const locationLongitudeDisplay = computed(() => {
   if (!location.value) return ''
   let long = Number.parseFloat(location.value.longitude.toFixed(4))
-  if(long < 0) {
+  if (long < 0) {
     return Math.abs(long) + '&deg;W'
   } else {
     return long + '&deg;E'
@@ -88,7 +88,8 @@ function initMap() {
   baseLayer.value = $L.tileLayer(
     'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
     {
-      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      attribution:
+        '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
       maxZoom: 16,
     }
   )
@@ -139,8 +140,8 @@ onBeforeUnmount(() => {
       <div :id="mapId" class="map-element"></div>
     </div>
 
-    <div v-if="error" class="notification is-danger mt-4">
-      <p>Error: {{ error }}</p>
+    <div v-if="error" class="notification is-danger is-light mt-4">
+      Argh! Something went wrong. Try again later!
     </div>
   </div>
 </template>
