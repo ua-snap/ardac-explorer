@@ -88,19 +88,31 @@ const getFlagEmoji = (countryCode: string) => {
         ARDAC has numerous other geographic lenses for analyzing climate and
         environmental data, including polygon vector data such as:
       </p>
-      <ul>
+      <ul class="has-list-style-none">
         <li>
-          ⚖️ <strong>Administrative boundaries</strong> (boroughs, census areas)
+          <span class="emoji-bullet">⚖️</span>
+          <strong>Administrative boundaries</strong> (boroughs, census areas)
         </li>
-        <li>🔥 <strong>Fire management zones</strong></li>
-        <li>🐻 <strong>Wildlife management units</strong></li>
         <li>
-          🌿 <strong>Protected areas</strong> (parks, wildlife refuges, critical
+          <span class="emoji-bullet">🔥</span>
+          <strong>Fire management zones</strong>
+        </li>
+        <li>
+          <span class="emoji-bullet">🐻</span>
+          <strong>Wildlife management units</strong>
+        </li>
+        <li>
+          <span class="emoji-bullet">🌿</span>
+          <strong>Protected areas</strong> (parks, wildlife refuges, critical
           habitat areas)
         </li>
-        <li>🌊 <strong>Watersheds</strong> (hydrologic units)</li>
         <li>
-          ➕<strong>And more!</strong> (ethnolinguistic regions, climate
+          <span class="emoji-bullet">🌊</span>
+          <strong>Watersheds</strong> (hydrologic units)
+        </li>
+        <li>
+          <span class="emoji-bullet">➕</span>
+          <strong>And more!</strong> (ethnolinguistic regions, climate
           divisions, ecoregions, etc.)
         </li>
       </ul>
@@ -316,13 +328,13 @@ const getFlagEmoji = (countryCode: string) => {
       >
         <li>
           Download point location CSV files for:
-          <div class="columns is-multiline">
+          <div class="columns is-multiline mt-1">
             <div
               class="column is-one-third py-0"
               v-for="(col, index) in 3"
               :key="index"
             >
-              <ul class="region-list mb-0">
+              <ul class="has-list-style-none mb-0">
                 <li
                   v-for="region in regionsList.slice(
                     index * 6,
@@ -355,7 +367,7 @@ table caption {
   font-size: 90%;
 }
 
-.region-list {
+.has-list-style-none {
   list-style: none;
 }
 
@@ -367,5 +379,11 @@ table caption {
   .blurbs .columns .column:nth-of-type(2) {
     margin-left: -2rem;
   }
+}
+
+span.emoji-bullet {
+  font-size: 120%;
+  display: inline-block;
+  margin-right: 1rem;
 }
 </style>
