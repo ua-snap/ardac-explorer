@@ -114,15 +114,6 @@ function initMap() {
   mapInstance.value = map
 }
 
-function closeMap() {
-  isMapVisible.value = false
-  polygonsStore.clearRandomPolygon()
-  if (mapInstance.value) {
-    mapInstance.value.remove()
-    mapInstance.value = null
-  }
-}
-
 onBeforeUnmount(() => {
   if (mapInstance.value) {
     mapInstance.value.remove()
@@ -131,32 +122,19 @@ onBeforeUnmount(() => {
 </script>
 
 <template>
-  <div class="random-polygon-container has-text-centered">
+  <div class="mb-5">
     <button
-      class="button is-primary is-medium px-3"
+      class="button is-info is-medium"
       @click="showRandomPolygon"
       :class="{ 'is-loading': loading }"
       :disabled="loading"
     >
-      <span class="icon ml-0 mr-2">
-        <i class="fas fa-draw-polygon"></i>
-      </span>
-      <span>Show a random polygon feature</span>
+      Show a random polygon feature
     </button>
 
-    <div v-if="isMapVisible && feature && geometry" class="map-container mt-4">
-      <div class="map-header">
-        <h4 class="title is-5">{{ headerLabel }}</h4>
-        <button class="button is-small is-light px-2" @click="closeMap">
-          Close
-        </button>
-      </div>
-
+    <div v-if="isMapVisible && feature && geometry" class="mt-4">
+      <h4 class="title is-5">{{ headerLabel }}</h4>
       <div :id="mapId" class="map-element"></div>
-
-      <div class="feature-details mt-2">
-        <p><strong>Feature ID:</strong> {{ feature.id }}</p>
-      </div>
     </div>
 
     <div v-if="error" class="notification is-danger mt-4">
@@ -166,60 +144,10 @@ onBeforeUnmount(() => {
 </template>
 
 <style lang="scss" scoped>
-.random-polygon-container {
-  margin: 2rem 0;
-
-  .button {
-    padding-left: 0;
-    padding-right: 0;
-
-    &.is-primary.is-medium {
-      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-      transition: all 0.3s ease;
-      border: 2px solid darken($primary, 5%);
-      font-weight: 600;
-
-      &:hover {
-        transform: translateY(-2px);
-        box-shadow: 0 6px 8px rgba(0, 0, 0, 0.15);
-      }
-    }
-  }
-}
-
-.map-container {
-  border: 1px solid #ddd;
-  border-radius: 6px;
-  overflow: hidden;
-
-  .map-header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 0.75rem 1rem;
-    background-color: #f5f5f5;
-
-    .title {
-      margin-bottom: 0;
-    }
-  }
 
   .map-element {
     height: 400px;
     width: 100%;
   }
 
-  .feature-details {
-    padding: 0.75rem 1rem;
-    background-color: #f5f5f5;
-
-    p {
-      margin-bottom: 0.25rem;
-
-      &:last-child {
-        margin-bottom: 0;
-      }
-    }
-  }
-}
 </style>
