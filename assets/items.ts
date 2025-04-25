@@ -143,10 +143,12 @@ export default [
     tags: ['Cryosphere', 'Programming', 'Sea Ice'],
   },
   {
-    slug: 'communities-boundaries',
-    title: 'Places & Polygons',
-    blurb: 'Names, coordinates, and boundaries to integrate with other data',
-    tags: ['GIS'],
+    slug: "places-and-polygons",
+    title: "Places & Polygons: Geographic Lenses for Arctic Data",
+    blurb: "Explore how ARDAC uses geographic vector data to provide data extractions for communities, parks, wildlife refuges, fire management zones, and more.",
+    tags: ["GIS"],
+    image: "places-polygons.jpg",
+    imageAlt: "Map showing vector data."
   },
   {
     slug: 'hydrology-evap',
