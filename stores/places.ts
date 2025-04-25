@@ -124,25 +124,6 @@ export const usePlacesStore = defineStore('places', () => {
     randomLocation.value = undefined
   }
 
-  function isLocationInAlaska(location: Community | undefined): boolean {
-    if (!location) return false
-
-    // Rough bounding box for Alaska
-    const alaskaBounds = {
-      minLat: 51.0,
-      maxLat: 72.0,
-      minLon: -180.0,
-      maxLon: -130.0,
-    }
-
-    return (
-      location.latitude >= alaskaBounds.minLat &&
-      location.latitude <= alaskaBounds.maxLat &&
-      location.longitude >= alaskaBounds.minLon &&
-      location.longitude <= alaskaBounds.maxLon
-    )
-  }
-
   return {
     fetchCommunities,
     latLng,
@@ -152,6 +133,5 @@ export const usePlacesStore = defineStore('places', () => {
     error,
     fetchRandomLocation,
     clearRandomLocation,
-    isLocationInAlaska,
   }
 })
