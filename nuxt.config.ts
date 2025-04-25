@@ -78,7 +78,7 @@ import { metas } from './utils/metas'
 export default defineNuxtConfig({
   ssr: false, // required or 3rd party libs break the app
   devtools: { enabled: true },
-  css: ['assets/styles/main.scss', '@fortawesome/fontawesome-free/css/all.css'],
+  css: ['assets/styles/main.scss'],
   vite: {
     css: {
       preprocessorOptions: {
