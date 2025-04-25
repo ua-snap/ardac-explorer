@@ -84,23 +84,12 @@ function initMap() {
     attributionControl: true,
   })
 
-  // Determine maxZoom based on country
-  let maxZoom = 8 // Default for most of the world
-  if (location.value.country) {
-    const country = location.value.country.trim().toLowerCase()
-    if (country === 'us' || country === 'usa' || country === 'united states') {
-      maxZoom = 16
-    } else if (country === 'canada' || country === 'ca') {
-      maxZoom = 12
-    }
-  }
-
   // Use USGS National Map for all locations
   baseLayer.value = $L.tileLayer(
-    'https://basemap.nationalmap.gov/arcgis/rest/services/USGSTopo/MapServer/tile/{z}/{y}/{x}',
+    'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
     {
-      attribution: 'USGS The National Map',
-      maxZoom: maxZoom,
+      attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
+      maxZoom: 16,
     }
   )
 
@@ -138,7 +127,7 @@ onBeforeUnmount(() => {
       Show a random point location
     </button>
 
-    <div v-if="isMapVisible && location" class="map-container mt-4">
+    <div v-if="isMapVisible && location" class="mt-4">
       <div class="map-header">
         <h4 class="title is-5">{{ headerLabel }}</h4>
         <h5 class="subtitle is-6">
