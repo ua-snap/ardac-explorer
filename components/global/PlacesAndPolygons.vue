@@ -354,10 +354,18 @@ table caption {
   text-align: left;
   font-size: 90%;
 }
+
 .region-list {
   list-style: none;
 }
+
 .blurbs .columns .column:first-of-type {
   border-right: 1px dashed $grey-lighter;
+}
+
+@media (max-width: 1023px) {
+  .blurbs .columns .column:nth-of-type(2) {
+    margin-left: -2rem;
+  }
 }
 </style>
