@@ -84,23 +84,12 @@ function initMap() {
     attributionControl: true,
   })
 
-  // Determine maxZoom based on country
-  let maxZoom = 8 // Default for most of the world
-  if (location.value.country) {
-    const country = location.value.country.trim().toLowerCase()
-    if (country === 'us' || country === 'usa' || country === 'united states') {
-      maxZoom = 16
-    } else if (country === 'canada' || country === 'ca') {
-      maxZoom = 12
-    }
-  }
-
   // Use USGS National Map for all locations
   baseLayer.value = $L.tileLayer(
     'https://tile.openstreetmap.org/{z}/{x}/{y}.png',
     {
       attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors',
-      maxZoom: maxZoom,
+      maxZoom: 16,
     }
   )
 

@@ -106,9 +106,9 @@ const getFlagEmoji = (countryCode: string) => {
       </ul>
     </div>
   </section>
-  <section class="section">
-    <div class="columns is-desktop">
-      <div class="column">
+  <section class="section blurbs">
+    <div class="columns is-desktop is-variable is-4">
+      <div class="column pr-6">
         <div class="content is-size-5">
           <h3 class="title is-4">Point Locations</h3>
           <p>
@@ -140,8 +140,8 @@ const getFlagEmoji = (countryCode: string) => {
           <h4 class="title is-5 mt-6 mb-2">Point Location Features</h4>
           <p>
             Thousands of point locations are manually vetted for geographic
-            accuracy. Place name correctness is with third party governmental
-            organizations and research institutions.
+            accuracy. Place name correctness is provided by third party
+            governmental organizations and research institutions.
           </p>
           <ul>
             <li>Geographic extent: the circumpolar North</li>
@@ -217,7 +217,7 @@ const getFlagEmoji = (countryCode: string) => {
         </div>
       </div>
 
-      <div class="column">
+      <div class="column pl-6">
         <div class="content is-size-5">
           <h3 class="title is-4">Polygon Boundaries</h3>
 
@@ -355,5 +355,8 @@ table caption {
 }
 .region-list {
   list-style: none;
+}
+.blurbs .columns .column:first-of-type {
+  border-right: 1px dashed $grey-lighter;
 }
 </style>
