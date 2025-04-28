@@ -37,10 +37,11 @@ const scenarioLabels: Record<string, string> = {
 }
 
 let startYear = 1900
+let projectedStartYear = 2025
 let endYear = 2100
 
-let historicalYears = $_.range(startYear, 2024 + 1)
-let projectedYears = $_.range(2025, endYear + 1)
+let historicalYears = $_.range(startYear, projectedStartYear)
+let projectedYears = $_.range(projectedStartYear, endYear + 1)
 
 let locationMin: number
 let locationMax: number
@@ -123,7 +124,7 @@ const buildChart = () => {
           dataByScenario[i][j] = '+' + dataByScenario[i][j]
         }
         let year = j + startYear
-        if (year < 2025) {
+        if (year < projectedStartYear) {
           dataLabels[i][j] =
             'Year: ' +
             year +
@@ -238,6 +239,8 @@ const buildChart = () => {
       modelInput.value +
       ' 1951-1980 baseline temperature.'
 
+    let annotationX = projectedStartYear - 0.5
+
     $Plotly.newPlot(
       'chart',
       plotData,
@@ -260,9 +263,9 @@ const buildChart = () => {
         shapes: [
           {
             type: 'line',
-            x0: 2024.5,
+            x0: annotationX,
             y0: -0.1,
-            x1: 2024.5,
+            x1: annotationX,
             y1: 1.1,
             yref: 'paper',
             line: {
@@ -273,7 +276,7 @@ const buildChart = () => {
         ],
         annotations: [
           {
-            x: 2024.5 - annotationOffset,
+            x: annotationX - annotationOffset,
             y: 1.1,
             xref: 'x',
             yref: 'paper',
@@ -284,7 +287,7 @@ const buildChart = () => {
             },
           },
           {
-            x: 2024.5 + annotationOffset,
+            x: annotationX + annotationOffset,
             y: 1.1,
             xref: 'x',
             yref: 'paper',
