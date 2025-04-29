@@ -11,50 +11,6 @@ onMounted(() => {
     lat: 64.8378,
     lng: -147.7164,
   }
-
-  // Set chart inputs for monthly temperature chart
-  // chartStore.inputs = {
-  //   model: 'GFDL-ESM4',
-  //   scenario: 'ssp585',
-  //   month: '01', // January
-  // }
-
-  // // Set chart labels
-  // chartStore.labels = {
-  //   models: {
-  //     CESM2: 'CESM2',
-  //     'CNRM-CM6-1-HR': 'CNRM-CM6-1-HR',
-  //     'EC-Earth3-Veg': 'EC-Earth3-Veg',
-  //     'GFDL-ESM4': 'GFDL-ESM4',
-  //     'HadGEM-GC31-LL': 'HadGEM-GC31-LL',
-  //     'HadGEM-GC31-MM': 'HadGEM-GC31-MM',
-  //     'KACE-1-0-G': 'KACE-1-0-G',
-  //     MIROC6: 'MIROC6',
-  //     'MPI-ESM1-2-LR': 'MPI-ESM1-2-LR',
-  //     'MRI-ESM2-0': 'MRI-ESM2-0',
-  //     'NorESM2-MM': 'NorESM2-MM',
-  //     TaiESM1: 'TaiESM1',
-  //   },
-  //   scenarios: {
-  //     ssp245: 'SSP2-4.5',
-  //     ssp370: 'SSP3-7.0',
-  //     ssp585: 'SSP5-8.5',
-  //   },
-  //   months: {
-  //     '01': 'January',
-  //     '02': 'February',
-  //     '03': 'March',
-  //     '04': 'April',
-  //     '05': 'May',
-  //     '06': 'June',
-  //     '07': 'July',
-  //     '08': 'August',
-  //     '09': 'September',
-  //     '10': 'October',
-  //     '11': 'November',
-  //     '12': 'December',
-  //   },
-  // }
 })
 
 onUnmounted(() => {
@@ -112,7 +68,7 @@ onUnmounted(() => {
         decade. This is more easily translated into a meaningful informational
         statement:
       </p>
-      <Cmip6MonthlyChartControls
+      <!-- <Cmip6MonthlyChartControls
         defaultModel="TaiESM1"
         defaultMonth="01"
         :datasetKeys="['tas']"
@@ -122,8 +78,8 @@ onUnmounted(() => {
         units="°C"
         dataKey="tas"
         class="mb-5"
-      />
-      <IndicatorsCmip6ChartControls />
+      /> -->
+      <IndicatorsCmip6ChartControls :datasetKeys="['dw']" />
       <IndicatorsCmip6Chart label="Deep winter days" dataKey="dw" />
       <p>
         When compared to the historical record, by the end of the century
@@ -256,6 +212,17 @@ onUnmounted(() => {
           CSV format for use in your own scientific analysis.
         </li>
       </ul>
+    </div>
+    <div class="content clamp is-size-5">
+      <h4>Can I suggest an indicator?</h4>
+      <p>
+        Of course! If there is a useful indicator missing from our collection,
+        we'd like to know about it. Please contact
+        <a href="mailto:uaf-snap-data-tools@alaska.edu"
+          >uaf-snap-data-tools@alaska.edu</a
+        >
+        with questions or comments.
+      </p>
     </div>
   </section>
 </template>
