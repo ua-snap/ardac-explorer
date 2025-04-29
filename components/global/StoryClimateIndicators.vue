@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const endpoints = ['cmip6Monthly', 'cmip6MonthlyIndicators']
+
 import { usePlacesStore } from '~/stores/places'
 import { useChartStore } from '~/stores/chart'
 
@@ -59,8 +61,10 @@ onMounted(() => {
 
 onUnmounted(() => {
   placesStore.latLng = undefined
-  chartStore.inputs = undefined
-  chartStore.labels = undefined
+  endpoints.forEach(endpoint => {
+    chartStore.inputs[endpoint] = undefined
+    chartStore.labels[endpoint] = undefined
+  })
 })
 </script>
 

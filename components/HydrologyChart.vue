@@ -5,6 +5,8 @@ const props = defineProps<{
   dataKey: string
 }>()
 
+const endpoint = 'hydrology'
+
 import type { Data } from 'plotly.js-dist-min'
 
 const { $Plotly, $_ } = useNuxtApp()
@@ -12,14 +14,14 @@ const dataStore = useDataStore()
 const placesStore = usePlacesStore()
 const chartStore = useChartStore()
 
-const apiData = computed<any[]>(() => dataStore.apiData)
+const apiData = computed<any[]>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const chartLabels = computed<HydrologyChartLabelsObj>(
-  () => chartStore.labels as HydrologyChartLabelsObj
+  () => chartStore.labels[endpoint] as HydrologyChartLabelsObj
 )
 const chartInputs = computed<HydrologyChartInputsObj>(
-  () => chartStore.inputs as HydrologyChartInputsObj
+  () => chartStore.inputs[endpoint] as HydrologyChartInputsObj
 )
 
 const chartId = computed<string>(() => props.dataKey + '-chart')
@@ -138,7 +140,7 @@ watch(latLng, async () => {
 })
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
 })
 </script>
 

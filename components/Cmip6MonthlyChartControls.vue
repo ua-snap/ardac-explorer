@@ -5,6 +5,8 @@ const props = defineProps<{
   datasetKeys?: string[]
 }>()
 
+const endpoint = 'cmip6Monthly'
+
 const dataStore = useDataStore()
 const placesStore = usePlacesStore()
 const chartStore = useChartStore()
@@ -23,14 +25,14 @@ if (props.defaultMonth) {
   monthInput.value = props.defaultMonth
 }
 
-const apiData = computed<any[]>(() => dataStore.apiData)
+const apiData = computed<any[]>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const chartLabels = computed<Cmip6MonthlyChartLabels>(
-  () => chartStore.labels as Cmip6MonthlyChartLabels
+  () => chartStore.labels[endpoint] as Cmip6MonthlyChartLabels
 )
 
-chartStore.labels = {
+chartStore.labels[endpoint] = {
   models: {
     CESM2: 'CESM2',
     'CNRM-CM6-1-HR': 'CNRM-CM6-1-HR',
@@ -70,8 +72,8 @@ chartStore.labels = {
 // Sea ice concentration data is only available for some models.
 if (props.datasetKeys?.includes('siconc')) {
   if (props.datasetKeys?.includes('siconc')) {
-    chartStore.labels = {
-      ...chartStore.labels,
+    chartStore.labels[endpoint] = {
+      ...chartStore.labels[endpoint],
       models: {
         'HadGEM3-GC31-LL': 'HadGEM3-GC31-LL',
         'HadGEM3-GC31-MM': 'HadGEM3-GC31-MM',
@@ -96,7 +98,7 @@ watch([latLng, modelInput, scenarioInput, monthInput], async () => {
   if (!scenarioPresent(scenarioInput.value)) {
     scenarioInput.value = defaultScenario
   }
-  chartStore.inputs = {
+  chartStore.inputs[endpoint] = {
     model: modelInput.value,
     scenario: scenarioInput.value,
     month: monthInput.value,
@@ -104,7 +106,7 @@ watch([latLng, modelInput, scenarioInput, monthInput], async () => {
 })
 
 watch(latLng, async () => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
   let params = ''
   if (props.datasetKeys) {
     params = '?vars=' + props.datasetKeys.join(',')

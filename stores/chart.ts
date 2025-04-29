@@ -2,15 +2,21 @@ import { defineStore } from 'pinia'
 
 export const useChartStore = defineStore('chart', () => {
   let labels: Ref<
-    | HydrologyChartLabelsObj
-    | PermafrostChartLabelsObj
-    | IndicatorsCmip6ChartLabelsObj
-  > = ref(undefined)
+    Record<
+      string,
+      | HydrologyChartLabelsObj
+      | PermafrostChartLabelsObj
+      | IndicatorsCmip6ChartLabelsObj
+    >
+  > = ref({})
   let inputs: Ref<
-    | HydrologyChartInputsObj
-    | PermafrostChartInputsObj
-    | IndicatorsCmip6ChartInputsObj
-  > = ref(undefined)
+    Record<
+      string,
+      | HydrologyChartInputsObj
+      | PermafrostChartInputsObj
+      | IndicatorsCmip6ChartInputsObj
+    >
+  > = ref({})
 
   return {
     labels,

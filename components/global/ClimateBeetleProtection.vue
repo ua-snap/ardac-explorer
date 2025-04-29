@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const endpoint = 'beetles'
+
 const placesStore = usePlacesStore()
 const mapStore = useMapStore()
 const dataStore = useDataStore()
@@ -7,7 +9,7 @@ const runtimeConfig = useRuntimeConfig()
 const snowpackInput = defineModel('snowpack', { default: 'medium' })
 const scenarioInput = defineModel('scenario', { default: 'rcp85' })
 
-const apiData = computed<Record<string, any>>(() => dataStore.apiData)
+const apiData = computed<Record<string, any>>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const eras = ['2010-2039', '2040-2069', '2070-2099']
@@ -80,12 +82,12 @@ const mapId = 'beetles'
 mapStore.setLegendItems(mapId, legend)
 
 watch(latLng, async () => {
-  dataStore.apiData = null
-  dataStore.fetchData('beetles')
+  dataStore.apiData[endpoint] = null
+  dataStore.fetchData(endpoint)
 })
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
 })
 </script>
 

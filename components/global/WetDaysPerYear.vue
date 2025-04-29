@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const endpoint = 'wetDaysPerYear'
+
 import type { Data } from 'plotly.js-dist-min'
 import { precisionMean } from '~/utils/math'
 import { useMapStore } from '~/stores/map'
@@ -10,7 +12,7 @@ const mapStore = useMapStore()
 const dataStore = useDataStore()
 const runtimeConfig = useRuntimeConfig()
 
-const apiData = computed<Record<string, any>>(() => dataStore.apiData)
+const apiData = computed<Record<string, any>>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const layers: MapLayer[] = [
@@ -259,12 +261,12 @@ watch(apiData, async () => {
 
 watch(latLng, async () => {
   $Plotly.purge('chart')
-  dataStore.apiData = null
-  dataStore.fetchData('wetDaysPerYear')
+  dataStore.apiData[endpoint] = null
+  dataStore.fetchData(endpoint)
 })
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
 })
 </script>
 
@@ -272,7 +274,7 @@ onUnmounted(() => {
   <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Wet Days Per Year</h3>
-      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5" />
       <p class="mb-6">
         A wet day is defined as a day with precipitation accumulation greater
         than or equal to 1.0㎜. The map below shows the 30-year mean of wet days

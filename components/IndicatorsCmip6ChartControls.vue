@@ -3,6 +3,8 @@ const props = defineProps<{
   defaultMonth?: string
 }>()
 
+const endpoint = 'indicatorsCmip6'
+
 const dataStore = useDataStore()
 const placesStore = usePlacesStore()
 const chartStore = useChartStore()
@@ -12,14 +14,14 @@ const defaultScenario = 'ssp585'
 const modelInput = defineModel('model', { default: 'TaiESM1' })
 const scenarioInput = defineModel('scenario', { default: defaultScenario })
 
-const apiData = computed<any[]>(() => dataStore.apiData)
+const apiData = computed<any[]>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const chartLabels = computed<IndicatorsCmip6ChartLabels>(
-  () => chartStore.labels as IndicatorsCmip6ChartLabels
+  () => chartStore.labels[endpoint] as IndicatorsCmip6ChartLabels
 )
 
-chartStore.labels = {
+chartStore.labels[endpoint] = {
   models: {
     CESM2: 'CESM2',
     'CNRM-CM6-1-HR': 'CNRM-CM6-1-HR',
@@ -52,7 +54,7 @@ const scenarioPresent = (value: string) => {
 }
 
 watch(latLng, async () => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
   dataStore.fetchData('indicatorsCmip6')
 })
 
@@ -60,7 +62,7 @@ watch([latLng, modelInput, scenarioInput], async () => {
   if (!scenarioPresent(scenarioInput.value)) {
     scenarioInput.value = defaultScenario
   }
-  chartStore.inputs = {
+  chartStore.inputs[endpoint] = {
     model: modelInput.value,
     scenario: scenarioInput.value,
   }

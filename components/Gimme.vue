@@ -292,12 +292,18 @@ const placeName = computed(() => {
   }
 })
 
+const nothingButErrors = computed(() => {
+  return Object.values(dataErrors.value).every(error => error == true)
+})
+
 const dataStore = useDataStore()
-const dataError = computed<boolean>(() => dataStore.dataError)
-watch(dataError, async () => {
-  if (dataError.value == true) {
+const dataErrors = computed<Record<string, boolean>>(() => dataStore.dataError)
+watch(nothingButErrors, async () => {
+  if (nothingButErrors) {
     fieldMessage.value =
       '⚠️ Failed to load data for the selected location. Please choose a different location.'
+  } else {
+    fieldMessage.value = ''
   }
 })
 
@@ -309,7 +315,7 @@ onUnmounted(() => {
 
 <template>
   <div class="my-3">
-    <div v-show="placeIsSelected && !dataError" class="selected-place">
+    <div v-show="placeIsSelected && !nothingButErrors" class="selected-place">
       <div class="content is-size-5">
         <p>
           Showing data for
@@ -323,7 +329,7 @@ onUnmounted(() => {
         </p>
       </div>
     </div>
-    <div v-show="!placeIsSelected || dataError" class="field">
+    <div v-show="!placeIsSelected || nothingButErrors" class="field">
       <div class="control">
         <label class="label is-size-4"
           >Get data for

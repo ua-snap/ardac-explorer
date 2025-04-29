@@ -4,6 +4,8 @@ const props = defineProps<{
   label: string
 }>()
 
+const endpoint = props.endpoint
+
 import type { Data } from 'plotly.js-dist-min'
 import { precisionMean } from '~/utils/math'
 
@@ -11,7 +13,7 @@ const { $Plotly, $_ } = useNuxtApp()
 const dataStore = useDataStore()
 const placesStore = usePlacesStore()
 
-const apiData = computed<any[]>(() => dataStore.apiData)
+const apiData = computed<any[]>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 let chartData: any
@@ -217,12 +219,12 @@ watch(apiData, async () => {
 
 watch(latLng, async () => {
   $Plotly.purge('chart')
-  dataStore.apiData = null
-  dataStore.fetchData(props.endpoint)
+  dataStore.apiData[endpoint] = null
+  dataStore.fetchData(endpoint)
 })
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
 })
 </script>
 

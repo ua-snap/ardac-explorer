@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const endpoint = 'precipitationFrequency'
+
 import type { Data } from 'plotly.js-dist-min'
 
 const { $Plotly, $_ } = useNuxtApp()
@@ -10,8 +12,8 @@ const runtimeConfig = useRuntimeConfig()
 const durationInput = defineModel('duration', { default: '24h' })
 const returnIntervalInput = defineModel('returnInterval', { default: '100' })
 
-const apiData = computed<any[]>(() => dataStore.apiData)
-const dataError = computed<boolean>(() => dataStore.dataError)
+const apiData = computed<any[]>(() => dataStore.apiData[endpoint])
+const dataError = computed<boolean>(() => dataStore.dataError[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 const errorMsg = ref('')
 
@@ -221,7 +223,7 @@ watch([apiData, durationInput, returnIntervalInput], async () => {
 watch(latLng, async () => {
   errorMsg.value = ''
   $Plotly.purge('chart')
-  dataStore.fetchData('precipitationFrequency')
+  dataStore.fetchData(endpoint)
 })
 
 watch(dataError, async () => {
@@ -232,7 +234,7 @@ watch(dataError, async () => {
 })
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
 })
 </script>
 
@@ -240,7 +242,7 @@ onUnmounted(() => {
   <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Precipitation Frequency</h3>
-      <XrayIntroblurb resolution="20" unit="km" cmip="5"/>
+      <XrayIntroblurb resolution="20" unit="km" cmip="5" />
       <p>
         The following results are precipitation frequencies by duration and
         exceedance probability derived from two CMIP5 climate simulations
