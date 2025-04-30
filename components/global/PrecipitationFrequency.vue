@@ -52,7 +52,9 @@ const buildChart = () => {
     }
     let ticks = [0, 1, 2, 3]
     let chartData =
-      dataStore.apiData[returnIntervalInput.value][durationInput.value]
+      dataStore.apiData.precipitationFrequency[returnIntervalInput.value][
+        durationInput.value
+      ]
     models.forEach(model => {
       let pfs: number[] = []
       let pfUppers: number[] = []
