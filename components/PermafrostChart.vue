@@ -87,7 +87,7 @@ const buildChart = () => {
   if (apiData.value) {
     let traces: Data[] = []
     let allDecades: string[] = ['']
-    chartData = dataStore.apiData
+    chartData = dataStore.apiData.permafrost
 
     for (let i = 2021; i <= 2120; i += 10) {
       allDecades.push(i + '-' + (i + 9))
