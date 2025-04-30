@@ -29,7 +29,7 @@ const seasonInput = defineModel('season', { default: 'DJF' })
 const scenarioInput = defineModel('scenario', { default: 'rcp85' })
 
 const apiData = computed<any[]>(() => dataStore.apiData[endpoint])
-const dataError = computed<boolean>(() => dataStore.dataError[endpoint])
+const dataError = computed<boolean>(() => dataStore.dataErrors[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 const errorMsg = ref('')
 

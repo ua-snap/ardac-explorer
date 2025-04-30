@@ -13,7 +13,7 @@ const durationInput = defineModel('duration', { default: '24h' })
 const returnIntervalInput = defineModel('returnInterval', { default: '100' })
 
 const apiData = computed<any[]>(() => dataStore.apiData[endpoint])
-const dataError = computed<boolean>(() => dataStore.dataError[endpoint])
+const dataError = computed<boolean>(() => dataStore.dataErrors[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 const errorMsg = ref('')
 

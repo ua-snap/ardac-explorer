@@ -29,14 +29,14 @@ export const useDataStore = defineStore('data', () => {
   // Use "any" type since apiData will be used to store many different types of
   // data we will get from the API for different ARDAC items.
   const apiData: Ref<Record<string, any>> = ref({})
-  const dataError: Ref<Record<string, boolean>> = ref({})
+  const dataErrors: Ref<Record<string, boolean>> = ref({})
 
   const fetchData = async (dataset: string, params: string = '') => {
     if (placesStore.latLng === undefined) {
       return // do not try
     }
     apiData.value[dataset] = null
-    dataError.value[dataset] = false
+    dataErrors.value[dataset] = false
     let url =
       runtimeConfig.public.apiUrl +
       endpoints[dataset] +
@@ -54,16 +54,16 @@ export const useDataStore = defineStore('data', () => {
       if (response.status === 200) {
         apiData.value[dataset] = data
       } else {
-        dataError.value[dataset] = true
+        dataErrors.value[dataset] = true
       }
     } catch (error) {
-      dataError.value[dataset] = true
+      dataErrors.value[dataset] = true
     }
   }
 
   return {
     fetchData,
     apiData,
-    dataError,
+    dataErrors,
   }
 })

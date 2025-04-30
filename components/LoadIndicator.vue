@@ -3,7 +3,7 @@ const placesStore = usePlacesStore()
 const dataStore = useDataStore()
 
 const apiData = computed<any>(() => dataStore.apiData)
-const dataErrors = computed<any>(() => dataStore.dataError)
+const dataErrors = computed<any>(() => dataStore.dataErrors)
 
 const anyApiData = computed(() => {
   return Object.values(apiData.value).some(

@@ -278,6 +278,7 @@ async function clearSelectedPlace() {
   placeIsSelected.value = false
   placeSelectionType.value = undefined
   inputValue.value = '' // clear input
+  fieldMessage.value = '' // clear field message
   latLngIsValid.value = false // hide button
 
   await nextTick() // so the focus works
@@ -297,7 +298,7 @@ const nothingButErrors = computed(() => {
 })
 
 const dataStore = useDataStore()
-const dataErrors = computed<Record<string, boolean>>(() => dataStore.dataError)
+const dataErrors = computed<Record<string, boolean>>(() => dataStore.dataErrors)
 watch(nothingButErrors, async () => {
   if (nothingButErrors) {
     fieldMessage.value =
