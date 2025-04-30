@@ -131,7 +131,7 @@ const buildChart = () => {
 
     let traces: Data[] = []
     let allDecades: string[] = ['']
-    chartData = dataStore.apiData
+    chartData = dataStore.apiData.wetDaysPerYear
 
     for (let i = 1980; i <= 2090; i += 10) {
       allDecades.push(i + '-' + (i + 9))
