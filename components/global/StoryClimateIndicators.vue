@@ -72,7 +72,7 @@ onUnmounted(() => {
         decade. This is more easily translated into a meaningful informational
         statement:
       </p>
-      <!-- <Cmip6MonthlyChartControls
+      <Cmip6MonthlyChartControls
         defaultModel="TaiESM1"
         defaultMonth="01"
         :datasetKeys="['tas']"
@@ -82,7 +82,7 @@ onUnmounted(() => {
         units="°C"
         dataKey="tas"
         class="mb-5"
-      /> -->
+      />
       <IndicatorsCmip6ChartControls :datasetKeys="['dw']" />
       <IndicatorsCmip6Chart label="Deep winter days" dataKey="dw" />
       <p>
