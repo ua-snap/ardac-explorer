@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const endpoint = 'landfastSeaIce'
+
 const placesStore = usePlacesStore()
 const mapStore = useMapStore()
 const dataStore = useDataStore()
@@ -9,7 +11,7 @@ import type { Data } from 'plotly.js-dist-min'
 
 const yearInput = defineModel('snowpack', { default: '2023' })
 
-const apiData = computed<Record<string, any>>(() => dataStore.apiData)
+const apiData = computed<Record<string, any>>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const years = $_.range(1996, 2024)
@@ -280,8 +282,8 @@ const buildChart = () => {
 
 watch(latLng, async () => {
   $Plotly.purge('chart')
-  dataStore.apiData = null
-  dataStore.fetchData('landfastSeaIce')
+  dataStore.apiData[endpoint] = null
+  dataStore.fetchData(endpoint)
 })
 
 watch([apiData, yearInput], async () => {
@@ -291,7 +293,7 @@ watch([apiData, yearInput], async () => {
 })
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
 })
 </script>
 

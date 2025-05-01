@@ -6,6 +6,8 @@ const props = defineProps<{
   dataKey: string
 }>()
 
+const endpoint = props.endpoint
+
 import type { Data, BoxPlotData } from 'plotly.js-dist-min'
 
 // Add additional boxplot properties that are not included in
@@ -26,8 +28,8 @@ const placesStore = usePlacesStore()
 const seasonInput = defineModel('season', { default: 'DJF' })
 const scenarioInput = defineModel('scenario', { default: 'rcp85' })
 
-const apiData = computed<any[]>(() => dataStore.apiData)
-const dataError = computed<boolean>(() => dataStore.dataError)
+const apiData = computed<any[]>(() => dataStore.apiData[endpoint])
+const dataError = computed<boolean>(() => dataStore.dataErrors[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 const errorMsg = ref('')
 
@@ -171,7 +173,7 @@ watch([apiData, seasonInput, scenarioInput], async () => {
 watch(latLng, async () => {
   errorMsg.value = ''
   $Plotly.purge('chart')
-  dataStore.fetchData(props.endpoint)
+  dataStore.fetchData(endpoint)
 })
 
 watch(dataError, async () => {
@@ -182,7 +184,7 @@ watch(dataError, async () => {
 })
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
 })
 </script>
 
