@@ -47,7 +47,7 @@ const buildChart = () => {
     ]
 
     let traces: Data[] = []
-    let chartData = dataStore.apiData.hydrology
+    let chartData = dataStore.apiData[endpoint]
     let means: number[] = []
 
     decades.forEach(decade => {

@@ -41,7 +41,7 @@ const buildChart = () => {
       'NCAR-CCSM4': 'diamond',
     }
     let ticks: number[] = [1, 2, 3]
-    let chartData = dataStore.apiData.indicators[props.dataKey]
+    let chartData = dataStore.apiData[endpoint][props.dataKey]
 
     let means: Array<number | null> = []
     let maxes: Array<number | null> = []
