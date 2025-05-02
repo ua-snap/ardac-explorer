@@ -12,7 +12,7 @@ const layers: MapLayer[] = [
     id: 'sfcWind_cmip6_2000',
     title: 'August 2000, EC-Earth3-Veg',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_sfcWind',
     legend: 'sfcWind',
     rasdamanConfiguration: {
@@ -26,7 +26,7 @@ const layers: MapLayer[] = [
     id: 'sfcWind_cmip6_2100',
     title: 'August 2100, EC-Earth3-Veg, SSP5-8.5',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_sfcWind',
     legend: 'sfcWind',
     rasdamanConfiguration: {
@@ -40,7 +40,7 @@ const layers: MapLayer[] = [
     id: 'uas_cmip6_2000',
     title: 'August 2000, EC-Earth3-Veg',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_uas',
     legend: 'uas',
     rasdamanConfiguration: {
@@ -54,7 +54,7 @@ const layers: MapLayer[] = [
     id: 'uas_cmip6_2100',
     title: 'August 2100, EC-Earth3-Veg, SSP5-8.5',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_uas',
     legend: 'uas',
     rasdamanConfiguration: {
@@ -68,7 +68,7 @@ const layers: MapLayer[] = [
     id: 'vas_cmip6_2000',
     title: 'August 2000, EC-Earth3-Veg',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_vas',
     legend: 'vas',
     rasdamanConfiguration: {
@@ -82,7 +82,7 @@ const layers: MapLayer[] = [
     id: 'vas_cmip6_2100',
     title: 'August 2100, EC-Earth3-Veg, SSP5-8.5',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_vas',
     legend: 'vas',
     rasdamanConfiguration: {

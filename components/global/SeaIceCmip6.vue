@@ -12,7 +12,7 @@ const layers: MapLayer[] = [
     id: 'siconc_cmip6_1950',
     title: 'March 1950, MIROC6',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_siconc',
     legend: 'siconc',
     default: true,
@@ -27,7 +27,7 @@ const layers: MapLayer[] = [
     id: 'siconc_cmip6_1975',
     title: 'March 1975, MIROC6',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
@@ -41,7 +41,7 @@ const layers: MapLayer[] = [
     id: 'siconc_cmip6_2000',
     title: 'March 2000, MIROC6',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
@@ -55,7 +55,7 @@ const layers: MapLayer[] = [
     id: 'siconc_cmip6_2025',
     title: 'March 2025, MIROC6',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
@@ -69,7 +69,7 @@ const layers: MapLayer[] = [
     id: 'siconc_cmip6_2050',
     title: 'March 2050, MIROC6',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
@@ -83,7 +83,7 @@ const layers: MapLayer[] = [
     id: 'siconc_cmip6_2075',
     title: 'March 2075, MIROC6',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
@@ -97,7 +97,7 @@ const layers: MapLayer[] = [
     id: 'siconc_cmip6_2100',
     title: 'March 2100, MIROC6',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
