@@ -12,7 +12,7 @@ const layers: MapLayer[] = [
     id: 'evspsbl_cmip6_1950',
     title: 'August 1950, EC-Earth3-Veg',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_evspsbl',
     legend: 'evspsbl',
     rasdamanConfiguration: {
@@ -26,7 +26,7 @@ const layers: MapLayer[] = [
     id: 'evspsbl_cmip6_1975',
     title: 'August 1975, EC-Earth3-Veg',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_evspsbl',
     legend: 'evspsbl',
     rasdamanConfiguration: {
@@ -40,7 +40,7 @@ const layers: MapLayer[] = [
     id: 'evspsbl_cmip6_2000',
     title: 'August 2000, EC-Earth3-Veg',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_evspsbl',
     legend: 'evspsbl',
     rasdamanConfiguration: {
@@ -54,7 +54,7 @@ const layers: MapLayer[] = [
     id: 'evspsbl_cmip6_2025',
     title: 'August 2025, EC-Earth3-Veg, SSP5-8.5',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_evspsbl',
     legend: 'evspsbl',
     rasdamanConfiguration: {
@@ -68,7 +68,7 @@ const layers: MapLayer[] = [
     id: 'evspsbl_cmip6_2050',
     title: 'August 2050, EC-Earth3-Veg, SSP5-8.5',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_evspsbl',
     legend: 'evspsbl',
     rasdamanConfiguration: {
@@ -82,7 +82,7 @@ const layers: MapLayer[] = [
     id: 'evspsbl_cmip6_2075',
     title: 'August 2075, EC-Earth3-Veg, SSP5-8.5',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_evspsbl',
     legend: 'evspsbl',
     rasdamanConfiguration: {
@@ -96,7 +96,7 @@ const layers: MapLayer[] = [
     id: 'evspsbl_cmip6_2100',
     title: 'August 2100, EC-Earth3-Veg, SSP5-8.5',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_evspsbl',
     legend: 'evspsbl',
     rasdamanConfiguration: {

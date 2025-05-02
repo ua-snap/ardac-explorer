@@ -12,7 +12,7 @@ const layers: MapLayer[] = [
     id: 'rsds_cmip6_2000',
     title: 'August 2000, HadGEM3-GC31-MM',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_rsds',
     legend: 'rsds',
     rasdamanConfiguration: {
@@ -26,7 +26,7 @@ const layers: MapLayer[] = [
     id: 'rsds_cmip6_2100',
     title: 'August 2100, HadGEM3-GC31-MM, SSP5-8.5',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_rsds',
     legend: 'rsds',
     rasdamanConfiguration: {
@@ -40,7 +40,7 @@ const layers: MapLayer[] = [
     id: 'rlds_cmip6_2000',
     title: 'August 2000, HadGEM3-GC31-MM',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_rlds',
     legend: 'rlds',
     rasdamanConfiguration: {
@@ -54,7 +54,7 @@ const layers: MapLayer[] = [
     id: 'rlds_cmip6_2100',
     title: 'August 2100, HadGEM3-GC31-MM, SSP5-8.5',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_rlds',
     legend: 'rlds',
     rasdamanConfiguration: {
@@ -68,7 +68,7 @@ const layers: MapLayer[] = [
     id: 'clt_cmip6_2000',
     title: 'August 2000, HadGEM3-GC31-MM',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_clt',
     legend: 'clt',
     rasdamanConfiguration: {
@@ -82,7 +82,7 @@ const layers: MapLayer[] = [
     id: 'clt_cmip6_2100',
     title: 'August 2100, HadGEM3-GC31-MM, SSP5-8.5',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_clt',
     legend: 'clt',
     rasdamanConfiguration: {

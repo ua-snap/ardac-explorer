@@ -12,7 +12,7 @@ const layers: MapLayer[] = [
     id: 'tas_cmip6_2000',
     title: '2000, GFDL-ESM4',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_tas',
     legend: 'tas',
     rasdamanConfiguration: {
@@ -26,7 +26,7 @@ const layers: MapLayer[] = [
     id: 'tas_cmip6_2100',
     title: '2100, GFDL-ESM4, SSP5-8.5',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_tas',
     legend: 'tas',
     rasdamanConfiguration: {
@@ -40,7 +40,7 @@ const layers: MapLayer[] = [
     id: 'tasmax_cmip6_2000',
     title: '2000, GFDL-ESM4',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_tasmax',
     legend: 'tas',
     rasdamanConfiguration: {
@@ -54,7 +54,7 @@ const layers: MapLayer[] = [
     id: 'tasmax_cmip6_2100',
     title: '2100, GFDL-ESM4, SSP5-8.5',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_tasmax',
     legend: 'tas',
     rasdamanConfiguration: {
@@ -68,7 +68,7 @@ const layers: MapLayer[] = [
     id: 'tasmin_cmip6_2000',
     title: '2000, GFDL-ESM4',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_tasmin',
     legend: 'tas',
     rasdamanConfiguration: {
@@ -82,7 +82,7 @@ const layers: MapLayer[] = [
     id: 'tasmin_cmip6_2100',
     title: '2100, GFDL-ESM4, SSP5-8.5',
     source: 'rasdaman',
-    wmsLayerName: 'cmip6_monthly_e3sm',
+    wmsLayerName: 'cmip6_monthly',
     style: 'ardac_tasmin',
     legend: 'tas',
     rasdamanConfiguration: {
