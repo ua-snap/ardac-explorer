@@ -17,9 +17,7 @@
         </p>
         <p class="trumpet is-size-4">
           <span>📢</span>
-          <NuxtLink to="/tag/CMIP6"
-            >check out just-added CMIP6 datasets!</NuxtLink
-          >
+          <strong>What&rsquo;s new?</strong>  Interactive data stories about <NuxtLink to="/item/places-and-polygons">places &amp; polygons</NuxtLink> in ARDAC, a <NuxtLink to="/item/tbd">climate stripe visualization</NuxtLink> that incorporates projected climate data, an introduction about how <NuxtLink to="/item/tbd">climate indicators</NuxtLink> help explain important ecological thresholds, and integration of the <NuxtLink to="/tag/CMIP6">E3SM CMIP6 climate model output</NuxtLink> throughout all available CMIP6 variables.
         </p>
       </div>
     </section>
