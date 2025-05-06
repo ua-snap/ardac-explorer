@@ -8,12 +8,12 @@ interface Props {
   communitiesEnabled?: boolean
 }
 
-const props = withDefaults(defineProps<Props>(), {
-  bbox: () => [-179.1506, 51.229, -129.9795, 71.3526],
-  extent: null,
-  ocean: false,
-  communitiesEnabled: true,
-})
+const props = defineProps<{
+  bbox: number[]
+  extent: Extent
+  ocean: boolean
+  communitiesEnabled: boolean
+}>()
 
 let bbox = props.bbox
 let extent = props.extent
@@ -171,6 +171,8 @@ onMounted(() => {
     }
     selectedCommunityName.value += ', ' + community.country
   })
+
+  placesStore.gimmeLoaded = true
 })
 
 const withinExtent = (lat: number, lng: number) => {

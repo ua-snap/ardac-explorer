@@ -229,7 +229,7 @@ onUnmounted(() => {
 </script>
 
 <template>
-  <Gimme extent="mizukami" />
+  <GimmeLoader extent="mizukami" />
   <div id="chart"></div>
 </template>
 

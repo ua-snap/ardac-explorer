@@ -283,7 +283,7 @@ onUnmounted(() => {
         data.
       </p>
       <p></p>
-      <Gimme
+      <GimmeLoader
         label="Get climate stripes for a community or by lat/long:"
         class="mt-5"
       />

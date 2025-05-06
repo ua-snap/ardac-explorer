@@ -133,7 +133,7 @@ onUnmounted(() => {
         charts.
       </p>
 
-      <Gimme extent="mizukami" />
+      <GimmeLoader extent="mizukami" />
       <HydrologyChartControls />
       <HydrologyChart
         label="Ice water equivalent"

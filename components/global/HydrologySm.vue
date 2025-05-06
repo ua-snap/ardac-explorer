@@ -175,7 +175,7 @@ onUnmounted(() => {
         where you can download the data that is used to populate the charts.
       </p>
 
-      <Gimme extent="mizukami" />
+      <GimmeLoader extent="mizukami" />
       <HydrologyChartControls />
       <HydrologyChart
         label="Soil moisture, layer 1"

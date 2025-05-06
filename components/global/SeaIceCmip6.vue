@@ -160,7 +160,11 @@ mapStore.setLegendItems(mapId, legend)
         of this dataset.
       </p>
 
-      <Gimme :bbox="[-180, 45, 180, 90]" ocean :communitiesEnabled="false" />
+      <GimmeLoader
+        :bbox="[-180, 45, 180, 90]"
+        ocean
+        :communitiesEnabled="false"
+      />
       <Cmip6MonthlyChartControls
         defaultModel="MIROC6"
         defaultMonth="03"

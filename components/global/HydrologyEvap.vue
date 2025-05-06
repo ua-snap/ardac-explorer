@@ -88,7 +88,7 @@ onUnmounted(() => {
         where you can download the data that is used to populate the chart.
       </p>
 
-      <Gimme extent="mizukami" />
+      <GimmeLoader extent="mizukami" />
       <HydrologyChartControls />
       <HydrologyChart label="Evapotranspiration" units="㎜" dataKey="evap" />
 

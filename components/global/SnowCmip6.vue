@@ -291,7 +291,7 @@ mapStore.setLegendItems(mapId, legend)
         used to populate the chart.
       </p>
 
-      <Gimme :bbox="[-180, 45, 180, 90]" />
+      <GimmeLoader :bbox="[-180, 45, 180, 90]" />
       <Cmip6MonthlyChartControls
         defaultModel="MIROC6"
         defaultMonth="12"

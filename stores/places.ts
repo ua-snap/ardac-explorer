@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia'
 const runtimeConfig = useRuntimeConfig()
 
-
 export const usePlacesStore = defineStore('places', () => {
   const allCommunities: Ref<Community[] | undefined> = ref(undefined)
+  const gimmeLoaded = ref(false)
   const selectedCommunity: Ref<CommunityValue> = ref(undefined)
   const latLng: Ref<LatLngValue> = ref(undefined)
   const randomLocation = ref<CommunityValue>(undefined)
@@ -34,7 +34,10 @@ export const usePlacesStore = defineStore('places', () => {
         allCommunities.value = await response.json()
       }
 
-      if (!Array.isArray(allCommunities.value) || allCommunities.value.length === 0) {
+      if (
+        !Array.isArray(allCommunities.value) ||
+        allCommunities.value.length === 0
+      ) {
         throw new Error('Invalid or empty data received from API')
       }
 
@@ -126,6 +129,7 @@ export const usePlacesStore = defineStore('places', () => {
 
   return {
     fetchCommunities,
+    gimmeLoaded,
     latLng,
     selectedCommunity,
     randomLocation,
