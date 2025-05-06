@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const endpoint = 'seaIceConcentration'
+
 const placesStore = usePlacesStore()
 const mapStore = useMapStore()
 const dataStore = useDataStore()
@@ -9,7 +11,7 @@ import type { Data } from 'plotly.js-dist-min'
 
 const monthInput = defineModel({ default: '3' })
 
-const apiData = computed<Record<string, any>>(() => dataStore.apiData)
+const apiData = computed<Record<string, any>>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const years = $_.range(1850, 2021)
@@ -180,8 +182,8 @@ const buildChart = () => {
 
 watch(latLng, async () => {
   $Plotly.purge('chart')
-  dataStore.apiData = null
-  dataStore.fetchData('seaIceConcentration')
+  dataStore.apiData[endpoint] = null
+  dataStore.fetchData(endpoint)
 })
 
 watch([apiData, monthInput], async () => {
@@ -191,7 +193,7 @@ watch([apiData, monthInput], async () => {
 })
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
 })
 </script>
 
@@ -238,10 +240,7 @@ onUnmounted(() => {
         populate the chart.
       </p>
 
-      <Gimme
-        :bbox="[-180, 45, 180, 90]"
-        ocean
-      />
+      <Gimme :bbox="[-180, 45, 180, 90]" ocean />
 
       <div v-if="latLng && apiData">
         <div class="parameter">

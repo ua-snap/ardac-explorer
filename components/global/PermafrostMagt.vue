@@ -1,10 +1,12 @@
 <script lang="ts" setup>
+const endpoint = 'permafrost'
+
 const mapStore = useMapStore()
 const dataStore = useDataStore()
 const placesStore = usePlacesStore()
 const runtimeConfig = useRuntimeConfig()
 
-const apiData = computed<any[]>(() => dataStore.apiData)
+const apiData = computed<any[]>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const layers: MapLayer[] = [
@@ -57,7 +59,7 @@ const mapId = 'magt'
 mapStore.setLegendItems(mapId, legend)
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
 })
 </script>
 
@@ -65,7 +67,7 @@ onUnmounted(() => {
   <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Ground Temperature</h3>
-      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5" />
       <p class="mb-6">
         The map below shows mean annual ground temperature at 3 meters depth for
         three eras using the GFDL CM3 under the RCP 8.5 emissions scenario.

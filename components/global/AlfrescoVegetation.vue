@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const endpoint = 'vegType'
+
 import type { Data } from 'plotly.js-dist-min'
 
 const { $Plotly, $_ } = useNuxtApp()
@@ -10,7 +12,7 @@ const runtimeConfig = useRuntimeConfig()
 const modelInput = defineModel('model', { default: 'NCAR-CCSM4' })
 const scenarioInput = defineModel('scenario', { default: 'rcp85' })
 
-const apiData = computed<any>(() => dataStore.apiData)
+const apiData = computed<any>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const models = [
@@ -190,11 +192,11 @@ watch([apiData, modelInput, scenarioInput], async () => {
 
 watch(latLng, async () => {
   $Plotly.purge('chart')
-  dataStore.fetchData('vegType')
+  dataStore.fetchData(endpoint)
 })
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
 })
 </script>
 

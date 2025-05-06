@@ -3,6 +3,8 @@ const props = defineProps<{
   defaultMonth?: string
 }>()
 
+const endpoint = 'hydrology'
+
 const dataStore = useDataStore()
 const placesStore = usePlacesStore()
 const chartStore = useChartStore()
@@ -15,14 +17,14 @@ if (props.defaultMonth) {
   monthInput.value = props.defaultMonth
 }
 
-const apiData = computed<any[]>(() => dataStore.apiData)
+const apiData = computed<any[]>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const chartLabels = computed<HydrologyChartLabels>(
-  () => chartStore.labels as HydrologyChartLabels
+  () => chartStore.labels[endpoint] as HydrologyChartLabels
 )
 
-chartStore.labels = {
+chartStore.labels[endpoint] = {
   models: {
     'ACCESS1-3': 'ACCESS1-3',
     CCSM4: 'CCSM4',
@@ -56,7 +58,7 @@ chartStore.labels = {
 }
 
 watch([latLng, modelInput, scenarioInput, monthInput], async () => {
-  chartStore.inputs = {
+  chartStore.inputs[endpoint] = {
     model: modelInput.value,
     scenario: scenarioInput.value,
     month: monthInput.value,
@@ -64,8 +66,8 @@ watch([latLng, modelInput, scenarioInput, monthInput], async () => {
 })
 
 watch(latLng, async () => {
-  dataStore.apiData = null
-  dataStore.fetchData('hydrology')
+  dataStore.apiData[endpoint] = null
+  dataStore.fetchData(endpoint)
 })
 </script>
 

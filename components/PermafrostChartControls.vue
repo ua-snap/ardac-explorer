@@ -3,6 +3,8 @@ const props = defineProps<{
   defaultMonth?: string
 }>()
 
+const endpoint = 'permafrost'
+
 const dataStore = useDataStore()
 const placesStore = usePlacesStore()
 const chartStore = useChartStore()
@@ -10,23 +12,23 @@ const chartStore = useChartStore()
 const scenarioInput = defineModel({ default: 'RCP 8.5' })
 
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
-const apiData = computed<any[]>(() => dataStore.apiData)
+const apiData = computed<any[]>(() => dataStore.apiData[endpoint])
 
 const chartLabels = computed<PermafrostChartLabels>(
-  () => chartStore.labels as PermafrostChartLabels
+  () => chartStore.labels[endpoint] as PermafrostChartLabels
 )
 
-chartStore.labels = {
+chartStore.labels[endpoint] = {
   scenarios: { 'RCP 4.5': 'RCP 4.5', 'RCP 8.5': 'RCP 8.5' },
 }
 
 watch(latLng, async () => {
-  dataStore.apiData = null
-  dataStore.fetchData('permafrost')
+  dataStore.apiData[endpoint] = null
+  dataStore.fetchData(endpoint)
 })
 
 watch([latLng, scenarioInput], async () => {
-  chartStore.inputs = {
+  chartStore.inputs[endpoint] = {
     scenario: scenarioInput.value,
   }
 })

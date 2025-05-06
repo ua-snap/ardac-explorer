@@ -1,10 +1,12 @@
 <script lang="ts" setup>
+const endpoint = 'cmip6Monthly'
+
 const placesStore = usePlacesStore()
 const mapStore = useMapStore()
 const dataStore = useDataStore()
 const runtimeConfig = useRuntimeConfig()
 
-const apiData = computed<any[]>(() => dataStore.apiData)
+const apiData = computed<any[]>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const layers: MapLayer[] = [
@@ -147,7 +149,7 @@ const mapId = 'evspsbl'
 mapStore.setLegendItems(mapId, legend)
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
 })
 </script>
 

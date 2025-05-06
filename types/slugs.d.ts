@@ -65,3 +65,4 @@ type Slug =
   | 'summary-landfast-sea-ice'
   | 'evaporation-cmip6'
   | 'places-and-polygons'
+  | 'story-climate-indicators'

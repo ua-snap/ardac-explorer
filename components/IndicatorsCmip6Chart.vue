@@ -5,6 +5,8 @@ const props = defineProps<{
   dataKey: string
 }>()
 
+const endpoint = 'indicatorsCmip6'
+
 import type { Data } from 'plotly.js-dist-min'
 import { precisionMean } from '~/utils/math'
 
@@ -13,14 +15,14 @@ const dataStore = useDataStore()
 const placesStore = usePlacesStore()
 const chartStore = useChartStore()
 
-const apiData = computed<any[]>(() => dataStore.apiData)
+const apiData = computed<any[]>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const chartLabels = computed<IndicatorsCmip6ChartLabelsObj>(
-  () => chartStore.labels as IndicatorsCmip6ChartLabelsObj
+  () => chartStore.labels[endpoint] as IndicatorsCmip6ChartLabelsObj
 )
 const chartInputs = computed<IndicatorsCmip6ChartInputsObj>(
-  () => chartStore.inputs as IndicatorsCmip6ChartInputsObj
+  () => chartStore.inputs[endpoint] as IndicatorsCmip6ChartInputsObj
 )
 
 let chartData: any
@@ -131,7 +133,7 @@ const buildChart = () => {
   if (apiData.value && chartLabels.value && chartInputs.value) {
     let traces: Data[] = []
     let allDecades: string[] = []
-    chartData = dataStore.apiData
+    chartData = dataStore.apiData[endpoint]
 
     // Unwrap for performance reasons
     if (isProxy(chartData)) {
@@ -266,7 +268,7 @@ watch(latLng, async () => {
 })
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
 })
 </script>
 

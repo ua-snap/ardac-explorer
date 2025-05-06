@@ -1,10 +1,12 @@
 <script lang="ts" setup>
+const endpoint = 'hydrology'
+
 const placesStore = usePlacesStore()
 const mapStore = useMapStore()
 const dataStore = useDataStore()
 const runtimeConfig = useRuntimeConfig()
 
-const apiData = computed<any[]>(() => dataStore.apiData)
+const apiData = computed<any[]>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const layers: MapLayer[] = [
@@ -119,7 +121,7 @@ const mapId = 'sm'
 mapStore.setLegendItems(mapId, legend)
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
 })
 </script>
 
@@ -127,7 +129,7 @@ onUnmounted(() => {
   <section class="section xray">
     <div class="content is-size-5">
       <h3 class="title is-3">Soil Moisture</h3>
-      <XrayIntroblurb resolution="~12" unit="km" cmip="5"/>
+      <XrayIntroblurb resolution="~12" unit="km" cmip="5" />
       <p class="mb-6">
         The map below shows the mean monthly soil moisture for soil layers
         1&ndash;3 across three 30-year eras using the CanESM2 model under the
