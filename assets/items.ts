@@ -46,7 +46,7 @@ export default [
       'Number of days per calendar year where the total precipitation amount is ≥ 1.0 mm',
     tags: ['Climate'],
   },
-  
+
   {
     slug: 'dd-below-65',
     title: 'Degree Days Below 65°F',
@@ -416,6 +416,12 @@ export default [
     title: 'Maximum 1-day Precipitation, CMIP6',
     blurb: 'Maximum precipitation in a single calendar year.',
     tags: ['Precipitation', 'Climate', 'CMIP6'],
+  },
+  {
+    slug: 'story-climate-stripes-2',
+    title: 'Climate Stripes Part 2 (Modeled Baseline + Projected)',
+    blurb: 'Modeled baseline + projected climate stripes',
+    tags: ['Climate', 'Terrestrial', 'Temperature'],
   },
   {
     slug: 'story-beetle-climate-protection',
