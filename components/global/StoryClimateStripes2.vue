@@ -225,7 +225,7 @@ const buildChart = () => {
     if (viewportWidth > 1500) {
       numerator = 30000
     } else if (viewportWidth > 800) {
-      numerator = 17000
+      numerator = 20000
     } else {
       numerator = 22000
     }
@@ -233,7 +233,7 @@ const buildChart = () => {
     let annotationOffset = numerator / viewportWidth
 
     let footerText =
-      "Historical data is provided by Berkeley Earth's Global Monthly Land + Ocean dataset.<br />" +
+      "Historical data is provided by Berkeley Earth's high-resolution global monthly land + ocean dataset.<br />" +
       'Historical temperature anomalies were calculated from the Berkeley Earth 1951-1980 baseline temperature.<br />' +
       'Projected temperature anomalies were calculated from the ' +
       modelInput.value +
@@ -358,10 +358,101 @@ onUnmounted(() => {
 
 <template>
   <section class="section">
-    <div class="content is-size-5">
-      <h3 class="title is-3">
-        Climate Stripes Part 2 (Historical + Projected)
-      </h3>
+    <div class="content clamp center is-size-5">
+      <h3 class="title is-3">Climate Stripes: What Might the Future Hold?</h3>
+
+      <p>
+        How much has your town or region already warmed? How does that change
+        compare to the normal year-to-year variability in weather that
+        we&rsquo;re used to? And what might the future hold?
+      </p>
+
+      <p>
+        The first two questions
+        <NuxtLink to="/item/story-climate-stripes-2"
+          >were discussed in the first part of this series</NuxtLink
+        >. But how do things change when we turn our attention towards the
+        future? What is likely to happen next in your own community, around the
+        state, or across the pan-Arctic?
+      </p>
+
+      <p>
+        Looking into the future requires modeling based on how increases in
+        greenhouse gases may affect planetary warming and weather patterns over
+        coming decades. Research groups from around the world have created
+        complex Global Climate Models and Earth System Models to explore this
+        question.
+      </p>
+
+      <p>
+        Each of these models uses slightly different methods to represent
+        effects on our planet&rsquo;s atmosphere, oceans, land, and ice, and
+        thus generates slightly different outputs. In addition, modelers cannot
+        precisely predict future human choices and behavior regarding emission
+        levels of greenhouse gases. Thus, each model has been run multiple
+        times, using different possible assumptions.
+      </p>
+
+      <p>
+        Because of these uncertainties, our Extended Climate Stripes represent
+        one past…and several futures.
+      </p>
+
+      <h4>Using the past to help visualize the future</h4>
+
+      <figure class="image">
+        <img
+          src="assets/images/ClimateStripesStory2/fairbanks_projected_climate_stripes.png"
+        />
+      </figure>
+
+      <p>
+        This set of stripes, representing Fairbanks, shows four possible futures
+        out to 2100. In this case, we are looking at a single model and varied
+        trajectories for human behavior in mitigating climate change. The 2.6
+        scenario is the least extreme, while the 8.5 scenario shows the most
+        dramatic change.
+      </p>
+
+      <p>
+        The historical dataset (<a href="https://berkeleyearth.org/data/"
+          >Berkeley Earth</a
+        >) used to produce this graphic is gridded, meaning it offers “maps
+        without gaps”. Climate stations are relatively rare. This dataset, and
+        others like it, uses historical measurements from weather stations to
+        create realistic estimates of what the weather was like in all the
+        locations in between where no station data is available.
+      </p>
+
+      <p>
+        Because these stripes represent change from the past, the colors are
+        calibrated to reflect that. Blue shades show years that were cooler than
+        the average for the historical time period, and pink to red to purple
+        shades show years that were &mdash; or are projected to be &mdash;
+        warmer than that historical “norm”.
+      </p>
+
+      <p>
+        Notice that even the most modest assumptions predict that coming decades
+        will be much warmer than the past. Meanwhile, the 8.5 scenario projects
+        that by the end of this century, almost every year is likely to be at
+        least 10&deg;C (18&deg;F) warmer than historical averages.
+      </p>
+
+      <p>
+        What this warming will mean for Alaskans will vary from region to region
+        and community to community. What might this kind of dramatic change look
+        like where you live?
+      </p>
+
+      <h4>Try for yourself!</h4>
+
+      <p>
+        This module will let you create historical + projected climate stripes
+        anywhere on Earth above 50&deg; latitude. Enter a community name or
+        lat/long below to get climate stripes derived from climate model data.
+      </p>
+
       <Gimme :bbox="[-180, 50, 180, 90]" />
       <div v-if="apiData">
         <div>
