@@ -46,7 +46,7 @@ export default [
       'Number of days per calendar year where the total precipitation amount is ≥ 1.0 mm',
     tags: ['Climate'],
   },
-  
+
   {
     slug: 'dd-below-65',
     title: 'Degree Days Below 65°F',
@@ -418,19 +418,26 @@ export default [
     tags: ['Precipitation', 'Climate', 'CMIP6'],
   },
   {
+    slug: 'story-climate-stripes-1',
+    title: 'Climate Stripes: Understanding Variability and Scale',
+    blurb:
+      'Climate stripes are a powerful climate data visualization both for understanding your local environment, and understanding how scale impacts climate variability.',
+    tags: ['Climate', 'Terrestrial', 'Temperature'],
+    image: 'ClimateStripes_Arctic_2022.jpg',
+  },
+  {
+    slug: 'story-climate-stripes-2',
+    title: 'Climate Stripes: What Might the Future Hold?',
+    blurb:
+      'Combining historical data with climate model projections to visualize possible futures using climate stripes.',
+    tags: ['Climate', 'Terrestrial', 'Temperature'],
+  },
+  {
     slug: 'story-beetle-climate-protection',
     title: 'Beetle Risk Data Story',
     blurb:
       'Learn about the lifecycle of spruce beetles and how the climate protects against outbreaks.',
     tags: ['Climate', 'Terrestrial'],
-  },
-  {
-    slug: 'story-climate-stripes-1',
-    title: 'Climate Stripes and Data Scale',
-    blurb:
-      'Climate stripes are a powerful climate data visualization both for understanding your local environment, and understanding how scale impacts climate variability.',
-    tags: ['Climate', 'Terrestrial', 'Temperature'],
-    image: 'ClimateStripes_Arctic_2022.jpg',
   },
   {
     slug: 'summary-landfast-sea-ice',
