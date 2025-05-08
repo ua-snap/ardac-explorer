@@ -3,7 +3,11 @@ const placesStore = usePlacesStore()
 const dataStore = useDataStore()
 
 const { $Plotly, $_ } = useNuxtApp()
-import type { Data } from 'plotly.js-dist-min'
+import type { Data, ColorBar } from 'plotly.js-dist-min'
+
+interface ExtendedColorBar extends ColorBar {
+  orientation?: 'h' | 'v'
+}
 
 const apiData = computed<Record<string, any>>(() => dataStore.apiData)
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
@@ -199,7 +203,7 @@ const buildChart = () => {
           tickmode: 'array',
           tickvals: tickvals,
           ticktext: ticktext,
-        },
+        } as ExtendedColorBar,
         hovertemplate: '%{customdata}',
         xhoverformat: '.0f',
         hoverlabel: {
