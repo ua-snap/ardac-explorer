@@ -1,5 +1,4 @@
 <script lang="ts" setup>
-// @ts-nocheck
 const placesStore = usePlacesStore()
 const dataStore = useDataStore()
 
@@ -43,30 +42,33 @@ let endYear = 2100
 let historicalYears = $_.range(startYear, projectedStartYear)
 let projectedYears = $_.range(projectedStartYear, endYear + 1)
 
-let locationMin: number
-let locationMax: number
+let locationMin: number | undefined
+let locationMax: number | undefined
 
 // Get the overall min and max temperature anomalies across all models and
 // scenarios for the selected location.
 const setLocationMinMax = () => {
-  let anomalies = []
-  $_.eachDeep(apiData.value, (value, key, parent, context) => {
-    // Collect all temperature anomalies from 1900 onward.
-    if (
-      context.parents.length == 4 &&
-      context.parents[2].key == 'temperature_anomalies' &&
-      parseInt(key) >= 1900
-    ) {
-      anomalies.push(value)
+  let anomalies: number[] = []
+  $_.eachDeep(
+    apiData.value,
+    (value: number, key: string, parent: any, context: any) => {
+      // Collect all temperature anomalies from 1900 onward.
+      if (
+        context.parents.length == 4 &&
+        context.parents[2].key == 'temperature_anomalies' &&
+        parseInt(key) >= 1900
+      ) {
+        anomalies.push(value)
+      }
     }
-  })
+  )
   locationMin = $_.min(anomalies)
   locationMax = $_.max(anomalies)
 }
 
 const buildChart = () => {
   if (apiData.value) {
-    let dataByScenario: number[][] = []
+    let dataByScenario: Array<Array<number | string>> = []
     let allValues: number[] = []
     let maxHistoricalValue: number = 0
 
@@ -76,10 +78,6 @@ const buildChart = () => {
     )
     availableScenarios.forEach(scenario => {
       let scenarioData: number[] = []
-      let historicalBaseline =
-        apiData.value['Berkeley-Earth']['temperature_baseline']
-      let projectedBaseline =
-        apiData.value[modelInput.value]['temperature_baseline']
       historicalYears.forEach((year: any) => {
         let anomaly =
           apiData.value['Berkeley-Earth']['temperature_anomalies'][
@@ -108,10 +106,12 @@ const buildChart = () => {
       setLocationMinMax()
     }
 
-    let range = locationMax - locationMin
-    let redPoint = (maxHistoricalValue - locationMin) / range
-    let whitePoint = (0 - locationMin) / range
-    let plumPoint = redPoint + (locationMax - maxHistoricalValue) / range / 2
+    // Lots of exclamation marks here because we know location min/max are
+    // actual numbers and not undefined.
+    let range = locationMax! - locationMin!
+    let redPoint = (maxHistoricalValue - locationMin!) / range
+    let whitePoint = (0 - locationMin!) / range
+    let plumPoint = redPoint + (locationMax! - maxHistoricalValue) / range / 2
 
     // Create hover labels for each data point and pass them into the chart
     // using the "customdata" property to give us more conditional logic. This is
@@ -120,7 +120,7 @@ const buildChart = () => {
     for (let i = 0; i < dataByScenario.length; i++) {
       dataLabels[i] = []
       for (let j = 0; j < dataByScenario[i].length; j++) {
-        if (dataByScenario[i][j] > 0) {
+        if ((dataByScenario[i][j] as number) > 0) {
           dataByScenario[i][j] = '+' + dataByScenario[i][j]
         }
         let year = j + startYear
@@ -161,8 +161,8 @@ const buildChart = () => {
       step = 2
     }
     let tickvals = $_.range(
-      Math.floor(locationMin),
-      Math.ceil(locationMax) + 1,
+      Math.floor(locationMin!),
+      Math.ceil(locationMax!) + 1,
       step
     )
 
