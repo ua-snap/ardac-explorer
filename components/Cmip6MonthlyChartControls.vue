@@ -34,6 +34,8 @@ chartStore.labels = {
   models: {
     CESM2: 'CESM2',
     'CNRM-CM6-1-HR': 'CNRM-CM6-1-HR',
+    'E3SM-1-1': 'E3SM-1-1',
+    'E3SM-2-0': 'E3SM-2-0',
     'EC-Earth3-Veg': 'EC-Earth3-Veg',
     'GFDL-ESM4': 'GFDL-ESM4',
     'HadGEM3-GC31-LL': 'HadGEM3-GC31-LL',

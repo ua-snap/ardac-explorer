@@ -16,7 +16,7 @@ const layers: MapLayer[] = [
     style: 'ardac_pr',
     legend: 'pr',
     rasdamanConfiguration: {
-      dim_model: 2,
+      dim_model: 4,
       dim_scenario: 0,
       time: '1950-08-15T12:00:00.000Z',
     },
@@ -31,7 +31,7 @@ const layers: MapLayer[] = [
     style: 'ardac_pr',
     legend: 'pr',
     rasdamanConfiguration: {
-      dim_model: 2,
+      dim_model: 4,
       dim_scenario: 0,
       time: '1975-08-15T12:00:00.000Z',
     },
@@ -45,7 +45,7 @@ const layers: MapLayer[] = [
     style: 'ardac_pr',
     legend: 'pr',
     rasdamanConfiguration: {
-      dim_model: 2,
+      dim_model: 4,
       dim_scenario: 0,
       time: '2000-08-15T12:00:00.000Z',
     },
@@ -59,7 +59,7 @@ const layers: MapLayer[] = [
     style: 'ardac_pr',
     legend: 'pr',
     rasdamanConfiguration: {
-      dim_model: 2,
+      dim_model: 4,
       dim_scenario: 4,
       time: '2025-08-15T12:00:00.000Z',
     },
@@ -73,7 +73,7 @@ const layers: MapLayer[] = [
     style: 'ardac_pr',
     legend: 'pr',
     rasdamanConfiguration: {
-      dim_model: 2,
+      dim_model: 4,
       dim_scenario: 4,
       time: '2050-08-15T12:00:00.000Z',
     },
@@ -87,7 +87,7 @@ const layers: MapLayer[] = [
     style: 'ardac_pr',
     legend: 'pr',
     rasdamanConfiguration: {
-      dim_model: 2,
+      dim_model: 4,
       dim_scenario: 4,
       time: '2075-08-15T12:00:00.000Z',
     },
@@ -101,7 +101,7 @@ const layers: MapLayer[] = [
     style: 'ardac_pr',
     legend: 'pr',
     rasdamanConfiguration: {
-      dim_model: 2,
+      dim_model: 4,
       dim_scenario: 4,
       time: '2100-08-15T12:00:00.000Z',
     },

@@ -17,7 +17,7 @@ const prsn_layers: MapLayer[] = [
     legend: 'prsn',
     default: true,
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 0,
       time: '1950-03-15T12:00:00.000Z',
     },
@@ -31,7 +31,7 @@ const prsn_layers: MapLayer[] = [
     style: 'ardac_prsn',
     legend: 'prsn',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 0,
       time: '1975-03-15T12:00:00.000Z',
     },
@@ -45,7 +45,7 @@ const prsn_layers: MapLayer[] = [
     style: 'ardac_prsn',
     legend: 'prsn',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 0,
       time: '2000-03-15T12:00:00.000Z',
     },
@@ -59,7 +59,7 @@ const prsn_layers: MapLayer[] = [
     style: 'ardac_prsn',
     legend: 'prsn',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2025-03-15T12:00:00.000Z',
     },
@@ -73,7 +73,7 @@ const prsn_layers: MapLayer[] = [
     style: 'ardac_prsn',
     legend: 'prsn',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2050-03-15T12:00:00.000Z',
     },
@@ -87,7 +87,7 @@ const prsn_layers: MapLayer[] = [
     style: 'ardac_prsn',
     legend: 'prsn',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2075-03-15T12:00:00.000Z',
     },
@@ -101,7 +101,7 @@ const prsn_layers: MapLayer[] = [
     style: 'ardac_prsn',
     legend: 'prsn',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2100-03-15T12:00:00.000Z',
     },
@@ -118,7 +118,7 @@ const swe_layers: MapLayer[] = [
     style: 'ardac_swe',
     legend: 'swe',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 0,
       time: '1950-03-15T12:00:00.000Z',
     },
@@ -132,7 +132,7 @@ const swe_layers: MapLayer[] = [
     style: 'ardac_swe',
     legend: 'swe',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 0,
       time: '1975-03-15T12:00:00.000Z',
     },
@@ -146,7 +146,7 @@ const swe_layers: MapLayer[] = [
     style: 'ardac_swe',
     legend: 'swe',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 0,
       time: '2000-03-15T12:00:00.000Z',
     },
@@ -160,7 +160,7 @@ const swe_layers: MapLayer[] = [
     style: 'ardac_swe',
     legend: 'swe',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2025-03-15T12:00:00.000Z',
     },
@@ -174,7 +174,7 @@ const swe_layers: MapLayer[] = [
     style: 'ardac_swe',
     legend: 'swe',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2050-03-15T12:00:00.000Z',
     },
@@ -188,7 +188,7 @@ const swe_layers: MapLayer[] = [
     style: 'ardac_swe',
     legend: 'swe',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2075-03-15T12:00:00.000Z',
     },
@@ -202,7 +202,7 @@ const swe_layers: MapLayer[] = [
     style: 'ardac_swe',
     legend: 'swe',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2100-03-15T12:00:00.000Z',
     },

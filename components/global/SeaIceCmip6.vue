@@ -17,7 +17,7 @@ const layers: MapLayer[] = [
     legend: 'siconc',
     default: true,
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 0,
       time: '1950-03-15T12:00:00.000Z',
     },
@@ -31,7 +31,7 @@ const layers: MapLayer[] = [
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 0,
       time: '1975-03-15T12:00:00.000Z',
     },
@@ -45,7 +45,7 @@ const layers: MapLayer[] = [
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 0,
       time: '2000-03-15T12:00:00.000Z',
     },
@@ -59,7 +59,7 @@ const layers: MapLayer[] = [
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2025-03-15T12:00:00.000Z',
     },
@@ -73,7 +73,7 @@ const layers: MapLayer[] = [
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2050-03-15T12:00:00.000Z',
     },
@@ -87,7 +87,7 @@ const layers: MapLayer[] = [
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2075-03-15T12:00:00.000Z',
     },
@@ -101,7 +101,7 @@ const layers: MapLayer[] = [
     style: 'ardac_siconc',
     legend: 'siconc',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2100-03-15T12:00:00.000Z',
     },

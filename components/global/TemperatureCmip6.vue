@@ -16,7 +16,7 @@ const layers: MapLayer[] = [
     style: 'ardac_tas',
     legend: 'tas',
     rasdamanConfiguration: {
-      dim_model: 3,
+      dim_model: 5,
       dim_scenario: 0,
       time: '2000-07-15T12:00:00.000Z',
     },
@@ -30,7 +30,7 @@ const layers: MapLayer[] = [
     style: 'ardac_tas',
     legend: 'tas',
     rasdamanConfiguration: {
-      dim_model: 3,
+      dim_model: 5,
       dim_scenario: 4,
       time: '2100-07-15T12:00:00.000Z',
     },
@@ -44,7 +44,7 @@ const layers: MapLayer[] = [
     style: 'ardac_tasmax',
     legend: 'tas',
     rasdamanConfiguration: {
-      dim_model: 3,
+      dim_model: 5,
       dim_scenario: 0,
       time: '2000-07-15T12:00:00.000Z',
     },
@@ -58,7 +58,7 @@ const layers: MapLayer[] = [
     style: 'ardac_tasmax',
     legend: 'tas',
     rasdamanConfiguration: {
-      dim_model: 3,
+      dim_model: 5,
       dim_scenario: 4,
       time: '2100-07-15T12:00:00.000Z',
     },
@@ -72,7 +72,7 @@ const layers: MapLayer[] = [
     style: 'ardac_tasmin',
     legend: 'tas',
     rasdamanConfiguration: {
-      dim_model: 3,
+      dim_model: 5,
       dim_scenario: 0,
       time: '2000-01-15T12:00:00.000Z',
     },
@@ -86,7 +86,7 @@ const layers: MapLayer[] = [
     style: 'ardac_tasmin',
     legend: 'tas',
     rasdamanConfiguration: {
-      dim_model: 3,
+      dim_model: 5,
       dim_scenario: 4,
       time: '2100-01-15T12:00:00.000Z',
     },
