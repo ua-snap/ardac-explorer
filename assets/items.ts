@@ -416,9 +416,18 @@ export default [
     tags: ['Precipitation', 'Climate', 'CMIP6'],
   },
   {
+    slug: 'story-climate-stripes-1',
+    title: 'Climate Stripes: Understanding Variability and Scale',
+    blurb:
+      'Climate stripes are a powerful climate data visualization both for understanding your local environment, and understanding how scale impacts climate variability.',
+    tags: ['Climate', 'Terrestrial', 'Temperature'],
+    image: 'ClimateStripes_Arctic_2022.jpg',
+  },
+  {
     slug: 'story-climate-stripes-2',
-    title: 'Climate Stripes Part 2 (Modeled Baseline + Projected)',
-    blurb: 'Modeled baseline + projected climate stripes',
+    title: 'Climate Stripes: What Might the Future Hold?',
+    blurb:
+      'Combining historical data with climate model projections to visualize possible futures using climate stripes.',
     tags: ['Climate', 'Terrestrial', 'Temperature'],
   },
   {
@@ -427,14 +436,6 @@ export default [
     blurb:
       'Learn about the lifecycle of spruce beetles and how the climate protects against outbreaks.',
     tags: ['Climate', 'Terrestrial'],
-  },
-  {
-    slug: 'story-climate-stripes-1',
-    title: 'Climate Stripes and Data Scale',
-    blurb:
-      'Climate stripes are a powerful climate data visualization both for understanding your local environment, and understanding how scale impacts climate variability.',
-    tags: ['Climate', 'Terrestrial', 'Temperature'],
-    image: 'ClimateStripes_Arctic_2022.jpg',
   },
   {
     slug: 'summary-landfast-sea-ice',
