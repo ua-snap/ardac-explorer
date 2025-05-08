@@ -79,7 +79,7 @@
         </div>
       </div>
       <div class="column right pl-5 border-left">
-        <ItemText slug="communities-boundaries" />
+        <ItemText slug="places-and-polygons" />
         <div class="content resources is-size-5">
           <hr class="light" />
           <p>Resources</p>
