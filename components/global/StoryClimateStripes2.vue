@@ -373,7 +373,7 @@ onUnmounted(() => {
 
       <p>
         The first two questions
-        <NuxtLink to="/item/story-climate-stripes-2"
+        <NuxtLink to="/item/story-climate-stripes-1"
           >were discussed in the first part of this series</NuxtLink
         >. But how do things change when we turn our attention towards the
         future? What is likely to happen next in your own community, around the
