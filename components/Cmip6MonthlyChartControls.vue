@@ -94,10 +94,26 @@ const scenarioPresent = (value: string) => {
   }
 }
 
-watch([latLng, modelInput, scenarioInput, monthInput], async () => {
+// If the user switched the model and the selected scenario is not available,
+// revert back to the default scenario if it is available. Otherwise, pick the
+// first found scenario that is available.
+const chooseScenario = () => {
   if (!scenarioPresent(scenarioInput.value)) {
-    scenarioInput.value = defaultScenario
+    if (scenarioPresent(defaultScenario)) {
+      scenarioInput.value = defaultScenario
+    } else {
+      let possibleScenarios = Object.keys(chartStore.labels?.scenarios!)
+      possibleScenarios.forEach(scenario => {
+        if (scenarioPresent(scenario)) {
+          scenarioInput.value = scenario
+        }
+      })
+    }
   }
+}
+
+watch([latLng, modelInput, scenarioInput, monthInput], async () => {
+  chooseScenario()
   chartStore.inputs = {
     model: modelInput.value,
     scenario: scenarioInput.value,
