@@ -114,6 +114,8 @@ const buildChart = () => {
         let yearMonthData = chartData[model][scenario][yearMonth]
         let value = yearMonthData[props.dataKey]
 
+        // Pushing undefined is intentional to allow later logic to hide the chart
+        // when all values are undefined.
         if (value === undefined) {
           values.push(value)
         } else {
