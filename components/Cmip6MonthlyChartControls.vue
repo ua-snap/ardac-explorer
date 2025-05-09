@@ -103,11 +103,12 @@ const chooseScenario = () => {
       scenarioInput.value = defaultScenario
     } else {
       let possibleScenarios = Object.keys(chartStore.labels?.scenarios!)
-      possibleScenarios.forEach(scenario => {
+      for (const scenario of possibleScenarios) {
         if (scenarioPresent(scenario)) {
           scenarioInput.value = scenario
+          break
         }
-      })
+      }
     }
   }
 }
