@@ -113,7 +113,12 @@ const buildChart = () => {
 
         let yearMonthData = chartData[model][scenario][yearMonth]
         let value = yearMonthData[props.dataKey]
-        values.push(value * multiplier)
+
+        if (value === undefined) {
+          values.push(value)
+        } else {
+          values.push(value * multiplier)
+        }
       })
 
       // Makes chart for sea ice concentration into a line chart
