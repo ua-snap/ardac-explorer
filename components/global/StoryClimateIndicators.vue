@@ -33,10 +33,11 @@ onUnmounted(() => {
       <h4>What is a climate indicator?</h4>
       <p>
         A climate indicator is a value intended to represent a specific aspect
-        of the climate. Climate indicators summarize complex climate data into
+        of the climate, such as the number of very cold days expected per year. 
+        Climate indicators summarize complex climate data into
         singular values that make it easier to understand the state of the
         environment at a given moment in time, and create connections between
-        climate data and human experience.
+        climate data and the human experience.
       </p>
       <p>
         Indicators are calculated from direct observations and from variables in
@@ -66,11 +67,7 @@ onUnmounted(() => {
         For example, compare the two plots below. In the first plot, the values
         show a general warming trend of the winter season in Fairbanks, AK. But
         we can only draw vague conclusions about what this might mean for daily
-        life in the city. In the second plot, we see air temperature data
-        summarized and expressed as "deep winter days" (the number of days per
-        year that are below -22°F). The indicator is further summarized by
-        decade. This is more easily translated into a meaningful informational
-        statement:
+        life in the city.
       </p>
       <Cmip6MonthlyChartControls
         defaultModel="TaiESM1"
@@ -83,13 +80,21 @@ onUnmounted(() => {
         dataKey="tas"
         class="mb-5"
       />
-      <IndicatorsCmip6ChartControls :datasetKeys="['dw']" />
-      <IndicatorsCmip6Chart label="Deep winter days" dataKey="dw" />
       <p>
-        When compared to the historical record, by the end of the century
+        In the second plot, we see air temperature data
+        summarized and expressed as "deep winter days" (the number of days per
+        year that are below -22°F). The indicator is further summarized by
+        decade. This is more easily translated into a meaningful informational
+        statement:
+      </p>
+      <p>
+        <strong>When compared to the historical record, by the end of the century
         Fairbanks is predicted to have 25 to 30 fewer days per year where the
         air temperature is below -22°F.
+        </strong>
       </p>
+      <IndicatorsCmip6ChartControls :datasetKeys="['dw']" />
+      <IndicatorsCmip6Chart label="Deep winter days" dataKey="dw" />
     </div>
     <div class="content clamp is-size-5">
       <h4>What makes a good climate indictator?</h4>
@@ -122,68 +127,69 @@ onUnmounted(() => {
         Indicators are usually calculated on a yearly basis, and can be averaged
         over longer time spans to provide a general overview of climate trends.
         Regionally-relevant indicators analyzed over multi-decadal periods of
-        time provides highly valuable information without requiring any
+        time provide highly valuable information without requiring any
         downloads or preprocessing of large and complex climate datasets.
       </p>
       <h5>SNAP's climate indicators include:</h5>
       <dl>
         <dt><strong>hd</strong></dt>
         <dd>
-          "Hot day" threshold &mdash; the highest observed daily maximum air
+          "Hot day" Threshold &mdash; the highest observed daily maximum air
           temperature where there are only 5 other observations equal to or
-          greater than this value.
+          greater than this value. Only five days per year are hotter than this value.
         </dd>
         <dt><strong>cd</strong></dt>
         <dd>
-          "Cold day" threshold &mdash; the lowest observed daily minimum air
+          "Cold day" Threshold &mdash; the lowest observed daily minimum air
           temperature where there are only 5 other observations equal to or less
-          than this value.
+          than this value. Only five days per year are colder than this value.
         </dd>
         <dt><strong>su</strong></dt>
         <dd>
-          "Summer Days" &mdash; Annual number of days with maximum air
-          temperature above 25°C (77°F)
+          "Summer Days" &mdash; annual number of days with maximum air
+          temperature above 25°C (77°F).
         </dd>
         <dt><strong>dw</strong></dt>
         <dd>
-          "Deep Winter days" &mdash; Annual number of days with minimum air
-          temperature below -30°C (-22°F)
+          "Deep Winter Days" &mdash; annual number of days with minimum air
+          temperature below -30°C (-22°F).
         </dd>
         <dt><strong>wsdi</strong></dt>
         <dd>
-          Warm Spell Duration Index &mdash; Annual count of occurrences of at
-          least 5 consecutive days with daily mean air temperature above 90th
-          percentile of historical values for the date
+          Warm Spell Duration Index &mdash; annual count of occurrences of at
+          least 5 consecutive days with daily mean air temperature above the 90th
+          percentile of historical values for that date.
         </dd>
         <dt><strong>cdsi</strong></dt>
         <dd>
-          Cold Spell Duration Index &mdash; Same as WDSI, but for daily mean air
-          temperature below 10th percentile
+          Cold Spell Duration Index &mdash; annual count of occurrences of at
+          least 5 consecutive days with daily mean air temperature below the 10th
+          percentile of historical values for that date. The opposite of WDSI.
         </dd>
         <dt><strong>rx1day</strong></dt>
         <dd>
-          "Maximum 1-day precipitation" &mdash; Annual maximum amount of
-          precipitation measured over a 24-hour period
+          "Maximum 1-day Precipitation" &mdash; annual maximum amount of
+          precipitation measured over a 24-hour period.
         </dd>
         <dt><strong>rx5day</strong></dt>
         <dd>
-          "Maximum 5-day precipitation" &mdash; Annual maximum amount of
-          precipitation measured over a 5-day period
+          "Maximum 5-day Precipitation" &mdash; annual maximum amount of
+          precipitation measured over a 5-day period.
         </dd>
         <dt><strong>r10mm</strong></dt>
         <dd>
-          "Rainy days" &mdash; Annual number of days with at least 10mm of
-          rainfall
+          "Rainy Days" &mdash; number of days per year with at least 10mm of
+          rainfall.
         </dd>
         <dt><strong>cwd</strong></dt>
         <dd>
-          Consecutive wet days &mdash; number of the most consecutive days with
-          precipitation &gt; 1mm
+          Consecutive Wet Days &mdash; number of the most consecutive days with
+          precipitation of at least 1mm.
         </dd>
         <dt><strong>cdd</strong></dt>
         <dd>
-          Consecutive dry days &mdash; number of the most consecutive days with
-          precipitation &lt; 1mm
+          Consecutive Dry Days &mdash; number of the most consecutive days with
+          precipitation less than 1mm.
         </dd>
       </dl>
     </div>
@@ -221,11 +227,20 @@ onUnmounted(() => {
       <h4>Can I suggest an indicator?</h4>
       <p>
         Of course! If there is a useful indicator missing from our collection,
-        we'd like to know about it. Please contact
+        we'd like to know about it. Send us your ideas for a climate indicator 
+        relevant to your needs. Please contact
         <a href="mailto:uaf-snap-data-tools@alaska.edu"
           >uaf-snap-data-tools@alaska.edu</a
         >
         with questions or comments.
+      </p>
+    </div>
+    <div class="content clamp is-size-5">
+      <h4>Read more about indicators</h4>
+      <p>
+        <li><a href="https://www.epa.gov/climate-indicators">Climate Change Indicators in the United States</a> (U.S. Environmental Protection Agency)</li>
+        <li>Fifth National Climate Assessment, <a href="https://nca2023.globalchange.gov/chapter/appendix-4/">Appendix 4: Indicators</a></li>
+        <li>Climdex Project <a href="https://www.climdex.org/learn/indices/">Indices</a></li>
       </p>
     </div>
   </section>
