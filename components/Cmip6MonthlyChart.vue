@@ -91,6 +91,14 @@ const buildChart = () => {
 
     let { min, max } = monthMinMax(chartData, month, props.dataKey)
 
+    let filenameParams = {
+      dataName: props.label,
+      latLng: latLng.value!.lat + '_' + latLng.value!.lng,
+      model: model,
+      scenario: chartInputs.value!.scenario,
+      interval: chartLabels.value.months[month],
+    }
+
     traceConfig.forEach(config => {
       let values: Array<number | null> = []
       config.years.forEach((year: number) => {
@@ -206,6 +214,9 @@ const buildChart = () => {
           'autoScale2d',
           'resetScale2d',
         ],
+        toImageButtonOptions: {
+          filename: plotFileName(filenameParams),
+        },
       }
     )
   }
