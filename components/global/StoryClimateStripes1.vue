@@ -121,7 +121,7 @@
         exist in the early 1900&rsquo;s and a few colder than average years
         occurred more recently, but overall a trend toward more red and less
         blue is obvious across the stripes. Year to year variability can be
-        caused by specific storm patterns, recurring cycles like el ni&ntilde;o,
+        caused by specific storm patterns, recurring cycles like El Ni&ntilde;o,
         or just plain chance. Understanding this variability is key to
         understanding why climate science comes with ranges and variability
         built in.
@@ -156,7 +156,7 @@
         But most folks who know the state will tell you that Anchorage is part
         of a broader &lsquo;population core&rsquo; in the south-central part of
         Alaska. While it can be hard to draw precise lines around this
-        population core we&rsquo;ll expand out using a climatological
+        population core, we&rsquo;ll expand out using a climatological
         perspective.
       </p>
       <figure class="image">
