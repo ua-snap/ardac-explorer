@@ -333,7 +333,7 @@ const buildChart = () => {
           'autoScale2d',
           'resetScale2d',
         ],
-      toImageButtonOptions: {
+        toImageButtonOptions: {
           filename:
             'Climate Stripes for ' +
             (selectedCommunity.value?.name ||
@@ -342,6 +342,7 @@ const buildChart = () => {
             modelInput.value,
           format: 'png',
         },
+      }
     )
   }
 }
