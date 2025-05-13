@@ -20,6 +20,7 @@ const endpoints: Record<string, string> = {
   precipitationFrequency: '/precipitation/frequency/point/',
   seaIceConcentration: '/seaice/point/',
   temperature: '/temperature/point/',
+  temperatureAnomalies: '/temperature_anomalies/point/',
   thawingIndex: '/degree_days/thawing_index/',
   vegType: '/alfresco/veg_type/local/',
   wetDaysPerYear: '/wet_days_per_year/all/point/',
