@@ -333,7 +333,15 @@ const buildChart = () => {
           'autoScale2d',
           'resetScale2d',
         ],
-      }
+      toImageButtonOptions: {
+          filename:
+            'Climate Stripes for ' +
+            (selectedCommunity.value?.name ||
+              latLng.value?.lat + ', ' + latLng.value?.lng) +
+            ', ' +
+            modelInput.value,
+          format: 'png',
+        },
     )
   }
 }
