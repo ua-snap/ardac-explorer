@@ -527,7 +527,7 @@ onMounted(() => {
             </tr>
             <tr>
               <td>Snow water equivalent</td>
-              <td><code>swe</code></td>
+              <td><code>snw</code></td>
               <td>Monthly</td>
             </tr>
             <tr>
