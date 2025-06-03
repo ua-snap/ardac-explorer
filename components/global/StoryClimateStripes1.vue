@@ -1,11 +1,13 @@
 <script lang="ts" setup>
+const endpoint = 'meanAnnualTemperature'
+
 const placesStore = usePlacesStore()
 const dataStore = useDataStore()
 
 const { $Plotly, $_ } = useNuxtApp()
 import type { Data } from 'plotly.js-dist-min'
 
-const apiData = computed<Record<string, any>>(() => dataStore.apiData)
+const apiData = computed<Record<string, any>>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 const selectedCommunity = computed<CommunityValue>(
   () => placesStore.selectedCommunity
@@ -132,8 +134,8 @@ const buildChart = () => {
 
 watch(latLng, async () => {
   $Plotly.purge('chart')
-  dataStore.apiData = null
-  dataStore.fetchData('meanAnnualTemperature')
+  dataStore.apiData[endpoint] = null
+  dataStore.fetchData(endpoint)
 })
 
 watch([apiData], async () => {
@@ -141,7 +143,7 @@ watch([apiData], async () => {
 })
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
 })
 </script>
 
