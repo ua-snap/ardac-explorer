@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const endpoint = 'temperatureAnomalies'
+
 const placesStore = usePlacesStore()
 const dataStore = useDataStore()
 
@@ -9,7 +11,7 @@ interface ExtendedColorBar extends ColorBar {
   orientation?: 'h' | 'v'
 }
 
-const apiData = computed<Record<string, any>>(() => dataStore.apiData)
+const apiData = computed<Record<string, any>>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 const selectedCommunity = computed<CommunityValue>(
   () => placesStore.selectedCommunity
@@ -354,10 +356,10 @@ window.addEventListener('resize', () => {
 
 watch(latLng, async () => {
   $Plotly.purge('chart')
-  dataStore.apiData = undefined
+  dataStore.apiData[endpoint] = null
   locationMin = undefined
   locationMax = undefined
-  dataStore.fetchData('temperatureAnomalies')
+  dataStore.fetchData(endpoint)
 })
 
 watch([apiData, modelInput], async () => {
@@ -365,7 +367,7 @@ watch([apiData, modelInput], async () => {
 })
 
 onUnmounted(() => {
-  dataStore.apiData = undefined
+  dataStore.apiData[endpoint] = null
 })
 </script>
 

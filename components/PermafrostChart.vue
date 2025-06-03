@@ -6,6 +6,8 @@ const props = defineProps<{
   dataKey: string
 }>()
 
+const endpoint = 'permafrost'
+
 import type { Data } from 'plotly.js-dist-min'
 import { precisionMean } from '~/utils/math'
 
@@ -14,11 +16,11 @@ const dataStore = useDataStore()
 const placesStore = usePlacesStore()
 const chartStore = useChartStore()
 
-const apiData = computed<any[]>(() => dataStore.apiData)
+const apiData = computed<any[]>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const chartInputs = computed<PermafrostChartInputs>(
-  () => chartStore.inputs as PermafrostChartInputs
+  () => chartStore.inputs[endpoint] as PermafrostChartInputs
 )
 
 const chartId = computed<string>(() => props.dataKey + '-chart')
@@ -85,7 +87,7 @@ const buildChart = () => {
   if (apiData.value) {
     let traces: Data[] = []
     let allDecades: string[] = ['']
-    chartData = dataStore.apiData
+    chartData = dataStore.apiData[endpoint]
 
     for (let i = 2021; i <= 2120; i += 10) {
       allDecades.push(i + '-' + (i + 9))
@@ -224,7 +226,7 @@ watch(latLng, async () => {
 })
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
 })
 </script>
 

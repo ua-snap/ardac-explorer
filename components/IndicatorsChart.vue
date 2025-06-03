@@ -5,6 +5,8 @@ const props = defineProps<{
   dataKey: string
 }>()
 
+const endpoint = 'indicators'
+
 import type { Data } from 'plotly.js-dist-min'
 
 const { $Plotly, $_ } = useNuxtApp()
@@ -13,7 +15,7 @@ const placesStore = usePlacesStore()
 
 const scenarioInput = defineModel({ default: 'rcp85' })
 
-const apiData = computed<any[]>(() => dataStore.apiData)
+const apiData = computed<any[]>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const scenarioLabels: Record<string, string> = {
@@ -39,7 +41,7 @@ const buildChart = () => {
       'NCAR-CCSM4': 'diamond',
     }
     let ticks: number[] = [1, 2, 3]
-    let chartData = dataStore.apiData[props.dataKey]
+    let chartData = dataStore.apiData[endpoint][props.dataKey]
 
     let means: Array<number | null> = []
     let maxes: Array<number | null> = []
@@ -201,12 +203,12 @@ watch([apiData, scenarioInput], async () => {
 
 watch(latLng, async () => {
   $Plotly.purge('chart')
-  dataStore.apiData = null
-  dataStore.fetchData('indicators')
+  dataStore.apiData[endpoint] = null
+  dataStore.fetchData(endpoint)
 })
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
 })
 </script>
 

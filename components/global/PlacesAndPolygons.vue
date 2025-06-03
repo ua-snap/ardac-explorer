@@ -73,14 +73,14 @@ const getFlagEmoji = (countryCode: string) => {
       <p>
         Place names are how humans navigate their daily geospatial context, and
         representation matters because that context varies across space, time,
-        and cultures. Every single named location in Alaska (and many throughout
+        and culture. Every single named location in Alaska (and many throughout
         the circumpolar North) are available in ARDAC. Every community is on the
         map. In some instances, an Indigenous name is included when it was
         possible to verify the name with the
         <a href="https://www.uaf.edu/anlc"
           >Alaska Native Language Center at the University of Alaska
           Fairbanks</a
-        >.
+        > or another expert source.
       </p>
       <p>
         From Afognak (Agw'aneq) to Yakutat (Yaakwdáat), over 500 named Alaska
@@ -134,7 +134,6 @@ const getFlagEmoji = (countryCode: string) => {
           </p>
           <ul>
             <li>Utqiaġvik (Barrow), Alaska</li>
-            <li>ᑦᐁᔅᓕᓐᑦᐆ / Desleen (Teslin), Yukon</li>
             <li>Igluligaarjuk / ᐃᒡᓗᓕᒑᕐᔪᒃ (Chesterfield Inlet), Nunavut</li>
             <li>Воркута (Vorkuta), Russia</li>
             <li>Bjørnøya, Svalbard, Norway</li>

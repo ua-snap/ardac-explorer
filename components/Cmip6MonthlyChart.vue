@@ -7,6 +7,8 @@ const props = defineProps<{
   multiplier?: number
 }>()
 
+const endpoint = 'cmip6Monthly'
+
 import type { Data } from 'plotly.js-dist-min'
 import { isProxy, toRaw } from 'vue'
 
@@ -22,14 +24,14 @@ const dataStore = useDataStore()
 const placesStore = usePlacesStore()
 const chartStore = useChartStore()
 
-const apiData = computed<any[]>(() => dataStore.apiData)
+const apiData = computed<any[]>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const chartLabels = computed<Cmip6MonthlyChartLabelsObj>(
-  () => chartStore.labels as Cmip6MonthlyChartLabelsObj
+  () => chartStore.labels[endpoint] as Cmip6MonthlyChartLabelsObj
 )
 const chartInputs = computed<Cmip6MonthlyChartInputsObj>(
-  () => chartStore.inputs as Cmip6MonthlyChartInputsObj
+  () => chartStore.inputs[endpoint] as Cmip6MonthlyChartInputsObj
 )
 
 const chartId = computed<string>(() => props.dataKey + '-chart')
@@ -57,7 +59,7 @@ const monthMinMax = (values: any, month: string, dataKey: string) => {
 const buildChart = () => {
   if (apiData.value && chartLabels.value && chartInputs.value) {
     let traces: Data[] = []
-    let chartData = dataStore.apiData
+    let chartData = dataStore.apiData[endpoint]
     let projectedStartYear = 2015
 
     // Unwrap for performance reasons
@@ -241,7 +243,7 @@ watch(latLng, async () => {
 })
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
 })
 </script>
 

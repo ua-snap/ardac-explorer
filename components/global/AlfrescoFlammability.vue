@@ -1,4 +1,6 @@
 <script lang="ts" setup>
+const endpoint = 'flammability'
+
 import type { Data } from 'plotly.js-dist-min'
 
 const { $Plotly, $_ } = useNuxtApp()
@@ -10,7 +12,7 @@ const runtimeConfig = useRuntimeConfig()
 const modelInput = defineModel('model', { default: 'NCAR-CCSM4' })
 const scenarioInput = defineModel('scenario', { default: 'rcp85' })
 
-const apiData = computed<any>(() => dataStore.apiData)
+const apiData = computed<any>(() => dataStore.apiData[endpoint])
 const latLng = computed<LatLngValue>(() => placesStore.latLng)
 
 const models = [
@@ -185,11 +187,11 @@ watch([apiData, modelInput, scenarioInput], async () => {
 
 watch(latLng, async () => {
   $Plotly.purge('chart')
-  dataStore.fetchData('flammability')
+  dataStore.fetchData(endpoint)
 })
 
 onUnmounted(() => {
-  dataStore.apiData = null
+  dataStore.apiData[endpoint] = null
 })
 </script>
 
@@ -208,7 +210,13 @@ onUnmounted(() => {
 
       <MapBlock :mapId="mapId" class="mb-6">
         <template v-slot:layers>
-          <MapLayer v-for="layer in layers" :mapId="mapId" :layer="layer" :key="layer.id" :default="layer.default">
+          <MapLayer
+            v-for="layer in layers"
+            :mapId="mapId"
+            :layer="layer"
+            :key="layer.id"
+            :default="layer.default"
+          >
             <template v-slot:title>{{ layer.title }}</template>
           </MapLayer>
         </template>
