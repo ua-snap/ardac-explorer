@@ -18,7 +18,7 @@ const layers: MapLayer[] = [
     style: 'ardac_psl',
     legend: 'psl',
     rasdamanConfiguration: {
-      dim_model: 2,
+      dim_model: 4,
       dim_scenario: 0,
       time: '2000-08-15T12:00:00.000Z',
     },
@@ -32,7 +32,7 @@ const layers: MapLayer[] = [
     style: 'ardac_psl',
     legend: 'psl',
     rasdamanConfiguration: {
-      dim_model: 2,
+      dim_model: 4,
       dim_scenario: 4,
       time: '2100-08-15T12:00:00.000Z',
     },
@@ -46,7 +46,7 @@ const layers: MapLayer[] = [
     style: 'ardac_ts',
     legend: 'ts',
     rasdamanConfiguration: {
-      dim_model: 2,
+      dim_model: 4,
       dim_scenario: 0,
       time: '2000-08-15T12:00:00.000Z',
     },
@@ -60,7 +60,7 @@ const layers: MapLayer[] = [
     style: 'ardac_ts',
     legend: 'ts',
     rasdamanConfiguration: {
-      dim_model: 2,
+      dim_model: 4,
       dim_scenario: 4,
       time: '2100-08-15T12:00:00.000Z',
     },

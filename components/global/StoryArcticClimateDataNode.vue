@@ -287,87 +287,101 @@ onMounted(() => {
       <div v-if="activeTab === 'models'">
         <div class="content is-size-5">
           <table>
-            <tr class="header-text">
-              <th scope="col" class="model">Climate Model</th>
-              <th>Institutions</th>
-            </tr>
-            <tr>
-              <td>CESM2</td>
-              <td>
-                National Center for Atmospheric Research, Climate and Global
-                Dynamics Laboratory
-              </td>
-            </tr>
-            <tr>
-              <td>CNRM-CM6-1-HR</td>
-              <td>
-                Centre National de Recherches Meteorologiques, Centre Europeen
-                de Recherche et de Formation Avancee en Calcul Scientifique
-              </td>
-            </tr>
-            <tr>
-              <td>EC-Earth3-Veg</td>
-              <td>
-                EC-Earth, Rossby Center, Swedish Meteorological and Hydrological
-                Institute
-              </td>
-            </tr>
-            <tr>
-              <td>GFDL-ESM4</td>
-              <td>
-                National Oceanic and Atmospheric Administration, Geophysical
-                Fluid Dynamics Laboratory
-              </td>
-            </tr>
-            <tr>
-              <td>HadGEM3-GC31-LL</td>
-              <td>Met Office Hadley Centre for Climate Science and Services</td>
-            </tr>
-            <tr>
-              <td>HadGEM3-GC31-MM</td>
-              <td>Met Office Hadley Centre for Climate Science and Services</td>
-            </tr>
-            <tr>
-              <td>KACE-1-0-G</td>
-              <td>
-                National Institute of Meteorological Sciences/Korea
-                Meteorological Administration, Climate Research Division
-              </td>
-            </tr>
-            <tr>
-              <td>MIROC6</td>
-              <td>
-                Japan Agency for Marine-Earth Science and Technology; Atmosphere
-                and Ocean Research Institute, The University of Tokyo; National
-                Institute for Environmental Studies; RIKEN Center for
-                Computational Science
-              </td>
-            </tr>
-            <tr>
-              <td>MPI-ESM1-2-HR</td>
-              <td>Max Planck Institute for Meteorology</td>
-            </tr>
-            <tr>
-              <td>MRI-ESM2-0</td>
-              <td>Meteorological Research Institute</td>
-            </tr>
-            <tr>
-              <td>NorESM2-MM</td>
-              <td>NorESM Climate Modeling Consortium</td>
-            </tr>
-            <tr>
-              <td>TaiESM1</td>
-              <td>
-                Research Center for Environmental Changes, Academia Sinica
-              </td>
-            </tr>
+            <thead>
+              <tr>
+                <th scope="col" class="model">Climate Model</th>
+                <th>Institutions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>E3SM 1.1 and E3SM 2.0</td>
+                <td>
+                  United States Department Of Energy
+                </td>
+              </tr>
+              <tr>
+                <td>CESM2</td>
+                <td>
+                  National Center for Atmospheric Research, Climate and Global
+                  Dynamics Laboratory
+                </td>
+              </tr>
+              <tr>
+                <td>CNRM-CM6-1-HR</td>
+                <td>
+                  Centre National de Recherches Meteorologiques, Centre Europeen
+                  de Recherche et de Formation Avancee en Calcul Scientifique
+                </td>
+              </tr>
+              <tr>
+                <td>EC-Earth3-Veg</td>
+                <td>
+                  EC-Earth, Rossby Center, Swedish Meteorological and
+                  Hydrological Institute
+                </td>
+              </tr>
+              <tr>
+                <td>GFDL-ESM4</td>
+                <td>
+                  National Oceanic and Atmospheric Administration, Geophysical
+                  Fluid Dynamics Laboratory
+                </td>
+              </tr>
+              <tr>
+                <td>HadGEM3-GC31-LL</td>
+                <td>
+                  Met Office Hadley Centre for Climate Science and Services
+                </td>
+              </tr>
+              <tr>
+                <td>HadGEM3-GC31-MM</td>
+                <td>
+                  Met Office Hadley Centre for Climate Science and Services
+                </td>
+              </tr>
+              <tr>
+                <td>KACE-1-0-G</td>
+                <td>
+                  National Institute of Meteorological Sciences/Korea
+                  Meteorological Administration, Climate Research Division
+                </td>
+              </tr>
+              <tr>
+                <td>MIROC6</td>
+                <td>
+                  Japan Agency for Marine-Earth Science and Technology;
+                  Atmosphere and Ocean Research Institute, The University of
+                  Tokyo; National Institute for Environmental Studies; RIKEN
+                  Center for Computational Science
+                </td>
+              </tr>
+              <tr>
+                <td>MPI-ESM1-2-HR</td>
+                <td>Max Planck Institute for Meteorology</td>
+              </tr>
+              <tr>
+                <td>MRI-ESM2-0</td>
+                <td>Meteorological Research Institute</td>
+              </tr>
+              <tr>
+                <td>NorESM2-MM</td>
+                <td>NorESM Climate Modeling Consortium</td>
+              </tr>
+              <tr>
+                <td>TaiESM1</td>
+                <td>
+                  Research Center for Environmental Changes, Academia Sinica
+                </td>
+              </tr>
+            </tbody>
           </table>
         </div>
       </div>
       <div v-if="activeTab === 'scenarios'">
         <div class="content is-size-5">
           <table>
-            <tr class="header-text">
+            <tr>
               <th>SSP</th>
               <th>Description</th>
             </tr>
@@ -527,7 +541,7 @@ onMounted(() => {
             </tr>
             <tr>
               <td>Snow water equivalent</td>
-              <td><code>swe</code></td>
+              <td><code>snw</code></td>
               <td>Monthly</td>
             </tr>
             <tr>

@@ -36,6 +36,8 @@ chartStore.labels[endpoint] = {
   models: {
     CESM2: 'CESM2',
     'CNRM-CM6-1-HR': 'CNRM-CM6-1-HR',
+    'E3SM-1-1': 'E3SM-1-1',
+    'E3SM-2-0': 'E3SM-2-0',
     'EC-Earth3-Veg': 'EC-Earth3-Veg',
     'GFDL-ESM4': 'GFDL-ESM4',
     'HadGEM3-GC31-LL': 'HadGEM3-GC31-LL',
@@ -94,10 +96,29 @@ const scenarioPresent = (value: string) => {
   }
 }
 
-watch([latLng, modelInput, scenarioInput, monthInput], async () => {
+// If the user switched the model and the selected scenario is not available,
+// revert back to the default scenario if it is available. Otherwise, pick the
+// first found scenario that is available.
+const chooseScenario = () => {
   if (!scenarioPresent(scenarioInput.value)) {
-    scenarioInput.value = defaultScenario
+    if (scenarioPresent(defaultScenario)) {
+      scenarioInput.value = defaultScenario
+    } else {
+      let possibleScenarios = Object.keys(
+        chartStore.labels[endpoint]?.scenarios!
+      )
+      for (const scenario of possibleScenarios) {
+        if (scenarioPresent(scenario)) {
+          scenarioInput.value = scenario
+          break
+        }
+      }
+    }
   }
+}
+
+watch([latLng, modelInput, scenarioInput, monthInput], async () => {
+  chooseScenario()
   chartStore.inputs[endpoint] = {
     model: modelInput.value,
     scenario: scenarioInput.value,
@@ -111,7 +132,7 @@ watch(latLng, async () => {
   if (props.datasetKeys) {
     params = '?vars=' + props.datasetKeys.join(',')
   }
-  dataStore.fetchData('cmip6Monthly', params)
+  dataStore.fetchData(endpoint, params)
 })
 </script>
 

@@ -1,152 +1,3 @@
-<script lang="ts" setup>
-const endpoint = 'meanAnnualTemperature'
-
-const placesStore = usePlacesStore()
-const dataStore = useDataStore()
-
-const { $Plotly, $_ } = useNuxtApp()
-import type { Data } from 'plotly.js-dist-min'
-
-const apiData = computed<Record<string, any>>(() => dataStore.apiData[endpoint])
-const latLng = computed<LatLngValue>(() => placesStore.latLng)
-const selectedCommunity = computed<CommunityValue>(
-  () => placesStore.selectedCommunity
-)
-
-let historicalYears = $_.range(1901, 2006 + 1)
-
-const buildChart = () => {
-  if (apiData.value) {
-    let dataByScenario: number[][] = []
-    let stripeData: number[] = []
-    historicalYears.forEach((year: any) => {
-      let temperature = apiData.value['CRU-TS']['historical'][year]['tas']
-      stripeData.push(temperature)
-    })
-    dataByScenario.push(stripeData)
-
-    let minValue = $_.min(stripeData)
-    let maxValue = $_.max(stripeData)
-    let range = maxValue - minValue
-    let redPoint = (maxValue - minValue) / range
-    let whitePoint = redPoint / 2
-
-    // Create hover labels for each data point and pass them into the chart
-    // using the "customdata" property.
-    let dataLabels: string[][] = []
-    for (let i = 0; i < dataByScenario.length; i++) {
-      dataLabels[i] = []
-      for (let j = 0; j < dataByScenario[i].length; j++) {
-        let year = j + 1901
-        dataLabels[i][j] =
-          'Year: ' +
-          year +
-          '<br />Mean Annual Temperature: ' +
-          dataByScenario[i][j] +
-          'ºC'
-      }
-    }
-
-    // Reverse arrays so they are ordered correctly on chart.
-    dataByScenario = dataByScenario.reverse()
-    dataLabels = dataLabels.reverse()
-
-    let plotData = [
-      {
-        x: $_.range(1901, 2100 + 1),
-        z: dataByScenario,
-        type: 'heatmap',
-        colorscale: [
-          [0, 'rgb(3,67,223)'],
-          [whitePoint, 'rgb(255,255,255)'],
-          [1, 'rgb(255,0,0)'],
-        ],
-        showscale: false,
-        hovertemplate: '%{customdata}',
-        xhoverformat: '.0f',
-        hoverlabel: {
-          namelength: 0,
-        },
-        customdata: dataLabels,
-      } satisfies Data,
-    ]
-
-    let titleText = 'Modeled mean annual temperature for '
-    if (selectedCommunity.value && selectedCommunity.value.name) {
-      titleText +=
-        selectedCommunity.value.name + ', ' + selectedCommunity.value.region
-    } else {
-      titleText += latLng.value?.lat + ', ' + latLng.value?.lng
-    }
-    titleText += '<br />Model: CRU TS 4.0'
-
-    $Plotly.newPlot(
-      'chart',
-      plotData,
-      {
-        title: {
-          text: titleText,
-          font: {
-            size: 24,
-          },
-          y: 0.9,
-          yanchor: 'top',
-        },
-        xaxis: {
-          showgrid: false,
-          fixedrange: true,
-        },
-        yaxis: {
-          showgrid: false,
-          fixedrange: true,
-          ticklen: 0,
-          showticklabels: false,
-        },
-        height: 500,
-        margin: {
-          t: 110,
-          b: 50,
-          l: 50,
-          r: 50,
-        },
-      },
-      {
-        responsive: true, // changes the height / width dynamically for charts
-        displayModeBar: true, // always show the camera icon
-        displaylogo: false,
-        modeBarButtonsToRemove: [
-          'zoom2d',
-          'pan2d',
-          'select2d',
-          'lasso2d',
-          'zoomIn2d',
-          'zoomOut2d',
-          'autoScale2d',
-          'resetScale2d',
-        ],
-        toImageButtonOptions: {
-          filename: 'climate_stripes',
-        },
-      }
-    )
-  }
-}
-
-watch(latLng, async () => {
-  $Plotly.purge('chart')
-  dataStore.apiData[endpoint] = null
-  dataStore.fetchData(endpoint)
-})
-
-watch([apiData], async () => {
-  buildChart()
-})
-
-onUnmounted(() => {
-  dataStore.apiData[endpoint] = null
-})
-</script>
-
 <template>
   <section class="section">
     <div class="content clamp center is-size-5">
@@ -161,6 +12,7 @@ onUnmounted(() => {
       <p>
         <img
           src="assets/images/ClimateStripesStory1/ClimateStripesCollage.jpg"
+          style="width: 100%"
         />
       </p>
 
@@ -269,25 +121,12 @@ onUnmounted(() => {
         exist in the early 1900&rsquo;s and a few colder than average years
         occurred more recently, but overall a trend toward more red and less
         blue is obvious across the stripes. Year to year variability can be
-        caused by specific storm patterns, recurring cycles like el ni&ntilde;o,
+        caused by specific storm patterns, recurring cycles like El Ni&ntilde;o,
         or just plain chance. Understanding this variability is key to
         understanding why climate science comes with ranges and variability
         built in.
       </p>
       <p>The world is messy and our data should reflect that.</p>
-      <h4 class="title is-4">Try for yourself!</h4>
-      <p>
-        This module will let you create climate stripes for your part of Alaska.
-        Maybe your home town, or your hunting spot&mdash;enter a community name
-        or lat/long below to get climate stripes derived from climate model
-        data.
-      </p>
-      <p></p>
-      <Gimme
-        label="Get climate stripes for a community or by lat/long:"
-        class="mt-5"
-      />
-      <div id="chart" class="mb-5"></div>
 
       <h4 class="title is-4">Variation is smoothed by scale</h4>
       <p>
@@ -317,7 +156,7 @@ onUnmounted(() => {
         But most folks who know the state will tell you that Anchorage is part
         of a broader &lsquo;population core&rsquo; in the south-central part of
         Alaska. While it can be hard to draw precise lines around this
-        population core we&rsquo;ll expand out using a climatological
+        population core, we&rsquo;ll expand out using a climatological
         perspective.
       </p>
       <figure class="image">
@@ -427,10 +266,14 @@ onUnmounted(() => {
       <p>
         Additionally these stripes typically only display historical data, so
         they don&rsquo;t offer insights into the possible futures in a given
-        place. With just a few tweaks, they can do precisely that.
+        place. With just a few tweaks, they can do precisely that. Continue to
+        the second part of this series, where we
+        <NuxtLink to="/item/story-climate-stripes-2"
+          >explore how possible futures can be visualized through climate
+          stripes</NuxtLink
+        >.
       </p>
     </div>
     <Bios :people="['Mike DeLue']" />
   </section>
 </template>
-<style lang="scss" scoped></style>

@@ -17,7 +17,7 @@ const prsn_layers: MapLayer[] = [
     legend: 'prsn',
     default: true,
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 0,
       time: '1950-03-15T12:00:00.000Z',
     },
@@ -31,7 +31,7 @@ const prsn_layers: MapLayer[] = [
     style: 'ardac_prsn',
     legend: 'prsn',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 0,
       time: '1975-03-15T12:00:00.000Z',
     },
@@ -45,7 +45,7 @@ const prsn_layers: MapLayer[] = [
     style: 'ardac_prsn',
     legend: 'prsn',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 0,
       time: '2000-03-15T12:00:00.000Z',
     },
@@ -59,7 +59,7 @@ const prsn_layers: MapLayer[] = [
     style: 'ardac_prsn',
     legend: 'prsn',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2025-03-15T12:00:00.000Z',
     },
@@ -73,7 +73,7 @@ const prsn_layers: MapLayer[] = [
     style: 'ardac_prsn',
     legend: 'prsn',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2050-03-15T12:00:00.000Z',
     },
@@ -87,7 +87,7 @@ const prsn_layers: MapLayer[] = [
     style: 'ardac_prsn',
     legend: 'prsn',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2075-03-15T12:00:00.000Z',
     },
@@ -101,7 +101,7 @@ const prsn_layers: MapLayer[] = [
     style: 'ardac_prsn',
     legend: 'prsn',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2100-03-15T12:00:00.000Z',
     },
@@ -109,100 +109,100 @@ const prsn_layers: MapLayer[] = [
   },
 ]
 
-const swe_layers: MapLayer[] = [
+const snw_layers: MapLayer[] = [
   {
-    id: 'swe_cmip6_1950',
+    id: 'snw_cmip6_1950',
     title: 'March 1950, MIROC6',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_monthly',
-    style: 'ardac_swe',
-    legend: 'swe',
+    style: 'ardac_snw',
+    legend: 'snw',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 0,
       time: '1950-03-15T12:00:00.000Z',
     },
     coastline: true,
   },
   {
-    id: 'swe_cmip6_1975',
+    id: 'snw_cmip6_1975',
     title: 'March 1975, MIROC6',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_monthly',
-    style: 'ardac_swe',
-    legend: 'swe',
+    style: 'ardac_snw',
+    legend: 'snw',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 0,
       time: '1975-03-15T12:00:00.000Z',
     },
     coastline: true,
   },
   {
-    id: 'swe_cmip6_2000',
+    id: 'snw_cmip6_2000',
     title: 'March 2000, MIROC6',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_monthly',
-    style: 'ardac_swe',
-    legend: 'swe',
+    style: 'ardac_snw',
+    legend: 'snw',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 0,
       time: '2000-03-15T12:00:00.000Z',
     },
     coastline: true,
   },
   {
-    id: 'swe_cmip6_2025',
+    id: 'snw_cmip6_2025',
     title: 'March 2025, MIROC6',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_monthly',
-    style: 'ardac_swe',
-    legend: 'swe',
+    style: 'ardac_snw',
+    legend: 'snw',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2025-03-15T12:00:00.000Z',
     },
     coastline: true,
   },
   {
-    id: 'swe_cmip6_2050',
+    id: 'snw_cmip6_2050',
     title: 'March 2050, MIROC6',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_monthly',
-    style: 'ardac_swe',
-    legend: 'swe',
+    style: 'ardac_snw',
+    legend: 'snw',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2050-03-15T12:00:00.000Z',
     },
     coastline: true,
   },
   {
-    id: 'swe_cmip6_2075',
+    id: 'snw_cmip6_2075',
     title: 'March 2075, MIROC6',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_monthly',
-    style: 'ardac_swe',
-    legend: 'swe',
+    style: 'ardac_snw',
+    legend: 'snw',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2075-03-15T12:00:00.000Z',
     },
     coastline: true,
   },
   {
-    id: 'swe_cmip6_2100',
+    id: 'snw_cmip6_2100',
     title: 'March 2100, MIROC6',
     source: 'rasdaman',
     wmsLayerName: 'cmip6_monthly',
-    style: 'ardac_swe',
-    legend: 'swe',
+    style: 'ardac_snw',
+    legend: 'snw',
     rasdamanConfiguration: {
-      dim_model: 7,
+      dim_model: 9,
       dim_scenario: 4,
       time: '2100-03-15T12:00:00.000Z',
     },
@@ -234,7 +234,7 @@ const legend: Record<string, LegendItem[]> = {
     },
     { color: '#006d2cff', label: '&ge; 80 kg m&#8315;&sup2; s&#8315;&sup1;' },
   ],
-  swe: [
+  snw: [
     { color: '#edf8fbff', label: '&ge;0 mm, &lt;75 mm' },
     { color: '#b2e2e2ff', label: '&ge;75 mm, &lt;150 mm' },
     { color: '#66c2a4ff', label: '&ge;150 mm, &lt;225 mm' },
@@ -272,7 +272,7 @@ mapStore.setLegendItems(mapId, legend)
           </MapLayer>
           <h4 class="title is-4 mb-3">Snow Water Equivalent</h4>
           <MapLayer
-            v-for="layer in swe_layers"
+            v-for="layer in snw_layers"
             :mapId="mapId"
             :layer="layer"
             :key="layer.id"
@@ -295,7 +295,7 @@ mapStore.setLegendItems(mapId, legend)
       <Cmip6MonthlyChartControls
         defaultModel="MIROC6"
         defaultMonth="12"
-        :datasetKeys="['prsn', 'swe']"
+        :datasetKeys="['prsn', 'snw']"
       />
       <Cmip6MonthlyChart
         label="Precipitation as Snow"
@@ -306,7 +306,7 @@ mapStore.setLegendItems(mapId, legend)
       <Cmip6MonthlyChart
         label="Snow Water Equivalent"
         units="mm"
-        dataKey="swe"
+        dataKey="snw"
       />
 
       <div v-if="latLng && apiData" class="my-6">
@@ -323,7 +323,7 @@ mapStore.setLegendItems(mapId, legend)
                 latLng.lat +
                 '/' +
                 latLng.lng +
-                '?vars=prsn,swe&format=csv'
+                '?vars=prsn,snw&format=csv'
               "
               >Download as CSV</a
             >
@@ -336,7 +336,7 @@ mapStore.setLegendItems(mapId, legend)
                 latLng.lat +
                 '/' +
                 latLng.lng +
-                '?vars=prsn,swe'
+                '?vars=prsn,snw'
               "
               >Download as JSON</a
             >

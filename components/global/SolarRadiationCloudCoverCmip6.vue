@@ -18,7 +18,7 @@ const layers: MapLayer[] = [
     style: 'ardac_rsds',
     legend: 'rsds',
     rasdamanConfiguration: {
-      dim_model: 5,
+      dim_model: 7,
       dim_scenario: 0,
       time: '2000-08-15T12:00:00.000Z',
     },
@@ -32,7 +32,7 @@ const layers: MapLayer[] = [
     style: 'ardac_rsds',
     legend: 'rsds',
     rasdamanConfiguration: {
-      dim_model: 5,
+      dim_model: 7,
       dim_scenario: 4,
       time: '2100-08-15T12:00:00.000Z',
     },
@@ -46,7 +46,7 @@ const layers: MapLayer[] = [
     style: 'ardac_rlds',
     legend: 'rlds',
     rasdamanConfiguration: {
-      dim_model: 5,
+      dim_model: 7,
       dim_scenario: 0,
       time: '2000-08-15T12:00:00.000Z',
     },
@@ -60,7 +60,7 @@ const layers: MapLayer[] = [
     style: 'ardac_rlds',
     legend: 'rlds',
     rasdamanConfiguration: {
-      dim_model: 5,
+      dim_model: 7,
       dim_scenario: 4,
       time: '2100-08-15T12:00:00.000Z',
     },
@@ -74,7 +74,7 @@ const layers: MapLayer[] = [
     style: 'ardac_clt',
     legend: 'clt',
     rasdamanConfiguration: {
-      dim_model: 5,
+      dim_model: 7,
       dim_scenario: 0,
       time: '2000-08-15T12:00:00.000Z',
     },
@@ -88,7 +88,7 @@ const layers: MapLayer[] = [
     style: 'ardac_clt',
     legend: 'clt',
     rasdamanConfiguration: {
-      dim_model: 5,
+      dim_model: 7,
       dim_scenario: 4,
       time: '2100-08-15T12:00:00.000Z',
     },
