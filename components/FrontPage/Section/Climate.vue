@@ -11,13 +11,13 @@
 
       <div class="tile is-parent">
         <div class="tile is-child">
-          <ItemTextPicture slug="indicator-ftc-cmip6" />
+          <ItemTextPicture slug="story-arctic-climate-data-node" />
         </div>
       </div>
 
       <div class="tile is-vertical is-parent">
         <div class="tile is-child border-bottom">
-          <ItemText slug="notebook-design-discharge" />
+          <ItemText slug="indicator-ftc-cmip6" />
         </div>
         <div class="tile is-child border-bottom">
           <ItemText slug="indicator-wsdi" />

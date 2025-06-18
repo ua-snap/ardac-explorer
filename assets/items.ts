@@ -143,12 +143,13 @@ export default [
     tags: ['Cryosphere', 'Programming', 'Sea Ice'],
   },
   {
-    slug: "places-and-polygons",
-    title: "Places & Polygons: Geographic Lenses for Arctic Data",
-    blurb: "Explore how ARDAC uses geographic vector data to provide data extractions for communities, parks, wildlife refuges, fire management zones, and more.",
-    tags: ["GIS"],
-    image: "places-polygons.jpg",
-    imageAlt: "Map showing vector data."
+    slug: 'places-and-polygons',
+    title: 'Places & Polygons: Geographic Lenses for Arctic Data',
+    blurb:
+      'Explore how ARDAC uses geographic vector data to provide data extractions for communities, parks, wildlife refuges, fire management zones, and more.',
+    tags: ['GIS'],
+    image: 'places-polygons.jpg',
+    imageAlt: 'Map showing vector data.',
   },
   {
     slug: 'hydrology-evap',
@@ -431,6 +432,7 @@ export default [
     blurb:
       'Combining historical data with climate model projections to visualize possible futures using climate stripes.',
     tags: ['Climate', 'Terrestrial', 'Temperature'],
+    image: 'climate-stripes-generator.png',
   },
   {
     slug: 'story-beetle-climate-protection',
@@ -446,5 +448,12 @@ export default [
     blurb:
       'A summary and interactive map for exploring the seaward landfast ice edge (SLIE) for the Beaufort Sea region.',
     tags: ['Sea Ice', 'Cryosphere'],
+  },
+  {
+    slug: 'story-climate-indicators',
+    title: 'Climate Indicators: Making More Meaning from Data',
+    blurb:
+      'Climate indicators summarize complex climate data and create connections between climate data and the human experience.',
+    tags: ['Climate', 'Temperature'],
   },
 ] satisfies Item[]

@@ -14,7 +14,7 @@
 
         <ul>
           <li>
-            <ItemBrief slug="indicator-ftc-cmip6" showTag />
+            <ItemBrief slug="indicator-su-cmip6" showTag />
           </li>
           <li>
             <ItemBrief slug="indicator-rx1day-cmip6" showTag />
@@ -26,13 +26,13 @@
             <ItemBrief slug="alfresco-vegetation" showTag />
           </li>
           <li>
-            <ItemBrief slug="indicator-hd" showTag />
+            <ItemBrief slug="indicator-wsdi" showTag />
           </li>
           <li>
             <ItemBrief slug="sea-ice-cmip6" showTag />
           </li>
           <li>
-            <ItemBrief slug="indicator-wsdi" showTag />
+            <ItemBrief slug="precipitation-cmip6" showTag />
           </li>
           <li>
             <ItemBrief slug="permafrost-base-top" showTag />
@@ -55,7 +55,7 @@
         <div class="tile is-ancestor">
           <div class="tile is-parent is-vertical">
             <div class="tile lead is-child border-bottom">
-              <ItemTextPicture slug="story-arctic-climate-data-node" />
+              <ItemTextPicture slug="story-climate-stripes-2" />
             </div>
             <div class="general">
               <div class="row tile is-parent mb-4">
@@ -63,7 +63,7 @@
                   <ItemTextPicture slug="summary-landfast-sea-ice" showTag />
                 </div>
                 <div class="right tile is-child">
-                  <ItemTextPicture slug="story-climate-stripes-1" showTag />
+                  <ItemTextPicture slug="story-climate-indicators" showTag />
                 </div>
               </div>
               <div class="tile is-parent">

@@ -4,7 +4,6 @@
   <HeaderBanner />
   <Navbar />
   <Edition />
-  <BetaNotice />
   <div class="container is-fullhd">
     <Header />
     <Tagbar />
