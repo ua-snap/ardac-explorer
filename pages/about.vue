@@ -24,12 +24,12 @@
       <div class="title is-4">ARDAC brings people and data together</div>
       <p>
         We are making data more usable and alive for
-        <a href="people">people</a> who need it. ARDAC has been constructed
-        thanks to the hard work of our research collaborators and the support of
+        people who need it. ARDAC has been constructed
+        thanks to the hard work of <a href="people">our research collaborators</a> and the support of
         the
         <a href="https://science.osti.gov/ber/Research/eessd/Data-Management"
           >Data Management Program</a
-        >, Climate and Environmental Sciences Division, US Department of Energy.
+        >, US Department of Energy.
       </p>
       <div class="title is-4">License</div>
       <p>

@@ -2,7 +2,7 @@
 
 <template>
   <div class="edition">
-    &mdash; <span class="warn">PRE-RELEASE</span>&nbsp;&nbsp;🌸&nbsp;Edition,
+    &mdash; ☀️&nbsp;Edition,
     June 2025 &mdash;
   </div>
 </template>
@@ -13,8 +13,5 @@
   font-family: 'Patrick Hand';
   font-size: 2rem;
   color: $gray;
-  .warn {
-    background-color: lch(96.607% 131.712 99.572);
-  }
 }
 </style>
