@@ -468,7 +468,7 @@ onUnmounted(() => {
         lat/long below to get climate stripes derived from climate model data.
       </p>
 
-      <Gimme :bbox="[-180, 50, 180, 90]" />
+      <Gimme :bbox="[-180, 50.5, 180, 90]" />
       <div v-if="apiData">
         <div>
           <div class="parameter mb-5">
