@@ -464,7 +464,7 @@ onUnmounted(() => {
 
       <p>
         This module will let you create historical + projected climate stripes
-        anywhere on Earth above 50&deg; latitude. Enter a community name or
+        anywhere on Earth above 50.5&deg; latitude. Enter a community name or
         lat/long below to get climate stripes derived from climate model data.
       </p>
 
