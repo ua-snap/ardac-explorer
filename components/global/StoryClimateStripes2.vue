@@ -464,11 +464,11 @@ onUnmounted(() => {
 
       <p>
         This module will let you create historical + projected climate stripes
-        anywhere on Earth above 50&deg; latitude. Enter a community name or
+        anywhere on Earth above 50.5&deg; latitude. Enter a community name or
         lat/long below to get climate stripes derived from climate model data.
       </p>
 
-      <Gimme :bbox="[-180, 50, 180, 90]" />
+      <Gimme :bbox="[-180, 50.5, 180, 90]" />
       <div v-if="apiData">
         <div>
           <div class="parameter mb-5">
