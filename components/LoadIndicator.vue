@@ -21,6 +21,7 @@ const anyDataErrors = computed(() => {
 
 <template>
   <div v-if="placesStore.latLng && !anyApiData && !anyDataErrors">
+    <p>Hang on, this could take a few minutes!</p>
     <progress class="progress" />
   </div>
 </template>
