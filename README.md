@@ -169,7 +169,7 @@ Set environment variables if necessary, then run:
 
 ```bash
 npm run generate
-aws s3 cp dist s3://arcticdatascience.org/ --acl public-read --recursive
+aws s3 cp .output/public s3://arcticdatascience.org/ --acl public-read --recursive
 ```
 
 You will also need to invalidate the CloudFront cache for arcticdatascience.org.
