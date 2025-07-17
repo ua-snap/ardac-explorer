@@ -19,61 +19,7 @@ let bbox = props.bbox
 let extent = props.extent
 let communitiesEnabled = props.communitiesEnabled
 
-import { point } from '@turf/helpers'
-import booleanPointInPolygon from '@turf/boolean-point-in-polygon'
-
-// Import needed extent GeoJSON file dynamically.
-const getGeoJson = async (extent: Extent) => {
-  let geoJsonString: typeof import('*?raw')
-  if (extent == 'alaska') {
-    geoJsonString = await import('~/assets/alaska.geojson?raw')
-  } else if (extent == 'blockyAlaska') {
-    geoJsonString = await import('~/assets/blocky_alaska.geojson?raw')
-  } else if (extent == 'mizukami') {
-    geoJsonString = await import('~/assets/mizukami.geojson?raw')
-  } else if (extent == 'elevation') {
-    geoJsonString = await import('~/assets/elevation.geojson?raw')
-  } else if (extent == 'slie') {
-    geoJsonString = await import('~/assets/slie.geojson?raw')
-  } else {
-    throw 'unknown extent type in gimme.vue'
-  }
-  return JSON.parse(geoJsonString!.default)
-}
-
-// TypeScript types for Turf.js are currently in flux, so use "any" for now.
-// See https://github.com/Turfjs/turf/issues/2617
-let parsedGeoJson: any
-
-if (extent != null) {
-  parsedGeoJson = await getGeoJson(extent)
-} else {
-  // Turn the BBOX into GeoJSON
-  parsedGeoJson = {
-    type: 'FeatureCollection',
-    features: [
-      {
-        type: 'Feature',
-        geometry: {
-          type: 'Polygon',
-          coordinates: [
-            [
-              [bbox[0], bbox[1]],
-              [bbox[0], bbox[3]],
-              [bbox[2], bbox[3]],
-              [bbox[2], bbox[1]],
-              [bbox[0], bbox[1]],
-            ],
-          ],
-        },
-        properties: {},
-      },
-    ],
-  }
-}
-
 const placesStore = usePlacesStore()
-let communities = await placesStore.fetchCommunities()
 
 const { $autoComplete, $parseDMS } = useNuxtApp()
 
@@ -96,7 +42,29 @@ onMounted(() => {
   let config = {
     selector: '#gimme',
     placeHolder: placeHolderText,
-    data: {},
+    data: {
+      src: async (query: string) => {
+        if (query.length >= 3 && communitiesEnabled) {
+          const extentParam = typeof extent === 'string' ? extent : undefined
+          let results = await placesStore.fetchCommunitiesBySubstringAndExtent(
+            query,
+            extentParam
+          )
+          if (bbox) {
+            results = results.filter(
+              c =>
+                c.longitude >= bbox[0] &&
+                c.longitude <= bbox[2] &&
+                c.latitude >= bbox[1] &&
+                c.latitude <= bbox[3]
+            )
+          }
+          return results
+        }
+        return []
+      },
+      keys: ['name', 'alt_name'],
+    },
     threshold: 3,
     resultsList: {
       maxResults: 999,
@@ -127,23 +95,6 @@ onMounted(() => {
     },
   }
 
-  if (!communitiesEnabled) {
-    config.data = {
-      src: [],
-    }
-  } else {
-    let extentCommunities = communitiesWithinExtent()
-    if (extentCommunities.length > 0) {
-      config.data = {
-        src: extentCommunities,
-        keys: ['name', 'alt_name'],
-      }
-    } else {
-      config.data = {
-        src: [],
-      }
-    }
-  }
   new $autoComplete(config)
 
   // When a placename is selected, populate the store.
@@ -172,31 +123,6 @@ onMounted(() => {
     selectedCommunityName.value += ', ' + community.country
   })
 })
-
-const withinExtent = (lat: number, lng: number) => {
-  let latLngPoint = point([lng, lat])
-  for (let feature of parsedGeoJson.features) {
-    if (booleanPointInPolygon(latLngPoint, feature)) {
-      return true
-    }
-  }
-  return false
-}
-
-const communitiesWithinExtent = () => {
-  let communitiesInExtent = []
-  for (let community of communities) {
-    if (withinExtent(community.latitude, community.longitude)) {
-      // If it's an ocean-type selector and the place is coastal,
-      // or it's not an oacean-type selector, add the community.
-      if ((props.ocean && community.is_coastal == 1) || !props.ocean) {
-        communitiesInExtent.push(community)
-      }
-    }
-  }
-
-  return communitiesInExtent
-}
 
 const validate = (latLng: string) => {
   let lat: number
@@ -234,26 +160,14 @@ const validate = (latLng: string) => {
         return false
       }
 
-      let validPoint: boolean
-      if (withinExtent(lat, lon)) {
-        validPoint = true
-      } else {
-        validPoint = false
-      }
-
       fieldMessage.value = ''
-      if (validPoint) {
-        // Rounding!
-        lat = +lat.toFixed(4)
-        lon = +lon.toFixed(4)
-        parsedLatLng.value = { lat: lat, lng: lon } as LatLng
-        latLngIsValid.value = true
-        return parsedLatLng.value
-      } else {
-        latLngIsValid.value = false
-        fieldMessage.value += '⚠️ This point is outside the data extent.'
-        return false
-      }
+
+      // Rounding!
+      lat = +lat.toFixed(4)
+      lon = +lon.toFixed(4)
+      parsedLatLng.value = { lat: lat, lng: lon } as LatLng
+      latLngIsValid.value = true
+      return parsedLatLng.value
     }
   } catch (e) {
     // ignore, it's ParseDMS throwing an error
@@ -265,7 +179,6 @@ const validate = (latLng: string) => {
   return false
 }
 
-// For confirming a user's Lat/Lng selection
 function setLatLng() {
   placesStore.latLng = parsedLatLng.value
   placeIsSelected.value = true
@@ -307,6 +220,34 @@ watch(nothingButErrors, async () => {
     fieldMessage.value = ''
   }
 })
+
+// watch(inputValue, val => {
+//   // Check for a valid lat/lon format
+//   const latLngRegex = /^\s*-?\d{1,3}(?:\.\d+)?[ ,]+-?\d{1,3}(?:\.\d+)?\s*$/
+//   if (latLngRegex.test(val)) {
+//     const latlng = val.trim().split(/[ ,]+/)
+//     const lat = parseFloat(latlng[0])
+//     const lng = parseFloat(latlng[1])
+//     let inBbox = true
+//     if (bbox) {
+//       inBbox =
+//         lng >= bbox[0] && lng <= bbox[2] && lat >= bbox[1] && lat <= bbox[3]
+//       if (!inBbox) {
+//         fieldMessage.value = `⚠️ This point is outside the bounding box of data: latitude between ${bbox[1]} – ${bbox[3]}, longitude between ${bbox[0]} – ${bbox[2]}`
+//       }
+//     }
+//     latLngIsValid.value = inBbox
+//     if (inBbox) {
+//       parsedLatLng.value = { lat, lng }
+//     } else {
+//       parsedLatLng.value = undefined
+//     }
+//   } else {
+//     latLngIsValid.value = false
+//     parsedLatLng.value = undefined
+//     fieldMessage.value = ''
+//   }
+// })
 
 onUnmounted(() => {
   placesStore.latLng = undefined
