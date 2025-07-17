@@ -1,7 +1,6 @@
 import { defineStore } from 'pinia'
 const runtimeConfig = useRuntimeConfig()
 
-
 export const usePlacesStore = defineStore('places', () => {
   const allCommunities: Ref<Community[] | undefined> = ref(undefined)
   const selectedCommunity: Ref<CommunityValue> = ref(undefined)
@@ -10,10 +9,19 @@ export const usePlacesStore = defineStore('places', () => {
   const isLoading = ref(false)
   const error = ref<string | null>(null)
 
-  async function fetchCommunities(): Promise<Community[]> {
-    let communities = (await $fetch(
-      runtimeConfig.public.apiUrl + '/places/communities?tags=ardac'
-    )) satisfies Community[]
+  async function fetchCommunitiesBySubstringAndExtent(
+    substring: string,
+    extent?: string
+  ): Promise<Community[]> {
+    if (!substring || substring.length < 3) return []
+    let url =
+      runtimeConfig.public.apiUrl +
+      '/places/search/communities?substring=' +
+      encodeURIComponent(substring)
+    if (extent) {
+      url += '&extent=' + encodeURIComponent(extent)
+    }
+    let communities = (await $fetch(url)) satisfies Community[]
     return communities
   }
 
@@ -34,7 +42,10 @@ export const usePlacesStore = defineStore('places', () => {
         allCommunities.value = await response.json()
       }
 
-      if (!Array.isArray(allCommunities.value) || allCommunities.value.length === 0) {
+      if (
+        !Array.isArray(allCommunities.value) ||
+        allCommunities.value.length === 0
+      ) {
         throw new Error('Invalid or empty data received from API')
       }
 
@@ -125,7 +136,7 @@ export const usePlacesStore = defineStore('places', () => {
   }
 
   return {
-    fetchCommunities,
+    fetchCommunitiesBySubstringAndExtent,
     latLng,
     selectedCommunity,
     randomLocation,
