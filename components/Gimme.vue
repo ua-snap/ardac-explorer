@@ -50,6 +50,8 @@ onMounted(() => {
             query,
             extentParam
           )
+          // Check if bbox is set and filter results based on
+          // the lat / lng for each community being within the bbox
           if (bbox) {
             results = results.filter(
               c =>
@@ -220,34 +222,6 @@ watch(nothingButErrors, async () => {
     fieldMessage.value = ''
   }
 })
-
-// watch(inputValue, val => {
-//   // Check for a valid lat/lon format
-//   const latLngRegex = /^\s*-?\d{1,3}(?:\.\d+)?[ ,]+-?\d{1,3}(?:\.\d+)?\s*$/
-//   if (latLngRegex.test(val)) {
-//     const latlng = val.trim().split(/[ ,]+/)
-//     const lat = parseFloat(latlng[0])
-//     const lng = parseFloat(latlng[1])
-//     let inBbox = true
-//     if (bbox) {
-//       inBbox =
-//         lng >= bbox[0] && lng <= bbox[2] && lat >= bbox[1] && lat <= bbox[3]
-//       if (!inBbox) {
-//         fieldMessage.value = `⚠️ This point is outside the bounding box of data: latitude between ${bbox[1]} – ${bbox[3]}, longitude between ${bbox[0]} – ${bbox[2]}`
-//       }
-//     }
-//     latLngIsValid.value = inBbox
-//     if (inBbox) {
-//       parsedLatLng.value = { lat, lng }
-//     } else {
-//       parsedLatLng.value = undefined
-//     }
-//   } else {
-//     latLngIsValid.value = false
-//     parsedLatLng.value = undefined
-//     fieldMessage.value = ''
-//   }
-// })
 
 onUnmounted(() => {
   placesStore.latLng = undefined
