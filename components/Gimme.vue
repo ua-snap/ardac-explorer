@@ -31,6 +31,8 @@ const placeSelectionType: Ref<PlaceType> = ref(undefined) // community | latLng
 const selectedCommunityName = ref('') // i.e. Fairbanks, etc
 const inputValue = ref('') // input value for autocompleter
 const gimmeInput = ref() // DOM element of #gimme
+const isLoadingCommunities = ref(false)
+let debounceTimeout: ReturnType<typeof setTimeout> | null = null
 
 onMounted(() => {
   let placeHolderText: string
@@ -44,26 +46,30 @@ onMounted(() => {
     placeHolder: placeHolderText,
     data: {
       src: async (query: string) => {
-        if (query.length >= 3 && communitiesEnabled) {
-          const extentParam = typeof extent === 'string' ? extent : undefined
-          let results = await placesStore.fetchCommunitiesBySubstringAndExtent(
-            query,
-            extentParam
-          )
-          // Check if bbox is set and filter results based on
-          // the lat / lng for each community being within the bbox
-          if (bbox) {
-            results = results.filter(
-              c =>
-                c.longitude >= bbox[0] &&
-                c.longitude <= bbox[2] &&
-                c.latitude >= bbox[1] &&
-                c.latitude <= bbox[3]
-            )
-          }
-          return results
+        if (debounceTimeout) clearTimeout(debounceTimeout)
+        if (!(query.length >= 3 && communitiesEnabled)) {
+          return []
         }
-        return []
+        return await new Promise(resolve => {
+          debounceTimeout = setTimeout(async () => {
+            const extentParam = typeof extent === 'string' ? extent : undefined
+            let results =
+              await placesStore.fetchCommunitiesBySubstringAndExtent(
+                query,
+                extentParam
+              )
+            if (bbox) {
+              results = results.filter(
+                (c: Community) =>
+                  c.longitude >= bbox[0] &&
+                  c.longitude <= bbox[2] &&
+                  c.latitude >= bbox[1] &&
+                  c.latitude <= bbox[3]
+              )
+            }
+            resolve(results)
+          }, 500)
+        })
       },
       keys: ['name', 'alt_name'],
     },
