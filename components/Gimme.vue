@@ -31,8 +31,6 @@ const placeSelectionType: Ref<PlaceType> = ref(undefined) // community | latLng
 const selectedCommunityName = ref('') // i.e. Fairbanks, etc
 const inputValue = ref('') // input value for autocompleter
 const gimmeInput = ref() // DOM element of #gimme
-const isLoadingCommunities = ref(false)
-let debounceTimeout: ReturnType<typeof setTimeout> | null = null
 
 onMounted(() => {
   let placeHolderText: string
@@ -46,34 +44,29 @@ onMounted(() => {
     placeHolder: placeHolderText,
     data: {
       src: async (query: string) => {
-        if (debounceTimeout) clearTimeout(debounceTimeout)
         if (!(query.length >= 3 && communitiesEnabled)) {
           return []
         }
-        return await new Promise(resolve => {
-          debounceTimeout = setTimeout(async () => {
-            const extentParam = typeof extent === 'string' ? extent : undefined
-            let results =
-              await placesStore.fetchCommunitiesBySubstringAndExtent(
-                query,
-                extentParam
-              )
-            if (bbox) {
-              results = results.filter(
-                (c: Community) =>
-                  c.longitude >= bbox[0] &&
-                  c.longitude <= bbox[2] &&
-                  c.latitude >= bbox[1] &&
-                  c.latitude <= bbox[3]
-              )
-            }
-            resolve(results)
-          }, 500)
-        })
+        const extentParam = typeof extent === 'string' ? extent : undefined
+        let results = await placesStore.fetchCommunitiesBySubstringAndExtent(
+          query,
+          extentParam
+        )
+        if (bbox) {
+          results = results.filter(
+            (c: Community) =>
+              c.longitude >= bbox[0] &&
+              c.longitude <= bbox[2] &&
+              c.latitude >= bbox[1] &&
+              c.latitude <= bbox[3]
+          )
+        }
+        return results
       },
       keys: ['name', 'alt_name'],
     },
     threshold: 3,
+    debounce: 500,
     resultsList: {
       maxResults: 999,
     },
