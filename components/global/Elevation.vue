@@ -87,7 +87,7 @@ onUnmounted(() => {
         populate the table.
       </p>
 
-      <Gimme extent="mizukami" class="mb-5" />
+      <Gimme extent="elevation" class="mb-5" />
 
       <div v-if="latLng && apiData">
         <h4 class="title is-4">
