@@ -66,7 +66,7 @@ onMounted(() => {
       keys: ['name', 'alt_name'],
     },
     threshold: 3,
-    debounce: 500,
+    debounce: 200,
     resultsList: {
       maxResults: 999,
     },
