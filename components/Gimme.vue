@@ -61,6 +61,11 @@ onMounted(() => {
               c.latitude <= bbox[3]
           )
         }
+        if (results.length === 0) {
+          fieldMessage.value = 'No communities found with that substring.'
+        } else {
+          fieldMessage.value = ''
+        }
         return results
       },
       keys: ['name'],
