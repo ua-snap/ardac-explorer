@@ -63,7 +63,11 @@ onMounted(() => {
         }
         return results
       },
-      keys: ['name', 'alt_name'],
+      keys: ['name'],
+    },
+    searchEngine: (query: string, record: any) => {
+      // Required for the autocomplete library to not filter results
+      return record
     },
     threshold: 3,
     debounce: 200,
