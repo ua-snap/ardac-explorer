@@ -62,7 +62,7 @@ onMounted(() => {
           )
         }
         if (results.length === 0) {
-          fieldMessage.value = 'No communities found with that substring.'
+          fieldMessage.value = '⚠️ Sorry, no matching communities within the extent of this dataset were found.'
         } else {
           fieldMessage.value = ''
         }
@@ -305,5 +305,9 @@ onUnmounted(() => {
 
 #gimme {
   background-image: none;
+}
+
+.help {
+  font-size: 1.25rem;
 }
 </style>
