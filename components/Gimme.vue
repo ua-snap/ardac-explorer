@@ -61,6 +61,11 @@ onMounted(() => {
               c.latitude <= bbox[3]
           )
         }
+        if (results.length === 0) {
+          fieldMessage.value = '⚠️ Sorry, no matching communities within the extent of this dataset were found.'
+        } else {
+          fieldMessage.value = ''
+        }
         return results
       },
       keys: ['name'],
@@ -300,5 +305,9 @@ onUnmounted(() => {
 
 #gimme {
   background-image: none;
+}
+
+.help {
+  font-size: 1.25rem;
 }
 </style>
