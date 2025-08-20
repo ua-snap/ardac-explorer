@@ -24,11 +24,6 @@ const props = defineProps(['jupyterlabUrl', 'githubUrl'])
           <div class="is-size-5">
             <ul>
               <li>
-                <NuxtLink :to="jupyterlabUrl"
-                  >&#x2192; run this notebook online</NuxtLink
-                >
-              </li>
-              <li>
                 <NuxtLink :to="githubUrl"
                   >&#x2192; download this notebook from GitHub</NuxtLink
                 >
