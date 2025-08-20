@@ -67,9 +67,6 @@
     <div class="content is-size-5">
       <ul>
         <li>
-          <a href="https://notebooks.earthmaps.io">Run this notebook online</a>
-        </li>
-        <li>
           <a
             href="https://github.com/ua-snap/ardac-toolbox/blob/main/notebooks/daymet_access.ipynb"
             >Access source code on Github</a
