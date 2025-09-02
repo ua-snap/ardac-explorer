@@ -38,9 +38,6 @@
         <a href="https://creativecommons.org/licenses/by/4.0/"
           >Creative Commons Attribution 4.0 International (CC by 4.0).</a
         >
-        Jupyter Notebook code is released under the
-        <a href="https://opensource.org/license/mit">MIT License</a> Copyright
-        2024 Scenarios Network for Alaska + Arctic Planning.
       </p>
       <div class="title is-4">Rasdaman raster database</div>
       <p>
